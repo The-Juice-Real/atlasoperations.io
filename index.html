@@ -10,15 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0b0b;
-      --panel: #0f1113;
-      --muted: #9aa4af;
-      --text: #f5f5f5;
-      --accent: #d90429;
+      --bg: #f8f9fb;
+      --panel: #ffffff;
+      --muted: #6b7280;
+      --text: #1f2937;
+      --accent: #2563eb;
     }
 
     * {
@@ -36,7 +36,7 @@
     h1,
     h2,
     h3 {
-      font-family: Oswald, Inter, sans-serif;
+      font-family: "Playfair Display", Inter, serif;
       margin: 0;
     }
 
@@ -46,9 +46,41 @@
 
     /* Header / Hero */
     header {
-      padding: 84px 20px 64px;
+      padding: 20px 20px 64px;
       text-align: center;
-      background: linear-gradient(180deg, rgba(217, 4, 41, 0.03), transparent);
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.03), transparent);
+    }
+
+    .top-nav {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--panel);
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover {
+      background: var(--accent);
+      color: #fff;
     }
 
     .brand {
@@ -75,18 +107,18 @@
     .cta {
       display: inline-block;
       padding: 12px 26px;
-      background: linear-gradient(90deg, var(--accent), #a60a18);
+      background: linear-gradient(90deg, var(--accent), #1e4bb8);
       color: #fff;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 700;
-      box-shadow: 0 10px 30px rgba(217, 4, 41, 0.12);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
       transition: background-color 0.3s ease;
     }
 
     .cta:hover,
     .cta:focus {
-      background: linear-gradient(90deg, #a60a18, var(--accent));
+      background: linear-gradient(90deg, #1e4bb8, var(--accent));
     }
 
     .stat-row {
@@ -97,10 +129,10 @@
     }
 
     .stat {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
       padding: 10px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .stat strong {
@@ -162,13 +194,13 @@
       background: var(--panel);
       padding: 22px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(217, 4, 41, 0.08);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.08);
     }
 
     .card h3 {
@@ -184,7 +216,7 @@
     .visual {
       width: 100%;
       height: 220px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), transparent);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -199,8 +231,9 @@
       padding: 26px 20px;
       text-align: center;
       color: var(--muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
       margin-top: 48px;
+      background: var(--panel);
     }
 
     /* small */
@@ -248,12 +281,12 @@
       0%,
       100% {
         fill-opacity: 0.15;
-        filter: drop-shadow(0 0 4px rgba(217, 4, 41, 0.6));
+        filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.6));
       }
 
       50% {
         fill-opacity: 0.25;
-        filter: drop-shadow(0 0 10px rgba(217, 4, 41, 0.9));
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.9));
       }
     }
 
@@ -268,12 +301,12 @@
       0%,
       100% {
         fill-opacity: 1;
-        filter: drop-shadow(0 0 6px rgba(217, 4, 41, 0.9));
+        filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.9));
       }
 
       50% {
         fill-opacity: 0.7;
-        filter: drop-shadow(0 0 12px rgba(217, 4, 41, 1));
+        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 1));
       }
     }
 
@@ -313,6 +346,10 @@
 
 <body>
   <header>
+    <nav class="top-nav">
+      <div class="logo">Atlas Operations</div>
+      <a class="contact-link" href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank" rel="noopener noreferrer">Contact</a>
+    </nav>
     <div class="brand">Atlas Operations</div>
     <h1 class="title">Precision Influence — On Demand</h1>
     <p class="lead">
@@ -373,7 +410,7 @@
     </div>
   </section>
 
-  <section style="background:#0e0e0f;padding-top:40px;padding-bottom:40px;">
+  <section style="background:var(--panel);padding-top:40px;padding-bottom:40px;">
     <div class="two">
       <div class="col">
         <div class="visual" aria-label="SOS beacon with signal waves" role="img">
@@ -438,7 +475,7 @@
     </div>
   </section>
 
-  <section style="background:#0e0e0f;padding-top:40px;padding-bottom:40px;text-align:center;">
+  <section style="background:var(--panel);padding-top:40px;padding-bottom:40px;text-align:center;">
     <h2 class="accent-line">Premium Reddit Strategy</h2>
     <p class="muted">
       We build and run full campaigns: ghost posts, comment networks, timed upvotes, rep monitoring, and win tracking.
@@ -448,7 +485,7 @@
     <div style="margin-top:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a class="cta" href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank"
         rel="noopener noreferrer">Request Strategy Brief</a>
-      <a style="display:inline-block;padding:12px 20px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none;font-weight:600"
+      <a style="display:inline-block;padding:12px 20px;border-radius:8px;border:1px solid rgba(0,0,0,0.05);color:var(--muted);text-decoration:none;font-weight:600;background:var(--panel)"
         href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank" rel="noopener noreferrer">Book
         a Triage Call</a>
     </div>
@@ -478,6 +515,7 @@
 
   <footer>
     <p>© 2025 Atlas Operations — Precision Influence, On Demand</p>
+    <p>Contact: <a href="mailto:contact@atlasops.com">contact@atlasops.com</a></p>
   </footer>
 </body>
 
