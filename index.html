@@ -4,58 +4,44 @@
   <meta charset="utf-8" />
   <title>UB → US in 12 Weeks • Scholarship-Ready Admission</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Small-group, in-person cohort in Ulaanbaatar. Weekly mocks with same-day fixes, EssayLab edits, Mongolia-specific scholarships. Score-lift guaranteed. Starts Oct 10." />
+  <meta name="description" content="Daily small-group classes in Ulaanbaatar. Weekly mock tests with same-day fixes, essay help, and a Mongolia-specific scholarship list. Score-lift guaranteed. Starts Oct 10." />
   <meta name="theme-color" content="#0b2240" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="UB → US in 12 Weeks • Scholarship-Ready Admission" />
-  <meta property="og:description" content="≤12 seats. Score-lift guaranteed. Book a free diagnostic." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://atlasoperations.io/ub-us" />
-  <meta property="og:image" content="https://atlasoperations.io/og-ubus.jpg" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="UB → US in 12 Weeks • Scholarship-Ready Admission" />
-  <meta name="twitter:description" content="In-person. Same-day fixes, essays, scholarships. Guarantee included." />
-  <meta name="twitter:image" content="https://atlasoperations.io/og-ubus.jpg" />
   <link rel="icon" href="/favicon.ico" />
   <style>
     :root{
       --navy:#0b2240; --red:#d21f3c; --white:#ffffff;
-      --g100:#f6f8fb; --g200:#ecf0f7; --g300:#d9e1ee; --g600:#5a6a84;
-      --max:1100px; --r:14px;
+      --g050:#fbfcff; --g100:#f6f8fb; --g200:#ecf0f7; --g300:#d9e1ee; --g600:#445370;
+      --max:1100px; --r:16px;
     }
     html{scroll-behavior:smooth}
     *{box-sizing:border-box}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
-      color:#0d1420; background:var(--white); line-height:1.5;
-    }
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; color:#0d1420; background:var(--g050); line-height:1.55}
     a{color:var(--navy); text-decoration:none}
     .container{max-width:var(--max); margin:0 auto; padding:0 20px}
     /* Top bar */
     .topbar{position:sticky; top:0; z-index:50; background:rgba(11,34,64,.92); backdrop-filter:saturate(120%) blur(6px); border-bottom:1px solid rgba(255,255,255,.06)}
     .topbar .inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
     .brand{display:flex; align-items:center; gap:10px; color:#fff; font-weight:800}
-    .brand .logo{width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,var(--red),#d94c60); display:grid; place-items:center; color:#fff; font-weight:900}
+    .brand .logo{width:36px; height:36px; border-radius:12px; background:#fff1; display:grid; place-items:center; color:#fff; font-weight:900}
     .nav a{color:#cfe0ff; margin-left:18px; font-size:14px}
-    .btn{display:inline-block; padding:12px 18px; border-radius:10px; font-weight:800; border:1px solid transparent; cursor:pointer}
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; font-weight:800; border:1px solid transparent; cursor:pointer}
     .btn.primary{background:var(--red); color:#fff}
     .btn.light{background:#fff; color:var(--navy); border-color:var(--g300)}
     .btn.ghost{color:#fff; border-color:rgba(255,255,255,.3)}
     /* Hero */
     .hero{
       background:
-        radial-gradient(1200px 500px at 80% -10%, rgba(210,31,60,0.18), transparent 60%),
+        radial-gradient(1200px 500px at 80% -10%, rgba(210,31,60,0.16), transparent 60%),
         radial-gradient(900px 500px at -10% -20%, rgba(13,34,64,0.25), transparent 60%),
         linear-gradient(180deg,#0b2240 0%, #102b52 40%, #0b2240 100%);
       color:#fff; padding:64px 0 36px; position:relative;
     }
-    .hero h1{margin:6px 0 8px; font-size:36px; line-height:1.15}
+    .hero h1{margin:6px 0 8px; font-size:34px; line-height:1.15}
     .hero p{color:#d5e4ff; max-width:760px; margin:0 0 16px}
-    .hero .badges, .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
     .badge{display:inline-block; border:1px solid rgba(255,255,255,.25); padding:6px 10px; border-radius:999px; font-size:12px; color:#e8f1ff}
     .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
-    .countdown{font-weight:800; color:#fff; padding:8px 12px; border:1px dashed rgba(255,255,255,.35); border-radius:10px; font-size:14px}
+    .countdown{font-weight:800; color:#fff; padding:8px 12px; border:1px dashed rgba(255,255,255,.35); border-radius:12px; font-size:14px}
     /* Sections */
     section{padding:38px 0}
     .section-title{font-size:26px; margin:0 0 14px}
@@ -67,17 +53,19 @@
       .cards.cols-3{grid-template-columns:repeat(3,1fr)}
       .cards.cols-6{grid-template-columns:repeat(3,1fr)}
     }
-    .card{background:var(--g100); border:1px solid var(--g300); border-radius:var(--r); padding:16px}
+    .card{background:#fff; border:1px solid var(--g300); border-radius:var(--r); padding:16px}
     .list{margin:0; padding-left:18px}
     .list li{margin:6px 0}
     .muted{color:var(--g600); font-size:14px}
     .kicker{color:var(--red); font-weight:800; font-size:12px; letter-spacing:.2px; text-transform:uppercase}
-    .table{width:100%; border-collapse:collapse; font-size:14px}
+    .table{width:100%; border-collapse:collapse; font-size:14px; background:#fff; border-radius:12px; overflow:hidden}
     .table th,.table td{border:1px solid var(--g300); padding:8px; text-align:left}
     .table th{background:var(--g100)}
-    .proof{height:120px; border:2px dashed var(--g300); border-radius:12px; display:grid; place-items:center; color:var(--g600); font-size:13px; background:#fff}
+    /* Instructor */
+    .instructor{display:flex; gap:16px; align-items:center}
+    .avatar{width:88px; height:88px; border-radius:999px; object-fit:cover; border:3px solid #fff; outline:2px solid var(--g300); background:#fff}
     /* Sticky footer CTA */
-    .sticky-cta{position:sticky; bottom:0; z-index:40; background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.9) 20%, #fff); border-top:1px solid var(--g300); padding:10px 0}
+    .sticky-cta{position:sticky; bottom:0; z-index:40; background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.92) 20%, #fff); border-top:1px solid var(--g300); padding:10px 0}
     .bar{display:flex; align-items:center; justify-content:space-between; gap:10px}
     .bar .copy{font-weight:700}
     footer{padding:30px 0 50px; color:var(--g600)}
@@ -94,7 +82,7 @@
       <nav class="nav">
         <a href="#why">Why Different</a>
         <a href="#what">What You Get</a>
-        <a href="#dates">Dates</a>
+        <a href="#dates">Schedule</a>
         <a href="#price">Price</a>
         <a href="#guarantee">Guarantee</a>
         <a href="#faq">FAQ</a>
@@ -106,65 +94,38 @@
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <h1>UB → US in 12 Weeks • Scholarship-Ready Admission.</h1>
-      <p>Small-group, in-person coaching. Weekly proctored mocks with same-day fixes, EssayLab line-edits, Mongolia-specific scholarships. <strong>Score-lift guaranteed.</strong></p>
+      <h1>UB → US in 12 Weeks. Get Scholarship-Ready.</h1>
+      <p>Daily small-group classes. Weekly mock tests with same-day fixes. Essay help that keeps it simple. A Mongolia-specific scholarship list you can actually use. <strong>We promise a score boost.</strong></p>
       <div class="badges">
         <span class="badge">Starts Oct 10, 2025</span>
-        <span class="badge">Tue/Thu 17:30–19:30 • Sat mocks 10:00</span>
+        <span class="badge">Daily classes • Group A & Group B (smaller classes)</span>
         <span class="badge seat-badge">≤<span data-seats>12</span> seats • 2 need-based at ₮990k</span>
-        <span class="badge">Taught by Founder Tuguldur Gan-Erdene — SAT 1550 • TOEFL 113 • IELTS 8.5 • 100% Soka scholarship</span>
+        <span class="badge">Founder-led • Score-lift guaranteed</span>
       </div>
       <div class="cta">
         <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
         <span id="countdown" class="countdown" aria-live="polite">Starts in —</span>
       </div>
-      <p class="muted">Credentials verified during diagnostic. Score reports and award letter on file.</p>
+      <p class="muted">Not formal or scary. Clear, friendly, and focused on wins.</p>
     </div>
   </header>
 
-  <!-- Results strip -->
+  <!-- Meet your instructor (with LinkedIn) -->
   <section>
-    <div class="container cards cols-3">
+    <div class="container">
+      <h2 class="section-title">Meet Your Instructor</h2>
       <div class="card">
-        <div class="kicker">Score Proof</div>
-        <div class="proof">Upload mock analytics screenshot</div>
-        <p class="muted">Same-day fixes raise next week’s score.</p>
-      </div>
-      <div class="card">
-        <div class="kicker">Essay Proof</div>
-        <div class="proof">Upload before/after essay excerpt</div>
-        <p class="muted">Draft → 2 line edits → polished statement.</p>
-      </div>
-      <div class="card">
-        <div class="kicker">Admission Proof</div>
-        <div class="proof">Upload acceptance/scholarship blur</div>
-        <p class="muted">Scholarships targeted with deadline calendar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Meet your instructor -->
-  <section>
-    <div class="container grid cols-2">
-      <div>
-        <h2 class="section-title">Meet Your Instructor</h2>
-        <p><strong>Tuguldur Gan-Erdene</strong> teaches this cohort personally.</p>
-        <ul class="list">
-          <li>Scores: SAT 1550 • TOEFL 113 • IELTS 8.5</li>
-          <li>100% scholarship to Soka University of America</li>
-          <li>Taught at Samsung and SK hynix (Shenzhen)</li>
-          <li>TOEFL Speaking tutor, Universal Learning Center</li>
-          <li>Private English tutor, Shenzhen</li>
-        </ul>
-        <p class="muted">Credential pack shown in the diagnostic: score reports, award letter, sample lesson, mock report.</p>
-      </div>
-      <div class="card">
-        <div class="kicker">Live Proof During Class</div>
-        <ul class="list">
-          <li>Public cohort tracker of weekly score deltas</li>
-          <li>On-screen mock analytics every Saturday</li>
-          <li>Essay edit history visible in Google Docs</li>
-        </ul>
+        <div class="instructor">
+          <!-- Uses your LinkedIn photo via Unavatar. Replace with a local file anytime. -->
+          <img class="avatar" src="https://unavatar.io/linkedin/the-juice" alt="Photo of Tuguldur Gan-Erdene" onerror="this.src='https://unavatar.io/placeholder/The%20Juice'">
+          <div>
+            <p style="margin:0 0 6px"><strong>Tuguldur Gan-Erdene</strong> • teaches this cohort himself.</p>
+            <p class="muted" style="margin:0">SAT 1550 • TOEFL 113 • IELTS 8.5 • 100% scholarship to Soka University of America</p>
+            <p class="muted" style="margin:6px 0 0">Taught at Samsung and SK hynix (Shenzhen). TOEFL Speaking tutor. Private English tutor.</p>
+            <p style="margin:8px 0 0"><a href="https://www.linkedin.com/in/the-juice/" target="_blank" rel="noopener">See my LinkedIn →</a></p>
+            <p class="muted" style="margin:6px 0 0">Score reports and award letter shown during the diagnostic.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -174,12 +135,12 @@
     <div class="container">
       <h2 class="section-title">Why We’re Different</h2>
       <div class="cards cols-6">
-        <div class="card"><strong>≤12 students</strong><br><span class="muted">Not a big class. Direct coaching.</span></div>
-        <div class="card"><strong>Weekly mocks</strong><br><span class="muted">Same-day fixes drive weekly lift.</span></div>
-        <div class="card"><strong>EssayLab line-edits</strong><br><span class="muted">2 professional edits to polish.</span></div>
-        <div class="card"><strong>MN-specific scholarships</strong><br><span class="muted">25–40 targets with deadlines.</span></div>
-        <div class="card"><strong>Score-lift guarantee</strong><br><span class="muted">We train free for double time.</span></div>
-        <div class="card"><strong>Parent alignment</strong><br><span class="muted">Parent Night + DeadlineGuard.</span></div>
+        <div class="card"><strong>Tiny groups</strong><br><span class="muted">You talk. We coach. You improve.</span></div>
+        <div class="card"><strong>Daily classes</strong><br><span class="muted">Practice a little every day.</span></div>
+        <div class="card"><strong>Mock → Fix</strong><br><span class="muted">Saturday test, same-day fixes.</span></div>
+        <div class="card"><strong>Essay help</strong><br><span class="muted">Simple steps. Two clean edits.</span></div>
+        <div class="card"><strong>Scholarship list</strong><br><span class="muted">25–40 real options with deadlines.</span></div>
+        <div class="card"><strong>Score guarantee</strong><br><span class="muted">Miss it? We train you for longer.</span></div>
       </div>
     </div>
   </section>
@@ -189,12 +150,12 @@
     <div class="container">
       <h2 class="section-title">What You Get</h2>
       <div class="cards cols-3">
-        <div class="card"><strong>Score Accelerator</strong><br><span class="muted">Raise scores weekly with same-day fixes.</span></div>
-        <div class="card"><strong>EssayLab</strong><br><span class="muted">Finish essays in 2 weeks with 2 line-edits.</span></div>
-        <div class="card"><strong>ScholarshipShortlist</strong><br><span class="muted">Never miss deadlines. 25–40 + calendar.</span></div>
-        <div class="card"><strong>Interview Accelerator</strong><br><span class="muted">2 live mocks + recordings.</span></div>
-        <div class="card"><strong>Parent Enablement</strong><br><span class="muted">Parent Night + WhatsApp DeadlineGuard.</span></div>
-        <div class="card"><strong>Rapid-Mock</strong><br><span class="muted">4 proctored mocks with instant analytics.</span></div>
+        <div class="card"><strong>Score Accelerator</strong><br><span class="muted">Raise scores each week with fast feedback.</span></div>
+        <div class="card"><strong>EssayLab</strong><br><span class="muted">Pick a story, follow a template, get 2 edits.</span></div>
+        <div class="card"><strong>ScholarshipShortlist</strong><br><span class="muted">A ready-to-use list + a deadline calendar.</span></div>
+        <div class="card"><strong>Interview Practice</strong><br><span class="muted">2 live mocks. Recordings included.</span></div>
+        <div class="card"><strong>Parent Enablement</strong><br><span class="muted">Parent Night + easy reminders on WhatsApp.</span></div>
+        <div class="card"><strong>Rapid Mocks</strong><br><span class="muted">4 proctored tests. Same-day score report.</span></div>
       </div>
     </div>
   </section>
@@ -205,20 +166,20 @@
       <div>
         <h2 class="section-title">How We Get Results</h2>
         <ul class="list">
-          <li>Week 1: Baseline mock + Score-Map™ plan</li>
-          <li>Weeks 2–12: Class + targeted drills from analytics</li>
-          <li>Weeks 2–6: Essay drafts → 2 line-edits → final</li>
-          <li>Weeks 4–8: Scholarship shortlist + deadline tracker</li>
+          <li>Week 1: Baseline mock + your 12-week plan (Score-Map™)</li>
+          <li>Weeks 2–12: Class + targeted drills based on your mistakes</li>
+          <li>Weeks 2–6: Write your essay → 2 edits → final version</li>
+          <li>Weeks 4–8: Scholarship list + deadline tracker</li>
           <li>Weeks 6–10: Interview coaching + 2 live mocks</li>
-          <li>Ongoing: Saturday analytics → next-week fixes</li>
+          <li>Every Saturday: Mock test → same-day fixes</li>
         </ul>
       </div>
       <div class="card">
         <div class="kicker">Try Before You Buy</div>
         <ul class="list">
           <li>Free 20-min diagnostic</li>
-          <li>Sample lesson access</li>
-          <li>Founder score reports on file</li>
+          <li>Short sample lesson</li>
+          <li>Credentials shown</li>
         </ul>
         <div class="cta" style="margin-top:8px">
           <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
@@ -227,55 +188,54 @@
     </div>
   </section>
 
-  <!-- Dates & Seats -->
+  <!-- Dates & Schedule -->
   <section id="dates">
     <div class="container grid cols-2">
       <div>
         <h2 class="section-title">Dates & Seats</h2>
         <ul class="list">
           <li><strong>Start:</strong> Oct 10, 2025</li>
-          <li><strong>Duration:</strong> 12 weeks • in-person small group</li>
-          <li><strong>Schedule:</strong> Tue & Thu 17:30–19:30; Sat 10:00–12:00; Sun 17:00–18:00 office hour</li>
+          <li><strong>Length:</strong> 12 weeks • in-person</li>
           <li><strong>Seats:</strong> ≤<span data-seats>12</span> • 2 need-based at ₮990,000</li>
         </ul>
       </div>
       <div>
-        <h2 class="section-title">Weekly Rhythm</h2>
+        <h2 class="section-title">Weekly Rhythm (Daily)</h2>
         <table class="table">
-          <tr><th>Tue</th><td>Class • Score Accelerator</td></tr>
-          <tr><th>Thu</th><td>Class • Essay/Scholarship/Interview blocks</td></tr>
-          <tr><th>Sat</th><td>Proctored mock • Same-day analytics</td></tr>
-          <tr><th>Sun</th><td>Optional office hour Q&A</td></tr>
+          <tr><th>Mon–Fri</th><td><strong>Group A:</strong> 17:00–18:30 • <strong>Group B:</strong> 18:45–20:15</td></tr>
+          <tr><th>Saturday</th><td>Proctored mock • Same-day analytics</td></tr>
+          <tr><th>Sunday</th><td>Optional office hour Q&A (17:00–18:00)</td></tr>
         </table>
+        <p class="muted" style="margin-top:8px">We keep classes small by splitting the cohort into two groups.</p>
       </div>
     </div>
   </section>
 
-  <!-- Price -->
+  <!-- Price + Bonuses (simple, fun copy) -->
   <section id="price">
     <div class="container grid cols-2">
       <div class="card">
-        <div class="kicker">Tuition</div>
-        <p style="margin:6px 0 10px"><strong>₮2,500,000</strong> • 0% 3-pay: ₮850,000 × 3</p>
-        <p class="muted">ROI: Even a modest $3k–$10k scholarship dwarfs ₮2.5M. This is about outcomes, not hours.</p>
-        <p style="margin-top:10px;"><span class="pill">Bonuses included: ₮3,000,000+ value</span></p>
+        <div class="kicker">Price</div>
+        <p style="margin:6px 0 8px"><strong>₮2,500,000</strong> • 0% plan: ₮850,000 × 3</p>
+        <p class="muted">Even a small $3k–$10k scholarship beats this cost. We’re buying outcomes, not hours.</p>
         <div class="cta" style="margin-top:10px">
           <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
         </div>
       </div>
       <div class="card">
-        <div class="kicker">Bonuses</div>
+        <div class="kicker">Bonuses You Get</div>
         <ul class="list">
-          <li>Score-Map™ 12-Week Plan (₮350k)</li>
-          <li>Rapid-Mock™ 4 Proctored + Analytics (₮420k)</li>
-          <li>EssayLab™ Templates + 2 Line-Edits (₮600k)</li>
-          <li>ScholarshipShortlist™ 25–40 + Calendar (₮300k)</li>
-          <li>Interview Accelerator™ 2 Mocks (₮380k)</li>
-          <li>Parent Playbook™ + Parent Night (₮220k)</li>
-          <li>DeadlineGuard™ Reminders (₮180k)</li>
-          <li>Test-Day Kit™ (₮90k)</li>
-          <li>Re-Application Sprint Plan™ (₮260k)</li>
+          <li><strong>Score-Map™</strong> — your 12-week to-do list. Just follow it.</li>
+          <li><strong>Rapid-Mock™ (4)</strong> — real tests. fast reports. fix next week.</li>
+          <li><strong>EssayLab™</strong> — easy templates + two clean edits.</li>
+          <li><strong>ScholarshipShortlist™</strong> — 25–40 options you can apply for now.</li>
+          <li><strong>Interview Accelerator™ (2)</strong> — practice answers. get confident.</li>
+          <li><strong>Parent Playbook™</strong> — what parents do, week by week.</li>
+          <li><strong>DeadlineGuard™</strong> — WhatsApp reminders so nothing is late.</li>
+          <li><strong>Test-Day Kit™</strong> — what to bring, where to go, how to stay calm.</li>
+          <li><strong>Re-Application Sprint™</strong> — a backup plan if we ever need it.</li>
         </ul>
+        <p style="margin-top:10px;"><span class="pill">Total bonus value: ₮3,000,000+ included</span></p>
       </div>
     </div>
   </section>
@@ -285,40 +245,40 @@
     <div class="container grid cols-2">
       <div>
         <h2 class="section-title">Double-Time Free Guarantee</h2>
-        <p>If the student completes the steps and misses the target, we train them for <strong>2× the program length</strong> at no extra cost—until they hit <strong>SAT +100</strong> or <strong>TOEFL/IELTS +15%</strong> from baseline.</p>
+        <p>Do the steps. If you miss the target, we keep training you for <strong>2× longer</strong> at no extra cost—until you hit <strong>SAT +100</strong> or <strong>TOEFL/IELTS +15%</strong> from your baseline.</p>
       </div>
       <div class="card">
         <details>
-          <summary><strong>Activation steps, scope, and window</strong></summary>
+          <summary><strong>How to activate (simple)</strong></summary>
           <ul class="list" style="margin-top:8px">
-            <li>≥85% attendance or recordings within 72h</li>
-            <li>≥80% weekly drills completed</li>
-            <li>4 proctored mocks + same-day reviews</li>
-            <li>2 essay drafts with editor feedback implemented</li>
-            <li>WhatsApp replies within 24h</li>
-            <li>1 official SAT/TOEFL/IELTS within 45 days post-program</li>
+            <li>Come to ≥85% classes or watch the recording in 72h</li>
+            <li>Finish ≥80% weekly drills</li>
+            <li>Take 4 proctored mocks + do the reviews</li>
+            <li>Write 2 essay drafts and apply the edits</li>
+            <li>Reply on WhatsApp within 24h</li>
+            <li>Take 1 official SAT/TOEFL/IELTS within 45 days</li>
           </ul>
-          <p class="muted">Scope: continuing same small-group services. Excludes new VIP 1:1, extra materials, and official test fees. Activation window: 14 days from end of program.</p>
+          <p class="muted">Same small-group service continues. No extra 1:1 hours, no extra materials, and official test fees are not included. Activate within 14 days after the program ends.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- FAQ trimmed -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="container">
       <h2 class="section-title">FAQ</h2>
-      <div class="card"><strong>What if we miss the target?</strong><br><span class="muted">Double-Time Free Guarantee applies.</span></div>
-      <div class="card"><strong>SAT or TOEFL/IELTS?</strong><br><span class="muted">Both. We map the best path for your colleges.</span></div>
-      <div class="card"><strong>If we miss classes?</strong><br><span class="muted">Watch the recording within 72 hours. It counts toward the guarantee.</span></div>
-      <div class="card"><strong>Refunds?</strong><br><span class="muted">14-day cooling-off from first session start. Then the guarantee applies.</span></div>
+      <div class="card"><strong>What if we miss the target?</strong><br><span class="muted">You get the Double-Time Free Guarantee.</span></div>
+      <div class="card"><strong>SAT or TOEFL/IELTS?</strong><br><span class="muted">Both. We pick the smarter path for your goals.</span></div>
+      <div class="card"><strong>Miss a class?</strong><br><span class="muted">Watch the recording within 72 hours. It still counts.</span></div>
+      <div class="card"><strong>Refunds?</strong><br><span class="muted">14-day cooling-off from the first session. After that, the guarantee applies.</span></div>
       <div class="cta" style="margin-top:12px">
         <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
       </div>
     </div>
   </section>
 
-  <!-- Policies near footer -->
+  <!-- Policies + Contact -->
   <section>
     <div class="container grid cols-2">
       <div class="card">
@@ -326,13 +286,13 @@
         <ul class="list">
           <li>Attendance: ≥85% live or 72h make-ups</li>
           <li>Makeups: recordings + office hours</li>
-          <li>Conduct: respectful classroom and chat behavior</li>
-          <li>Data/media consent optional</li>
+          <li>Conduct: be respectful in class and chat</li>
+          <li>Data/media consent is optional</li>
         </ul>
       </div>
       <div class="card">
         <div class="kicker">Contact</div>
-        <p><strong>Location:</strong> Ulaanbaatar • In-person classroom</p>
+        <p><strong>Location:</strong> Ulaanbaatar • in-person classroom</p>
         <p><strong>WhatsApp:</strong> <a id="wa-link" href="#">Message us</a></p>
         <p><strong>Email:</strong> <a href="mailto:admissions@atlasoperations.io">admissions@atlasoperations.io</a></p>
       </div>
@@ -342,7 +302,7 @@
   <!-- Sticky footer CTA -->
   <div class="sticky-cta">
     <div class="container bar">
-      <div class="copy">Starts Oct 10 • ≤<span data-seats>12</span> seats • Score-lift guaranteed</div>
+      <div class="copy">Starts Oct 10 • Daily classes • ≤<span data-seats>12</span> seats • Score-lift guaranteed</div>
       <div class="cta">
         <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
       </div>
@@ -355,7 +315,7 @@
     </div>
   </footer>
 
-  <!-- JSON-LD -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -377,10 +337,7 @@
       "availability":"https://schema.org/LimitedAvailability",
       "url":"https://atlasoperations.io/ub-us"
     },
-    "instructor": {
-      "@type":"Person",
-      "name":"Tuguldur Gan-Erdene"
-    }
+    "instructor": {"@type":"Person","name":"Tuguldur Gan-Erdene","sameAs":"https://www.linkedin.com/in/the-juice/"}
   }
   </script>
 
@@ -391,7 +348,7 @@
       const CALENDLY = "https://calendly.com/atlas-ub-us/diagnostic";
       const ENROLL_WA = "https://wa.me/97600000000";
       const START_ISO = "2025-10-10T09:00:00+08:00"; // 09:00 Asia/Ulaanbaatar
-      let seatsRemaining = 12; // update this as enrollments happen
+      let seatsRemaining = 12; // update as enrollments happen
 
       // --- UTM passthrough ---
       const params = window.location.search || "";
@@ -422,8 +379,6 @@
         document.querySelectorAll("[data-seats]").forEach(el => el.textContent = seatsRemaining);
       }
       renderSeats();
-
-      // Expose a tiny helper for manual updates in console if needed:
       window.__setSeats = function(n){ seatsRemaining = Math.max(0, n|0); renderSeats(); };
 
       // Year
