@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="mn">
 <head>
   <meta charset="utf-8" />
-  <title>UB → US in 12 Weeks • Scholarship-Ready Admission</title>
+  <title>UB → US 12 долоо хоногт • Тэтгэлэгт бэлэн элсэлт</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Daily small-group classes in Ulaanbaatar. Weekly mock tests with same-day fixes, essay help, and a Mongolia-specific scholarship list. Backed by Double-Time support. Starts Oct 10." />
+  <meta name="description" content="Өдөр бүр жижиг бүлгийн хичээл. Бямба бүр прокторт сорил + тэр өдөрт нь засвар. Энгийн алхмаар эсээ. Монгол сурагчдад зориулсан тэтгэлгийн жагсаалт. Түвшинт зорилт + Double-Time дэмжлэг. 10-р сарын 10-нд эхэлнэ." />
   <meta name="theme-color" content="#0b2240" />
   <link rel="icon" href="/favicon.ico" />
   <style>
@@ -28,6 +28,9 @@
     .btn.primary{background:var(--red); color:#fff}
     .btn.light{background:#fff; color:var(--navy); border-color:var(--g300)}
     .btn.ghost{color:#fff; border-color:rgba(255,255,255,.3)}
+    .lang{display:flex; gap:6px; align-items:center}
+    .lang button{padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#e8f1ff; cursor:pointer; font-weight:700}
+    .lang button.active{background:#fff; color:var(--navy); border-color:#fff}
     /* Hero */
     .hero{
       background:
@@ -70,6 +73,7 @@
     .bar .copy{font-weight:700}
     footer{padding:30px 0 50px; color:var(--g600)}
     .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid var(--g300); font-size:12px}
+    .hidden{display:none}
   </style>
 </head>
 <body>
@@ -79,254 +83,504 @@
       <div class="brand">
         <div class="logo">US</div><div>UB → US</div>
       </div>
-      <nav class="nav">
-        <a href="#why">Why Different</a>
-        <a href="#what">What You Get</a>
-        <a href="#dates">Schedule</a>
-        <a href="#price">Price</a>
-        <a href="#guarantee">Guarantee</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn ghost book-cta" href="#">Book Free Diagnostic</a>
+      <nav class="nav" id="navlinks">
+        <a data-target="why" href="#mn-why">Яагаад өөр вэ</a>
+        <a data-target="what" href="#mn-what">Та юу авах вэ</a>
+        <a data-target="dates" href="#mn-dates">Хуваарь</a>
+        <a data-target="price" href="#mn-price">Үнэ</a>
+        <a data-target="guarantee" href="#mn-guarantee">Баталгаа</a>
+        <a data-target="faq" href="#mn-faq">Түгээмэл асуулт</a>
+        <a class="btn ghost book-cta" href="#">Үнэгүй оношилгоо</a>
       </nav>
+      <div class="lang">
+        <button id="btn-mn" class="active" aria-pressed="true">MN</button>
+        <button id="btn-en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container">
-      <h1>UB → US in 12 Weeks. Get Scholarship-Ready.</h1>
-      <p>Daily small-group classes. Weekly mock tests with same-day fixes. Essay help that’s simple. A Mongolia-specific scholarship list you can actually use. <strong>Tiered score targets + Double-Time support.</strong></p>
-      <div class="badges">
-        <span class="badge">Starts Oct 10, 2025</span>
-        <span class="badge">Daily classes • Alternating groups A/B • 120-min sessions</span>
-        <span class="badge seat-badge">≤<span data-seats>12</span> seats • 2 need-based at ₮990k</span>
-        <span class="badge">Founder-led • Friendly and focused</span>
+  <!-- ====== MONGOLIAN ====== -->
+  <div id="mn">
+    <!-- Hero -->
+    <header class="hero">
+      <div class="container">
+        <h1>UB → US 12 долоо хоногт. Тэтгэлэгт бэлэн болоё.</h1>
+        <p>Өдөр бүр жижиг бүлгийн хичээл. Бямба бүр прокторт сорил + тэр өдөрт нь засвар. Энгийн алхмаар эсээ. Монгол сурагчдад тохируулсан тэтгэлгийн жагсаалт. <strong>Түвшинт зорилт + Double-Time дэмжлэг.</strong></p>
+        <div class="badges">
+          <span class="badge">Эхлэх: 2025.10.10</span>
+          <span class="badge">Өдөр бүр • A/B бүлэг ээлжилж орно • 120 минут</span>
+          <span class="badge seat-badge">≤<span data-seats>12</span> суудал • 2 хэрэгцээт ₮990к</span>
+          <span class="badge">Үүсгэн байгуулагч өөрөө заана • Энгийн, найрсаг</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary book-cta" href="#">Үнэгүй оношилгоо товлох</a>
+          <span id="countdown" class="countdown" aria-live="polite">Эхлэх хүртэл —</span>
+        </div>
+        <p class="muted">Хэт формал биш. Тод, найрсаг, ялалтад төвлөрсөн.</p>
       </div>
-      <div class="cta">
-        <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
-        <span id="countdown" class="countdown" aria-live="polite">Starts in —</span>
-      </div>
-      <p class="muted">Not formal or scary. Clear, friendly, and focused on wins.</p>
-    </div>
-  </header>
+    </header>
 
-  <!-- Meet your instructor -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">Meet Your Instructor</h2>
-      <div class="card">
-        <div class="instructor">
-          <img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHA8-aQAAbaoQ/profile-displayphoto-crop_800_800/B56Zh03C5XG0AM-/0/1754307246682?e=1761782400&v=beta&t=m5uk2mjaimL4wSgMUuoD0IZQJefqrjmx0VTGrOVVJiE" alt="Photo of Tuguldur Gan-Erdene">
-          <div>
-            <p style="margin:0 0 6px"><strong>Tuguldur Gan-Erdene</strong> • teaches this cohort himself.</p>
-            <p class="muted" style="margin:0">SAT 1550 • TOEFL 113 • IELTS 8.5 • 100% scholarship to Soka University of America</p>
-            <p class="muted" style="margin:6px 0 0">Taught at Samsung and SK hynix (Shenzhen). TOEFL Speaking tutor. Private English tutor.</p>
+    <!-- Instructor -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Сургагч багш</h2>
+        <div class="card">
+          <div class="instructor">
+            <img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHA8-aQAAbaoQ/profile-displayphoto-crop_800_800/B56Zh03C5XG0AM-/0/1754307246682?e=1761782400&v=beta&t=m5uk2mjaimL4wSgMUuoD0IZQJefqrjmx0VTGrOVVJiE" alt="Tuguldur Gan-Erdene">
+            <div>
+              <p style="margin:0 0 6px"><strong>Тугuldур Ган-Эрдэнэ</strong> • энэ кохортыг өөрөө заана.</p>
+              <p class="muted" style="margin:0">SAT 1550 • TOEFL 113 • IELTS 8.5 • Soka University of America — 100% тэтгэлэг</p>
+              <p class="muted" style="margin:6px 0 0">Samsung, SK hynix (Шэньжэнь) дээр сургасан • TOEFL Speaking багш • Хувийн англи хэлний багш</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Different -->
-  <section id="why">
-    <div class="container">
-      <h2 class="section-title">Why We’re Different</h2>
-      <div class="cards cols-6">
-        <div class="card"><strong>Tiny groups</strong><br><span class="muted">You talk. We coach. You improve.</span></div>
-        <div class="card"><strong>Daily classes</strong><br><span class="muted">Practice a little every day.</span></div>
-        <div class="card"><strong>Mock → Fix</strong><br><span class="muted">Saturday test, same-day fixes.</span></div>
-        <div class="card"><strong>Essay help</strong><br><span class="muted">Simple steps. Two clean edits.</span></div>
-        <div class="card"><strong>Scholarship list</strong><br><span class="muted">25–40 real options with deadlines.</span></div>
-        <div class="card"><strong>Double-Time support</strong><br><span class="muted">Do the steps → we add time free.</span></div>
+    <!-- Why Different -->
+    <section id="mn-why">
+      <div class="container">
+        <h2 class="section-title">Яагаад өөр вэ</h2>
+        <div class="cards cols-6">
+          <div class="card"><strong>Жижиг бүлэг</strong><br><span class="muted">Чи ярьж, бид дасгалжуулна → өснө.</span></div>
+          <div class="card"><strong>Өдөр бүр</strong><br><span class="muted">Өдөр бүр бага багаар хийе.</span></div>
+          <div class="card"><strong>Сорил → Засвар</strong><br><span class="muted">Бямба сорил, тэр өдөр нь засвар.</span></div>
+          <div class="card"><strong>Эсээ тусламж</strong><br><span class="muted">Энгийн загвар + 2 засвар.</span></div>
+          <div class="card"><strong>Тэтгэлгийн жагсаалт</strong><br><span class="muted">25–40 боломж + хугацааны календарь.</span></div>
+          <div class="card"><strong>Double-Time</strong><br><span class="muted">Алхмуудаа хийвэл хугацааг үнэгүй сунгана.</span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- What You Get -->
-  <section id="what">
-    <div class="container">
-      <h2 class="section-title">What You Get</h2>
-      <div class="cards cols-3">
-        <div class="card"><strong>Score Accelerator</strong><br><span class="muted">Raise scores each week with fast feedback.</span></div>
-        <div class="card"><strong>EssayLab</strong><br><span class="muted">Pick a story, follow a template, get 2 edits.</span></div>
-        <div class="card"><strong>ScholarshipShortlist</strong><br><span class="muted">A ready-to-use list + a deadline calendar.</span></div>
-        <div class="card"><strong>Interview Practice</strong><br><span class="muted">2 live mocks. Recordings of your mocks included.</span></div>
-        <div class="card"><strong>Parent Enablement</strong><br><span class="muted">Parent Night + Discord reminders.</span></div>
-        <div class="card"><strong>Rapid Mocks</strong><br><span class="muted">4 proctored tests. Same-day score report.</span></div>
+    <!-- What You Get -->
+    <section id="mn-what">
+      <div class="container">
+        <h2 class="section-title">Та юу авах вэ</h2>
+        <div class="cards cols-3">
+          <div class="card"><strong>Оноо өсгөх</strong><br><span class="muted">Долоо хоног бүр хурдан фийдбэкээр өсгөнө.</span></div>
+          <div class="card"><strong>EssayLab</strong><br><span class="muted">Сэдэвээ ол → загвар → 2 засвар.</span></div>
+          <div class="card"><strong>Scholarship Shortlist</strong><br><span class="muted">Ашиглахад бэлэн жагсаалт + календарь.</span></div>
+          <div class="card"><strong>Ярилцлага</strong><br><span class="muted">2 лайв мокк • бичлэгийг өгнө.</span></div>
+          <div class="card"><strong>Эцэг эх оролцоо</strong><br><span class="muted">Parent Night + Discord сануулга.</span></div>
+          <div class="card"><strong>Rapid Mocks (4)</strong><br><span class="muted">Прокторт сорил • шууд тайлан.</span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- How we get results -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">How We Get Results</h2>
-      <ul class="list">
-        <li>Week 1: Baseline mock + your 12-week plan (Score-Map™)</li>
-        <li>Weeks 2–12: Class + targeted drills based on your mistakes</li>
-        <li>Weeks 2–6: Write your essay → 2 edits → final version</li>
-        <li>Weeks 4–8: Scholarship list + deadline tracker</li>
-        <li>Weeks 6–10: Interview coaching + 2 live mocks</li>
-        <li>Every Saturday: Mock test → same-day fixes</li>
-      </ul>
-      <div class="cta" style="margin-top:10px">
-        <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
-        <span class="muted">Free 20-min diagnostic call.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dates & Schedule -->
-  <section id="dates">
-    <div class="container grid cols-2">
-      <div>
-        <h2 class="section-title">Dates & Seats</h2>
+    <!-- How we get results -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Бид ингэж үр дүн гаргана</h2>
         <ul class="list">
-          <li><strong>Start:</strong> Oct 10, 2025</li>
-          <li><strong>Length:</strong> 12 weeks • in-person</li>
-          <li><strong>Seats:</strong> ≤<span data-seats>12</span> • 2 need-based at ₮990,000</li>
+          <li>1-р долоо хоног: Суурь сорил + 12 долоо хоногийн Score-Map™</li>
+          <li>2–12: Алдаан дээр суурилсан чиглэсэн дасгал</li>
+          <li>2–6: Эсээ → 2 засвар → финал хувилбар</li>
+          <li>4–8: Тэтгэлгийн жагсаалт + дедлайн трекер</li>
+          <li>6–10: Ярилцлагын дасгал + 2 лайв мокк</li>
+          <li>Бямба бүр: Сорил → тэр өдөр нь засвар</li>
         </ul>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn primary book-cta" href="#">Үнэгүй оношилгоо товлох</a>
+          <span class="muted">Утас/онлайнаар 20 минутын үнэгүй оношилгоо.</span>
+        </div>
       </div>
-      <div>
-        <h2 class="section-title">Weekly Rhythm (Alternating A/B • 120 mins)</h2>
-        <table class="table">
-          <tr><th>Mon / Wed / Fri</th><td><strong>Group A</strong> • 17:00–19:00</td></tr>
-          <tr><th>Tue / Thu / Sat</th><td><strong>Group B</strong> • 17:00–19:00 <strong>(Saturday is Group B)</strong></td></tr>
-          <tr><th>Sat AM</th><td>Proctored mock for all • Same-day analytics</td></tr>
-          <tr><th>Sun</th><td>Optional office hour Q&A (17:00–18:00)</td></tr>
-        </table>
-        <p class="muted" style="margin-top:8px">Groups alternate so each group has a day off between sessions.</p>
+    </section>
+
+    <!-- Dates & Schedule -->
+    <section id="mn-dates">
+      <div class="container grid cols-2">
+        <div>
+          <h2 class="section-title">Огноо & Суудал</h2>
+          <ul class="list">
+            <li><strong>Эхлэх:</strong> 2025 оны 10-р сарын 10</li>
+            <li><strong>Үргэлжлэх хугацаа:</strong> 12 долоо хоног • танхимаар</li>
+            <li><strong>Суудал:</strong> ≤<span data-seats>12</span> • 2 хэрэгцээт ₮990,000</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="section-title">Долоо хоногийн хэмнэл (A/B • 120 мин)</h2>
+          <table class="table">
+            <tr><th>Даваа / Лхагва / Баасан</th><td><strong>A бүлэг</strong> • 17:00–19:00</td></tr>
+            <tr><th>Мягмар / Пүрэв / Бямба</th><td><strong>B бүлэг</strong> • 17:00–19:00 <strong>(Бямба = B бүлэг)</strong></td></tr>
+            <tr><th>Бямба өглөө</th><td>Бүгдэд зориулсан прокторт сорил • Тухайн өдрийн аналитик</td></tr>
+            <tr><th>Ням</th><td>Сонголттой Q&A 17:00–18:00</td></tr>
+          </table>
+          <p class="muted" style="margin-top:8px">A/B ээлжилнэ. Иймээс хичээлийн хооронд нэг өдөр амарна.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price + Bonuses -->
+    <section id="mn-price">
+      <div class="container grid cols-2">
+        <div class="card">
+          <div class="kicker">Үнэ</div>
+          <p style="margin:6px 0 8px"><strong>₮2,500,000</strong> • 0% төлөлт: ₮850,000 × 3</p>
+          <p class="muted">Жижигхэн $3k–$10k тэтгэлэг ч энэ зардлыг давна. Цаг биш, үр дүн авна.</p>
+          <div class="cta" style="margin-top:10px">
+            <a class="btn primary book-cta" href="#">Үнэгүй оношилгоо товлох</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="kicker">Бонусууд (үнэ цэн)</div>
+          <ul class="list">
+            <li><strong>Score-Map™</strong> — 12 долоо хоногийн хийх-үүний жагсаалт. (₮350,000)</li>
+            <li><strong>Rapid-Mock™ (4)</strong> — бодит сорил, түргэн тайлан, дараагийн 7 хоногт засвар. (₮420,000)</li>
+            <li><strong>EssayLab™</strong> — энгийн загвар + хоёр цэвэр засвар. (₮600,000)</li>
+            <li><strong>ScholarshipShortlist™</strong> — 25–40 боломж + календарь. (₮300,000)</li>
+            <li><strong>Interview Accelerator™ (2)</strong> — хариултын банк + итгэлтэй ярих. (₮380,000)</li>
+            <li><strong>Parent Playbook™</strong> — эцэг эхийн долоо хоног бүрийн үүрэг. (₮220,000)</li>
+            <li><strong>DeadlineGuard™ (Discord)</strong> — сануулга, юу ч хоцрохгүй. (₮180,000)</li>
+            <li><strong>Test-Day Kit™</strong> — юу авч, хаашаа, яаж тайван байх. (₮90,000)</li>
+            <li><strong>Re-Application Sprint™</strong> — хэрэг бол 6 долоо хоногийн дахин-өргөдлийн төлөвлөгөө. (₮260,000)</li>
+            <li><strong>Discord Community</strong> — оюутны хаалттай сервер (асуулт, амжилт, файлууд). (₮300,000)</li>
+          </ul>
+          <p style="margin-top:10px;"><span class="pill">Нийт бонусын үнэ цэн: ₮3,000,000+ багтсан</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section id="mn-guarantee">
+      <div class="container grid cols-2">
+        <div>
+          <h2 class="section-title">Double-Time дэмжлэг (үнэгүй)</h2>
+          <p>Алхмуудаа хийнэ. Хэрэв зорилтод хүрэхгүй бол <strong>2× урт</strong> хугацаанд нэмэлт төлбөргүйгээр үргэлжлүүлэн сургана.</p>
+        </div>
+        <div class="card">
+          <details open>
+            <summary><strong>Шаардлага (товч)</strong></summary>
+            <ul class="list" style="margin-top:8px">
+              <li>Амьд хичээлд ≥85% суух <strong>(бичлэг, мэейкап байхгүй)</strong></li>
+              <li>Долоо хоногийн дасгалын ≥80%-ийг хийх</li>
+              <li>4 прокторт сорил өгч, ревьюг бүрэн хийх</li>
+              <li>2 эсээ ноорог бичиж, засварыг хэрэгжүүлэх</li>
+              <li><strong>Discord</strong>-д 24 цагийн дотор хариулах</li>
+              <li>Програм дууссанаас 45 хоногт 1 албан ёсны SAT/TOEFL/IELTS өгөх</li>
+            </ul>
+            <p class="muted">Үргэлжлэх үйлчилгээ: ижил жижиг бүлгийн сургалт. Нэмэлт 1:1 цаг, нэмэлт материал орохгүй. Албан ёсны шалгалтын хураамж багтахгүй. Програм дууссанаас 14 хоногт идэвхжүүлнэ.</p>
+          </details>
+          <details style="margin-top:10px">
+            <summary><strong>Онооны зорилтын бүс (аюулгүй + шударга)</strong></summary>
+            <div style="margin-top:8px">
+              <p><strong>SAT</strong></p>
+              <ul class="list">
+                <li>Суурь &lt; 1200 → +120</li>
+                <li>1200–1290 → +100</li>
+                <li>1300–1390 → +70</li>
+                <li>1400–1490 → +40</li>
+                <li>≥1500 → Математик <em>эсвэл</em> R/W дээр +30 <em>эсвэл</em> 2 албан ёсны шалгалтад ≥1500-г хадгалах</li>
+              </ul>
+              <p><strong>TOEFL iBT</strong></p>
+              <ul class="list">
+                <li>Суурь &lt; 80 → +15</li>
+                <li>80–89 → +12</li>
+                <li>90–99 → +8</li>
+                <li>100–109 → +4</li>
+                <li>≥110 → 2 хэсэгт +2 <em>эсвэл</em> 2 албан ёсны шалгалтад ≥110-г хадгалах</li>
+              </ul>
+              <p><strong>IELTS</strong></p>
+              <ul class="list">
+                <li>Суурь &lt; 6.5 → +1.0 band</li>
+                <li>6.5–7.0 → +0.5 band</li>
+                <li>≥7.5 → 2 хэсэгт +0.5 <em>эсвэл</em> нийт ≥7.5-г 2 шалгалтад хадгалах</li>
+              </ul>
+              <p class="muted">Суурийн тодорхойлолт: 1-р долоо хоногийн прокторт сорил <em>эсвэл</em> сүүлийн 60 хоногийн албан ёсны оноо. Чамд илүү өндөр нь суурь болно.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="mn-faq">
+      <div class="container">
+        <h2 class="section-title">Түгээмэл асуулт</h2>
+        <div class="card"><strong>Зорилтоо алдавал?</strong><br><span class="muted">Double-Time дэмжлэгийг үнэгүй авна.</span></div>
+        <div class="card"><strong>SAT уу, TOEFL/IELTS үү?</strong><br><span class="muted">Хоёуланг нь дэмжинэ. Чамд ашигтай замыг сонгоно.</span></div>
+        <div class="card"><strong>Хичээл таславал?</strong><br><span class="muted"><strong>Бичлэг, мэейкап байхгүй.</strong> Богино асуултаа Discord-д үлдээгээрэй. Ирц зөвхөн амьд.</span></div>
+        <div class="card">
+          <strong>Буцаалт (All Sales Final)</strong><br>
+          <span class="muted">Суудал хязгаартай, нэг сурагч бүрт багшийн цаг хуваарилдаг тул төлбөр <strong>буцаагдахгүй</strong>. Буцаалтын оронд Double-Time дэмжлэг таны элсэлтийг хамгаална (алхмуудыг хийсэн ч зорилтод хүрээгүй бол хөтөлбөрийн хугацааг 2× үнэгүй үргэлжлүүлнэ). Эхний хичээлээс өмнө суудлыг өөр сурагчид шилжүүлж болно, эсвэл дараагийн кохорт руу нэг удаа шилжүүлэх боломжтой (админ хураамж ₮150,000).</span>
+        </div>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn primary book-cta" href="#">Үнэгүй оношилгоо товлох</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies + Contact -->
+    <section>
+      <div class="container grid cols-2">
+        <div class="card">
+          <div class="kicker">Бодлого</div>
+          <ul class="list">
+            <li>Ирц: амьд хичээл ≥85%</li>
+            <li>Мэейкап: байхгүй (бичлэг байхгүй)</li>
+            <li>Зан төлөв: анги, Discord дээр хүндэтгэлтэй байх</li>
+            <li>Буцаалт: <strong>All Sales Final</strong>. Эхний хичээлээс өмнө суудал шилжүүлэх <em>эсвэл</em> нэг удаа дараагийн кохорт руу шилжүүлэх (₮150,000 админ хураамж). Double-Time таны элсэлтийг хамгаална.</li>
+            <li>Өгөгдөл/медиа зөвшөөрөл: сайн дурын</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="kicker">Холбоо барих</div>
+          <p><strong>Байршил:</strong> Их Найд, Улаанбаатар — танхимын анги</p>
+          <p><strong>Имэйл:</strong> <a href="mailto:juice@atlasoperations.io">juice@atlasoperations.io</a></p>
+          <p><strong>Утас:</strong> <a href="tel:+97686029234">86029234</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky footer CTA (MN) -->
+    <div class="sticky-cta">
+      <div class="container bar">
+        <div class="copy">Эхлэх: 10-р сарын 10 • A/B ээлж • Бямба = B бүлэг • 120 мин • ≤<span data-seats>12</span> суудал • Double-Time</div>
+        <div class="cta">
+          <a class="btn primary book-cta" href="#">Үнэгүй оношилгоо товлох</a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Price + Bonuses (with values) -->
-  <section id="price">
-    <div class="container grid cols-2">
-      <div class="card">
-        <div class="kicker">Price</div>
-        <p style="margin:6px 0 8px"><strong>₮2,500,000</strong> • 0% plan: ₮850,000 × 3</p>
-        <p class="muted">Even a small $3k–$10k scholarship beats this cost. We’re buying outcomes, not hours.</p>
+  <!-- ====== ENGLISH (optional) ====== -->
+  <div id="en" class="hidden" lang="en">
+    <!-- Hero -->
+    <header class="hero">
+      <div class="container">
+        <h1>UB → US in 12 Weeks. Get Scholarship-Ready.</h1>
+        <p>Daily small-group classes. Weekly proctored mocks with same-day fixes. Simple essay steps. A Mongolia-specific scholarship list you can actually use. <strong>Tiered score targets + Double-Time support.</strong></p>
+        <div class="badges">
+          <span class="badge">Starts Oct 10, 2025</span>
+          <span class="badge">Daily classes • Alternating A/B groups • 120-min sessions</span>
+          <span class="badge seat-badge">≤<span data-seats>12</span> seats • 2 need-based at ₮990k</span>
+          <span class="badge">Founder-led • Friendly and focused</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
+          <span id="countdown-en" class="countdown" aria-live="polite">Starts in —</span>
+        </div>
+        <p class="muted">Not formal or scary. Clear, friendly, and focused on wins.</p>
+      </div>
+    </header>
+
+    <!-- Instructor -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Meet Your Instructor</h2>
+        <div class="card">
+          <div class="instructor">
+            <img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHA8-aQAAbaoQ/profile-displayphoto-crop_800_800/B56Zh03C5XG0AM-/0/1754307246682?e=1761782400&v=beta&t=m5uk2mjaimL4wSgMUuoD0IZQJefqrjmx0VTGrOVVJiE" alt="Tuguldur Gan-Erdene">
+            <div>
+              <p style="margin:0 0 6px"><strong>Tuguldur Gan-Erdene</strong> • teaches this cohort himself.</p>
+              <p class="muted" style="margin:0">SAT 1550 • TOEFL 113 • IELTS 8.5 • 100% scholarship to Soka University of America</p>
+              <p class="muted" style="margin:6px 0 0">Taught at Samsung and SK hynix (Shenzhen). TOEFL Speaking tutor. Private English tutor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Different -->
+    <section id="en-why">
+      <div class="container">
+        <h2 class="section-title">Why We’re Different</h2>
+        <div class="cards cols-6">
+          <div class="card"><strong>Tiny groups</strong><br><span class="muted">You talk. We coach. You improve.</span></div>
+          <div class="card"><strong>Daily classes</strong><br><span class="muted">Practice a little every day.</span></div>
+          <div class="card"><strong>Mock → Fix</strong><br><span class="muted">Saturday test, same-day fixes.</span></div>
+          <div class="card"><strong>Essay help</strong><br><span class="muted">Simple steps. Two clean edits.</span></div>
+          <div class="card"><strong>Scholarship list</strong><br><span class="muted">25–40 real options with deadlines.</span></div>
+          <div class="card"><strong>Double-Time support</strong><br><span class="muted">Do the steps → we add time free.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Get -->
+    <section id="en-what">
+      <div class="container">
+        <h2 class="section-title">What You Get</h2>
+        <div class="cards cols-3">
+          <div class="card"><strong>Score Accelerator</strong><br><span class="muted">Raise scores weekly with fast feedback.</span></div>
+          <div class="card"><strong>EssayLab</strong><br><span class="muted">Pick a story → template → 2 edits.</span></div>
+          <div class="card"><strong>ScholarshipShortlist</strong><br><span class="muted">Ready-to-use list + deadline calendar.</span></div>
+          <div class="card"><strong>Interview Practice</strong><br><span class="muted">2 live mocks. Your mock recordings included.</span></div>
+          <div class="card"><strong>Parent Enablement</strong><br><span class="muted">Parent Night + Discord reminders.</span></div>
+          <div class="card"><strong>Rapid Mocks</strong><br><span class="muted">4 proctored tests. Same-day report.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How we get results -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">How We Get Results</h2>
+        <ul class="list">
+          <li>Week 1: Baseline mock + your 12-week Score-Map™</li>
+          <li>Weeks 2–12: Targeted drills from mistakes</li>
+          <li>Weeks 2–6: Essay → 2 edits → final</li>
+          <li>Weeks 4–8: Scholarship list + tracker</li>
+          <li>Weeks 6–10: Interview coaching + 2 live mocks</li>
+          <li>Every Saturday: Mock → same-day fixes</li>
+        </ul>
         <div class="cta" style="margin-top:10px">
+          <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
+          <span class="muted">Free 20-min diagnostic call.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dates & Schedule -->
+    <section id="en-dates">
+      <div class="container grid cols-2">
+        <div>
+          <h2 class="section-title">Dates & Seats</h2>
+          <ul class="list">
+            <li><strong>Start:</strong> Oct 10, 2025</li>
+            <li><strong>Length:</strong> 12 weeks • in-person</li>
+            <li><strong>Seats:</strong> ≤<span data-seats>12</span> • 2 need-based at ₮990,000</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="section-title">Weekly Rhythm (Alternating A/B • 120 mins)</h2>
+          <table class="table">
+            <tr><th>Mon / Wed / Fri</th><td><strong>Group A</strong> • 17:00–19:00</td></tr>
+            <tr><th>Tue / Thu / Sat</th><td><strong>Group B</strong> • 17:00–19:00 <strong>(Saturday = Group B)</strong></td></tr>
+            <tr><th>Sat AM</th><td>Proctored mock for all • Same-day analytics</td></tr>
+            <tr><th>Sun</th><td>Optional office hour Q&A (17:00–18:00)</td></tr>
+          </table>
+          <p class="muted" style="margin-top:8px">Groups alternate so each group gets a day off between sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price + Bonuses -->
+    <section id="en-price">
+      <div class="container grid cols-2">
+        <div class="card">
+          <div class="kicker">Price</div>
+          <p style="margin:6px 0 8px"><strong>₮2,500,000</strong> • 0% plan: ₮850,000 × 3</p>
+          <p class="muted">Even a small $3k–$10k scholarship beats this cost. We buy outcomes, not hours.</p>
+          <div class="cta" style="margin-top:10px">
+            <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="kicker">Bonuses You Get</div>
+          <ul class="list">
+            <li><strong>Score-Map™</strong> — your 12-week to-do list. (₮350,000)</li>
+            <li><strong>Rapid-Mock™ (4)</strong> — real tests, fast reports, fix next week. (₮420,000)</li>
+            <li><strong>EssayLab™</strong> — simple templates + two clean edits. (₮600,000)</li>
+            <li><strong>ScholarshipShortlist™</strong> — 25–40 options + calendar. (₮300,000)</li>
+            <li><strong>Interview Accelerator™ (2)</strong> — practice answers, get confident. (₮380,000)</li>
+            <li><strong>Parent Playbook™</strong> — week-by-week roles. (₮220,000)</li>
+            <li><strong>DeadlineGuard™ (Discord)</strong> — reminders so nothing is late. (₮180,000)</li>
+            <li><strong>Test-Day Kit™</strong> — what to bring, where to go, calm plan. (₮90,000)</li>
+            <li><strong>Re-Application Sprint™</strong> — 6-week plan if needed. (₮260,000)</li>
+            <li><strong>Discord Community</strong> — student-only server. (₮300,000)</li>
+          </ul>
+          <p style="margin-top:10px;"><span class="pill">Total bonus value: ₮3,000,000+ included</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section id="en-guarantee">
+      <div class="container grid cols-2">
+        <div>
+          <h2 class="section-title">Double-Time Support (No Extra Cost)</h2>
+          <p>Do the steps. If you miss your target, we keep training you for <strong>2× longer</strong> at no extra cost.</p>
+        </div>
+        <div class="card">
+          <details open>
+            <summary><strong>How to qualify (simple)</strong></summary>
+            <ul class="list" style="margin-top:8px">
+              <li>Attend ≥85% of live classes <strong>(no recordings, no makeups)</strong></li>
+              <li>Finish ≥80% weekly drills</li>
+              <li>Take 4 proctored mocks and complete reviews</li>
+              <li>Write 2 essay drafts and apply edits</li>
+              <li>Reply on <strong>Discord</strong> within 24h</li>
+              <li>Take 1 official SAT/TOEFL/IELTS within 45 days</li>
+            </ul>
+            <p class="muted">Same small-group service continues. No extra 1:1 hours, no extra materials. Official test fees not included. Activate within 14 days after program end.</p>
+          </details>
+          <details style="margin-top:10px">
+            <summary><strong>Score Target Bands (safe + fair)</strong></summary>
+            <div style="margin-top:8px">
+              <p><strong>SAT</strong></p>
+              <ul class="list">
+                <li>Baseline &lt; 1200 → +120</li>
+                <li>1200–1290 → +100</li>
+                <li>1300–1390 → +70</li>
+                <li>1400–1490 → +40</li>
+                <li>≥1500 → +30 in Math or R/W or maintain ≥1500 on 2 official attempts</li>
+              </ul>
+              <p><strong>TOEFL iBT</strong></p>
+              <ul class="list">
+                <li>Baseline &lt; 80 → +15</li>
+                <li>80–89 → +12</li>
+                <li>90–99 → +8</li>
+                <li>100–109 → +4</li>
+                <li>≥110 → +2 in any two sections or maintain ≥110 on 2 official attempts</li>
+              </ul>
+              <p><strong>IELTS</strong></p>
+              <ul class="list">
+                <li>Baseline &lt; 6.5 → +1.0 band</li>
+                <li>6.5–7.0 → +0.5 band</li>
+                <li>≥7.5 → +0.5 in two sections or maintain ≥7.5 overall on 2 official attempts</li>
+              </ul>
+              <p class="muted">Baseline = first proctored mock in week 1 or a recent official score (last 60 days), whichever is higher for you.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="en-faq">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="card"><strong>What if we miss the target?</strong><br><span class="muted">You get Double-Time support at no extra cost.</span></div>
+        <div class="card"><strong>SAT or TOEFL/IELTS?</strong><br><span class="muted">Both. We pick the smarter path for your goals.</span></div>
+        <div class="card"><strong>Miss a class?</strong><br><span class="muted"><strong>No recordings and no makeups.</strong> Ask quick questions in Discord. Attendance is live only.</span></div>
+        <div class="card">
+          <strong>Refunds (All Sales Final)</strong><br>
+          <span class="muted">Because seats are strictly limited and we reserve staff time for each student, all payments are non-refundable. Instead of refunds, your enrollment is protected by our Double-Time support (we keep training 2× program length if targets aren’t met after the action steps). You may transfer the seat before the first class or defer once to the next cohort (₮150,000 admin fee).</span>
+        </div>
+        <div class="cta" style="margin-top:12px">
           <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
         </div>
       </div>
-      <div class="card">
-        <div class="kicker">Bonuses You Get</div>
-        <ul class="list">
-          <li><strong>Score-Map™</strong> — your 12-week to-do list. Just follow it. <em>(₮350,000)</em></li>
-          <li><strong>Rapid-Mock™ (4)</strong> — real tests, fast reports, fix next week. <em>(₮420,000)</em></li>
-          <li><strong>EssayLab™</strong> — easy templates + two clean edits. <em>(₮600,000)</em></li>
-          <li><strong>ScholarshipShortlist™</strong> — 25–40 options + calendar. <em>(₮300,000)</em></li>
-          <li><strong>Interview Accelerator™ (2)</strong> — practice answers, get confident. <em>(₮380,000)</em></li>
-          <li><strong>Parent Playbook™</strong> — what parents do, week by week. <em>(₮220,000)</em></li>
-          <li><strong>DeadlineGuard™ (Discord)</strong> — reminders so nothing is late. <em>(₮180,000)</em></li>
-          <li><strong>Test-Day Kit™</strong> — what to bring, where to go, how to stay calm. <em>(₮90,000)</em></li>
-          <li><strong>Re-Application Sprint™</strong> — a backup plan if needed. <em>(₮260,000)</em></li>
-          <li><strong>Discord Community Access</strong> — student-only server for questions, wins, files. <em>(₮300,000)</em></li>
-        </ul>
-        <p style="margin-top:10px;"><span class="pill">Total bonus value: ₮3,000,000+ included</span></p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Guarantee -->
-  <section id="guarantee">
-    <div class="container grid cols-2">
-      <div>
-        <h2 class="section-title">Double-Time Support (No Extra Cost)</h2>
-        <p>Do the steps. If you miss your target, we keep training you for <strong>2× longer</strong> at no extra cost.</p>
-      </div>
-      <div class="card">
-        <details open>
-          <summary><strong>How to qualify (simple)</strong></summary>
-          <ul class="list" style="margin-top:8px">
-            <li>Attend ≥85% of live classes <strong>(no recordings, no makeups)</strong></li>
-            <li>Finish ≥80% weekly drills</li>
-            <li>Take 4 proctored mocks and complete the reviews</li>
-            <li>Write 2 essay drafts and apply the edits</li>
-            <li>Reply on <strong>Discord</strong> within 24h</li>
-            <li>Take 1 official SAT/TOEFL/IELTS within 45 days</li>
+    <!-- Policies + Contact -->
+    <section>
+      <div class="container grid cols-2">
+        <div class="card">
+          <div class="kicker">Policies</div>
+          <ul class="list">
+            <li>Attendance: ≥85% live classes required</li>
+            <li>Makeups: none (no recordings)</li>
+            <li>Conduct: be respectful in class and Discord</li>
+            <li>Refunds: <strong>All Sales Final</strong>. Seat transfer before first class or one deferral (₮150,000 admin fee). Double-Time protects your enrollment.</li>
+            <li>Data/media consent is optional</li>
           </ul>
-          <p class="muted">Same small-group service continues. No extra 1:1 hours, no extra materials, and official test fees are not included. Activate within 14 days after the program ends.</p>
-        </details>
-        <details style="margin-top:10px">
-          <summary><strong>Score Target Bands (safe + fair)</strong></summary>
-          <div style="margin-top:8px">
-            <p><strong>SAT</strong></p>
-            <ul class="list">
-              <li>Baseline &lt; 1200 → target +120</li>
-              <li>1200–1290 → target +100</li>
-              <li>1300–1390 → target +70</li>
-              <li>1400–1490 → target +40</li>
-              <li>≥1500 → +30 in Math or Reading/Writing <em>or</em> maintain ≥1500 on 2 official attempts</li>
-            </ul>
-            <p><strong>TOEFL iBT</strong></p>
-            <ul class="list">
-              <li>Baseline &lt; 80 → target +15</li>
-              <li>80–89 → target +12</li>
-              <li>90–99 → target +8</li>
-              <li>100–109 → target +4</li>
-              <li>≥110 → +2 in any two sections <em>or</em> maintain ≥110 on 2 official attempts</li>
-            </ul>
-            <p><strong>IELTS</strong></p>
-            <ul class="list">
-              <li>Baseline &lt; 6.5 → target +1.0 band</li>
-              <li>6.5–7.0 → target +0.5 band</li>
-              <li>≥7.5 → +0.5 in two sections <em>or</em> maintain ≥7.5 overall on 2 official attempts</li>
-            </ul>
-            <p class="muted">Baseline = first proctored mock in week 1 or a recent official score (last 60 days), whichever is higher for you.</p>
-          </div>
-        </details>
+        </div>
+        <div class="card">
+          <div class="kicker">Contact</div>
+          <p><strong>Location:</strong> Ikh Nayd, Ulaanbaatar — in-person classroom</p>
+          <p><strong>Email:</strong> <a href="mailto:juice@atlasoperations.io">juice@atlasoperations.io</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+97686029234">86029234</a></p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <h2 class="section-title">FAQ</h2>
-      <div class="card"><strong>What if we miss the target?</strong><br><span class="muted">You get Double-Time support at no extra cost.</span></div>
-      <div class="card"><strong>SAT or TOEFL/IELTS?</strong><br><span class="muted">Both. We pick the smarter path for your goals.</span></div>
-      <div class="card"><strong>Miss a class?</strong><br><span class="muted"><strong>No recordings and no makeups.</strong> Ask quick questions in Discord. Attendance is live only.</span></div>
-      <div class="card">
-        <strong>Refunds (All Sales Final)</strong><br>
-        <span class="muted">Because seats are strictly limited and we reserve staff time for each student, all payments are non-refundable. Instead of refunds, your enrollment is protected by our Double-Time Free Guarantee (we keep training 2× program length if targets aren’t met after the action steps). You may transfer the seat to another eligible student before the first class or defer once to the next cohort (admin fee ₮150,000).</span>
-      </div>
-      <div class="cta" style="margin-top:12px">
-        <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Policies + Contact -->
-  <section>
-    <div class="container grid cols-2">
-      <div class="card">
-        <div class="kicker">Policies</div>
-        <ul class="list">
-          <li>Attendance: ≥85% live classes required</li>
-          <li>Makeups: none (no recordings)</li>
-          <li>Conduct: be respectful in class and Discord</li>
-          <li>Refunds: <strong>All Sales Final</strong>. Seat transfer before first class or one deferral (₮150,000 admin fee). Double-Time support protects your enrollment.</li>
-          <li>Data/media consent is optional</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="kicker">Contact</div>
-        <p><strong>Location:</strong> Ikh Nayd, Ulaanbaatar — in-person classroom</p>
-        <p><strong>Email:</strong> <a href="mailto:juice@atlasoperations.io">juice@atlasoperations.io</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+97686029234">86029234</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sticky footer CTA -->
-  <div class="sticky-cta">
-    <div class="container bar">
-      <div class="copy">Starts Oct 10 • Alternating A/B • Sat = Group B • 120-min sessions • ≤<span data-seats>12</span> seats • Double-Time support</div>
-      <div class="cta">
-        <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
+    <!-- Sticky footer CTA (EN) -->
+    <div class="sticky-cta">
+      <div class="container bar">
+        <div class="copy">Starts Oct 10 • Alternating A/B • Sat = Group B • 120-min • ≤<span data-seats>12</span> seats • Double-Time</div>
+        <div class="cta">
+          <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
+        </div>
       </div>
     </div>
   </div>
@@ -363,7 +617,7 @@
   }
   </script>
 
-  <!-- Minimal JS -->
+  <!-- Language + CTA wiring + Countdown + Seats -->
   <script>
     (function(){
       const CALENDLY = "https://calendly.com/tgjuicereal/new-meeting";
@@ -375,21 +629,24 @@
       const bookURL = CALENDLY + params;
       document.querySelectorAll(".book-cta").forEach(a=>a.href = bookURL);
 
-      // Countdown
-      const countdownEl = document.getElementById("countdown");
-      const startDate = new Date(START_ISO).getTime();
-      function tick(){
-        const now = Date.now();
-        const d = Math.max(0, startDate - now);
-        const days = Math.floor(d/86400000);
-        const hours = Math.floor((d%86400000)/3600000);
-        const mins = Math.floor((d%3600000)/60000);
-        if (countdownEl){
-          countdownEl.textContent = d>0 ? `Starts in ${days}d ${hours}h ${mins}m` : "In progress";
+      // Countdown (MN + EN)
+      function startCountdown(elId){
+        const el = document.getElementById(elId);
+        if(!el) return;
+        const startDate = new Date(START_ISO).getTime();
+        function tick(){
+          const now = Date.now();
+          const d = Math.max(0, startDate - now);
+          const days = Math.floor(d/86400000);
+          const hours = Math.floor((d%86400000)/3600000);
+          const mins = Math.floor((d%3600000)/60000);
+          el.textContent = d>0 ? `${elId==='countdown'?'Эхлэх хүртэл':'Starts in'} ${days}d ${hours}h ${mins}m` : (elId==='countdown'?'Эхэлсэн':'In progress');
+          requestAnimationFrame(()=>setTimeout(tick, 30000));
         }
-        requestAnimationFrame(()=>setTimeout(tick, 30000));
+        tick();
       }
-      tick();
+      startCountdown("countdown");
+      startCountdown("countdown-en");
 
       // Seats remaining
       function renderSeats(){
@@ -397,6 +654,52 @@
       }
       renderSeats();
       window.__setSeats = function(n){ seatsRemaining = Math.max(0, n|0); renderSeats(); };
+
+      // Language toggle
+      const mn = document.getElementById('mn');
+      const en = document.getElementById('en');
+      const btnMN = document.getElementById('btn-mn');
+      const btnEN = document.getElementById('btn-en');
+      const nav = document.getElementById('navlinks');
+      const links = nav.querySelectorAll('a[data-target]');
+      function setNav(lang){
+        links.forEach(a=>{
+          const t = a.getAttribute('data-target');
+          a.href = `#${lang}-${t}`;
+          a.textContent =
+            lang==='mn' && t==='why' ? 'Яагаад өөр вэ' :
+            lang==='mn' && t==='what' ? 'Та юу авах вэ' :
+            lang==='mn' && t==='dates'? 'Хуваарь' :
+            lang==='mn' && t==='price'? 'Үнэ' :
+            lang==='mn' && t==='guarantee'? 'Баталгаа' :
+            lang==='mn' && t==='faq'? 'Түгээмэл асуулт' :
+            lang==='en' && t==='why' ? 'Why Different' :
+            lang==='en' && t==='what' ? 'What You Get' :
+            lang==='en' && t==='dates'? 'Schedule' :
+            lang==='en' && t==='price'? 'Price' :
+            lang==='en' && t==='guarantee'? 'Guarantee' :
+            'FAQ';
+        });
+        const cta = nav.querySelector('.book-cta');
+        if(lang==='mn'){ cta.textContent='Үнэгүй оношилгоо'; }
+        else { cta.textContent='Book Free Diagnostic'; }
+      }
+      function setLang(lang){
+        if(lang==='mn'){
+          mn.classList.remove('hidden'); en.classList.add('hidden');
+          btnMN.classList.add('active'); btnEN.classList.remove('active');
+          btnMN.setAttribute('aria-pressed','true'); btnEN.setAttribute('aria-pressed','false');
+        }else{
+          en.classList.remove('hidden'); mn.classList.add('hidden');
+          btnEN.classList.add('active'); btnMN.classList.remove('active');
+          btnEN.setAttribute('aria-pressed','true'); btnMN.setAttribute('aria-pressed','false');
+        }
+        setNav(lang);
+        localStorage.setItem('lang', lang);
+      }
+      btnMN.addEventListener('click', ()=>setLang('mn'));
+      btnEN.addEventListener('click', ()=>setLang('en'));
+      setLang(localStorage.getItem('lang') || 'mn');
 
       // Year
       const yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
