@@ -1,3 +1,5 @@
+Updated `index.html` with no recordings/makeups and the All Sales Final refund policy.
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -117,7 +119,6 @@
       <h2 class="section-title">Meet Your Instructor</h2>
       <div class="card">
         <div class="instructor">
-          <!-- Your provided image -->
           <img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHA8-aQAAbaoQ/profile-displayphoto-crop_800_800/B56Zh03C5XG0AM-/0/1754307246682?e=1761782400&v=beta&t=m5uk2mjaimL4wSgMUuoD0IZQJefqrjmx0VTGrOVVJiE" alt="Photo of Tuguldur Gan-Erdene">
           <div>
             <p style="margin:0 0 6px"><strong>Tuguldur Gan-Erdene</strong> • teaches this cohort himself.</p>
@@ -178,7 +179,7 @@
         <div class="kicker">Try Before You Buy</div>
         <ul class="list">
           <li>Free 20-min diagnostic</li>
-          <li>Short sample lesson</li>
+          <li>Short sample lesson overview</li>
           <li>Credentials shown</li>
         </ul>
         <div class="cta" style="margin-top:8px">
@@ -252,9 +253,9 @@
         <details open>
           <summary><strong>How to qualify (simple)</strong></summary>
           <ul class="list" style="margin-top:8px">
-            <li>Come to ≥85% classes or watch recordings within 72h</li>
+            <li>Attend ≥85% of live classes <strong>(no recordings, no makeups)</strong></li>
             <li>Finish ≥80% weekly drills</li>
-            <li>Take 4 proctored mocks + do the reviews</li>
+            <li>Take 4 proctored mocks and complete the reviews</li>
             <li>Write 2 essay drafts and apply the edits</li>
             <li>Reply on <strong>Discord</strong> within 24h</li>
             <li>Take 1 official SAT/TOEFL/IELTS within 45 days</li>
@@ -270,7 +271,7 @@
               <li>1200–1290 → target +100</li>
               <li>1300–1390 → target +70</li>
               <li>1400–1490 → target +40</li>
-              <li>≥1500 → target: +30 in Math or Reading/Writing <em>or</em> maintain ≥1500 on 2 official attempts</li>
+              <li>≥1500 → +30 in Math or Reading/Writing <em>or</em> maintain ≥1500 on 2 official attempts</li>
             </ul>
             <p><strong>TOEFL iBT</strong></p>
             <ul class="list">
@@ -278,15 +279,15 @@
               <li>80–89 → target +12</li>
               <li>90–99 → target +8</li>
               <li>100–109 → target +4</li>
-              <li>≥110 → target: +2 in any two sections <em>or</em> maintain ≥110 on 2 official attempts</li>
+              <li>≥110 → +2 in any two sections <em>or</em> maintain ≥110 on 2 official attempts</li>
             </ul>
             <p><strong>IELTS</strong></p>
             <ul class="list">
               <li>Baseline &lt; 6.5 → target +1.0 band</li>
               <li>6.5–7.0 → target +0.5 band</li>
-              <li>≥7.5 → target: +0.5 in two sections <em>or</em> maintain overall ≥7.5 on 2 official attempts</li>
+              <li>≥7.5 → +0.5 in two sections <em>or</em> maintain ≥7.5 overall on 2 official attempts</li>
             </ul>
-            <p class="muted">Your baseline = your first proctored mock in week 1 or a recent official score (last 60 days), whichever is higher for you.</p>
+            <p class="muted">Baseline = first proctored mock in week 1 or a recent official score (last 60 days), whichever is higher for you.</p>
           </div>
         </details>
       </div>
@@ -299,8 +300,11 @@
       <h2 class="section-title">FAQ</h2>
       <div class="card"><strong>What if we miss the target?</strong><br><span class="muted">You get Double-Time support at no extra cost.</span></div>
       <div class="card"><strong>SAT or TOEFL/IELTS?</strong><br><span class="muted">Both. We pick the smarter path for your goals.</span></div>
-      <div class="card"><strong>Miss a class?</strong><br><span class="muted">Watch the recording within 72 hours. It still counts.</span></div>
-      <div class="card"><strong>Refunds?</strong><br><span class="muted">14-day cooling-off from the first session. After that, Double-Time support applies.</span></div>
+      <div class="card"><strong>Miss a class?</strong><br><span class="muted"><strong>No recordings and no makeups.</strong> Ask quick questions in Discord. Attendance is live only.</span></div>
+      <div class="card">
+        <strong>Refunds (All Sales Final)</strong><br>
+        <span class="muted">Because seats are strictly limited and we reserve staff time for each student, all payments are non-refundable. Instead of refunds, your enrollment is protected by our Double-Time Free Guarantee (we keep training 2× program length if targets aren’t met after the action steps). You may transfer the seat to another eligible student before the first class or defer once to the next cohort (admin fee ₮150,000).</span>
+      </div>
       <div class="cta" style="margin-top:12px">
         <a class="btn primary book-cta" href="#">Book Free Diagnostic</a>
       </div>
@@ -313,9 +317,10 @@
       <div class="card">
         <div class="kicker">Policies</div>
         <ul class="list">
-          <li>Attendance: ≥85% live or 72h make-ups</li>
-          <li>Makeups: recordings + office hours</li>
+          <li>Attendance: ≥85% live classes required</li>
+          <li>Makeups: none (no recordings)</li>
           <li>Conduct: be respectful in class and Discord</li>
+          <li>Refunds: <strong>All Sales Final</strong>. Seat transfer before first class or one deferral (₮150,000 admin fee). Double-Time support protects your enrollment.</li>
           <li>Data/media consent is optional</li>
         </ul>
       </div>
@@ -370,21 +375,17 @@
   }
   </script>
 
-  <!-- Minimal JS: single CTA wiring, countdown, seats -->
+  <!-- Minimal JS -->
   <script>
     (function(){
-      // --- Config ---
       const CALENDLY = "https://calendly.com/tgjuicereal/new-meeting";
-      const START_ISO = "2025-10-10T09:00:00+08:00"; // 09:00 Asia/Ulaanbaatar
-      let seatsRemaining = 12; // update as enrollments happen
+      const START_ISO = "2025-10-10T09:00:00+08:00";
+      let seatsRemaining = 12;
 
-      // --- UTM passthrough ---
       const params = window.location.search || "";
       const bookURL = CALENDLY + params;
-
       document.querySelectorAll(".book-cta").forEach(a=>a.href = bookURL);
 
-      // --- Countdown ---
       const countdownEl = document.getElementById("countdown");
       const startDate = new Date(START_ISO).getTime();
       function tick(){
@@ -400,18 +401,15 @@
       }
       tick();
 
-      // --- Seats remaining display ---
       function renderSeats(){
         document.querySelectorAll("[data-seats]").forEach(el => el.textContent = seatsRemaining);
       }
       renderSeats();
       window.__setSeats = function(n){ seatsRemaining = Math.max(0, n|0); renderSeats(); };
 
-      // Year
       const yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
     })();
   </script>
 </body>
 </html>
 ```
-
