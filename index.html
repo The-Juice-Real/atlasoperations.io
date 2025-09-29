@@ -1,522 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
+  <title>UB → US: Scholarship-Ready Admission in 12 Weeks</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Atlas Operations — Precision Influence, On Demand</title>
-  <meta name="description"
-    content="Atlas Operations: Reddit Growth, Reputation Control, Competitor Sabotage Analysis, and Premium Reddit Strategy — precision influence for decisive brands." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
-    rel="stylesheet" />
+  <meta name="description" content="Small-group, in-person cohort in Ulaanbaatar. Weekly mocks, EssayLab, scholarship shortlist—score-lift guaranteed. Starts Oct 10." />
+  <meta name="theme-color" content="#0b2240" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="From UB to US: Scholarship-Ready Admission in 12 Weeks" />
+  <meta property="og:description" content="≤12 seats. Score-lift guaranteed. Book a free diagnostic." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlasoperations.io/ub-us" />
+  <meta property="og:image" content="https://atlasoperations.io/og-ubus.jpg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UB → US: Scholarship-Ready in 12 Weeks" />
+  <meta name="twitter:description" content="In-person. Mocks + essays + scholarships. Guarantee included." />
+  <meta name="twitter:image" content="https://atlasoperations.io/og-ubus.jpg" />
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
   <style>
-    :root {
-      --bg: #f8f9fb;
-      --panel: #ffffff;
-      --muted: #6b7280;
-      --text: #1f2937;
-      --accent: #2563eb;
+    :root{
+      --navy:#0b2240; /* Navy */
+      --red:#d21f3c;  /* Accent Red */
+      --white:#ffffff;
+      --gray-100:#f6f8fb;
+      --gray-300:#d9e1ee;
+      --gray-600:#5a6a84;
+      --max:1100px;
+      --radius:14px;
     }
-
-    * {
-      box-sizing: border-box;
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:#0d1420;
+      background:var(--white);
+      line-height:1.5;
     }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
+    a{color:var(--navy); text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,34,64,.92); backdrop-filter:saturate(120%) blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Playfair Display", Inter, serif;
-      margin: 0;
+    .topbar .inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; color:var(--white); font-weight:700; letter-spacing:.2px}
+    .brand .logo{
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg,var(--red),#d94c60);
+      display:grid; place-items:center; color:#fff; font-weight:900;
     }
-
-    a {
-      color: inherit;
+    .nav a{color:#cfe0ff; margin-left:18px; font-size:14px}
+    .btn{display:inline-block; padding:12px 18px; border-radius:10px; font-weight:700; border:1px solid transparent}
+    .btn.primary{background:var(--red); color:#fff}
+    .btn.light{background:#fff; color:var(--navy); border-color:var(--gray-300)}
+    .btn.ghost{color:#fff; border-color:rgba(255,255,255,.3)}
+    /* Hero */
+    .hero{
+      background:
+        radial-gradient(1200px 500px at 80% -10%, rgba(210,31,60,0.18), transparent 60%),
+        radial-gradient(900px 500px at -10% -20%, rgba(13,34,64,0.25), transparent 60%),
+        linear-gradient(180deg,#0b2240 0%, #102b52 40%, #0b2240 100%);
+      color:#fff;
+      padding:64px 0 36px;
+      position:relative;
     }
-
-    /* Header / Hero */
-    header {
-      padding: 20px 20px 64px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(37, 99, 235, 0.03), transparent);
-    }
-
-    .top-nav {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .contact-link {
-      text-decoration: none;
-      color: var(--text);
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      background: var(--panel);
-      font-weight: 600;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .contact-link:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .brand {
-      font-size: 13px;
-      letter-spacing: 2px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    h1.title {
-      font-size: 46px;
-      line-height: 1.02;
-      margin-top: 10px;
-      letter-spacing: 1px;
-    }
-
-    p.lead {
-      color: var(--muted);
-      max-width: 880px;
-      margin: 18px auto 26px;
-      font-size: 18px;
-    }
-
-    .cta {
-      display: inline-block;
-      padding: 12px 26px;
-      background: linear-gradient(90deg, var(--accent), #1e4bb8);
-      color: #fff;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
-      transition: background-color 0.3s ease;
-    }
-
-    .cta:hover,
-    .cta:focus {
-      background: linear-gradient(90deg, #1e4bb8, var(--accent));
-    }
-
-    .stat-row {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
-      padding: 10px 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 20px;
-      color: var(--accent);
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
+    .hero .eyebrow{opacity:.85; font-size:14px; letter-spacing:.3px; text-transform:uppercase}
+    .hero h1{margin:8px 0 10px; font-size:40px; line-height:1.15}
+    .hero p{color:#d5e4ff; max-width:720px; margin:0 0 18px}
+    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .hero .meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:14px; color:#c9d7f0}
+    .badge{display:inline-block; border:1px solid rgba(255,255,255,.25); padding:6px 10px; border-radius:999px; font-size:12px; color:#e8f1ff}
     /* Sections */
-    section {
-      max-width: 1100px;
-      margin: 48px auto;
-      padding: 0 20px;
+    section{padding:38px 0}
+    .section-title{font-size:26px; margin:0 0 14px}
+    .grid{display:grid; gap:14px}
+    .cards{display:grid; gap:12px}
+    @media(min-width:800px){
+      .grid.cols-2{grid-template-columns:1fr 1fr}
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+      .cards.cols-3{grid-template-columns:repeat(3,1fr)}
     }
-
-    .two {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      flex-wrap: wrap;
+    .card{
+      background:var(--gray-100); border:1px solid var(--gray-300);
+      border-radius:var(--radius); padding:16px
     }
-
-    .col {
-      flex: 1;
-      min-width: 300px;
+    .list{margin:0; padding-left:18px}
+    .list li{margin:6px 0}
+    .muted{color:var(--gray-600); font-size:14px}
+    .price{
+      display:flex; align-items:baseline; gap:10px; margin:6px 0 12px
     }
-
-    .accent-line {
-      display: inline-block;
-      border-bottom: 4px solid var(--accent);
-      padding-bottom: 6px;
-      margin-bottom: 14px;
+    .price .amt{font-size:34px; font-weight:900; color:var(--navy)}
+    .kicker{color:var(--red); font-weight:800; font-size:13px; letter-spacing:.2px; text-transform:uppercase}
+    /* FAQ */
+    .faq details{border:1px solid var(--gray-300); border-radius:12px; padding:10px 14px; background:#fff}
+    .faq details+details{margin-top:10px}
+    .faq summary{cursor:pointer; list-style:none; font-weight:700}
+    .faq summary::-webkit-details-marker{display:none}
+    /* Sticky footer CTA */
+    .sticky-cta{
+      position:sticky; bottom:0; z-index:40;
+      background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.85) 20%, #fff);
+      border-top:1px solid var(--gray-300);
+      padding:10px 0;
     }
-
-    p.muted {
-      color: var(--muted);
-    }
-
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 880px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--panel);
-      padding: 22px;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.08);
-    }
-
-    .card h3 {
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* Visuals */
-    .visual {
-      width: 100%;
-      height: 220px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), transparent);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-weight: 600;
-      position: relative;
-    }
-
-    /* Footer */
-    footer {
-      padding: 26px 20px;
-      text-align: center;
-      color: var(--muted);
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      margin-top: 48px;
-      background: var(--panel);
-    }
-
-    /* small */
-    .small {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* responsive hero */
-    @media (max-width: 640px) {
-      h1.title {
-        font-size: 32px;
-      }
-
-      .stat-row {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    /* Animations */
-
-    /* Stroke dash animation for roots */
-    .root-path {
-      stroke-dasharray: 80;
-      stroke-dashoffset: 80;
-      animation: growRoot 3s forwards ease-in-out;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes growRoot {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    /* Pulse glow on bubbles */
-    .bubble-glow {
-      animation: pulseGlow 4s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes pulseGlow {
-
-      0%,
-      100% {
-        fill-opacity: 0.15;
-        filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.6));
-      }
-
-      50% {
-        fill-opacity: 0.25;
-        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.9));
-      }
-    }
-
-    /* SOS beacon pulse */
-    .beacon-circle {
-      animation: pulseBeacon 2.5s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes pulseBeacon {
-
-      0%,
-      100% {
-        fill-opacity: 1;
-        filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.9));
-      }
-
-      50% {
-        fill-opacity: 0.7;
-        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 1));
-      }
-    }
-
-    /* Signal wave ripple */
-    .signal-wave {
-      stroke-dasharray: 62.8;
-      stroke-dashoffset: 62.8;
-      animation: rippleWave 3s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    .signal-wave:nth-child(2) {
-      animation-delay: 1.5s;
-    }
-
-    @keyframes rippleWave {
-      0% {
-        stroke-dashoffset: 62.8;
-        stroke-opacity: 1;
-        transform: scale(0.7);
-      }
-
-      50% {
-        stroke-dashoffset: 0;
-        stroke-opacity: 0.3;
-        transform: scale(1.1);
-      }
-
-      100% {
-        stroke-dashoffset: 62.8;
-        stroke-opacity: 1;
-        transform: scale(0.7);
-      }
-    }
+    .bar{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .bar .copy{font-weight:700}
+    footer{padding:30px 0 50px; color:var(--gray-600)}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid var(--gray-300); font-size:12px}
+    .table{width:100%; border-collapse:collapse; font-size:14px}
+    .table th,.table td{border:1px solid var(--gray-300); padding:8px; text-align:left}
+    .table th{background:var(--gray-100)}
   </style>
 </head>
-
 <body>
-  <header>
-    <nav class="top-nav">
-      <div class="logo">Atlas Operations</div>
-      <a class="contact-link" href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank" rel="noopener noreferrer">Contact</a>
-    </nav>
-    <div class="brand">Atlas Operations</div>
-    <h1 class="title">Precision Influence — On Demand</h1>
-    <p class="lead">
-      We run bold Reddit campaigns that make your brand impossible to ignore. We kill threats, start conversations, and
-      turn talks into sales.
-    </p>
-    <a class="cta" href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank"
-      rel="noopener noreferrer">Initiate Operation</a>
+  <!-- Top Nav -->
+  <div class="topbar">
+    <div class="container inner">
+      <div class="brand">
+        <div class="logo">US</div>
+        <div>UB → US</div>
+      </div>
+      <nav class="nav">
+        <a href="#who">Who</a>
+        <a href="#what">What</a>
+        <a href="#dates">Dates</a>
+        <a href="#price">Price</a>
+        <a href="#guarantee">Guarantee</a>
+        <a href="#faq">FAQ</a>
+        <a id="nav-book" class="btn ghost" href="#">Book Diagnostic</a>
+      </nav>
+    </div>
+  </div>
 
-    <div class="stat-row" aria-hidden="true">
-      <div class="stat"><strong>71%</strong><span>Buyers check Reddit before buying.</span></div>
-      <div class="stat"><strong>74%</strong><span>Say Reddit speeds up buying decisions.</span></div>
-      <div class="stat"><strong>97.5%</strong><span>Reddit shows up in product searches.</span></div>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">In-person • Ulaanbaatar • ≤12 seats</div>
+      <h1>From UB to US: Scholarship-Ready Admission in 12 Weeks</h1>
+      <p>Small-group coaching with weekly proctored mocks, EssayLab edits, Mongolia-specific scholarship shortlist, and interview training. <strong>Score-lift guaranteed.</strong></p>
+      <div class="meta">
+        <span class="badge">Cohort starts Oct 10, 2025</span>
+        <span class="badge">Tue/Thu 17:30–19:30 • Sat mocks 10:00</span>
+        <span class="badge">Double-Time Free Guarantee</span>
+      </div>
+      <div class="cta">
+        <a id="hero-book" class="btn primary" href="#">Book a Free Diagnostic</a>
+        <a class="btn light" href="#curriculum">See Curriculum & Dates</a>
+      </div>
     </div>
   </header>
 
+  <!-- Value bar -->
   <section>
-    <div class="two">
-      <div class="col">
-        <h2 class="accent-line">Reddit Growth</h2>
-        <p class="muted">
-          We don’t guess. We plant your brand where it counts. Real conversations. Real clicks. Real customers.
-        </p>
-
-        <p style="margin-top:12px;" class="muted">
-          <strong style="color:var(--accent)">The math:</strong> 100 keywords. 100,000 searches per month. Reddit shows
-          up in 97.5% — that’s 97,500 views. Even if 2% buy, that’s 1,950 sales. At $50 each, that’s $97,500 every
-          month.
-        </p>
-
-        <ul class="small" style="margin-top:14px;">
-          <li>Plant in the communities your customers use</li>
-          <li>Smart comments that start and keep conversations</li>
-          <li>Real engagement. Measurable growth.</li>
-        </ul>
-      </div>
-      <div class="col">
-        <div class="visual" aria-label="Roots growing into conversation bubbles" role="img">
-          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" focusable="false">
-            <!-- Conversation bubbles -->
-            <rect x="15" y="20" width="45" height="35" rx="6" ry="6" fill="var(--accent)" class="bubble-glow"
-              fill-opacity="0.2" />
-            <rect x="60" y="40" width="45" height="30" rx="6" ry="6" fill="var(--accent)" class="bubble-glow"
-              fill-opacity="0.15" />
-            <rect x="30" y="70" width="60" height="35" rx="6" ry="6" fill="var(--accent)" class="bubble-glow"
-              fill-opacity="0.1" />
-            <!-- Roots growing into bubbles -->
-            <path stroke="var(--accent)" stroke-width="3" stroke-linecap="round" d="M45 110 L45 80 L30 70"
-              class="root-path" />
-            <path stroke="var(--accent)" stroke-width="3" stroke-linecap="round" d="M55 110 L55 75 L75 70"
-              class="root-path" />
-            <path stroke="var(--accent)" stroke-width="3" stroke-linecap="round" d="M65 110 L65 80 L80 60"
-              class="root-path" />
-          </svg>
-        </div>
-      </div>
+    <div class="container cards cols-3">
+      <div class="card"><div class="kicker">Outcome</div><div><strong>SAT +100</strong> or <strong>TOEFL/IELTS +15%</strong> from baseline.</div></div>
+      <div class="card"><div class="kicker">Essays</div><div>Personal statement + supplement, <strong>2 line edits</strong>.</div></div>
+      <div class="card"><div class="kicker">Scholarships</div><div><strong>25–40</strong> Mongolia-specific targets + deadline calendar.</div></div>
     </div>
   </section>
 
-  <section style="background:var(--panel);padding-top:40px;padding-bottom:40px;">
-    <div class="two">
-      <div class="col">
-        <div class="visual" aria-label="SOS beacon with signal waves" role="img">
-          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" focusable="false">
-            <circle cx="60" cy="60" r="58" stroke="var(--accent)" stroke-opacity="0.15" stroke-width="2" />
-            <!-- SOS tower -->
-            <rect x="55" y="30" width="10" height="60" fill="var(--accent)" />
-            <circle cx="60" cy="25" r="10" fill="var(--accent)" class="beacon-circle" />
-            <!-- Signal waves -->
-            <path stroke="var(--accent)" stroke-width="3" fill="none" d="M60 15 a20 20 0 0 1 0 30"
-              class="signal-wave" />
-            <path stroke="var(--accent)" stroke-width="3" fill="none" d="M60 5 a35 35 0 0 1 0 55" class="signal-wave" />
-          </svg>
-        </div>
+  <!-- Who -->
+  <section id="who">
+    <div class="container grid cols-2">
+      <div>
+        <h2 class="section-title">Who It’s For</h2>
+        <ul class="list">
+          <li>Grades 10–12 in Ulaanbaatar</li>
+          <li>Goal: US admission with scholarships</li>
+          <li>Parents want clarity on deadlines and role</li>
+        </ul>
       </div>
-      <div class="col">
-        <h2 class="accent-line">Reputation Control — SOS</h2>
-        <p class="muted">
-          Google your brand. Negative Reddit posts kill sales before you get a call. We find bad stuff fast, bury it,
-          and flood your brand with good vibes.
-        </p>
-
-        <p style="margin-top:12px;" class="muted">
-          <strong style="color:var(--accent)">Fact:</strong> 71% of buyers check Reddit. One bad thread can kill deals.
-          We fix it. Fast.
-        </p>
-
-        <ul class="small" style="margin-top:14px;">
-          <li>Fast threat spotting and triage</li>
-          <li>Crush bad threads with positive posts</li>
-          <li>Watch and control the story until safe</li>
+      <div class="card">
+        <div class="kicker">Common Problems</div>
+        <ul class="list">
+          <li>Low practice scores</li>
+          <li>Blank or weak essays</li>
+          <li>Missed deadlines</li>
+          <li>No scholarship plan</li>
+          <li>Parent confusion</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- What -->
+  <section id="what">
+    <div class="container">
+      <h2 class="section-title">What You Get</h2>
+      <div class="cards cols-3">
+        <div class="card"><strong>Score Accelerator</strong><br/><span class="muted">SAT Math/Reading or TOEFL/IELTS, drills from analytics.</span></div>
+        <div class="card"><strong>EssayLab</strong><br/><span class="muted">Topic mining, scaffold templates, 2 line edits.</span></div>
+        <div class="card"><strong>ScholarshipShortlist</strong><br/><span class="muted">25–40 targets + calendar + submission checks.</span></div>
+        <div class="card"><strong>Interview Accelerator</strong><br/><span class="muted">Answer bank, 2 live mocks + recordings.</span></div>
+        <div class="card"><strong>Parent Enablement</strong><br/><span class="muted">Parent Night, role alignment, WhatsApp DeadlineGuard.</span></div>
+        <div class="card"><strong>Rapid-Mock</strong><br/><span class="muted">4 proctored mocks with same-day analytics.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dates & Seats / Curriculum -->
+  <section id="curriculum">
+    <div class="container grid cols-2">
+      <div>
+        <h2 class="section-title" id="dates">Dates & Seats</h2>
+        <ul class="list">
+          <li><strong>Start:</strong> Oct 10, 2025</li>
+          <li><strong>Duration:</strong> 12 weeks</li>
+          <li><strong>Format:</strong> In-person small group + weekly proctored mocks</li>
+          <li><strong>Schedule:</strong> Tue & Thu 17:30–19:30; Sat 10:00–12:00; Sun 17:00–18:00 office hour</li>
+          <li><strong>Seats:</strong> ≤12 (2 need-based at ₮990,000)</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">Weekly Rhythm</h2>
+        <table class="table">
+          <tr><th>Tue</th><td>Class • Score Accelerator</td></tr>
+          <tr><th>Thu</th><td>Class • Essay/Scholarship/Interview blocks</td></tr>
+          <tr><th>Sat</th><td>Proctored mock • Same-day analytics</td></tr>
+          <tr><th>Sun</th><td>Optional office hour Q&A</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price -->
+  <section id="price">
+    <div class="container grid cols-2">
+      <div class="card">
+        <div class="kicker">Tuition</div>
+        <div class="price"><div class="amt">₮2,500,000</div><div class="muted">0% 3-pay available</div></div>
+        <p class="muted">Scholar seats: 2 at ₮990,000 (need-based).</p>
+        <div class="cta">
+          <a id="price-book" class="btn primary" href="#">Book Diagnostic</a>
+          <a id="price-enroll" class="btn light" href="#">Enroll Now</a>
+        </div>
+        <p style="margin-top:10px;"><span class="pill">Join now and get ₮3,000,000+ in bonuses</span></p>
+      </div>
+      <div class="card">
+        <div class="kicker">Bonuses Included</div>
+        <ul class="list">
+          <li>Score-Map™ 12-Week Plan (₮350k)</li>
+          <li>Rapid-Mock™ 4 Proctored + Analytics (₮420k)</li>
+          <li>EssayLab™ Templates + 2 Line-Edits (₮600k)</li>
+          <li>ScholarshipShortlist™ 25–40 + Calendar (₮300k)</li>
+          <li>Interview Accelerator™ 2 Mocks (₮380k)</li>
+          <li>Parent Playbook™ + Parent Night (₮220k)</li>
+          <li>DeadlineGuard™ Reminders (₮180k)</li>
+          <li>Test-Day Kit™ (₮90k)</li>
+          <li>Re-Application Sprint Plan™ (₮260k)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section id="guarantee">
+    <div class="container grid cols-2">
+      <div>
+        <h2 class="section-title">Double-Time Free Guarantee</h2>
+        <p>If the student completes the action steps and misses the target, we train them for <strong>2× the program length</strong> at no extra cost—until they hit <strong>SAT +100</strong> or <strong>TOEFL/IELTS +15%</strong> from baseline.</p>
+      </div>
+      <div class="card">
+        <div class="kicker">Activation Steps</div>
+        <ul class="list">
+          <li>≥85% sessions or recordings within 72h</li>
+          <li>≥80% weekly drills completed</li>
+          <li>4 proctored mocks + reviews</li>
+          <li>2 essay drafts with edits implemented</li>
+          <li>WhatsApp replies within 24h</li>
+          <li>Official SAT/TOEFL/IELTS within 45 days post-program</li>
+        </ul>
+        <p class="muted">Window to activate: 14 days from end of program. Excludes new 1:1 hours, extra materials, and official test fees.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <details><summary>Is this for SAT or IELTS/TOEFL?</summary><p>Both. We map the best pathway for target colleges.</p></details>
+        <details><summary>What if we miss classes?</summary><p>Watch the recording within 72 hours. It counts toward the guarantee.</p></details>
+        <details><summary>Do you handle visas?</summary><p>We coach on timelines and documents. Embassy makes decisions.</p></details>
+        <details><summary>Do you offer refunds?</summary><p>14-day cooling-off from first session start. After that, the guarantee applies.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Policies -->
   <section>
-    <h2 class="accent-line">Competitor Sabotage Analysis</h2>
-    <p class="muted">
-      Know where your rivals hide. We map their moves, find their strongest spots, and give you the plan to outsmart
-      them.
-    </p>
-
-    <div style="margin-top:20px" class="cards">
+    <div class="container grid cols-2">
       <div class="card">
-        <h3>Intel Gathering</h3>
-        <p>Deep dive on competitor threads and top commenters.</p>
+        <div class="kicker">Contact</div>
+        <p><strong>Location:</strong> Ulaanbaatar • In-person classroom</p>
+        <p><strong>WhatsApp:</strong> <a id="wa-link" href="#">Message us</a></p>
+        <p><strong>Email:</strong> <a href="mailto:admissions@atlasoperations.io">admissions@atlasoperations.io</a></p>
       </div>
       <div class="card">
-        <h3>Opportunity Map</h3>
-        <p>Pinpoint exactly where to strike for max impact.</p>
-      </div>
-      <div class="card">
-        <h3>Action Playbook</h3>
-        <p>Ready-to-run tactics you can do or outsource.</p>
-      </div>
-      <div class="card">
-        <h3>Risk Assessment</h3>
-        <p>Spot and avoid legal or reputation risks.</p>
+        <div class="kicker">Policies</div>
+        <ul class="list">
+          <li>Attendance: ≥85% live or recorded within 72h</li>
+          <li>Makeups: recordings + office hours</li>
+          <li>Conduct: respectful classroom and chat behavior</li>
+          <li>Data & media consent optional</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section style="background:var(--panel);padding-top:40px;padding-bottom:40px;text-align:center;">
-    <h2 class="accent-line">Premium Reddit Strategy</h2>
-    <p class="muted">
-      We build and run full campaigns: ghost posts, comment networks, timed upvotes, rep monitoring, and win tracking.
-      Made for founders who want results.
-    </p>
-
-    <div style="margin-top:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a class="cta" href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank"
-        rel="noopener noreferrer">Request Strategy Brief</a>
-      <a style="display:inline-block;padding:12px 20px;border-radius:8px;border:1px solid rgba(0,0,0,0.05);color:var(--muted);text-decoration:none;font-weight:600;background:var(--panel)"
-        href="https://calendly.com/tgjuicereal/atlas-operations-booking" target="_blank" rel="noopener noreferrer">Book
-        a Triage Call</a>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="accent-line">Why Atlas</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:16px">
-      <div class="card">
-        <h3>Operational Focus</h3>
-        <p class="muted">We run campaigns with clear targets. No random posts.</p>
-      </div>
-      <div class="card">
-        <h3>Low Ban Rate</h3>
-        <p class="muted">Our tactics keep ban risk under 2%. Your accounts stay safe.</p>
-      </div>
-      <div class="card">
-        <h3>Search-First</h3>
-        <p class="muted">We make sure your content shows up in Reddit and Google searches.</p>
-      </div>
-      <div class="card">
-        <h3>Discreet & Secure</h3>
-        <p class="muted">We run tight ops with full confidentiality and audit trails.</p>
+  <!-- Sticky footer CTA -->
+  <div class="sticky-cta">
+    <div class="container bar">
+      <div class="copy">Seats limited • Cohort starts Oct 10 • Score-lift guaranteed</div>
+      <div class="cta">
+        <a id="bar-book" class="btn primary" href="#">Book Free Diagnostic</a>
+        <a id="bar-enroll" class="btn light" href="#">Enroll</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <p>© 2025 Atlas Operations — Precision Influence, On Demand</p>
-    <p>Contact: <a href="mailto:contact@atlasops.com">contact@atlasops.com</a></p>
+    <div class="container">
+      <div>© <span id="yr"></span> Atlas Operations • “UB → US” Cohort Accelerator</div>
+    </div>
   </footer>
-</body>
 
+  <!-- JSON-LD (Course/Event hybrid) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Course",
+    "name":"From UB to US: Scholarship-Ready Admission in 12 Weeks",
+    "provider":{"@type":"Organization","name":"Atlas Operations","url":"https://atlasoperations.io"},
+    "hasCourseInstance":{
+      "@type":"Event",
+      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus":"https://schema.org/EventScheduled",
+      "name":"UB → US Cohort (Oct 10 Start)",
+      "startDate":"2025-10-10",
+      "location":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Ulaanbaatar","addressCountry":"MN"}}
+    },
+    "offers":{
+      "@type":"Offer",
+      "priceCurrency":"MNT",
+      "price":"2500000",
+      "availability":"https://schema.org/LimitedAvailability",
+      "url":"https://atlasoperations.io/ub-us"
+    }
+  }
+  </script>
+
+  <!-- Minimal JS: wire CTAs, carry UTM, year -->
+  <script>
+    (function(){
+      const params = window.location.search || "";
+      const bookURL = "https://calendly.com/atlas-ub-us/diagnostic" + params;
+      const enrollURL = "https://atlasoperations.io/enroll" + params;
+      const waURL = "https://wa.me/97600000000?text=" + encodeURIComponent("Hi, I'd like to book a diagnostic for the UB → US cohort.") + (params ? "%0A"+encodeURIComponent(params) : "");
+
+      const ids = ["hero-book","nav-book","price-book","bar-book"];
+      ids.forEach(id=>{ const el=document.getElementById(id); if(el){ el.href=bookURL; }});
+      const enrollIds = ["price-enroll","bar-enroll"];
+      enrollIds.forEach(id=>{ const el=document.getElementById(id); if(el){ el.href=enrollURL; }});
+      const wa=document.getElementById("wa-link"); if(wa) wa.href=waURL;
+
+      document.getElementById("yr").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
 </html>
