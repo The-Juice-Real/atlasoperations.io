@@ -1,29 +1,328 @@
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
-<h1>hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Sales — Sell Your First Product in 14 Days</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1117; /* Dark charcoal/navy */
+            color: #E6EDF3; /* Light text */
+        }
+        .bg-brand-orange {
+            background-color: #FF6B00; /* Energetic Orange from logo */
+        }
+        .text-brand-orange {
+            color: #FF6B00;
+        }
+        .border-brand-orange {
+            border-color: #FF6B00;
+        }
+        .cta-button {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 107, 0, 0.3), 0 4px 6px -4px rgba(255, 107, 0, 0.3);
+        }
+        .faq-item[open] summary svg:last-child {
+            transform: rotate(180deg);
+        }
+        .feature-card {
+            background-color: #161B22;
+            border: 1px solid #30363D;
+        }
+        .value-stack-item {
+            border-bottom: 1px solid #30363D;
+        }
+        .value-stack-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="py-6 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://i.imgur.com/u13253s.jpeg" alt="Sprint Sales Logo" class="h-10 w-10 rounded-md">
+                 <span class="text-2xl font-bold tracking-tight">SPRINT SALES</span>
+            </div>
+             <div class="flex items-center space-x-2 text-sm text-gray-400">
+                <span>by</span>
+                <img src="https://i.imgur.com/iRmh2yC.png" alt="Atlas Operations Logo" class="h-5">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20 md:py-32">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-block bg-gray-800 text-gray-300 text-sm font-semibold px-4 py-1 rounded-full mb-4 border border-gray-700">
+                    10 seats only • Kits ship Oct 20 • Sprint starts Nov 1
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4">
+                    Sell Your First Product in 14 Days — <span class="text-brand-orange">Without Showing Your Face.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                    Get a starter kit shipped to you, faceless funnels, content packs, and daily coaching. One product. One funnel. One sprint.
+                </p>
+                <a href="https://whop.com/first-sale-sprint/14-day-first-sale-sprint/" class="cta-button inline-block bg-brand-orange text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg">
+                    👉 Join the Sprint — $297
+                </a>
+                
+                <!-- Countdown Timer -->
+                <div id="countdown" class="mt-12 text-gray-300">
+                    <p class="mb-4 text-lg font-semibold tracking-wide">Sprint Starts In:</p>
+                    <div class="grid grid-cols-4 gap-4 max-w-sm mx-auto">
+                        <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
+                            <div id="days" class="text-4xl font-bold">00</div>
+                            <div class="text-sm text-gray-400">Days</div>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
+                            <div id="hours" class="text-4xl font-bold">00</div>
+                            <div class="text-sm text-gray-400">Hours</div>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
+                            <div id="minutes" class="text-4xl font-bold">00</div>
+                            <div class="text-sm text-gray-400">Minutes</div>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
+                            <div id="seconds" class="text-4xl font-bold">00</div>
+                            <div class="text-sm text-gray-400">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -> Mechanism Section -->
+        <section id="problem" class="py-16 md:py-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+                <div>
+                     <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person frustrated at a laptop" class="rounded-lg shadow-2xl aspect-video object-cover">
+                </div>
+                <div class="prose prose-invert lg:prose-xl max-w-none">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Most beginners never make their first sale. <span class="text-brand-orange">We fix that.</span></h2>
+                    <p class="text-gray-400">
+                        Most people quit because they overthink, get stuck with suppliers, or get banned running ads. Sprint Sales removes all that. We give you a product kit, faceless funnels, and daily standups. You stop guessing, follow the sprint, and get your first sale in 14 days.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 md:py-24 text-center">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">How we get you to <span class="text-brand-orange">your first sale.</span></h2>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="feature-card p-6 rounded-lg text-left">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-brand-orange/20 mb-4 border border-brand-orange/30">
+                            <svg class="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Kit</h3>
+                        <p class="text-gray-400">We ship 5 units from LA so you can sell immediately.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="feature-card p-6 rounded-lg text-left">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-brand-orange/20 mb-4 border border-brand-orange/30">
+                            <svg class="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Funnel</h3>
+                        <p class="text-gray-400">Copy-paste landing page and checkout templates.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="feature-card p-6 rounded-lg text-left">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-brand-orange/20 mb-4 border border-brand-orange/30">
+                            <svg class="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Content</h3>
+                        <p class="text-gray-400">Scripts, captions, thumbnails, and faceless B-roll.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="feature-card p-6 rounded-lg text-left">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-brand-orange/20 mb-4 border border-brand-orange/30">
+                             <svg class="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Coaching</h3>
+                        <p class="text-gray-400">Daily 15-min standups, weekly clinics, live scoreboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- What You Get Section -->
+        <section id="value-stack" class="py-16 md:py-24">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Everything included in the <span class="text-brand-orange">Sprint.</span></h2>
+                </div>
+                
+                <div class="feature-card rounded-lg overflow-hidden">
+                    <div class="p-8">
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-center value-stack-item pb-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Starter Kit (5 units, shipped from LA)</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>No-Face Funnel copy blocks</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Policy-Safe Ads Vault + keyword bank</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Content Pack A (scripts, captions, B-roll, thumbnails)</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Influencer Launch Kit (DM scripts + tracker)</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Money Map (pricing & breakeven sheet)</span></li>
+                            <li class="flex items-center value-stack-item py-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Daily standups & weekly live clinic</span></li>
+                            <li class="flex items-center value-stack-item pt-4"><svg class="h-6 w-6 text-green-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Live Scoreboard (posts, clicks, orders, revenue)</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-brand-orange/10 px-8 py-6 border-t border-brand-orange/30">
+                        <div class="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
+                            <div>
+                                <p class="text-gray-400">Total Value: <span class="line-through">$7,576+</span></p>
+                                <p class="text-3xl font-bold">Your Price: <span class="text-brand-orange">$297</span> one-time</p>
+                            </div>
+                             <a href="https://whop.com/first-sale-sprint/14-day-first-sale-sprint/" class="cta-button w-full sm:w-auto mt-4 sm:mt-0 bg-brand-orange text-white text-lg font-bold py-3 px-8 rounded-lg shadow-lg">
+                                👉 Join the Sprint — $297
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guarantee Section -->
+        <section id="guarantee" class="py-16 md:py-24">
+             <div class="max-w-3xl mx-auto feature-card rounded-lg p-8 md:p-12 text-center border-2 border-brand-orange/50">
+                <svg class="h-16 w-16 mx-auto mb-4 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">The Do-the-Work Guarantee.</h2>
+                <p class="text-gray-400 mb-6 text-lg">
+                   If you attend at least 10 standups, post daily proofs, and complete the checklist — and you don’t make a sale — you can repeat the Sprint free. No refunds. All sales final.
+                </p>
+                <div class="inline-block bg-gray-800 text-gray-300 text-sm font-semibold px-4 py-1 rounded-full border border-gray-700">
+                    Only 10 seats. Kits ship Oct 20. Sprint starts Nov 1.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 md:py-24">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">Frequently Asked <span class="text-brand-orange">Questions</span></h2>
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <details class="faq-item group feature-card rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg list-none">
+                            Do I need experience?
+                            <svg class="w-5 h-5 text-gray-400 group-open:text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="text-gray-400 mt-4">No. The Sprint is built for beginners. Just follow the daily tasks.</p>
+                    </details>
+                    <!-- FAQ Item 2 -->
+                    <details class="faq-item group feature-card rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg list-none">
+                            Do I have to show my face?
+                            <svg class="w-5 h-5 text-gray-400 group-open:text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="text-gray-400 mt-4">No. Every funnel, content pack, and ad is faceless.</p>
+                    </details>
+                     <!-- FAQ Item 3 -->
+                    <details class="faq-item group feature-card rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg list-none">
+                            What if ads get rejected?
+                            <svg class="w-5 h-5 text-gray-400 group-open:text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="text-gray-400 mt-4">We give you policy-safe templates and keywords to avoid bans.</p>
+                    </details>
+                     <!-- FAQ Item 4 -->
+                    <details class="faq-item group feature-card rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg list-none">
+                            What if I don’t make a sale?
+                           <svg class="w-5 h-5 text-gray-400 group-open:text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="text-gray-400 mt-4">Complete the required tasks and you repeat the Sprint free.</p>
+                    </details>
+                     <!-- FAQ Item 5 -->
+                    <details class="faq-item group feature-card rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg list-none">
+                            What happens after 14 days?
+                            <svg class="w-5 h-5 text-gray-400 group-open:text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="text-gray-400 mt-4">You can join Sprint Society ($100/mo) for momentum or the 30-Day Cohort ($997) to launch your full store.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing CTA -->
+        <section id="closing-cta" class="text-center py-20 md:py-32">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                    Are you <span class="text-brand-orange">one of the 10?</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-400 mb-8">
+                    The question isn’t “Is this worth it?”<br>The question is: “Am I ready to get my first sale in 14 days?”
+                </p>
+                <a href="https://whop.com/first-sale-sprint/14-day-first-sale-sprint/" class="cta-button inline-block bg-brand-orange text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg">
+                    👉 Join the Sprint — $297
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 mt-20">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Sprint Sales. A product of Atlas Operations. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer Logic
+        (function () {
+            const countdownDate = new Date("November 1, 2025 00:00:00").getTime();
+
+            const interval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById('countdown').innerHTML = "<p class='text-xl font-bold text-brand-orange'>The Sprint has started!</p>";
+                }
+            }, 1000);
+        })();
+        
+        // Logic to close other FAQ items when one is opened
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('toggle', event => {
+                if (event.target.open) {
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== event.target) {
+                            otherItem.open = false;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
