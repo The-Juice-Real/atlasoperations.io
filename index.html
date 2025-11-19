@@ -3,297 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Operations | Zero-Defect Manufacturing</title>
+    <title>Atlas Operations | Industrial Supply Chain Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        atlas: {
-                            900: '#0a0a0a',
-                            800: '#171717',
-                            accent: '#10b981', // Emerald green for "Pass"
-                            danger: '#ef4444', // Red for "Fail"
-                            tech: '#3b82f6',   // Blue for "Engineering"
+                        brand: {
+                            900: '#0f172a', // Navy (Authority)
+                            800: '#1e293b',
+                            600: '#2563eb', // Royal Blue (Action)
+                            50: '#f8fafc',  // Off-white background
+                            100: '#f1f5f9', // Card background
                         }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #0a0a0a; color: #e5e5e5; }
-        .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        .glass-panel {
-            background: rgba(23, 23, 23, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .tech-border {
-            position: relative;
-        }
-        .tech-border::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, #10b981, transparent);
-        }
-        /* Diagonal Hatching Pattern for SVG */
-        .hatch {
-            fill: none;
-            stroke: #3b82f6;
-            stroke-width: 0.5;
-            opacity: 0.3;
-        }
+        body { background-color: #f8fafc; color: #1e293b; }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="fixed inset-0 grid-bg z-[-1]"></div>
-
-    <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <i data-lucide="hexagon" class="text-atlas-accent fill-atlas-accent/20 w-8 h-8"></i>
-                <span class="font-bold text-xl tracking-tighter">ATLAS<span class="text-gray-500">OPERATIONS</span></span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="w-10 h-10">
+                  <path d="M250 50 L423 150 L423 350 L250 450 L77 350 L77 150 Z" fill="none" stroke="#0f172a" stroke-width="20" stroke-linejoin="round"/>
+                  <path d="M250 130 L350 300 L150 300 Z" fill="none" stroke="#0f172a" stroke-width="15" stroke-linejoin="round"/>
+                  <circle cx="250" cy="220" r="15" fill="#2563eb" />
+                  <line x1="250" y1="220" x2="250" y2="130" stroke="#2563eb" stroke-width="8" />
+                  <line x1="250" y1="220" x2="190" y2="300" stroke="#2563eb" stroke-width="8" />
+                  <line x1="250" y1="220" x2="310" y2="300" stroke="#2563eb" stroke-width="8" />
+                </svg>
+                <span class="font-bold text-xl tracking-tight text-brand-900">ATLAS<span class="text-slate-400 font-normal">OPERATIONS</span></span>
             </div>
-            <div class="hidden md:flex items-center gap-8 text-sm font-mono text-gray-400">
-                <a href="#protocol" class="hover:text-white transition">THE_PROTOCOL</a>
-                <a href="#case-studies" class="hover:text-white transition">EVIDENCE</a>
-                <a href="#pricing" class="hover:text-white transition">ENGAGEMENT</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+                <a href="#methodology" class="hover:text-brand-900 transition">Methodology</a>
+                <a href="#case-studies" class="hover:text-brand-900 transition">Case Studies</a>
+                <a href="#pricing" class="hover:text-brand-900 transition">Engagement</a>
             </div>
-            <a href="#pricing" class="bg-white text-black px-6 py-2 font-bold hover:bg-gray-200 transition text-sm uppercase tracking-wider flex items-center gap-2">
-                INITIATE PROTOCOL <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            <a href="#pricing" class="bg-brand-900 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-brand-800 transition text-sm shadow-soft">
+                Start Audit
             </a>
         </div>
     </nav>
 
-    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+    <header class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 px-6">
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-atlas-accent/30 bg-atlas-accent/5 text-atlas-accent text-xs font-mono mb-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-brand-600 text-xs font-bold uppercase tracking-wide mb-8">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                 </span>
-                OPERATIONAL CAPACITY: ACTIVE
+                Engineering-Grade Sourcing
             </div>
             
-            <h1 class="text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+            <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6 text-brand-900">
                 Stop Sourcing.<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600">Start Engineering.</span>
+                <span class="text-brand-600">Start Engineering.</span>
             </h1>
             
-            <p class="text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
-                Most agents speak Chinese. We speak <strong>Zero-Defect Manufacturing</strong>.
-                Leveraging protocols from <span class="text-white">Apple</span> & <span class="text-white">German Engineering</span> 
-                to build supply chains that don't fail.
+            <p class="text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed font-normal">
+                We don't just find factories. We implement <strong>Zero-Defect Manufacturing Protocols</strong> inspired by Apple & German engineering standards to build supply chains that are physically incapable of failing.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#case-studies" class="flex items-center justify-center gap-2 bg-atlas-accent text-black px-8 py-4 font-bold hover:bg-emerald-400 transition">
-                    <i data-lucide="file-search" class="w-5 h-5"></i>
-                    SEE THE EVIDENCE
+                <a href="#case-studies" class="flex items-center justify-center gap-2 bg-white text-brand-900 border border-slate-200 px-8 py-4 rounded-lg font-bold hover:border-brand-900 transition shadow-soft">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+                    View Evidence
                 </a>
-                <a href="#pricing" class="flex items-center justify-center gap-2 border border-white/20 px-8 py-4 font-bold hover:bg-white/5 transition">
-                    INITIATE PROTOCOL
+                <a href="#pricing" class="flex items-center justify-center gap-2 bg-brand-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20">
+                    Initiate Feasibility Audit
                 </a>
             </div>
-        </div>
-
-        <div class="absolute top-1/2 right-0 -translate-y-1/2 opacity-20 pointer-events-none select-none hidden lg:block">
-            <div class="font-mono text-xs text-right space-y-1">
-                <p>TOLERANCE_CHECK: <span class="text-atlas-accent">PASS</span></p>
-                <p>MATERIAL_DENSITY: <span class="text-atlas-accent">200GSM</span></p>
-                <p>STITCH_RATE: <span class="text-atlas-accent">OPTIMAL</span></p>
-                <p>DEFECT_RATE: <span class="text-atlas-accent">< 0.01%</span></p>
+            
+            <div class="mt-16 pt-8 border-t border-slate-200/60">
+                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-4">Trained & Operated With</p>
+                <div class="flex gap-8 opacity-50 grayscale hover:grayscale-0 transition duration-500">
+                     <a href="https://www.china-worx.com/" target="_blank" class="flex items-center gap-2">
+                        <i data-lucide="container" class="w-6 h-6"></i>
+                        <span class="font-bold text-lg">CHINA WORX</span>
+                     </a>
+                     <a href="https://thesparrows.co/" target="_blank" class="flex items-center gap-2">
+                        <i data-lucide="crosshair" class="w-6 h-6"></i>
+                        <span class="font-bold text-lg">THE SPARROWS</span>
+                     </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="protocol" class="py-20 bg-atlas-800 border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+    <section id="methodology" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
             <div>
-                <h2 class="text-3xl font-bold mb-6">The "Generic Agent" Failure Loop</h2>
+                <h2 class="text-3xl font-bold mb-6 text-brand-900">The "Generic Agent" Trap</h2>
+                <p class="text-slate-600 mb-8 text-lg">Most sourcing agents are essentially translators with a WeChat account. They rely on the "Alibaba Lottery"—hoping the factory sends a good batch.</p>
+                
                 <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-red-500/10 flex items-center justify-center rounded border border-red-500/30 shrink-0">
-                            <i data-lucide="x" class="text-red-500"></i>
+                    <div class="flex gap-5">
+                        <div class="w-12 h-12 bg-red-50 flex items-center justify-center rounded-full shrink-0">
+                            <i data-lucide="x" class="text-red-600 w-6 h-6"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg">The "Alibaba Lottery"</h3>
-                            <p class="text-gray-400 text-sm mt-1">They search keywords. They pick the cheapest. You get a container of trash 3 months later.</p>
+                            <h3 class="font-bold text-lg text-brand-900">No Spec Control</h3>
+                            <p class="text-slate-500 mt-1">"Make it like the picture" is not a specification. It leads to material swaps and critical failures.</p>
                         </div>
                     </div>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-red-500/10 flex items-center justify-center rounded border border-red-500/30 shrink-0">
-                            <i data-lucide="x" class="text-red-500"></i>
+                    <div class="flex gap-5">
+                        <div class="w-12 h-12 bg-red-50 flex items-center justify-center rounded-full shrink-0">
+                            <i data-lucide="x" class="text-red-600 w-6 h-6"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg">Zero Spec Control</h3>
-                            <p class="text-gray-400 text-sm mt-1">"Make it like the picture" is not a spec. It leads to wrong materials, weak seams, and failed products.</p>
+                            <h3 class="font-bold text-lg text-brand-900">Quality Fade</h3>
+                            <p class="text-slate-500 mt-1">The first batch is perfect. The second batch is trash. Without on-site engineering, you are defenseless.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="relative">
-                <div class="absolute -inset-4 bg-atlas-accent/5 blur-xl"></div>
-                <div class="relative glass-panel p-8 rounded-lg tech-border">
-                    <h2 class="text-2xl font-bold mb-6 text-atlas-accent">The German-Grade Protocol</h2>
-                    <ul class="space-y-4 font-mono text-sm text-gray-300">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
-                            <span>MATERIAL_METALLURGY_AUDIT</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
-                            <span>TOLERANCE_STRESS_TESTING</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
-                            <span>LEGAL_BINDING_SPEC_SHEETS</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
-                            <span>GOLDEN_SAMPLE_GAUNTLET</span>
-                        </li>
-                    </ul>
-                    <div class="mt-8 pt-8 border-t border-white/10">
-                        <p class="text-xs text-gray-500 uppercase mb-4">Legacy / Training</p>
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 opacity-80">
-                            <a href="https://www.china-worx.com/" target="_blank" class="group flex items-center gap-3 px-4 py-2 rounded border border-white/10 hover:border-blue-500/50 hover:bg-blue-500/5 transition duration-300">
-                                <i data-lucide="container" class="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition"></i>
-                                <span class="font-bold text-sm tracking-wider text-gray-300 group-hover:text-white transition">CHINA WORX</span>
-                                <i data-lucide="external-link" class="w-3 h-3 text-gray-600 group-hover:text-blue-400 ml-1"></i>
-                            </a>
-                            <a href="https://thesparrows.co/" target="_blank" class="group flex items-center gap-3 px-4 py-2 rounded border border-white/10 hover:border-red-500/50 hover:bg-red-500/5 transition duration-300">
-                                <i data-lucide="crosshair" class="w-5 h-5 text-gray-400 group-hover:text-red-500 transition"></i>
-                                <span class="font-bold text-sm tracking-widest text-gray-300 group-hover:text-white transition">THE SPARROWS</span>
-                                <i data-lucide="external-link" class="w-3 h-3 text-gray-600 group-hover:text-red-500 ml-1"></i>
-                            </a>
+            <div class="bg-brand-900 text-white p-10 rounded-2xl shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-10 -translate-y-1/2 translate-x-1/2"></div>
+                
+                <h2 class="text-2xl font-bold mb-8 relative z-10">The Atlas Protocol</h2>
+                <ul class="space-y-5 relative z-10">
+                    <li class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <i data-lucide="check" class="text-blue-400 w-5 h-5"></i>
                         </div>
-                    </div>
-                </div>
+                        <span class="font-medium">Metallurgy & Material Audit</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <i data-lucide="check" class="text-blue-400 w-5 h-5"></i>
+                        </div>
+                        <span class="font-medium">Tolerance Stress Testing</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <i data-lucide="check" class="text-blue-400 w-5 h-5"></i>
+                        </div>
+                        <span class="font-medium">Legally Binding Spec Sheets</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <i data-lucide="check" class="text-blue-400 w-5 h-5"></i>
+                        </div>
+                        <span class="font-medium">Golden Sample Gauntlet</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="case-studies" class="py-24 px-6">
+    <section id="case-studies" class="py-24 px-6 bg-slate-50">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16">
-                <h2 class="text-4xl font-bold mb-4">Proof of Work</h2>
-                <p class="text-gray-400">We don't hide behind NDAs. Here is the level of detail we demand.</p>
+                <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">Proof of Work</span>
+                <h2 class="text-4xl font-bold mt-2 text-brand-900">We don't hide behind NDAs.</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl">Real projects. Real engineering. Real margins.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div class="grid md:grid-cols-2 gap-10">
                 
-                <div class="group h-full">
-                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
-                        <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
-                            STATUS: MASS_PRODUCTION
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition duration-300 group border border-slate-100">
+                    <div class="h-64 bg-slate-100 relative overflow-hidden">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-900 rounded-md shadow-sm z-10 border border-slate-200">
+                            MASS PRODUCTION
                         </div>
-                        <div class="w-full h-full bg-gray-900 relative flex items-center justify-center overflow-hidden">
-                             
-                             <div class="w-full h-full p-6 bg-black/20">
-                                <svg viewBox="0 0 400 300" class="w-full h-full drop-shadow-xl">
-                                    <defs>
-                                        <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="10" height="10">
-                                            <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" class="hatch"/>
-                                        </pattern>
-                                        <pattern id="crossHatch" patternUnits="userSpaceOnUse" width="8" height="8">
-                                            <path d="M-1,1 l2,-2 M0,8 l8,-8 M7,9 l2,-2" stroke="#10b981" stroke-width="0.5" opacity="0.4"/>
-                                            <path d="M-1,7 l2,2 M0,0 l8,8 M7,-1 l2,2" stroke="#10b981" stroke-width="0.5" opacity="0.4"/>
-                                        </pattern>
-                                    </defs>
-                                    
-                                    <rect x="132" y="20" width="135" height="200" fill="url(#diagonalHatch)" stroke="#3b82f6" stroke-width="2" />
-                                    <rect x="132" y="20" width="135" height="70" fill="url(#crossHatch)" stroke="#10b981" stroke-width="2" stroke-dasharray="4 2" />
-                                    
-                                    <line x1="110" y1="20" x2="110" y2="220" stroke="#6b7280" stroke-width="1" />
-                                    <line x1="105" y1="20" x2="115" y2="20" stroke="#6b7280" stroke-width="1" />
-                                    <line x1="105" y1="220" x2="115" y2="220" stroke="#6b7280" stroke-width="1" />
-                                    <text x="95" y="120" fill="#9ca3af" font-family="monospace" font-size="10" transform="rotate(-90 95,120)">2000mm</text>
-                                    
-                                    <text x="200" y="55" fill="#10b981" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" opacity="0.9">ARM COVER</text>
-                                </svg>
-                             </div>
+                        <div class="w-full h-full flex items-center justify-center p-6">
+                           <svg viewBox="0 0 400 300" class="w-full h-full">
+                                <defs>
+                                    <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="10" height="10">
+                                        <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" fill="none" stroke="#94a3b8" stroke-width="0.5"/>
+                                    </pattern>
+                                    <pattern id="crossHatch" patternUnits="userSpaceOnUse" width="8" height="8">
+                                        <path d="M-1,1 l2,-2 M0,8 l8,-8 M7,9 l2,-2" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+                                        <path d="M-1,7 l2,2 M0,0 l8,8 M7,-1 l2,2" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+                                    </pattern>
+                                </defs>
+                                <rect x="132" y="20" width="135" height="200" fill="url(#diagonalHatch)" stroke="#334155" stroke-width="2" />
+                                <rect x="132" y="20" width="135" height="70" fill="url(#crossHatch)" stroke="#10b981" stroke-width="2" stroke-dasharray="4 2" />
+                                <line x1="110" y1="20" x2="110" y2="220" stroke="#cbd5e1" stroke-width="1" />
+                                <text x="95" y="120" fill="#64748b" font-family="sans-serif" font-size="10" transform="rotate(-90 95,120)">2000mm</text>
+                                <text x="200" y="55" fill="#10b981" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">ARM COVER</text>
+                            </svg>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Seitentraum: Side-Sleeper System</h3>
-                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                        Engineered a complex dual-component textile with diagonal quilting. Defined 200gsm feather cotton density and zipper logic to prevent common assembly defects.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
-                        <span class="bg-white/5 px-2 py-1 rounded">UNIT: $7.90</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">RETAIL: €79.00</span>
-                    </div>
-                </div>
-
-                <div class="group h-full">
-                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
-                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
-                            STATUS: DEPLOYED
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 text-brand-900">Seitentraum: Side-Sleeper System</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Engineered a complex dual-component textile with diagonal quilting. Defined 200gsm feather cotton density and zipper logic to prevent common assembly defects.
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase">Unit Cost</p>
+                                <p class="text-brand-600 font-bold font-mono">$7.90</p>
+                            </div>
+                            <div class="h-8 w-px bg-slate-200"></div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase">Retail</p>
+                                <p class="text-brand-900 font-bold font-mono">€79.00</p>
+                            </div>
                         </div>
-                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
-                             <img src="https://www.imettax.com/cdn/shop/files/lQLPJxBlKnh7wDHNBGbNBdyw2UPnG_GzyfcIsVHljSD6AQ_1500_1126.png?v=1758780169&width=1000" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">MettaX: Fleet Telematics</h3>
-                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                        Managed whitelabel engineering for AI-powered dashcams. Customized firmware logic for driver behavior monitoring and modified hardware housing for high-heat Arizona trucking routes.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
-                        <span class="bg-white/5 px-2 py-1 rounded">CUSTOM FIRMWARE</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">HEAT MGMT</span>
                     </div>
                 </div>
 
-                <div class="group h-full">
-                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
-                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
-                            STATUS: QC PASSED
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition duration-300 group border border-slate-100">
+                    <div class="h-64 bg-slate-100 relative overflow-hidden">
+                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-900 rounded-md shadow-sm z-10 border border-slate-200">
+                            DEPLOYED
                         </div>
-                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
-                             <img src="https://thesparrows.co/wp-content/uploads/2024/10/Appearance-Check_Scratches_20240607_4-1024x768.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
-                        </div>
+                        <img src="https://www.imettax.com/cdn/shop/files/lQLPJxBlKnh7wDHNBGbNBdyw2UPnG_GzyfcIsVHljSD6AQ_1500_1126.png?v=1758780169&width=1000" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Forensic Audit: Sprout Kit</h3>
-                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                        Post-production audit for Canadian ag-tech. Implemented AQI sampling, digital height gauge checks for lid sealing, and food-grade safety testing with 3rd party labs.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
-                        <span class="bg-white/5 px-2 py-1 rounded">AQI STANDARD</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">FOOD GRADE</span>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 text-brand-900">MettaX: Fleet Telematics</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Managed whitelabel engineering for AI-powered dashcams. Customized firmware logic for driver behavior monitoring and modified hardware housing for high-heat Arizona trucking routes.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">CUSTOM FIRMWARE</span>
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">HEAT MGMT</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="group h-full">
-                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
-                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
-                            STATUS: ASSEMBLED
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition duration-300 group border border-slate-100">
+                    <div class="h-64 bg-slate-100 relative overflow-hidden">
+                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-900 rounded-md shadow-sm z-10 border border-slate-200">
+                            QC PASSED
                         </div>
-                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
-                             <img src="https://cdn.prod.website-files.com/5c27725977f28349e59ea0a9/5c5ea451e18675a0f768db71_Camera_Rig_Sourcing.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
+                        <img src="https://thesparrows.co/wp-content/uploads/2024/10/Appearance-Check_Scratches_20240607_4-1024x768.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 text-brand-900">Forensic Audit: Sprout Kit</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Post-production audit for Canadian ag-tech. Implemented AQI sampling, digital height gauge checks for lid sealing, and food-grade safety testing with 3rd party labs.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">AQI STANDARD</span>
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">FOOD GRADE</span>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">NeonStorage: Camera Rig</h3>
-                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                        Complex sourcing for specialized filmmaking equipment. Managed sourcing of precision-machined aluminum components and heavy-duty assembly for high-value camera systems.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
-                        <span class="bg-white/5 px-2 py-1 rounded">FILM GEAR</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">PRECISION ASSEMBLY</span>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition duration-300 group border border-slate-100">
+                    <div class="h-64 bg-slate-100 relative overflow-hidden">
+                         <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-900 rounded-md shadow-sm z-10 border border-slate-200">
+                            ASSEMBLED
+                        </div>
+                        <img src="https://cdn.prod.website-files.com/5c27725977f28349e59ea0a9/5c5ea451e18675a0f768db71_Camera_Rig_Sourcing.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 text-brand-900">NeonStorage: Camera Rig</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Complex sourcing for specialized filmmaking equipment. Managed sourcing of precision-machined aluminum components and heavy-duty assembly for high-value camera systems.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">FILM GEAR</span>
+                            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">PRECISION</span>
+                        </div>
                     </div>
                 </div>
 
@@ -301,66 +281,74 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-24 bg-gradient-to-b from-atlas-900 to-atlas-800">
+    <section id="pricing" class="py-24 bg-white border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold">Engagement Models</h2>
-                <p class="text-gray-400 mt-4">Phase 1 is mandatory. We audit before we engineer.</p>
+                <h2 class="text-3xl font-bold text-brand-900">Engagement Protocol</h2>
+                <p class="text-slate-500 mt-4">We operate in phases to mitigate your risk.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-panel p-8 rounded-2xl border border-white/10 hover:border-white/30 transition relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-600"></div>
+                
+                <div class="bg-white p-8 rounded-2xl border-2 border-brand-600 shadow-xl relative">
+                    <div class="absolute top-0 right-0 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        START HERE
+                    </div>
                     <div class="flex justify-between items-start mb-6">
                         <div>
-                            <h3 class="text-xl font-bold">Phase 1: Feasibility Audit</h3>
-                            <p class="text-sm text-gray-400 mt-1">The "Go/No-Go" Check</p>
+                            <h3 class="text-xl font-bold text-brand-900">Phase 1: Feasibility Audit</h3>
+                            <p class="text-sm text-slate-500 mt-1">The "Go/No-Go" Analysis</p>
                         </div>
-                        <div class="text-2xl font-mono font-bold">$50</div>
+                        <div class="text-3xl font-bold text-brand-900">$50</div>
                     </div>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8">
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Spec-Sheet Review:</strong> Can your target price hit your tolerances?</li>
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Failure Mode Analysis:</strong> Where will this factory fail you?</li>
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Price Benchmarking:</strong> Are you overpaying?</li>
+                    <ul class="space-y-4 text-sm text-slate-600 mb-8">
+                        <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-brand-600"></i> <strong>Spec-Sheet Review:</strong> Validating tolerances.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-brand-600"></i> <strong>Failure Mode Analysis:</strong> Predicting defects.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-brand-600"></i> <strong>Price Benchmarking:</strong> Checking for overpayment.</li>
                     </ul>
-                    <a href="https://buy.stripe.com/7sY00jaYvdzG8A3fhY7bW01" class="block w-full py-3 text-center border border-white/20 hover:bg-white/5 transition font-mono text-sm">
+                    <a href="https://buy.stripe.com/7sY00jaYvdzG8A3fhY7bW01" class="block w-full py-4 text-center bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-900 transition shadow-lg shadow-blue-500/20">
                         START PHASE 1
                     </a>
+                    <p class="text-xs text-center text-slate-400 mt-4">Credited back if you proceed to Phase 2.</p>
                 </div>
 
-                <div class="glass-panel p-8 rounded-2xl border border-atlas-accent/50 hover:border-atlas-accent transition relative overflow-hidden shadow-lg shadow-atlas-accent/5">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-atlas-accent"></div>
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
                     <div class="flex justify-between items-start mb-6">
                         <div>
-                            <h3 class="text-xl font-bold text-white">Phase 2: The Protocol</h3>
-                            <p class="text-sm text-gray-400 mt-1">Zero-Defect Engineering</p>
+                            <h3 class="text-xl font-bold text-slate-700">Phase 2: The Protocol</h3>
+                            <p class="text-sm text-slate-500 mt-1">Zero-Defect Engineering</p>
                         </div>
                         <div class="text-right">
-                            <div class="text-xs text-gray-500 line-through">$5,000</div>
-                            <div class="text-2xl font-mono font-bold text-atlas-accent">CUSTOM</div>
+                            <div class="text-xs text-slate-400 line-through">$5,000</div>
+                            <div class="text-2xl font-bold text-slate-700">Custom</div>
                         </div>
                     </div>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8">
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> Full Factory Scouting & Negotiation</li>
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> <strong>Golden Sample Gauntlet</strong></li>
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> Legal Manufacturing Contract (PI)</li>
-                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> On-Site QC Checklist</li>
+                    <ul class="space-y-4 text-sm text-slate-500 mb-8">
+                        <li class="flex gap-3"><i data-lucide="lock" class="w-5 h-5 text-slate-400"></i> Full Factory Scouting & Negotiation</li>
+                        <li class="flex gap-3"><i data-lucide="lock" class="w-5 h-5 text-slate-400"></i> Golden Sample Gauntlet</li>
+                        <li class="flex gap-3"><i data-lucide="lock" class="w-5 h-5 text-slate-400"></i> Legal Manufacturing Contracts</li>
+                        <li class="flex gap-3"><i data-lucide="lock" class="w-5 h-5 text-slate-400"></i> On-Site QC Checklist</li>
                     </ul>
-                    <span class="block w-full py-3 text-center bg-white/10 text-gray-400 font-mono text-sm cursor-not-allowed">
-                        REQUIRES AUDIT APPROVAL
-                    </span>
+                    <button disabled class="block w-full py-4 text-center bg-slate-200 text-slate-400 font-bold rounded-lg cursor-not-allowed">
+                        REQUIRES PHASE 1 APPROVAL
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-12 border-t border-white/5 text-center">
+    <footer class="py-12 bg-white border-t border-slate-100 text-center">
         <div class="max-w-7xl mx-auto px-6">
-            <i data-lucide="hexagon" class="w-8 h-8 text-gray-700 mx-auto mb-6"></i>
-            <p class="text-2xl font-bold mb-8">Ready to engineer your supply chain?</p>
-            <a href="mailto:juice@atlasoperations.io" class="text-atlas-accent hover:underline font-mono text-lg">juice@atlasoperations.io</a>
-            
-            <div class="mt-16 text-xs text-gray-600 font-mono">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="w-8 h-8 mx-auto mb-6 opacity-50 grayscale">
+                  <path d="M250 50 L423 150 L423 350 L250 450 L77 350 L77 150 Z" fill="none" stroke="#0f172a" stroke-width="20" stroke-linejoin="round"/>
+                  <path d="M250 130 L350 300 L150 300 Z" fill="none" stroke="#0f172a" stroke-width="15" stroke-linejoin="round"/>
+                  <circle cx="250" cy="220" r="15" fill="#2563eb" />
+                  <line x1="250" y1="220" x2="250" y2="130" stroke="#2563eb" stroke-width="8" />
+                  <line x1="250" y1="220" x2="190" y2="300" stroke="#2563eb" stroke-width="8" />
+                  <line x1="250" y1="220" x2="310" y2="300" stroke="#2563eb" stroke-width="8" />
+            </svg>
+            <a href="mailto:juice@atlasoperations.io" class="text-brand-600 font-bold hover:underline text-lg">juice@atlasoperations.io</a>
+            <div class="mt-8 text-xs text-slate-400">
                 &copy; 2025 ATLAS OPERATIONS. SHENZHEN / GLOBAL.
             </div>
         </div>
