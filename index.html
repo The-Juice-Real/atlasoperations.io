@@ -1,116 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Operations — Building Ventures That Scale</title>
+    <title>Atlas Operations | Zero-Defect Manufacturing</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        atlas: {
+                            900: '#0a0a0a',
+                            800: '#171717',
+                            accent: '#10b981', // Emerald green for "Pass"
+                            danger: '#ef4444', // Red for "Fail"
+                            tech: '#3b82f6',   // Blue for "Engineering"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #FFFFFF;
+        body { background-color: #0a0a0a; color: #e5e5e5; }
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
-        .text-brand-orange {
-            color: #FF6B00;
+        .glass-panel {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .project-card {
-            background-color: #111111;
-            border: 1px solid #222222;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .tech-border {
+            position: relative;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #FF6B00;
+        .tech-border::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
         }
-        .cta-button {
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #333333;
+        /* Diagonal Hatching Pattern for SVG */
+        .hatch {
+            fill: none;
+            stroke: #3b82f6;
+            stroke-width: 0.5;
+            opacity: 0.3;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
-    <header class="py-6 px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <span class="block text-xl font-bold tracking-wide text-white leading-tight">ATLAS</span>
-                <span class="block text-xl font-bold tracking-wide text-white leading-tight">OPERATIONS</span>
+    <div class="fixed inset-0 grid-bg z-[-1]"></div>
+
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i data-lucide="hexagon" class="text-atlas-accent fill-atlas-accent/20 w-8 h-8"></i>
+                <span class="font-bold text-xl tracking-tighter">ATLAS<span class="text-gray-500">OPERATIONS</span></span>
             </div>
-            <nav>
-                <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
-            </nav>
+            <div class="hidden md:flex items-center gap-8 text-sm font-mono text-gray-400">
+                <a href="#protocol" class="hover:text-white transition">THE_PROTOCOL</a>
+                <a href="#case-studies" class="hover:text-white transition">EVIDENCE</a>
+                <a href="#pricing" class="hover:text-white transition">ENGAGEMENT</a>
+            </div>
+            <a href="#pricing" class="bg-white text-black px-6 py-2 font-bold hover:bg-gray-200 transition text-sm uppercase tracking-wider flex items-center gap-2">
+                INITIATE PROTOCOL <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-atlas-accent/30 bg-atlas-accent/5 text-atlas-accent text-xs font-mono mb-8">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                OPERATIONAL CAPACITY: ACTIVE
+            </div>
+            
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+                Stop Sourcing.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600">Start Engineering.</span>
+            </h1>
+            
+            <p class="text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
+                Most agents speak Chinese. We speak <strong>Zero-Defect Manufacturing</strong>.
+                Leveraging protocols from <span class="text-white">Apple</span> & <span class="text-white">German Engineering</span> 
+                to build supply chains that don't fail.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#case-studies" class="flex items-center justify-center gap-2 bg-atlas-accent text-black px-8 py-4 font-bold hover:bg-emerald-400 transition">
+                    <i data-lucide="file-search" class="w-5 h-5"></i>
+                    SEE THE EVIDENCE
+                </a>
+                <a href="#pricing" class="flex items-center justify-center gap-2 border border-white/20 px-8 py-4 font-bold hover:bg-white/5 transition">
+                    INITIATE PROTOCOL
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 opacity-20 pointer-events-none select-none hidden lg:block">
+            <div class="font-mono text-xs text-right space-y-1">
+                <p>TOLERANCE_CHECK: <span class="text-atlas-accent">PASS</span></p>
+                <p>MATERIAL_DENSITY: <span class="text-atlas-accent">200GSM</span></p>
+                <p>STITCH_RATE: <span class="text-atlas-accent">OPTIMAL</span></p>
+                <p>DEFECT_RATE: <span class="text-atlas-accent">< 0.01%</span></p>
+            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Hero Section -->
-        <section id="hero" class="text-center py-24 md:py-40">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-6">
-                    We Build Ventures That Scale.
-                </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                    Atlas Operations is a holding company dedicated to creating and scaling innovative digital products and educational programs for modern entrepreneurs.
-                </p>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-16 md:py-24">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">Our Projects</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <!-- Sprint Sales Card -->
-                    <a href="/sprint-sales" class="project-card block rounded-lg overflow-hidden group">
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span class="block text-2xl font-extrabold tracking-tight text-brand-orange leading-none">SPRINT</span>
-                                <span class="block text-2xl font-extrabold tracking-tight text-brand-orange leading-none">SALES</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Get Your First Sale in 14 Days</h3>
-                            <p class="text-gray-400 mb-6">A 14-day intensive program designed to help beginners make their first e-commerce sale without showing their face.</p>
-                            <span class="font-semibold text-white group-hover:text-brand-orange transition">View Project &rarr;</span>
+    <section id="protocol" class="py-20 bg-atlas-800 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">The "Generic Agent" Failure Loop</h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-red-500/10 flex items-center justify-center rounded border border-red-500/30 shrink-0">
+                            <i data-lucide="x" class="text-red-500"></i>
                         </div>
-                    </a>
-
-                    <!-- Placeholder for Future Project -->
-                    <div class="project-card rounded-lg p-8 flex flex-col justify-center items-center border-2 border-dashed border-gray-700">
-                        <h3 class="text-xl font-bold text-gray-500 mb-2">New Venture Launching Soon</h3>
-                        <p class="text-gray-600 text-center">We're always building. Check back later for our next project reveal.</p>
+                        <div>
+                            <h3 class="font-bold text-lg">The "Alibaba Lottery"</h3>
+                            <p class="text-gray-400 text-sm mt-1">They search keywords. They pick the cheapest. You get a container of trash 3 months later.</p>
+                        </div>
                     </div>
-
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-red-500/10 flex items-center justify-center rounded border border-red-500/30 shrink-0">
+                            <i data-lucide="x" class="text-red-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Zero Spec Control</h3>
+                            <p class="text-gray-400 text-sm mt-1">"Make it like the picture" is not a spec. It leads to wrong materials, weak seams, and failed products.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- About/Mission Section -->
-        <section id="mission" class="py-16 md:py-24 text-center">
-            <div class="max-w-3xl mx-auto">
-                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Our Mission</h2>
-                 <p class="text-lg md:text-xl text-gray-400">
-                    Our goal is to simplify entrepreneurship. We build systems, tools, and training that remove common roadblocks, empowering individuals to achieve financial independence through clear, actionable steps.
-                </p>
+            <div class="relative">
+                <div class="absolute -inset-4 bg-atlas-accent/5 blur-xl"></div>
+                <div class="relative glass-panel p-8 rounded-lg tech-border">
+                    <h2 class="text-2xl font-bold mb-6 text-atlas-accent">The German-Grade Protocol</h2>
+                    <ul class="space-y-4 font-mono text-sm text-gray-300">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
+                            <span>MATERIAL_METALLURGY_AUDIT</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
+                            <span>TOLERANCE_STRESS_TESTING</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
+                            <span>LEGAL_BINDING_SPEC_SHEETS</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="text-atlas-accent w-4 h-4"></i>
+                            <span>GOLDEN_SAMPLE_GAUNTLET</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 pt-8 border-t border-white/10">
+                        <p class="text-xs text-gray-500 uppercase mb-4">Legacy / Training</p>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 opacity-80">
+                            <a href="https://www.china-worx.com/" target="_blank" class="group flex items-center gap-3 px-4 py-2 rounded border border-white/10 hover:border-blue-500/50 hover:bg-blue-500/5 transition duration-300">
+                                <i data-lucide="container" class="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition"></i>
+                                <span class="font-bold text-sm tracking-wider text-gray-300 group-hover:text-white transition">CHINA WORX</span>
+                                <i data-lucide="external-link" class="w-3 h-3 text-gray-600 group-hover:text-blue-400 ml-1"></i>
+                            </a>
+                            <a href="https://thesparrows.co/" target="_blank" class="group flex items-center gap-3 px-4 py-2 rounded border border-white/10 hover:border-red-500/50 hover:bg-red-500/5 transition duration-300">
+                                <i data-lucide="crosshair" class="w-5 h-5 text-gray-400 group-hover:text-red-500 transition"></i>
+                                <span class="font-bold text-sm tracking-widest text-gray-300 group-hover:text-white transition">THE SPARROWS</span>
+                                <i data-lucide="external-link" class="w-3 h-3 text-gray-600 group-hover:text-red-500 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section id="case-studies" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold mb-4">Proof of Work</h2>
+                <p class="text-gray-400">We don't hide behind NDAs. Here is the level of detail we demand.</p>
+            </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 mt-20">
-        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2025 Atlas Operations. All Rights Reserved.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <div class="group h-full">
+                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
+                        <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
+                            STATUS: MASS_PRODUCTION
+                        </div>
+                        <div class="w-full h-full bg-gray-900 relative flex items-center justify-center overflow-hidden">
+                             
+                             <div class="w-full h-full p-6 bg-black/20">
+                                <svg viewBox="0 0 400 300" class="w-full h-full drop-shadow-xl">
+                                    <defs>
+                                        <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="10" height="10">
+                                            <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" class="hatch"/>
+                                        </pattern>
+                                        <pattern id="crossHatch" patternUnits="userSpaceOnUse" width="8" height="8">
+                                            <path d="M-1,1 l2,-2 M0,8 l8,-8 M7,9 l2,-2" stroke="#10b981" stroke-width="0.5" opacity="0.4"/>
+                                            <path d="M-1,7 l2,2 M0,0 l8,8 M7,-1 l2,2" stroke="#10b981" stroke-width="0.5" opacity="0.4"/>
+                                        </pattern>
+                                    </defs>
+                                    
+                                    <rect x="132" y="20" width="135" height="200" fill="url(#diagonalHatch)" stroke="#3b82f6" stroke-width="2" />
+                                    <rect x="132" y="20" width="135" height="70" fill="url(#crossHatch)" stroke="#10b981" stroke-width="2" stroke-dasharray="4 2" />
+                                    
+                                    <line x1="110" y1="20" x2="110" y2="220" stroke="#6b7280" stroke-width="1" />
+                                    <line x1="105" y1="20" x2="115" y2="20" stroke="#6b7280" stroke-width="1" />
+                                    <line x1="105" y1="220" x2="115" y2="220" stroke="#6b7280" stroke-width="1" />
+                                    <text x="95" y="120" fill="#9ca3af" font-family="monospace" font-size="10" transform="rotate(-90 95,120)">2000mm</text>
+                                    
+                                    <text x="200" y="55" fill="#10b981" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" opacity="0.9">ARM COVER</text>
+                                </svg>
+                             </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Seitentraum: Side-Sleeper System</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
+                        Engineered a complex dual-component textile with diagonal quilting. Defined 200gsm feather cotton density and zipper logic to prevent common assembly defects.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">UNIT: $7.90</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">RETAIL: €79.00</span>
+                    </div>
+                </div>
+
+                <div class="group h-full">
+                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
+                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
+                            STATUS: DEPLOYED
+                        </div>
+                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
+                             <img src="https://www.imettax.com/cdn/shop/files/lQLPJxBlKnh7wDHNBGbNBdyw2UPnG_GzyfcIsVHljSD6AQ_1500_1126.png?v=1758780169&width=1000" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MettaX: Fleet Telematics</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
+                        Managed whitelabel engineering for AI-powered dashcams. Customized firmware logic for driver behavior monitoring and modified hardware housing for high-heat Arizona trucking routes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">CUSTOM FIRMWARE</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">HEAT MGMT</span>
+                    </div>
+                </div>
+
+                <div class="group h-full">
+                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
+                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
+                            STATUS: QC PASSED
+                        </div>
+                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
+                             <img src="https://thesparrows.co/wp-content/uploads/2024/10/Appearance-Check_Scratches_20240607_4-1024x768.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Forensic Audit: Sprout Kit</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
+                        Post-production audit for Canadian ag-tech. Implemented AQI sampling, digital height gauge checks for lid sealing, and food-grade safety testing with 3rd party labs.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">AQI STANDARD</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">FOOD GRADE</span>
+                    </div>
+                </div>
+
+                <div class="group h-full">
+                    <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-6 relative h-72">
+                         <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono text-atlas-accent border border-atlas-accent/20 rounded z-10">
+                            STATUS: ASSEMBLED
+                        </div>
+                        <div class="w-full h-full bg-gray-900 relative group-hover:scale-105 transition duration-700">
+                             <img src="https://cdn.prod.website-files.com/5c27725977f28349e59ea0a9/5c5ea451e18675a0f768db71_Camera_Rig_Sourcing.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition">
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">NeonStorage: Camera Rig</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
+                        Complex sourcing for specialized filmmaking equipment. Managed sourcing of precision-machined aluminum components and heavy-duty assembly for high-value camera systems.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">FILM GEAR</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">PRECISION ASSEMBLY</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-gradient-to-b from-atlas-900 to-atlas-800">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold">Engagement Models</h2>
+                <p class="text-gray-400 mt-4">Phase 1 is mandatory. We audit before we engineer.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-panel p-8 rounded-2xl border border-white/10 hover:border-white/30 transition relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-600"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold">Phase 1: Feasibility Audit</h3>
+                            <p class="text-sm text-gray-400 mt-1">The "Go/No-Go" Check</p>
+                        </div>
+                        <div class="text-2xl font-mono font-bold">$50</div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Spec-Sheet Review:</strong> Can your target price hit your tolerances?</li>
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Failure Mode Analysis:</strong> Where will this factory fail you?</li>
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> <strong>Price Benchmarking:</strong> Are you overpaying?</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/7sY00jaYvdzG8A3fhY7bW01" class="block w-full py-3 text-center border border-white/20 hover:bg-white/5 transition font-mono text-sm">
+                        START PHASE 1
+                    </a>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl border border-atlas-accent/50 hover:border-atlas-accent transition relative overflow-hidden shadow-lg shadow-atlas-accent/5">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-atlas-accent"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Phase 2: The Protocol</h3>
+                            <p class="text-sm text-gray-400 mt-1">Zero-Defect Engineering</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-500 line-through">$5,000</div>
+                            <div class="text-2xl font-mono font-bold text-atlas-accent">CUSTOM</div>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> Full Factory Scouting & Negotiation</li>
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> <strong>Golden Sample Gauntlet</strong></li>
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> Legal Manufacturing Contract (PI)</li>
+                        <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 text-atlas-accent"></i> On-Site QC Checklist</li>
+                    </ul>
+                    <span class="block w-full py-3 text-center bg-white/10 text-gray-400 font-mono text-sm cursor-not-allowed">
+                        REQUIRES AUDIT APPROVAL
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-12 border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <i data-lucide="hexagon" class="w-8 h-8 text-gray-700 mx-auto mb-6"></i>
+            <p class="text-2xl font-bold mb-8">Ready to engineer your supply chain?</p>
+            <a href="mailto:juice@atlasoperations.io" class="text-atlas-accent hover:underline font-mono text-lg">juice@atlasoperations.io</a>
+            
+            <div class="mt-16 text-xs text-gray-600 font-mono">
+                &copy; 2025 ATLAS OPERATIONS. SHENZHEN / GLOBAL.
+            </div>
         </div>
     </footer>
 
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
