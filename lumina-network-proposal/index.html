@@ -168,6 +168,30 @@
             font-size: 1rem;
         }
 
+        /* Math Detail Box */
+        .math-box {
+            background: #f8f9fa;
+            border-left: 3px solid var(--text-main);
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .math-row {
+            display: flex;
+            justify-content: space-between;
+            font-family: "SF Mono", monospace;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 2px;
+        }
+        .math-total {
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-top: 2px solid #ddd;
+            padding-top: 5px;
+            margin-top: 5px;
+        }
+
         /* Ramp Up Visual */
         .ramp-container {
             display: flex;
@@ -330,8 +354,8 @@
 
     <!-- Section 5 -->
     <div class="section-title">
-        5. Revenue Trajectory
-        <span class="cn-title">收入增长轨迹</span>
+        5. Revenue Trajectory (The Math)
+        <span class="cn-title">收入增长轨迹（算法推演）</span>
     </div>
 
     <div class="note-box">
@@ -355,6 +379,61 @@
         <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #888;">MONTH 1<br>(Build)</div>
         <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #888;">MONTH 2<br>(Activate)</div>
         <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #1D1D1F; font-weight: 700;">MONTH 3<br>(Scale)</div>
+    </div>
+
+    <!-- Detailed Math Block -->
+    <div style="margin-top: 30px;">
+        <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 10px;">The Math Behind $47k (Month 3 Target)</h3>
+        <span class="cn-text">第3个月目标（$47k）背后的数据逻辑</span>
+        
+        <div class="math-box">
+            <div class="math-row">
+                <span>Active Partners (活跃合伙人)</span>
+                <span>100</span>
+            </div>
+            <div class="math-row">
+                <span>Videos Per Month (人均视频量)</span>
+                <span>x 4</span>
+            </div>
+            <div class="math-row">
+                <span>Total Content Output (总内容)</span>
+                <span>= 400 Videos</span>
+            </div>
+            <div class="math-row">
+                <span>Avg Views / Video (平均播放)</span>
+                <span>x 2,500</span>
+            </div>
+            <div class="math-row" style="color: var(--accent); font-weight: 600;">
+                <span>Total Reach (总曝光)</span>
+                <span>1,000,000 Views</span>
+            </div>
+            <br>
+            <div class="math-row">
+                <span>Click Rate (CTR)</span>
+                <span>1.5% (15k Visitors)</span>
+            </div>
+            <div class="math-row">
+                <span>Conversion Rate (CVR)</span>
+                <span>3.2%</span>
+            </div>
+            <div class="math-row">
+                <span>Total Orders (订单量)</span>
+                <span>480 Units</span>
+            </div>
+            <div class="math-row">
+                <span>Avg Order Value (客单价)</span>
+                <span>x $99</span>
+            </div>
+            
+            <div class="math-row math-total">
+                <span>MONTHLY GMV (月销售总额)</span>
+                <span style="color: var(--success);">$47,520</span>
+            </div>
+        </div>
+        
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 10px;">
+            *Conservative estimate. Does not include "Viral Outlier" scenarios where a single video hits 1M+ views (potentially doubling revenue).
+        </p>
     </div>
 
     <!-- Section 6 -->
