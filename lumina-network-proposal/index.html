@@ -15,6 +15,7 @@
             --success: #34C759;
             --danger: #FF3B30;
             --warning: #FF9F0A;
+            --highlight-bg: #F2F7FF;
         }
 
         body {
@@ -152,30 +153,43 @@
             font-weight: 600;
         }
 
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Mechanics Box */
+        .mechanics-box {
+            background: var(--highlight-bg);
+            border: 1px solid #E1E8F0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .mechanics-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        /* Ramp Up Visual */
+        .ramp-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 100px;
             margin: 20px 0;
-            font-size: 0.95rem;
-        }
-
-        th {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 2px solid var(--border);
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        td {
-            padding: 12px;
+            padding: 0 10px;
             border-bottom: 1px solid var(--border);
         }
-
-        tr:last-child td {
-            font-weight: 700;
-            background-color: #F9F9F9;
+        .ramp-bar {
+            width: 30%;
+            background: var(--accent);
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: height 0.3s ease;
         }
 
         /* Timeline */
@@ -227,52 +241,74 @@
         <strong>To:</strong> Lumina & Partners &nbsp;|&nbsp; <strong>Date:</strong> December 2, 2025
     </div>
 
+    <!-- Section 1 -->
     <div class="section-title">
         1. Executive Summary
         <span class="cn-title">项目摘要</span>
     </div>
     
-    <p>We are pivoting from "Selling a Course" to "Building a Sales Team."</p>
-    <span class="cn-text">我们正在从“卖课程”转向“建立销售团队”。</span>
+    <p>We are deploying a <strong>"Business-in-a-Box"</strong> model. Instead of paying influencers for posts, we build them white-labeled stores.</p>
+    <span class="cn-text">我们正在部署“一站式商业”模式。我们不再按帖子付费给网红，而是为他们建立白牌商店。</span>
 
     <ul style="padding-left: 20px;">
         <li>
-            <strong>The Asset:</strong> We are repackaging the <strong>Creator Cash Sprint</strong> into an internal "Sales Library." It will be optional training for partners to increase their sales conversion.
-            <span class="cn-text">资产：我们将 <strong>Creator Cash Sprint</strong> 重新打包为内部“销售知识库”。它将作为合伙人的可选培训，以提高他们的销售转化率。</span>
+            <strong>The Asset (Business-in-a-Box):</strong> We give creators a branded storefront (e.g. "Sarah's Wellness Shop"). You provide the supply chain. We provide the backend operations.
+            <span class="cn-text">资产（一站式商业）：我们为创作者提供品牌店面（例如“Sarah的健康店”）。您提供供应链。我们提供后台运营。</span>
         </li>
         <li>
-            <strong>The Goal (Month 1):</strong> Aggressive Recruitment. We focus 100% on signing partners and logistics setup. No revenue targets until the network is built.
-            <span class="cn-text">目标（首月）：激进招募。我们 100% 专注于签约合伙人和物流设置。在网络建成之前没有收入目标。</span>
+            <strong>The Enablement:</strong> We use the <strong>Atlas AI Training Protocol</strong> (repackaged from Creator Cash Sprint) to train partners on sales & compliance automatically.
+            <span class="cn-text">赋能：我们使用 Atlas AI 培训协议（重新打包自 Creator Cash Sprint）自动培训合伙人销售技巧和合规性。</span>
         </li>
     </ul>
 
+    <!-- Section 2 -->
     <div class="section-title">
-        2. Financial Structure
+        2. Operational Mechanics
+        <span class="cn-title">运营机制</span>
+    </div>
+
+    <div class="mechanics-box">
+        <div class="mechanics-title">A. White-Label Technology (白牌技术)</div>
+        <p style="font-size:0.9rem; margin-bottom:5px;">We clone the "Master Store" infrastructure for each partner. To the customer, it looks like the Creator's own brand. To us, it is a centralized order stream.</p>
+        <span class="cn-text" style="font-size:0.8rem; margin:0;">我们为每个合伙人克隆“主店”基础设施。对客户来说，它是创作者的自有品牌。对我们来说，它是集中的订单流。</span>
+    </div>
+
+    <div class="mechanics-box">
+        <div class="mechanics-title">B. The "Operator" Model (运营者模式)</div>
+        <p style="font-size:0.9rem; margin-bottom:5px;"><strong>Atlas is the Invisible Operator.</strong> We handle store updates, customer service coordination, and partner training. The Creator focuses 100% on Content. Lumina focuses 100% on Logistics.</p>
+        <span class="cn-text" style="font-size:0.8rem; margin:0;"><strong>Atlas 是隐形运营者。</strong> 我们处理店铺更新、客服协调和合伙人培训。创作者 100% 专注于内容。Lumina 100% 专注于物流。</span>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section-title">
+        3. Financial Structure
         <span class="cn-title">财务结构</span>
     </div>
 
     <div class="phase-grid">
+        <!-- Phase 1 -->
         <div class="phase-card">
             <div class="phase-header">
-                PHASE 1 (Month 1)
-                <span class="phase-tag">ACQUISITION</span>
+                PHASE 1 (Months 1-3)
+                <span class="phase-tag">BUILD & RAMP</span>
             </div>
-            <div class="data-point"><strong>Focus:</strong> Recruitment Only</div>
-            <div class="data-point"><span class="cn-text" style="margin:0;">仅限招募</span></div>
+            <div class="data-point"><strong>Model:</strong> Fixed Fee + CPS</div>
+            <div class="data-point"><span class="cn-text" style="margin:0;">固定运营费 + 分成</span></div>
             <hr style="border:0; border-top:1px solid #eee; margin: 10px 0;">
-            <div class="data-point">KPI: <strong>Signed Partners</strong></div>
-            <div class="data-point">Atlas Fee: <span class="highlight">$3,000</span> (Ops Cost)</div>
-            <div class="data-point">Revenue: <span class="highlight-green">$0 Projected</span></div>
-            <div class="data-point" style="margin-top:10px; font-size: 0.8rem; color: #666;">We build the army first.</div>
+            <div class="data-point">Creator: <strong>25%</strong> (Incentive)</div>
+            <div class="data-point">Atlas Fee: <span class="highlight">$3,000</span> (Fixed Ops)</div>
+            <div class="data-point">Lumina: <span class="highlight-green">75%</span> (Profit)</div>
+            <div class="data-point" style="margin-top:10px; font-size: 0.8rem; color: #666;">Atlas waives 15% commission. Lumina keeps 60% base + 15% waiver.</div>
         </div>
 
+        <!-- Phase 2 -->
         <div class="phase-card">
             <div class="phase-header">
-                PHASE 2 (Month 2+)
-                <span class="phase-tag">REVENUE</span>
+                PHASE 2 (Month 4+)
+                <span class="phase-tag">SCALE</span>
             </div>
-            <div class="data-point"><strong>Focus:</strong> Sales Activation</div>
-            <div class="data-point"><span class="cn-text" style="margin:0;">销售启动</span></div>
+            <div class="data-point"><strong>Model:</strong> Pure CPS (Rev Share)</div>
+            <div class="data-point"><span class="cn-text" style="margin:0;">纯收入分成</span></div>
             <hr style="border:0; border-top:1px solid #eee; margin: 10px 0;">
             <div class="data-point">Creator: <strong>25%</strong> (Incentive)</div>
             <div class="data-point">Atlas Ops: <strong>15%</strong> (Mgmt)</div>
@@ -280,55 +316,50 @@
         </div>
     </div>
 
+    <!-- Section 4 -->
     <div class="section-title">
-        3. Acquisition Targets (Month 1)
-        <span class="cn-title">招募目标（首月）</span>
+        4. Acquisition Targets
+        <span class="cn-title">招募目标</span>
     </div>
-
-    <p>We execute <strong>2,000 DMs</strong> to filter for the top talent. This is a volume game.</p>
-    <span class="cn-text">我们执行 <strong>2000 条私信</strong> 来筛选顶尖人才。这是量变到质变的过程。</span>
 
     <div style="background: #f0f4f8; padding: 15px; border-radius: 8px;">
         <div class="data-point">Outreach Volume (私信量): <strong>2,000 Creators</strong></div>
-        <div class="data-point">Leads Generated (潜在客户): <strong>240 (12% Reply)</strong></div>
         <div class="data-point">Interviews (面试): <strong>150</strong></div>
         <div class="data-point" style="color: var(--success); margin-top:5px; font-size: 1.1rem;">► KPI Target: <strong>100 Signed Partners (100个签约合伙人)</strong></div>
     </div>
 
+    <!-- Section 5 -->
     <div class="section-title">
-        4. Revenue Ramp-Up (Month 2+)
-        <span class="cn-title">收入增长预测（第2个月起）</span>
+        5. Revenue Trajectory
+        <span class="cn-title">收入增长轨迹</span>
     </div>
 
     <div class="note-box">
-        <strong>Note:</strong> We do not project revenue for Month 1. Month 1 is for shipping samples and onboarding. Sales begin Month 2.
-        <br><span class="cn-text" style="margin:0; color: #7f6826;">注意：我们不预测首月收入。首月用于寄送样品和入职。销售从第2个月开始。</span>
+        <strong>Note:</strong> Month 1 focus is infrastructure. We expect soft launch revenue (~$1k) from early partners, with full sales velocity starting Month 2.
+        <br><span class="cn-text" style="margin:0; color: #7f6826;">注意：首月侧重于基建。预计早期合伙人将产生少量试运行收入（约$1k），全面销售将于第2个月启动。</span>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Scenario<br><span style="font-weight:400; font-size:0.8em">场景</span></th>
-                <th>Partners<br><span style="font-weight:400; font-size:0.8em">合伙人</span></th>
-                <th>Est. Revenue (Mo 2)<br><span style="font-weight:400; font-size:0.8em">预估收入（第2月）</span></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Baseline<br><span class="cn-text" style="margin:0">基准</span></td>
-                <td>20 Active</td>
-                <td>$3,700 / mo</td>
-            </tr>
-            <tr>
-                <td style="color: var(--accent);"><strong>High Scale</strong><br><span class="cn-text" style="margin:0">规模化目标</span></td>
-                <td style="color: var(--accent);"><strong>100 Active</strong></td>
-                <td style="color: var(--accent);"><strong>$47,000 / mo</strong></td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Ramp Visual -->
+    <div class="ramp-container">
+        <div class="ramp-bar" style="height: 15%; background: #D2D2D7; color: #666;">
+            $1k
+        </div>
+        <div class="ramp-bar" style="height: 45%; opacity: 0.7;">
+            $12k
+        </div>
+        <div class="ramp-bar" style="height: 100%;">
+            $47k
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 0 10px; margin-bottom: 20px;">
+        <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #888;">MONTH 1<br>(Build)</div>
+        <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #888;">MONTH 2<br>(Activate)</div>
+        <div style="width: 30%; text-align: center; font-size: 0.8rem; color: #1D1D1F; font-weight: 700;">MONTH 3<br>(Scale)</div>
+    </div>
 
+    <!-- Section 6 -->
     <div class="section-title">
-        5. Execution Timeline (December)
+        6. Execution Timeline (December)
         <span class="cn-title">执行时间表（12月）</span>
     </div>
 
@@ -366,8 +397,8 @@
 
     <br>
     <div style="background: var(--text-main); color: white; padding: 20px; border-radius: 8px; text-align: center;">
-        <div style="font-weight: 700; margin-bottom: 5px;">NEXT STEP: APPROVE OPS BUDGET</div>
-        <div style="font-size: 0.9rem; opacity: 0.8;">下一步：批准运营预算</div>
+        <div style="font-weight: 700; margin-bottom: 5px;">NEXT STEP: APPROVE PHASE 1 BUDGET</div>
+        <div style="font-size: 0.9rem; opacity: 0.8;">下一步：批准第一阶段预算</div>
     </div>
 
 </div>
