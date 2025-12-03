@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Oyuka</title>
     <!-- Three.js & GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     
-    <!-- Firebase SDKs (Compat version for simple HTML usage) -->
+    <!-- Firebase SDKs (Compat version) -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -16,6 +16,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        /* --- Core Reset --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             margin: 0;
             overflow-x: hidden;
@@ -35,7 +37,8 @@
         #ui-layer {
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
+            min-height: 600px; /* Prevent crunching on landscape mobile */
             z-index: 2;
             pointer-events: none;
             display: flex;
@@ -43,15 +46,18 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
             background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 150%);
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            letter-spacing: 0.5rem;
+            /* Fluid typography: scales between 3rem and 6rem based on viewport width */
+            font-size: clamp(3rem, 12vw, 6rem); 
+            letter-spacing: clamp(0.2rem, 2vw, 0.5rem);
             margin: 0;
             text-transform: uppercase;
+            line-height: 1.1;
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
             background: linear-gradient(to right, #fff, #ffb6c1, #fff);
             -webkit-background-clip: text;
@@ -61,28 +67,30 @@
         }
 
         p.subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 0.2rem;
-            margin-top: 1rem;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            letter-spacing: 0.15rem;
+            margin-top: 1.5rem;
             color: #dcdcdc;
-            max-width: 600px;
+            max-width: 90%;
+            width: 600px;
             line-height: 1.6;
         }
 
         .hint {
             position: absolute;
-            bottom: 50px;
+            bottom: 15vh;
             font-size: 0.8rem;
             letter-spacing: 0.2rem;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.5);
             animation: pulse 2s infinite;
+            width: 100%;
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 20px;
-            font-size: 1.5rem;
+            bottom: 30px;
+            font-size: 2rem;
             color: rgba(255,255,255,0.3);
             animation: bounce 2s infinite;
         }
@@ -95,8 +103,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px 100px 20px; /* Extra padding bottom for FAB */
-            background: linear-gradient(to bottom, transparent, #000 10%);
+            padding: 50px 15px 120px 15px; /* More bottom padding for FAB on mobile */
+            background: linear-gradient(to bottom, transparent, #000 15%);
         }
 
         .paper {
@@ -106,32 +114,37 @@
                 linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
             background-size: 20px 20px;
             color: #4a4a4a;
-            padding: 40px 60px;
-            max-width: 700px;
+            /* Responsive padding inside the paper */
+            padding: clamp(25px, 6vw, 60px);
             width: 100%;
+            max-width: 700px;
             border-radius: 2px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             font-family: 'Dancing Script', cursive;
-            font-size: 1.4rem;
+            /* Responsive font size for the letter text */
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
             line-height: 1.6;
             position: relative;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             transition: transform 0.3s ease;
         }
         
-        .paper:hover {
-            transform: scale(1.01);
-        }
-
+        .paper:hover { transform: scale(1.01); }
         .paper:nth-child(even) { transform: rotate(1deg); }
         .paper:nth-child(odd) { transform: rotate(-1deg); }
+
+        /* Remove rotation on very small screens to prevent layout shifting */
+        @media (max-width: 400px) {
+            .paper:nth-child(even), .paper:nth-child(odd) { transform: none; }
+        }
 
         .paper::before {
             content: '';
             position: absolute;
-            top: -15px; left: 50%;
+            top: -12px; left: 50%;
             transform: translateX(-50%);
-            width: 80px; height: 25px;
+            width: clamp(60px, 15vw, 100px); 
+            height: 25px;
             background: rgba(255,255,255,0.3);
             border-top: 1px solid rgba(255,255,255,0.4);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -139,7 +152,7 @@
 
         .paper h2 {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
             border-bottom: 2px solid #d4c5a0;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -156,16 +169,21 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        
+        /* Adjust date position on mobile */
+        @media (max-width: 500px) {
+            .paper-date { top: 10px; right: 10px; font-size: 0.6rem; }
+        }
 
         .paper ul {
             list-style: none;
-            padding-left: 20px;
+            padding-left: 15px;
             margin: 20px 0;
             border-left: 3px solid #e0d0b0;
         }
 
         .paper li { margin-bottom: 10px; font-style: italic; }
-        .signature { margin-top: 30px; text-align: right; font-weight: bold; font-size: 1.6rem; }
+        .signature { margin-top: 30px; text-align: right; font-weight: bold; font-size: 1.1em; }
 
         /* --- Write Button (FAB) --- */
         #fab-write {
@@ -182,33 +200,38 @@
             z-index: 10;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid #fff;
+            -webkit-tap-highlight-color: transparent;
         }
         #fab-write:hover { transform: scale(1.1); background: #f0c750; }
+        #fab-write:active { transform: scale(0.9); }
         #fab-write svg { width: 30px; height: 30px; fill: #fff; }
 
         /* --- Modal --- */
         #write-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85); /* Darker overlay */
             z-index: 20;
             display: none;
             justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px); /* Modern blur effect */
         }
         
         #write-modal.active { display: flex; opacity: 1; }
 
         .modal-paper {
             background: #fdfbf0;
-            padding: 40px;
+            padding: 30px;
             width: 90%;
             max-width: 500px;
             border-radius: 4px;
             position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,1);
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
         }
 
         .close-btn {
@@ -218,36 +241,43 @@
             cursor: pointer;
             color: #555;
             font-family: 'Montserrat', sans-serif;
+            padding: 10px; /* Larger touch target */
+            line-height: 0.5;
         }
 
         .input-group { margin-bottom: 20px; }
-        label { display: block; font-family: 'Cinzel', serif; color: #555; margin-bottom: 5px; font-size: 0.9rem; }
+        label { display: block; font-family: 'Cinzel', serif; color: #555; margin-bottom: 8px; font-size: 0.9rem; }
         
         input, textarea {
             width: 100%;
             background: transparent;
-            border: none;
-            border-bottom: 2px solid #d4c5a0;
+            border: 2px solid #e0d0b0; /* Boxed input for easier tapping */
+            border-radius: 4px;
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
+            font-size: 18px; /* Prevents iOS auto-zoom on focus (must be >16px) */
             color: #333;
             outline: none;
-            padding: 5px;
-            box-sizing: border-box; /* Fix padding width issue */
+            padding: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
         }
         
+        input:focus, textarea:focus { border-color: #d4af37; background: rgba(255,255,255,0.5); }
         textarea { resize: vertical; min-height: 150px; line-height: 1.5; }
 
         button.send-btn {
             background: #2c2c2c;
             color: #d4af37;
             border: none;
-            padding: 10px 30px;
+            padding: 15px 30px;
             font-family: 'Cinzel', serif;
             font-size: 1rem;
             cursor: pointer;
             width: 100%;
             transition: background 0.3s;
+            margin-top: 10px;
+            border-radius: 4px;
+            -webkit-appearance: none; /* iOS Reset */
         }
         button.send-btn:hover { background: #000; }
         button.send-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
@@ -256,13 +286,8 @@
         @keyframes shine { to { background-position: 200% center; } }
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .paper { padding: 30px; }
-            #letters-feed { padding-top: 20px; }
-        }
         
+        /* Loader */
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 100;
@@ -282,7 +307,7 @@
     <div id="ui-layer">
         <h1 id="main-title">Oyuka</h1>
         <p class="subtitle" id="subtitle">You are the gravity that holds my universe together.</p>
-        <div class="hint">Click and hold to bring the stars home</div>
+        <div class="hint">Click & Hold</div>
         <div class="scroll-indicator">⌄</div>
     </div>
 
@@ -331,6 +356,11 @@
                 <label>From</label>
                 <input type="text" id="sender-input" placeholder="Your Name" value="Juice">
             </div>
+            <!-- Added Heading Input -->
+            <div class="input-group">
+                <label>Heading</label>
+                <input type="text" id="heading-input" placeholder="e.g. Dear Oyuka," value="Dear Oyuka,">
+            </div>
             <div class="input-group">
                 <label>Message</label>
                 <textarea id="message-input" placeholder="Pour your soul here..."></textarea>
@@ -341,9 +371,7 @@
 
     <!-- --- Scripts --- -->
     <script>
-        // --- Firebase Setup ---
-        // Config logic: Use the environment config if available (Preview Mode),
-        // otherwise use the user's explicit config (GitHub Pages / Production Mode).
+        // --- Firebase Config ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
             apiKey: "AIzaSyCXgMC4AKWvbyisd7gIPv0dB4fq_5w4G4I",
             authDomain: "oyuka-love.firebaseapp.com",
@@ -353,14 +381,15 @@
             appId: "1:363955825504:web:6a9c9d3faace9bb3ca8c05",
             measurementId: "G-J5VGBZBGE4"
         };
-        
-        // App ID logic for Gemini environment vs Production
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'oyuka-love-app';
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
+
+        // --- Webhook ---
+        const SMS_WEBHOOK_URL = "https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m"; 
 
         // DOM Elements
         const lettersContainer = document.getElementById('dynamic-letters-container');
@@ -369,10 +398,10 @@
         const closeModal = document.getElementById('close-modal');
         const sendBtn = document.getElementById('send-letter-btn');
         const senderInput = document.getElementById('sender-input');
+        const headingInput = document.getElementById('heading-input');
         const messageInput = document.getElementById('message-input');
 
-        // --- Logic: ThreeJS Galaxy ---
-        // (Re-pasting the galaxy logic below to ensure it runs independently)
+        // --- ThreeJS Setup ---
         const PARTICLE_COUNT = 4000;
         const GALAXY_RADIUS = 30;
         const HEART_SIZE = 15;
@@ -385,7 +414,7 @@
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance on high-res mobiles
         container.appendChild(renderer.domElement);
 
         function createStarTexture() {
@@ -435,11 +464,40 @@
         const particles = new THREE.Points(geometry, material);
         scene.add(particles);
 
+        // Responsive Camera Logic
+        function handleResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Zoom out on mobile portrait to fit the galaxy
+            if(window.innerWidth < 768) {
+                camera.position.z = 70; // Move camera back
+            } else {
+                camera.position.z = 50; // Desktop standard
+            }
+        }
+        // Call once on init
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        // Interaction
         let mouseX = 0; let mouseY = 0;
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
             mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
         });
+
+        // Touch Interaction fix for mobile
+        document.addEventListener('touchmove', (e) => {
+             // Only rotate galaxy if we aren't scrolling the page
+            if(window.scrollY < 50) {
+                 const touch = e.touches[0];
+                 mouseX = (touch.clientX - window.innerWidth / 2) * 0.05;
+                 mouseY = (touch.clientY - window.innerHeight / 2) * 0.05;
+            }
+        }, { passive: true });
+
 
         let isHeartForming = false;
         function onInteractStart(e) {
@@ -458,7 +516,10 @@
         function animate() {
             requestAnimationFrame(animate);
             const time = clock.getElapsedTime();
+            
+            // Subtle rotation
             particles.rotation.y += 0.002;
+            // Mouse/Touch influence (dampened)
             particles.rotation.x += (mouseY * 0.001 - particles.rotation.x) * 0.05;
             particles.rotation.z += (mouseX * 0.001 - particles.rotation.z) * 0.05;
 
@@ -488,17 +549,9 @@
         }
         animate();
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth/window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
         // --- Firebase Logic ---
         
-        // 1. Auth & Load
         async function initMessenger() {
-            // Load Auth Token if available in Gemini env, otherwise Anon
             if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                 await auth.signInWithCustomToken(__initial_auth_token);
             } else {
@@ -512,12 +565,11 @@
             });
         }
 
-        // 2. Fetch Letters (Realtime)
         function subscribeToLetters(user) {
             db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters')
                 .orderBy('timestamp', 'desc')
                 .onSnapshot((snapshot) => {
-                    lettersContainer.innerHTML = ''; // Clear current
+                    lettersContainer.innerHTML = ''; 
                     snapshot.forEach((doc) => {
                         const data = doc.data();
                         renderLetter(data);
@@ -527,20 +579,18 @@
                 });
         }
 
-        // 3. Render Letter HTML
         function renderLetter(data) {
             const div = document.createElement('div');
             div.className = 'paper';
             
-            // Format date
             const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Just now';
-
-            // Convert newlines to breaks
-            const formattedMsg = data.text.replace(/\n/g, '<br>');
+            const formattedMsg = data.text ? data.text.replace(/\n/g, '<br>') : '';
+            // Use saved heading or fallback to "Dear Oyuka," for older data
+            const heading = data.heading || 'Dear Oyuka,';
 
             div.innerHTML = `
                 <div class="paper-date">${date}</div>
-                <h2>Dear Oyuka,</h2>
+                <h2>${heading}</h2>
                 <p>${formattedMsg}</p>
                 <div class="signature">
                     From,<br>
@@ -550,14 +600,13 @@
             lettersContainer.appendChild(div);
         }
 
-        // 4. Send Letter
         sendBtn.addEventListener('click', async () => {
             const sender = senderInput.value.trim() || 'Juice';
             const text = messageInput.value.trim();
+            const heading = headingInput.value.trim() || 'Dear Oyuka,'; // Capture Heading
 
             if (!text) return;
             
-            // Fix: Disable button immediately to prevent double clicks
             if (sendBtn.disabled) return;
             sendBtn.disabled = true;
 
@@ -572,32 +621,45 @@
             try {
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters').add({
                     sender: sender,
+                    heading: heading, // Save the heading!
                     text: text,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     userId: user.uid
                 });
                 
-                // Reset UI
+                triggerSMSWebhook(sender, text);
+                
                 messageInput.value = '';
                 toggleModal(false);
-                
-                // Scroll to new letter (it appears at top of dynamic list)
                 lettersContainer.scrollIntoView({ behavior: 'smooth' });
 
             } catch (e) {
                 console.error("Error sending letter", e);
                 sendBtn.innerText = "Error (Try Again)";
             } finally {
-                // Fix: Re-enable button after success or error
                 sendBtn.disabled = false;
                 sendBtn.innerText = "Send to the Stars";
             }
         });
+        
+        async function triggerSMSWebhook(sender, text) {
+            if (!SMS_WEBHOOK_URL) return;
+            try {
+                await fetch(SMS_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sender: sender, message: text, date: new Date().toISOString() })
+                });
+            } catch (err) {
+                console.error("Failed to trigger SMS webhook:", err);
+            }
+        }
 
-        // --- UI Interactions ---
         function toggleModal(show) {
             if(show) {
                 modal.classList.add('active');
+                // Auto focus text area on open
+                setTimeout(() => messageInput.focus(), 100);
             } else {
                 modal.classList.remove('active');
             }
@@ -609,7 +671,6 @@
             if(e.target === modal) toggleModal(false);
         });
 
-        // Start
         window.onload = () => {
             const loader = document.getElementById('loader');
             loader.style.opacity = 0;
