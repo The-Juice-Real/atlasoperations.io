@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Oyuka</title>
+    <!-- Three.js & GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-    <!-- Added Dancing Script for the letter -->
+    
+    <!-- Firebase SDKs (Compat version for simple HTML usage) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            overflow-y: auto;   /* Allow vertical scroll */
+            overflow-x: hidden;
+            overflow-y: auto;
             background-color: #050505;
             font-family: 'Montserrat', sans-serif;
             color: white;
         }
 
         #canvas-container {
-            position: fixed; /* Fixed background */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
             z-index: 0;
         }
 
+        /* --- UI Layers --- */
         #ui-layer {
             position: relative;
             width: 100%;
-            height: 100vh; /* First screen takes full height */
+            height: 100vh;
             z-index: 2;
             pointer-events: none;
             display: flex;
@@ -38,7 +43,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Fade out background to let stars show through more clearly */
             background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 150%);
         }
 
@@ -48,8 +52,6 @@
             letter-spacing: 0.5rem;
             margin: 0;
             text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(20px);
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
             background: linear-gradient(to right, #fff, #ffb6c1, #fff);
             -webkit-background-clip: text;
@@ -62,7 +64,6 @@
             font-size: 1.2rem;
             letter-spacing: 0.2rem;
             margin-top: 1rem;
-            opacity: 0;
             color: #dcdcdc;
             max-width: 600px;
             line-height: 1.6;
@@ -74,12 +75,10 @@
             font-size: 0.8rem;
             letter-spacing: 0.2rem;
             text-transform: uppercase;
-            opacity: 0;
             color: rgba(255, 255, 255, 0.5);
             animation: pulse 2s infinite;
         }
 
-        /* Scroll Down Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 20px;
@@ -88,58 +87,74 @@
             animation: bounce 2s infinite;
         }
 
-        /* Letter Section */
-        #letter-section {
+        /* --- Letters Section --- */
+        #letters-feed {
             position: relative;
             z-index: 2;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
-            background: linear-gradient(to bottom, transparent, #000 10%); /* Fade into black backing */
+            padding: 50px 20px 100px 20px; /* Extra padding bottom for FAB */
+            background: linear-gradient(to bottom, transparent, #000 10%);
         }
 
         .paper {
-            background: #fdfbf0; /* Parchment color */
+            background: #fdfbf0;
             background-image: 
                 linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
             background-size: 20px 20px;
-            color: #4a4a4a; /* Ink color */
-            padding: 60px;
+            color: #4a4a4a;
+            padding: 40px 60px;
             max-width: 700px;
             width: 100%;
             border-radius: 2px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             font-family: 'Dancing Script', cursive;
             font-size: 1.4rem;
-            line-height: 1.8;
+            line-height: 1.6;
             position: relative;
-            transform: rotate(-1deg); /* Slight natural tilt */
+            margin-bottom: 60px;
+            transition: transform 0.3s ease;
+        }
+        
+        .paper:hover {
+            transform: scale(1.01);
         }
 
-        /* Wax Seal Effect decoration */
+        .paper:nth-child(even) { transform: rotate(1deg); }
+        .paper:nth-child(odd) { transform: rotate(-1deg); }
+
         .paper::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: 50%;
+            top: -15px; left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 30px;
-            background: rgba(255,255,255,0.1);
-            border-top: 1px solid rgba(255,255,255,0.2);
+            width: 80px; height: 25px;
+            background: rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .paper h2 {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             border-bottom: 2px solid #d4c5a0;
             padding-bottom: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #2c2c2c;
             text-align: center;
+        }
+        
+        .paper-date {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .paper ul {
@@ -149,40 +164,109 @@
             border-left: 3px solid #e0d0b0;
         }
 
-        .paper li {
-            margin-bottom: 10px;
-            font-style: italic;
+        .paper li { margin-bottom: 10px; font-style: italic; }
+        .signature { margin-top: 30px; text-align: right; font-weight: bold; font-size: 1.6rem; }
+
+        /* --- Write Button (FAB) --- */
+        #fab-write {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #fff;
+        }
+        #fab-write:hover { transform: scale(1.1); background: #f0c750; }
+        #fab-write svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* --- Modal --- */
+        #write-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 20;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #write-modal.active { display: flex; opacity: 1; }
+
+        .modal-paper {
+            background: #fdfbf0;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
         }
 
-        .signature {
-            margin-top: 40px;
-            text-align: right;
-            font-weight: bold;
-            font-size: 1.6rem;
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #555;
+            font-family: 'Montserrat', sans-serif;
         }
 
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-family: 'Cinzel', serif; color: #555; margin-bottom: 5px; font-size: 0.9rem; }
+        
+        input, textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #d4c5a0;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #333;
+            outline: none;
+            padding: 5px;
+            box-sizing: border-box; /* Fix padding width issue */
+        }
+        
+        textarea { resize: vertical; min-height: 150px; line-height: 1.5; }
+
+        button.send-btn {
+            background: #2c2c2c;
+            color: #d4af37;
+            border: none;
+            padding: 10px 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button.send-btn:hover { background: #000; }
+
+        /* Animations */
         @keyframes shine { to { background-position: 200% center; } }
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* Responsive Text */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            p.subtitle { font-size: 1rem; padding: 0 20px; }
-            .paper { padding: 30px; font-size: 1.2rem; }
+            .paper { padding: 30px; }
+            #letters-feed { padding-top: 20px; }
         }
         
-        /* Loader */
         #loader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-family: 'Cinzel', serif;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 100;
+            display: flex; justify-content: center; align-items: center;
+            color: white; font-family: 'Cinzel', serif;
             transition: opacity 1s ease;
         }
     </style>
@@ -193,7 +277,7 @@
 
     <div id="canvas-container"></div>
 
-    <!-- Section 1: The Galaxy Hero -->
+    <!-- Section 1: Hero -->
     <div id="ui-layer">
         <h1 id="main-title">Oyuka</h1>
         <p class="subtitle" id="subtitle">You are the gravity that holds my universe together.</p>
@@ -201,47 +285,98 @@
         <div class="scroll-indicator">⌄</div>
     </div>
 
-    <!-- Section 2: The Letter -->
-    <div id="letter-section">
-        <div class="paper">
+    <!-- Section 2: Letters Feed -->
+    <div id="letters-feed">
+        <!-- Original Pinned Letter -->
+        <div class="paper" style="transform: rotate(-1deg);">
+            <div class="paper-date">Pinned</div>
             <h2>Dear Oyuka,</h2>
-            
             <p>I write to you from a coffee shop that's playing all kinds of love songs. These love songs remind me of how I should've treated you.</p>
-            
             <p>I lost control and said crazy things I didn't mean. I had no control of my thoughts and my mouth. I just spat out of anger like a fool.</p>
-            
             <p>Here's what I think of you:</p>
             <ul>
                 <li>Oyuka is a soul that sees my soul.</li>
                 <li>Oyuka is someone that gets me.</li>
                 <li>Oyuka makes anywhere feel like home. Even a dirty office floor.</li>
             </ul>
-            
             <p>I am sorry for the things I said. I have no excuse but to say that I was being completely stupid.</p>
-            
             <p>You have given me many chances no matter what. And you have apologized and stuck with me even when my ego couldn't let me admit that I already accepted you back.</p>
-            
             <p>I will let you go if I went too far this time.</p>
-            
             <p>However, if there's still a part of you that wants to talk it out, here's my pathetic attempt to get that chance.</p>
-            
             <p>Nothing thought out. I speak purely from my soul to your soul.</p>
-            
             <div class="signature">
                 Thank you for everything,<br>
                 Juice
             </div>
         </div>
+        
+        <!-- Dynamic Letters will appear here -->
+        <div id="dynamic-letters-container" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
     </div>
 
+    <!-- Write Button -->
+    <div id="fab-write" title="Write a Letter">
+        <svg viewBox="0 0 24 24">
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+        </svg>
+    </div>
+
+    <!-- Write Modal -->
+    <div id="write-modal">
+        <div class="modal-paper">
+            <div class="close-btn" id="close-modal">&times;</div>
+            <h2>New Letter</h2>
+            <div class="input-group">
+                <label>From</label>
+                <input type="text" id="sender-input" placeholder="Your Name" value="Juice">
+            </div>
+            <div class="input-group">
+                <label>Message</label>
+                <textarea id="message-input" placeholder="Pour your soul here..."></textarea>
+            </div>
+            <button class="send-btn" id="send-letter-btn">Send to the Stars</button>
+        </div>
+    </div>
+
+    <!-- --- Scripts --- -->
     <script>
-        // --- Configuration ---
+        // --- Firebase Setup ---
+        // Config logic: Use the environment config if available (Preview Mode),
+        // otherwise use the user's explicit config (GitHub Pages / Production Mode).
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyCXgMC4AKWvbyisd7gIPv0dB4fq_5w4G4I",
+            authDomain: "oyuka-love.firebaseapp.com",
+            projectId: "oyuka-love",
+            storageBucket: "oyuka-love.firebasestorage.app",
+            messagingSenderId: "363955825504",
+            appId: "1:363955825504:web:6a9c9d3faace9bb3ca8c05",
+            measurementId: "G-J5VGBZBGE4"
+        };
+        
+        // App ID logic for Gemini environment vs Production
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'oyuka-love-app';
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // DOM Elements
+        const lettersContainer = document.getElementById('dynamic-letters-container');
+        const fab = document.getElementById('fab-write');
+        const modal = document.getElementById('write-modal');
+        const closeModal = document.getElementById('close-modal');
+        const sendBtn = document.getElementById('send-letter-btn');
+        const senderInput = document.getElementById('sender-input');
+        const messageInput = document.getElementById('message-input');
+
+        // --- Logic: ThreeJS Galaxy ---
+        // (Re-pasting the galaxy logic below to ensure it runs independently)
         const PARTICLE_COUNT = 4000;
         const GALAXY_RADIUS = 30;
         const HEART_SIZE = 15;
         const COLORS = [0xff69b4, 0xff1493, 0xdda0dd, 0xffffff, 0x87ceeb];
 
-        // --- Setup ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -252,66 +387,40 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // --- Texture Generation (Procedural Star) ---
         function createStarTexture() {
             const canvas = document.createElement('canvas');
-            canvas.width = 32;
-            canvas.height = 32;
-            const context = canvas.getContext('2d');
-            const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-            gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
-            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            context.fillStyle = gradient;
-            context.fillRect(0, 0, 32, 32);
-            const texture = new THREE.CanvasTexture(canvas);
-            return texture;
+            canvas.width = 32; canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 32, 32);
+            return new THREE.CanvasTexture(canvas);
         }
 
-        // --- Particle System ---
         const geometry = new THREE.BufferGeometry();
-        const positions = [];
-        const initialPositions = []; // Store galaxy positions
-        const heartPositions = [];   // Store heart target positions
-        const colors = [];
-        const sizes = [];
+        const positions = []; const initialPositions = []; const heartPositions = []; const colors = []; const sizes = [];
         const colorObj = new THREE.Color();
 
-        // 1. Create Galaxy Positions
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             const r = Math.random() * GALAXY_RADIUS;
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos((Math.random() * 2) - 1);
-            
-            // Spiral/Sphere Galaxy hybrid
             const x = r * Math.sin(phi) * Math.cos(theta);
             const y = r * Math.sin(phi) * Math.sin(theta);
-            const z = r * Math.cos(phi) * 0.5; // Flattened slightly
-
-            positions.push(x, y, z);
-            initialPositions.push(x, y, z);
-
-            // Random Colors
+            const z = r * Math.cos(phi) * 0.5;
+            positions.push(x, y, z); initialPositions.push(x, y, z);
             colorObj.setHex(COLORS[Math.floor(Math.random() * COLORS.length)]);
             colors.push(colorObj.r, colorObj.g, colorObj.b);
-            
             sizes.push(Math.random() * 0.5 + 0.1);
         }
 
-        // 2. Create Heart Positions (Mathematical Heart Formula)
         for (let i = 0; i < PARTICLE_COUNT; i++) {
-            // Parametric equations for a heart in 3D
-            let t = Math.random() * Math.PI * 2; 
-            
-            // Re-randomize t for better distribution
-            t = Math.random() * Math.PI * 2;
-            
+            let t = Math.random() * Math.PI * 2;
             const x = HEART_SIZE * (16 * Math.pow(Math.sin(t), 3)) / 16;
             const y = HEART_SIZE * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) / 16;
-            const z = (Math.random() - 0.5) * 5; // Thickness of the heart
-
-            // Scale and translate to center
+            const z = (Math.random() - 0.5) * 5;
             heartPositions.push(x, y, z);
         }
 
@@ -319,131 +428,188 @@
         geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
         geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
 
-        // Shader Material for glowy particles
         const material = new THREE.PointsMaterial({
-            size: 0.5,
-            vertexColors: true,
-            map: createStarTexture(),
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            transparent: true,
-            opacity: 0.9
+            size: 0.5, vertexColors: true, map: createStarTexture(), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.9
         });
-
         const particles = new THREE.Points(geometry, material);
         scene.add(particles);
 
-        // --- Mouse Interaction ---
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-        const windowHalfX = window.innerWidth / 2;
-        const windowHalfY = window.innerHeight / 2;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX - windowHalfX) * 0.05;
-            mouseY = (event.clientY - windowHalfY) * 0.05;
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+            mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
         });
 
-        // --- Animation Logic ---
         let isHeartForming = false;
-        const positionAttribute = geometry.attributes.position;
-        
-        // Listen for click/touch to transform
-        // Modified to ensure we don't trigger heart form when reading letter
         function onInteractStart(e) {
-            // If the user clicks on the letter, don't form the heart
-            if (e.target.closest('#letter-section')) return;
+            // Only trigger heart if clicking background (not modal or paper)
+            if (e.target.closest('.paper') || e.target.closest('#fab-write') || e.target.closest('#write-modal')) return;
             isHeartForming = true;
         }
-
-        function onInteractEnd() {
-            isHeartForming = false;
-        }
-
+        function onInteractEnd() { isHeartForming = false; }
+        
         document.addEventListener('mousedown', onInteractStart);
         document.addEventListener('mouseup', onInteractEnd);
         document.addEventListener('touchstart', onInteractStart);
         document.addEventListener('touchend', onInteractEnd);
 
         const clock = new THREE.Clock();
-
         function animate() {
             requestAnimationFrame(animate);
             const time = clock.getElapsedTime();
-
-            targetX = mouseX * 0.5;
-            targetY = mouseY * 0.5;
-
-            // Smooth Camera Movement
             particles.rotation.y += 0.002;
             particles.rotation.x += (mouseY * 0.001 - particles.rotation.x) * 0.05;
             particles.rotation.z += (mouseX * 0.001 - particles.rotation.z) * 0.05;
 
-            // Pulse effect for size
             if(isHeartForming) {
-                particles.scale.x = THREE.MathUtils.lerp(particles.scale.x, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
-                particles.scale.y = THREE.MathUtils.lerp(particles.scale.y, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
-                particles.scale.z = THREE.MathUtils.lerp(particles.scale.z, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
+                particles.scale.setScalar(THREE.MathUtils.lerp(particles.scale.x, 1.2 + Math.sin(time*3)*0.05, 0.1));
             } else {
-                particles.scale.set(1, 1, 1);
+                particles.scale.set(1,1,1);
             }
 
-            // Morphing Logic
-            const positions = positionAttribute.array;
-            const speed = 0.08; // Morph speed
-
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                const ix = i * 3;
-                const iy = i * 3 + 1;
-                const iz = i * 3 + 2;
-
-                let targetRx, targetRy, targetRz;
-
-                if (isHeartForming) {
-                    targetRx = heartPositions[i * 3];
-                    targetRy = heartPositions[i * 3 + 1];
-                    targetRz = heartPositions[i * 3 + 2];
+            const pos = geometry.attributes.position.array;
+            for(let i=0; i<PARTICLE_COUNT; i++) {
+                const ix = i*3;
+                let tx, ty, tz;
+                if(isHeartForming) {
+                    tx = heartPositions[ix]; ty = heartPositions[ix+1]; tz = heartPositions[ix+2];
                 } else {
-                    // Add some noise to initial positions so they "breathe"
-                    targetRx = initialPositions[i * 3] + Math.sin(time + i) * 0.2;
-                    targetRy = initialPositions[i * 3 + 1] + Math.cos(time + i * 0.5) * 0.2;
-                    targetRz = initialPositions[i * 3 + 2] + Math.sin(time + i * 0.2) * 0.2;
+                    tx = initialPositions[ix] + Math.sin(time+i)*0.2;
+                    ty = initialPositions[ix+1] + Math.cos(time+i*0.5)*0.2;
+                    tz = initialPositions[ix+2] + Math.sin(time+i*0.2)*0.2;
                 }
-
-                // Linear Interpolation (Lerp) for smooth transition
-                positions[ix] += (targetRx - positions[ix]) * speed;
-                positions[iy] += (targetRy - positions[iy]) * speed;
-                positions[iz] += (targetRz - positions[iz]) * speed;
+                pos[ix] += (tx - pos[ix]) * 0.08;
+                pos[ix+1] += (ty - pos[ix+1]) * 0.08;
+                pos[ix+2] += (tz - pos[ix+2]) * 0.08;
             }
-
-            positionAttribute.needsUpdate = true;
+            geometry.attributes.position.needsUpdate = true;
             renderer.render(scene, camera);
         }
+        animate();
 
-        // --- UI Entry Animation ---
-        window.onload = () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = 0;
-            setTimeout(() => {
-                loader.style.display = 'none';
-                animate();
-                
-                // GSAP text reveal
-                gsap.to("#main-title", { duration: 2, opacity: 1, y: 0, ease: "power3.out", delay: 0.5 });
-                gsap.to("#subtitle", { duration: 2, opacity: 1, ease: "power3.out", delay: 1.5 });
-                gsap.to(".hint", { duration: 1, opacity: 0.8, ease: "power2.inOut", delay: 2.5 });
-
-            }, 1000);
-        };
-
-        // --- Resize Handler ---
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.aspect = window.innerWidth/window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
+
+        // --- Firebase Logic ---
+        
+        // 1. Auth & Load
+        async function initMessenger() {
+            // Load Auth Token if available in Gemini env, otherwise Anon
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                await auth.signInWithCustomToken(__initial_auth_token);
+            } else {
+                await auth.signInAnonymously();
+            }
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    subscribeToLetters(user);
+                }
+            });
+        }
+
+        // 2. Fetch Letters (Realtime)
+        function subscribeToLetters(user) {
+            db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters')
+                .orderBy('timestamp', 'desc')
+                .onSnapshot((snapshot) => {
+                    lettersContainer.innerHTML = ''; // Clear current
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        renderLetter(data);
+                    });
+                }, (error) => {
+                    console.error("Error fetching letters:", error);
+                });
+        }
+
+        // 3. Render Letter HTML
+        function renderLetter(data) {
+            const div = document.createElement('div');
+            div.className = 'paper';
+            
+            // Format date
+            const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Just now';
+
+            // Convert newlines to breaks
+            const formattedMsg = data.text.replace(/\n/g, '<br>');
+
+            div.innerHTML = `
+                <div class="paper-date">${date}</div>
+                <h2>Dear Oyuka,</h2>
+                <p>${formattedMsg}</p>
+                <div class="signature">
+                    From,<br>
+                    ${data.sender || 'Juice'}
+                </div>
+            `;
+            lettersContainer.appendChild(div);
+        }
+
+        // 4. Send Letter
+        sendBtn.addEventListener('click', async () => {
+            const sender = senderInput.value.trim() || 'Juice';
+            const text = messageInput.value.trim();
+
+            if (!text) return;
+
+            const user = auth.currentUser;
+            if (!user) return;
+
+            sendBtn.innerText = "Sending...";
+            
+            try {
+                await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters').add({
+                    sender: sender,
+                    text: text,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    userId: user.uid
+                });
+                
+                // Reset UI
+                messageInput.value = '';
+                toggleModal(false);
+                sendBtn.innerText = "Send to the Stars";
+                
+                // Scroll to new letter (it appears at top of dynamic list)
+                lettersContainer.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (e) {
+                console.error("Error sending letter", e);
+                sendBtn.innerText = "Error (Try Again)";
+            }
+        });
+
+        // --- UI Interactions ---
+        function toggleModal(show) {
+            if(show) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        fab.addEventListener('click', () => toggleModal(true));
+        closeModal.addEventListener('click', () => toggleModal(false));
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) toggleModal(false);
+        });
+
+        // Start
+        window.onload = () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = 0;
+            setTimeout(() => loader.style.display = 'none', 1000);
+            
+            gsap.to("#main-title", { duration: 2, opacity: 1, y: 0, ease: "power3.out", delay: 0.5 });
+            gsap.to("#subtitle", { duration: 2, opacity: 1, ease: "power3.out", delay: 1.5 });
+            
+            initMessenger();
+        };
+
     </script>
 </body>
 </html>
