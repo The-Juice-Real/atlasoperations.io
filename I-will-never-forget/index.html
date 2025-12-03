@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Oyuka</title>
     <!-- Three.js & GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     
-    <!-- Firebase SDKs (Compat version for simple HTML usage) -->
+    <!-- Firebase SDKs (Compat version) -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -23,6 +23,7 @@
             background-color: #050505;
             font-family: 'Montserrat', sans-serif;
             color: white;
+            -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
         }
 
         #canvas-container {
@@ -44,6 +45,8 @@
             align-items: center;
             text-align: center;
             background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 150%);
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -58,6 +61,7 @@
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: shine 5s linear infinite;
+            line-height: 1.2;
         }
 
         p.subtitle {
@@ -77,6 +81,8 @@
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.5);
             animation: pulse 2s infinite;
+            width: 100%;
+            text-align: center;
         }
 
         .scroll-indicator {
@@ -85,6 +91,8 @@
             font-size: 1.5rem;
             color: rgba(255,255,255,0.3);
             animation: bounce 2s infinite;
+            width: 100%;
+            text-align: center;
         }
 
         /* --- Letters Section --- */
@@ -117,6 +125,7 @@
             position: relative;
             margin-bottom: 60px;
             transition: transform 0.3s ease;
+            box-sizing: border-box;
         }
         
         .paper:hover {
@@ -197,6 +206,8 @@
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            padding: 20px; /* Prevent modal from touching edges */
+            box-sizing: border-box;
         }
         
         #write-modal.active { display: flex; opacity: 1; }
@@ -204,11 +215,14 @@
         .modal-paper {
             background: #fdfbf0;
             padding: 40px;
-            width: 90%;
+            width: 100%;
             max-width: 500px;
             border-radius: 4px;
             position: relative;
             box-shadow: 0 0 50px rgba(0,0,0,1);
+            box-sizing: border-box;
+            max-height: 90vh; /* Ensure it fits on screen */
+            overflow-y: auto; /* Scroll internally if keyboard covers it */
         }
 
         .close-btn {
@@ -218,6 +232,7 @@
             cursor: pointer;
             color: #555;
             font-family: 'Montserrat', sans-serif;
+            z-index: 5;
         }
 
         .input-group { margin-bottom: 20px; }
@@ -233,7 +248,7 @@
             color: #333;
             outline: none;
             padding: 5px;
-            box-sizing: border-box; /* Fix padding width issue */
+            box-sizing: border-box; 
         }
         
         textarea { resize: vertical; min-height: 150px; line-height: 1.5; }
@@ -248,6 +263,7 @@
             cursor: pointer;
             width: 100%;
             transition: background 0.3s;
+            margin-top: 10px;
         }
         button.send-btn:hover { background: #000; }
 
@@ -256,10 +272,36 @@
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
+        /* --- Mobile Specific Styles --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .paper { padding: 30px; }
+            h1 { font-size: 2.5rem; letter-spacing: 0.2rem; }
+            .paper { 
+                padding: 30px 20px; 
+                font-size: 1.1rem; 
+                margin-bottom: 40px;
+            }
+            .paper h2 { font-size: 1.3rem; }
+            .signature { font-size: 1.3rem; }
+            
             #letters-feed { padding-top: 20px; }
+            
+            /* Better Modal for Mobile */
+            .modal-paper { 
+                padding: 25px 20px;
+                max-height: 85vh; /* Account for mobile browser bars */
+            }
+            
+            /* Prevent zoom on focus for inputs (needs 16px min, using slightly larger rem) */
+            input, textarea { font-size: 1.2rem; }
+            textarea { min-height: 100px; }
+            
+            .close-btn { top: 5px; right: 10px; font-size: 1.5rem; }
+            
+            /* Adjust FAB position */
+            #fab-write { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+            #fab-write svg { width: 24px; height: 24px; }
+            
+            .hint { bottom: 80px; } /* Move hint up so it doesn't overlap scroll indicator too much */
         }
         
         #loader {
@@ -327,8 +369,14 @@
             <div class="close-btn" id="close-modal">&times;</div>
             <h2>New Letter</h2>
             <div class="input-group">
+                <label>Heading</label>
+                <!-- Default value set, but editable -->
+                <input type="text" id="heading-input" placeholder="Dear Oyuka," value="Dear Oyuka,">
+            </div>
+            <div class="input-group">
                 <label>From</label>
-                <input type="text" id="sender-input" placeholder="Your Name" value="Juice">
+                <!-- Empty by default -->
+                <input type="text" id="sender-input" placeholder="Your Name">
             </div>
             <div class="input-group">
                 <label>Message</label>
@@ -341,8 +389,6 @@
     <!-- --- Scripts --- -->
     <script>
         // --- Firebase Setup ---
-        // Config logic: Use the environment config if available (Preview Mode),
-        // otherwise use the user's explicit config (GitHub Pages / Production Mode).
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
             apiKey: "AIzaSyCXgMC4AKWvbyisd7gIPv0dB4fq_5w4G4I",
             authDomain: "oyuka-love.firebaseapp.com",
@@ -353,10 +399,8 @@
             measurementId: "G-J5VGBZBGE4"
         };
         
-        // App ID logic for Gemini environment vs Production
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'oyuka-love-app';
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
@@ -368,10 +412,10 @@
         const closeModal = document.getElementById('close-modal');
         const sendBtn = document.getElementById('send-letter-btn');
         const senderInput = document.getElementById('sender-input');
+        const headingInput = document.getElementById('heading-input');
         const messageInput = document.getElementById('message-input');
 
         // --- Logic: ThreeJS Galaxy ---
-        // (Re-pasting the galaxy logic below to ensure it runs independently)
         const PARTICLE_COUNT = 4000;
         const GALAXY_RADIUS = 30;
         const HEART_SIZE = 15;
@@ -439,10 +483,18 @@
             mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
             mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
         });
+        
+        // Touch move support for galaxy rotation
+        document.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) {
+                const touch = e.touches[0];
+                mouseX = (touch.clientX - window.innerWidth / 2) * 0.05;
+                mouseY = (touch.clientY - window.innerHeight / 2) * 0.05;
+            }
+        }, { passive: true });
 
         let isHeartForming = false;
         function onInteractStart(e) {
-            // Only trigger heart if clicking background (not modal or paper)
             if (e.target.closest('.paper') || e.target.closest('#fab-write') || e.target.closest('#write-modal')) return;
             isHeartForming = true;
         }
@@ -497,7 +549,6 @@
         
         // 1. Auth & Load
         async function initMessenger() {
-            // Load Auth Token if available in Gemini env, otherwise Anon
             if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                 await auth.signInWithCustomToken(__initial_auth_token);
             } else {
@@ -507,7 +558,7 @@
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     subscribeToLetters(user);
-                    logVisit(user); // Log the visit
+                    logVisit(user);
                 }
             });
         }
@@ -515,15 +566,13 @@
         // 2. Logging Visits
         async function logVisit(user) {
             try {
-                // Log detailed info to 'oyuka-visits' collection
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').add({
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     userId: user.uid,
-                    userAgent: navigator.userAgent, // Helps distinguish devices
+                    userAgent: navigator.userAgent, 
                     screenResolution: `${window.innerWidth}x${window.innerHeight}`,
                     referrer: document.referrer || 'Direct'
                 });
-                console.log("Visit tracked silently.");
             } catch(e) {
                 console.error("Silent log failed", e);
             }
@@ -534,7 +583,7 @@
             db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters')
                 .orderBy('timestamp', 'desc')
                 .onSnapshot((snapshot) => {
-                    lettersContainer.innerHTML = ''; // Clear current
+                    lettersContainer.innerHTML = ''; 
                     snapshot.forEach((doc) => {
                         const data = doc.data();
                         renderLetter(data);
@@ -549,15 +598,13 @@
             const div = document.createElement('div');
             div.className = 'paper';
             
-            // Format date
             const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Just now';
-
-            // Convert newlines to breaks
             const formattedMsg = data.text.replace(/\n/g, '<br>');
+            const heading = data.heading || 'Dear Oyuka,'; // Use custom heading
 
             div.innerHTML = `
                 <div class="paper-date">${date}</div>
-                <h2>Dear Oyuka,</h2>
+                <h2>${heading}</h2>
                 <p>${formattedMsg}</p>
                 <div class="signature">
                     From,<br>
@@ -570,6 +617,7 @@
         // 5. Send Letter
         sendBtn.addEventListener('click', async () => {
             const sender = senderInput.value.trim() || 'Juice';
+            const heading = headingInput.value.trim() || 'Dear Oyuka,';
             const text = messageInput.value.trim();
 
             if (!text) return;
@@ -582,17 +630,18 @@
             try {
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters').add({
                     sender: sender,
+                    heading: heading,
                     text: text,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     userId: user.uid
                 });
                 
-                // Reset UI
                 messageInput.value = '';
+                // Keep heading default for next time
+                headingInput.value = 'Dear Oyuka,';
                 toggleModal(false);
                 sendBtn.innerText = "Send to the Stars";
                 
-                // Scroll to new letter (it appears at top of dynamic list)
                 lettersContainer.scrollIntoView({ behavior: 'smooth' });
 
             } catch (e) {
@@ -601,7 +650,6 @@
             }
         });
 
-        // --- UI Interactions ---
         function toggleModal(show) {
             if(show) {
                 modal.classList.add('active');
@@ -616,7 +664,6 @@
             if(e.target === modal) toggleModal(false);
         });
 
-        // Start
         window.onload = () => {
             const loader = document.getElementById('loader');
             loader.style.opacity = 0;
