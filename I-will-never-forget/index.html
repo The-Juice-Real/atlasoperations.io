@@ -250,6 +250,7 @@
             transition: background 0.3s;
         }
         button.send-btn:hover { background: #000; }
+        button.send-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
 
         /* Animations */
         @keyframes shine { to { background-position: 200% center; } }
@@ -555,9 +556,16 @@
             const text = messageInput.value.trim();
 
             if (!text) return;
+            
+            // Fix: Disable button immediately to prevent double clicks
+            if (sendBtn.disabled) return;
+            sendBtn.disabled = true;
 
             const user = auth.currentUser;
-            if (!user) return;
+            if (!user) {
+                sendBtn.disabled = false;
+                return;
+            }
 
             sendBtn.innerText = "Sending...";
             
@@ -572,7 +580,6 @@
                 // Reset UI
                 messageInput.value = '';
                 toggleModal(false);
-                sendBtn.innerText = "Send to the Stars";
                 
                 // Scroll to new letter (it appears at top of dynamic list)
                 lettersContainer.scrollIntoView({ behavior: 'smooth' });
@@ -580,6 +587,10 @@
             } catch (e) {
                 console.error("Error sending letter", e);
                 sendBtn.innerText = "Error (Try Again)";
+            } finally {
+                // Fix: Re-enable button after success or error
+                sendBtn.disabled = false;
+                sendBtn.innerText = "Send to the Stars";
             }
         });
 
