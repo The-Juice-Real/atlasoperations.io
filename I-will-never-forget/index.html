@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Oyuka</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <!-- Added Dancing Script for the letter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto;   /* Allow vertical scroll */
+            background-color: #050505;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+
+        #canvas-container {
+            position: fixed; /* Fixed background */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+        }
+
+        #ui-layer {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* First screen takes full height */
+            z-index: 2;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Fade out background to let stars show through more clearly */
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 150%);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(to right, #fff, #ffb6c1, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 0.2rem;
+            margin-top: 1rem;
+            opacity: 0;
+            color: #dcdcdc;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .hint {
+            position: absolute;
+            bottom: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            opacity: 0;
+            color: rgba(255, 255, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        /* Letter Section */
+        #letter-section {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, transparent, #000 10%); /* Fade into black backing */
+        }
+
+        .paper {
+            background: #fdfbf0; /* Parchment color */
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #4a4a4a; /* Ink color */
+            padding: 60px;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 2px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            position: relative;
+            transform: rotate(-1deg); /* Slight natural tilt */
+        }
+
+        /* Wax Seal Effect decoration */
+        .paper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .paper h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #d4c5a0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+            text-align: center;
+        }
+
+        .paper ul {
+            list-style: none;
+            padding-left: 20px;
+            margin: 20px 0;
+            border-left: 3px solid #e0d0b0;
+        }
+
+        .paper li {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* Responsive Text */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            p.subtitle { font-size: 1rem; padding: 0 20px; }
+            .paper { padding: 30px; font-size: 1.2rem; }
+        }
+        
+        /* Loader */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Cinzel', serif;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">Loading the stars...</div>
+
+    <div id="canvas-container"></div>
+
+    <!-- Section 1: The Galaxy Hero -->
+    <div id="ui-layer">
+        <h1 id="main-title">Oyuka</h1>
+        <p class="subtitle" id="subtitle">You are the gravity that holds my universe together.</p>
+        <div class="hint">Click and hold to bring the stars home</div>
+        <div class="scroll-indicator">⌄</div>
+    </div>
+
+    <!-- Section 2: The Letter -->
+    <div id="letter-section">
+        <div class="paper">
+            <h2>Dear Oyuka,</h2>
+            
+            <p>I write to you from a coffee shop that's playing all kinds of love songs. These love songs remind me of how I should've treated you.</p>
+            
+            <p>I lost control and said crazy things I didn't mean. I had no control of my thoughts and my mouth. I just spat out of anger like a fool.</p>
+            
+            <p>Here's what I think of you:</p>
+            <ul>
+                <li>Oyuka is a soul that sees my soul.</li>
+                <li>Oyuka is someone that gets me.</li>
+                <li>Oyuka makes anywhere feel like home. Even a dirty office floor.</li>
+            </ul>
+            
+            <p>I am sorry for the things I said. I have no excuse but to say that I was being completely stupid.</p>
+            
+            <p>You have given me many chances no matter what. And you have apologized and stuck with me even when my ego couldn't let me admit that I already accepted you back.</p>
+            
+            <p>I will let you go if I went too far this time.</p>
+            
+            <p>However, if there's still a part of you that wants to talk it out, here's my pathetic attempt to get that chance.</p>
+            
+            <p>Nothing thought out. I speak purely from my soul to your soul.</p>
+            
+            <div class="signature">
+                Thank you for everything,<br>
+                Juice
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Configuration ---
+        const PARTICLE_COUNT = 4000;
+        const GALAXY_RADIUS = 30;
+        const HEART_SIZE = 15;
+        const COLORS = [0xff69b4, 0xff1493, 0xdda0dd, 0xffffff, 0x87ceeb];
+
+        // --- Setup ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // --- Texture Generation (Procedural Star) ---
+        function createStarTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = 32;
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
+            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 32, 32);
+            const texture = new THREE.CanvasTexture(canvas);
+            return texture;
+        }
+
+        // --- Particle System ---
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const initialPositions = []; // Store galaxy positions
+        const heartPositions = [];   // Store heart target positions
+        const colors = [];
+        const sizes = [];
+        const colorObj = new THREE.Color();
+
+        // 1. Create Galaxy Positions
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const r = Math.random() * GALAXY_RADIUS;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+            
+            // Spiral/Sphere Galaxy hybrid
+            const x = r * Math.sin(phi) * Math.cos(theta);
+            const y = r * Math.sin(phi) * Math.sin(theta);
+            const z = r * Math.cos(phi) * 0.5; // Flattened slightly
+
+            positions.push(x, y, z);
+            initialPositions.push(x, y, z);
+
+            // Random Colors
+            colorObj.setHex(COLORS[Math.floor(Math.random() * COLORS.length)]);
+            colors.push(colorObj.r, colorObj.g, colorObj.b);
+            
+            sizes.push(Math.random() * 0.5 + 0.1);
+        }
+
+        // 2. Create Heart Positions (Mathematical Heart Formula)
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            // Parametric equations for a heart in 3D
+            let t = Math.random() * Math.PI * 2; 
+            
+            // Re-randomize t for better distribution
+            t = Math.random() * Math.PI * 2;
+            
+            const x = HEART_SIZE * (16 * Math.pow(Math.sin(t), 3)) / 16;
+            const y = HEART_SIZE * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) / 16;
+            const z = (Math.random() - 0.5) * 5; // Thickness of the heart
+
+            // Scale and translate to center
+            heartPositions.push(x, y, z);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+        // Shader Material for glowy particles
+        const material = new THREE.PointsMaterial({
+            size: 0.5,
+            vertexColors: true,
+            map: createStarTexture(),
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            transparent: true,
+            opacity: 0.9
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // --- Mouse Interaction ---
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX) * 0.05;
+            mouseY = (event.clientY - windowHalfY) * 0.05;
+        });
+
+        // --- Animation Logic ---
+        let isHeartForming = false;
+        const positionAttribute = geometry.attributes.position;
+        
+        // Listen for click/touch to transform
+        // Modified to ensure we don't trigger heart form when reading letter
+        function onInteractStart(e) {
+            // If the user clicks on the letter, don't form the heart
+            if (e.target.closest('#letter-section')) return;
+            isHeartForming = true;
+        }
+
+        function onInteractEnd() {
+            isHeartForming = false;
+        }
+
+        document.addEventListener('mousedown', onInteractStart);
+        document.addEventListener('mouseup', onInteractEnd);
+        document.addEventListener('touchstart', onInteractStart);
+        document.addEventListener('touchend', onInteractEnd);
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+
+            targetX = mouseX * 0.5;
+            targetY = mouseY * 0.5;
+
+            // Smooth Camera Movement
+            particles.rotation.y += 0.002;
+            particles.rotation.x += (mouseY * 0.001 - particles.rotation.x) * 0.05;
+            particles.rotation.z += (mouseX * 0.001 - particles.rotation.z) * 0.05;
+
+            // Pulse effect for size
+            if(isHeartForming) {
+                particles.scale.x = THREE.MathUtils.lerp(particles.scale.x, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
+                particles.scale.y = THREE.MathUtils.lerp(particles.scale.y, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
+                particles.scale.z = THREE.MathUtils.lerp(particles.scale.z, 1.2 + Math.sin(time * 3) * 0.05, 0.1);
+            } else {
+                particles.scale.set(1, 1, 1);
+            }
+
+            // Morphing Logic
+            const positions = positionAttribute.array;
+            const speed = 0.08; // Morph speed
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const ix = i * 3;
+                const iy = i * 3 + 1;
+                const iz = i * 3 + 2;
+
+                let targetRx, targetRy, targetRz;
+
+                if (isHeartForming) {
+                    targetRx = heartPositions[i * 3];
+                    targetRy = heartPositions[i * 3 + 1];
+                    targetRz = heartPositions[i * 3 + 2];
+                } else {
+                    // Add some noise to initial positions so they "breathe"
+                    targetRx = initialPositions[i * 3] + Math.sin(time + i) * 0.2;
+                    targetRy = initialPositions[i * 3 + 1] + Math.cos(time + i * 0.5) * 0.2;
+                    targetRz = initialPositions[i * 3 + 2] + Math.sin(time + i * 0.2) * 0.2;
+                }
+
+                // Linear Interpolation (Lerp) for smooth transition
+                positions[ix] += (targetRx - positions[ix]) * speed;
+                positions[iy] += (targetRy - positions[iy]) * speed;
+                positions[iz] += (targetRz - positions[iz]) * speed;
+            }
+
+            positionAttribute.needsUpdate = true;
+            renderer.render(scene, camera);
+        }
+
+        // --- UI Entry Animation ---
+        window.onload = () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = 0;
+            setTimeout(() => {
+                loader.style.display = 'none';
+                animate();
+                
+                // GSAP text reveal
+                gsap.to("#main-title", { duration: 2, opacity: 1, y: 0, ease: "power3.out", delay: 0.5 });
+                gsap.to("#subtitle", { duration: 2, opacity: 1, ease: "power3.out", delay: 1.5 });
+                gsap.to(".hint", { duration: 1, opacity: 0.8, ease: "power2.inOut", delay: 2.5 });
+
+            }, 1000);
+        };
+
+        // --- Resize Handler ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
