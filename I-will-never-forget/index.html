@@ -23,7 +23,7 @@
             background-color: #050505;
             font-family: 'Montserrat', sans-serif;
             color: white;
-            -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
+            -webkit-tap-highlight-color: transparent;
         }
 
         #canvas-container {
@@ -103,7 +103,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px 100px 20px; /* Extra padding bottom for FAB */
+            padding: 50px 20px 100px 20px;
             background: linear-gradient(to bottom, transparent, #000 10%);
         }
 
@@ -206,7 +206,7 @@
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            padding: 20px; /* Prevent modal from touching edges */
+            padding: 20px;
             box-sizing: border-box;
         }
         
@@ -221,8 +221,8 @@
             position: relative;
             box-shadow: 0 0 50px rgba(0,0,0,1);
             box-sizing: border-box;
-            max-height: 90vh; /* Ensure it fits on screen */
-            overflow-y: auto; /* Scroll internally if keyboard covers it */
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .close-btn {
@@ -267,7 +267,6 @@
         }
         button.send-btn:hover { background: #000; }
 
-        /* Animations */
         @keyframes shine { to { background-position: 200% center; } }
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
@@ -275,33 +274,17 @@
         /* --- Mobile Specific Styles --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; letter-spacing: 0.2rem; }
-            .paper { 
-                padding: 30px 20px; 
-                font-size: 1.1rem; 
-                margin-bottom: 40px;
-            }
+            .paper { padding: 30px 20px; font-size: 1.1rem; margin-bottom: 40px; }
             .paper h2 { font-size: 1.3rem; }
             .signature { font-size: 1.3rem; }
-            
             #letters-feed { padding-top: 20px; }
-            
-            /* Better Modal for Mobile */
-            .modal-paper { 
-                padding: 25px 20px;
-                max-height: 85vh; /* Account for mobile browser bars */
-            }
-            
-            /* Prevent zoom on focus for inputs (needs 16px min, using slightly larger rem) */
+            .modal-paper { padding: 25px 20px; max-height: 85vh; }
             input, textarea { font-size: 1.2rem; }
             textarea { min-height: 100px; }
-            
             .close-btn { top: 5px; right: 10px; font-size: 1.5rem; }
-            
-            /* Adjust FAB position */
             #fab-write { width: 50px; height: 50px; bottom: 20px; right: 20px; }
             #fab-write svg { width: 24px; height: 24px; }
-            
-            .hint { bottom: 80px; } /* Move hint up so it doesn't overlap scroll indicator too much */
+            .hint { bottom: 80px; } 
         }
         
         #loader {
@@ -319,7 +302,6 @@
 
     <div id="canvas-container"></div>
 
-    <!-- Section 1: Hero -->
     <div id="ui-layer">
         <h1 id="main-title">Oyuka</h1>
         <p class="subtitle" id="subtitle">You are the gravity that holds my universe together.</p>
@@ -327,9 +309,7 @@
         <div class="scroll-indicator">⌄</div>
     </div>
 
-    <!-- Section 2: Letters Feed -->
     <div id="letters-feed">
-        <!-- Original Pinned Letter -->
         <div class="paper" style="transform: rotate(-1deg);">
             <div class="paper-date">Pinned</div>
             <h2>Dear Oyuka,</h2>
@@ -352,30 +332,25 @@
             </div>
         </div>
         
-        <!-- Dynamic Letters will appear here -->
         <div id="dynamic-letters-container" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
     </div>
 
-    <!-- Write Button -->
     <div id="fab-write" title="Write a Letter">
         <svg viewBox="0 0 24 24">
             <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
         </svg>
     </div>
 
-    <!-- Write Modal -->
     <div id="write-modal">
         <div class="modal-paper">
             <div class="close-btn" id="close-modal">&times;</div>
             <h2>New Letter</h2>
             <div class="input-group">
                 <label>Heading</label>
-                <!-- Default value set, but editable -->
                 <input type="text" id="heading-input" placeholder="Dear Oyuka," value="Dear Oyuka,">
             </div>
             <div class="input-group">
                 <label>From</label>
-                <!-- Empty by default -->
                 <input type="text" id="sender-input" placeholder="Your Name">
             </div>
             <div class="input-group">
@@ -386,7 +361,6 @@
         </div>
     </div>
 
-    <!-- --- Scripts --- -->
     <script>
         // --- Firebase Setup ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
@@ -483,8 +457,6 @@
             mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
             mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
         });
-        
-        // Touch move support for galaxy rotation
         document.addEventListener('touchmove', (e) => {
             if(e.touches.length > 0) {
                 const touch = e.touches[0];
@@ -600,7 +572,7 @@
             
             const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Just now';
             const formattedMsg = data.text.replace(/\n/g, '<br>');
-            const heading = data.heading || 'Dear Oyuka,'; // Use custom heading
+            const heading = data.heading || 'Dear Oyuka,';
 
             div.innerHTML = `
                 <div class="paper-date">${date}</div>
@@ -614,7 +586,7 @@
             lettersContainer.appendChild(div);
         }
 
-        // 5. Send Letter
+        // 5. Send Letter + Trigger Webhook
         sendBtn.addEventListener('click', async () => {
             const sender = senderInput.value.trim() || 'Juice';
             const heading = headingInput.value.trim() || 'Dear Oyuka,';
@@ -628,6 +600,7 @@
             sendBtn.innerText = "Sending...";
             
             try {
+                // Save to Firestore
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters').add({
                     sender: sender,
                     heading: heading,
@@ -636,8 +609,19 @@
                     userId: user.uid
                 });
                 
+                // Trigger Make.com Webhook (Fire and forget)
+                fetch('https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sender: sender,
+                        heading: heading,
+                        text: text,
+                        timestamp: new Date().toISOString()
+                    })
+                }).catch(err => console.error("Webhook trigger failed", err));
+
                 messageInput.value = '';
-                // Keep heading default for next time
                 headingInput.value = 'Dear Oyuka,';
                 toggleModal(false);
                 sendBtn.innerText = "Send to the Stars";
