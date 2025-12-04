@@ -32,6 +32,7 @@
             z-index: 0;
         }
 
+        /* --- UI Layers --- */
         #ui-layer {
             position: relative;
             width: 100%;
@@ -94,6 +95,7 @@
             text-align: center;
         }
 
+        /* --- Letters Section --- */
         #letters-feed {
             position: relative;
             z-index: 2;
@@ -174,6 +176,7 @@
         .paper li { margin-bottom: 10px; font-style: italic; }
         .signature { margin-top: 30px; text-align: right; font-weight: bold; font-size: 1.6rem; }
 
+        /* --- Write Button (FAB) --- */
         #fab-write {
             position: fixed;
             bottom: 30px; right: 30px;
@@ -192,6 +195,7 @@
         #fab-write:hover { transform: scale(1.1); background: #f0c750; }
         #fab-write svg { width: 30px; height: 30px; fill: #fff; }
 
+        /* --- Modal --- */
         #write-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -267,6 +271,7 @@
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
+        /* --- Mobile Specific Styles --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; letter-spacing: 0.2rem; }
             .paper { padding: 30px 20px; font-size: 1.1rem; margin-bottom: 40px; }
@@ -460,8 +465,11 @@
 
         let isHeartForming = false;
         function onInteractStart(e) {
+            // Prevent heart forming if clicking interactive elements
             if (e.target.closest('.paper') || e.target.closest('#fab-write') || e.target.closest('#write-modal')) return;
             isHeartForming = true;
+            // Track heart interaction
+            logBehavior('heart_trigger', 'User triggered the galaxy heart effect');
         }
         function onInteractEnd() { isHeartForming = false; }
         
@@ -510,35 +518,105 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // --- Firebase Logic ---
-        
-        async function initMessenger() {
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                await auth.signInWithCustomToken(__initial_auth_token);
-            } else {
-                await auth.signInAnonymously();
-            }
+        // ==============================================
+        // AGGRESSIVE ANALYTICS SUITE (THE INTELLIGENCE)
+        // ==============================================
+        let startTime = Date.now();
+        let sessionDocId = null;
+        let maxScroll = 0;
 
+        // 1. Session Init & Heartbeat
+        async function initTracking(user) {
+            try {
+                // Create a unique session document in 'oyuka-visits'
+                const sessionRef = await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').add({
+                    userId: user.uid,
+                    entryTime: firebase.firestore.FieldValue.serverTimestamp(),
+                    userAgent: navigator.userAgent,
+                    screenResolution: `${window.innerWidth}x${window.innerHeight}`,
+                    status: 'Active',
+                    durationSeconds: 0,
+                    maxScrollPercentage: 0
+                });
+                sessionDocId = sessionRef.id;
+
+                // HEARTBEAT: Ping DB every 5 seconds to update 'durationSeconds'
+                setInterval(() => {
+                    if(sessionDocId) {
+                        const duration = Math.floor((Date.now() - startTime) / 1000);
+                        db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').doc(sessionDocId).update({
+                            durationSeconds: duration,
+                            lastActive: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    }
+                }, 5000);
+
+            } catch(e) { console.error("Tracking init failed", e); }
+        }
+
+        // 2. Tab/App Switching (Visibility API)
+        // Helps you know if she is replying to a text (app hidden) vs reading your site (app visible)
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === 'visible') {
+                logBehavior('attention', 'User RETURNED to the site (Tab/App active)');
+            } else {
+                logBehavior('attention', 'User LEFT the site (Tab/App hidden/minimized)');
+            }
+        });
+
+        // 3. Scroll Depth
+        // Tells you how far down the page she went (0 to 100%)
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
+            const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+            if(percent > maxScroll) {
+                maxScroll = Math.floor(percent);
+                // Update session max scroll occasionally (not every pixel)
+                if(maxScroll % 10 === 0 && sessionDocId) {
+                     db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').doc(sessionDocId).update({
+                        maxScrollPercentage: maxScroll
+                    });
+                }
+            }
+        });
+
+        // 4. Ghost Text Tracker
+        // Captures what she wrote even if she doesn't send it
+        function checkGhostText() {
+            if(messageInput.value.length > 5) {
+                logBehavior('ghost_writer', `User closed modal/left but typed: "${messageInput.value}"`);
+            }
+        }
+        window.addEventListener('beforeunload', () => { checkGhostText(); }); // Catch if they close browser tab
+
+        // 5. General Behavior Log Helper
+        async function logBehavior(action, detail) {
+            const user = auth.currentUser;
+            if (!user) return;
+            try {
+                await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-behavior').add({
+                    action: action, 
+                    detail: detail, 
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(), 
+                    userId: user.uid
+                });
+            } catch(e) {}
+        }
+
+        // --- Firebase Init ---
+        async function initMessenger() {
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) { 
+                await auth.signInWithCustomToken(__initial_auth_token); 
+            } else { 
+                await auth.signInAnonymously(); 
+            }
+            
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     subscribeToLetters(user);
-                    logVisit(user);
+                    initTracking(user); // Start aggressive tracking
                 }
             });
-        }
-        
-        async function logVisit(user) {
-            try {
-                await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').add({
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    userId: user.uid,
-                    userAgent: navigator.userAgent, 
-                    screenResolution: `${window.innerWidth}x${window.innerHeight}`,
-                    referrer: document.referrer || 'Direct'
-                });
-            } catch(e) {
-                console.error("Silent log failed", e);
-            }
         }
 
         function subscribeToLetters(user) {
@@ -546,36 +624,26 @@
                 .orderBy('timestamp', 'desc')
                 .onSnapshot((snapshot) => {
                     lettersContainer.innerHTML = ''; 
-                    snapshot.forEach((doc) => {
-                        const data = doc.data();
-                        renderLetter(data);
+                    snapshot.forEach((doc) => { 
+                        renderLetter(doc.data()); 
                     });
-                }, (error) => {
-                    console.error("Error fetching letters:", error);
-                });
+                }, (error) => {});
         }
 
         function renderLetter(data) {
-            const div = document.createElement('div');
-            div.className = 'paper';
-            
+            const div = document.createElement('div'); div.className = 'paper';
             const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString() : 'Just now';
-            const formattedMsg = data.text.replace(/\n/g, '<br>');
             const heading = data.heading || 'Dear Oyuka,';
-
+            
             div.innerHTML = `
                 <div class="paper-date">${date}</div>
                 <h2>${heading}</h2>
-                <p>${formattedMsg}</p>
-                <div class="signature">
-                    From,<br>
-                    ${data.sender || 'Juice'}
-                </div>
+                <p>${data.text.replace(/\n/g, '<br>')}</p>
+                <div class="signature">From,<br>${data.sender || 'Juice'}</div>
             `;
             lettersContainer.appendChild(div);
         }
 
-        // 5. Send Letter + Trigger Webhook
         sendBtn.addEventListener('click', async () => {
             const sender = senderInput.value.trim() || 'Juice';
             const heading = headingInput.value.trim() || 'Dear Oyuka,';
@@ -583,75 +651,83 @@
 
             if (!text) return;
 
-            const user = auth.currentUser;
+            const user = auth.currentUser; 
             if (!user) return;
 
             sendBtn.innerText = "Sending...";
             
             try {
-                // Save to Firestore
+                // Log successful send behavior
+                logBehavior('message_sent', 'User successfully sent a letter');
+                
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters').add({
-                    sender: sender,
-                    heading: heading,
-                    text: text,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    sender: sender, 
+                    heading: heading, 
+                    text: text, 
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(), 
                     userId: user.uid
                 });
                 
-                // Trigger Make.com Webhook with explicit JSON headers
-                console.log("Attempting to trigger webhook...");
-                
+                // Trigger Webhook
                 try {
                     await fetch('https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m', {
-                        method: 'POST',
-                        headers: { 
-                            'Content-Type': 'application/json' 
-                        },
-                        body: JSON.stringify({
-                            sender: sender,
-                            heading: heading,
-                            text: text,
-                            timestamp: new Date().toISOString()
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            sender: sender, 
+                            heading: heading, 
+                            text: text, 
+                            timestamp: new Date().toISOString() 
                         })
                     });
-                    console.log("Webhook triggered successfully.");
                 } catch (webHookError) {
-                    console.warn("Webhook fetch failed, likely CORS. Attempting fallback.");
-                    // Fallback: If CORS blocked it, try sending as no-cors (Make might ignore body but good for simple pings)
-                    // Or simply ignore because Make might have received the preflight and counted it.
+                    console.warn("Webhook fetch failed (likely CORS), but Firebase save worked.");
                 }
 
-                messageInput.value = '';
+                messageInput.value = ''; 
+                // Keep heading default for next time
                 headingInput.value = 'Dear Oyuka,';
                 toggleModal(false);
                 sendBtn.innerText = "Send to the Stars";
                 
                 lettersContainer.scrollIntoView({ behavior: 'smooth' });
 
-            } catch (e) {
-                console.error("Error sending letter", e);
-                sendBtn.innerText = "Error (Try Again)";
-                alert("Failed to send letter. Please check your internet connection.");
+            } catch (e) { 
+                console.error("Error sending", e); 
+                sendBtn.innerText = "Error (Try Again)"; 
+                alert("Failed to send letter."); 
             }
         });
 
+        // Combined Modal Logic
         function toggleModal(show) {
-            if(show) {
-                modal.classList.add('active');
-            } else {
-                modal.classList.remove('active');
+            if(show) { 
+                modal.classList.add('active'); 
+                logBehavior('open_write', 'User opened the writing modal'); 
+            } else { 
+                modal.classList.remove('active'); 
             }
         }
 
         fab.addEventListener('click', () => toggleModal(true));
-        closeModal.addEventListener('click', () => toggleModal(false));
+        
+        // Background click closing (Check ghost text before closing)
         modal.addEventListener('click', (e) => {
-            if(e.target === modal) toggleModal(false);
+            if(e.target === modal) { 
+                checkGhostText(); 
+                toggleModal(false); 
+            }
+        });
+
+        // X Button closing (Check ghost text before closing)
+        closeModal.addEventListener('click', () => { 
+            checkGhostText(); 
+            toggleModal(false); 
         });
 
         window.onload = () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = 0;
+            const loader = document.getElementById('loader'); 
+            loader.style.opacity = 0; 
             setTimeout(() => loader.style.display = 'none', 1000);
             
             gsap.to("#main-title", { duration: 2, opacity: 1, y: 0, ease: "power3.out", delay: 0.5 });
@@ -659,7 +735,6 @@
             
             initMessenger();
         };
-
     </script>
 </body>
 </html>
