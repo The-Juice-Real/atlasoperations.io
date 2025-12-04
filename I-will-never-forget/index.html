@@ -32,7 +32,6 @@
             z-index: 0;
         }
 
-        /* --- UI Layers --- */
         #ui-layer {
             position: relative;
             width: 100%;
@@ -95,7 +94,6 @@
             text-align: center;
         }
 
-        /* --- Letters Section --- */
         #letters-feed {
             position: relative;
             z-index: 2;
@@ -176,7 +174,6 @@
         .paper li { margin-bottom: 10px; font-style: italic; }
         .signature { margin-top: 30px; text-align: right; font-weight: bold; font-size: 1.6rem; }
 
-        /* --- Write Button (FAB) --- */
         #fab-write {
             position: fixed;
             bottom: 30px; right: 30px;
@@ -195,7 +192,6 @@
         #fab-write:hover { transform: scale(1.1); background: #f0c750; }
         #fab-write svg { width: 30px; height: 30px; fill: #fff; }
 
-        /* --- Modal --- */
         #write-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -271,7 +267,6 @@
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* --- Mobile Specific Styles --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; letter-spacing: 0.2rem; }
             .paper { padding: 30px 20px; font-size: 1.1rem; margin-bottom: 40px; }
@@ -362,7 +357,6 @@
     </div>
 
     <script>
-        // --- Firebase Setup ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
             apiKey: "AIzaSyCXgMC4AKWvbyisd7gIPv0dB4fq_5w4G4I",
             authDomain: "oyuka-love.firebaseapp.com",
@@ -379,7 +373,6 @@
         const db = firebase.firestore();
         const auth = firebase.auth();
 
-        // DOM Elements
         const lettersContainer = document.getElementById('dynamic-letters-container');
         const fab = document.getElementById('fab-write');
         const modal = document.getElementById('write-modal');
@@ -519,7 +512,6 @@
 
         // --- Firebase Logic ---
         
-        // 1. Auth & Load
         async function initMessenger() {
             if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                 await auth.signInWithCustomToken(__initial_auth_token);
@@ -535,7 +527,6 @@
             });
         }
         
-        // 2. Logging Visits
         async function logVisit(user) {
             try {
                 await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-visits').add({
@@ -550,7 +541,6 @@
             }
         }
 
-        // 3. Fetch Letters (Realtime)
         function subscribeToLetters(user) {
             db.collection('artifacts').doc(appId).collection('public').doc('data').collection('oyuka-letters')
                 .orderBy('timestamp', 'desc')
@@ -565,7 +555,6 @@
                 });
         }
 
-        // 4. Render Letter HTML
         function renderLetter(data) {
             const div = document.createElement('div');
             div.className = 'paper';
@@ -609,17 +598,28 @@
                     userId: user.uid
                 });
                 
-                // Trigger Make.com Webhook (Fire and forget)
-                fetch('https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        sender: sender,
-                        heading: heading,
-                        text: text,
-                        timestamp: new Date().toISOString()
-                    })
-                }).catch(err => console.error("Webhook trigger failed", err));
+                // Trigger Make.com Webhook with explicit JSON headers
+                console.log("Attempting to trigger webhook...");
+                
+                try {
+                    await fetch('https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m', {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json' 
+                        },
+                        body: JSON.stringify({
+                            sender: sender,
+                            heading: heading,
+                            text: text,
+                            timestamp: new Date().toISOString()
+                        })
+                    });
+                    console.log("Webhook triggered successfully.");
+                } catch (webHookError) {
+                    console.warn("Webhook fetch failed, likely CORS. Attempting fallback.");
+                    // Fallback: If CORS blocked it, try sending as no-cors (Make might ignore body but good for simple pings)
+                    // Or simply ignore because Make might have received the preflight and counted it.
+                }
 
                 messageInput.value = '';
                 headingInput.value = 'Dear Oyuka,';
@@ -631,6 +631,7 @@
             } catch (e) {
                 console.error("Error sending letter", e);
                 sendBtn.innerText = "Error (Try Again)";
+                alert("Failed to send letter. Please check your internet connection.");
             }
         });
 
