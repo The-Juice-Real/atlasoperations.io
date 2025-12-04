@@ -668,21 +668,8 @@
                     userId: user.uid
                 });
                 
-                // Trigger Webhook
-                try {
-                    await fetch('https://hook.eu1.make.com/ppcaoxcevwma6pcy04wr1ie3ajwg851m', {
-                        method: 'POST', 
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            sender: sender, 
-                            heading: heading, 
-                            text: text, 
-                            timestamp: new Date().toISOString() 
-                        })
-                    });
-                } catch (webHookError) {
-                    console.warn("Webhook fetch failed (likely CORS), but Firebase save worked.");
-                }
+                // Note: We removed the client-side Webhook fetch here.
+                // Make.com should be configured to "Watch Firestore" collection 'oyuka-letters' instead.
 
                 messageInput.value = ''; 
                 // Keep heading default for next time
