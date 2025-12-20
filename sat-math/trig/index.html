@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>SAT Trig — Teach First, Simulate Second (v2.1)</title>
+  <title>SAT Trig — Visual → Concept → Math → SAT (v2.2)</title>
   <style>
     :root{
       --bg:#050505; --panel:#0a0a0a; --text:#eee; --muted:#8a8a8a;
@@ -67,9 +67,8 @@
       background:rgba(255,255,255,.06);
       color:#ddd; font-weight:950; font-size:.75rem;
     }
-    #microbar button.active{
-      background:#fff; color:#000;
-    }
+    #microbar button.active{ background:#fff; color:#000; }
+    #microbar button:disabled{ opacity:.45; cursor:not-allowed; }
 
     /* BOTTOM NAV */
     #nav{
@@ -93,10 +92,11 @@
     }
     #nav button:hover{color:#fff; background:rgba(255,255,255,.08)}
     #nav button.active{background:#fff; color:#000}
+    #nav button:disabled{opacity:.45; cursor:not-allowed}
 
     /* RIGHT PANEL */
     #panel{
-      width:470px; flex-shrink:0;
+      width:480px; flex-shrink:0;
       background:var(--panel);
       border-left:1px solid #222;
       display:flex; flex-direction:column;
@@ -134,9 +134,8 @@
     #layers button.active{
       background:#fff; color:#000; border-color:#fff;
     }
-    #layers button.locked{
-      opacity:.35; cursor:not-allowed;
-    }
+    #layers button.locked{opacity:.35; cursor:not-allowed}
+    #layers button:disabled{opacity:.35; cursor:not-allowed}
 
     #body{
       padding:16px 18px 18px 18px;
@@ -204,7 +203,7 @@
     #quizOverlay.active{display:flex; align-items:center; justify-content:center;}
     #quizCard{
       width:100%;
-      max-width:420px;
+      max-width:440px;
       border-radius:16px;
       border:1px solid #2b2b2b;
       background:rgba(10,10,10,0.94);
@@ -306,8 +305,8 @@
   </div>
 
   <div id="microbar">
-    <button id="btnReadout" class="active" title="Show tiny values on the canvas">READOUT</button>
-    <button id="btnSnap" class="" title="Snap θ to SAT special angles">SNAP</button>
+    <button id="btnReadout" class="active" title="Tiny values near the point">READOUT</button>
+    <button id="btnSnap" class="" title="Snap to SAT special angles">SNAP</button>
   </div>
 
   <div id="nav"></div>
@@ -328,8 +327,8 @@
       <div id="quizResult"></div>
 
       <div id="quizHint">
-        You don’t “read” SAT trig. You execute it.  
-        Miss or timeout → you get kicked back one step. Then you earn SAT again.
+        SAT trig is not “reading.” It’s fast mapping.  
+        Miss or timeout → you drop one step. Then you earn SAT again.
       </div>
     </div>
   </div>
@@ -362,10 +361,12 @@
 
 <script>
 /* =========================================================
-   SAT TRIG TEACHING ENGINE (v2.1)
-   Adds:
-   - Timed SAT micro-question on Layer 4 (SAT)
-   - Fail/timeout => kicks back one layer + locks SAT again
+   SAT TRIG TEACHING ENGINE (v2.2)
+   Workshop overhaul:
+   - More intuitive language everywhere
+   - Tan precision: undefined vs unbounded growth
+   - Radians/Arcs re-built: “walk radius-lengths along the edge”
+   - Word-problem scene fixed (ground + tan)
    ========================================================= */
 
 const cvs = document.getElementById("cvs");
@@ -505,77 +506,76 @@ function exactFromDeg(deg){
 }
 
 /* =========================================================
-   Lessons
+   Lessons (Workshop rewrite)
    ========================================================= */
 const lessons = [
   {
     id:"unit",
     nav:"0 Unit Circle",
-    title:"Trigonometry is a machine",
-    subtitle:"Feed it an angle. It outputs a point. That’s the whole game.",
+    title:"Trig is: angle → point",
+    subtitle:"Drag the point. That’s trig. Everything else is just different ways of describing the same point.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, walls:false, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, measureLine:false, quadrants:false},
         html:`
-          <p><strong>Visual rule:</strong> drag. You are steering a point around a circle.</p>
+          <p><strong>What to do:</strong> drag the white point around the circle.</p>
           <div class="box">
-            <p>This is not “lines and triangles.” That’s the costume.</p>
-            <p>The core is: <strong>rotation</strong>.</p>
+            <p>Think of a steering wheel.</p>
             <ul>
-              <li>Angle θ = the input.</li>
-              <li>Point on the circle = the output.</li>
+              <li>θ tells you <strong>which direction</strong> you’re pointing.</li>
+              <li>The point shows you <strong>where you land</strong> on the circle.</li>
             </ul>
+            <p>No formulas yet. Just: turn → land.</p>
           </div>
-          <p class="tag">If you accept “angle → position,” trig stops being magic.</p>
+          <p class="tag">If angle decides the point, trig stops being random.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
-          <p><strong>Concept:</strong> the output is a coordinate pair.</p>
+          <p><strong>Now add meaning:</strong> that point has an address.</p>
           <div class="box ok">
-            <p>Every point has:</p>
+            <p>Every point has two coordinates:</p>
             <ul>
-              <li><strong>x</strong> = horizontal push (right/left)</li>
-              <li><strong>y</strong> = vertical push (up/down)</li>
+              <li><strong>x</strong> = how far right/left</li>
+              <li><strong>y</strong> = how far up/down</li>
             </ul>
-            <p>Trigonometry is the language for these two numbers while the point rotates.</p>
+            <p>On the stage, we draw those as two “drops” from the point:</p>
+            <ul>
+              <li><span style="color:var(--cos)"><strong>Blue</strong></span> is the x-value.</li>
+              <li><span style="color:var(--sin)"><strong>Pink</strong></span> is the y-value.</li>
+            </ul>
           </div>
-          <p>On the stage:</p>
-          <ul>
-            <li><span style="color:var(--cos)"><strong>Blue</strong></span> drops to the x-axis.</li>
-            <li><span style="color:var(--sin)"><strong>Pink</strong></span> drops to the y-axis.</li>
-          </ul>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
-          <p><strong>Math translation:</strong></p>
+          <p><strong>Math translation (finally):</strong></p>
           <div class="box ok">
-            <p class="mono"><strong>(x, y) = (cos θ, sin θ)</strong></p>
-            <p>Cos is x. Sin is y. No negotiation.</p>
+            <p class="mono"><strong>x = cos(θ)</strong> and <strong>y = sin(θ)</strong></p>
+            <p>Cos is “how much x.” Sin is “how much y.”</p>
           </div>
           <div class="box">
-            <p><strong>Why the identity exists:</strong> the radius is locked to 1.</p>
-            <p>Distance from the origin is always 1. That constraint becomes:</p>
-            <p class="mono"><strong>cos²θ + sin²θ = 1</strong></p>
-            <p>That’s not a “formula.” It’s conservation.</p>
+            <p><strong>Why</strong> <span class="mono">sin² + cos² = 1</span>:</p>
+            <p>The radius is locked to 1. The distance from the center never changes.</p>
+            <p>Distance uses squares, so the circle forces:</p>
+            <p class="mono"><strong>cos²(θ) + sin²(θ) = 1</strong></p>
           </div>
           <div class="box bad">
             <p><strong>SAT trap:</strong> “sin + cos = 1”.</p>
-            <p>No. Squares. Because distance uses squares.</p>
+            <p>No. The circle locks distance, and distance uses squares.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">How SAT hides this:</div>
             <div class="a">
               Point P is on the unit circle. If P is <span class="mono">(0.6, 0.8)</span>, what is <span class="mono">sin(θ)</span>?
             </div>
             <div class="map">
-              <p><strong>Map:</strong> on unit circle, <span class="mono">x = cosθ</span>, <span class="mono">y = sinθ</span>.</p>
-              <p><strong>So:</strong> sin(θ) is just the y-value → <span class="mono">0.8</span>.</p>
-              <p><strong>And the identity check:</strong> 0.6² + 0.8² = 1 (it matches). SAT loves this.</p>
+              <p><strong>Map:</strong> on the unit circle, <span class="mono">x = cos(θ)</span> and <span class="mono">y = sin(θ)</span>.</p>
+              <p><strong>So:</strong> <span class="mono">sin(θ)</span> is just the y-value → <span class="mono">0.8</span>.</p>
+              <p><strong>Quick check:</strong> 0.6² + 0.8² = 1. SAT loves this check.</p>
             </div>
           </div>
         `
@@ -586,62 +586,63 @@ const lessons = [
   {
     id:"soh",
     nav:"1 SOHCAHTOA",
-    title:"SOHCAHTOA is not a chant. It’s a selector switch.",
-    subtitle:"You pick the ratio that uses what you have and what you need.",
+    title:"SOHCAHTOA is a labeling trick",
+    subtitle:"Same triangle. Different names, depending on where θ is sitting.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:false, labels:false, walls:false, quadrants:false, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:false, labels:false, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
-          <p><strong>Visual:</strong> the triangle is real. The labels are relative.</p>
+          <p><strong>Visual:</strong> look at the right triangle. Now look at θ.</p>
           <div class="box">
-            <p>Three sides. Three names:</p>
+            <p>Three sides. Three roles:</p>
             <ul>
-              <li><strong>Hyp</strong> = longest side (always)</li>
-              <li><strong>Opp</strong> = directly across from θ</li>
-              <li><strong>Adj</strong> = touches θ (not the hypotenuse)</li>
+              <li><strong>Hypotenuse</strong>: the longest side (always)</li>
+              <li><strong>Adjacent</strong>: the side touching θ (not the hypotenuse)</li>
+              <li><strong>Opposite</strong>: the side directly across from θ</li>
             </ul>
           </div>
           <div class="box bad">
-            <p><strong>Common failure:</strong> calling “up” the opposite forever.</p>
-            <p>Rotate θ and Opp changes. That’s the point.</p>
+            <p><strong>Common mistake:</strong> students memorize “up = opposite.”</p>
+            <p>Opposite depends on where θ is. Rotate θ, the roles swap.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
-          <p><strong>Concept:</strong> ratios don’t care about size.</p>
+          <p><strong>Concept:</strong> trig ratios are “shape fingerprints.”</p>
           <div class="box ok">
-            <p>Make the triangle bigger. Every side grows.</p>
-            <p>The ratios stay the same because the <strong>shape</strong> is the same.</p>
-            <p>That’s why trig works: it’s geometry that survives scaling.</p>
+            <p>Make the triangle bigger or smaller.</p>
+            <p>All sides scale together.</p>
+            <p>So the ratios stay the same. That’s why trig works.</p>
           </div>
-          <p>SOHCAHTOA is a menu of “which two sides are you using?”</p>
+          <p class="tag">Ratios ignore size. Ratios keep the angle’s DNA.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
-          <p><strong>Math:</strong> the definitions.</p>
+          <p><strong>Math (but in plain English):</strong></p>
           <div class="box">
-            <p class="mono">sin θ = Opp/Hyp</p>
-            <p class="mono">cos θ = Adj/Hyp</p>
-            <p class="mono">tan θ = Opp/Adj</p>
+            <p class="mono"><strong>sin(θ)</strong> = opposite ÷ hypotenuse</p>
+            <p class="mono"><strong>cos(θ)</strong> = adjacent ÷ hypotenuse</p>
+            <p class="mono"><strong>tan(θ)</strong> = opposite ÷ adjacent</p>
           </div>
           <div class="box bad">
-            <p><strong>SAT rule:</strong> you do not “choose tan because you like tan.”</p>
-            <p>You choose the ratio that contains the side you have and the side you want.</p>
+            <p><strong>How you actually choose:</strong> write “Have” and “Need.”</p>
+            <p>Pick the ratio that uses what you have and outputs what you need.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
-              Opp = 9 and Hyp = 15. What is <span class="mono">sin(θ)</span>?
+              Opposite = 9 and hypotenuse = 15. What is <span class="mono">sin(θ)</span>?
             </div>
             <div class="map">
-              <p><strong>Have:</strong> Opp + Hyp. <strong>Need:</strong> sin.</p>
-              <p><strong>Pick:</strong> <span class="mono">sin = Opp/Hyp</span></p>
-              <p><strong>Build:</strong> <span class="mono">sin(θ)=9/15=3/5</span></p>
+              <p><strong>Have:</strong> opposite and hypotenuse.</p>
+              <p><strong>Need:</strong> sin.</p>
+              <p><strong>Use:</strong> <span class="mono">sin = opp/hyp</span></p>
+              <p><strong>Answer:</strong> <span class="mono">9/15 = 3/5</span></p>
             </div>
           </div>
         `
@@ -652,54 +653,53 @@ const lessons = [
   {
     id:"scale",
     nav:"2 Scaling",
-    title:"Trig ratios are multipliers",
-    subtitle:"Once θ is fixed, sin/cos/tan are conversion rates between lengths.",
+    title:"Trig is a converter",
+    subtitle:"Once θ is fixed, sin/cos/tan behave like conversion rates between lengths.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
-          <p><strong>Visual:</strong> same θ. bigger triangle. same shape.</p>
+          <p><strong>Visual:</strong> same θ, different size triangle.</p>
           <div class="box">
-            <p>This is the move SAT hides in plain sight:</p>
-            <p><strong>ratio × known side = unknown side</strong></p>
+            <p>The angle pins the shape.</p>
+            <p>So you can scale the triangle up or down, but you can’t change its “look” unless θ changes.</p>
           </div>
-          <p class="tag">You are not “doing trig.” You are converting lengths.</p>
+          <p class="tag">Fix θ → ratios become multipliers.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
-          <p><strong>Concept:</strong> a fixed angle forces a fixed shape.</p>
+          <p><strong>Concept:</strong> sin/cos/tan are the “percentage” of a side.</p>
           <div class="box ok">
-            <p>If θ doesn’t change, the triangle can only scale up/down.</p>
-            <p>So sin/cos/tan behave like constants while θ is fixed.</p>
-            <p>That’s why these problems feel “algebraic” on SAT.</p>
+            <p>If you know a long side, trig tells you the matching short side.</p>
+            <p>If you know a short side, trig tells you the matching long side.</p>
+            <p>Same θ means predictable conversions.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
-          <p><strong>Math patterns SAT expects instantly:</strong></p>
+          <p><strong>Math patterns SAT repeats:</strong></p>
           <div class="box">
-            <p class="mono">Opp = Hyp · sin θ</p>
-            <p class="mono">Adj = Hyp · cos θ</p>
-            <p class="mono">Opp = Adj · tan θ</p>
+            <p class="mono">opposite = hypotenuse · sin(θ)</p>
+            <p class="mono">adjacent = hypotenuse · cos(θ)</p>
+            <p class="mono">opposite = adjacent · tan(θ)</p>
           </div>
           <div class="box bad">
-            <p><strong>Trap:</strong> using a ratio that ignores your given side.</p>
-            <p>If you have Hyp, tan is usually the wrong first tool.</p>
+            <p><strong>Speed rule:</strong> match the formula to the side you actually have.</p>
+            <p>If you have the hypotenuse, sin/cos are usually the clean path.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
-              Hyp = 10 and <span class="mono">sin(θ)=0.6</span>. Find Opp.
+              Hypotenuse = 10 and <span class="mono">sin(θ)=0.6</span>. Find opposite.
             </div>
             <div class="map">
-              <p><strong>Translate:</strong> <span class="mono">sin = Opp/Hyp</span></p>
-              <p><strong>Build:</strong> <span class="mono">0.6 = Opp/10</span></p>
-              <p><strong>So:</strong> <span class="mono">Opp = 6</span></p>
+              <p><strong>Meaning:</strong> sin is the “opposite fraction of the hypotenuse.”</p>
+              <p><strong>Compute:</strong> opposite = 10 · 0.6 = <span class="mono">6</span></p>
             </div>
           </div>
         `
@@ -710,46 +710,46 @@ const lessons = [
   {
     id:"special",
     nav:"3 Special Angles",
-    title:"Exact trig values: SAT’s time tax",
-    subtitle:"You don’t get to be slow here. SNAP exists to hardwire it.",
+    title:"Special angles = SAT’s speed gate",
+    subtitle:"Turn SNAP on. These are the only exact values SAT expects you to know instantly.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, specialMode:true},
         html:`
-          <p><strong>Visual:</strong> turn SNAP on. Drag. It locks to SAT angles.</p>
+          <p><strong>Visual:</strong> turn <strong>SNAP</strong> on and drag.</p>
           <div class="box">
-            <p>These positions are “privileged” because their triangles are clean.</p>
-            <p>30-60-90 and 45-45-90 generate the entire exact-value set.</p>
+            <p>SAT cares about a small set of angles because their triangles are clean.</p>
+            <p>Those clean triangles generate exact radicals instead of ugly decimals.</p>
           </div>
-          <p class="tag">If you rely on decimals, SAT owns your time.</p>
+          <p class="tag">Exact values buy you time. Decimals steal it.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
-          <p><strong>Concept:</strong> two triangles, not a hundred.</p>
+          <p><strong>Concept:</strong> it’s really just two triangles.</p>
           <div class="box ok">
-            <p><strong>30-60-90:</strong> <span class="mono">1 : √3 : 2</span></p>
-            <p><strong>45-45-90:</strong> <span class="mono">1 : 1 : √2</span></p>
-            <p>Unit circle means Hyp = 1, so every value becomes a clean fraction/radical.</p>
+            <p><strong>30–60–90</strong> ratios: <span class="mono">1 : √3 : 2</span></p>
+            <p><strong>45–45–90</strong> ratios: <span class="mono">1 : 1 : √2</span></p>
+            <p>Unit circle means radius = 1, so these ratios become the exact sin/cos values.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
-          <p><strong>Math:</strong> Quadrant I anchors (memorize or derive fast):</p>
+          <p><strong>Math (Quadrant I anchors):</strong></p>
           <div class="box">
             <p class="mono">sin 30 = 1/2,   cos 30 = √3/2</p>
             <p class="mono">sin 45 = √2/2,  cos 45 = √2/2</p>
             <p class="mono">sin 60 = √3/2,  cos 60 = 1/2</p>
           </div>
           <div class="box bad">
-            <p><strong>Discipline:</strong> keep values exact. √ stays √.</p>
+            <p><strong>Discipline:</strong> keep answers exact. Don’t decimalize √ unless SAT forces you.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
               What is <span class="mono">sin(π/3)</span>?
             </div>
@@ -768,55 +768,57 @@ const lessons = [
     id:"quadrants",
     nav:"4 Quadrants",
     title:"Same reference angle. Different signs.",
-    subtitle:"Magnitude comes from Quadrant I. Signs come from where you stand.",
+    subtitle:"Magnitude comes from Quadrant I. Signs come from left/right and up/down.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:true},
         html:`
-          <p><strong>Visual:</strong> move θ into every quadrant. Watch what flips.</p>
+          <p><strong>Visual:</strong> drag into all 4 quadrants.</p>
           <div class="box">
+            <p>Don’t memorize “mystical sign rules.” Just look:</p>
             <ul>
-              <li>Left side means x is negative → cos is negative.</li>
-              <li>Down side means y is negative → sin is negative.</li>
+              <li>Left side → x is negative → <strong>cos is negative</strong></li>
+              <li>Down side → y is negative → <strong>sin is negative</strong></li>
             </ul>
+            <p>Tan is sin ÷ cos, so it inherits signs from both.</p>
           </div>
-          <p class="tag">See signs first. Compute second.</p>
+          <p class="tag">Signs are geography. Not memorization.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
-          <p><strong>Concept:</strong> reference angle is the “clean acute twin.”</p>
+          <p><strong>Concept:</strong> reference angle is your “clean twin.”</p>
           <div class="box ok">
-            <p>Step 1: find the acute angle to the x-axis.</p>
-            <p>Step 2: use the exact value from Quadrant I.</p>
-            <p>Step 3: flip signs based on quadrant.</p>
+            <p>Step 1: find the acute angle to the x-axis (the reference angle).</p>
+            <p>Step 2: grab the exact value as if you were in Quadrant I.</p>
+            <p>Step 3: flip the sign based on where the point lives.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
           <p><strong>Math sign table (sin, cos, tan):</strong></p>
           <div class="box">
-            <p class="mono">QI: + + +</p>
-            <p class="mono">QII: + − −</p>
-            <p class="mono">QIII: − − +</p>
-            <p class="mono">QIV: − + −</p>
+            <p class="mono">QI:  +  +  +</p>
+            <p class="mono">QII: +  −  −</p>
+            <p class="mono">QIII:−  −  +</p>
+            <p class="mono">QIV: −  +  −</p>
           </div>
           <div class="box bad">
-            <p><strong>Reality:</strong> right magnitude + wrong sign = 0 points.</p>
+            <p><strong>Scoring reality:</strong> correct magnitude with wrong sign = wrong answer.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
               If θ = 210°, what is <span class="mono">cos(θ)</span>?
             </div>
             <div class="map">
               <p><strong>ref:</strong> 210° → 30°</p>
               <p><strong>magnitude:</strong> cos 30 = √3/2</p>
-              <p><strong>sign:</strong> 210° is QIII → cos negative</p>
+              <p><strong>sign:</strong> 210° is QIII → cos is negative</p>
               <p><strong>answer:</strong> <span class="mono">−√3/2</span></p>
             </div>
           </div>
@@ -827,49 +829,60 @@ const lessons = [
 
   {
     id:"tan",
-    nav:"5 Tan & Slope",
-    title:"Tan is tilt. Slope is tilt. Same idea.",
-    subtitle:"SAT will disguise tan as coordinate geometry.",
+    nav:"5 Tan",
+    title:"Tan is “how steep”",
+    subtitle:"We measure steepness by seeing where the direction-line hits a vertical measuring line.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, walls:true, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:true, quadrants:false},
         html:`
-          <p><strong>Visual:</strong> wall is “run = 1.” the rise is tan.</p>
+          <p><strong>Visual:</strong> the yellow line is your direction.</p>
           <div class="box">
-            <p>As θ grows, the tilt grows. Tan measures that tilt.</p>
+            <p>Now we add a simple measuring tool:</p>
+            <p><strong>a vertical measuring line at x = 1</strong> (the right edge of the unit circle).</p>
+            <p>Extend your direction-line until it hits that measuring line.</p>
+            <p>The height it hits is <strong>tan(θ)</strong>.</p>
           </div>
+          <p class="tag">Tan is a height reading on a fixed measuring line.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
-          <p><strong>Concept:</strong> slope is rise/run.</p>
+          <p><strong>Concept:</strong> slope = “rise per 1 step.”</p>
           <div class="box ok">
-            <p>Opp = rise. Adj = run.</p>
-            <p>So tan is literally the slope of the angle.</p>
+            <p>If you move 1 unit to the right, how much do you rise (or fall) on that line?</p>
+            <p>That “rise” is the slope.</p>
+            <p>And tan(θ) is exactly that slope number.</p>
+          </div>
+          <div class="box">
+            <p><strong>Important detail:</strong> sometimes the direction points left (Quadrant II/III).</p>
+            <p>We still measure tan by extending the line both ways until it hits x = 1.</p>
+            <p>Same line. Same steepness. Same tan.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
-          <p><strong>Math:</strong></p>
+          <p><strong>Math, connected to the picture:</strong></p>
           <div class="box">
-            <p class="mono">tan θ = Opp/Adj</p>
-            <p class="mono">tan θ = sin θ / cos θ</p>
+            <p class="mono"><strong>tan(θ) = opposite / adjacent</strong></p>
+            <p class="mono"><strong>tan(θ) = sin(θ) / cos(θ)</strong></p>
           </div>
           <div class="box bad">
-            <p><strong>Undefined:</strong> when cos = 0 (90°, 270°).</p>
-            <p>That’s not a “big number.” It’s not defined.</p>
+            <p><strong>Precision:</strong> tan is <strong>undefined</strong> when cos = 0.</p>
+            <p>That happens at 90° and 270°.</p>
+            <p>Near 90°, tan becomes extremely large in magnitude (it grows without bound), but at 90° itself: undefined.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
-              A line makes an angle θ with the positive x-axis. If slope is 3, what is <span class="mono">tan(θ)</span>?
+              A line makes angle θ with the positive x-axis. If the slope is 3, what is <span class="mono">tan(θ)</span>?
             </div>
             <div class="map">
-              <p><strong>Map:</strong> tan θ = slope</p>
+              <p><strong>Map:</strong> tan(θ) = slope</p>
               <p><strong>Answer:</strong> <span class="mono">3</span></p>
             </div>
           </div>
@@ -881,45 +894,45 @@ const lessons = [
   {
     id:"co",
     nav:"6 Co-functions",
-    title:"The ‘CO’ trick: sin and cos are the same leg, viewed from different angles",
-    subtitle:"SAT loves this because it punishes memorization without geometry.",
+    title:"Sin and cos are the same leg… from different seats",
+    subtitle:"If you swap the angle you’re looking from, “opposite” and “adjacent” swap too.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, coMode:true},
         html:`
-          <p><strong>Visual:</strong> keep the triangle. swap the angle.</p>
+          <p><strong>Visual:</strong> one triangle, two viewpoints.</p>
           <div class="box">
-            <p>In a right triangle, the two acute angles add to 90°.</p>
-            <p>If you switch which angle you call θ, opposite/adjacent swap.</p>
+            <p>In a right triangle, the two sharp angles always add to 90°.</p>
+            <p>If you switch which angle you call θ, the “across” side and the “touching” side swap roles.</p>
           </div>
-          <p class="tag">Same triangle. Different viewpoint. That’s the whole trick.</p>
+          <p class="tag">Same triangle. The labels changed. That’s it.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
-          <p><strong>Concept:</strong> sin is “vertical-from-this-angle.”</p>
+          <p><strong>Concept:</strong> complementary angles trade sin and cos.</p>
           <div class="box ok">
-            <p>If you rotate your viewpoint 90°, what used to be “vertical” becomes “horizontal.”</p>
-            <p>So sin and cos trade identities under complementary angles.</p>
+            <p>If an angle turns into (90° − θ), what was “vertical” becomes “horizontal” for that new angle.</p>
+            <p>So sin and cos switch jobs.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
-          <p><strong>Math:</strong></p>
+          <p><strong>Math (clean identities):</strong></p>
           <div class="box">
             <p class="mono">sin(θ) = cos(90° − θ)</p>
             <p class="mono">cos(θ) = sin(90° − θ)</p>
           </div>
           <div class="box bad">
-            <p><strong>SAT trap:</strong> people see “cos” and panic.</p>
-            <p>It’s the same ratio with a swapped angle label.</p>
+            <p><strong>SAT trap:</strong> they write cos(90−θ) and hope you freeze.</p>
+            <p>Don’t. It’s just sin(θ).</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
               If <span class="mono">sin(x)=3/5</span> and x is acute, what is <span class="mono">cos(90°−x)</span>?
             </div>
@@ -936,57 +949,56 @@ const lessons = [
   {
     id:"word",
     nav:"7 Word Problems",
-    title:"Word problems: same triangle, different nouns",
-    subtitle:"SAT swaps words to make you forget it’s trig. Don’t.",
+    title:"Word problems are just triangles wearing costumes",
+    subtitle:"Height, ladder, shadow, drone, building… it’s still Opp/Adj/Hyp.",
     layers:[
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:false, walls:false, quadrants:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, wordScene:true},
         html:`
-          <p><strong>Visual:</strong> height, ground distance, line-of-sight.</p>
+          <p><strong>Visual:</strong> ground, wall, and a line-of-sight.</p>
           <div class="box">
-            <p>Nothing changed. Only the nouns changed.</p>
-            <p>Trig is still “angle + right triangle.”</p>
+            <p>Nothing new happened. Only the nouns changed.</p>
+            <p>Your job is to translate nouns into triangle sides.</p>
           </div>
+          <p class="tag">Translate first. Compute second.</p>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <p><strong>Concept mapping (SAT translation):</strong></p>
           <div class="box ok">
             <ul>
-              <li><strong>Height</strong> → Opp (usually)</li>
-              <li><strong>Ground distance</strong> → Adj (usually)</li>
-              <li><strong>Ladder/cable</strong> → Hyp (usually)</li>
+              <li><strong>Height</strong> → opposite (usually)</li>
+              <li><strong>Ground distance</strong> → adjacent (usually)</li>
+              <li><strong>Ladder / cable / line of sight</strong> → hypotenuse (usually)</li>
             </ul>
           </div>
           <div class="box bad">
-            <p><strong>Angle of depression:</strong> same angle as elevation (alternate interior angles).</p>
-            <p>They’re baiting panic. Don’t give it to them.</p>
+            <p><strong>Angle of depression / elevation:</strong> it’s the same angle (parallel lines).</p>
+            <p>SAT uses words to create panic. Ignore the panic, keep the triangle.</p>
           </div>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
-          <p><strong>Math patterns SAT repeats:</strong></p>
+          <p><strong>Math patterns that keep showing up:</strong></p>
           <div class="box">
-            <p class="mono">height = distance · tan θ</p>
-            <p class="mono">height = hypotenuse · sin θ</p>
+            <p class="mono">height = ground · tan(θ)</p>
+            <p class="mono">height = hypotenuse · sin(θ)</p>
+            <p class="mono">ground = hypotenuse · cos(θ)</p>
           </div>
-          <p>You choose based on which length is given.</p>
+          <p>You choose based on what the problem gives you.</p>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
               From a point 80 m from a building, the angle of elevation is 28°. Approximately how tall is the building?
             </div>
             <div class="map">
-              <ul>
-                <li>Adj = 80 (ground distance)</li>
-                <li>Opp = height</li>
-              </ul>
-              <p><strong>Use:</strong> <span class="mono">tan = Opp/Adj</span></p>
+              <p><strong>Translate:</strong> adjacent = 80, opposite = height</p>
+              <p><strong>Use:</strong> <span class="mono">tan = opp/adj</span></p>
               <p><strong>Build:</strong> <span class="mono">height = 80·tan(28°)</span></p>
             </div>
           </div>
@@ -997,53 +1009,69 @@ const lessons = [
 
   {
     id:"rad",
-    nav:"8 Radians & Arcs",
-    title:"Radians: the natural unit of rotation",
-    subtitle:"On the unit circle, θ is literally arc length. That’s why radians exist.",
+    nav:"8 Radians",
+    title:"Radians are ‘how far you walked’ along the circle",
+    subtitle:"Degrees count slices. Radians count distance along the edge, measured in radius-lengths.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, walls:false, quadrants:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, measureLine:false, quadrants:false, arcMode:true},
         html:`
-          <p><strong>Visual:</strong> look at the highlighted arc on the circle.</p>
+          <p><strong>Visual:</strong> notice two arcs:</p>
           <div class="box">
-            <p>Degrees are a human invention: 360 pieces.</p>
-            <p>Radians are physics: angle measured by arc length.</p>
+            <ul>
+              <li><span style="color:var(--ok)"><strong>Green</strong></span> arc = <strong>1 radian</strong> (a fixed reference)</li>
+              <li><span style="color:var(--vio)"><strong>Purple</strong></span> arc = your current θ</li>
+            </ul>
+            <p>A radian is an angle defined by <strong>arc length</strong>.</p>
+            <p>1 radian means: the arc you cut off is exactly <strong>one radius long</strong>.</p>
           </div>
-          <p class="tag">Unit circle = radius 1 = arc length equals angle (in radians).</p>
+          <p class="tag">Radians aren’t “hard.” They’re a distance-based angle.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
-          <p><strong>Concept:</strong> angle = (arc length) / (radius).</p>
+          <p><strong>Concept:</strong> count radius-lengths along the edge.</p>
           <div class="box ok">
-            <p>If radius = 1, then:</p>
-            <p class="mono"><strong>θ (radians) = arc length</strong></p>
+            <p>Imagine walking along the circle’s edge starting at 0°.</p>
+            <p>Ask: “How many radius-lengths have I walked?”</p>
+            <p>That number is θ in radians.</p>
           </div>
-          <p>This is why π shows up: it’s the half-circle arc length when radius = 1.</p>
+          <div class="box">
+            <p><strong>Unit circle shortcut:</strong> radius = 1, so the number of radius-lengths equals the arc length number.</p>
+            <p>That’s why radians are the natural unit for circles.</p>
+          </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
-          <p><strong>Math:</strong></p>
+          <p><strong>Math (connected to what you saw):</strong></p>
           <div class="box">
-            <p class="mono">arc length: s = rθ</p>
-            <p class="mono">sector area: A = (1/2)r²θ</p>
+            <p class="mono"><strong>arc length</strong>: s = r·θ</p>
+            <p class="mono">so θ = s/r</p>
+          </div>
+          <div class="box ok">
+            <p><strong>Unit circle:</strong> r = 1 → <span class="mono">s = θ</span></p>
+            <p>That’s literally “radians = arc length” on the unit circle.</p>
+          </div>
+          <div class="box">
+            <p><strong>Two anchor facts:</strong></p>
+            <p class="mono">π radians = 180°</p>
+            <p class="mono">2π radians = 360°</p>
           </div>
           <div class="box bad">
-            <p><strong>SAT trap:</strong> using degrees inside these formulas.</p>
-            <p>These formulas demand θ in radians.</p>
+            <p><strong>SAT precision:</strong> formulas like <span class="mono">s=rθ</span> and <span class="mono">A=(1/2)r²θ</span> require θ in radians.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
           <div class="sat">
-            <div class="q">SAT look:</div>
+            <div class="q">SAT version:</div>
             <div class="a">
               A circle has radius 6. A sector has central angle <span class="mono">π/3</span>. What is the arc length?
             </div>
             <div class="map">
-              <p><strong>Use:</strong> <span class="mono">s = rθ</span></p>
-              <p><strong>Compute:</strong> <span class="mono">s = 6 · (π/3) = 2π</span></p>
+              <p><strong>Use:</strong> <span class="mono">s = rθ</span> (θ already in radians)</p>
+              <p><strong>Compute:</strong> <span class="mono">s = 6·(π/3) = 2π</span></p>
             </div>
           </div>
         `
@@ -1053,17 +1081,17 @@ const lessons = [
 ];
 
 /* =========================================================
-   Micro-quiz bank (one per lesson, fired on SAT layer)
+   Micro-quiz bank (fired on SAT layer)
    ========================================================= */
 const quizBank = {
   unit: {
-    q: "Point P is on the unit circle: P = (1/2, √3/2). What is θ?",
+    q: "Point P is on the unit circle: P = (1/2, √3/2). What is θ (in standard position)?",
     choices: ["30°", "60°", "120°", "300°"],
     correct: 1
   },
   soh: {
-    q: "In a right triangle, Opp = 8 and Hyp = 10. What is sin(θ)?",
-    choices: ["4/5", "5/4", "3/5", "8/10 simplified is 8/10"],
+    q: "Right triangle: Opp = 8 and Hyp = 10. What is sin(θ)?",
+    choices: ["4/5", "5/4", "3/5", "8/10 (not simplified)"],
     correct: 0
   },
   scale: {
@@ -1092,7 +1120,7 @@ const quizBank = {
     correct: 1
   },
   word: {
-    q: "Ground distance = 20 and angle of elevation = θ. Height = 20·tan(θ). Which ratio did you use?",
+    q: "Ground = 20 and height = 20·tan(θ). Which ratio did you use?",
     choices: ["sin = Opp/Hyp", "cos = Adj/Hyp", "tan = Opp/Adj", "cot = Adj/Opp"],
     correct: 2
   },
@@ -1118,12 +1146,10 @@ function buildNav(){
     nav.appendChild(b);
   });
 }
-
 function ensureProgress(lessonId){
   if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
   return progress[lessonId];
 }
-
 function setLesson(i){
   state.lessonIndex = i;
   state.layerIndex = 0;
@@ -1132,14 +1158,12 @@ function setLesson(i){
   stopQuiz(); // hard stop on lesson change
   updatePanel(); updateNav(); draw(); updateHud();
 }
-
 function setLayer(k){
   if(state.uiLocked) return;
   if(k > state.unlockedLayer) return;
 
   state.layerIndex = k;
 
-  // Fire quiz if SAT layer and not passed
   const lesson = lessons[state.lessonIndex];
   const prog = ensureProgress(lesson.id);
   if(state.layerIndex === 3 && !prog.satPassed){
@@ -1150,7 +1174,6 @@ function setLayer(k){
 
   updatePanel(); draw(); updateHud();
 }
-
 function nextLayer(){
   if(state.uiLocked) return;
   if(state.layerIndex < 3){
@@ -1177,14 +1200,12 @@ function prevLayer(){
 }
 function nextLesson(){ if(state.uiLocked) return; if(state.lessonIndex < lessons.length-1) setLesson(state.lessonIndex+1); }
 function prevLesson(){ if(state.uiLocked) return; if(state.lessonIndex > 0) setLesson(state.lessonIndex-1); }
-
 function updateNav(){
   lessons.forEach((_, i) => {
     const b = document.getElementById(`nav_${i}`);
     if(b) b.classList.toggle("active", i === state.lessonIndex);
   });
 }
-
 function updatePanel(){
   const L = lessons[state.lessonIndex];
   const layer = L.layers[state.layerIndex];
@@ -1244,21 +1265,15 @@ const quizTime = document.getElementById("quizTime");
 
 function lockUI(on){
   state.uiLocked = on;
-  // disable layer buttons and nav buttons
   document.querySelectorAll("#nav button").forEach(b => b.disabled = on);
   document.querySelectorAll("#layers button").forEach(b => b.disabled = on || b.classList.contains("locked"));
-  document.querySelectorAll("#panelBottom button").forEach(b => b.disabled = on || b.disabled);
-
   btnReadout.disabled = on;
   btnSnap.disabled = on;
-  // visual dim optional: not needed; overlay handles it
   updatePanel();
 }
-
 function startQuizForLesson(lessonId){
   const item = quizBank[lessonId];
   if(!item){
-    // No quiz defined => auto pass.
     ensureProgress(lessonId).satPassed = true;
     return;
   }
@@ -1283,7 +1298,6 @@ function startQuizForLesson(lessonId){
 
   state.quizEndsAt = Date.now() + state.quizDurationMs;
 
-  // timer tick
   state.quizTimer = setInterval(() => {
     const now = Date.now();
     const left = state.quizEndsAt - now;
@@ -1298,14 +1312,12 @@ function startQuizForLesson(lessonId){
     }
   }, 80);
 }
-
 function resolveQuiz(choiceIdx){
   if(!state.quizActive) return;
   const lessonId = lessons[state.lessonIndex].id;
   const item = quizBank[lessonId];
   if(!item) return;
 
-  // freeze choices
   quizChoices.querySelectorAll("button").forEach(b => b.disabled = true);
 
   if(choiceIdx === item.correct){
@@ -1314,40 +1326,33 @@ function resolveQuiz(choiceIdx){
     failQuiz("Wrong.");
   }
 }
-
 function passQuiz(){
   if(!state.quizActive) return;
   const lessonId = lessons[state.lessonIndex].id;
   ensureProgress(lessonId).satPassed = true;
 
-  quizResult.textContent = "Correct. You can see SAT now.";
+  quizResult.textContent = "Correct. SAT layer unlocked.";
   quizResult.className = "good";
 
   setTimeout(() => {
     stopQuiz();
-    // keep SAT unlocked
     state.unlockedLayer = Math.max(state.unlockedLayer, 3);
     updatePanel(); draw(); updateHud();
   }, 650);
 }
-
 function failQuiz(reason){
   if(!state.quizActive) return;
 
-  quizResult.textContent = `${reason} Back one step.`;
+  quizResult.textContent = `${reason} Drop one step.`;
   quizResult.className = "bad";
 
   setTimeout(() => {
     stopQuiz();
-
-    // kick back one layer and lock SAT again
     state.layerIndex = Math.max(0, state.layerIndex - 1);
     state.unlockedLayer = Math.min(state.unlockedLayer, 2);
-
     updatePanel(); draw(); updateHud();
   }, 850);
 }
-
 function stopQuiz(){
   if(state.quizTimer){
     clearInterval(state.quizTimer);
@@ -1357,7 +1362,6 @@ function stopQuiz(){
   quizOverlay.classList.remove("active");
   lockUI(false);
 
-  // reset bar/time display
   quizBar.style.width = "100%";
   quizBar.style.background = "rgba(34,197,94,0.85)";
   quizTime.textContent = `${(state.quizDurationMs/1000).toFixed(1)}s`;
@@ -1406,11 +1410,7 @@ function interact(px, py){
 
   draw(); updateHud();
 }
-
-cvs.addEventListener("mousedown", e => {
-  state.dragging = true;
-  interact(e.offsetX, e.offsetY);
-});
+cvs.addEventListener("mousedown", e => { state.dragging = true; interact(e.offsetX, e.offsetY); });
 window.addEventListener("mousemove", e => {
   if(!state.dragging) return;
   const r = cvs.getBoundingClientRect();
@@ -1424,14 +1424,12 @@ cvs.addEventListener("touchstart", e => {
   const r = cvs.getBoundingClientRect();
   interact(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
 }, {passive:false});
-
 cvs.addEventListener("touchmove", e => {
   e.preventDefault();
   if(!state.dragging) return;
   const r = cvs.getBoundingClientRect();
   interact(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
 }, {passive:false});
-
 cvs.addEventListener("touchend", () => state.dragging=false);
 
 /* =========================================================
@@ -1500,7 +1498,12 @@ function draw(){
   }
 
   drawAxes(ox, oy);
-  if(flags.quadrants) shadeQuadrants(ox, oy, R);
+
+  if(flags.quadrants) {
+    shadeQuadrants(ox, oy, R);
+    drawQuadrantLabels(ox, oy, R);
+  }
+
   if(flags.circle) drawCircle(ox, oy, R);
 
   const px = ox + R * Math.cos(th);
@@ -1509,8 +1512,11 @@ function draw(){
   if(flags.triangle) drawTriangle(ox, oy, px, py, R, th, flags);
   else drawRadius(ox, oy, px, py, R, th, flags);
 
-  if(flags.walls) drawTanWall(ox, oy, R, th);
-  if(flags.arcMode) drawArcHighlight(ox, oy, R, th);
+  if(flags.measureLine) drawTanMeasuringLine(ox, oy, R, th);
+
+  if(flags.arcMode){
+    drawArcToolkit(ox, oy, R, th); // includes 1 rad reference arc + theta arc
+  }
 
   if(state.readout) drawMicroReadout(ox, oy, px, py, th, flags);
 }
@@ -1535,6 +1541,22 @@ function shadeQuadrants(cx, cy, R){
   ctx.fillStyle = colors.cos; ctx.fillRect(cx-R, cy-R, R, R);   // QII
   ctx.fillStyle = colors.sin; ctx.fillRect(cx-R, cy, R, R);     // QIII
   ctx.fillStyle = colors.tan; ctx.fillRect(cx, cy, R, R);       // QIV
+  ctx.restore();
+}
+function drawQuadrantLabels(cx, cy, R){
+  const spots = [
+    {t:"QI",  x: cx+R*0.45, y: cy-R*0.45},
+    {t:"QII", x: cx-R*0.45, y: cy-R*0.45},
+    {t:"QIII",x: cx-R*0.45, y: cy+R*0.45},
+    {t:"QIV", x: cx+R*0.45, y: cy+R*0.45},
+  ];
+  ctx.save();
+  ctx.font = "1000 14px Segoe UI, system-ui, sans-serif";
+  ctx.textAlign="center"; ctx.textBaseline="middle";
+  for(const s of spots){
+    ctx.fillStyle = "rgba(255,255,255,0.12)";
+    ctx.fillText(s.t, s.x, s.y);
+  }
   ctx.restore();
 }
 function neon(x1,y1,x2,y2,color,width=3){
@@ -1604,14 +1626,14 @@ function laser(x1,y1,x2,y2){
   dot(x2,y2,4,"#fff");
 }
 function angleArc(cx, cy, theta, r){
+  // visual hint of the angle at the center
   const t = thetaSignedForArc(theta);
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.65)";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  const end = -t;
-  if(t >= 0){ ctx.arc(cx, cy, r, 0, end, true); }
-  else { ctx.arc(cx, cy, r, 0, end, false); }
+  // canvas angles go clockwise because y grows downward; use -t for end
+  ctx.arc(cx, cy, r, 0, -t, t<0);
   ctx.stroke();
   ctx.restore();
 }
@@ -1637,12 +1659,12 @@ function drawTriangle(cx, cy, px, py, R, theta, flags){
 
   if(flags.labels){
     if(flags.showOppAdjHyp){
-      label((cx+px)/2, cy+18, "Adj", colors.cos);
-      label(px+28, (cy+py)/2, "Opp", colors.sin);
-      label((cx+px)/2+12, (cy+py)/2-12, "Hyp", "#fff");
+      label((cx+px)/2, cy+18, "Adjacent", colors.cos);
+      label(px+48, (cy+py)/2, "Opposite", colors.sin);
+      label((cx+px)/2+12, (cy+py)/2-12, "Hypotenuse", "#fff");
     } else {
-      label((cx+px)/2, cy+18, "cos θ", colors.cos);
-      label(px+30, (cy+py)/2, "sin θ", colors.sin);
+      label((cx+px)/2, cy+18, "x = cos(θ)", colors.cos);
+      label(cx-52, (cy+py)/2, "y = sin(θ)", colors.sin);
       label((cx+px)/2+10, (cy+py)/2-12, "radius", "#fff");
     }
   }
@@ -1659,7 +1681,7 @@ function drawTriangle(cx, cy, px, py, R, theta, flags){
     neon(gx, cy, gx, gy, colors.sin, 3);
     neon(cx, cy, gx, gy, colors.white, 3);
     ctx.restore();
-    label((cx+gx)/2, cy-20, "Same θ, bigger triangle", colors.ok);
+    label((cx+gx)/2, cy-20, "Same θ → same shape", colors.ok);
   }
 
   if(flags.specialMode){
@@ -1667,7 +1689,7 @@ function drawTriangle(cx, cy, px, py, R, theta, flags){
   }
 
   if(flags.coMode){
-    label(px-10, py+26, "90°−θ", "#ddd");
+    label(px-10, py+26, "Complement viewpoint", "#ddd");
   }
 }
 function drawSpecialTicks(cx, cy, R){
@@ -1684,62 +1706,110 @@ function drawSpecialTicks(cx, cy, R){
   }
   ctx.restore();
 }
-function drawTanWall(cx, cy, R, theta){
-  const wallX = cx + R;
+
+/* ---------- Tan measuring line (intuitive + precise) ---------- */
+function drawTanMeasuringLine(cx, cy, R, theta){
+  const measureX = cx + R; // x = 1 on unit circle scale
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(wallX, cy+60); ctx.lineTo(wallX, cy-state.h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(measureX, cy+80); ctx.lineTo(measureX, cy-state.h); ctx.stroke();
 
+  // The direction line from center at angle theta.
+  // Intersection with x = 1 line gives y = tan(theta).
   const c = Math.cos(theta);
-  if(Math.abs(c) < 1e-5){
-    label(wallX+64, cy-90, "tan undefined", colors.bad);
+  const s = Math.sin(theta);
+
+  // cos = 0 → division by zero → tan undefined
+  if(Math.abs(c) < 1e-6){
+    label(measureX + 110, cy - 90, "tan is undefined here", colors.bad);
+    // show the direction ray
+    const px = cx + R*Math.cos(theta);
+    const py = cy - R*Math.sin(theta);
+    neon(cx, cy, px, py, "#fff", 3);
     return;
   }
 
-  const t = Math.tan(theta);
-  if(Math.abs(t) > 8){
-    label(wallX+64, cy-90, "tan huge", colors.bad);
-    laser(cx, cy, wallX, cy - clamp(R*t, -R*3, R*3));
-    return;
+  const t = s / c;
+
+  // Visual clamp only (not math). Line grows without bound near 90°.
+  const yHit = cy - R*t;
+  const yClamped = cy - clamp(R*t, -R*3.2, R*3.2);
+
+  // Draw the direction (white) and the hit height (yellow)
+  laser(cx, cy, measureX, yClamped);
+
+  // If it's clamped, say "grows without bound" instead of "infinite"
+  const wasClamped = Math.abs(R*t) > R*3.2;
+
+  neon(measureX, cy, measureX, yClamped, colors.tan, 4);
+  label(measureX + 64, (cy+yClamped)/2, "tan(θ)", colors.tan);
+
+  if(wasClamped){
+    label(measureX + 130, yClamped, "grows without bound near 90°", colors.bad);
+  } else {
+    // subtle: show sign as up/down
+    const note = (t>=0) ? "hits above → tan positive" : "hits below → tan negative";
+    label(measureX + 140, yClamped, note, "rgba(255,255,255,0.65)");
   }
 
-  const tanY = cy - R*t;
-  neon(wallX, cy, wallX, tanY, colors.tan, 4);
-  laser(cx, cy, wallX, tanY);
-  label(wallX+42, (cy+tanY)/2, "tan θ", colors.tan);
+  // label measuring line
+  label(measureX, cy + 44, "measuring line: x = 1", "rgba(255,255,255,0.55)");
 }
-function drawArcHighlight(cx, cy, R, theta){
-  const t = thetaSignedForArc(theta);
-  const start = 0;
-  const end = -t;
 
+/* ---------- Radians toolkit (visual + intuitive) ---------- */
+function drawArcToolkit(cx, cy, R, theta){
+  // 1 rad reference arc (green), always from 0 to 1 rad
+  drawArc(cx, cy, R, 0, -1, "rgba(34,197,94,0.45)", 10);
+  label(cx + R*0.26, cy - R*0.18, "1 rad (reference)", "rgba(34,197,94,0.95)");
+
+  // theta arc (violet)
+  const t = thetaSignedForArc(theta);
+  drawArc(cx, cy, R, 0, -t, "rgba(189,0,255,0.35)", 10);
+  label(cx + R*0.30, cy - R*0.06, "θ arc", "rgba(189,0,255,0.9)");
+
+  // show arc endpoints
+  dot(cx + R, cy, 4, "rgba(255,255,255,0.55)");
+  const px = cx + R*Math.cos(theta);
+  const py = cy - R*Math.sin(theta);
+  dot(px, py, 6, "#fff");
+
+  // show radius segment and label
+  neon(cx, cy, cx+R, cy, "rgba(255,255,255,0.35)", 2);
+  label(cx + R*0.5, cy + 22, "radius", "rgba(255,255,255,0.55)");
+}
+
+function drawArc(cx, cy, r, start, end, stroke, width){
   ctx.save();
-  ctx.lineWidth = 10;
-  ctx.strokeStyle = "rgba(34,197,94,0.35)";
+  ctx.lineWidth = width;
+  ctx.strokeStyle = stroke;
   ctx.beginPath();
-  if(t >= 0){ ctx.arc(cx, cy, R, start, end, true); }
-  else { ctx.arc(cx, cy, R, start, end, false); }
+  // arc direction: if end < start, draw anticlockwise true (because canvas y-down)
+  const anticlockwise = end > start;
+  ctx.arc(cx, cy, r, start, end, anticlockwise);
   ctx.stroke();
   ctx.restore();
-
-  label(cx + R*0.25, cy - R*0.12, "arc", colors.ok);
 }
+
+/* =========================================================
+   Micro readout (small, intuitive)
+   ========================================================= */
 function drawMicroReadout(cx, cy, px, py, theta, flags){
   const s = Math.sin(theta), c = Math.cos(theta);
-  const t = (Math.abs(c)<1e-6) ? Infinity : s/c;
+  const t = (Math.abs(c)<1e-6) ? NaN : s/c;
 
   let x = px + 16;
   let y = py - 18;
-  x = Math.max(12, Math.min(state.w-190, x));
+  x = Math.max(12, Math.min(state.w-200, x));
   y = Math.max(18, Math.min(state.h-18, y));
 
   const lines = [];
-  if(flags.circle || flags.triangle){
-    lines.push({k:"sin", v:fmt(s), c:colors.sin});
-    lines.push({k:"cos", v:fmt(c), c:colors.cos});
-  }
-  if(flags.walls || flags.scene==="word"){
-    lines.push({k:"tan", v:(Number.isFinite(t)?fmt(t):"undef"), c:colors.tan});
+
+  // Always reinforce the core idea: x and y
+  lines.push({k:"x", v:fmt(c), c:"rgba(0,204,255,0.95)"});
+  lines.push({k:"y", v:fmt(s), c:"rgba(255,0,85,0.95)"});
+
+  if(flags.measureLine || flags.scene==="word"){
+    lines.push({k:"tan", v:(Number.isFinite(t)?fmt(t):"undef"), c:"rgba(255,204,0,0.95)"});
   }
 
   const d = normDeg(radToDeg(theta));
@@ -1748,16 +1818,14 @@ function drawMicroReadout(cx, cy, px, py, theta, flags){
   if(isExact && (flags.specialMode || flags.arcMode || flags.scene==="circle")){
     const ex = exactFromDeg(snapInfo.best);
     if(ex){
-      lines.push({k:"sin*", v:ex.sin, c:"rgba(255,0,85,0.9)"});
-      lines.push({k:"cos*", v:ex.cos, c:"rgba(0,204,255,0.9)"});
-      if(flags.walls) lines.push({k:"tan*", v:ex.tan, c:"rgba(255,204,0,0.9)"});
+      lines.push({k:"sin*", v:ex.sin, c:"rgba(255,0,85,0.85)"});
+      lines.push({k:"cos*", v:ex.cos, c:"rgba(0,204,255,0.85)"});
+      if(flags.measureLine) lines.push({k:"tan*", v:ex.tan, c:"rgba(255,204,0,0.85)"});
       lines.push({k:"rad", v:degToPiFrac(snapInfo.best), c:"rgba(255,255,255,0.85)"});
     }
   }
 
-  if(lines.length === 0) return;
-
-  const pad=8, lh=16, w=172, h=pad*2 + lh*lines.length;
+  const pad=8, lh=16, w=182, h=pad*2 + lh*lines.length;
 
   ctx.fillStyle = "rgba(0,0,0,0.70)";
   ctx.strokeStyle = "rgba(255,255,255,0.08)";
@@ -1773,7 +1841,7 @@ function drawMicroReadout(cx, cy, px, py, theta, flags){
     ctx.fillStyle = lines[i].c;
     ctx.fillText(lines[i].k.toUpperCase(), x+10, yy);
     ctx.fillStyle = "#ddd";
-    ctx.fillText(lines[i].v, x+66, yy);
+    ctx.fillText(lines[i].v, x+70, yy);
   }
 }
 function roundRect(x, y, w, h, r, fill, stroke){
@@ -1788,42 +1856,94 @@ function roundRect(x, y, w, h, r, fill, stroke){
   if(stroke) ctx.stroke();
 }
 
-/* ---------- Word scene ---------- */
+/* =========================================================
+   Base scenes
+   ========================================================= */
+function drawRadius(cx, cy, px, py, R, theta){
+  neon(cx, cy, px, py, colors.white, 3);
+  dot(px, py, 6, "#fff");
+  angleArc(cx, cy, theta, R*0.18);
+}
+function drawAxes(cx, cy){
+  ctx.strokeStyle = colors.grid;
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(state.w, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, state.h); ctx.stroke();
+}
+function drawCircle(cx, cy, R){
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.stroke();
+}
+
+/* =========================================================
+   Word scene (FIXED: ground + tan is consistent)
+   ========================================================= */
 function drawWordScene(ox, oy, R, theta, flags){
   const w=state.w;
 
+  // ground baseline
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 4;
   ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
 
-  const baseX = ox + R*1.2;
+  // choose a fixed ground distance for the picture
+  const ground = R*1.25;
+  const baseX = ox + ground;
+
+  // height via tan
+  const height = ground * Math.tan(theta);
+  const topY = oy - height;
+
+  // building
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 6;
-  ctx.beginPath(); ctx.moveTo(baseX, oy); ctx.lineTo(baseX, oy - R*1.1); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(baseX, oy); ctx.lineTo(baseX, oy - R*1.2); ctx.stroke();
 
-  const hypLen = R*1.15;
-  const hx = ox + hypLen*Math.cos(theta);
-  const hy = oy - hypLen*Math.sin(theta);
-
+  // triangle: adj, opp, hyp
   neon(ox, oy, baseX, oy, colors.cos, 4);
-  neon(baseX, oy, baseX, hy, colors.sin, 4);
-  neon(ox, oy, baseX, hy, colors.white, 4);
+  neon(baseX, oy, baseX, topY, colors.sin, 4);
+  neon(ox, oy, baseX, topY, colors.white, 4);
 
   dot(ox, oy, 6, "#fff");
-  dot(baseX, hy, 6, "#fff");
+  dot(baseX, topY, 6, "#fff");
 
   angleArc(ox, oy, theta, 26);
+  rightAngle(baseX, oy, 14);
 
   if(flags.labels){
-    label((ox+baseX)/2, oy+18, "Ground (Adj)", colors.cos);
-    label(baseX+62, (oy+hy)/2, "Height (Opp)", colors.sin);
-    label((ox+baseX)/2+20, (oy+hy)/2-12, "Line of sight (Hyp)", "#fff");
+    label((ox+baseX)/2, oy+18, "Ground (adjacent)", colors.cos);
+    label(baseX+70, (oy+topY)/2, "Height (opposite)", colors.sin);
+    label((ox+baseX)/2+20, (oy+topY)/2-12, "Line of sight", "#fff");
+    label(baseX, oy + 44, "building", "rgba(255,255,255,0.55)");
   }
 }
 
 /* =========================================================
    Boot
    ========================================================= */
+function buildNav(){
+  const nav = document.getElementById("nav");
+  nav.innerHTML = "";
+  lessons.forEach((L, i) => {
+    const b = document.createElement("button");
+    b.textContent = L.nav;
+    b.onclick = () => setLesson(i);
+    b.id = `nav_${i}`;
+    nav.appendChild(b);
+  });
+}
+function updateNav(){
+  lessons.forEach((_, i) => {
+    const b = document.getElementById(`nav_${i}`);
+    if(b) b.classList.toggle("active", i === state.lessonIndex);
+  });
+}
+function ensureProgress(lessonId){
+  if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
+  return progress[lessonId];
+}
+
 buildNav();
 setLesson(0);
 setTimeout(resize, 20);
