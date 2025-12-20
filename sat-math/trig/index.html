@@ -2,136 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SAT Trig Engine — v1 (Complete)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>SAT Trig — Teach First, Simulate Second</title>
   <style>
     :root{
-      --bg:#050505; --panel:#0a0a0a; --text:#eee;
+      --bg:#050505; --panel:#0a0a0a; --text:#eee; --muted:#8a8a8a;
       --sin:#ff0055; --cos:#00ccff; --tan:#ffcc00;
       --sec:#ccffff; --csc:#ffcccc; --cot:#ff8800;
-      --root:#4ade80; --muted:#888; --grid:#222;
-      --good:#22c55e; --bad:#ef4444; --violet:#bd00ff;
+      --ok:#22c55e; --bad:#ef4444; --vio:#bd00ff;
+      --grid:#222; --line:#2a2a2a;
     }
-
     *{box-sizing:border-box}
     body{
-      margin:0; background:var(--bg); color:var(--text);
+      margin:0; height:100vh; width:100vw;
+      background:var(--bg); color:var(--text);
       font-family: "Segoe UI", system-ui, sans-serif;
-      overflow:hidden; display:flex; height:100vh; width:100vw;
+      display:flex; overflow:hidden;
     }
 
-    /* STAGE */
-    #stage{flex:1; min-width:0; position:relative; background:#000; overflow:hidden; cursor:crosshair;}
-    canvas{display:block; width:100%; height:100%; outline:none;}
+    /* LEFT STAGE */
+    #stage{
+      flex:1; min-width:0; position:relative; background:#000; overflow:hidden;
+      cursor:crosshair;
+    }
+    canvas{display:block; width:100%; height:100%}
 
-    /* TOP HUD */
+    /* Minimal HUD (small, not a spreadsheet) */
     #hud{
       position:absolute; top:14px; left:14px; z-index:20;
-      background:rgba(10,10,10,.85); border:1px solid #2a2a2a;
-      padding:10px 12px; border-radius:12px;
-      display:flex; gap:12px; align-items:center;
+      background:rgba(10,10,10,.82);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px 12px;
+      display:flex; gap:10px; align-items:flex-start;
       backdrop-filter: blur(6px);
     }
-    #hud .big{font-weight:900; letter-spacing:.3px}
-    #hud .sub{color:#aaa; font-size:.85rem}
-    #hud .pill{
-      padding:6px 10px; border-radius:999px; border:1px solid #333;
-      background:rgba(255,255,255,.05); color:#ddd; font-weight:700; font-size:.75rem;
+    #hud .k{font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase; color:#777}
+    #hud .v{font-weight:900; font-size:1.05rem; line-height:1.1}
+    #hud .s{font-size:.85rem; color:#aaa; margin-top:2px}
+    .pill{
+      padding:6px 10px; border-radius:999px;
+      border:1px solid #333; background:rgba(255,255,255,.05);
+      color:#ddd; font-weight:800; font-size:.72rem;
       user-select:none;
     }
-    #hud .pill.good{border-color:rgba(34,197,94,.5); color:#c7f9d6}
-    #hud .pill.bad{border-color:rgba(239,68,68,.5); color:#ffd1d1}
+    .pill.ok{border-color:rgba(34,197,94,.45); color:#c7f9d6}
+    .pill.bad{border-color:rgba(239,68,68,.45); color:#ffd1d1}
 
-    /* CONTROLS BAR */
-    .controls{
-      position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
-      display:flex; gap:8px; background:rgba(10,10,10,0.9);
-      padding:8px; border-radius:40px; border:1px solid #333; z-index:20;
-      max-width:95%; overflow-x:auto; white-space:nowrap; scrollbar-width:none;
+    /* Micro readout toggle */
+    #microbar{
+      position:absolute; top:14px; right:14px; z-index:20;
+      background:rgba(10,10,10,.82);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:8px 10px;
+      display:flex; gap:8px; align-items:center;
+      backdrop-filter: blur(6px);
     }
-    .controls::-webkit-scrollbar{display:none}
-    .btn{
-      background:transparent; color:#888; border:none; padding:8px 14px;
-      font-weight:800; text-transform:uppercase; letter-spacing:.5px;
-      cursor:pointer; border-radius:30px; font-size:.72rem; transition:.18s;
+    #microbar button{
+      border:none; cursor:pointer;
+      padding:8px 10px; border-radius:10px;
+      background:rgba(255,255,255,.06);
+      color:#ddd; font-weight:900; font-size:.75rem;
     }
-    .btn:hover{color:#fff; background:rgba(255,255,255,.1)}
-    .btn.active{color:#000; background:#fff; box-shadow:0 0 15px rgba(255,255,255,.25)}
-    .btn#btn-intro.active{background:var(--root); box-shadow:0 0 15px var(--root)}
-    .btn#btn-soh.active{background:var(--sin); box-shadow:0 0 15px var(--sin)}
-    .btn#btn-special.active{background:var(--cos); box-shadow:0 0 15px var(--cos)}
-    .btn#btn-quadrant.active{background:var(--tan); box-shadow:0 0 15px var(--tan)}
-    .btn#btn-identities.active{background:#fff; box-shadow:0 0 15px #fff}
-    .btn#btn-graph.active{background:var(--violet); box-shadow:0 0 15px var(--violet)}
-    .btn#btn-word.active{background:var(--good); box-shadow:0 0 15px var(--good)}
+    #microbar button.active{
+      background:#fff; color:#000;
+    }
 
-    /* RIGHT PANEL */
+    /* BOTTOM NAV */
+    #nav{
+      position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
+      z-index:20; display:flex; gap:8px;
+      background:rgba(10,10,10,.90);
+      border:1px solid #333;
+      border-radius:16px;
+      padding:10px;
+      max-width:95%;
+      overflow-x:auto; white-space:nowrap; scrollbar-width:none;
+    }
+    #nav::-webkit-scrollbar{display:none}
+    #nav button{
+      border:none; cursor:pointer;
+      padding:9px 12px; border-radius:12px;
+      background:transparent; color:#888;
+      font-weight:900; letter-spacing:.4px; text-transform:uppercase;
+      font-size:.72rem;
+      transition:.15s;
+    }
+    #nav button:hover{color:#fff; background:rgba(255,255,255,.08)}
+    #nav button.active{background:#fff; color:#000}
+
+    /* RIGHT PANEL = LESSON, not numbers */
     #panel{
-      width:440px; flex-shrink:0; background:var(--panel);
-      border-left:1px solid #222; display:flex; flex-direction:column; z-index:10;
+      width:460px; flex-shrink:0;
+      background:var(--panel);
+      border-left:1px solid #222;
+      display:flex; flex-direction:column;
     }
-    .content{padding:22px 22px 10px 22px; overflow-y:auto; flex-grow:1}
-    h1{margin:0; font-size:1.9rem; letter-spacing:-1px; line-height:1}
-    h2{margin:8px 0 14px 0; font-size:.78rem; color:#666; text-transform:uppercase; letter-spacing:3px}
-    p{line-height:1.55; color:#bbb; margin:0 0 12px 0; font-size:.95rem}
+    #panelTop{
+      padding:18px 18px 12px 18px;
+      border-bottom:1px solid #1f1f1f;
+    }
+    #title{
+      margin:0; font-size:1.45rem; letter-spacing:-.5px; line-height:1.15;
+      font-weight:950;
+    }
+    #subtitle{
+      margin:8px 0 0 0;
+      color:#8f8f8f; font-size:.92rem; line-height:1.35;
+    }
+
+    /* Layer buttons enforce the sequence */
+    #layers{
+      margin-top:12px;
+      display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+    }
+    #layers button{
+      border:1px solid #2b2b2b;
+      border-radius:12px;
+      padding:10px 8px;
+      background:#070707;
+      color:#bbb;
+      font-weight:950;
+      font-size:.72rem;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    #layers button.active{
+      background:#fff; color:#000; border-color:#fff;
+    }
+    #layers button.locked{
+      opacity:.35; cursor:not-allowed;
+    }
+
+    #body{
+      padding:16px 18px 18px 18px;
+      overflow:auto;
+      flex:1;
+    }
+    p{margin:0 0 12px 0; color:#c0c0c0; line-height:1.6; font-size:.95rem}
     strong{color:#fff}
-    ul{margin:0 0 14px 18px; color:#bbb}
+    ul{margin:0 0 12px 18px; color:#c0c0c0}
     li{margin:6px 0}
-    .highlight{background:rgba(255,255,255,.08); border:1px solid #2a2a2a; padding:10px 12px; border-radius:10px; color:#eaeaea}
-    .warn{border-color:rgba(239,68,68,.35); background:rgba(239,68,68,.08)}
-    .ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.08)}
-    .mini{color:#999; font-size:.86rem}
-
-    /* INTERACTIVE FORM */
-    .form{
-      margin-top:10px;
-      padding:12px; border-radius:12px;
-      border:1px solid #2a2a2a; background:#060606;
+    .box{
+      border:1px solid #2b2b2b;
+      background:rgba(255,255,255,.05);
+      border-radius:14px;
+      padding:12px 12px;
+      margin:12px 0;
     }
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    label{display:block; font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:#777; margin:0 0 6px 0}
-    select, input{
-      width:100%; padding:10px 10px; border-radius:10px;
-      border:1px solid #2b2b2b; background:#0b0b0b; color:#fff;
-      font-weight:700; outline:none;
-    }
-    input[type="number"]{appearance:textfield}
-    .form .row{display:flex; gap:10px; align-items:center; margin-top:10px}
-    .cta{
-      background:#fff; color:#000; border:none; border-radius:12px;
-      padding:10px 12px; font-weight:900; cursor:pointer;
-    }
-    .cta:hover{filter:brightness(0.96)}
-    .toggle{
-      background:transparent; color:#ddd; border:1px solid #2b2b2b;
-      border-radius:12px; padding:10px 12px; font-weight:800; cursor:pointer;
-    }
-    .toggle.on{border-color:rgba(34,197,94,.5); box-shadow:0 0 0 1px rgba(34,197,94,.15) inset}
-    .toggle.off{border-color:rgba(239,68,68,.4); box-shadow:0 0 0 1px rgba(239,68,68,.12) inset}
-
-    /* DATA BOX */
-    .data-box{
-      background:#000; padding:14px 18px;
-      border-top:1px solid #222; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-      font-size:.88rem;
-    }
-    .drow{display:flex; justify-content:space-between; margin-bottom:7px; align-items:center}
-    .bar-bg{width:90px; height:6px; background:#222; border-radius:3px; overflow:hidden}
-    .bar-fill{height:100%; width:0%; transition:width .08s}
+    .box.ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.07)}
+    .box.bad{border-color:rgba(239,68,68,.35); background:rgba(239,68,68,.07)}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace}
-
-    /* MINI CANVAS (graph) */
-    #mini-stage{
-      width:100%; height:220px; background:#000;
-      border-top:1px solid #222; border-bottom:1px solid #222;
-      display:none;
+    .tag{
+      display:inline-block; padding:2px 8px; border-radius:999px;
+      background:rgba(255,255,255,.07); border:1px solid #2b2b2b;
+      color:#ddd; font-weight:900; font-size:.74rem; letter-spacing:.4px;
+    }
+    .sat{
+      border:1px solid #2b2b2b;
+      background:#060606;
+      border-radius:14px;
+      padding:12px;
+    }
+    .sat .q{
+      color:#e8e8e8; font-weight:900; margin-bottom:8px;
+    }
+    .sat .a{
+      color:#bdbdbd; font-size:.92rem; line-height:1.55;
+    }
+    .sat .map{
+      margin-top:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid #232323;
+      background:rgba(255,255,255,.04);
+      color:#cfcfcf;
     }
 
-    @media (max-width: 780px){
+    #panelBottom{
+      padding:12px 18px;
+      border-top:1px solid #1f1f1f;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+    }
+    #panelBottom .left, #panelBottom .right{display:flex; gap:10px}
+    #panelBottom button{
+      border:none; cursor:pointer;
+      padding:10px 12px; border-radius:12px;
+      background:rgba(255,255,255,.08); color:#ddd; font-weight:950;
+    }
+    #panelBottom button.primary{
+      background:#fff; color:#000;
+    }
+    #panelBottom button:disabled{
+      opacity:.35; cursor:not-allowed;
+    }
+
+    @media (max-width: 820px){
       body{flex-direction:column}
-      #stage{flex:2}
-      #panel{width:100%; height:50%; border-left:none; border-top:1px solid #222}
-      #hud{top:10px; left:10px}
+      #panel{width:100%; height:52%}
+      #stage{height:48%}
+      #microbar{top:64px}
     }
   </style>
 </head>
@@ -142,341 +214,781 @@
 
   <div id="hud">
     <div>
-      <div class="big" id="hud-angle">θ = 0°</div>
-      <div class="sub" id="hud-eq">Equivalent: 0°</div>
+      <div class="k">ANGLE</div>
+      <div class="v" id="hudTheta">θ = 0°</div>
+      <div class="s" id="hudEq">Equivalent: 0°</div>
     </div>
-    <div class="pill" id="hud-quad">Q I</div>
-    <div class="pill" id="hud-ref">ref 0°</div>
+    <div class="pill ok" id="hudQuad">QI</div>
+    <div class="pill" id="hudRef">ref 0°</div>
   </div>
 
-  <div class="controls">
-    <button class="btn active" id="btn-intro" onclick="setMode('intro')">0. Start</button>
-    <button class="btn" id="btn-soh" onclick="setMode('soh')">1. SOHCAHTOA</button>
-    <button class="btn" id="btn-special" onclick="setMode('special')">2. Special Angles</button>
-    <button class="btn" id="btn-quadrant" onclick="setMode('quadrant')">3. Quadrants</button>
-    <button class="btn" id="btn-identities" onclick="setMode('identities')">4. Identities</button>
-    <button class="btn" id="btn-graph" onclick="setMode('graph')">5. Graph</button>
-    <button class="btn" id="btn-word" onclick="setMode('word')">6. Word Problems</button>
+  <div id="microbar">
+    <button id="btnReadout" class="active" title="Show small values on the canvas">READOUT</button>
+    <button id="btnSnap" class="" title="Snap θ to SAT special angles">SNAP</button>
   </div>
+
+  <div id="nav"></div>
 </div>
 
 <div id="panel">
-  <canvas id="mini-stage" width="440" height="220"></canvas>
+  <div id="panelTop">
+    <h1 id="title"></h1>
+    <div id="subtitle"></div>
 
-  <div class="content">
-    <h1>SAT TRIG<br/>ENGINE</h1>
-    <h2>Zero fluff. Zero gaps.</h2>
-    <div id="txt"></div>
+    <div id="layers">
+      <button id="layer0" onclick="setLayer(0)">1 Visual</button>
+      <button id="layer1" onclick="setLayer(1)">2 Concept</button>
+      <button id="layer2" onclick="setLayer(2)">3 Math</button>
+      <button id="layer3" onclick="setLayer(3)">4 SAT</button>
+    </div>
   </div>
 
-  <div class="data-box" id="data"></div>
+  <div id="body"></div>
+
+  <div id="panelBottom">
+    <div class="left">
+      <button id="btnPrev" onclick="prevLesson()">Prev</button>
+      <button id="btnNext" onclick="nextLesson()">Next</button>
+    </div>
+    <div class="right">
+      <button id="btnBackLayer" onclick="prevLayer()">Back Step</button>
+      <button class="primary" id="btnForwardLayer" onclick="nextLayer()">Next Step</button>
+    </div>
+  </div>
 </div>
 
 <script>
-/* =========================
-   SAT TRIG ENGINE (Complete)
-   ========================= */
+/* =========================================================
+   Teaching-first engine
+   Goal: Visual -> Concept -> Math -> SAT, per section.
+   No constant right-side number spam.
+   Small readout sits on the canvas when you want it.
+   ========================================================= */
 
-const cvs = document.getElementById('cvs');
-const ctx = cvs.getContext('2d', { alpha:false });
-
-const mini = document.getElementById('mini-stage');
-const mctx = mini.getContext('2d');
+const cvs = document.getElementById("cvs");
+const ctx = cvs.getContext("2d", {alpha:false});
 
 const colors = {
-  bg:'#050505', grid:'#222',
-  sin:'#ff0055', cos:'#00ccff', tan:'#ffcc00',
-  sec:'#ccffff', csc:'#ffcccc', cot:'#ff8800',
-  root:'#4ade80', white:'#fff', gray:'#888', violet:'#bd00ff',
-  good:'#22c55e', bad:'#ef4444'
+  bg:"#050505", grid:"#222",
+  sin:"#ff0055", cos:"#00ccff", tan:"#ffcc00",
+  white:"#fff", muted:"#888", ok:"#22c55e", bad:"#ef4444",
+  vio:"#bd00ff"
 };
+
+const SPECIAL = [0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360];
 
 const state = {
-  w:0,h:0,cx:0,cy:0, R:200, // display radius
-  angleRad: 0.6,            // can be any real number
-  mode:'intro',
+  w:0,h:0,cx:0,cy:0,R:220,
+  theta: 0.65,      // radians (raw, can be negative)
   dragging:false,
-  snapOn:true,
-  units:'deg',              // display units for HUD and sliders
-  showExact:true,
-
-  // SOH solver
-  givenSide:'hyp', givenVal: 10,
-  askedSide:'opp'
+  readout:true,
+  snap:false,
+  lessonIndex:0,
+  layerIndex:0,
+  unlockedLayer:0
 };
 
-// Special angles list (degrees) for snapping and exact values
-const SPECIAL = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
-
-// Content (overhauled language)
-const content = {
-  intro: `
-    <p><strong>What this is:</strong> a SAT trig simulator that forces the same decisions the test forces.</p>
-
-    <div class="highlight ok">
-      <p><strong>Rule 1:</strong> Trig is not “memorize.” It’s “pick the correct ratio.”</p>
-      <p><strong>Rule 2:</strong> The triangle changes. The ratios don’t.</p>
-    </div>
-
-    <p><strong>How to use the canvas:</strong></p>
-    <ul>
-      <li>Drag anywhere on the stage to rotate the angle θ.</li>
-      <li>The point on the circle is <span class="mono">(cos θ, sin θ)</span>.</li>
-      <li>Pink = sine (vertical). Blue = cosine (horizontal).</li>
-    </ul>
-
-    <div class="highlight warn">
-      <p><strong>SAT trap:</strong> if you only understand Quadrant I, you only understand ~25% of trig.</p>
-    </div>
-
-    <p class="mini">Go in order: SOHCAHTOA → Special Angles → Quadrants → Identities → Graph → Word Problems.</p>
-  `,
-
-  soh: `
-    <p><strong>SOHCAHTOA is a decision engine.</strong></p>
-    <p>Every SAT right-triangle trig question is:</p>
-    <div class="highlight">
-      <p><strong>Given:</strong> some side(s) and an angle</p>
-      <p><strong>Asked:</strong> a missing side or a ratio</p>
-      <p><strong>Job:</strong> pick the ratio that contains what you need and what you have.</p>
-    </div>
-
-    <p><strong>Names are always relative to θ:</strong></p>
-    <ul>
-      <li><strong>Opp</strong> = across from θ</li>
-      <li><strong>Adj</strong> = next to θ</li>
-      <li><strong>Hyp</strong> = the longest side (across the right angle)</li>
-    </ul>
-
-    <div class="form" id="soh-form"></div>
-
-    <div class="highlight warn">
-      <p><strong>Trap:</strong> students pick a ratio because it “looks familiar.” That leads to wrong equations.</p>
-      <p>You pick based on <strong>Given → Asked</strong>. No guessing.</p>
-    </div>
-  `,
-
-  special: `
-    <p><strong>Special angles are free points.</strong> You either know them instantly or you bleed time.</p>
-
-    <div class="highlight">
-      <p><strong>30°–60°–90° triangle:</strong> <span class="mono">1 : √3 : 2</span></p>
-      <p><strong>45°–45°–90° triangle:</strong> <span class="mono">1 : 1 : √2</span></p>
-      <p class="mini">Those ratios generate the exact unit-circle values.</p>
-    </div>
-
-    <p><strong>What this mode does:</strong></p>
-    <ul>
-      <li>Snaps θ to the SAT angles (toggle it on/off).</li>
-      <li>Shows exact values (radicals + fractions), not just decimals.</li>
-    </ul>
-
-    <div class="highlight ok">
-      <p><strong>Reality:</strong> SAT expects exact forms like <span class="mono">√3/2</span>, not <span class="mono">0.866</span>.</p>
-    </div>
-  `,
-
-  quadrant: `
-    <p><strong>Quadrants decide the signs.</strong></p>
-    <p>Same reference angle. Different signs. That’s the whole trick.</p>
-
-    <div class="highlight">
-      <p><strong>Quadrant signs (sin, cos, tan):</strong></p>
-      <ul>
-        <li><strong>QI:</strong> + + +</li>
-        <li><strong>QII:</strong> + − −</li>
-        <li><strong>QIII:</strong> − − +</li>
-        <li><strong>QIV:</strong> − + −</li>
-      </ul>
-      <p class="mini">Tan is positive when sin and cos share the same sign.</p>
-    </div>
-
-    <p><strong>Reference angle:</strong> the acute angle to the x-axis. You use it to fetch exact values, then apply signs.</p>
-  `,
-
-  identities: `
-    <p><strong>Identities are shortcuts.</strong> SAT uses them to hide an easy problem inside algebra.</p>
-
-    <div class="highlight">
-      <p><strong>The core three:</strong></p>
-      <ul>
-        <li><span class="mono">sin²θ + cos²θ = 1</span></li>
-        <li><span class="mono">1 + tan²θ = sec²θ</span></li>
-        <li><span class="mono">1 + cot²θ = csc²θ</span></li>
-      </ul>
-      <p><strong>Fast flips:</strong></p>
-      <ul>
-        <li><span class="mono">tanθ = sinθ / cosθ</span></li>
-        <li><span class="mono">secθ = 1 / cosθ</span>, <span class="mono">cscθ = 1 / sinθ</span>, <span class="mono">cotθ = 1 / tanθ</span></li>
-      </ul>
-    </div>
-
-    <div class="highlight warn">
-      <p><strong>Trap:</strong> forgetting signs in QII/QIII/QIV while doing algebra.</p>
-      <p>Before you simplify, lock quadrant → lock signs.</p>
-    </div>
-  `,
-
-  graph: `
-    <p><strong>Graphs show behavior.</strong> SAT tests you on amplitude/period/shift because it’s pattern recognition.</p>
-
-    <div class="highlight">
-      <p><strong>Sin wave basics:</strong></p>
-      <ul>
-        <li>Amplitude = |a| in <span class="mono">y = a·sin(bx) + k</span></li>
-        <li>Period = <span class="mono">360°/|b|</span> (or <span class="mono">2π/|b|</span>)</li>
-        <li>Midline = k</li>
-      </ul>
-    </div>
-
-    <p><strong>This view:</strong> top line is sin, bottom line is cos. The vertical cursor is your current θ.</p>
-  `,
-
-  word: `
-    <p><strong>Word problems are trig in disguise.</strong> Same ratios. Different nouns.</p>
-
-    <div class="highlight">
-      <p><strong>Translation table:</strong></p>
-      <ul>
-        <li><strong>Height</strong> usually = Opp</li>
-        <li><strong>Ground distance</strong> usually = Adj</li>
-        <li><strong>Line of sight / cable / ladder</strong> usually = Hyp</li>
-      </ul>
-    </div>
-
-    <div class="form" id="word-form"></div>
-
-    <div class="highlight warn">
-      <p><strong>Trap:</strong> “angle of depression” looks different, but it’s the same angle as elevation (alternate interior angles).</p>
-    </div>
-  `
-};
-
-/* =========================
-   Geometry helpers
-   ========================= */
-
-function radToDeg(r){ return r * 180 / Math.PI; }
-function degToRad(d){ return d * Math.PI / 180; }
-
+function radToDeg(r){ return r*180/Math.PI; }
+function degToRad(d){ return d*Math.PI/180; }
 function normDeg(d){
-  // Normalize to [0,360)
-  let x = d % 360;
-  if(x < 0) x += 360;
-  // treat 360 as 0 for clean display in exact logic
-  if(Math.abs(x - 360) < 1e-9) x = 0;
+  let x = d%360; if(x<0) x+=360;
+  if(Math.abs(x-360)<1e-9) x=0;
   return x;
 }
 function normRad(r){
-  let x = r % (2*Math.PI);
-  if(x < 0) x += 2*Math.PI;
-  if(Math.abs(x - 2*Math.PI) < 1e-9) x = 0;
+  let x = r%(2*Math.PI); if(x<0) x+=2*Math.PI;
+  if(Math.abs(x-2*Math.PI)<1e-9) x=0;
   return x;
 }
-
 function quadrantFromDeg(d0){
   const d = normDeg(d0);
-  if(d >= 0 && d < 90) return "I";
-  if(d > 90 && d < 180) return "II";
-  if(d > 180 && d < 270) return "III";
-  if(d > 270 && d < 360) return "IV";
-  // axis cases:
-  if(d === 0) return "Axis (+x)";
-  if(d === 90) return "Axis (+y)";
-  if(d === 180) return "Axis (-x)";
-  if(d === 270) return "Axis (-y)";
-  return "?";
+  if(d===0) return "Axis +x";
+  if(d===90) return "Axis +y";
+  if(d===180) return "Axis -x";
+  if(d===270) return "Axis -y";
+  if(d>0 && d<90) return "QI";
+  if(d>90 && d<180) return "QII";
+  if(d>180 && d<270) return "QIII";
+  return "QIV";
 }
-
 function referenceAngleDeg(d0){
   const d = normDeg(d0);
-  if(d >= 0 && d <= 90) return d;
-  if(d > 90 && d < 180) return 180 - d;
-  if(d >= 180 && d <= 270) return d - 180;
-  if(d > 270 && d < 360) return 360 - d;
+  if(d>=0 && d<=90) return d;
+  if(d>90 && d<180) return 180-d;
+  if(d>=180 && d<=270) return d-180;
+  if(d>270 && d<360) return 360-d;
   return 0;
 }
-
 function signPack(d0){
   const d = normDeg(d0);
-  // return signs for sin and cos
-  if(d === 0 || d === 180) return {sin:0, cos: d===0?+1:-1};
-  if(d === 90 || d === 270) return {sin: d===90?+1:-1, cos:0};
-  if(d > 0 && d < 90) return {sin:+1, cos:+1};
-  if(d > 90 && d < 180) return {sin:+1, cos:-1};
-  if(d > 180 && d < 270) return {sin:-1, cos:-1};
-  if(d > 270 && d < 360) return {sin:-1, cos:+1};
-  return {sin:0, cos:0};
+  if(d===0) return {sin:0, cos:+1};
+  if(d===90) return {sin:+1, cos:0};
+  if(d===180) return {sin:0, cos:-1};
+  if(d===270) return {sin:-1, cos:0};
+  if(d>0 && d<90) return {sin:+1, cos:+1};
+  if(d>90 && d<180) return {sin:+1, cos:-1};
+  if(d>180 && d<270) return {sin:-1, cos:-1};
+  return {sin:-1, cos:+1};
 }
-
 function nearestSpecialDeg(d0){
   const d = normDeg(d0);
-  let best = SPECIAL[0], bestDist = 1e9;
+  let best=SPECIAL[0], bestDist=1e9;
   for(const s of SPECIAL){
-    const dist = Math.min(Math.abs(d - s), Math.abs((d+360) - s), Math.abs(d - (s+360)));
-    if(dist < bestDist){ bestDist = dist; best = s; }
+    const dist = Math.min(Math.abs(d-s), Math.abs((d+360)-s), Math.abs(d-(s+360)));
+    if(dist<bestDist){ bestDist=dist; best=s; }
   }
   return {best, dist:bestDist};
 }
+function fmt(x){
+  if(!Number.isFinite(x)) return "undef";
+  const ax=Math.abs(x);
+  if(ax<1e-4) return "0";
+  return x.toFixed(3);
+}
 
-/* Exact value builder for common special angles */
-function exactBaseSinCos(refDeg){
-  // refDeg is one of 0,30,45,60,90
-  switch(refDeg){
-    case 0:  return {sin:"0", cos:"1"};
-    case 30: return {sin:"1/2", cos:"√3/2"};
-    case 45: return {sin:"√2/2", cos:"√2/2"};
-    case 60: return {sin:"√3/2", cos:"1/2"};
-    case 90: return {sin:"1", cos:"0"};
-    default: return null;
+/* =========================================================
+   Lessons: each lesson defines:
+   - title/subtitle
+   - per layer: (visual config + text + sat example)
+   - draw flags that change visuals to match the teaching step
+   ========================================================= */
+
+const LAYERS = ["Visual","Concept","Math","SAT"];
+
+const lessons = [
+  {
+    id:"unit",
+    nav:"0 Unit Circle",
+    title:"Unit Circle: make it visual first",
+    subtitle:"You move θ. The point moves. That’s the foundation. No formulas yet.",
+    layers:[
+      {
+        // VISUAL
+        flags:{circle:true, triangle:false, projections:false, labels:false, walls:false, quadrants:false},
+        html:`
+          <p><strong>Do this:</strong> drag on the left stage. Watch the point move around the circle.</p>
+          <div class="box">
+            <p><strong>What you should notice:</strong></p>
+            <ul>
+              <li>The circle is the “track.”</li>
+              <li>θ is the “steering wheel.”</li>
+              <li>The point is the only thing that matters right now.</li>
+            </ul>
+          </div>
+          <p class="tag">Goal: your brain accepts “angle = position” before any math appears.</p>
+        `
+      },
+      {
+        // CONCEPT
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+        html:`
+          <p><strong>Concept:</strong> the point has two coordinates.</p>
+          <div class="box">
+            <ul>
+              <li><strong>Horizontal</strong> coordinate = how far right/left.</li>
+              <li><strong>Vertical</strong> coordinate = how far up/down.</li>
+            </ul>
+          </div>
+          <p>On this app:</p>
+          <ul>
+            <li><span style="color:var(--cos)"><strong>Blue</strong></span> is horizontal.</li>
+            <li><span style="color:var(--sin)"><strong>Pink</strong></span> is vertical.</li>
+          </ul>
+        `
+      },
+      {
+        // MATH
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+        html:`
+          <p><strong>Math translation:</strong></p>
+          <div class="box ok">
+            <p class="mono"><strong>(x, y) = (cos θ, sin θ)</strong></p>
+            <p>That’s it. That’s the “unit circle” statement.</p>
+          </div>
+          <div class="box bad">
+            <p><strong>SAT trap:</strong> mixing them up.</p>
+            <p><span class="mono">cos</span> is <strong>x</strong>. <span class="mono">sin</span> is <strong>y</strong>. Always.</p>
+          </div>
+        `
+      },
+      {
+        // SAT
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              Point P is on the unit circle. If P has coordinates <span class="mono">(0.6, 0.8)</span>, what is <span class="mono">sin(θ)</span>?
+            </div>
+            <div class="map">
+              <p><strong>Mapping:</strong></p>
+              <ul>
+                <li><span class="mono">x = cos θ</span> → here <span class="mono">cos θ = 0.6</span></li>
+                <li><span class="mono">y = sin θ</span> → here <span class="mono">sin θ = 0.8</span></li>
+              </ul>
+              <p><strong>Answer is literally the y-value.</strong></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"soh",
+    nav:"1 SOHCAHTOA",
+    title:"SOHCAHTOA: sides are relative to θ",
+    subtitle:"SAT doesn’t test “what is sine?” It tests “which ratio should I use?”",
+    layers:[
+      {
+        flags:{circle:true, triangle:true, projections:false, labels:false, walls:false, quadrants:false, showOppAdjHyp:true},
+        html:`
+          <p><strong>Visual:</strong> this is a right triangle sitting inside the circle.</p>
+          <div class="box">
+            <p><strong>Look only at names:</strong></p>
+            <ul>
+              <li><strong>Hyp</strong> = the long slanted side.</li>
+              <li><strong>Opp</strong> = directly across from θ.</li>
+              <li><strong>Adj</strong> = next to θ (touching it).</li>
+            </ul>
+          </div>
+          <div class="box bad">
+            <p><strong>Trap:</strong> students label “up” as Opp forever.</p>
+            <p>Wrong. Opp changes when θ changes.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+        html:`
+          <p><strong>Concept:</strong> ratios ignore scale.</p>
+          <div class="box ok">
+            <p>If the triangle gets bigger, sides grow… but the ratios stay the same.</p>
+            <p>That’s why trig works.</p>
+          </div>
+          <p>SOHCAHTOA is just a menu:</p>
+          <ul>
+            <li><strong>SOH</strong>: <span class="mono">sin = Opp/Hyp</span></li>
+            <li><strong>CAH</strong>: <span class="mono">cos = Adj/Hyp</span></li>
+            <li><strong>TOA</strong>: <span class="mono">tan = Opp/Adj</span></li>
+          </ul>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+        html:`
+          <p><strong>Math:</strong> the three definitions.</p>
+          <div class="box">
+            <p class="mono">sin θ = Opp/Hyp</p>
+            <p class="mono">cos θ = Adj/Hyp</p>
+            <p class="mono">tan θ = Opp/Adj</p>
+          </div>
+          <div class="box bad">
+            <p><strong>Non-negotiable SAT rule:</strong></p>
+            <p>You pick a ratio because it contains what you <strong>have</strong> and what you <strong>need</strong>.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, showOppAdjHyp:true},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              In a right triangle, θ is an acute angle. The side opposite θ is 9 and the hypotenuse is 15.
+              What is <span class="mono">sin(θ)</span>?
+            </div>
+            <div class="map">
+              <p><strong>Given → Asked:</strong></p>
+              <ul>
+                <li>Given: Opp and Hyp</li>
+                <li>Asked: sin</li>
+              </ul>
+              <p><strong>Pick the ratio that uses Opp and Hyp:</strong> <span class="mono">sin = Opp/Hyp</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"scale",
+    nav:"2 Scaling",
+    title:"Scaling: turn ratios into side lengths",
+    subtitle:"This is where SAT problems become “build one equation and solve.”",
+    layers:[
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:false, scaleDemo:true},
+        html:`
+          <p><strong>Visual:</strong> the triangle “zooms.” Ratios don’t care.</p>
+          <div class="box">
+            <p>Imagine hypotenuse is not 1 anymore.</p>
+            <p>Same θ. Bigger triangle.</p>
+          </div>
+          <p class="tag">Goal: accept “ratio × known side = unknown side”.</p>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true},
+        html:`
+          <p><strong>Concept:</strong> similar triangles.</p>
+          <div class="box ok">
+            <p>When θ stays the same, the triangle’s shape stays the same.</p>
+            <p>Only the size changes.</p>
+          </div>
+          <p>So if you know one side, you can compute the others with trig ratios.</p>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true},
+        html:`
+          <p><strong>Math tools SAT expects you to build instantly:</strong></p>
+          <div class="box">
+            <p class="mono">Opp = Hyp · sin θ</p>
+            <p class="mono">Adj = Hyp · cos θ</p>
+            <p class="mono">Opp = Adj · tan θ</p>
+          </div>
+          <div class="box bad">
+            <p><strong>Trap:</strong> using tan when you have Hyp. Tan doesn’t include Hyp. That wastes your information.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, scaleDemo:true},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              A right triangle has hypotenuse 10 and angle θ. If <span class="mono">sin(θ)=0.6</span>,
+              what is the length of the side opposite θ?
+            </div>
+            <div class="map">
+              <p><strong>Translate:</strong> <span class="mono">sin = Opp/Hyp</span></p>
+              <p><strong>Build:</strong> <span class="mono">0.6 = Opp/10</span></p>
+              <p><strong>So:</strong> <span class="mono">Opp = 10·0.6</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"special",
+    nav:"3 Special Angles",
+    title:"Special angles: exact values, zero decimals",
+    subtitle:"SAT loves √2/2 and √3/2. If you hesitate, you lose time.",
+    layers:[
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:false, specialMode:true},
+        html:`
+          <p><strong>Visual:</strong> turn SNAP on. Drag. It locks to SAT angles.</p>
+          <div class="box">
+            <p>These are the angles SAT keeps recycling:</p>
+            <p class="mono">0, 30, 45, 60, 90, …</p>
+          </div>
+          <p class="tag">Goal: your eye recognizes these positions.</p>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+        html:`
+          <p><strong>Concept:</strong> all exact values come from two triangles:</p>
+          <div class="box ok">
+            <p><strong>30-60-90:</strong> <span class="mono">1 : √3 : 2</span></p>
+            <p><strong>45-45-90:</strong> <span class="mono">1 : 1 : √2</span></p>
+          </div>
+          <p>Unit circle values are those ratios scaled to hypotenuse 1.</p>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+        html:`
+          <p><strong>Math:</strong> the core exact ones (Quadrant I):</p>
+          <div class="box">
+            <p class="mono">sin 30 = 1/2</p>
+            <p class="mono">cos 30 = √3/2</p>
+            <p class="mono">sin 45 = √2/2</p>
+            <p class="mono">cos 45 = √2/2</p>
+            <p class="mono">sin 60 = √3/2</p>
+            <p class="mono">cos 60 = 1/2</p>
+          </div>
+          <div class="box bad">
+            <p><strong>Rule:</strong> SAT wants exact forms. Decimals are bait.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:false, specialMode:true},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              What is <span class="mono">sin(π/3)</span>?
+            </div>
+            <div class="map">
+              <p><strong>Translate:</strong> <span class="mono">π/3 = 60°</span></p>
+              <p><strong>Recall:</strong> <span class="mono">sin 60 = √3/2</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"quadrants",
+    nav:"4 Quadrants",
+    title:"Quadrants: same reference angle, different signs",
+    subtitle:"This is where most students start hallucinating. Fix that.",
+    layers:[
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:false, walls:false, quadrants:true},
+        html:`
+          <p><strong>Visual:</strong> drag θ into every quadrant. Watch what flips.</p>
+          <div class="box">
+            <ul>
+              <li>Right/left decides the sign of cosine (x).</li>
+              <li>Up/down decides the sign of sine (y).</li>
+            </ul>
+          </div>
+          <p class="tag">Goal: you see signs before you compute anything.</p>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+        html:`
+          <p><strong>Concept:</strong> reference angle is the “acute copy.”</p>
+          <div class="box ok">
+            <p>You find the acute angle to the x-axis.</p>
+            <p>You grab the exact values from Quadrant I.</p>
+            <p>Then you apply signs based on the quadrant.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+        html:`
+          <p><strong>Math signs table (sin, cos, tan):</strong></p>
+          <div class="box">
+            <p class="mono">QI: + + +</p>
+            <p class="mono">QII: + − −</p>
+            <p class="mono">QIII: − − +</p>
+            <p class="mono">QIV: − + −</p>
+          </div>
+          <div class="box bad">
+            <p><strong>Trap:</strong> getting the magnitude right but the sign wrong.</p>
+            <p>That is still 0 points.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:false, quadrants:true},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              If θ = 210°, what is <span class="mono">cos(θ)</span>?
+            </div>
+            <div class="map">
+              <p><strong>Step 1:</strong> reference angle = 30°</p>
+              <p><strong>Step 2:</strong> cos 30 = √3/2</p>
+              <p><strong>Step 3:</strong> 210° is QIII → cos is negative</p>
+              <p><strong>Result:</strong> <span class="mono">−√3/2</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"tan",
+    nav:"5 Tan & Slope",
+    title:"Tan: the slope of the angle",
+    subtitle:"SAT hides tan in coordinate geometry. This connects them.",
+    layers:[
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:false, walls:true, quadrants:false},
+        html:`
+          <p><strong>Visual:</strong> the yellow wall is “run = 1”. The vertical is “rise”.</p>
+          <div class="box">
+            <p>As θ rotates, the slope changes.</p>
+            <p>That slope is <strong>tan</strong>.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+        html:`
+          <p><strong>Concept:</strong> slope = rise/run.</p>
+          <div class="box ok">
+            <p><strong>rise</strong> = Opp</p>
+            <p><strong>run</strong> = Adj</p>
+            <p>So <strong>tan</strong> is literally <strong>Opp/Adj</strong>.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+        html:`
+          <p><strong>Math:</strong></p>
+          <div class="box">
+            <p class="mono">tan θ = Opp/Adj</p>
+            <p class="mono">tan θ = sin θ / cos θ</p>
+          </div>
+          <div class="box bad">
+            <p><strong>Key SAT warning:</strong> tan is undefined when cos = 0 (90°, 270°).</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:true, triangle:true, projections:true, labels:true, walls:true, quadrants:false},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              A line makes an angle θ with the positive x-axis. If the slope of the line is 3, what is <span class="mono">tan(θ)</span>?
+            </div>
+            <div class="map">
+              <p><strong>Mapping:</strong> tan θ = slope</p>
+              <p><strong>So:</strong> <span class="mono">tan(θ)=3</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  {
+    id:"word",
+    nav:"6 Word Problems",
+    title:"Word problems: same triangle, different nouns",
+    subtitle:"SAT swaps words to make you forget it’s trig. Don’t.",
+    layers:[
+      {
+        flags:{circle:false, triangle:true, projections:true, labels:false, walls:false, quadrants:false, wordScene:true},
+        html:`
+          <p><strong>Visual:</strong> height, ground distance, line-of-sight.</p>
+          <div class="box">
+            <p>Set θ with drag.</p>
+            <p>See which side is “height” (vertical) and which is “ground” (horizontal).</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+        html:`
+          <p><strong>Concept translation table:</strong></p>
+          <div class="box ok">
+            <ul>
+              <li><strong>Height</strong> → Opp (usually)</li>
+              <li><strong>Ground distance</strong> → Adj (usually)</li>
+              <li><strong>Ladder/cable</strong> → Hyp (usually)</li>
+            </ul>
+          </div>
+          <div class="box bad">
+            <p><strong>Trap:</strong> “angle of depression” is the same angle as elevation (geometry), so do not panic.</p>
+          </div>
+        `
+      },
+      {
+        flags:{circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+        html:`
+          <p><strong>Math patterns SAT repeats:</strong></p>
+          <div class="box">
+            <p class="mono">height = distance · tan θ</p>
+            <p class="mono">height = hypotenuse · sin θ</p>
+          </div>
+          <p>Pick based on which lengths are given.</p>
+        `
+      },
+      {
+        flags:{circle:false, triangle:true, projections:true, labels:true, walls:false, quadrants:false, wordScene:true},
+        html:`
+          <div class="sat">
+            <div class="q">SAT look:</div>
+            <div class="a">
+              From a point 80 meters from a building, the angle of elevation to the top is 28°. Approximately how tall is the building?
+            </div>
+            <div class="map">
+              <p><strong>Map the words:</strong></p>
+              <ul>
+                <li>ground distance = Adj = 80</li>
+                <li>height = Opp = ?</li>
+              </ul>
+              <p><strong>Pick ratio:</strong> <span class="mono">tan = Opp/Adj</span></p>
+              <p><strong>Build:</strong> <span class="mono">Opp = 80·tan(28°)</span></p>
+            </div>
+          </div>
+        `
+      }
+    ]
+  }
+];
+
+/* =========================================================
+   UI wiring (nav + layers)
+   ========================================================= */
+
+const nav = document.getElementById("nav");
+
+function buildNav(){
+  nav.innerHTML = "";
+  lessons.forEach((L, i) => {
+    const b = document.createElement("button");
+    b.textContent = L.nav;
+    b.onclick = () => setLesson(i);
+    b.id = `nav_${i}`;
+    nav.appendChild(b);
+  });
+}
+
+function setLesson(i){
+  state.lessonIndex = i;
+  state.layerIndex = 0;
+  state.unlockedLayer = 0;
+
+  updatePanel();
+  updateNav();
+  draw();
+  updateHud();
+}
+
+function setLayer(k){
+  if(k > state.unlockedLayer) return;
+  state.layerIndex = k;
+  updatePanel();
+  draw();
+}
+
+function nextLayer(){
+  if(state.layerIndex < 3){
+    state.unlockedLayer = Math.max(state.unlockedLayer, state.layerIndex + 1);
+    state.layerIndex++;
+    updatePanel();
+    draw();
   }
 }
-
-function exactSinCos(d0){
-  // Returns {sinStr, cosStr, exact:boolean}
-  const d = normDeg(d0);
-  const ref = referenceAngleDeg(d);
-  const snap = nearestSpecialDeg(ref);
-  // Only produce exact when ref is one of 0,30,45,60,90 (within epsilon)
-  const EPS = 0.0001;
-  const candidates = [0,30,45,60,90];
-  let refMatch = null;
-  for(const c of candidates){
-    if(Math.abs(ref - c) < EPS) refMatch = c;
+function prevLayer(){
+  if(state.layerIndex > 0){
+    state.layerIndex--;
+    updatePanel();
+    draw();
   }
-  // also allow exact if original angle is exactly those axis/special angles
-  if(refMatch === null) return {sinStr:"", cosStr:"", exact:false};
-
-  const base = exactBaseSinCos(refMatch);
-  if(!base) return {sinStr:"", cosStr:"", exact:false};
-
-  const sgn = signPack(d);
-  let sinStr = base.sin;
-  let cosStr = base.cos;
-
-  if(sgn.sin === -1 && sinStr !== "0") sinStr = "-" + sinStr;
-  if(sgn.cos === -1 && cosStr !== "0") cosStr = "-" + cosStr;
-
-  // axis: signPack already handles sin/cos = 0 cases cleanly
-  return {sinStr, cosStr, exact:true};
+}
+function nextLesson(){
+  if(state.lessonIndex < lessons.length-1) setLesson(state.lessonIndex+1);
+}
+function prevLesson(){
+  if(state.lessonIndex > 0) setLesson(state.lessonIndex-1);
 }
 
-function fmtNum(x){
-  if(!Number.isFinite(x)) return "undefined";
-  const ax = Math.abs(x);
-  if(ax > 1e6) return "huge";
-  return x.toFixed(4);
+function updateNav(){
+  lessons.forEach((_, i) => {
+    const b = document.getElementById(`nav_${i}`);
+    if(!b) return;
+    b.classList.toggle("active", i === state.lessonIndex);
+  });
 }
 
-function pctBar(val){
-  if(!Number.isFinite(val)) return 100;
-  const capped = Math.min(Math.abs(val), 2);
-  return capped * 50; // 0..100
+function updatePanel(){
+  const L = lessons[state.lessonIndex];
+  const layer = L.layers[state.layerIndex];
+
+  document.getElementById("title").textContent = L.title;
+  document.getElementById("subtitle").textContent = L.subtitle;
+  document.getElementById("body").innerHTML = layer.html;
+
+  // layer buttons
+  for(let k=0;k<4;k++){
+    const btn = document.getElementById(`layer${k}`);
+    btn.classList.toggle("active", k === state.layerIndex);
+    const locked = k > state.unlockedLayer;
+    btn.classList.toggle("locked", locked);
+    btn.disabled = locked;
+  }
+
+  // bottom buttons
+  document.getElementById("btnBackLayer").disabled = state.layerIndex === 0;
+  document.getElementById("btnForwardLayer").disabled = state.layerIndex === 3;
+  document.getElementById("btnPrev").disabled = state.lessonIndex === 0;
+  document.getElementById("btnNext").disabled = state.lessonIndex === lessons.length-1;
 }
 
-/* =========================
-   Layout / resize
-   ========================= */
+window.setLayer = setLayer;
+window.nextLayer = nextLayer;
+window.prevLayer = prevLayer;
+window.nextLesson = nextLesson;
+window.prevLesson = prevLesson;
+
+/* =========================================================
+   Controls: readout + snap
+   ========================================================= */
+const btnReadout = document.getElementById("btnReadout");
+const btnSnap = document.getElementById("btnSnap");
+
+btnReadout.addEventListener("click", () => {
+  state.readout = !state.readout;
+  btnReadout.classList.toggle("active", state.readout);
+  draw();
+});
+btnSnap.addEventListener("click", () => {
+  state.snap = !state.snap;
+  btnSnap.classList.toggle("active", state.snap);
+  draw();
+});
+
+/* =========================================================
+   Input (drag angle)
+   ========================================================= */
+function interact(px, py){
+  const dx = px - state.cx;
+  const dy = py - state.cy;
+  let ang = Math.atan2(-dy, dx); // raw
+  state.theta = ang;
+
+  if(state.snap){
+    const d = normDeg(radToDeg(state.theta));
+    const {best, dist} = nearestSpecialDeg(d);
+    if(dist < 2.0) state.theta = degToRad(best);
+  }
+
+  draw();
+  updateHud();
+}
+
+cvs.addEventListener("mousedown", e => {
+  state.dragging = true;
+  interact(e.offsetX, e.offsetY);
+});
+window.addEventListener("mousemove", e => {
+  if(!state.dragging) return;
+  const r = cvs.getBoundingClientRect();
+  interact(e.clientX - r.left, e.clientY - r.top);
+});
+window.addEventListener("mouseup", () => state.dragging=false);
+
+cvs.addEventListener("touchstart", e => {
+  e.preventDefault();
+  state.dragging = true;
+  const r = cvs.getBoundingClientRect();
+  interact(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
+}, {passive:false});
+
+cvs.addEventListener("touchmove", e => {
+  e.preventDefault();
+  if(!state.dragging) return;
+  const r = cvs.getBoundingClientRect();
+  interact(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
+}, {passive:false});
+
+cvs.addEventListener("touchend", () => state.dragging=false);
+
+/* =========================================================
+   Resize
+   ========================================================= */
 function resize(){
   const p = cvs.parentElement;
   state.w = p.clientWidth;
@@ -484,657 +996,331 @@ function resize(){
   cvs.width = state.w;
   cvs.height = state.h;
 
-  state.cx = state.w * 0.36;
-  state.cy = state.h * 0.62;
-  state.R  = Math.min(state.w, state.h) * 0.28;
-
-  // mini canvas fixed width in markup; repaint anyway
-  draw();
-  updateUI();
-}
-window.addEventListener('resize', resize);
-window.addEventListener('load', () => { buildForms(); resize(); });
-
-/* =========================
-   Input (drag + optional snapping)
-   ========================= */
-function interact(px, py){
-  const dx = px - state.cx;
-  const dy = py - state.cy;
-  let ang = Math.atan2(-dy, dx); // [-pi, pi]
-  // keep full circle: allow negatives too (store raw)
-  state.angleRad = ang;
-
-  if(state.snapOn){
-    const d = normDeg(radToDeg(state.angleRad));
-    const {best, dist} = nearestSpecialDeg(d);
-    if(dist < 2.0){ // snap threshold (degrees)
-      state.angleRad = degToRad(best);
-    }
-  }
+  state.cx = state.w * 0.38;
+  state.cy = state.h * 0.64;
+  state.R  = Math.min(state.w, state.h) * 0.30;
 
   draw();
-  updateUI();
+  updateHud();
 }
+window.addEventListener("resize", resize);
 
-cvs.addEventListener('mousedown', e => { state.dragging=true; interact(e.offsetX, e.offsetY); });
-window.addEventListener('mousemove', e => {
-  if(!state.dragging) return;
-  const rect = cvs.getBoundingClientRect();
-  interact(e.clientX - rect.left, e.clientY - rect.top);
-});
-window.addEventListener('mouseup', () => state.dragging=false);
-
-cvs.addEventListener('touchstart', e => {
-  e.preventDefault();
-  state.dragging=true;
-  const rect = cvs.getBoundingClientRect();
-  interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-}, {passive:false});
-
-cvs.addEventListener('touchmove', e => {
-  e.preventDefault();
-  if(!state.dragging) return;
-  const rect = cvs.getBoundingClientRect();
-  interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-}, {passive:false});
-
-cvs.addEventListener('touchend', () => state.dragging=false);
-
-/* =========================
-   Mode switching
-   ========================= */
-function setMode(m){
-  state.mode = m;
-
-  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('btn-'+m);
-  if(btn) btn.classList.add('active');
-
-  // mini stage only for graph
-  mini.style.display = (m === 'graph') ? 'block' : 'none';
-
-  const txt = document.getElementById('txt');
-  txt.innerHTML = content[m] || "";
-
-  buildForms(); // rebuild interactive forms if needed
-  draw();
-  updateUI();
-}
-window.setMode = setMode;
-
-/* =========================
-   Forms for SOH and Word
-   ========================= */
-function buildForms(){
-  // SOH form
-  const soh = document.getElementById('soh-form');
-  if(soh){
-    soh.innerHTML = `
-      <div class="grid2">
-        <div>
-          <label>GIVEN SIDE</label>
-          <select id="givenSide">
-            <option value="hyp">Hypotenuse (Hyp)</option>
-            <option value="adj">Adjacent (Adj)</option>
-            <option value="opp">Opposite (Opp)</option>
-          </select>
-        </div>
-        <div>
-          <label>GIVEN VALUE</label>
-          <input id="givenVal" type="number" step="0.1" min="0" value="${state.givenVal}">
-        </div>
-      </div>
-
-      <div class="grid2" style="margin-top:10px">
-        <div>
-          <label>ASKED SIDE</label>
-          <select id="askedSide">
-            <option value="opp">Opposite (Opp)</option>
-            <option value="adj">Adjacent (Adj)</option>
-            <option value="hyp">Hypotenuse (Hyp)</option>
-          </select>
-        </div>
-        <div>
-          <label>SNAP SPECIAL ANGLES</label>
-          <button id="snapBtn" class="toggle ${state.snapOn ? 'on':'off'}">${state.snapOn ? 'ON' : 'OFF'}</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <button class="cta" id="solveBtn">BUILD EQUATION → SOLVE</button>
-        <button class="toggle ${state.showExact ? 'on':'off'}" id="exactBtn">${state.showExact ? 'EXACT ON' : 'EXACT OFF'}</button>
-      </div>
-
-      <div class="highlight" id="sohOut" style="margin-top:10px"></div>
-    `;
-
-    const givenSide = document.getElementById('givenSide');
-    const askedSide = document.getElementById('askedSide');
-    const givenVal  = document.getElementById('givenVal');
-    const solveBtn  = document.getElementById('solveBtn');
-    const snapBtn   = document.getElementById('snapBtn');
-    const exactBtn  = document.getElementById('exactBtn');
-
-    if(givenSide) givenSide.value = state.givenSide;
-    if(askedSide) askedSide.value = state.askedSide;
-
-    givenSide?.addEventListener('change', () => { state.givenSide = givenSide.value; renderSOH(); updateUI(); draw(); });
-    askedSide?.addEventListener('change', () => { state.askedSide = askedSide.value; renderSOH(); updateUI(); draw(); });
-    givenVal?.addEventListener('input', () => {
-      state.givenVal = Math.max(0, Number(givenVal.value || 0));
-      renderSOH();
-      updateUI();
-      draw();
-    });
-
-    solveBtn?.addEventListener('click', () => renderSOH(true));
-    snapBtn?.addEventListener('click', () => {
-      state.snapOn = !state.snapOn;
-      snapBtn.classList.toggle('on', state.snapOn);
-      snapBtn.classList.toggle('off', !state.snapOn);
-      snapBtn.textContent = state.snapOn ? 'ON' : 'OFF';
-      updateUI();
-      draw();
-    });
-    exactBtn?.addEventListener('click', () => {
-      state.showExact = !state.showExact;
-      exactBtn.classList.toggle('on', state.showExact);
-      exactBtn.classList.toggle('off', !state.showExact);
-      exactBtn.textContent = state.showExact ? 'EXACT ON' : 'EXACT OFF';
-      updateUI();
-      draw();
-    });
-
-    renderSOH();
-  }
-
-  // Word form
-  const wf = document.getElementById('word-form');
-  if(wf){
-    wf.innerHTML = `
-      <div class="grid2">
-        <div>
-          <label>PROBLEM TYPE</label>
-          <select id="wordType">
-            <option value="elev">Angle of Elevation (height from distance)</option>
-            <option value="ladder">Ladder / Cable (length + angle → height)</option>
-          </select>
-        </div>
-        <div>
-          <label>SNAP SPECIAL ANGLES</label>
-          <button id="snapBtnW" class="toggle ${state.snapOn ? 'on':'off'}">${state.snapOn ? 'ON' : 'OFF'}</button>
-        </div>
-      </div>
-
-      <div class="grid2" style="margin-top:10px">
-        <div>
-          <label id="lblA">GROUND DISTANCE (Adj)</label>
-          <input id="inA" type="number" step="0.1" min="0" value="80">
-        </div>
-        <div>
-          <label id="lblB">HEIGHT (Opp)</label>
-          <input id="inB" type="number" step="0.1" min="0" value="0" disabled>
-        </div>
-      </div>
-
-      <div class="row">
-        <button class="cta" id="wordSolve">SOLVE WITH CURRENT θ</button>
-        <button class="toggle ${state.showExact ? 'on':'off'}" id="exactBtnW">${state.showExact ? 'EXACT ON' : 'EXACT OFF'}</button>
-      </div>
-
-      <div class="highlight" id="wordOut" style="margin-top:10px"></div>
-    `;
-
-    const wordType = document.getElementById('wordType');
-    const inA = document.getElementById('inA');
-    const lblA = document.getElementById('lblA');
-    const wordSolve = document.getElementById('wordSolve');
-    const snapBtnW = document.getElementById('snapBtnW');
-    const exactBtnW = document.getElementById('exactBtnW');
-
-    function updateWordLabels(){
-      const type = wordType.value;
-      if(type === 'elev'){
-        lblA.textContent = "GROUND DISTANCE (Adj)";
-      } else {
-        lblA.textContent = "LADDER/CABLE LENGTH (Hyp)";
-      }
-    }
-    updateWordLabels();
-
-    wordType.addEventListener('change', updateWordLabels);
-
-    wordSolve.addEventListener('click', () => {
-      const type = wordType.value;
-      const A = Math.max(0, Number(inA.value || 0));
-      const ang = normRad(state.angleRad);
-      const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
-
-      let out = "";
-      if(type === 'elev'){
-        // height = adj * tan
-        if(!Number.isFinite(t)){
-          out = `<p><strong>Stop.</strong> Tan is undefined at 90°/270°. Pick a different angle.</p>`;
-        } else {
-          const h = A * t;
-          out = `
-            <p><strong>Given:</strong> ground distance = ${A}</p>
-            <p><strong>Asked:</strong> height</p>
-            <p><strong>Correct ratio:</strong> <span class="mono">tanθ = opp/adj</span></p>
-            <p><strong>Build equation:</strong> <span class="mono">opp = adj · tanθ</span></p>
-            <p><strong>Compute:</strong> <span class="mono">height = ${A} · tan(θ) = ${fmtNum(h)}</span></p>
-          `;
-        }
-      } else {
-        // height = hyp * sin
-        const h = A * s;
-        out = `
-          <p><strong>Given:</strong> ladder/cable length = ${A}</p>
-          <p><strong>Asked:</strong> vertical height</p>
-          <p><strong>Correct ratio:</strong> <span class="mono">sinθ = opp/hyp</span></p>
-          <p><strong>Build equation:</strong> <span class="mono">opp = hyp · sinθ</span></p>
-          <p><strong>Compute:</strong> <span class="mono">height = ${A} · sin(θ) = ${fmtNum(h)}</span></p>
-        `;
-      }
-
-      document.getElementById('wordOut').innerHTML = out;
-    });
-
-    snapBtnW.addEventListener('click', () => {
-      state.snapOn = !state.snapOn;
-      snapBtnW.classList.toggle('on', state.snapOn);
-      snapBtnW.classList.toggle('off', !state.snapOn);
-      snapBtnW.textContent = state.snapOn ? 'ON' : 'OFF';
-      updateUI();
-      draw();
-    });
-
-    exactBtnW.addEventListener('click', () => {
-      state.showExact = !state.showExact;
-      exactBtnW.classList.toggle('on', state.showExact);
-      exactBtnW.classList.toggle('off', !state.showExact);
-      exactBtnW.textContent = state.showExact ? 'EXACT ON' : 'EXACT OFF';
-      updateUI();
-      draw();
-    });
-
-    document.getElementById('wordOut').innerHTML =
-      `<p>Set θ by dragging on the canvas. Then press <strong>SOLVE</strong>.</p>`;
-  }
-}
-
-/* =========================
-   SOH Solver output
-   ========================= */
-function pickRatio(given, asked){
-  // Returns {name, formula, solve, note}
-  // We'll include sec/csc/cot where relevant.
-  const map = {
-    sin: {name:"SIN", formula:"sinθ = opp / hyp"},
-    cos: {name:"COS", formula:"cosθ = adj / hyp"},
-    tan: {name:"TAN", formula:"tanθ = opp / adj"},
-    cot: {name:"COT", formula:"cotθ = adj / opp"},
-    sec: {name:"SEC", formula:"secθ = hyp / adj"},
-    csc: {name:"CSC", formula:"cscθ = hyp / opp"}
-  };
-
-  if(given === 'hyp' && asked === 'opp') return map.sin;
-  if(given === 'hyp' && asked === 'adj') return map.cos;
-  if(given === 'adj' && asked === 'opp') return map.tan;
-  if(given === 'opp' && asked === 'adj') return map.cot;
-  if(given === 'adj' && asked === 'hyp') return map.sec;
-  if(given === 'opp' && asked === 'hyp') return map.csc;
-
-  // asked == given: trivial
-  return {name:"TRIVIAL", formula:"asked side is the given side", note:"No trig needed."};
-}
-
-function renderSOH(force=false){
-  const out = document.getElementById('sohOut');
-  if(!out) return;
-
-  const ang = normRad(state.angleRad);
-  const d = normDeg(radToDeg(state.angleRad)); // raw can be negative; norm for trig context
-  const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
-
-  const given = state.givenSide;
-  const asked = state.askedSide;
-  const val = Math.max(0, state.givenVal);
-
-  const ratio = pickRatio(given, asked);
-
-  // compute full triangle using given side
-  let hyp, adj, opp;
-  let err = null;
-
-  if(given === 'hyp'){
-    hyp = val;
-    opp = hyp * s;
-    adj = hyp * c;
-  }
-  if(given === 'adj'){
-    adj = val;
-    if(Math.abs(c) < 1e-9) err = "cosθ is 0 here. Adjacent cannot be your given at 90°/270°.";
-    else {
-      hyp = adj / c;
-      opp = adj * t;
-    }
-  }
-  if(given === 'opp'){
-    opp = val;
-    if(Math.abs(s) < 1e-9) err = "sinθ is 0 here. Opposite cannot be your given at 0°/180°.";
-    else {
-      hyp = opp / s;
-      if(!Number.isFinite(t) || Math.abs(t) < 1e-9) err = "tanθ is 0/undefined here. Adj becomes impossible from opp with this angle.";
-      else adj = opp / t;
-    }
-  }
-
-  // asked output
-  let askedVal = null;
-  if(!err){
-    if(asked === 'hyp') askedVal = hyp;
-    if(asked === 'adj') askedVal = adj;
-    if(asked === 'opp') askedVal = opp;
-  }
-
-  const eqSteps = [];
-  eqSteps.push(`<p><strong>Given:</strong> ${given.toUpperCase()} = ${val}</p>`);
-  eqSteps.push(`<p><strong>Asked:</strong> ${asked.toUpperCase()}</p>`);
-  eqSteps.push(`<p><strong>Pick ratio:</strong> <span class="mono">${ratio.formula}</span></p>`);
-
-  if(err){
-    eqSteps.push(`<p style="color:var(--bad)"><strong>Blocked:</strong> ${err}</p>`);
-    eqSteps.push(`<p class="mini">Move θ away from the axis or change what you’re “given.”</p>`);
-    out.innerHTML = eqSteps.join("");
-    return;
-  }
-
-  // Build the solving equation explicitly based on (given, asked)
-  let solveLine = "";
-  if(given === 'hyp' && asked === 'opp') solveLine = `opp = hyp · sinθ`;
-  if(given === 'hyp' && asked === 'adj') solveLine = `adj = hyp · cosθ`;
-  if(given === 'adj' && asked === 'opp') solveLine = `opp = adj · tanθ`;
-  if(given === 'opp' && asked === 'adj') solveLine = `adj = opp · cotθ = opp / tanθ`;
-  if(given === 'adj' && asked === 'hyp') solveLine = `hyp = adj · secθ = adj / cosθ`;
-  if(given === 'opp' && asked === 'hyp') solveLine = `hyp = opp · cscθ = opp / sinθ`;
-  if(given === asked) solveLine = `${asked} = ${given}`;
-
-  eqSteps.push(`<p><strong>Build equation:</strong> <span class="mono">${solveLine}</span></p>`);
-  eqSteps.push(`<p><strong>Compute:</strong> <span class="mono">${asked.toUpperCase()} = ${fmtNum(askedVal)}</span></p>`);
-
-  // show full triangle so they see scaling
-  eqSteps.push(`<div class="highlight" style="margin-top:10px">
-      <p><strong>Full triangle (scaled):</strong></p>
-      <p class="mono">hyp = ${fmtNum(hyp)}<br/>adj = ${fmtNum(adj)}<br/>opp = ${fmtNum(opp)}</p>
-    </div>`);
-
-  out.innerHTML = eqSteps.join("");
-}
-
-/* =========================
-   UI (HUD + Data box)
-   ========================= */
-function updateUI(){
-  const data = document.getElementById('data');
-  const hudAngle = document.getElementById('hud-angle');
-  const hudEq = document.getElementById('hud-eq');
-  const hudQuad = document.getElementById('hud-quad');
-  const hudRef = document.getElementById('hud-ref');
-
-  const rawDeg = radToDeg(state.angleRad);     // can be negative
-  const eqDeg = normDeg(rawDeg);               // [0,360)
-  const refDeg = referenceAngleDeg(eqDeg);
+/* =========================================================
+   HUD
+   ========================================================= */
+function updateHud(){
+  const rawDeg = radToDeg(state.theta);
+  const eqDeg = normDeg(rawDeg);
+  const ref = referenceAngleDeg(eqDeg);
   const quad = quadrantFromDeg(eqDeg);
 
-  // HUD
-  hudAngle.textContent = `θ = ${rawDeg.toFixed(0)}°`;
-  hudEq.textContent = `Equivalent: ${eqDeg.toFixed(0)}°`;
-  hudQuad.textContent = `Q ${quad}`;
-  hudRef.textContent = `ref ${refDeg.toFixed(0)}°`;
+  document.getElementById("hudTheta").textContent = `θ = ${rawDeg.toFixed(0)}°`;
+  document.getElementById("hudEq").textContent = `Equivalent: ${eqDeg.toFixed(0)}°`;
+  document.getElementById("hudQuad").textContent = quad;
+  document.getElementById("hudRef").textContent = `ref ${ref.toFixed(0)}°`;
 
-  hudQuad.classList.remove('good','bad');
-  if(quad.includes("Axis")) hudQuad.classList.add('bad');
-  else hudQuad.classList.add('good');
-
-  // Values
-  const ang = normRad(state.angleRad);
-  const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
-  const exact = exactSinCos(eqDeg);
-
-  let sinLine = state.showExact && exact.exact ? `${exact.sinStr}  (${fmtNum(s)})` : `${fmtNum(s)}`;
-  let cosLine = state.showExact && exact.exact ? `${exact.cosStr}  (${fmtNum(c)})` : `${fmtNum(c)}`;
-
-  // tan exact (optional): derive from exact sin/cos if both exact and cos != 0
-  let tanLine = fmtNum(t);
-  if(state.showExact && exact.exact && exact.cosStr !== "0"){
-    tanLine = `(${exact.sinStr})/(${exact.cosStr})  (${fmtNum(t)})`;
-  } else if(!Number.isFinite(t)){
-    tanLine = "undefined";
-  }
-
-  // Show extra derived ratios (sec/csc) because SAT uses them in identities
-  const sec = (Math.abs(c) < 1e-9) ? Infinity : 1/c;
-  const csc = (Math.abs(s) < 1e-9) ? Infinity : 1/s;
-
-  const rows = [];
-  rows.push(dRow("SIN", sinLine, colors.sin, s));
-  rows.push(dRow("COS", cosLine, colors.cos, c));
-  rows.push(dRow("TAN", tanLine, colors.tan, t));
-  rows.push(dRow("SEC", fmtNum(sec), colors.sec, sec));
-  rows.push(dRow("CSC", fmtNum(csc), colors.csc, csc));
-
-  rows.push(`<div style="border-top:1px solid #222; margin:10px 0"></div>`);
-  rows.push(`<div class="drow"><span>Quadrant</span><strong>${quad}</strong></div>`);
-  rows.push(`<div class="drow"><span>Reference</span><strong>${refDeg.toFixed(0)}°</strong></div>`);
-  rows.push(`<div class="drow"><span>Angle (rad)</span><strong>${degToRad(eqDeg).toFixed(3)}</strong></div>`);
-
-  data.innerHTML = rows.join("");
-
-  // If in SOH, keep output fresh when angle changes
-  if(state.mode === 'soh'){
-    renderSOH(false);
-  }
-
-  // If graph mode, repaint mini graph
-  if(state.mode === 'graph'){
-    drawGraph();
-  }
+  const qPill = document.getElementById("hudQuad");
+  qPill.classList.remove("ok","bad");
+  qPill.classList.add(quad.startsWith("Axis") ? "bad" : "ok");
 }
 
-function dRow(label, valStr, color, numericVal){
-  return `
-    <div class="drow" style="color:${color}">
-      <span>${label}</span>
-      <div style="display:flex; align-items:center; gap:10px;">
-        <span class="mono" style="color:#ddd">${valStr}</span>
-        <div class="bar-bg"><div class="bar-fill" style="width:${pctBar(numericVal)}%; background:${color}"></div></div>
-      </div>
-    </div>`;
-}
+/* =========================================================
+   Drawing engine with lesson flags
+   ========================================================= */
 
-/* =========================
-   Drawing
-   ========================= */
 function draw(){
   if(state.w === 0 || state.h === 0) return;
 
-  const w = state.w, h = state.h;
-  const cx = state.cx, cy = state.cy, R = state.R;
-  const ang = normRad(state.angleRad);
-
-  const x = cx + R * Math.cos(ang);
-  const y = cy - R * Math.sin(ang);
+  const L = lessons[state.lessonIndex];
+  const flags = L.layers[state.layerIndex].flags;
 
   ctx.fillStyle = colors.bg;
-  ctx.fillRect(0,0,w,h);
+  ctx.fillRect(0,0,state.w,state.h);
 
-  drawAxes(cx, cy, w, h);
-  drawCircle(cx, cy, R);
-
-  // Quadrant shading in quadrant mode
-  if(state.mode === 'quadrant'){
-    shadeQuadrants(cx, cy, R);
+  // Choose a scene anchor.
+  // Word scene uses a ground baseline; unit circle scenes use axes + circle.
+  if(flags.wordScene){
+    drawWordScene(flags);
+    return;
   }
 
-  // Triangle: origin -> (x,y) -> (x,cy)
-  // Adj = horizontal, Opp = vertical, Hyp = slanted
-  drawNeon(cx, cy, x, cy, colors.cos, 3);     // adjacent baseline
-  drawNeon(x, cy, x, y, colors.sin, 3);       // opposite vertical
-  drawNeon(cx, cy, x, y, colors.white, 3);    // hypotenuse
-  dot(x,y,6,colors.white);
+  drawAxes();
 
-  // Labels (always, but stronger in SOH)
-  const showSOHLabels = (state.mode === 'soh');
-  const showCoreLabels = (state.mode !== 'graph'); // graph uses mini canvas anyway
+  if(flags.quadrants) shadeQuadrants();
+  if(flags.circle) drawCircle();
 
-  if(showCoreLabels){
-    if(showSOHLabels){
-      label((cx+x)/2, cy+20, "ADJ", colors.cos);
-      label(x+26, (cy+y)/2, "OPP", colors.sin);
-      label((cx+x)/2+10, (cy+y)/2-12, "HYP", colors.white);
+  const ang = normRad(state.theta);
 
-      // draw angle arc
-      drawAngleArc(cx, cy, ang, R*0.18);
-      label(cx + R*0.23, cy - R*0.07, "θ", colors.white);
+  // point on circle (unit radius visual)
+  const px = state.cx + state.R * Math.cos(ang);
+  const py = state.cy - state.R * Math.sin(ang);
 
-      // right angle box
-      rightAngleMark(x, cy, 14);
-    } else {
-      label((cx+x)/2, cy+18, "cos θ", colors.cos);
-      label(x+32, (cy+y)/2, "sin θ", colors.sin);
-      label((cx+x)/2+12, (cy+y)/2-12, "hyp", colors.white);
-      drawAngleArc(cx, cy, ang, R*0.16);
-    }
+  if(flags.triangle){
+    drawTriangle(px, py, flags);
+  } else {
+    drawRadius(px, py, flags);
   }
 
-  // Walls overlay to visualize tan (only when useful)
-  if(state.mode === 'identities' || state.mode === 'quadrant'){
-    // show tangent line x = cx + R
-    const wallX = cx + R;
-    ctx.strokeStyle = "#333"; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(wallX, cy + 60); ctx.lineTo(wallX, cy - h); ctx.stroke();
+  // tangent wall (tan)
+  if(flags.walls) drawWalls(ang);
 
-    const tanY = cy - R * Math.tan(ang);
-    if(Number.isFinite(tanY) && Math.abs(Math.cos(ang)) > 1e-4){
-      drawNeon(wallX, cy, wallX, tanY, colors.tan, 3);
-      drawLaser(cx, cy, wallX, tanY);
-      label(wallX+34, (cy+tanY)/2, "tan θ", colors.tan);
-    } else {
-      label(wallX+45, cy-80, "tan undefined", colors.bad);
-    }
+  // readout on canvas only when requested
+  if(state.readout){
+    drawMicroReadout(ang, px, py, flags);
   }
 }
 
-function drawAxes(cx, cy, w, h){
-  ctx.strokeStyle = colors.grid; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
-
-  // small ticks (0.5 and 1.0)
-  ctx.fillStyle = "#444";
-  ctx.font = "10px ui-monospace, Menlo, Consolas, monospace";
-  ctx.textAlign = "center";
-  for(const t of [0.5,1.0]){
-    const px = cx + state.R*t;
-    ctx.fillRect(px, cy-4, 1, 8);
-    ctx.fillText(t.toFixed(1), px, cy+18);
-
-    const py = cy - state.R*t;
-    ctx.fillRect(cx-4, py, 8, 1);
-    ctx.fillText(t.toFixed(1), cx-20, py+3);
-  }
+function drawAxes(){
+  ctx.strokeStyle = colors.grid;
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, state.cy); ctx.lineTo(state.w, state.cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(state.cx, 0); ctx.lineTo(state.cx, state.h); ctx.stroke();
 }
 
-function drawCircle(cx, cy, R){
+function drawCircle(){
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(state.cx, state.cy, state.R, 0, Math.PI*2); ctx.stroke();
 }
 
-function shadeQuadrants(cx, cy, R){
+function shadeQuadrants(){
+  const cx=state.cx, cy=state.cy, R=state.R;
   ctx.save();
   ctx.globalAlpha = 0.10;
-  // QI (top-right)
-  ctx.fillStyle = colors.good;
+
+  ctx.fillStyle = colors.ok; // QI
   ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,0,Math.PI/2,true); ctx.closePath(); ctx.fill();
-  // QII (top-left)
-  ctx.fillStyle = colors.cos;
+
+  ctx.fillStyle = colors.cos; // QII
   ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,Math.PI/2,Math.PI,true); ctx.closePath(); ctx.fill();
-  // QIII (bottom-left)
-  ctx.fillStyle = colors.sin;
+
+  ctx.fillStyle = colors.sin; // QIII
   ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,Math.PI,3*Math.PI/2,true); ctx.closePath(); ctx.fill();
-  // QIV (bottom-right)
-  ctx.fillStyle = colors.tan;
+
+  ctx.fillStyle = colors.tan; // QIV
   ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,3*Math.PI/2,2*Math.PI,true); ctx.closePath(); ctx.fill();
 
   ctx.restore();
 }
 
-function drawNeon(x1,y1,x2,y2,color,width=2){
+function drawRadius(px, py){
+  neon(state.cx, state.cy, px, py, colors.white, 3);
+  dot(px, py, 6, "#fff");
+  angleArc(state.cx, state.cy, normRad(state.theta), state.R*0.18);
+}
+
+function drawTriangle(px, py, flags){
+  const cx=state.cx, cy=state.cy;
+
+  // Adj (horizontal)
+  neon(cx, cy, px, cy, colors.cos, flags.showOppAdjHyp ? 4 : 3);
+  // Opp (vertical)
+  neon(px, cy, px, py, colors.sin, flags.showOppAdjHyp ? 4 : 3);
+  // Hyp
+  neon(cx, cy, px, py, colors.white, flags.showOppAdjHyp ? 4 : 3);
+
+  dot(px, py, 6, "#fff");
+  angleArc(cx, cy, normRad(state.theta), state.R*0.16);
+
+  if(flags.labels){
+    if(flags.showOppAdjHyp){
+      label((cx+px)/2, cy+18, "Adj", colors.cos);
+      label(px+28, (cy+py)/2, "Opp", colors.sin);
+      label((cx+px)/2+12, (cy+py)/2-12, "Hyp", "#fff");
+    } else {
+      label((cx+px)/2, cy+18, "cos θ", colors.cos);
+      label(px+30, (cy+py)/2, "sin θ", colors.sin);
+      label((cx+px)/2+10, (cy+py)/2-12, "radius", "#fff");
+    }
+  }
+
+  // right angle marker at (px, cy)
+  rightAngle(px, cy, 14);
+
+  // scaling demo: show a second similar triangle (ghost) so they SEE similarity
+  if(flags.scaleDemo){
+    const scale = 1.45;
+    const gx = cx + (px-cx)*scale;
+    const gy = cy + (py-cy)*scale;
+    ctx.save();
+    ctx.globalAlpha = 0.22;
+    neon(cx, cy, gx, cy, colors.cos, 3);
+    neon(gx, cy, gx, gy, colors.sin, 3);
+    neon(cx, cy, gx, gy, colors.white, 3);
+    ctx.restore();
+    label((cx+gx)/2, cy-20, "Same θ, bigger triangle", colors.ok);
+  }
+
+  // special mode: lightly mark special angles around
+  if(flags.specialMode){
+    drawSpecialTicks();
+  }
+}
+
+function drawSpecialTicks(){
+  const cx=state.cx, cy=state.cy, R=state.R;
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.15)";
+  ctx.lineWidth = 1;
+
+  for(const d of [0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330]){
+    const a = degToRad(d);
+    const x1 = cx + Math.cos(a)*(R*0.92);
+    const y1 = cy - Math.sin(a)*(R*0.92);
+    const x2 = cx + Math.cos(a)*(R*1.02);
+    const y2 = cy - Math.sin(a)*(R*1.02);
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawWalls(ang){
+  const cx=state.cx, cy=state.cy, R=state.R;
+  const wallX = cx + R;
+
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(wallX, cy+60); ctx.lineTo(wallX, cy-state.h); ctx.stroke();
+
+  const c = Math.cos(ang);
+  if(Math.abs(c) < 1e-4){
+    label(wallX+60, cy-90, "tan undefined", colors.bad);
+    return;
+  }
+  const tanY = cy - R*Math.tan(ang);
+
+  neon(wallX, cy, wallX, tanY, colors.tan, 4);
+  laser(cx, cy, wallX, tanY);
+  label(wallX+42, (cy+tanY)/2, "tan θ", colors.tan);
+}
+
+function drawMicroReadout(ang, px, py, flags){
+  // tiny. lives near the drawing. not a right-panel spreadsheet.
+  const s = Math.sin(ang), c = Math.cos(ang);
+  const t = (Math.abs(c)<1e-6) ? Infinity : s/c;
+
+  // put the tiny text near the point but keep it inside screen bounds
+  let x = px + 16;
+  let y = py - 18;
+  x = Math.max(12, Math.min(state.w-160, x));
+  y = Math.max(18, Math.min(state.h-18, y));
+
+  const lines = [];
+  if(flags.triangle || flags.projections || flags.labels || flags.circle){
+    lines.push({k:"sin", v:fmt(s), c:colors.sin});
+    lines.push({k:"cos", v:fmt(c), c:colors.cos});
+  }
+  if(lessons[state.lessonIndex].id === "tan"){
+    lines.push({k:"tan", v:(Number.isFinite(t)?fmt(t):"undef"), c:colors.tan});
+  }
+
+  if(lines.length === 0) return;
+
+  // background box
+  const pad=8, lh=16, w=140, h=pad*2 + lh*lines.length;
+  ctx.fillStyle = "rgba(0,0,0,0.70)";
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.lineWidth = 1;
+  roundRect(x, y, w, h, 10, true, true);
+
+  ctx.font = "800 12px ui-monospace, Menlo, Consolas, monospace";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "left";
+
+  for(let i=0;i<lines.length;i++){
+    const yy = y + pad + i*lh + lh/2;
+    ctx.fillStyle = lines[i].c;
+    ctx.fillText(lines[i].k.toUpperCase(), x+10, yy);
+    ctx.fillStyle = "#ddd";
+    ctx.fillText(lines[i].v, x+58, yy);
+  }
+}
+
+/* Word scene: ground + height triangle (no circle) */
+function drawWordScene(flags){
+  const w=state.w, h=state.h;
+  const cx = state.w*0.22;
+  const cy = state.h*0.78;
+
+  // redefine anchor for this scene
+  state.cx = cx;
+  state.cy = cy;
+  state.R  = Math.min(state.w, state.h)*0.30;
+
+  // ground line
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+
+  // vertical "building"
+  const baseX = cx + state.R*1.2;
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(baseX, cy); ctx.lineTo(baseX, cy - state.R*1.1); ctx.stroke();
+
+  // angle at observer
+  const ang = Math.min(Math.max(normRad(state.theta), degToRad(5)), degToRad(80));
+  const hypLen = state.R*1.15;
+  const hx = cx + hypLen*Math.cos(ang);
+  const hy = cy - hypLen*Math.sin(ang);
+
+  // adj = ground distance from observer to wall base projection
+  neon(cx, cy, baseX, cy, colors.cos, 4);
+  // opp = height up the wall
+  neon(baseX, cy, baseX, hy, colors.sin, 4);
+  // hyp = line of sight
+  neon(cx, cy, baseX, hy, colors.white, 4);
+
+  dot(cx, cy, 6, "#fff");
+  dot(baseX, hy, 6, "#fff");
+
+  angleArc(cx, cy, ang, 26);
+
+  if(flags.labels){
+    label((cx+baseX)/2, cy+18, "Ground (Adj)", colors.cos);
+    label(baseX+62, (cy+hy)/2, "Height (Opp)", colors.sin);
+    label((cx+baseX)/2+20, (cy+hy)/2-12, "Line of sight (Hyp)", "#fff");
+  }
+  if(state.readout){
+    const s = Math.sin(ang), c = Math.cos(ang), t = s/c;
+    label(cx+78, cy-46, `tan θ = ${fmt(t)}`, colors.tan);
+  }
+}
+
+/* =========================================================
+   Drawing primitives
+   ========================================================= */
+function neon(x1,y1,x2,y2,color,width=3){
   ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
   ctx.lineWidth = width*4;
   ctx.strokeStyle = color;
-  ctx.globalAlpha = 0.25;
+  ctx.globalAlpha = 0.22;
   ctx.stroke();
   ctx.lineWidth = width;
-  ctx.globalAlpha = 1.0;
+  ctx.globalAlpha = 1;
   ctx.strokeStyle = color;
   ctx.stroke();
 }
-
-function drawLaser(x1,y1,x2,y2){
-  ctx.save();
-  ctx.globalCompositeOperation = 'screen';
-  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "rgba(255,255,255,0.9)";
-  ctx.setLineDash([5,5]);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.lineWidth = 8;
-  ctx.strokeStyle = "rgba(255,255,255,0.18)";
-  ctx.stroke();
-  ctx.restore();
-  dot(x2,y2,4,"#fff");
-}
-
 function dot(x,y,r,color){
   ctx.fillStyle = color;
   ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
 }
-
 function label(x,y,text,color){
   ctx.save();
-  ctx.font = "800 12px Segoe UI, system-ui, sans-serif";
+  ctx.font = "950 12px Segoe UI, system-ui, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  const pad = 6;
+  const pad=6;
   const w = ctx.measureText(text).width + pad*2;
   ctx.fillStyle = "rgba(0,0,0,0.72)";
-  ctx.fillRect(x - w/2, y - 10, w, 20);
+  ctx.fillRect(x-w/2, y-10, w, 20);
   ctx.strokeStyle = "rgba(255,255,255,0.08)";
-  ctx.strokeRect(x - w/2, y - 10, w, 20);
+  ctx.strokeRect(x-w/2, y-10, w, 20);
   ctx.fillStyle = color;
   ctx.fillText(text, x, y);
   ctx.restore();
 }
-
-function drawAngleArc(cx, cy, ang, r){
-  const a = normRad(ang);
-  const start = 0;
-  const end = a;
-  ctx.save();
-  ctx.strokeStyle = "rgba(255,255,255,0.6)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, -start, -end, true);
-  ctx.stroke();
-  ctx.restore();
-}
-
-function rightAngleMark(x, y, size){
+function rightAngle(x,y,size){
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.55)";
   ctx.lineWidth = 2;
@@ -1146,87 +1332,51 @@ function rightAngleMark(x, y, size){
   ctx.stroke();
   ctx.restore();
 }
-
-/* =========================
-   Graph (mini canvas)
-   ========================= */
-function drawGraph(){
-  const W = mini.width, H = mini.height;
-  mctx.fillStyle = "#000";
-  mctx.fillRect(0,0,W,H);
-
-  // axes
-  mctx.strokeStyle = "#222"; mctx.lineWidth = 1;
-  mctx.beginPath(); mctx.moveTo(0, H/2); mctx.lineTo(W, H/2); mctx.stroke();
-  mctx.beginPath(); mctx.moveTo(40, 0); mctx.lineTo(40, H); mctx.stroke();
-
-  // plot sin (top half) and cos (bottom half) scaled
-  const plotLeft = 40, plotRight = W-12;
-  const plotW = plotRight - plotLeft;
-
-  const topMid = H*0.30;
-  const botMid = H*0.72;
-  const amp = 42;
-
-  function xFromDeg(d){ return plotLeft + (d/360)*plotW; }
-  function ySin(d){ return topMid - Math.sin(degToRad(d))*amp; }
-  function yCos(d){ return botMid - Math.cos(degToRad(d))*amp; }
-
-  // draw curves
-  mctx.lineWidth = 2;
-
-  mctx.strokeStyle = colors.sin;
-  mctx.beginPath();
-  for(let d=0; d<=360; d+=2){
-    const x = xFromDeg(d);
-    const y = ySin(d);
-    if(d===0) mctx.moveTo(x,y); else mctx.lineTo(x,y);
-  }
-  mctx.stroke();
-
-  mctx.strokeStyle = colors.cos;
-  mctx.beginPath();
-  for(let d=0; d<=360; d+=2){
-    const x = xFromDeg(d);
-    const y = yCos(d);
-    if(d===0) mctx.moveTo(x,y); else mctx.lineTo(x,y);
-  }
-  mctx.stroke();
-
-  // labels
-  mctx.fillStyle = "#aaa";
-  mctx.font = "700 11px Segoe UI, system-ui, sans-serif";
-  mctx.fillText("sin", 10, topMid+4);
-  mctx.fillText("cos", 10, botMid+4);
-
-  // cursor at current equivalent angle
-  const eqDeg = normDeg(radToDeg(state.angleRad));
-  const cx = xFromDeg(eqDeg);
-
-  mctx.strokeStyle = "rgba(255,255,255,0.7)";
-  mctx.setLineDash([6,6]);
-  mctx.beginPath(); mctx.moveTo(cx, 0); mctx.lineTo(cx, H); mctx.stroke();
-  mctx.setLineDash([]);
-
-  // dots
-  const ys = ySin(eqDeg);
-  const yc = yCos(eqDeg);
-
-  mctx.fillStyle = "#fff";
-  mctx.beginPath(); mctx.arc(cx, ys, 4, 0, Math.PI*2); mctx.fill();
-  mctx.beginPath(); mctx.arc(cx, yc, 4, 0, Math.PI*2); mctx.fill();
-
-  // angle text
-  mctx.fillStyle = "#ddd";
-  mctx.font = "800 12px ui-monospace, Menlo, Consolas, monospace";
-  mctx.fillText(`θ=${eqDeg.toFixed(0)}°`, cx-20, 16);
+function angleArc(cx, cy, ang, r){
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.6)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  // draw from 0 to ang
+  ctx.arc(cx, cy, r, 0, -ang, true);
+  ctx.stroke();
+  ctx.restore();
+}
+function laser(x1,y1,x2,y2){
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "rgba(255,255,255,0.9)";
+  ctx.setLineDash([6,6]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = "rgba(255,255,255,0.14)";
+  ctx.stroke();
+  ctx.restore();
+  dot(x2,y2,4,"#fff");
+}
+function roundRect(x, y, w, h, r, fill, stroke){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+  if(fill) ctx.fill();
+  if(stroke) ctx.stroke();
 }
 
-/* =========================
-   Init
-   ========================= */
-setMode('intro');
-setTimeout(resize, 30);
+/* =========================================================
+   Boot
+   ========================================================= */
+buildNav();
+setLesson(0);
+setTimeout(resize, 20);
+resize();
 </script>
+
 </body>
 </html>
