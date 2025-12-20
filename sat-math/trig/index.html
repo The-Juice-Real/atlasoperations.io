@@ -1,923 +1,1232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trig Engine v13 (The Architect)</title>
-    <style>
-        :root {
-            --bg: #050505;
-            --panel: #0a0a0a;
-            --text: #eee;
-            --sin: #ff0055;
-            --cos: #00ccff;
-            --tan: #ffcc00;
-            --sec: #ccffff;
-            --csc: #ffcccc;
-            --cot: #ff8800;
-            --root: #4ade80;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAT Trig Engine — v1 (Complete)</title>
+  <style>
+    :root{
+      --bg:#050505; --panel:#0a0a0a; --text:#eee;
+      --sin:#ff0055; --cos:#00ccff; --tan:#ffcc00;
+      --sec:#ccffff; --csc:#ffcccc; --cot:#ff8800;
+      --root:#4ade80; --muted:#888; --grid:#222;
+      --good:#22c55e; --bad:#ef4444; --violet:#bd00ff;
+    }
 
-        body {
-            margin: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            overflow: hidden;
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-        }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      overflow:hidden; display:flex; height:100vh; width:100vw;
+    }
 
-        /* STAGE */
-        #stage {
-            flex: 1;
-            min-width: 0;
-            position: relative;
-            cursor: crosshair;
-            background: #000;
-            overflow: hidden;
-        }
-        canvas { display: block; width: 100%; height: 100%; outline: none; }
+    /* STAGE */
+    #stage{flex:1; min-width:0; position:relative; background:#000; overflow:hidden; cursor:crosshair;}
+    canvas{display:block; width:100%; height:100%; outline:none;}
 
-        /* CONTROLS */
-        .controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            background: rgba(10,10,10,0.9);
-            padding: 8px;
-            border-radius: 40px;
-            border: 1px solid #333;
-            z-index: 20;
-            max-width: 95%;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none; 
-        }
-        .controls::-webkit-scrollbar { display: none; }
+    /* TOP HUD */
+    #hud{
+      position:absolute; top:14px; left:14px; z-index:20;
+      background:rgba(10,10,10,.85); border:1px solid #2a2a2a;
+      padding:10px 12px; border-radius:12px;
+      display:flex; gap:12px; align-items:center;
+      backdrop-filter: blur(6px);
+    }
+    #hud .big{font-weight:900; letter-spacing:.3px}
+    #hud .sub{color:#aaa; font-size:.85rem}
+    #hud .pill{
+      padding:6px 10px; border-radius:999px; border:1px solid #333;
+      background:rgba(255,255,255,.05); color:#ddd; font-weight:700; font-size:.75rem;
+      user-select:none;
+    }
+    #hud .pill.good{border-color:rgba(34,197,94,.5); color:#c7f9d6}
+    #hud .pill.bad{border-color:rgba(239,68,68,.5); color:#ffd1d1}
 
-        .btn {
-            background: transparent;
-            color: #888;
-            border: none;
-            padding: 8px 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            transition: 0.2s;
-        }
-        .btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
-        .btn.active { color: #000; background: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+    /* CONTROLS BAR */
+    .controls{
+      position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+      display:flex; gap:8px; background:rgba(10,10,10,0.9);
+      padding:8px; border-radius:40px; border:1px solid #333; z-index:20;
+      max-width:95%; overflow-x:auto; white-space:nowrap; scrollbar-width:none;
+    }
+    .controls::-webkit-scrollbar{display:none}
+    .btn{
+      background:transparent; color:#888; border:none; padding:8px 14px;
+      font-weight:800; text-transform:uppercase; letter-spacing:.5px;
+      cursor:pointer; border-radius:30px; font-size:.72rem; transition:.18s;
+    }
+    .btn:hover{color:#fff; background:rgba(255,255,255,.1)}
+    .btn.active{color:#000; background:#fff; box-shadow:0 0 15px rgba(255,255,255,.25)}
+    .btn#btn-intro.active{background:var(--root); box-shadow:0 0 15px var(--root)}
+    .btn#btn-soh.active{background:var(--sin); box-shadow:0 0 15px var(--sin)}
+    .btn#btn-special.active{background:var(--cos); box-shadow:0 0 15px var(--cos)}
+    .btn#btn-quadrant.active{background:var(--tan); box-shadow:0 0 15px var(--tan)}
+    .btn#btn-identities.active{background:#fff; box-shadow:0 0 15px #fff}
+    .btn#btn-graph.active{background:var(--violet); box-shadow:0 0 15px var(--violet)}
+    .btn#btn-word.active{background:var(--good); box-shadow:0 0 15px var(--good)}
 
-        .btn#btn-root.active { background: var(--root); box-shadow: 0 0 15px var(--root); }
-        .btn#btn-shadows.active { background: var(--sin); box-shadow: 0 0 15px var(--sin); }
-        .btn#btn-walls.active { background: var(--tan); box-shadow: 0 0 15px var(--tan); }
-        .btn#btn-ceiling.active { background: var(--cot); box-shadow: 0 0 15px var(--cot); }
-        .btn#btn-god.active { background: #fff; box-shadow: 0 0 15px #fff; }
-        .btn#btn-sat.active { background: #22c55e; box-shadow: 0 0 15px #22c55e; }
-        .btn#btn-real.active { background: #bd00ff; box-shadow: 0 0 15px #bd00ff; }
+    /* RIGHT PANEL */
+    #panel{
+      width:440px; flex-shrink:0; background:var(--panel);
+      border-left:1px solid #222; display:flex; flex-direction:column; z-index:10;
+    }
+    .content{padding:22px 22px 10px 22px; overflow-y:auto; flex-grow:1}
+    h1{margin:0; font-size:1.9rem; letter-spacing:-1px; line-height:1}
+    h2{margin:8px 0 14px 0; font-size:.78rem; color:#666; text-transform:uppercase; letter-spacing:3px}
+    p{line-height:1.55; color:#bbb; margin:0 0 12px 0; font-size:.95rem}
+    strong{color:#fff}
+    ul{margin:0 0 14px 18px; color:#bbb}
+    li{margin:6px 0}
+    .highlight{background:rgba(255,255,255,.08); border:1px solid #2a2a2a; padding:10px 12px; border-radius:10px; color:#eaeaea}
+    .warn{border-color:rgba(239,68,68,.35); background:rgba(239,68,68,.08)}
+    .ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.08)}
+    .mini{color:#999; font-size:.86rem}
 
-        /* RIGHT PANEL */
-        #panel {
-            width: 420px;
-            flex-shrink: 0;
-            background: var(--panel);
-            border-left: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
-            position: relative;
-        }
+    /* INTERACTIVE FORM */
+    .form{
+      margin-top:10px;
+      padding:12px; border-radius:12px;
+      border:1px solid #2a2a2a; background:#060606;
+    }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    label{display:block; font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:#777; margin:0 0 6px 0}
+    select, input{
+      width:100%; padding:10px 10px; border-radius:10px;
+      border:1px solid #2b2b2b; background:#0b0b0b; color:#fff;
+      font-weight:700; outline:none;
+    }
+    input[type="number"]{appearance:textfield}
+    .form .row{display:flex; gap:10px; align-items:center; margin-top:10px}
+    .cta{
+      background:#fff; color:#000; border:none; border-radius:12px;
+      padding:10px 12px; font-weight:900; cursor:pointer;
+    }
+    .cta:hover{filter:brightness(0.96)}
+    .toggle{
+      background:transparent; color:#ddd; border:1px solid #2b2b2b;
+      border-radius:12px; padding:10px 12px; font-weight:800; cursor:pointer;
+    }
+    .toggle.on{border-color:rgba(34,197,94,.5); box-shadow:0 0 0 1px rgba(34,197,94,.15) inset}
+    .toggle.off{border-color:rgba(239,68,68,.4); box-shadow:0 0 0 1px rgba(239,68,68,.12) inset}
 
-        .content { padding: 25px; overflow-y: auto; flex-grow: 1; }
-        
-        h1 { margin: 0; font-size: 2rem; letter-spacing: -1px; line-height: 1; }
-        h2 { margin: 0 0 15px 0; font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 3px; }
-        
-        p { line-height: 1.5; color: #bbb; margin-bottom: 1.2em; font-size: 0.95rem; }
-        strong { color: #fff; }
-        .highlight { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; color: #fff; font-weight: bold; }
+    /* DATA BOX */
+    .data-box{
+      background:#000; padding:14px 18px;
+      border-top:1px solid #222; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+      font-size:.88rem;
+    }
+    .drow{display:flex; justify-content:space-between; margin-bottom:7px; align-items:center}
+    .bar-bg{width:90px; height:6px; background:#222; border-radius:3px; overflow:hidden}
+    .bar-fill{height:100%; width:0%; transition:width .08s}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace}
 
-        /* DATA BOX */
-        .data-box {
-            background: #000;
-            padding: 15px 25px;
-            border-top: 1px solid #222;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-        .row { display: flex; justify-content: space-between; margin-bottom: 6px; align-items: center; }
-        .bar-bg { width: 80px; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
-        .bar-fill { height: 100%; width: 0%; transition: width 0.1s; }
+    /* MINI CANVAS (graph) */
+    #mini-stage{
+      width:100%; height:220px; background:#000;
+      border-top:1px solid #222; border-bottom:1px solid #222;
+      display:none;
+    }
 
-        /* PROOF CANVAS */
-        #proof-stage {
-            width: 100%;
-            height: 250px;
-            background: #000;
-            border-bottom: 1px solid #333;
-            display: none; 
-        }
-
-        /* SAT OVERLAY */
-        #sat-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 30;
-            display: none;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        #sat-overlay.active { display: block; }
-        
-        .sat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .sat-card {
-            background: rgba(20, 20, 20, 0.9);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .sat-card:hover { border-color: #fff; background: rgba(40, 40, 40, 0.95); transform: translateY(-2px); }
-        .sat-card.active-proof { border-color: #4ade80; background: rgba(10, 30, 10, 0.95); box-shadow: 0 0 25px rgba(74, 222, 128, 0.2); }
-        .sat-card h3 { color: #fff; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 8px; font-size: 1.1rem;}
-        .sat-card .math { font-family: monospace; font-size: 1.2rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 10px; border-radius: 6px; display: block; text-align: center; margin: 15px 0;}
-
-        @media (max-width: 700px) {
-            body { flex-direction: column; }
-            #stage { flex: 2; }
-            #panel { width: 100%; height: 50%; border-left: none; border-top: 1px solid #222; }
-        }
-    </style>
+    @media (max-width: 780px){
+      body{flex-direction:column}
+      #stage{flex:2}
+      #panel{width:100%; height:50%; border-left:none; border-top:1px solid #222}
+      #hud{top:10px; left:10px}
+    }
+  </style>
 </head>
 <body>
 
 <div id="stage">
-    <canvas id="cvs"></canvas>
-    
-    <!-- SAT OVERLAY -->
-    <div id="sat-overlay">
-        <h1 style="text-align:center; margin-bottom:10px;">THE PROOF DECODER</h1>
-        <p style="text-align:center; color:#888; margin-bottom:30px;">CLICK a formula to see <strong>WHY</strong> it works.</p>
-        
-        <div class="sat-grid">
-            <div class="sat-card" id="card-pythag" onclick="activateProof('pythag')">
-                <h3 style="color:var(--sin)">1. THE CIRCLE</h3>
-                <p><strong>Formula:</strong> <span class="math">sin² + cos² = 1</span></p>
-                <p style="font-size:0.9rem; color:#aaa">The foundation of everything.</p>
-            </div>
-            <div class="sat-card" id="card-tan" onclick="activateProof('tan')">
-                <h3 style="color:var(--tan)">2. THE WALL</h3>
-                <p><strong>Formula:</strong> <span class="math">tan² + 1 = sec²</span></p>
-                <p style="font-size:0.9rem; color:#aaa">Proves the link between Wall Height and Beam Length.</p>
-            </div>
-            <div class="sat-card" id="card-cot" onclick="activateProof('cot')">
-                <h3 style="color:var(--cot)">3. THE CEILING</h3>
-                <p><strong>Formula:</strong> <span class="math">cot² + 1 = csc²</span></p>
-                <p style="font-size:0.9rem; color:#aaa">The inverted version of the wall.</p>
-            </div>
-            <div class="sat-card" id="card-slope" onclick="activateProof('slope')">
-                <h3 style="color:#fff">4. RATIO ID</h3>
-                <p><strong>Formula:</strong> <span class="math">tan = sin / cos</span></p>
-                <p style="font-size:0.9rem; color:#aaa">Similar triangles scaling up.</p>
-            </div>
-            <div class="sat-card" id="card-co" onclick="activateProof('co')">
-                <h3 style="color:#4ade80">5. THE "CO" TRAP</h3>
-                <p><strong>Formula:</strong> <span class="math">sin(x) = cos(90-x)</span></p>
-                <p style="font-size:0.9rem; color:#aaa">The #1 SAT Trick Question.</p>
-            </div>
-        </div>
-        
-        <div style="text-align:center; margin-top:30px;">
-            <button class="btn active" onclick="setMode('shadows')">EXIT PROOF MODE</button>
-        </div>
-    </div>
+  <canvas id="cvs"></canvas>
 
-    <div class="controls">
-        <button class="btn active" id="btn-root" onclick="setMode('root')">0. THE ROOT</button>
-        <button class="btn" id="btn-shadows" onclick="setMode('shadows')">1. Shadows</button>
-        <button class="btn" id="btn-walls" onclick="setMode('walls')">2. Walls</button>
-        <button class="btn" id="btn-ceiling" onclick="setMode('ceiling')">3. Ceiling</button>
-        <button class="btn" id="btn-god" onclick="setMode('god')">4. God Mode</button>
-        <button class="btn" id="btn-sat" onclick="setMode('sat')">5. PROOF MODE</button>
-        <button class="btn" id="btn-real" onclick="setMode('real')">6. REAL WORLD</button>
+  <div id="hud">
+    <div>
+      <div class="big" id="hud-angle">θ = 0°</div>
+      <div class="sub" id="hud-eq">Equivalent: 0°</div>
     </div>
+    <div class="pill" id="hud-quad">Q I</div>
+    <div class="pill" id="hud-ref">ref 0°</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn active" id="btn-intro" onclick="setMode('intro')">0. Start</button>
+    <button class="btn" id="btn-soh" onclick="setMode('soh')">1. SOHCAHTOA</button>
+    <button class="btn" id="btn-special" onclick="setMode('special')">2. Special Angles</button>
+    <button class="btn" id="btn-quadrant" onclick="setMode('quadrant')">3. Quadrants</button>
+    <button class="btn" id="btn-identities" onclick="setMode('identities')">4. Identities</button>
+    <button class="btn" id="btn-graph" onclick="setMode('graph')">5. Graph</button>
+    <button class="btn" id="btn-word" onclick="setMode('word')">6. Word Problems</button>
+  </div>
 </div>
 
 <div id="panel">
-    <!-- Proof Canvas -->
-    <canvas id="proof-stage" width="400" height="250"></canvas>
+  <canvas id="mini-stage" width="440" height="220"></canvas>
 
-    <div class="content">
-        <h1>TRIG<br>VELOCITY</h1>
-        <h2>Concept Engine v13.0</h2>
-        <div id="txt"></div>
-    </div>
-    
-    <div class="data-box" id="data-display"></div>
+  <div class="content">
+    <h1>SAT TRIG<br/>ENGINE</h1>
+    <h2>Zero fluff. Zero gaps.</h2>
+    <div id="txt"></div>
+  </div>
+
+  <div class="data-box" id="data"></div>
 </div>
 
 <script>
-    // MAIN CANVAS
-    const cvs = document.getElementById('cvs');
-    const ctx = cvs.getContext('2d', { alpha: false });
-    
-    // PROOF CANVAS
-    const pCvs = document.getElementById('proof-stage');
-    const pCtx = pCvs.getContext('2d');
+/* =========================
+   SAT TRIG ENGINE (Complete)
+   ========================= */
 
-    // CONFIG
-    const colors = {
-        bg: '#050505',
-        sin: '#ff0055',
-        cos: '#00ccff',
-        tan: '#ffcc00',
-        sec: '#ccffff',
-        csc: '#ffcccc',
-        cot: '#ff8800',
-        root: '#4ade80',
-        mech: '#bd00ff',
-        grid: '#222',
-        text: '#fff'
-    };
+const cvs = document.getElementById('cvs');
+const ctx = cvs.getContext('2d', { alpha:false });
 
-    let state = {
-        w: 0, h: 0, cx: 0, cy: 0, scale: 200,
-        angle: 0.927, 
-        mode: 'root',
-        proofTarget: null, 
-        dragging: false,
-        wavePoints: []
-    };
+const mini = document.getElementById('mini-stage');
+const mctx = mini.getContext('2d');
 
-    // SCRIPTS
-    const content = {
-        root: `
-            <p><strong>0. The Root: WHY a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></strong></p>
-            <p>Trigonometry doesn't care about the lines. It cares about the <strong>Squares</strong> attached to them.</p>
-            
-            <p><strong>The Visual Proof:</strong><br>
-            The Triangle lives inside the Circle (Radius 1).
-            Look at the grid tiles on the screen.</p>
-            <p>
-            <span style="color:var(--sin)">Pink Square</span> Area: <span id="r-sin">0.64</span><br>
-            <span style="color:var(--cos)">Blue Square</span> Area: <span id="r-cos">0.36</span>
-            </p>
-            <p>If you smash the Blue and Pink tiles together, they fit <strong>perfectly</strong> into the Green Hypotenuse Square.</p>
-            
-            <p class="highlight" style="text-align:center">Pink Area + Blue Area = 1.00</p>
-            <p>This is why we square everything. sin + cos &ne; 1. But sin<sup>2</sup> + cos<sup>2</sup> = 1. Always.</p>
-        `,
-        shadows: `
-            <p><strong>1. SOH CAH TOA vs. The Scanner</strong></p>
-            <p>You know <strong>Sin = Opp / Hyp</strong>.</p>
-            <p>Look at the canvas. We force the White Arm (Hypotenuse) to equal <strong>1.0</strong>.</p>
-            
-            <p><strong>The Math:</strong><br>
-            Sin = Opp / 1  →  <strong>Sin = Opp</strong><br>
-            Cos = Adj / 1  →  <strong>Cos = Adj</strong></p>
-            
-            <p><strong>The Visual:</strong><br>
-            The Blue Light scans down. The <strong>Shadow (Adjacent)</strong> is Cosine.<br>
-            The Pink Light scans left. The <strong>Shadow (Opposite)</strong> is Sine.</p>
-        `,
-        walls: `
-            <p><strong>2. The "Zoom" Logic</strong></p>
-            <p>Look at the diagram. We have a <strong>Mini Triangle</strong> (Inside) and a <strong>Mega Triangle</strong> (Wall).</p>
-            
-            <p><strong>The Projector:</strong><br>
-            We take the Mini Triangle (Sin, Cos) and blow it up until the base is 1.0.</p>
-            
-            <p><strong>Calculations:</strong><br>
-            To get from Cos &rarr; 1, we divide by Cos.<br>
-            So we must divide the Height (Sin) by Cos.</p>
-            <p class="highlight" style="text-align:center">Tan = Sin / Cos</p>
-        `,
-        ceiling: `
-            <p><strong>3. The "Ceiling" Logic</strong></p>
-            <p>Now we project onto the ceiling. We scale the triangle until the <strong>Height is 1</strong>.</p>
-            
-            <p><strong>Calculations:</strong><br>
-            To get from Sin &rarr; 1, we divide by Sin.<br>
-            So we must divide the Base (Cos) by Sin.</p>
-            <p class="highlight" style="text-align:center">Cot = Cos / Sin</p>
-        `,
-        god: `
-            <p><strong>4. The Trigonometric Trinity</strong></p>
-            <p>The "God Mode" view reveals three distinct families of lines:</p>
-            
-            <p><strong>1. The Chords (Inside):</strong><br>
-            <span style="color:var(--sin)">Sin</span> and <span style="color:var(--cos)">Cos</span>. They are trapped inside the circle. They measure x/y position.</p>
-            
-            <p><strong>2. The Tangents (Touching):</strong><br>
-            <span style="color:var(--tan)">Tan</span> and <span style="color:var(--cot)">Cot</span>. They touch the edge. They represent the "Slope" of the angle.</p>
-            
-            <p><strong>3. The Secants (Cutting):</strong><br>
-            <span style="color:var(--sec)">Sec</span> and <span style="color:var(--csc)">Csc</span>. They slice through the center. They represent the distance to the "walls".</p>
-            
-            <p><em>They are all measuring the exact same angle, just using different rulers.</em></p>
-        `,
-        sat: `
-            <p><strong>5. The Proof Decoder</strong></p>
-            <p>Select a formula on the left.</p>
-            <p>The visual proof will appear <strong>RIGHT HERE</strong> in this panel.</p>
-        `,
-        real: `
-            <p><strong>6. The Industrial Application</strong></p>
-            <p><strong>1. Mechanical Engineering (Pistons):</strong><br>
-            A car engine turns a Circle (Crankshaft) into a Line (Piston).<br>
-            The Height of the piston is literally the <strong>Sine</strong> of the wheel angle.</p>
-            
-            <p><strong>2. Civil Engineering (Bridges):</strong><br>
-            Look at the Arm as a bridge cable.<br>
-            <span style="color:var(--sin)">SIN</span> = Lifting Force (Vertical).<br>
-            <span style="color:var(--cos)">COS</span> = Crushing Force (Horizontal).</p>
-            
-            <p><strong>3. Surveying (Tangents):</strong><br>
-            To measure a mountain, you measure distance to the base (1) and look up.<br>
-            <span style="color:var(--tan)">TAN</span> * Distance = Height.</p>
-        `,
-        // PROOF TEXTS
-        proof_pythag: `
-            <h3 style="color:var(--sin)">1. THE CIRCLE PROOF</h3>
-            <p><strong>Setup:</strong> Right Triangle inside circle.</p>
-            <ul>
-                <li>Base = <strong style="color:var(--cos)">cos</strong></li>
-                <li>Height = <strong style="color:var(--sin)">sin</strong></li>
-                <li>Hyp = <strong style="color:#fff">1</strong></li>
-            </ul>
-            <p>Apply Pythagoras (a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>):</p>
-            <p class="highlight" style="text-align:center">sin<sup>2</sup> + cos<sup>2</sup> = 1</p>
-        `,
-        proof_tan: `
-            <h3 style="color:var(--tan)">2. THE WALL PROOF</h3>
-            <p><strong>Setup:</strong> The Big Triangle hitting the wall.</p>
-            <ul>
-                <li>Base = <strong style="color:#fff">1</strong></li>
-                <li>Height = <strong style="color:var(--tan)">tan</strong></li>
-                <li>Hyp = <strong style="color:var(--sec)">sec</strong></li>
-            </ul>
-            <p>Apply Pythagoras:</p>
-            <p class="highlight" style="text-align:center">1 + tan<sup>2</sup> = sec<sup>2</sup></p>
-        `,
-        proof_cot: `
-            <h3 style="color:var(--cot)">3. THE CEILING PROOF</h3>
-            <p><strong>Setup:</strong> The Triangle hitting the ceiling.</p>
-            <ul>
-                <li>Height = <strong style="color:#fff">1</strong></li>
-                <li>Base = <strong style="color:var(--cot)">cot</strong></li>
-                <li>Hyp = <strong style="color:var(--csc)">csc</strong></li>
-            </ul>
-            <p>Apply Pythagoras:</p>
-            <p class="highlight" style="text-align:center">cot<sup>2</sup> + 1 = csc<sup>2</sup></p>
-        `,
-        proof_slope: `
-            <h3 style="color:#fff">4. THE RATIO PROOF</h3>
-            <p><strong>Setup:</strong> Similar Triangles.</p>
-            <p>The Inner Triangle (Blue) and Outer Triangle (Yellow) share the same angle.</p>
-            <p>Ratios must be equal:</p>
-            <p class="highlight" style="text-align:center">sin / cos = tan / 1</p>
-        `,
-        proof_co: `
-            <h3 style="color:#4ade80">5. THE CO-FUNCTION PROOF</h3>
-            <p><strong>Setup:</strong> Look at the triangle.</p>
-            <p>Angle A = <strong style="color:#fff">x</strong>.<br>
-            Angle B = <strong style="color:#fff">90 - x</strong>.</p>
-            <p>The side <strong>Opposite</strong> to A is the side <strong>Adjacent</strong> to B.</p>
-            <p class="highlight" style="text-align:center">sin(x) = cos(90-x)</p>
-        `
-    };
+const colors = {
+  bg:'#050505', grid:'#222',
+  sin:'#ff0055', cos:'#00ccff', tan:'#ffcc00',
+  sec:'#ccffff', csc:'#ffcccc', cot:'#ff8800',
+  root:'#4ade80', white:'#fff', gray:'#888', violet:'#bd00ff',
+  good:'#22c55e', bad:'#ef4444'
+};
 
-    // INIT
-    function resize() {
-        if(!cvs || !cvs.parentElement) return;
-        const p = cvs.parentElement;
-        state.w = p.clientWidth;
-        state.h = p.clientHeight;
-        if(state.w === 0 || state.h === 0) return;
+const state = {
+  w:0,h:0,cx:0,cy:0, R:200, // display radius
+  angleRad: 0.6,            // can be any real number
+  mode:'intro',
+  dragging:false,
+  snapOn:true,
+  units:'deg',              // display units for HUD and sliders
+  showExact:true,
 
-        cvs.width = state.w;
-        cvs.height = state.h;
-        state.cx = state.w * 0.35;
-        state.cy = state.h * 0.65;
-        state.scale = Math.min(state.w, state.h) * 0.28;
-        draw();
+  // SOH solver
+  givenSide:'hyp', givenVal: 10,
+  askedSide:'opp'
+};
+
+// Special angles list (degrees) for snapping and exact values
+const SPECIAL = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
+
+// Content (overhauled language)
+const content = {
+  intro: `
+    <p><strong>What this is:</strong> a SAT trig simulator that forces the same decisions the test forces.</p>
+
+    <div class="highlight ok">
+      <p><strong>Rule 1:</strong> Trig is not “memorize.” It’s “pick the correct ratio.”</p>
+      <p><strong>Rule 2:</strong> The triangle changes. The ratios don’t.</p>
+    </div>
+
+    <p><strong>How to use the canvas:</strong></p>
+    <ul>
+      <li>Drag anywhere on the stage to rotate the angle θ.</li>
+      <li>The point on the circle is <span class="mono">(cos θ, sin θ)</span>.</li>
+      <li>Pink = sine (vertical). Blue = cosine (horizontal).</li>
+    </ul>
+
+    <div class="highlight warn">
+      <p><strong>SAT trap:</strong> if you only understand Quadrant I, you only understand ~25% of trig.</p>
+    </div>
+
+    <p class="mini">Go in order: SOHCAHTOA → Special Angles → Quadrants → Identities → Graph → Word Problems.</p>
+  `,
+
+  soh: `
+    <p><strong>SOHCAHTOA is a decision engine.</strong></p>
+    <p>Every SAT right-triangle trig question is:</p>
+    <div class="highlight">
+      <p><strong>Given:</strong> some side(s) and an angle</p>
+      <p><strong>Asked:</strong> a missing side or a ratio</p>
+      <p><strong>Job:</strong> pick the ratio that contains what you need and what you have.</p>
+    </div>
+
+    <p><strong>Names are always relative to θ:</strong></p>
+    <ul>
+      <li><strong>Opp</strong> = across from θ</li>
+      <li><strong>Adj</strong> = next to θ</li>
+      <li><strong>Hyp</strong> = the longest side (across the right angle)</li>
+    </ul>
+
+    <div class="form" id="soh-form"></div>
+
+    <div class="highlight warn">
+      <p><strong>Trap:</strong> students pick a ratio because it “looks familiar.” That leads to wrong equations.</p>
+      <p>You pick based on <strong>Given → Asked</strong>. No guessing.</p>
+    </div>
+  `,
+
+  special: `
+    <p><strong>Special angles are free points.</strong> You either know them instantly or you bleed time.</p>
+
+    <div class="highlight">
+      <p><strong>30°–60°–90° triangle:</strong> <span class="mono">1 : √3 : 2</span></p>
+      <p><strong>45°–45°–90° triangle:</strong> <span class="mono">1 : 1 : √2</span></p>
+      <p class="mini">Those ratios generate the exact unit-circle values.</p>
+    </div>
+
+    <p><strong>What this mode does:</strong></p>
+    <ul>
+      <li>Snaps θ to the SAT angles (toggle it on/off).</li>
+      <li>Shows exact values (radicals + fractions), not just decimals.</li>
+    </ul>
+
+    <div class="highlight ok">
+      <p><strong>Reality:</strong> SAT expects exact forms like <span class="mono">√3/2</span>, not <span class="mono">0.866</span>.</p>
+    </div>
+  `,
+
+  quadrant: `
+    <p><strong>Quadrants decide the signs.</strong></p>
+    <p>Same reference angle. Different signs. That’s the whole trick.</p>
+
+    <div class="highlight">
+      <p><strong>Quadrant signs (sin, cos, tan):</strong></p>
+      <ul>
+        <li><strong>QI:</strong> + + +</li>
+        <li><strong>QII:</strong> + − −</li>
+        <li><strong>QIII:</strong> − − +</li>
+        <li><strong>QIV:</strong> − + −</li>
+      </ul>
+      <p class="mini">Tan is positive when sin and cos share the same sign.</p>
+    </div>
+
+    <p><strong>Reference angle:</strong> the acute angle to the x-axis. You use it to fetch exact values, then apply signs.</p>
+  `,
+
+  identities: `
+    <p><strong>Identities are shortcuts.</strong> SAT uses them to hide an easy problem inside algebra.</p>
+
+    <div class="highlight">
+      <p><strong>The core three:</strong></p>
+      <ul>
+        <li><span class="mono">sin²θ + cos²θ = 1</span></li>
+        <li><span class="mono">1 + tan²θ = sec²θ</span></li>
+        <li><span class="mono">1 + cot²θ = csc²θ</span></li>
+      </ul>
+      <p><strong>Fast flips:</strong></p>
+      <ul>
+        <li><span class="mono">tanθ = sinθ / cosθ</span></li>
+        <li><span class="mono">secθ = 1 / cosθ</span>, <span class="mono">cscθ = 1 / sinθ</span>, <span class="mono">cotθ = 1 / tanθ</span></li>
+      </ul>
+    </div>
+
+    <div class="highlight warn">
+      <p><strong>Trap:</strong> forgetting signs in QII/QIII/QIV while doing algebra.</p>
+      <p>Before you simplify, lock quadrant → lock signs.</p>
+    </div>
+  `,
+
+  graph: `
+    <p><strong>Graphs show behavior.</strong> SAT tests you on amplitude/period/shift because it’s pattern recognition.</p>
+
+    <div class="highlight">
+      <p><strong>Sin wave basics:</strong></p>
+      <ul>
+        <li>Amplitude = |a| in <span class="mono">y = a·sin(bx) + k</span></li>
+        <li>Period = <span class="mono">360°/|b|</span> (or <span class="mono">2π/|b|</span>)</li>
+        <li>Midline = k</li>
+      </ul>
+    </div>
+
+    <p><strong>This view:</strong> top line is sin, bottom line is cos. The vertical cursor is your current θ.</p>
+  `,
+
+  word: `
+    <p><strong>Word problems are trig in disguise.</strong> Same ratios. Different nouns.</p>
+
+    <div class="highlight">
+      <p><strong>Translation table:</strong></p>
+      <ul>
+        <li><strong>Height</strong> usually = Opp</li>
+        <li><strong>Ground distance</strong> usually = Adj</li>
+        <li><strong>Line of sight / cable / ladder</strong> usually = Hyp</li>
+      </ul>
+    </div>
+
+    <div class="form" id="word-form"></div>
+
+    <div class="highlight warn">
+      <p><strong>Trap:</strong> “angle of depression” looks different, but it’s the same angle as elevation (alternate interior angles).</p>
+    </div>
+  `
+};
+
+/* =========================
+   Geometry helpers
+   ========================= */
+
+function radToDeg(r){ return r * 180 / Math.PI; }
+function degToRad(d){ return d * Math.PI / 180; }
+
+function normDeg(d){
+  // Normalize to [0,360)
+  let x = d % 360;
+  if(x < 0) x += 360;
+  // treat 360 as 0 for clean display in exact logic
+  if(Math.abs(x - 360) < 1e-9) x = 0;
+  return x;
+}
+function normRad(r){
+  let x = r % (2*Math.PI);
+  if(x < 0) x += 2*Math.PI;
+  if(Math.abs(x - 2*Math.PI) < 1e-9) x = 0;
+  return x;
+}
+
+function quadrantFromDeg(d0){
+  const d = normDeg(d0);
+  if(d >= 0 && d < 90) return "I";
+  if(d > 90 && d < 180) return "II";
+  if(d > 180 && d < 270) return "III";
+  if(d > 270 && d < 360) return "IV";
+  // axis cases:
+  if(d === 0) return "Axis (+x)";
+  if(d === 90) return "Axis (+y)";
+  if(d === 180) return "Axis (-x)";
+  if(d === 270) return "Axis (-y)";
+  return "?";
+}
+
+function referenceAngleDeg(d0){
+  const d = normDeg(d0);
+  if(d >= 0 && d <= 90) return d;
+  if(d > 90 && d < 180) return 180 - d;
+  if(d >= 180 && d <= 270) return d - 180;
+  if(d > 270 && d < 360) return 360 - d;
+  return 0;
+}
+
+function signPack(d0){
+  const d = normDeg(d0);
+  // return signs for sin and cos
+  if(d === 0 || d === 180) return {sin:0, cos: d===0?+1:-1};
+  if(d === 90 || d === 270) return {sin: d===90?+1:-1, cos:0};
+  if(d > 0 && d < 90) return {sin:+1, cos:+1};
+  if(d > 90 && d < 180) return {sin:+1, cos:-1};
+  if(d > 180 && d < 270) return {sin:-1, cos:-1};
+  if(d > 270 && d < 360) return {sin:-1, cos:+1};
+  return {sin:0, cos:0};
+}
+
+function nearestSpecialDeg(d0){
+  const d = normDeg(d0);
+  let best = SPECIAL[0], bestDist = 1e9;
+  for(const s of SPECIAL){
+    const dist = Math.min(Math.abs(d - s), Math.abs((d+360) - s), Math.abs(d - (s+360)));
+    if(dist < bestDist){ bestDist = dist; best = s; }
+  }
+  return {best, dist:bestDist};
+}
+
+/* Exact value builder for common special angles */
+function exactBaseSinCos(refDeg){
+  // refDeg is one of 0,30,45,60,90
+  switch(refDeg){
+    case 0:  return {sin:"0", cos:"1"};
+    case 30: return {sin:"1/2", cos:"√3/2"};
+    case 45: return {sin:"√2/2", cos:"√2/2"};
+    case 60: return {sin:"√3/2", cos:"1/2"};
+    case 90: return {sin:"1", cos:"0"};
+    default: return null;
+  }
+}
+
+function exactSinCos(d0){
+  // Returns {sinStr, cosStr, exact:boolean}
+  const d = normDeg(d0);
+  const ref = referenceAngleDeg(d);
+  const snap = nearestSpecialDeg(ref);
+  // Only produce exact when ref is one of 0,30,45,60,90 (within epsilon)
+  const EPS = 0.0001;
+  const candidates = [0,30,45,60,90];
+  let refMatch = null;
+  for(const c of candidates){
+    if(Math.abs(ref - c) < EPS) refMatch = c;
+  }
+  // also allow exact if original angle is exactly those axis/special angles
+  if(refMatch === null) return {sinStr:"", cosStr:"", exact:false};
+
+  const base = exactBaseSinCos(refMatch);
+  if(!base) return {sinStr:"", cosStr:"", exact:false};
+
+  const sgn = signPack(d);
+  let sinStr = base.sin;
+  let cosStr = base.cos;
+
+  if(sgn.sin === -1 && sinStr !== "0") sinStr = "-" + sinStr;
+  if(sgn.cos === -1 && cosStr !== "0") cosStr = "-" + cosStr;
+
+  // axis: signPack already handles sin/cos = 0 cases cleanly
+  return {sinStr, cosStr, exact:true};
+}
+
+function fmtNum(x){
+  if(!Number.isFinite(x)) return "undefined";
+  const ax = Math.abs(x);
+  if(ax > 1e6) return "huge";
+  return x.toFixed(4);
+}
+
+function pctBar(val){
+  if(!Number.isFinite(val)) return 100;
+  const capped = Math.min(Math.abs(val), 2);
+  return capped * 50; // 0..100
+}
+
+/* =========================
+   Layout / resize
+   ========================= */
+function resize(){
+  const p = cvs.parentElement;
+  state.w = p.clientWidth;
+  state.h = p.clientHeight;
+  cvs.width = state.w;
+  cvs.height = state.h;
+
+  state.cx = state.w * 0.36;
+  state.cy = state.h * 0.62;
+  state.R  = Math.min(state.w, state.h) * 0.28;
+
+  // mini canvas fixed width in markup; repaint anyway
+  draw();
+  updateUI();
+}
+window.addEventListener('resize', resize);
+window.addEventListener('load', () => { buildForms(); resize(); });
+
+/* =========================
+   Input (drag + optional snapping)
+   ========================= */
+function interact(px, py){
+  const dx = px - state.cx;
+  const dy = py - state.cy;
+  let ang = Math.atan2(-dy, dx); // [-pi, pi]
+  // keep full circle: allow negatives too (store raw)
+  state.angleRad = ang;
+
+  if(state.snapOn){
+    const d = normDeg(radToDeg(state.angleRad));
+    const {best, dist} = nearestSpecialDeg(d);
+    if(dist < 2.0){ // snap threshold (degrees)
+      state.angleRad = degToRad(best);
     }
-    window.addEventListener('resize', resize);
-    window.addEventListener('load', resize);
+  }
 
-    // INPUT
-    function interact(x, y) {
-        if(state.w === 0) return;
-        const dx = x - state.cx;
-        const dy = y - state.cy;
-        let ang = Math.atan2(-dy, dx);
-        if(ang < 0.05) ang = 0.05;
-        if(ang > 1.52 && state.mode !== 'real') ang = 1.52;
-        state.angle = ang;
-        draw();
-        updateUI();
-    }
+  draw();
+  updateUI();
+}
 
-    cvs.addEventListener('mousedown', e => { state.dragging = true; interact(e.offsetX, e.offsetY); });
-    window.addEventListener('mousemove', e => { 
-        if(state.dragging) {
-            const rect = cvs.getBoundingClientRect();
-            interact(e.clientX - rect.left, e.clientY - rect.top);
-        }
+cvs.addEventListener('mousedown', e => { state.dragging=true; interact(e.offsetX, e.offsetY); });
+window.addEventListener('mousemove', e => {
+  if(!state.dragging) return;
+  const rect = cvs.getBoundingClientRect();
+  interact(e.clientX - rect.left, e.clientY - rect.top);
+});
+window.addEventListener('mouseup', () => state.dragging=false);
+
+cvs.addEventListener('touchstart', e => {
+  e.preventDefault();
+  state.dragging=true;
+  const rect = cvs.getBoundingClientRect();
+  interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+}, {passive:false});
+
+cvs.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if(!state.dragging) return;
+  const rect = cvs.getBoundingClientRect();
+  interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+}, {passive:false});
+
+cvs.addEventListener('touchend', () => state.dragging=false);
+
+/* =========================
+   Mode switching
+   ========================= */
+function setMode(m){
+  state.mode = m;
+
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-'+m);
+  if(btn) btn.classList.add('active');
+
+  // mini stage only for graph
+  mini.style.display = (m === 'graph') ? 'block' : 'none';
+
+  const txt = document.getElementById('txt');
+  txt.innerHTML = content[m] || "";
+
+  buildForms(); // rebuild interactive forms if needed
+  draw();
+  updateUI();
+}
+window.setMode = setMode;
+
+/* =========================
+   Forms for SOH and Word
+   ========================= */
+function buildForms(){
+  // SOH form
+  const soh = document.getElementById('soh-form');
+  if(soh){
+    soh.innerHTML = `
+      <div class="grid2">
+        <div>
+          <label>GIVEN SIDE</label>
+          <select id="givenSide">
+            <option value="hyp">Hypotenuse (Hyp)</option>
+            <option value="adj">Adjacent (Adj)</option>
+            <option value="opp">Opposite (Opp)</option>
+          </select>
+        </div>
+        <div>
+          <label>GIVEN VALUE</label>
+          <input id="givenVal" type="number" step="0.1" min="0" value="${state.givenVal}">
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:10px">
+        <div>
+          <label>ASKED SIDE</label>
+          <select id="askedSide">
+            <option value="opp">Opposite (Opp)</option>
+            <option value="adj">Adjacent (Adj)</option>
+            <option value="hyp">Hypotenuse (Hyp)</option>
+          </select>
+        </div>
+        <div>
+          <label>SNAP SPECIAL ANGLES</label>
+          <button id="snapBtn" class="toggle ${state.snapOn ? 'on':'off'}">${state.snapOn ? 'ON' : 'OFF'}</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="cta" id="solveBtn">BUILD EQUATION → SOLVE</button>
+        <button class="toggle ${state.showExact ? 'on':'off'}" id="exactBtn">${state.showExact ? 'EXACT ON' : 'EXACT OFF'}</button>
+      </div>
+
+      <div class="highlight" id="sohOut" style="margin-top:10px"></div>
+    `;
+
+    const givenSide = document.getElementById('givenSide');
+    const askedSide = document.getElementById('askedSide');
+    const givenVal  = document.getElementById('givenVal');
+    const solveBtn  = document.getElementById('solveBtn');
+    const snapBtn   = document.getElementById('snapBtn');
+    const exactBtn  = document.getElementById('exactBtn');
+
+    if(givenSide) givenSide.value = state.givenSide;
+    if(askedSide) askedSide.value = state.askedSide;
+
+    givenSide?.addEventListener('change', () => { state.givenSide = givenSide.value; renderSOH(); updateUI(); draw(); });
+    askedSide?.addEventListener('change', () => { state.askedSide = askedSide.value; renderSOH(); updateUI(); draw(); });
+    givenVal?.addEventListener('input', () => {
+      state.givenVal = Math.max(0, Number(givenVal.value || 0));
+      renderSOH();
+      updateUI();
+      draw();
     });
-    window.addEventListener('mouseup', () => state.dragging = false);
-    
-    cvs.addEventListener('touchstart', e => { 
-        e.preventDefault(); 
-        state.dragging = true;
-        const rect = cvs.getBoundingClientRect();
-        interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-    }, {passive:false});
-    cvs.addEventListener('touchmove', e => {
-        e.preventDefault();
-        if(state.dragging) {
-            const rect = cvs.getBoundingClientRect();
-            interact(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-        }
-    }, {passive:false});
 
-    // LOGIC
-    function setMode(m) {
-        state.mode = m;
-        document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
-        const btn = document.getElementById('btn-'+m);
-        if(btn) btn.classList.add('active');
-        
-        document.getElementById('proof-stage').style.display = 'none';
-        
-        const txt = document.getElementById('txt');
-        if(txt && content[m]) txt.innerHTML = content[m];
-        
-        const satOverlay = document.getElementById('sat-overlay');
-        if(satOverlay) {
-            if(m === 'sat') satOverlay.classList.add('active');
-            else satOverlay.classList.remove('active');
-        }
+    solveBtn?.addEventListener('click', () => renderSOH(true));
+    snapBtn?.addEventListener('click', () => {
+      state.snapOn = !state.snapOn;
+      snapBtn.classList.toggle('on', state.snapOn);
+      snapBtn.classList.toggle('off', !state.snapOn);
+      snapBtn.textContent = state.snapOn ? 'ON' : 'OFF';
+      updateUI();
+      draw();
+    });
+    exactBtn?.addEventListener('click', () => {
+      state.showExact = !state.showExact;
+      exactBtn.classList.toggle('on', state.showExact);
+      exactBtn.classList.toggle('off', !state.showExact);
+      exactBtn.textContent = state.showExact ? 'EXACT ON' : 'EXACT OFF';
+      updateUI();
+      draw();
+    });
 
-        if(m === 'real') {
-            requestAnimationFrame(animatePiston);
-        }
+    renderSOH();
+  }
 
-        updateUI(); 
-        draw();
+  // Word form
+  const wf = document.getElementById('word-form');
+  if(wf){
+    wf.innerHTML = `
+      <div class="grid2">
+        <div>
+          <label>PROBLEM TYPE</label>
+          <select id="wordType">
+            <option value="elev">Angle of Elevation (height from distance)</option>
+            <option value="ladder">Ladder / Cable (length + angle → height)</option>
+          </select>
+        </div>
+        <div>
+          <label>SNAP SPECIAL ANGLES</label>
+          <button id="snapBtnW" class="toggle ${state.snapOn ? 'on':'off'}">${state.snapOn ? 'ON' : 'OFF'}</button>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:10px">
+        <div>
+          <label id="lblA">GROUND DISTANCE (Adj)</label>
+          <input id="inA" type="number" step="0.1" min="0" value="80">
+        </div>
+        <div>
+          <label id="lblB">HEIGHT (Opp)</label>
+          <input id="inB" type="number" step="0.1" min="0" value="0" disabled>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="cta" id="wordSolve">SOLVE WITH CURRENT θ</button>
+        <button class="toggle ${state.showExact ? 'on':'off'}" id="exactBtnW">${state.showExact ? 'EXACT ON' : 'EXACT OFF'}</button>
+      </div>
+
+      <div class="highlight" id="wordOut" style="margin-top:10px"></div>
+    `;
+
+    const wordType = document.getElementById('wordType');
+    const inA = document.getElementById('inA');
+    const lblA = document.getElementById('lblA');
+    const wordSolve = document.getElementById('wordSolve');
+    const snapBtnW = document.getElementById('snapBtnW');
+    const exactBtnW = document.getElementById('exactBtnW');
+
+    function updateWordLabels(){
+      const type = wordType.value;
+      if(type === 'elev'){
+        lblA.textContent = "GROUND DISTANCE (Adj)";
+      } else {
+        lblA.textContent = "LADDER/CABLE LENGTH (Hyp)";
+      }
     }
+    updateWordLabels();
 
-    function animatePiston() {
-        if(state.mode !== 'real') return;
-        state.angle += 0.02; 
-        draw();
-        updateUI();
-        requestAnimationFrame(animatePiston);
-    }
+    wordType.addEventListener('change', updateWordLabels);
 
-    function activateProof(target) {
-        state.proofTarget = target;
-        document.querySelectorAll('.sat-card').forEach(c => c.classList.remove('active-proof'));
-        document.getElementById('card-'+target).classList.add('active-proof');
-        
-        const txt = document.getElementById('txt');
-        if(txt && content['proof_'+target]) txt.innerHTML = content['proof_'+target];
-        
-        document.getElementById('proof-stage').style.display = 'block';
-        drawProof(target);
-    }
-    window.activateProof = activateProof;
+    wordSolve.addEventListener('click', () => {
+      const type = wordType.value;
+      const A = Math.max(0, Number(inA.value || 0));
+      const ang = normRad(state.angleRad);
+      const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
 
-    function updateUI() {
-        const box = document.getElementById('data-display');
-        if(!box) return;
-
-        const c = Math.cos(state.angle);
-        const s = Math.sin(state.angle);
-        const t = Math.tan(state.angle);
-        const deg = ((state.angle * 180 / Math.PI) % 360).toFixed(0);
-
-        let html = '';
-        
-        if (state.mode === 'root' || state.mode === 'shadows' || state.mode === 'god' || state.mode === 'sat') {
-            html += createRow('COS', c, colors.cos);
-            html += createRow('SIN', s, colors.sin);
-        }
-        if (state.mode === 'walls' || state.mode === 'god' || state.mode === 'sat') {
-            html += createRow('TAN', t, colors.tan);
-        }
-        if (state.mode === 'real') {
-             html += createRow('PISTON', s, colors.mech);
-        }
-        
-        html += `<div style="border-top:1px solid #333; margin:10px 0"></div>
-                 <div class="row"><span>ANGLE</span><strong style="color:#fff; font-size:1.2rem;">${deg}°</strong></div>`;
-        
-        box.innerHTML = html;
-        
-        // Update Root Content if needed
-        if(state.mode === 'root') {
-            const rSin = document.getElementById('r-sin');
-            const rCos = document.getElementById('r-cos');
-            if(rSin) rSin.innerText = (s*s).toFixed(2);
-            if(rCos) rCos.innerText = (c*c).toFixed(2);
-        }
-    }
-
-    function createRow(label, val, color) {
-        let pct = Math.abs(Math.min(val, 2)) * 50; 
-        let valStr = (Math.abs(val) > 10) ? "∞" : val.toFixed(2);
-        return `
-        <div class="row" style="color:${color}">
-            <span>${label}</span>
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span>${valStr}</span>
-                <div class="bar-bg"><div class="bar-fill" style="width:${pct}%; background:${color}"></div></div>
-            </div>
-        </div>`;
-    }
-
-    // --- MAIN RENDERER ---
-    function draw() {
-        if(state.w === 0 || state.h === 0) return;
-
-        const { w, h, cx, cy, scale, angle, mode } = state;
-        const tx = cx + scale * Math.cos(angle); 
-        const ty = cy - scale * Math.sin(angle); 
-        
-        const wallX = cx + scale;
-        const tanY = cy - scale * Math.tan(angle);
-        const ceilY = cy - scale;
-        const cotX = cx + scale * (1 / Math.tan(angle));
-
-        ctx.fillStyle = colors.bg;
-        ctx.fillRect(0, 0, w, h);
-
-        if(mode !== 'real' && mode !== 'root') drawRuler(cx, cy, scale, w, h);
-
-        // --- ROOT (PYTHAGORAS REIMAGINED) ---
-        if (mode === 'root') {
-            const size = scale; 
-            const rTx = cx + size * Math.cos(angle);
-            const rTy = cy - size * Math.sin(angle);
-            
-            // Draw Circle
-            ctx.strokeStyle = "#333";
-            ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.arc(cx, cy, size, 0, Math.PI*2); ctx.stroke();
-
-            // Draw Triangle Base
-            drawNeon(cx, cy, rTx, cy, colors.cos, 3);
-            drawNeon(rTx, cy, rTx, rTy, colors.sin, 3);
-            drawNeon(cx, cy, rTx, rTy, "#fff", 3);
-
-            // 1. COS SQUARE (Horizontal)
-            const cosLen = rTx - cx;
-            const cosSize = Math.abs(cosLen);
-            ctx.fillStyle = "rgba(0, 204, 255, 0.2)";
-            ctx.strokeStyle = "rgba(0, 204, 255, 0.5)";
-            ctx.lineWidth = 1;
-            
-            ctx.beginPath();
-            ctx.rect(cx, cy, cosLen, cosSize); 
-            ctx.fill();
-            ctx.stroke();
-            
-            ctx.beginPath();
-            for(let i=0.1; i<1.0; i+=0.2) {
-                ctx.moveTo(cx + cosLen*i, cy);
-                ctx.lineTo(cx + cosLen*i, cy + cosSize);
-                ctx.moveTo(cx, cy + cosSize*i);
-                ctx.lineTo(cx + cosLen, cy + cosSize*i);
-            }
-            ctx.stroke();
-            
-            // 2. SIN SQUARE (Vertical)
-            const sinLen = cy - rTy;
-            const sinSize = Math.abs(sinLen);
-            ctx.fillStyle = "rgba(255, 0, 85, 0.2)";
-            ctx.strokeStyle = "rgba(255, 0, 85, 0.5)";
-            
-            ctx.beginPath();
-            ctx.rect(rTx, cy, sinSize, -sinLen);
-            ctx.fill();
-            ctx.stroke();
-            
-            ctx.beginPath();
-            for(let i=0.1; i<1.0; i+=0.2) {
-                ctx.moveTo(rTx + sinSize*i, cy);
-                ctx.lineTo(rTx + sinSize*i, cy - sinLen);
-                ctx.moveTo(rTx, cy - sinLen*i);
-                ctx.lineTo(rTx + sinSize, cy - sinLen*i);
-            }
-            ctx.stroke();
-
-            // 3. HYP SQUARE (Angled)
-            ctx.save();
-            ctx.translate(cx, cy);
-            ctx.rotate(-angle);
-            ctx.fillStyle = "rgba(74, 222, 128, 0.1)";
-            ctx.strokeStyle = "rgba(74, 222, 128, 0.5)";
-            ctx.beginPath();
-            ctx.rect(0, -size, size, size); 
-            ctx.fill();
-            ctx.stroke();
-            
-            ctx.beginPath();
-            for(let i=0.2; i<1.0; i+=0.2) {
-                ctx.moveTo(size*i, -size); ctx.lineTo(size*i, 0);
-                ctx.moveTo(0, -size*i); ctx.lineTo(size, -size*i);
-            }
-            ctx.stroke();
-            ctx.restore();
-            
-            // Labels
-            drawLabel(cx + cosLen/2, cy + cosSize/2, (Math.cos(angle)**2).toFixed(2), "#fff");
-            drawLabel(rTx + sinSize/2, cy - sinLen/2, (Math.sin(angle)**2).toFixed(2), "#fff");
-            
-            return;
-        }
-
-        // MAIN CIRCLE 
-        if(mode !== 'real') {
-            ctx.strokeStyle = "#333";
-            ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.arc(cx, cy, scale, 0, Math.PI*2); ctx.stroke();
-        }
-
-        // --- SHADOWS ---
-        if (mode === 'shadows' || mode === 'god') {
-            ctx.save();
-            ctx.globalCompositeOperation = 'screen'; 
-            
-            // Floor Beam
-            const lightY = cy - scale * 1.5;
-            const gradCos = ctx.createLinearGradient(tx, lightY, tx, cy);
-            gradCos.addColorStop(0, "rgba(0, 204, 255, 0.4)"); 
-            gradCos.addColorStop(1, "rgba(0, 204, 255, 0.0)"); 
-            ctx.fillStyle = gradCos;
-            ctx.beginPath(); ctx.moveTo(tx-20, lightY); ctx.lineTo(tx+20, lightY); ctx.lineTo(tx, cy); ctx.fill();
-
-            // Wall Beam
-            const lightX = cx + scale * 1.5;
-            const gradSin = ctx.createLinearGradient(lightX, ty, cx, ty);
-            gradSin.addColorStop(0, "rgba(255, 0, 85, 0.4)"); 
-            gradSin.addColorStop(1, "rgba(255, 0, 85, 0.0)"); 
-            ctx.fillStyle = gradSin;
-            ctx.beginPath(); ctx.moveTo(lightX, ty-20); ctx.lineTo(lightX, ty+20); ctx.lineTo(cx, ty); ctx.fill();
-            
-            ctx.restore();
-
-            drawNeon(cx, cy, tx, cy, colors.cos, 4); 
-            drawNeon(cx, cy, cx, ty, colors.sin, 4); 
-            drawDashed(tx, ty, tx, cy, colors.cos);
-            drawDashed(tx, ty, cx, ty, colors.sin);
-            
-            drawLabel(cx + (tx-cx)/2, cy + 25, "cos", colors.cos);
-            drawLabel(cx - 35, cy + (ty-cy)/2, "sin", colors.sin);
-        }
-
-        // --- WALLS ---
-        if (mode === 'walls' || mode === 'god') {
-            ctx.strokeStyle = "#444"; ctx.lineWidth = 4;
-            ctx.beginPath(); ctx.moveTo(wallX, cy+50); ctx.lineTo(wallX, cy-h); ctx.stroke();
-            
-            // MINI TRIANGLE LABELS (SIN/COS)
-            drawNeon(cx, cy, tx, cy, colors.cos, 2);
-            drawNeon(tx, cy, tx, ty, colors.sin, 2);
-            drawLabel((cx+tx)/2, cy+15, "cos", "#666");
-            drawLabel(tx-20, (cy+ty)/2, "sin", "#666");
-
-            // MEGA TRIANGLE
-            drawNeon(wallX, cy, wallX, tanY, colors.tan, 4);
-            
-            if (mode !== 'god') {
-                drawLaser(cx, cy, wallX, tanY); 
-                drawLabel(wallX + 35, (cy+tanY)/2, "TAN", colors.tan);
-                drawLabel((cx+wallX)/2, (cy+tanY)/2 - 20, "SEC", colors.sec);
-            }
-        }
-
-        // --- CEILING ---
-        if (mode === 'ceiling' || mode === 'god') {
-            ctx.strokeStyle = "#444"; ctx.lineWidth = 4;
-            ctx.beginPath(); ctx.moveTo(cx-50, ceilY); ctx.lineTo(w, ceilY); ctx.stroke();
-            
-            // MINI TRIANGLE LABELS
-            drawNeon(cx, cy, cx, ty, colors.sin, 2);
-            drawNeon(cx, ty, tx, ty, colors.cos, 2);
-            drawLabel(cx-20, (cy+ty)/2, "sin", "#666");
-            drawLabel((cx+tx)/2, ty+15, "cos", "#666");
-
-            // MEGA TRIANGLE
-            drawNeon(cx, ceilY, cotX, ceilY, colors.cot, 4);
-            
-            if (mode !== 'god') {
-                drawLaser(cx, cy, cotX, ceilY);
-                drawLabel((cx+cotX)/2, ceilY - 25, "COT", colors.cot);
-                drawLabel((cx+cotX)/2, (cy+ceilY)/2 + 20, "CSC", colors.csc);
-            }
-        }
-
-        // --- REAL WORLD (PISTON) ---
-        if (mode === 'real') {
-            const pistonX = cx + scale * 2;
-            const pistonY = ty; 
-            
-            ctx.strokeStyle = "#333"; ctx.lineWidth=2;
-            ctx.beginPath(); ctx.arc(cx, cy, scale, 0, Math.PI*2); ctx.stroke();
-            drawNeon(cx, cy, tx, ty, "#fff", 4);
-            drawNeon(tx, ty, pistonX, pistonY, "#666", 3);
-            ctx.fillStyle="#fff"; ctx.beginPath(); ctx.arc(tx, ty, 6, 0, Math.PI*2); ctx.fill();
-            ctx.fillStyle="#fff"; ctx.beginPath(); ctx.arc(pistonX, pistonY, 6, 0, Math.PI*2); ctx.fill();
-
-            ctx.fillStyle = "rgba(30,30,30,0.8)";
-            ctx.fillRect(pistonX - 30, cy - scale - 20, 60, scale*2 + 40);
-            ctx.strokeStyle = "#555"; ctx.lineWidth = 2;
-            ctx.strokeRect(pistonX - 30, cy - scale - 20, 60, scale*2 + 40);
-
-            ctx.fillStyle = colors.mech;
-            ctx.fillRect(pistonX - 25, pistonY - 15, 50, 30);
-            drawLabel(pistonX, pistonY - 30, "PISTON (SIN)", colors.mech);
-            drawDashed(cx, cy, pistonX, cy, "#444");
+      let out = "";
+      if(type === 'elev'){
+        // height = adj * tan
+        if(!Number.isFinite(t)){
+          out = `<p><strong>Stop.</strong> Tan is undefined at 90°/270°. Pick a different angle.</p>`;
         } else {
-            drawNeon(cx, cy, tx, ty, "#fff", 3);
-            ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(tx, ty, 6, 0, Math.PI*2); ctx.fill();
-            if(mode === 'shadows' || mode === 'god') drawLabel((cx+tx)/2, (cy+ty)/2 - 15, "Hyp (1)", "#fff");
+          const h = A * t;
+          out = `
+            <p><strong>Given:</strong> ground distance = ${A}</p>
+            <p><strong>Asked:</strong> height</p>
+            <p><strong>Correct ratio:</strong> <span class="mono">tanθ = opp/adj</span></p>
+            <p><strong>Build equation:</strong> <span class="mono">opp = adj · tanθ</span></p>
+            <p><strong>Compute:</strong> <span class="mono">height = ${A} · tan(θ) = ${fmtNum(h)}</span></p>
+          `;
         }
+      } else {
+        // height = hyp * sin
+        const h = A * s;
+        out = `
+          <p><strong>Given:</strong> ladder/cable length = ${A}</p>
+          <p><strong>Asked:</strong> vertical height</p>
+          <p><strong>Correct ratio:</strong> <span class="mono">sinθ = opp/hyp</span></p>
+          <p><strong>Build equation:</strong> <span class="mono">opp = hyp · sinθ</span></p>
+          <p><strong>Compute:</strong> <span class="mono">height = ${A} · sin(θ) = ${fmtNum(h)}</span></p>
+        `;
+      }
+
+      document.getElementById('wordOut').innerHTML = out;
+    });
+
+    snapBtnW.addEventListener('click', () => {
+      state.snapOn = !state.snapOn;
+      snapBtnW.classList.toggle('on', state.snapOn);
+      snapBtnW.classList.toggle('off', !state.snapOn);
+      snapBtnW.textContent = state.snapOn ? 'ON' : 'OFF';
+      updateUI();
+      draw();
+    });
+
+    exactBtnW.addEventListener('click', () => {
+      state.showExact = !state.showExact;
+      exactBtnW.classList.toggle('on', state.showExact);
+      exactBtnW.classList.toggle('off', !state.showExact);
+      exactBtnW.textContent = state.showExact ? 'EXACT ON' : 'EXACT OFF';
+      updateUI();
+      draw();
+    });
+
+    document.getElementById('wordOut').innerHTML =
+      `<p>Set θ by dragging on the canvas. Then press <strong>SOLVE</strong>.</p>`;
+  }
+}
+
+/* =========================
+   SOH Solver output
+   ========================= */
+function pickRatio(given, asked){
+  // Returns {name, formula, solve, note}
+  // We'll include sec/csc/cot where relevant.
+  const map = {
+    sin: {name:"SIN", formula:"sinθ = opp / hyp"},
+    cos: {name:"COS", formula:"cosθ = adj / hyp"},
+    tan: {name:"TAN", formula:"tanθ = opp / adj"},
+    cot: {name:"COT", formula:"cotθ = adj / opp"},
+    sec: {name:"SEC", formula:"secθ = hyp / adj"},
+    csc: {name:"CSC", formula:"cscθ = hyp / opp"}
+  };
+
+  if(given === 'hyp' && asked === 'opp') return map.sin;
+  if(given === 'hyp' && asked === 'adj') return map.cos;
+  if(given === 'adj' && asked === 'opp') return map.tan;
+  if(given === 'opp' && asked === 'adj') return map.cot;
+  if(given === 'adj' && asked === 'hyp') return map.sec;
+  if(given === 'opp' && asked === 'hyp') return map.csc;
+
+  // asked == given: trivial
+  return {name:"TRIVIAL", formula:"asked side is the given side", note:"No trig needed."};
+}
+
+function renderSOH(force=false){
+  const out = document.getElementById('sohOut');
+  if(!out) return;
+
+  const ang = normRad(state.angleRad);
+  const d = normDeg(radToDeg(state.angleRad)); // raw can be negative; norm for trig context
+  const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
+
+  const given = state.givenSide;
+  const asked = state.askedSide;
+  const val = Math.max(0, state.givenVal);
+
+  const ratio = pickRatio(given, asked);
+
+  // compute full triangle using given side
+  let hyp, adj, opp;
+  let err = null;
+
+  if(given === 'hyp'){
+    hyp = val;
+    opp = hyp * s;
+    adj = hyp * c;
+  }
+  if(given === 'adj'){
+    adj = val;
+    if(Math.abs(c) < 1e-9) err = "cosθ is 0 here. Adjacent cannot be your given at 90°/270°.";
+    else {
+      hyp = adj / c;
+      opp = adj * t;
     }
-
-    // --- PROOF RENDERER (RIGHT PANEL) ---
-    function drawProof(target) {
-        const w = pCvs.width;
-        const h = pCvs.height;
-        const cx = 50;
-        const cy = h - 50;
-        const s = 150; 
-        const a = 0.7; 
-
-        pCtx.fillStyle = "#111";
-        pCtx.fillRect(0,0,w,h);
-        
-        const tx = cx + s * Math.cos(a);
-        const ty = cy - s * Math.sin(a);
-        const wallX = cx + s;
-        const tanY = cy - s * Math.tan(a);
-        const ceilY = cy - s;
-        const cotX = cx + s * (1/Math.tan(a));
-
-        if(target === 'pythag') {
-            pDrawLine(cx, cy, tx, cy, colors.cos, 4); 
-            pDrawLine(tx, cy, tx, ty, colors.sin, 4); 
-            pDrawLine(cx, cy, tx, ty, "#fff", 4);     
-            pLabel("cos", (cx+tx)/2, cy+20, colors.cos);
-            pLabel("sin", tx+20, (cy+ty)/2, colors.sin);
-            pLabel("1", (cx+tx)/2 - 10, (cy+ty)/2 - 10, "#fff");
-        }
-
-        if(target === 'tan') {
-            pDrawLine(cx, cy, wallX, cy, "#fff", 4);     
-            pDrawLine(wallX, cy, wallX, tanY, colors.tan, 4); 
-            pDrawLine(cx, cy, wallX, tanY, colors.sec, 4); 
-            pLabel("1", (cx+wallX)/2, cy+20, "#fff");
-            pLabel("tan", wallX+25, (cy+tanY)/2, colors.tan);
-            pLabel("sec", (cx+wallX)/2 - 10, (cy+tanY)/2 - 10, colors.sec);
-        }
-
-        if(target === 'cot') {
-            pDrawLine(cx, cy, cx, ceilY, "#fff", 4); 
-            pDrawLine(cx, ceilY, cotX, ceilY, colors.cot, 4); 
-            pDrawLine(cx, cy, cotX, ceilY, colors.csc, 4); 
-            pLabel("1", cx-20, (cy+ceilY)/2, "#fff");
-            pLabel("cot", (cx+cotX)/2, ceilY-20, colors.cot);
-            pLabel("csc", (cx+cotX)/2 + 10, (cy+ceilY)/2 + 10, colors.csc);
-        }
-
-        if(target === 'slope') {
-            pCtx.fillStyle = "rgba(0, 204, 255, 0.2)";
-            pCtx.beginPath(); pCtx.moveTo(cx, cy); pCtx.lineTo(tx, cy); pCtx.lineTo(tx, ty); pCtx.fill();
-            pDrawLine(cx, cy, tx, cy, colors.cos, 2);
-            pDrawLine(tx, cy, tx, ty, colors.sin, 2);
-            pDrawLine(wallX, cy, wallX, tanY, colors.tan, 4);
-            pDrawLine(cx, cy, wallX, tanY, colors.sec, 1);
-            pDrawLine(cx, cy, wallX, cy, "#fff", 1);
-            pLabel("sin", tx-15, (cy+ty)/2, colors.sin);
-            pLabel("cos", (cx+tx)/2, cy-10, colors.cos);
-            pLabel("tan", wallX+20, (cy+tanY)/2, colors.tan);
-            pLabel("1", (cx+wallX)/2, cy+20, "#fff");
-        }
-
-        if(target === 'co') {
-            pDrawLine(cx, cy, tx, cy, colors.cos, 4);
-            pDrawLine(tx, cy, tx, ty, colors.sin, 4);
-            pDrawLine(cx, cy, tx, ty, "#fff", 4);
-            pLabel("x", cx+20, cy-10, "#fff");
-            pLabel("90-x", tx-10, ty+20, "#fff");
-            pLabel("Opp to x", tx+30, (cy+ty)/2, colors.sin);
-            pLabel("Adj to 90-x", tx+35, (cy+ty)/2 + 20, colors.sin);
-        }
+  }
+  if(given === 'opp'){
+    opp = val;
+    if(Math.abs(s) < 1e-9) err = "sinθ is 0 here. Opposite cannot be your given at 0°/180°.";
+    else {
+      hyp = opp / s;
+      if(!Number.isFinite(t) || Math.abs(t) < 1e-9) err = "tanθ is 0/undefined here. Adj becomes impossible from opp with this angle.";
+      else adj = opp / t;
     }
+  }
 
-    function pDrawLine(x1, y1, x2, y2, color, w) {
-        pCtx.strokeStyle = color;
-        pCtx.lineWidth = w;
-        pCtx.beginPath(); pCtx.moveTo(x1,y1); pCtx.lineTo(x2,y2); pCtx.stroke();
+  // asked output
+  let askedVal = null;
+  if(!err){
+    if(asked === 'hyp') askedVal = hyp;
+    if(asked === 'adj') askedVal = adj;
+    if(asked === 'opp') askedVal = opp;
+  }
+
+  const eqSteps = [];
+  eqSteps.push(`<p><strong>Given:</strong> ${given.toUpperCase()} = ${val}</p>`);
+  eqSteps.push(`<p><strong>Asked:</strong> ${asked.toUpperCase()}</p>`);
+  eqSteps.push(`<p><strong>Pick ratio:</strong> <span class="mono">${ratio.formula}</span></p>`);
+
+  if(err){
+    eqSteps.push(`<p style="color:var(--bad)"><strong>Blocked:</strong> ${err}</p>`);
+    eqSteps.push(`<p class="mini">Move θ away from the axis or change what you’re “given.”</p>`);
+    out.innerHTML = eqSteps.join("");
+    return;
+  }
+
+  // Build the solving equation explicitly based on (given, asked)
+  let solveLine = "";
+  if(given === 'hyp' && asked === 'opp') solveLine = `opp = hyp · sinθ`;
+  if(given === 'hyp' && asked === 'adj') solveLine = `adj = hyp · cosθ`;
+  if(given === 'adj' && asked === 'opp') solveLine = `opp = adj · tanθ`;
+  if(given === 'opp' && asked === 'adj') solveLine = `adj = opp · cotθ = opp / tanθ`;
+  if(given === 'adj' && asked === 'hyp') solveLine = `hyp = adj · secθ = adj / cosθ`;
+  if(given === 'opp' && asked === 'hyp') solveLine = `hyp = opp · cscθ = opp / sinθ`;
+  if(given === asked) solveLine = `${asked} = ${given}`;
+
+  eqSteps.push(`<p><strong>Build equation:</strong> <span class="mono">${solveLine}</span></p>`);
+  eqSteps.push(`<p><strong>Compute:</strong> <span class="mono">${asked.toUpperCase()} = ${fmtNum(askedVal)}</span></p>`);
+
+  // show full triangle so they see scaling
+  eqSteps.push(`<div class="highlight" style="margin-top:10px">
+      <p><strong>Full triangle (scaled):</strong></p>
+      <p class="mono">hyp = ${fmtNum(hyp)}<br/>adj = ${fmtNum(adj)}<br/>opp = ${fmtNum(opp)}</p>
+    </div>`);
+
+  out.innerHTML = eqSteps.join("");
+}
+
+/* =========================
+   UI (HUD + Data box)
+   ========================= */
+function updateUI(){
+  const data = document.getElementById('data');
+  const hudAngle = document.getElementById('hud-angle');
+  const hudEq = document.getElementById('hud-eq');
+  const hudQuad = document.getElementById('hud-quad');
+  const hudRef = document.getElementById('hud-ref');
+
+  const rawDeg = radToDeg(state.angleRad);     // can be negative
+  const eqDeg = normDeg(rawDeg);               // [0,360)
+  const refDeg = referenceAngleDeg(eqDeg);
+  const quad = quadrantFromDeg(eqDeg);
+
+  // HUD
+  hudAngle.textContent = `θ = ${rawDeg.toFixed(0)}°`;
+  hudEq.textContent = `Equivalent: ${eqDeg.toFixed(0)}°`;
+  hudQuad.textContent = `Q ${quad}`;
+  hudRef.textContent = `ref ${refDeg.toFixed(0)}°`;
+
+  hudQuad.classList.remove('good','bad');
+  if(quad.includes("Axis")) hudQuad.classList.add('bad');
+  else hudQuad.classList.add('good');
+
+  // Values
+  const ang = normRad(state.angleRad);
+  const s = Math.sin(ang), c = Math.cos(ang), t = Math.tan(ang);
+  const exact = exactSinCos(eqDeg);
+
+  let sinLine = state.showExact && exact.exact ? `${exact.sinStr}  (${fmtNum(s)})` : `${fmtNum(s)}`;
+  let cosLine = state.showExact && exact.exact ? `${exact.cosStr}  (${fmtNum(c)})` : `${fmtNum(c)}`;
+
+  // tan exact (optional): derive from exact sin/cos if both exact and cos != 0
+  let tanLine = fmtNum(t);
+  if(state.showExact && exact.exact && exact.cosStr !== "0"){
+    tanLine = `(${exact.sinStr})/(${exact.cosStr})  (${fmtNum(t)})`;
+  } else if(!Number.isFinite(t)){
+    tanLine = "undefined";
+  }
+
+  // Show extra derived ratios (sec/csc) because SAT uses them in identities
+  const sec = (Math.abs(c) < 1e-9) ? Infinity : 1/c;
+  const csc = (Math.abs(s) < 1e-9) ? Infinity : 1/s;
+
+  const rows = [];
+  rows.push(dRow("SIN", sinLine, colors.sin, s));
+  rows.push(dRow("COS", cosLine, colors.cos, c));
+  rows.push(dRow("TAN", tanLine, colors.tan, t));
+  rows.push(dRow("SEC", fmtNum(sec), colors.sec, sec));
+  rows.push(dRow("CSC", fmtNum(csc), colors.csc, csc));
+
+  rows.push(`<div style="border-top:1px solid #222; margin:10px 0"></div>`);
+  rows.push(`<div class="drow"><span>Quadrant</span><strong>${quad}</strong></div>`);
+  rows.push(`<div class="drow"><span>Reference</span><strong>${refDeg.toFixed(0)}°</strong></div>`);
+  rows.push(`<div class="drow"><span>Angle (rad)</span><strong>${degToRad(eqDeg).toFixed(3)}</strong></div>`);
+
+  data.innerHTML = rows.join("");
+
+  // If in SOH, keep output fresh when angle changes
+  if(state.mode === 'soh'){
+    renderSOH(false);
+  }
+
+  // If graph mode, repaint mini graph
+  if(state.mode === 'graph'){
+    drawGraph();
+  }
+}
+
+function dRow(label, valStr, color, numericVal){
+  return `
+    <div class="drow" style="color:${color}">
+      <span>${label}</span>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="mono" style="color:#ddd">${valStr}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${pctBar(numericVal)}%; background:${color}"></div></div>
+      </div>
+    </div>`;
+}
+
+/* =========================
+   Drawing
+   ========================= */
+function draw(){
+  if(state.w === 0 || state.h === 0) return;
+
+  const w = state.w, h = state.h;
+  const cx = state.cx, cy = state.cy, R = state.R;
+  const ang = normRad(state.angleRad);
+
+  const x = cx + R * Math.cos(ang);
+  const y = cy - R * Math.sin(ang);
+
+  ctx.fillStyle = colors.bg;
+  ctx.fillRect(0,0,w,h);
+
+  drawAxes(cx, cy, w, h);
+  drawCircle(cx, cy, R);
+
+  // Quadrant shading in quadrant mode
+  if(state.mode === 'quadrant'){
+    shadeQuadrants(cx, cy, R);
+  }
+
+  // Triangle: origin -> (x,y) -> (x,cy)
+  // Adj = horizontal, Opp = vertical, Hyp = slanted
+  drawNeon(cx, cy, x, cy, colors.cos, 3);     // adjacent baseline
+  drawNeon(x, cy, x, y, colors.sin, 3);       // opposite vertical
+  drawNeon(cx, cy, x, y, colors.white, 3);    // hypotenuse
+  dot(x,y,6,colors.white);
+
+  // Labels (always, but stronger in SOH)
+  const showSOHLabels = (state.mode === 'soh');
+  const showCoreLabels = (state.mode !== 'graph'); // graph uses mini canvas anyway
+
+  if(showCoreLabels){
+    if(showSOHLabels){
+      label((cx+x)/2, cy+20, "ADJ", colors.cos);
+      label(x+26, (cy+y)/2, "OPP", colors.sin);
+      label((cx+x)/2+10, (cy+y)/2-12, "HYP", colors.white);
+
+      // draw angle arc
+      drawAngleArc(cx, cy, ang, R*0.18);
+      label(cx + R*0.23, cy - R*0.07, "θ", colors.white);
+
+      // right angle box
+      rightAngleMark(x, cy, 14);
+    } else {
+      label((cx+x)/2, cy+18, "cos θ", colors.cos);
+      label(x+32, (cy+y)/2, "sin θ", colors.sin);
+      label((cx+x)/2+12, (cy+y)/2-12, "hyp", colors.white);
+      drawAngleArc(cx, cy, ang, R*0.16);
     }
-    function pLabel(t, x, y, c) {
-        pCtx.fillStyle = c;
-        pCtx.font = "bold 14px sans-serif";
-        pCtx.textAlign = "center";
-        pCtx.textBaseline = "middle";
-        pCtx.fillText(t, x, y);
+  }
+
+  // Walls overlay to visualize tan (only when useful)
+  if(state.mode === 'identities' || state.mode === 'quadrant'){
+    // show tangent line x = cx + R
+    const wallX = cx + R;
+    ctx.strokeStyle = "#333"; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(wallX, cy + 60); ctx.lineTo(wallX, cy - h); ctx.stroke();
+
+    const tanY = cy - R * Math.tan(ang);
+    if(Number.isFinite(tanY) && Math.abs(Math.cos(ang)) > 1e-4){
+      drawNeon(wallX, cy, wallX, tanY, colors.tan, 3);
+      drawLaser(cx, cy, wallX, tanY);
+      label(wallX+34, (cy+tanY)/2, "tan θ", colors.tan);
+    } else {
+      label(wallX+45, cy-80, "tan undefined", colors.bad);
     }
+  }
+}
 
-    function drawRuler(cx, cy, scale, w, h) {
-        ctx.strokeStyle = "#222"; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke(); 
-        ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
-        
-        ctx.fillStyle = "#444"; ctx.font = "10px monospace"; ctx.textAlign = "center";
-        for(let i=0.2; i<=1.0; i+=0.2) {
-            let px = cx + scale * i;
-            ctx.fillRect(px, cy-4, 1, 8);
-            ctx.fillText(i.toFixed(1), px, cy + 18);
-            let py = cy - scale * i;
-            ctx.fillRect(cx-4, py, 8, 1);
-            ctx.fillText(i.toFixed(1), cx - 20, py + 3);
-        }
-    }
+function drawAxes(cx, cy, w, h){
+  ctx.strokeStyle = colors.grid; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
 
-    function drawNeon(x1, y1, x2, y2, color, width=2) {
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.lineWidth = width * 4;
-        ctx.strokeStyle = color;
-        ctx.globalAlpha = 0.3;
-        ctx.stroke();
-        ctx.lineWidth = width;
-        ctx.globalAlpha = 1.0;
-        ctx.strokeStyle = (color === '#fff') ? '#fff' : color; 
-        ctx.stroke();
-    }
+  // small ticks (0.5 and 1.0)
+  ctx.fillStyle = "#444";
+  ctx.font = "10px ui-monospace, Menlo, Consolas, monospace";
+  ctx.textAlign = "center";
+  for(const t of [0.5,1.0]){
+    const px = cx + state.R*t;
+    ctx.fillRect(px, cy-4, 1, 8);
+    ctx.fillText(t.toFixed(1), px, cy+18);
 
-    function drawDashed(x1, y1, x2, y2, color) {
-        ctx.save();
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.strokeStyle = color;
-        ctx.setLineDash([4, 4]);
-        ctx.stroke();
-        ctx.restore();
-    }
+    const py = cy - state.R*t;
+    ctx.fillRect(cx-4, py, 8, 1);
+    ctx.fillText(t.toFixed(1), cx-20, py+3);
+  }
+}
 
-    function drawLaser(x1, y1, x2, y2) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'screen';
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = "rgba(255,255,255,0.9)";
-        ctx.setLineDash([4, 4]);
-        ctx.stroke();
-        ctx.lineWidth = 8;
-        ctx.strokeStyle = "rgba(255,255,255,0.3)";
-        ctx.setLineDash([]);
-        ctx.stroke();
-        ctx.restore();
-        ctx.fillStyle = "#fff";
-        ctx.beginPath(); ctx.arc(x2, y2, 4, 0, Math.PI*2); ctx.fill();
-    }
+function drawCircle(cx, cy, R){
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.stroke();
+}
 
-    function drawLabel(x, y, txt, color) {
-        ctx.fillStyle = "rgba(0,0,0,0.8)";
-        const w = ctx.measureText(txt).width + 10;
-        ctx.fillRect(x - w/2, y - 10, w, 20);
-        ctx.fillStyle = color;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.font = "bold 12px sans-serif";
-        ctx.fillText(txt, x, y);
-    }
+function shadeQuadrants(cx, cy, R){
+  ctx.save();
+  ctx.globalAlpha = 0.10;
+  // QI (top-right)
+  ctx.fillStyle = colors.good;
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,0,Math.PI/2,true); ctx.closePath(); ctx.fill();
+  // QII (top-left)
+  ctx.fillStyle = colors.cos;
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,Math.PI/2,Math.PI,true); ctx.closePath(); ctx.fill();
+  // QIII (bottom-left)
+  ctx.fillStyle = colors.sin;
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,Math.PI,3*Math.PI/2,true); ctx.closePath(); ctx.fill();
+  // QIV (bottom-right)
+  ctx.fillStyle = colors.tan;
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,3*Math.PI/2,2*Math.PI,true); ctx.closePath(); ctx.fill();
 
-    setMode('root');
-    setTimeout(resize, 50);
-    resize();
+  ctx.restore();
+}
 
+function drawNeon(x1,y1,x2,y2,color,width=2){
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+  ctx.lineWidth = width*4;
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = 0.25;
+  ctx.stroke();
+  ctx.lineWidth = width;
+  ctx.globalAlpha = 1.0;
+  ctx.strokeStyle = color;
+  ctx.stroke();
+}
+
+function drawLaser(x1,y1,x2,y2){
+  ctx.save();
+  ctx.globalCompositeOperation = 'screen';
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "rgba(255,255,255,0.9)";
+  ctx.setLineDash([5,5]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = "rgba(255,255,255,0.18)";
+  ctx.stroke();
+  ctx.restore();
+  dot(x2,y2,4,"#fff");
+}
+
+function dot(x,y,r,color){
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+}
+
+function label(x,y,text,color){
+  ctx.save();
+  ctx.font = "800 12px Segoe UI, system-ui, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const pad = 6;
+  const w = ctx.measureText(text).width + pad*2;
+  ctx.fillStyle = "rgba(0,0,0,0.72)";
+  ctx.fillRect(x - w/2, y - 10, w, 20);
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.strokeRect(x - w/2, y - 10, w, 20);
+  ctx.fillStyle = color;
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+function drawAngleArc(cx, cy, ang, r){
+  const a = normRad(ang);
+  const start = 0;
+  const end = a;
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.6)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, -start, -end, true);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function rightAngleMark(x, y, size){
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.55)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - size, y);
+  ctx.lineTo(x - size, y - size);
+  ctx.lineTo(x, y - size);
+  ctx.stroke();
+  ctx.restore();
+}
+
+/* =========================
+   Graph (mini canvas)
+   ========================= */
+function drawGraph(){
+  const W = mini.width, H = mini.height;
+  mctx.fillStyle = "#000";
+  mctx.fillRect(0,0,W,H);
+
+  // axes
+  mctx.strokeStyle = "#222"; mctx.lineWidth = 1;
+  mctx.beginPath(); mctx.moveTo(0, H/2); mctx.lineTo(W, H/2); mctx.stroke();
+  mctx.beginPath(); mctx.moveTo(40, 0); mctx.lineTo(40, H); mctx.stroke();
+
+  // plot sin (top half) and cos (bottom half) scaled
+  const plotLeft = 40, plotRight = W-12;
+  const plotW = plotRight - plotLeft;
+
+  const topMid = H*0.30;
+  const botMid = H*0.72;
+  const amp = 42;
+
+  function xFromDeg(d){ return plotLeft + (d/360)*plotW; }
+  function ySin(d){ return topMid - Math.sin(degToRad(d))*amp; }
+  function yCos(d){ return botMid - Math.cos(degToRad(d))*amp; }
+
+  // draw curves
+  mctx.lineWidth = 2;
+
+  mctx.strokeStyle = colors.sin;
+  mctx.beginPath();
+  for(let d=0; d<=360; d+=2){
+    const x = xFromDeg(d);
+    const y = ySin(d);
+    if(d===0) mctx.moveTo(x,y); else mctx.lineTo(x,y);
+  }
+  mctx.stroke();
+
+  mctx.strokeStyle = colors.cos;
+  mctx.beginPath();
+  for(let d=0; d<=360; d+=2){
+    const x = xFromDeg(d);
+    const y = yCos(d);
+    if(d===0) mctx.moveTo(x,y); else mctx.lineTo(x,y);
+  }
+  mctx.stroke();
+
+  // labels
+  mctx.fillStyle = "#aaa";
+  mctx.font = "700 11px Segoe UI, system-ui, sans-serif";
+  mctx.fillText("sin", 10, topMid+4);
+  mctx.fillText("cos", 10, botMid+4);
+
+  // cursor at current equivalent angle
+  const eqDeg = normDeg(radToDeg(state.angleRad));
+  const cx = xFromDeg(eqDeg);
+
+  mctx.strokeStyle = "rgba(255,255,255,0.7)";
+  mctx.setLineDash([6,6]);
+  mctx.beginPath(); mctx.moveTo(cx, 0); mctx.lineTo(cx, H); mctx.stroke();
+  mctx.setLineDash([]);
+
+  // dots
+  const ys = ySin(eqDeg);
+  const yc = yCos(eqDeg);
+
+  mctx.fillStyle = "#fff";
+  mctx.beginPath(); mctx.arc(cx, ys, 4, 0, Math.PI*2); mctx.fill();
+  mctx.beginPath(); mctx.arc(cx, yc, 4, 0, Math.PI*2); mctx.fill();
+
+  // angle text
+  mctx.fillStyle = "#ddd";
+  mctx.font = "800 12px ui-monospace, Menlo, Consolas, monospace";
+  mctx.fillText(`θ=${eqDeg.toFixed(0)}°`, cx-20, 16);
+}
+
+/* =========================
+   Init
+   ========================= */
+setMode('intro');
+setTimeout(resize, 30);
 </script>
 </body>
 </html>
