@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>SAT Trig — Visual → Concept → Math → SAT (v2.2)</title>
+  <title>SAT Trig — Visual → Concept → Math → SAT (v2.2 + Glossary)</title>
   <style>
     :root{
       --bg:#050505; --panel:#0a0a0a; --text:#eee; --muted:#8a8a8a;
@@ -281,11 +281,163 @@
     .good{color:var(--ok)}
     .bad{color:var(--bad)}
 
+    /* =========================================================
+       GLOSSARY MODAL (Must-memorize popup)
+       ========================================================= */
+    #glossaryModal{
+      position:fixed;
+      inset:0;
+      z-index:950; /* below quiz (999) */
+      display:none;
+    }
+    #glossaryModal.active{display:block;}
+    .g_backdrop{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0.78);
+    }
+    .g_card{
+      position:relative;
+      width:min(980px, calc(100vw - 24px));
+      height:min(86vh, 760px);
+      margin:60px auto;
+      border-radius:16px;
+      border:1px solid #2b2b2b;
+      background:rgba(10,10,10,0.96);
+      box-shadow: 0 0 40px rgba(0,0,0,0.60);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .g_header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid #1f1f1f;
+    }
+    .g_title{
+      font-weight:1000;
+      letter-spacing:.2px;
+      font-size:1.08rem;
+      color:#fff;
+      line-height:1.15;
+    }
+    .g_sub{
+      margin-top:4px;
+      color:#888;
+      font-size:.86rem;
+      line-height:1.35;
+    }
+    .g_close{
+      border:none; cursor:pointer;
+      padding:8px 10px; border-radius:12px;
+      background:rgba(255,255,255,.08); color:#ddd; font-weight:980;
+    }
+    .g_close:hover{background:rgba(255,255,255,.12)}
+    .g_search{
+      padding:12px 16px;
+      border-bottom:1px solid #1f1f1f;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    #g_searchInput{
+      flex:1;
+      min-width:220px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #2b2b2b;
+      background:#060606;
+      color:#eee;
+      outline:none;
+      font-weight:700;
+    }
+    .g_hint{
+      color:#777;
+      font-size:.85rem;
+    }
+    .g_hint kbd{
+      background:#060606;
+      border:1px solid #2b2b2b;
+      border-bottom-width:2px;
+      padding:2px 6px;
+      border-radius:6px;
+      color:#ddd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .g_body{
+      padding:14px 16px 18px 16px;
+      overflow:auto;
+    }
+    .g_section{margin:10px 0 18px 0;}
+    .g_section h3{
+      margin: 0 0 10px 0;
+      font-size: .95rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color:#ddd;
+      font-weight:1000;
+    }
+    .g_grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:10px;
+    }
+    .g_box{
+      border:1px solid #2b2b2b;
+      background:rgba(255,255,255,.05);
+      border-radius:14px;
+      padding:12px 12px;
+    }
+    .g_box.ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.07)}
+    .g_box.bad{border-color:rgba(239,68,68,.35); background:rgba(239,68,68,.07)}
+    .g_box h4{
+      margin:0 0 8px 0;
+      font-size:.95rem;
+      color:#fff;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .g_line{
+      margin:6px 0;
+      color:#bbb;
+      line-height:1.55;
+      font-size:.94rem;
+    }
+    .g_k{ color:#888; font-weight:900; }
+    .g_v{ color:#fff; font-weight:1000; }
+    .g_note{ margin-top:8px; color:#888; font-size:.9rem; line-height:1.5; }
+
+    .g_tableWrap{ margin-top: 10px; }
+    .g_table{
+      width:100%;
+      border-collapse: collapse;
+      background:#060606;
+      border:1px solid #2b2b2b;
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .g_table th, .g_table td{
+      padding:10px;
+      border-bottom:1px solid #1f1f1f;
+      text-align:center;
+      color:#ddd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size:.9rem;
+    }
+    .g_table th{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+      font-weight:1000;
+    }
+    .g_warn{ color: var(--tan); font-weight:1000; }
+
     @media (max-width: 820px){
       body{flex-direction:column}
       #panel{width:100%; height:52%}
       #stage{height:48%}
       #microbar{top:64px}
+      .g_card{ margin: 12px auto; height: calc(92vh); }
     }
   </style>
 </head>
@@ -307,6 +459,7 @@
   <div id="microbar">
     <button id="btnReadout" class="active" title="Tiny values near the point">READOUT</button>
     <button id="btnSnap" class="" title="Snap to SAT special angles">SNAP</button>
+    <button id="btnGlossary" class="" title="Must-memorize values + formulas (G)">GLOSSARY</button>
   </div>
 
   <div id="nav"></div>
@@ -359,14 +512,193 @@
   </div>
 </div>
 
+<!-- =========================================================
+     GLOSSARY MODAL (Popup)
+     ========================================================= -->
+<div id="glossaryModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="g_backdrop" id="g_backdrop"></div>
+
+  <div class="g_card" role="document">
+    <div class="g_header">
+      <div>
+        <div class="g_title">Must-Memorize Glossary</div>
+        <div class="g_sub">Open anytime. Search anytime. This is the SAT “memory kit.”</div>
+      </div>
+      <button class="g_close" id="g_closeBtn" aria-label="Close glossary">✕</button>
+    </div>
+
+    <div class="g_search">
+      <input id="g_searchInput" type="text" placeholder="Search: 30°, π/6, reference angle, SOHCAHTOA, s=rθ…" />
+      <div class="g_hint">Shortcuts: <kbd>G</kbd> open/close • <kbd>Esc</kbd> close</div>
+    </div>
+
+    <div class="g_body" id="g_body">
+      <div class="g_section" data-tags="must memorize core kit values special angles triangles unit circle signs">
+        <h3>1) The tiny list that carries the whole SAT</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="unit circle meaning x y equals cos sin point coordinates">
+            <h4>Unit circle translation</h4>
+            <div class="g_line"><span class="g_k">Point:</span> <span class="g_v mono">(x, y)</span></div>
+            <div class="g_line"><span class="g_k">Means:</span> <span class="g_v mono">(cos θ, sin θ)</span></div>
+            <div class="g_note">SAT often “gives you cos and sin” by handing you the point.</div>
+          </div>
+
+          <div class="g_box" data-tags="degrees radians conversion 180 pi 360 2pi 90 pi/2">
+            <h4>Degrees ↔ radians</h4>
+            <div class="g_line"><span class="g_k">Anchor:</span> <span class="g_v mono">180° = π</span></div>
+            <div class="g_line"><span class="g_k">So:</span> <span class="g_v mono">30°=π/6 • 45°=π/4 • 60°=π/3 • 90°=π/2</span></div>
+            <div class="g_note">If you remember one thing: remember 180° = π.</div>
+          </div>
+
+          <div class="g_box" data-tags="triangles 30-60-90 45-45-90 ratios root2 root3">
+            <h4>The two triangles</h4>
+            <div class="g_line"><span class="g_k">45-45-90:</span> <span class="g_v mono">1 : 1 : √2</span></div>
+            <div class="g_line"><span class="g_k">30-60-90:</span> <span class="g_v mono">1 : √3 : 2</span></div>
+            <div class="g_note">All “special angle” values come from these + signs.</div>
+          </div>
+
+          <div class="g_box" data-tags="quadrants signs sin cos tan positive negative">
+            <h4>Quadrant signs (look at x and y)</h4>
+            <div class="g_line"><span class="g_k">QI:</span> <span class="g_v mono">cos +, sin +</span></div>
+            <div class="g_line"><span class="g_k">QII:</span> <span class="g_v mono">cos −, sin +</span></div>
+            <div class="g_line"><span class="g_k">QIII:</span> <span class="g_v mono">cos −, sin −</span></div>
+            <div class="g_line"><span class="g_k">QIV:</span> <span class="g_v mono">cos +, sin −</span></div>
+            <div class="g_note">Tan is sin/cos, so it inherits signs from both.</div>
+          </div>
+        </div>
+
+        <div class="g_tableWrap g_box" data-tags="table sin cos tan values 0 30 45 60 90 special angles exact">
+          <h4>Special angle values (SAT expects these fast)</h4>
+          <table class="g_table">
+            <thead>
+              <tr><th>θ</th><th>rad</th><th>sin θ</th><th>cos θ</th><th>tan θ</th></tr>
+            </thead>
+            <tbody>
+              <tr data-tags="0 0deg 0rad"><td>0°</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr data-tags="30 pi/6"><td>30°</td><td>π/6</td><td>1/2</td><td>√3/2</td><td>√3/3</td></tr>
+              <tr data-tags="45 pi/4"><td>45°</td><td>π/4</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+              <tr data-tags="60 pi/3"><td>60°</td><td>π/3</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+              <tr data-tags="90 pi/2"><td>90°</td><td>π/2</td><td>1</td><td>0</td><td class="g_warn">undefined</td></tr>
+            </tbody>
+          </table>
+          <div class="g_note"><strong>Precision:</strong> tan(90°) is <strong>undefined</strong>. Near 90°, tan grows without bound, but at 90° itself: undefined.</div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="formulas identities sohcahtoa pythagorean tan equals sin over cos sec csc cot">
+        <h3>2) Formulas you keep using</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="sohcahtoa right triangle opposite adjacent hypotenuse">
+            <h4>SOH-CAH-TOA (right triangle only)</h4>
+            <div class="g_line"><span class="g_k">sin θ =</span> <span class="g_v">opposite / hypotenuse</span></div>
+            <div class="g_line"><span class="g_k">cos θ =</span> <span class="g_v">adjacent / hypotenuse</span></div>
+            <div class="g_line"><span class="g_k">tan θ =</span> <span class="g_v">opposite / adjacent</span></div>
+            <div class="g_note">Opposite/adjacent depend on where θ is sitting.</div>
+          </div>
+
+          <div class="g_box" data-tags="pythagorean identity sin^2 cos^2 equals 1">
+            <h4>Pythagorean identity</h4>
+            <div class="g_line mono"><span class="g_v">sin²θ + cos²θ = 1</span></div>
+            <div class="g_note">SAT uses this to solve “missing trig value” problems.</div>
+          </div>
+
+          <div class="g_box" data-tags="tan identity tan equals sin over cos">
+            <h4>Tan as a ratio of sin and cos</h4>
+            <div class="g_line mono"><span class="g_v">tan θ = sin θ / cos θ</span></div>
+            <div class="g_note">Fast when they hand you (cos, sin) on the unit circle.</div>
+          </div>
+
+          <div class="g_box" data-tags="reciprocal identities sec csc cot definitions">
+            <h4>Reciprocals (show up sometimes)</h4>
+            <div class="g_line mono"><span class="g_v">sec θ = 1 / cos θ</span></div>
+            <div class="g_line mono"><span class="g_v">csc θ = 1 / sin θ</span></div>
+            <div class="g_line mono"><span class="g_v">cot θ = 1 / tan θ = cos θ / sin θ</span></div>
+          </div>
+        </div>
+
+        <div class="g_box bad" data-tags="undefined tan cos 0 division by zero">
+          <h4>Undefined (SAT’s exact word)</h4>
+          <div class="g_line"><span class="g_k">tan θ is undefined when:</span> <span class="g_v mono">cos θ = 0</span></div>
+          <div class="g_line"><span class="g_k">Examples:</span> <span class="g_v mono">90°, 270° (π/2, 3π/2)</span></div>
+          <div class="g_note">If the denominator is 0, you do not call it “infinite.” You call it “undefined.”</div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="radians arcs arc length sector area s=rθ 1/2 r^2 θ">
+        <h3>3) Radians & arcs (human translation)</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="radian definition arc length radius walk along circle">
+            <h4>What a radian means</h4>
+            <div class="g_line"><span class="g_k">Picture:</span> walk along the circle’s edge.</div>
+            <div class="g_line"><span class="g_k">Count:</span> how many “radius-length steps” you walked.</div>
+            <div class="g_line"><span class="g_k">That count is:</span> <span class="g_v">θ in radians</span></div>
+            <div class="g_note">Radians measure angle using distance along the edge, scaled by radius.</div>
+          </div>
+
+          <div class="g_box" data-tags="arc length formula s=rθ theta radians">
+            <h4>Arc length</h4>
+            <div class="g_line mono"><span class="g_v">s = r · θ</span></div>
+            <div class="g_note">θ must be in radians.</div>
+          </div>
+
+          <div class="g_box" data-tags="sector area formula 1/2 r^2 θ">
+            <h4>Sector area (sometimes)</h4>
+            <div class="g_line mono"><span class="g_v">A = ½ · r² · θ</span></div>
+            <div class="g_note">θ must be in radians.</div>
+          </div>
+
+          <div class="g_box" data-tags="unit circle shortcut r=1 s=theta">
+            <h4>Unit circle shortcut</h4>
+            <div class="g_line"><span class="g_k">If r = 1:</span> <span class="g_v mono">s = θ</span></div>
+            <div class="g_note">On the unit circle, radians literally equal arc length.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="vocabulary reference angle opposite adjacent hypotenuse elevation depression">
+        <h3>4) SAT words (what they really mean)</h3>
+
+        <div class="g_grid">
+          <div class="g_box" data-tags="opposite adjacent hypotenuse definitions">
+            <h4>Opposite / Adjacent / Hypotenuse</h4>
+            <div class="g_line"><span class="g_k">Hypotenuse:</span> <span class="g_v">longest side, across the right angle</span></div>
+            <div class="g_line"><span class="g_k">Opposite:</span> <span class="g_v">across from θ</span></div>
+            <div class="g_line"><span class="g_k">Adjacent:</span> <span class="g_v">touches θ (not the hypotenuse)</span></div>
+          </div>
+
+          <div class="g_box ok" data-tags="reference angle definition acute base angle to x-axis">
+            <h4>Reference angle</h4>
+            <div class="g_line"><span class="g_k">Meaning:</span> <span class="g_v">the small “base” angle to the x-axis</span></div>
+            <div class="g_note">Magnitude comes from the reference angle. Sign comes from the quadrant.</div>
+          </div>
+
+          <div class="g_box" data-tags="angle of elevation depression parallel lines same angle">
+            <h4>Elevation / depression</h4>
+            <div class="g_line"><span class="g_k">Trick:</span> “elevation” and “depression” create the same acute angle (parallel lines).</div>
+            <div class="g_note">SAT uses words to distract you. You keep the triangle.</div>
+          </div>
+
+          <div class="g_box bad" data-tags="trap sin+cos=1 wrong">
+            <h4>Trap SAT loves</h4>
+            <div class="g_line"><span class="g_k">Wrong:</span> <span class="g_v mono">sin θ + cos θ = 1</span></div>
+            <div class="g_line"><span class="g_k">Right:</span> <span class="g_v mono">sin²θ + cos²θ = 1</span></div>
+            <div class="g_note">Distance uses squares. The unit circle locks distance.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 /* =========================================================
    SAT TRIG TEACHING ENGINE (v2.2)
-   Workshop overhaul:
-   - More intuitive language everywhere
-   - Tan precision: undefined vs unbounded growth
-   - Radians/Arcs re-built: “walk radius-lengths along the edge”
-   - Word-problem scene fixed (ground + tan)
+   + Must-memorize Glossary popup
+   - G opens/closes glossary (disabled during quiz)
    ========================================================= */
 
 const cvs = document.getElementById("cvs");
@@ -1156,6 +1488,7 @@ function setLesson(i){
   state.unlockedLayer = 0;
 
   stopQuiz(); // hard stop on lesson change
+  closeGlossary(); // close glossary if open
   updatePanel(); updateNav(); draw(); updateHud();
 }
 function setLayer(k){
@@ -1239,6 +1572,7 @@ window.prevLesson = prevLesson;
    ========================================================= */
 const btnReadout = document.getElementById("btnReadout");
 const btnSnap = document.getElementById("btnSnap");
+const btnGlossary = document.getElementById("btnGlossary");
 
 btnReadout.addEventListener("click", () => {
   if(state.uiLocked) return;
@@ -1254,6 +1588,59 @@ btnSnap.addEventListener("click", () => {
 });
 
 /* =========================================================
+   Glossary popup (G)
+   ========================================================= */
+const glossaryModal = document.getElementById("glossaryModal");
+const gBackdrop = document.getElementById("g_backdrop");
+const gCloseBtn = document.getElementById("g_closeBtn");
+const gSearchInput = document.getElementById("g_searchInput");
+const gBody = document.getElementById("g_body");
+
+function openGlossary(){
+  if(state.uiLocked) return; // no glossary during quiz lock
+  glossaryModal.classList.add("active");
+  glossaryModal.setAttribute("aria-hidden","false");
+  setTimeout(() => gSearchInput.focus(), 0);
+}
+function closeGlossary(){
+  glossaryModal.classList.remove("active");
+  glossaryModal.setAttribute("aria-hidden","true");
+  if(gSearchInput) gSearchInput.value = "";
+  filterGlossary("");
+}
+function toggleGlossary(){
+  if(state.uiLocked) return;
+  const open = glossaryModal.classList.contains("active");
+  if(open) closeGlossary(); else openGlossary();
+}
+function filterGlossary(q){
+  const query = (q || "").trim().toLowerCase();
+  const blocks = gBody.querySelectorAll("[data-tags]");
+  blocks.forEach(el => {
+    const tags = (el.getAttribute("data-tags") || "").toLowerCase();
+    const text = (el.innerText || "").toLowerCase();
+    const hit = !query || tags.includes(query) || text.includes(query);
+    el.style.display = hit ? "" : "none";
+  });
+}
+
+btnGlossary.addEventListener("click", () => openGlossary());
+gBackdrop.addEventListener("click", () => closeGlossary());
+gCloseBtn.addEventListener("click", () => closeGlossary());
+gSearchInput.addEventListener("input", (e) => filterGlossary(e.target.value));
+
+window.addEventListener("keydown", (e) => {
+  const k = (e.key || "").toLowerCase();
+  if(k === "g"){
+    // ignore if typing in an input outside glossary? (safe: still toggles)
+    toggleGlossary();
+  }
+  if(k === "escape" && glossaryModal.classList.contains("active")){
+    closeGlossary();
+  }
+});
+
+/* =========================================================
    Quiz system
    ========================================================= */
 const quizOverlay = document.getElementById("quizOverlay");
@@ -1265,10 +1652,12 @@ const quizTime = document.getElementById("quizTime");
 
 function lockUI(on){
   state.uiLocked = on;
+  if(on) closeGlossary(); // never overlap
   document.querySelectorAll("#nav button").forEach(b => b.disabled = on);
   document.querySelectorAll("#layers button").forEach(b => b.disabled = on || b.classList.contains("locked"));
   btnReadout.disabled = on;
   btnSnap.disabled = on;
+  btnGlossary.disabled = on;
   updatePanel();
 }
 function startQuizForLesson(lessonId){
@@ -1626,13 +2015,11 @@ function laser(x1,y1,x2,y2){
   dot(x2,y2,4,"#fff");
 }
 function angleArc(cx, cy, theta, r){
-  // visual hint of the angle at the center
   const t = thetaSignedForArc(theta);
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.65)";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  // canvas angles go clockwise because y grows downward; use -t for end
   ctx.arc(cx, cy, r, 0, -t, t<0);
   ctx.stroke();
   ctx.restore();
@@ -1714,15 +2101,11 @@ function drawTanMeasuringLine(cx, cy, R, theta){
   ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(measureX, cy+80); ctx.lineTo(measureX, cy-state.h); ctx.stroke();
 
-  // The direction line from center at angle theta.
-  // Intersection with x = 1 line gives y = tan(theta).
   const c = Math.cos(theta);
   const s = Math.sin(theta);
 
-  // cos = 0 → division by zero → tan undefined
   if(Math.abs(c) < 1e-6){
     label(measureX + 110, cy - 90, "tan is undefined here", colors.bad);
-    // show the direction ray
     const px = cx + R*Math.cos(theta);
     const py = cy - R*Math.sin(theta);
     neon(cx, cy, px, py, "#fff", 3);
@@ -1731,14 +2114,10 @@ function drawTanMeasuringLine(cx, cy, R, theta){
 
   const t = s / c;
 
-  // Visual clamp only (not math). Line grows without bound near 90°.
-  const yHit = cy - R*t;
   const yClamped = cy - clamp(R*t, -R*3.2, R*3.2);
 
-  // Draw the direction (white) and the hit height (yellow)
   laser(cx, cy, measureX, yClamped);
 
-  // If it's clamped, say "grows without bound" instead of "infinite"
   const wasClamped = Math.abs(R*t) > R*3.2;
 
   neon(measureX, cy, measureX, yClamped, colors.tan, 4);
@@ -1747,43 +2126,35 @@ function drawTanMeasuringLine(cx, cy, R, theta){
   if(wasClamped){
     label(measureX + 130, yClamped, "grows without bound near 90°", colors.bad);
   } else {
-    // subtle: show sign as up/down
     const note = (t>=0) ? "hits above → tan positive" : "hits below → tan negative";
     label(measureX + 140, yClamped, note, "rgba(255,255,255,0.65)");
   }
 
-  // label measuring line
   label(measureX, cy + 44, "measuring line: x = 1", "rgba(255,255,255,0.55)");
 }
 
 /* ---------- Radians toolkit (visual + intuitive) ---------- */
 function drawArcToolkit(cx, cy, R, theta){
-  // 1 rad reference arc (green), always from 0 to 1 rad
   drawArc(cx, cy, R, 0, -1, "rgba(34,197,94,0.45)", 10);
   label(cx + R*0.26, cy - R*0.18, "1 rad (reference)", "rgba(34,197,94,0.95)");
 
-  // theta arc (violet)
   const t = thetaSignedForArc(theta);
   drawArc(cx, cy, R, 0, -t, "rgba(189,0,255,0.35)", 10);
   label(cx + R*0.30, cy - R*0.06, "θ arc", "rgba(189,0,255,0.9)");
 
-  // show arc endpoints
   dot(cx + R, cy, 4, "rgba(255,255,255,0.55)");
   const px = cx + R*Math.cos(theta);
   const py = cy - R*Math.sin(theta);
   dot(px, py, 6, "#fff");
 
-  // show radius segment and label
   neon(cx, cy, cx+R, cy, "rgba(255,255,255,0.35)", 2);
   label(cx + R*0.5, cy + 22, "radius", "rgba(255,255,255,0.55)");
 }
-
 function drawArc(cx, cy, r, start, end, stroke, width){
   ctx.save();
   ctx.lineWidth = width;
   ctx.strokeStyle = stroke;
   ctx.beginPath();
-  // arc direction: if end < start, draw anticlockwise true (because canvas y-down)
   const anticlockwise = end > start;
   ctx.arc(cx, cy, r, start, end, anticlockwise);
   ctx.stroke();
@@ -1803,8 +2174,6 @@ function drawMicroReadout(cx, cy, px, py, theta, flags){
   y = Math.max(18, Math.min(state.h-18, y));
 
   const lines = [];
-
-  // Always reinforce the core idea: x and y
   lines.push({k:"x", v:fmt(c), c:"rgba(0,204,255,0.95)"});
   lines.push({k:"y", v:fmt(s), c:"rgba(255,0,85,0.95)"});
 
@@ -1857,50 +2226,25 @@ function roundRect(x, y, w, h, r, fill, stroke){
 }
 
 /* =========================================================
-   Base scenes
-   ========================================================= */
-function drawRadius(cx, cy, px, py, R, theta){
-  neon(cx, cy, px, py, colors.white, 3);
-  dot(px, py, 6, "#fff");
-  angleArc(cx, cy, theta, R*0.18);
-}
-function drawAxes(cx, cy){
-  ctx.strokeStyle = colors.grid;
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(state.w, cy); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, state.h); ctx.stroke();
-}
-function drawCircle(cx, cy, R){
-  ctx.strokeStyle = "#333";
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.stroke();
-}
-
-/* =========================================================
-   Word scene (FIXED: ground + tan is consistent)
+   Word scene (ground + tan consistent)
    ========================================================= */
 function drawWordScene(ox, oy, R, theta, flags){
   const w=state.w;
 
-  // ground baseline
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 4;
   ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
 
-  // choose a fixed ground distance for the picture
   const ground = R*1.25;
   const baseX = ox + ground;
 
-  // height via tan
   const height = ground * Math.tan(theta);
   const topY = oy - height;
 
-  // building
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 6;
   ctx.beginPath(); ctx.moveTo(baseX, oy); ctx.lineTo(baseX, oy - R*1.2); ctx.stroke();
 
-  // triangle: adj, opp, hyp
   neon(ox, oy, baseX, oy, colors.cos, 4);
   neon(baseX, oy, baseX, topY, colors.sin, 4);
   neon(ox, oy, baseX, topY, colors.white, 4);
@@ -1922,28 +2266,6 @@ function drawWordScene(ox, oy, R, theta, flags){
 /* =========================================================
    Boot
    ========================================================= */
-function buildNav(){
-  const nav = document.getElementById("nav");
-  nav.innerHTML = "";
-  lessons.forEach((L, i) => {
-    const b = document.createElement("button");
-    b.textContent = L.nav;
-    b.onclick = () => setLesson(i);
-    b.id = `nav_${i}`;
-    nav.appendChild(b);
-  });
-}
-function updateNav(){
-  lessons.forEach((_, i) => {
-    const b = document.getElementById(`nav_${i}`);
-    if(b) b.classList.toggle("active", i === state.lessonIndex);
-  });
-}
-function ensureProgress(lessonId){
-  if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
-  return progress[lessonId];
-}
-
 buildNav();
 setLesson(0);
 setTimeout(resize, 20);
