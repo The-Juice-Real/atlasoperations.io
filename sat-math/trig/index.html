@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>SAT Trig — Visual → Concept → Math → SAT (v2.3)</title>
+  <title>SAT Trig — Visual → Concept → Math → SAT (v2.2)</title>
+  <title>SAT Trig — Visual → Concept → Math → SAT (v2.2 + Glossary)</title>
   <style>
     :root{
       --bg:#050505; --panel:#0a0a0a; --text:#eee; --muted:#8a8a8a;
@@ -281,11 +282,163 @@
     .good{color:var(--ok)}
     .bad{color:var(--bad)}
 
+    /* =========================================================
+       GLOSSARY MODAL (Must-memorize popup)
+       ========================================================= */
+    #glossaryModal{
+      position:fixed;
+      inset:0;
+      z-index:950; /* below quiz (999) */
+      display:none;
+    }
+    #glossaryModal.active{display:block;}
+    .g_backdrop{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0.78);
+    }
+    .g_card{
+      position:relative;
+      width:min(980px, calc(100vw - 24px));
+      height:min(86vh, 760px);
+      margin:60px auto;
+      border-radius:16px;
+      border:1px solid #2b2b2b;
+      background:rgba(10,10,10,0.96);
+      box-shadow: 0 0 40px rgba(0,0,0,0.60);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .g_header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid #1f1f1f;
+    }
+    .g_title{
+      font-weight:1000;
+      letter-spacing:.2px;
+      font-size:1.08rem;
+      color:#fff;
+      line-height:1.15;
+    }
+    .g_sub{
+      margin-top:4px;
+      color:#888;
+      font-size:.86rem;
+      line-height:1.35;
+    }
+    .g_close{
+      border:none; cursor:pointer;
+      padding:8px 10px; border-radius:12px;
+      background:rgba(255,255,255,.08); color:#ddd; font-weight:980;
+    }
+    .g_close:hover{background:rgba(255,255,255,.12)}
+    .g_search{
+      padding:12px 16px;
+      border-bottom:1px solid #1f1f1f;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    #g_searchInput{
+      flex:1;
+      min-width:220px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #2b2b2b;
+      background:#060606;
+      color:#eee;
+      outline:none;
+      font-weight:700;
+    }
+    .g_hint{
+      color:#777;
+      font-size:.85rem;
+    }
+    .g_hint kbd{
+      background:#060606;
+      border:1px solid #2b2b2b;
+      border-bottom-width:2px;
+      padding:2px 6px;
+      border-radius:6px;
+      color:#ddd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .g_body{
+      padding:14px 16px 18px 16px;
+      overflow:auto;
+    }
+    .g_section{margin:10px 0 18px 0;}
+    .g_section h3{
+      margin: 0 0 10px 0;
+      font-size: .95rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color:#ddd;
+      font-weight:1000;
+    }
+    .g_grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:10px;
+    }
+    .g_box{
+      border:1px solid #2b2b2b;
+      background:rgba(255,255,255,.05);
+      border-radius:14px;
+      padding:12px 12px;
+    }
+    .g_box.ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.07)}
+    .g_box.bad{border-color:rgba(239,68,68,.35); background:rgba(239,68,68,.07)}
+    .g_box h4{
+      margin:0 0 8px 0;
+      font-size:.95rem;
+      color:#fff;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .g_line{
+      margin:6px 0;
+      color:#bbb;
+      line-height:1.55;
+      font-size:.94rem;
+    }
+    .g_k{ color:#888; font-weight:900; }
+    .g_v{ color:#fff; font-weight:1000; }
+    .g_note{ margin-top:8px; color:#888; font-size:.9rem; line-height:1.5; }
+
+    .g_tableWrap{ margin-top: 10px; }
+    .g_table{
+      width:100%;
+      border-collapse: collapse;
+      background:#060606;
+      border:1px solid #2b2b2b;
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .g_table th, .g_table td{
+      padding:10px;
+      border-bottom:1px solid #1f1f1f;
+      text-align:center;
+      color:#ddd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size:.9rem;
+    }
+    .g_table th{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+      font-weight:1000;
+    }
+    .g_warn{ color: var(--tan); font-weight:1000; }
+
     @media (max-width: 820px){
       body{flex-direction:column}
       #panel{width:100%; height:52%}
       #stage{height:48%}
       #microbar{top:64px}
+      .g_card{ margin: 12px auto; height: calc(92vh); }
     }
   </style>
 </head>
@@ -307,6 +460,7 @@
   <div id="microbar">
     <button id="btnReadout" class="active" title="Tiny values near the point">READOUT</button>
     <button id="btnSnap" class="" title="Snap to SAT special angles">SNAP</button>
+    <button id="btnGlossary" class="" title="Must-memorize values + formulas (G)">GLOSSARY</button>
   </div>
 
   <div id="nav"></div>
@@ -359,16 +513,198 @@
   </div>
 </div>
 
+<!-- =========================================================
+     GLOSSARY MODAL (Popup)
+     ========================================================= -->
+<div id="glossaryModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="g_backdrop" id="g_backdrop"></div>
+
+  <div class="g_card" role="document">
+    <div class="g_header">
+      <div>
+        <div class="g_title">Must-Memorize Glossary</div>
+        <div class="g_sub">Open anytime. Search anytime. This is the SAT “memory kit.”</div>
+      </div>
+      <button class="g_close" id="g_closeBtn" aria-label="Close glossary">✕</button>
+    </div>
+
+    <div class="g_search">
+      <input id="g_searchInput" type="text" placeholder="Search: 30°, π/6, reference angle, SOHCAHTOA, s=rθ…" />
+      <div class="g_hint">Shortcuts: <kbd>G</kbd> open/close • <kbd>Esc</kbd> close</div>
+    </div>
+
+    <div class="g_body" id="g_body">
+      <div class="g_section" data-tags="must memorize core kit values special angles triangles unit circle signs">
+        <h3>1) The tiny list that carries the whole SAT</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="unit circle meaning x y equals cos sin point coordinates">
+            <h4>Unit circle translation</h4>
+            <div class="g_line"><span class="g_k">Point:</span> <span class="g_v mono">(x, y)</span></div>
+            <div class="g_line"><span class="g_k">Means:</span> <span class="g_v mono">(cos θ, sin θ)</span></div>
+            <div class="g_note">SAT often “gives you cos and sin” by handing you the point.</div>
+          </div>
+
+          <div class="g_box" data-tags="degrees radians conversion 180 pi 360 2pi 90 pi/2">
+            <h4>Degrees ↔ radians</h4>
+            <div class="g_line"><span class="g_k">Anchor:</span> <span class="g_v mono">180° = π</span></div>
+            <div class="g_line"><span class="g_k">So:</span> <span class="g_v mono">30°=π/6 • 45°=π/4 • 60°=π/3 • 90°=π/2</span></div>
+            <div class="g_note">If you remember one thing: remember 180° = π.</div>
+          </div>
+
+          <div class="g_box" data-tags="triangles 30-60-90 45-45-90 ratios root2 root3">
+            <h4>The two triangles</h4>
+            <div class="g_line"><span class="g_k">45-45-90:</span> <span class="g_v mono">1 : 1 : √2</span></div>
+            <div class="g_line"><span class="g_k">30-60-90:</span> <span class="g_v mono">1 : √3 : 2</span></div>
+            <div class="g_note">All “special angle” values come from these + signs.</div>
+          </div>
+
+          <div class="g_box" data-tags="quadrants signs sin cos tan positive negative">
+            <h4>Quadrant signs (look at x and y)</h4>
+            <div class="g_line"><span class="g_k">QI:</span> <span class="g_v mono">cos +, sin +</span></div>
+            <div class="g_line"><span class="g_k">QII:</span> <span class="g_v mono">cos −, sin +</span></div>
+            <div class="g_line"><span class="g_k">QIII:</span> <span class="g_v mono">cos −, sin −</span></div>
+            <div class="g_line"><span class="g_k">QIV:</span> <span class="g_v mono">cos +, sin −</span></div>
+            <div class="g_note">Tan is sin/cos, so it inherits signs from both.</div>
+          </div>
+        </div>
+
+        <div class="g_tableWrap g_box" data-tags="table sin cos tan values 0 30 45 60 90 special angles exact">
+          <h4>Special angle values (SAT expects these fast)</h4>
+          <table class="g_table">
+            <thead>
+              <tr><th>θ</th><th>rad</th><th>sin θ</th><th>cos θ</th><th>tan θ</th></tr>
+            </thead>
+            <tbody>
+              <tr data-tags="0 0deg 0rad"><td>0°</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr data-tags="30 pi/6"><td>30°</td><td>π/6</td><td>1/2</td><td>√3/2</td><td>√3/3</td></tr>
+              <tr data-tags="45 pi/4"><td>45°</td><td>π/4</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+              <tr data-tags="60 pi/3"><td>60°</td><td>π/3</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+              <tr data-tags="90 pi/2"><td>90°</td><td>π/2</td><td>1</td><td>0</td><td class="g_warn">undefined</td></tr>
+            </tbody>
+          </table>
+          <div class="g_note"><strong>Precision:</strong> tan(90°) is <strong>undefined</strong>. Near 90°, tan grows without bound, but at 90° itself: undefined.</div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="formulas identities sohcahtoa pythagorean tan equals sin over cos sec csc cot">
+        <h3>2) Formulas you keep using</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="sohcahtoa right triangle opposite adjacent hypotenuse">
+            <h4>SOH-CAH-TOA (right triangle only)</h4>
+            <div class="g_line"><span class="g_k">sin θ =</span> <span class="g_v">opposite / hypotenuse</span></div>
+            <div class="g_line"><span class="g_k">cos θ =</span> <span class="g_v">adjacent / hypotenuse</span></div>
+            <div class="g_line"><span class="g_k">tan θ =</span> <span class="g_v">opposite / adjacent</span></div>
+            <div class="g_note">Opposite/adjacent depend on where θ is sitting.</div>
+          </div>
+
+          <div class="g_box" data-tags="pythagorean identity sin^2 cos^2 equals 1">
+            <h4>Pythagorean identity</h4>
+            <div class="g_line mono"><span class="g_v">sin²θ + cos²θ = 1</span></div>
+            <div class="g_note">SAT uses this to solve “missing trig value” problems.</div>
+          </div>
+
+          <div class="g_box" data-tags="tan identity tan equals sin over cos">
+            <h4>Tan as a ratio of sin and cos</h4>
+            <div class="g_line mono"><span class="g_v">tan θ = sin θ / cos θ</span></div>
+            <div class="g_note">Fast when they hand you (cos, sin) on the unit circle.</div>
+          </div>
+
+          <div class="g_box" data-tags="reciprocal identities sec csc cot definitions">
+            <h4>Reciprocals (show up sometimes)</h4>
+            <div class="g_line mono"><span class="g_v">sec θ = 1 / cos θ</span></div>
+            <div class="g_line mono"><span class="g_v">csc θ = 1 / sin θ</span></div>
+            <div class="g_line mono"><span class="g_v">cot θ = 1 / tan θ = cos θ / sin θ</span></div>
+          </div>
+        </div>
+
+        <div class="g_box bad" data-tags="undefined tan cos 0 division by zero">
+          <h4>Undefined (SAT’s exact word)</h4>
+          <div class="g_line"><span class="g_k">tan θ is undefined when:</span> <span class="g_v mono">cos θ = 0</span></div>
+          <div class="g_line"><span class="g_k">Examples:</span> <span class="g_v mono">90°, 270° (π/2, 3π/2)</span></div>
+          <div class="g_note">If the denominator is 0, you do not call it “infinite.” You call it “undefined.”</div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="radians arcs arc length sector area s=rθ 1/2 r^2 θ">
+        <h3>3) Radians & arcs (human translation)</h3>
+
+        <div class="g_grid">
+          <div class="g_box ok" data-tags="radian definition arc length radius walk along circle">
+            <h4>What a radian means</h4>
+            <div class="g_line"><span class="g_k">Picture:</span> walk along the circle’s edge.</div>
+            <div class="g_line"><span class="g_k">Count:</span> how many “radius-length steps” you walked.</div>
+            <div class="g_line"><span class="g_k">That count is:</span> <span class="g_v">θ in radians</span></div>
+            <div class="g_note">Radians measure angle using distance along the edge, scaled by radius.</div>
+          </div>
+
+          <div class="g_box" data-tags="arc length formula s=rθ theta radians">
+            <h4>Arc length</h4>
+            <div class="g_line mono"><span class="g_v">s = r · θ</span></div>
+            <div class="g_note">θ must be in radians.</div>
+          </div>
+
+          <div class="g_box" data-tags="sector area formula 1/2 r^2 θ">
+            <h4>Sector area (sometimes)</h4>
+            <div class="g_line mono"><span class="g_v">A = ½ · r² · θ</span></div>
+            <div class="g_note">θ must be in radians.</div>
+          </div>
+
+          <div class="g_box" data-tags="unit circle shortcut r=1 s=theta">
+            <h4>Unit circle shortcut</h4>
+            <div class="g_line"><span class="g_k">If r = 1:</span> <span class="g_v mono">s = θ</span></div>
+            <div class="g_note">On the unit circle, radians literally equal arc length.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g_section" data-tags="vocabulary reference angle opposite adjacent hypotenuse elevation depression">
+        <h3>4) SAT words (what they really mean)</h3>
+
+        <div class="g_grid">
+          <div class="g_box" data-tags="opposite adjacent hypotenuse definitions">
+            <h4>Opposite / Adjacent / Hypotenuse</h4>
+            <div class="g_line"><span class="g_k">Hypotenuse:</span> <span class="g_v">longest side, across the right angle</span></div>
+            <div class="g_line"><span class="g_k">Opposite:</span> <span class="g_v">across from θ</span></div>
+            <div class="g_line"><span class="g_k">Adjacent:</span> <span class="g_v">touches θ (not the hypotenuse)</span></div>
+          </div>
+
+          <div class="g_box ok" data-tags="reference angle definition acute base angle to x-axis">
+            <h4>Reference angle</h4>
+            <div class="g_line"><span class="g_k">Meaning:</span> <span class="g_v">the small “base” angle to the x-axis</span></div>
+            <div class="g_note">Magnitude comes from the reference angle. Sign comes from the quadrant.</div>
+          </div>
+
+          <div class="g_box" data-tags="angle of elevation depression parallel lines same angle">
+            <h4>Elevation / depression</h4>
+            <div class="g_line"><span class="g_k">Trick:</span> “elevation” and “depression” create the same acute angle (parallel lines).</div>
+            <div class="g_note">SAT uses words to distract you. You keep the triangle.</div>
+          </div>
+
+          <div class="g_box bad" data-tags="trap sin+cos=1 wrong">
+            <h4>Trap SAT loves</h4>
+            <div class="g_line"><span class="g_k">Wrong:</span> <span class="g_v mono">sin θ + cos θ = 1</span></div>
+            <div class="g_line"><span class="g_k">Right:</span> <span class="g_v mono">sin²θ + cos²θ = 1</span></div>
+            <div class="g_note">Distance uses squares. The unit circle locks distance.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 /* =========================================================
-   SAT TRIG TEACHING ENGINE (v2.3)
-   Fixes + upgrades requested:
-   1) θ marker bug fixed: angle wedge is ALWAYS drawn inside the right triangle.
-      - We draw the angle between the two triangle rays (adjacent ray + hypotenuse ray),
-        not a “global” circle angle that can land outside in QII/QIII/QIV.
-   2) Precise labeling for EVERY lesson:
-      - Each layer sets a labelSet (unit/xy/oppAdjHyp/quadrant/tan/co/arc/word/special/scale).
-      - The canvas always labels exactly what the text is talking about.
+   SAT TRIG TEACHING ENGINE (v2.2)
+   Workshop overhaul:
+   - More intuitive language everywhere
+   - Tan precision: undefined vs unbounded growth
+   - Radians/Arcs re-built: “walk radius-lengths along the edge”
+   - Word-problem scene fixed (ground + tan)
+   + Must-memorize Glossary popup
+   - G opens/closes glossary (disabled during quiz)
    ========================================================= */
 
 const cvs = document.getElementById("cvs");
@@ -377,7 +713,7 @@ const ctx = cvs.getContext("2d", {alpha:false});
 const colors = {
   bg:"#050505", grid:"#222",
   sin:"#ff0055", cos:"#00ccff", tan:"#ffcc00",
-  white:"#fff", muted:"#888", ok:"#22c55e", bad:"#ef4444", vio:"#bd00ff",
+  white:"#fff", muted:"#888", ok:"#22c55e", bad:"#ef4444",
 };
 
 const SPECIAL_DEG = [0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360];
@@ -386,7 +722,7 @@ const TAU = 2*Math.PI;
 const state = {
   w:0,h:0,
   baseCx:0, baseCy:0, baseR:220,
-  theta: 0.65,          // stored as math-angle where +y is up (we convert on draw)
+  theta: 0.65,
   dragging:false,
   readout:true,
   snap:false,
@@ -410,13 +746,6 @@ function radToDeg(r){ return r*180/Math.PI; }
 function degToRad(d){ return d*Math.PI/180; }
 function clamp(v,a,b){ return Math.max(a, Math.min(b,v)); }
 function normDeg(d){ let x=d%360; if(x<0) x+=360; if(Math.abs(x-360)<1e-9) x=0; return x; }
-function normRadPos(r){ let x=r%TAU; if(x<0) x+=TAU; if(Math.abs(x-TAU)<1e-9) x=0; return x; }
-function normRadSigned(r){
-  let x = r % TAU;
-  if(x<=-Math.PI) x += TAU;
-  if(x> Math.PI) x -= TAU;
-  return x;
-}
 function quadrantFromDeg(d0){
   const d = normDeg(d0);
   if(d===0) return "Axis +x";
@@ -458,6 +787,12 @@ function nearestSpecialDeg(d0){
     if(dist<bestDist){ bestDist=dist; best=s; }
   }
   return {best, dist:bestDist};
+}
+function thetaSignedForArc(rad){
+  let x = rad % TAU;
+  if(x<=-Math.PI) x += TAU;
+  if(x> Math.PI) x -= TAU;
+  return x;
 }
 function fmt(x){
   if(!Number.isFinite(x)) return "undef";
@@ -509,11 +844,7 @@ function exactFromDeg(deg){
 }
 
 /* =========================================================
-   Lessons (flags now include labelSet + thetaMark)
-   labelSet values:
-     unitIntro | xy | oppAdjHyp | scale | special | quadrant | tan | co | arc | word
-   thetaMark:
-     true/false (if true, we draw θ wedge INSIDE the right triangle)
+   Lessons (Workshop rewrite)
    ========================================================= */
 const lessons = [
   {
@@ -522,7 +853,7 @@ const lessons = [
     title:"Trig is: angle → point",
     subtitle:"Drag the point. That’s trig. Everything else is just different ways of describing the same point.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:true, labelSet:"unitIntro", thetaMark:false, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, measureLine:false, quadrants:false},
         html:`
           <p><strong>What to do:</strong> drag the white point around the circle.</p>
           <div class="box">
@@ -536,7 +867,7 @@ const lessons = [
           <p class="tag">If angle decides the point, trig stops being random.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"xy", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
           <p><strong>Now add meaning:</strong> that point has an address.</p>
           <div class="box ok">
@@ -553,7 +884,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"xy", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
           <p><strong>Math translation (finally):</strong></p>
           <div class="box ok">
@@ -572,7 +903,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"xy", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false},
         html:`
           <div class="sat">
             <div class="q">How SAT hides this:</div>
@@ -596,7 +927,7 @@ const lessons = [
     title:"SOHCAHTOA is a labeling trick",
     subtitle:"Same triangle. Different names, depending on where θ is sitting.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"oppAdjHyp", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:false, labels:false, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
           <p><strong>Visual:</strong> look at the right triangle. Now look at θ.</p>
           <div class="box">
@@ -613,7 +944,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"oppAdjHyp", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
           <p><strong>Concept:</strong> trig ratios are “shape fingerprints.”</p>
           <div class="box ok">
@@ -624,7 +955,7 @@ const lessons = [
           <p class="tag">Ratios ignore size. Ratios keep the angle’s DNA.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"oppAdjHyp", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
           <p><strong>Math (but in plain English):</strong></p>
           <div class="box">
@@ -638,7 +969,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"oppAdjHyp", thetaMark:true, quadrants:false, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, showOppAdjHyp:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -663,7 +994,7 @@ const lessons = [
     title:"Trig is a converter",
     subtitle:"Once θ is fixed, sin/cos/tan behave like conversion rates between lengths.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"scale", thetaMark:true, quadrants:false, measureLine:false, scaleDemo:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
           <p><strong>Visual:</strong> same θ, different size triangle.</p>
           <div class="box">
@@ -673,7 +1004,7 @@ const lessons = [
           <p class="tag">Fix θ → ratios become multipliers.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"scale", thetaMark:true, quadrants:false, measureLine:false, scaleDemo:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
           <p><strong>Concept:</strong> sin/cos/tan are the “percentage” of a side.</p>
           <div class="box ok">
@@ -683,7 +1014,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"scale", thetaMark:true, quadrants:false, measureLine:false, scaleDemo:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
           <p><strong>Math patterns SAT repeats:</strong></p>
           <div class="box">
@@ -697,7 +1028,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"scale", thetaMark:true, quadrants:false, measureLine:false, scaleDemo:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, scaleDemo:true, showOppAdjHyp:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -720,7 +1051,7 @@ const lessons = [
     title:"Special angles = SAT’s speed gate",
     subtitle:"Turn SNAP on. These are the only exact values SAT expects you to know instantly.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"special", thetaMark:true, quadrants:false, measureLine:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, specialMode:true},
         html:`
           <p><strong>Visual:</strong> turn <strong>SNAP</strong> on and drag.</p>
           <div class="box">
@@ -730,7 +1061,7 @@ const lessons = [
           <p class="tag">Exact values buy you time. Decimals steal it.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"special", thetaMark:true, quadrants:false, measureLine:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
           <p><strong>Concept:</strong> it’s really just two triangles.</p>
           <div class="box ok">
@@ -740,7 +1071,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"special", thetaMark:true, quadrants:false, measureLine:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
           <p><strong>Math (Quadrant I anchors):</strong></p>
           <div class="box">
@@ -753,7 +1084,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"special", thetaMark:true, quadrants:false, measureLine:false, specialMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, specialMode:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -777,7 +1108,7 @@ const lessons = [
     title:"Same reference angle. Different signs.",
     subtitle:"Magnitude comes from Quadrant I. Signs come from left/right and up/down.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"quadrant", thetaMark:true, quadrants:true, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:true},
         html:`
           <p><strong>Visual:</strong> drag into all 4 quadrants.</p>
           <div class="box">
@@ -791,7 +1122,7 @@ const lessons = [
           <p class="tag">Signs are geography. Not memorization.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"quadrant", thetaMark:true, quadrants:true, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
           <p><strong>Concept:</strong> reference angle is your “clean twin.”</p>
           <div class="box ok">
@@ -801,7 +1132,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"quadrant", thetaMark:true, quadrants:true, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
           <p><strong>Math sign table (sin, cos, tan):</strong></p>
           <div class="box">
@@ -815,7 +1146,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"quadrant", thetaMark:true, quadrants:true, measureLine:false},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -840,7 +1171,7 @@ const lessons = [
     title:"Tan is “how steep”",
     subtitle:"We measure steepness by seeing where the direction-line hits a vertical measuring line.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"tan", thetaMark:true, quadrants:false, measureLine:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:true, quadrants:false},
         html:`
           <p><strong>Visual:</strong> the yellow line is your direction.</p>
           <div class="box">
@@ -852,7 +1183,7 @@ const lessons = [
           <p class="tag">Tan is a height reading on a fixed measuring line.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"tan", thetaMark:true, quadrants:false, measureLine:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
           <p><strong>Concept:</strong> slope = “rise per 1 step.”</p>
           <div class="box ok">
@@ -867,7 +1198,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"tan", thetaMark:true, quadrants:false, measureLine:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
           <p><strong>Math, connected to the picture:</strong></p>
           <div class="box">
@@ -877,11 +1208,11 @@ const lessons = [
           <div class="box bad">
             <p><strong>Precision:</strong> tan is <strong>undefined</strong> when cos = 0.</p>
             <p>That happens at 90° and 270°.</p>
-            <p>Near 90°, tan grows without bound (it gets huge), but at 90° itself: undefined.</p>
+            <p>Near 90°, tan becomes extremely large in magnitude (it grows without bound), but at 90° itself: undefined.</p>
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"tan", thetaMark:true, quadrants:false, measureLine:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:true, quadrants:false},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -904,7 +1235,7 @@ const lessons = [
     title:"Sin and cos are the same leg… from different seats",
     subtitle:"If you swap the angle you’re looking from, “opposite” and “adjacent” swap too.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"co", thetaMark:true, quadrants:false, measureLine:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, coMode:true},
         html:`
           <p><strong>Visual:</strong> one triangle, two viewpoints.</p>
           <div class="box">
@@ -914,7 +1245,7 @@ const lessons = [
           <p class="tag">Same triangle. The labels changed. That’s it.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"co", thetaMark:true, quadrants:false, measureLine:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
           <p><strong>Concept:</strong> complementary angles trade sin and cos.</p>
           <div class="box ok">
@@ -923,7 +1254,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"co", thetaMark:true, quadrants:false, measureLine:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
           <p><strong>Math (clean identities):</strong></p>
           <div class="box">
@@ -936,7 +1267,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"co", thetaMark:true, quadrants:false, measureLine:false, coMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, coMode:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -959,7 +1290,7 @@ const lessons = [
     title:"Word problems are just triangles wearing costumes",
     subtitle:"Height, ladder, shadow, drone, building… it’s still Opp/Adj/Hyp.",
     layers:[
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, labelSet:"word", thetaMark:true, quadrants:false, measureLine:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:false, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <p><strong>Visual:</strong> ground, wall, and a line-of-sight.</p>
           <div class="box">
@@ -969,7 +1300,7 @@ const lessons = [
           <p class="tag">Translate first. Compute second.</p>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, labelSet:"word", thetaMark:true, quadrants:false, measureLine:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <p><strong>Concept mapping (SAT translation):</strong></p>
           <div class="box ok">
@@ -985,7 +1316,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, labelSet:"word", thetaMark:true, quadrants:false, measureLine:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <p><strong>Math patterns that keep showing up:</strong></p>
           <div class="box">
@@ -996,7 +1327,7 @@ const lessons = [
           <p>You choose based on what the problem gives you.</p>
         `
       },
-      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, labelSet:"word", thetaMark:true, quadrants:false, measureLine:false, wordScene:true},
+      { flags:{scene:"word", circle:false, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, wordScene:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -1020,7 +1351,7 @@ const lessons = [
     title:"Radians are ‘how far you walked’ along the circle",
     subtitle:"Degrees count slices. Radians count distance along the edge, measured in radius-lengths.",
     layers:[
-      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:true, labelSet:"arc", thetaMark:false, quadrants:false, measureLine:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:false, projections:false, labels:false, measureLine:false, quadrants:false, arcMode:true},
         html:`
           <p><strong>Visual:</strong> notice two arcs:</p>
           <div class="box">
@@ -1034,7 +1365,7 @@ const lessons = [
           <p class="tag">Radians aren’t “hard.” They’re a distance-based angle.</p>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"arc", thetaMark:true, quadrants:false, measureLine:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
           <p><strong>Concept:</strong> count radius-lengths along the edge.</p>
           <div class="box ok">
@@ -1048,7 +1379,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"arc", thetaMark:true, quadrants:false, measureLine:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
           <p><strong>Math (connected to what you saw):</strong></p>
           <div class="box">
@@ -1069,7 +1400,7 @@ const lessons = [
           </div>
         `
       },
-      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, labelSet:"arc", thetaMark:true, quadrants:false, measureLine:false, arcMode:true},
+      { flags:{scene:"circle", circle:true, triangle:true, projections:true, labels:true, measureLine:false, quadrants:false, arcMode:true},
         html:`
           <div class="sat">
             <div class="q">SAT version:</div>
@@ -1088,25 +1419,54 @@ const lessons = [
 ];
 
 /* =========================================================
-   Quiz bank (SAT gate)
+   Micro-quiz bank (fired on SAT layer)
    ========================================================= */
 const quizBank = {
-  unit: { q:"Point P is on the unit circle: P = (1/2, √3/2). What is θ (in standard position)?",
-    choices:["30°","60°","120°","300°"], correct:1 },
-  soh:  { q:"Right triangle: Opp = 8 and Hyp = 10. What is sin(θ)?",
-    choices:["4/5","5/4","3/5","8/10 (not simplified)"], correct:0 },
-  scale:{ q:"Adj = 12 and tan(θ) = 3/4. What is Opp?",
-    choices:["9","16","4","3"], correct:0 },
-  special:{ q:"What is sin(π/4)?", choices:["1/2","√2/2","√3/2","1"], correct:1 },
-  quadrants:{ q:"θ = 150°. What is sin(θ)?", choices:["-1/2","1/2","-√3/2","√3/2"], correct:1 },
-  tan: { q:"A line makes angle θ with +x axis. If slope = -2, what is tan(θ)?",
-    choices:["2","-2","1/2","-1/2"], correct:1 },
-  co:  { q:"If sin(x) = 3/5 and x is acute, what is cos(90° - x)?",
-    choices:["4/5","3/5","5/3","1/5"], correct:1 },
-  word:{ q:"Ground = 20 and height = 20·tan(θ). Which ratio did you use?",
-    choices:["sin = Opp/Hyp","cos = Adj/Hyp","tan = Opp/Adj","cot = Adj/Opp"], correct:2 },
-  rad: { q:"Radius r = 5, θ = 2π/5 (radians). What is arc length s?",
-    choices:["2π","π/2","10π","5π/2"], correct:0 },
+  unit: {
+    q: "Point P is on the unit circle: P = (1/2, √3/2). What is θ (in standard position)?",
+    choices: ["30°", "60°", "120°", "300°"],
+    correct: 1
+  },
+  soh: {
+    q: "Right triangle: Opp = 8 and Hyp = 10. What is sin(θ)?",
+    choices: ["4/5", "5/4", "3/5", "8/10 (not simplified)"],
+    correct: 0
+  },
+  scale: {
+    q: "Adj = 12 and tan(θ) = 3/4. What is Opp?",
+    choices: ["9", "16", "4", "3"],
+    correct: 0
+  },
+  special: {
+    q: "What is sin(π/4)?",
+    choices: ["1/2", "√2/2", "√3/2", "1"],
+    correct: 1
+  },
+  quadrants: {
+    q: "θ = 150°. What is sin(θ)?",
+    choices: ["-1/2", "1/2", "-√3/2", "√3/2"],
+    correct: 1
+  },
+  tan: {
+    q: "A line makes angle θ with +x axis. If slope = -2, what is tan(θ)?",
+    choices: ["2", "-2", "1/2", "-1/2"],
+    correct: 1
+  },
+  co: {
+    q: "If sin(x) = 3/5 and x is acute, what is cos(90° - x)?",
+    choices: ["4/5", "3/5", "5/3", "1/5"],
+    correct: 1
+  },
+  word: {
+    q: "Ground = 20 and height = 20·tan(θ). Which ratio did you use?",
+    choices: ["sin = Opp/Hyp", "cos = Adj/Hyp", "tan = Opp/Adj", "cot = Adj/Opp"],
+    correct: 2
+  },
+  rad: {
+    q: "Radius r = 5, θ = 2π/5 (radians). What is arc length s?",
+    choices: ["2π", "π/2", "10π", "5π/2"],
+    correct: 0
+  },
 };
 
 /* =========================================================
@@ -1114,10 +1474,6 @@ const quizBank = {
    ========================================================= */
 const nav = document.getElementById("nav");
 
-function ensureProgress(lessonId){
-  if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
-  return progress[lessonId];
-}
 function buildNav(){
   nav.innerHTML = "";
   lessons.forEach((L, i) => {
@@ -1128,18 +1484,17 @@ function buildNav(){
     nav.appendChild(b);
   });
 }
-function updateNav(){
-  lessons.forEach((_, i) => {
-    const b = document.getElementById(`nav_${i}`);
-    if(b) b.classList.toggle("active", i === state.lessonIndex);
-  });
+function ensureProgress(lessonId){
+  if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
+  return progress[lessonId];
 }
-
 function setLesson(i){
   state.lessonIndex = i;
   state.layerIndex = 0;
   state.unlockedLayer = 0;
-  stopQuiz();
+
+  stopQuiz(); // hard stop on lesson change
+  closeGlossary(); // close glossary if open
   updatePanel(); updateNav(); draw(); updateHud();
 }
 function setLayer(k){
@@ -1155,6 +1510,7 @@ function setLayer(k){
     startQuizForLesson(lesson.id);
     return;
   }
+
   updatePanel(); draw(); updateHud();
 }
 function nextLayer(){
@@ -1183,18 +1539,11 @@ function prevLayer(){
 }
 function nextLesson(){ if(state.uiLocked) return; if(state.lessonIndex < lessons.length-1) setLesson(state.lessonIndex+1); }
 function prevLesson(){ if(state.uiLocked) return; if(state.lessonIndex > 0) setLesson(state.lessonIndex-1); }
-
-window.setLayer = setLayer;
-window.nextLayer = nextLayer;
-window.prevLayer = prevLayer;
-window.nextLesson = nextLesson;
-window.prevLesson = prevLesson;
-
-/* =========================================================
-   Panel update
-   ========================================================= */
-function currentFlags(){
-  return lessons[state.lessonIndex].layers[state.layerIndex].flags;
+function updateNav(){
+  lessons.forEach((_, i) => {
+    const b = document.getElementById(`nav_${i}`);
+    if(b) b.classList.toggle("active", i === state.lessonIndex);
+  });
 }
 function updatePanel(){
   const L = lessons[state.lessonIndex];
@@ -1218,11 +1567,18 @@ function updatePanel(){
   document.getElementById("btnNext").disabled = state.lessonIndex === lessons.length-1 || state.uiLocked;
 }
 
+window.setLayer = setLayer;
+window.nextLayer = nextLayer;
+window.prevLayer = prevLayer;
+window.nextLesson = nextLesson;
+window.prevLesson = prevLesson;
+
 /* =========================================================
    Controls
    ========================================================= */
 const btnReadout = document.getElementById("btnReadout");
 const btnSnap = document.getElementById("btnSnap");
+const btnGlossary = document.getElementById("btnGlossary");
 
 btnReadout.addEventListener("click", () => {
   if(state.uiLocked) return;
@@ -1238,6 +1594,59 @@ btnSnap.addEventListener("click", () => {
 });
 
 /* =========================================================
+   Glossary popup (G)
+   ========================================================= */
+const glossaryModal = document.getElementById("glossaryModal");
+const gBackdrop = document.getElementById("g_backdrop");
+const gCloseBtn = document.getElementById("g_closeBtn");
+const gSearchInput = document.getElementById("g_searchInput");
+const gBody = document.getElementById("g_body");
+
+function openGlossary(){
+  if(state.uiLocked) return; // no glossary during quiz lock
+  glossaryModal.classList.add("active");
+  glossaryModal.setAttribute("aria-hidden","false");
+  setTimeout(() => gSearchInput.focus(), 0);
+}
+function closeGlossary(){
+  glossaryModal.classList.remove("active");
+  glossaryModal.setAttribute("aria-hidden","true");
+  if(gSearchInput) gSearchInput.value = "";
+  filterGlossary("");
+}
+function toggleGlossary(){
+  if(state.uiLocked) return;
+  const open = glossaryModal.classList.contains("active");
+  if(open) closeGlossary(); else openGlossary();
+}
+function filterGlossary(q){
+  const query = (q || "").trim().toLowerCase();
+  const blocks = gBody.querySelectorAll("[data-tags]");
+  blocks.forEach(el => {
+    const tags = (el.getAttribute("data-tags") || "").toLowerCase();
+    const text = (el.innerText || "").toLowerCase();
+    const hit = !query || tags.includes(query) || text.includes(query);
+    el.style.display = hit ? "" : "none";
+  });
+}
+
+btnGlossary.addEventListener("click", () => openGlossary());
+gBackdrop.addEventListener("click", () => closeGlossary());
+gCloseBtn.addEventListener("click", () => closeGlossary());
+gSearchInput.addEventListener("input", (e) => filterGlossary(e.target.value));
+
+window.addEventListener("keydown", (e) => {
+  const k = (e.key || "").toLowerCase();
+  if(k === "g"){
+    // ignore if typing in an input outside glossary? (safe: still toggles)
+    toggleGlossary();
+  }
+  if(k === "escape" && glossaryModal.classList.contains("active")){
+    closeGlossary();
+  }
+});
+
+/* =========================================================
    Quiz system
    ========================================================= */
 const quizOverlay = document.getElementById("quizOverlay");
@@ -1249,10 +1658,12 @@ const quizTime = document.getElementById("quizTime");
 
 function lockUI(on){
   state.uiLocked = on;
+  if(on) closeGlossary(); // never overlap
   document.querySelectorAll("#nav button").forEach(b => b.disabled = on);
   document.querySelectorAll("#layers button").forEach(b => b.disabled = on || b.classList.contains("locked"));
   btnReadout.disabled = on;
   btnSnap.disabled = on;
+  btnGlossary.disabled = on;
   updatePanel();
 }
 function startQuizForLesson(lessonId){
@@ -1304,8 +1715,11 @@ function resolveQuiz(choiceIdx){
 
   quizChoices.querySelectorAll("button").forEach(b => b.disabled = true);
 
-  if(choiceIdx === item.correct) passQuiz();
-  else failQuiz("Wrong.");
+  if(choiceIdx === item.correct){
+    passQuiz();
+  } else {
+    failQuiz("Wrong.");
+  }
 }
 function passQuiz(){
   if(!state.quizActive) return;
@@ -1351,6 +1765,9 @@ function stopQuiz(){
 /* =========================================================
    Scene geometry
    ========================================================= */
+function currentFlags(){
+  return lessons[state.lessonIndex].layers[state.layerIndex].flags;
+}
 function getSceneAnchor(flags){
   if(flags.scene !== "word"){
     return {ox: state.baseCx, oy: state.baseCy, R: state.baseR};
@@ -1359,12 +1776,6 @@ function getSceneAnchor(flags){
   const oy = state.h*0.78;
   const R  = Math.min(state.w, state.h)*0.30;
   return {ox, oy, R};
-}
-function effectiveTheta(flags){
-  if(flags.scene === "word"){
-    return clamp(state.theta, degToRad(5), degToRad(80));
-  }
-  return state.theta;
 }
 
 /* =========================================================
@@ -1378,8 +1789,6 @@ function interact(px, py){
 
   const dx = px - ox;
   const dy = py - oy;
-
-  // store theta as math-angle where +y is up:
   let ang = Math.atan2(-dy, dx);
 
   if(flags.scene === "word"){
@@ -1439,154 +1848,30 @@ window.addEventListener("resize", resize);
 /* =========================================================
    HUD
    ========================================================= */
+function effectiveTheta(flags){
+  if(flags.scene === "word"){
+    return clamp(state.theta, degToRad(5), degToRad(80));
+  }
+  return state.theta;
+}
 function updateHud(){
   const flags = currentFlags();
   const th = effectiveTheta(flags);
 
-  // Standard (0..360) for SAT clarity
-  const stdDeg = normDeg(radToDeg(th));
-  const ref = referenceAngleDeg(stdDeg);
-  const quad = quadrantFromDeg(stdDeg);
+  const rawDeg = radToDeg(th);
+  const eqDeg = normDeg(rawDeg);
+  const ref = referenceAngleDeg(eqDeg);
+  const quad = quadrantFromDeg(eqDeg);
 
-  const piForm = degToPiFrac(stdDeg);
-  document.getElementById("hudTheta").textContent = `θ = ${stdDeg.toFixed(0)}° (${piForm})`;
-  document.getElementById("hudEq").textContent = `Reference angle: ${ref.toFixed(0)}° (${degToPiFrac(ref)})`;
+  const piForm = degToPiFrac(eqDeg);
+  document.getElementById("hudTheta").textContent = `θ = ${rawDeg.toFixed(0)}° (${piForm})`;
+  document.getElementById("hudEq").textContent = `Equivalent: ${eqDeg.toFixed(0)}°`;
   document.getElementById("hudQuad").textContent = quad;
-  document.getElementById("hudRef").textContent = `Quadrant: ${quad}`;
+  document.getElementById("hudRef").textContent = `ref ${ref.toFixed(0)}° (${degToPiFrac(ref)})`;
 
   const qPill = document.getElementById("hudQuad");
   qPill.classList.remove("ok","bad");
   qPill.classList.add(quad.startsWith("Axis") ? "bad" : "ok");
-}
-
-/* =========================================================
-   Drawing primitives
-   ========================================================= */
-function neon(x1,y1,x2,y2,color,width=3){
-  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
-  ctx.lineWidth = width*4;
-  ctx.strokeStyle = color;
-  ctx.globalAlpha = 0.22;
-  ctx.stroke();
-  ctx.lineWidth = width;
-  ctx.globalAlpha = 1;
-  ctx.strokeStyle = color;
-  ctx.stroke();
-}
-function dashed(x1,y1,x2,y2,color){
-  ctx.save();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
-  ctx.setLineDash([6,6]);
-  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.restore();
-}
-function dot(x,y,r,color){
-  ctx.fillStyle = color;
-  ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.fill();
-}
-function roundRect(x, y, w, h, r, fill, stroke){
-  ctx.beginPath();
-  ctx.moveTo(x+r, y);
-  ctx.arcTo(x+w, y, x+w, y+h, r);
-  ctx.arcTo(x+w, y+h, x, y+h, r);
-  ctx.arcTo(x, y+h, x, y, r);
-  ctx.arcTo(x, y, x+w, y, r);
-  ctx.closePath();
-  if(fill) ctx.fill();
-  if(stroke) ctx.stroke();
-}
-function label(x,y,text,color, align="center"){
-  ctx.save();
-  ctx.font = "980 12px Segoe UI, system-ui, sans-serif";
-  ctx.textAlign = align;
-  ctx.textBaseline = "middle";
-
-  const pad=6;
-  const w = ctx.measureText(text).width + pad*2;
-
-  const bx = (align==="center") ? x - w/2 : (align==="left" ? x : x - w);
-  const by = y-10;
-
-  ctx.fillStyle = "rgba(0,0,0,0.72)";
-  ctx.fillRect(bx, by, w, 20);
-  ctx.strokeStyle = "rgba(255,255,255,0.08)";
-  ctx.strokeRect(bx, by, w, 20);
-
-  ctx.fillStyle = color;
-  ctx.fillText(text, x, y);
-  ctx.restore();
-}
-function rightAngle(x,y,size){
-  ctx.save();
-  ctx.strokeStyle = "rgba(255,255,255,0.55)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(x - size, y);
-  ctx.lineTo(x - size, y - size);
-  ctx.lineTo(x, y - size);
-  ctx.stroke();
-  ctx.restore();
-}
-function laser(x1,y1,x2,y2){
-  ctx.save();
-  ctx.globalCompositeOperation = "screen";
-  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "rgba(255,255,255,0.9)";
-  ctx.setLineDash([6,6]);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.lineWidth = 10;
-  ctx.strokeStyle = "rgba(255,255,255,0.14)";
-  ctx.stroke();
-  ctx.restore();
-  dot(x2,y2,4,"#fff");
-}
-
-/* --- Key fix: draw θ wedge INSIDE the triangle --- */
-function drawAngleWedgeAtVertex(vx, vy, ax, ay, bx, by, r, text){
-  // ax,ay and bx,by are direction vectors in CANVAS coords (y down)
-  const a0 = Math.atan2(ay, ax);
-  const b0 = Math.atan2(by, bx);
-
-  let delta = b0 - a0;
-  // normalize to (-π, π]
-  delta = ((delta + Math.PI) % TAU) - Math.PI;
-
-  const start = a0;
-  const end = a0 + delta;
-
-  ctx.save();
-  ctx.strokeStyle = "rgba(255,255,255,0.70)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(vx, vy, r, start, end, delta < 0);
-  ctx.stroke();
-  ctx.restore();
-
-  if(text){
-    const mid = start + delta*0.5;
-    const tx = vx + Math.cos(mid) * (r + 14);
-    const ty = vy + Math.sin(mid) * (r + 14);
-    label(tx, ty, text, "rgba(255,255,255,0.9)");
-  }
-}
-
-/* For radians arcs: draw in math-angle (y up) */
-function drawArcMath(cx, cy, r, startM, endM, stroke, width){
-  const startC = -startM;      // convert math to canvas
-  const endC   = -endM;
-  const anticlockwise = endM > startM; // CCW in math means decreasing in canvas
-  ctx.save();
-  ctx.lineWidth = width;
-  ctx.strokeStyle = stroke;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, startC, endC, anticlockwise);
-  ctx.stroke();
-  ctx.restore();
 }
 
 /* =========================================================
@@ -1625,22 +1910,18 @@ function draw(){
   if(flags.measureLine) drawTanMeasuringLine(ox, oy, R, th);
 
   if(flags.arcMode){
-    drawArcToolkit(ox, oy, R, th, flags);
+    drawArcToolkit(ox, oy, R, th); // includes 1 rad reference arc + theta arc
   }
 
   if(state.readout) drawMicroReadout(ox, oy, px, py, th, flags);
 }
 
-/* ---------- scene pieces ---------- */
+/* ---------- primitives ---------- */
 function drawAxes(cx, cy){
   ctx.strokeStyle = colors.grid;
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(state.w, cy); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, state.h); ctx.stroke();
-
-  // light axis labels (always helpful, never noisy)
-  label(cx + 64, cy + 18, "+x", "rgba(255,255,255,0.40)");
-  label(cx - 18, cy - 64, "+y", "rgba(255,255,255,0.40)");
 }
 function drawCircle(cx, cy, R){
   ctx.strokeStyle = "#333";
@@ -1673,162 +1954,139 @@ function drawQuadrantLabels(cx, cy, R){
   }
   ctx.restore();
 }
-
-function drawRadius(cx, cy, px, py, R, theta, flags){
-  neon(cx, cy, px, py, colors.white, 3);
-  dot(px, py, 6, "#fff");
-
-  if(flags.labels && flags.labelSet==="unitIntro"){
-    dot(cx, cy, 4, "rgba(255,255,255,0.8)");
-    label(cx, cy-18, "O (center)", "rgba(255,255,255,0.65)");
-    label(px+22, py-22, "P (point)", "rgba(255,255,255,0.85)", "left");
-    label(cx + R*0.5, cy + 22, "radius = 1 (unit circle)", "rgba(255,255,255,0.55)");
-  }
+function neon(x1,y1,x2,y2,color,width=3){
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+  ctx.lineWidth = width*4;
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = 0.22;
+  ctx.stroke();
+  ctx.lineWidth = width;
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = color;
+  ctx.stroke();
+}
+function dashed(x1,y1,x2,y2,color){
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6,6]);
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+function dot(x,y,r,color){
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.fill();
+}
+function label(x,y,text,color){
+  ctx.save();
+  ctx.font = "980 12px Segoe UI, system-ui, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const pad=6;
+  const w = ctx.measureText(text).width + pad*2;
+  ctx.fillStyle = "rgba(0,0,0,0.72)";
+  ctx.fillRect(x-w/2, y-10, w, 20);
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.strokeRect(x-w/2, y-10, w, 20);
+  ctx.fillStyle = color;
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+function rightAngle(x,y,size){
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.55)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - size, y);
+  ctx.lineTo(x - size, y - size);
+  ctx.lineTo(x, y - size);
+  ctx.stroke();
+  ctx.restore();
+}
+function laser(x1,y1,x2,y2){
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "rgba(255,255,255,0.9)";
+  ctx.setLineDash([6,6]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = "rgba(255,255,255,0.14)";
+  ctx.stroke();
+  ctx.restore();
+  dot(x2,y2,4,"#fff");
+}
+function angleArc(cx, cy, theta, r){
+  // visual hint of the angle at the center
+  const t = thetaSignedForArc(theta);
+  ctx.save();
+  ctx.strokeStyle = "rgba(255,255,255,0.65)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  // canvas angles go clockwise because y grows downward; use -t for end
+  ctx.arc(cx, cy, r, 0, -t, t<0);
+  ctx.stroke();
+  ctx.restore();
 }
 
+/* ---------- scene drawing ---------- */
+function drawRadius(cx, cy, px, py, R, theta){
+  neon(cx, cy, px, py, colors.white, 3);
+  dot(px, py, 6, "#fff");
+  angleArc(cx, cy, theta, R*0.18);
+}
 function drawTriangle(cx, cy, px, py, R, theta, flags){
-  const qx = px, qy = cy; // projection on x-axis (same y as center)
-
-  // main triangle lines
-  const wAdj = (flags.labelSet==="oppAdjHyp") ? 5 : 4;
-  neon(cx, cy, qx, qy, colors.cos, wAdj);     // adjacent / x
-  neon(qx, qy, px, py, colors.sin, wAdj);     // opposite / y
-  neon(cx, cy, px, py, colors.white, wAdj);   // hypotenuse / radius
+  neon(cx, cy, px, cy, colors.cos, flags.showOppAdjHyp ? 4 : 3);
+  neon(px, cy, px, py, colors.sin, flags.showOppAdjHyp ? 4 : 3);
+  neon(cx, cy, px, py, colors.white, flags.showOppAdjHyp ? 4 : 3);
 
   dot(px, py, 6, "#fff");
-  rightAngle(qx, qy, 14);
+  angleArc(cx, cy, theta, R*0.16);
 
-  // subtle projection hints
   if(flags.projections){
-    dashed(px, py, qx, qy, "rgba(0,204,255,0.35)");
-    dashed(px, py, cx, py, "rgba(255,0,85,0.35)");
+    dashed(px, py, px, cy, "rgba(0,204,255,0.45)");
+    dashed(px, py, cx, py, "rgba(255,0,85,0.45)");
   }
 
-  // θ wedge FIX: draw it between the triangle rays at the ORIGIN vertex
-  if(flags.thetaMark){
-    const vA = {x: qx - cx, y: qy - cy};  // adjacent ray (canvas coords)
-    const vB = {x: px - cx, y: py - cy};  // hypotenuse ray (canvas coords)
-    const labelText = (flags.labelSet==="quadrant") ? "θ (ref)" : "θ";
-    drawAngleWedgeAtVertex(cx, cy, vA.x, vA.y, vB.x, vB.y, R*0.16, labelText);
-  }
-
-  // extra: co-functions show the OTHER acute angle at point P
-  if(flags.coMode){
-    const v1 = {x: qx - px, y: qy - py};      // vertical leg direction from P to projection
-    const v2 = {x: cx - px, y: cy - py};      // hypotenuse direction from P to center
-    drawAngleWedgeAtVertex(px, py, v1.x, v1.y, v2.x, v2.y, R*0.12, "90° − θ");
-  }
-
-  // labels: match exactly what this layer is teaching
   if(flags.labels){
-    drawLabelSetTriangle(cx, cy, px, py, qx, qy, theta, R, flags);
+    if(flags.showOppAdjHyp){
+      label((cx+px)/2, cy+18, "Adjacent", colors.cos);
+      label(px+48, (cy+py)/2, "Opposite", colors.sin);
+      label((cx+px)/2+12, (cy+py)/2-12, "Hypotenuse", "#fff");
+    } else {
+      label((cx+px)/2, cy+18, "x = cos(θ)", colors.cos);
+      label(cx-52, (cy+py)/2, "y = sin(θ)", colors.sin);
+      label((cx+px)/2+10, (cy+py)/2-12, "radius", "#fff");
+    }
   }
 
-  // scaling demo visual
+  rightAngle(px, cy, 14);
+
   if(flags.scaleDemo){
     const scale = 1.45;
     const gx = cx + (px-cx)*scale;
     const gy = cy + (py-cy)*scale;
-    const gq = {x: gx, y: cy};
-
     ctx.save();
     ctx.globalAlpha = 0.22;
-    neon(cx, cy, gq.x, gq.y, colors.cos, 3);
-    neon(gq.x, gq.y, gx, gy, colors.sin, 3);
+    neon(cx, cy, gx, cy, colors.cos, 3);
+    neon(gx, cy, gx, gy, colors.sin, 3);
     neon(cx, cy, gx, gy, colors.white, 3);
     ctx.restore();
-
-    label(cx + 8, cy - R*0.70, "Same θ → same shape", colors.ok, "left");
-    label(cx + 8, cy - R*0.62, "Only the size changed", "rgba(255,255,255,0.55)", "left");
+    label((cx+gx)/2, cy-20, "Same θ → same shape", colors.ok);
   }
 
   if(flags.specialMode){
     drawSpecialTicks(cx, cy, R);
   }
-}
 
-/* Label sets */
-function drawLabelSetTriangle(cx, cy, px, py, qx, qy, theta, R, flags){
-  const labelSet = flags.labelSet;
-  const s = Math.sin(theta), c = Math.cos(theta);
-  const t = (Math.abs(c)<1e-6) ? NaN : s/c;
-
-  // midpoints for clean labels
-  const midAdj = {x:(cx+qx)/2, y:(cy+qy)/2};
-  const midOpp = {x:(qx+px)/2, y:(qy+py)/2};
-  const midHyp = {x:(cx+px)/2, y:(cy+py)/2};
-
-  if(labelSet==="xy"){
-    label(midAdj.x, midAdj.y+18, "x = cos(θ)", colors.cos);
-    label(midOpp.x+58, midOpp.y, "y = sin(θ)", colors.sin, "left");
-    label(midHyp.x+10, midHyp.y-14, "radius (hypotenuse)", "rgba(255,255,255,0.85)");
-    label(px+22, py-22, "P", "rgba(255,255,255,0.85)", "left");
-  }
-
-  if(labelSet==="oppAdjHyp"){
-    label(midAdj.x, midAdj.y+18, "Adjacent", colors.cos);
-    label(midOpp.x+58, midOpp.y, "Opposite", colors.sin, "left");
-    label(midHyp.x+10, midHyp.y-14, "Hypotenuse", "rgba(255,255,255,0.95)");
-    label(px+22, py-22, "P", "rgba(255,255,255,0.85)", "left");
-  }
-
-  if(labelSet==="scale"){
-    label(midAdj.x, midAdj.y+18, "Adjacent", colors.cos);
-    label(midOpp.x+58, midOpp.y, "Opposite", colors.sin, "left");
-    label(midHyp.x+10, midHyp.y-14, "Hypotenuse", "rgba(255,255,255,0.95)");
-    label(cx + 8, cy + 54, "Ratios stay the same", "rgba(255,255,255,0.55)", "left");
-  }
-
-  if(labelSet==="special"){
-    // show snapped exact values right on the picture (only when we're basically on a special angle)
-    const deg = normDeg(radToDeg(theta));
-    const {best, dist} = nearestSpecialDeg(deg);
-    const isExact = dist < 0.2;
-    if(isExact){
-      const ex = exactFromDeg(best);
-      if(ex){
-        const tagX = px + 18;
-        const tagY = py + 16;
-        label(tagX, tagY, `θ=${best}° (${degToPiFrac(best)})`, "rgba(255,255,255,0.90)", "left");
-        label(tagX, tagY+22, `sin=${ex.sin}   cos=${ex.cos}`, "rgba(255,255,255,0.75)", "left");
-      }
-    } else {
-      label(px+18, py+16, "Turn SNAP on → hit a special angle", "rgba(255,255,255,0.50)", "left");
-    }
-    label(midAdj.x, midAdj.y+18, "cos(θ)", colors.cos);
-    label(midOpp.x+58, midOpp.y, "sin(θ)", colors.sin, "left");
-  }
-
-  if(labelSet==="quadrant"){
-    const signCos = (c>0) ? "+" : (c<0 ? "−" : "0");
-    const signSin = (s>0) ? "+" : (s<0 ? "−" : "0");
-    const signTan = (!Number.isFinite(t)) ? "undef" : (t>0 ? "+" : (t<0 ? "−" : "0"));
-
-    label(midAdj.x, midAdj.y+18, `cos(θ) sign: ${signCos}`, colors.cos);
-    label(midOpp.x+58, midOpp.y, `sin(θ) sign: ${signSin}`, colors.sin, "left");
-    label(midHyp.x+10, midHyp.y-14, "Magnitude comes from ref angle", "rgba(255,255,255,0.55)");
-    label(cx + 8, cy + 54, `tan sign: ${signTan}`, "rgba(255,255,255,0.55)", "left");
-  }
-
-  if(labelSet==="tan"){
-    label(midAdj.x, midAdj.y+18, "Adjacent (run)", colors.cos);
-    label(midOpp.x+58, midOpp.y, "Opposite (rise)", colors.sin, "left");
-    label(cx + 8, cy + 54, "tan(θ) = rise/run = slope", "rgba(255,255,255,0.55)", "left");
-  }
-
-  if(labelSet==="co"){
-    label(midAdj.x, midAdj.y+18, "Adjacent for θ", colors.cos);
-    label(midOpp.x+58, midOpp.y, "Opposite for θ", colors.sin, "left");
-    label(px - 4, py - 34, "Swap viewpoint → swap names", "rgba(255,255,255,0.55)");
-  }
-
-  if(labelSet==="arc"){
-    label(midAdj.x, midAdj.y+18, "cos(θ)", colors.cos);
-    label(midOpp.x+58, midOpp.y, "sin(θ)", colors.sin, "left");
-    label(cx + 8, cy + 54, "Arc length: s = r·θ", "rgba(255,255,255,0.55)", "left");
+  if(flags.coMode){
+    label(px-10, py+26, "Complement viewpoint", "#ddd");
   }
 }
-
 function drawSpecialTicks(cx, cy, R){
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.15)";
@@ -1844,68 +2102,91 @@ function drawSpecialTicks(cx, cy, R){
   ctx.restore();
 }
 
-/* ---------- Tan measuring line ---------- */
+/* ---------- Tan measuring line (intuitive + precise) ---------- */
 function drawTanMeasuringLine(cx, cy, R, theta){
   const measureX = cx + R; // x = 1 on unit circle scale
   ctx.strokeStyle = "#333";
   ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(measureX, cy+80); ctx.lineTo(measureX, cy-state.h); ctx.stroke();
 
+  // The direction line from center at angle theta.
+  // Intersection with x = 1 line gives y = tan(theta).
   const c = Math.cos(theta);
   const s = Math.sin(theta);
 
+  // cos = 0 → division by zero → tan undefined
   if(Math.abs(c) < 1e-6){
-    label(measureX + 110, cy - 90, "tan is undefined (cos=0)", colors.bad);
-    const px = cx + R*c;
-    const py = cy - R*s;
+    label(measureX + 110, cy - 90, "tan is undefined here", colors.bad);
+    // show the direction ray
+    const px = cx + R*Math.cos(theta);
+    const py = cy - R*Math.sin(theta);
     neon(cx, cy, px, py, "#fff", 3);
     return;
   }
 
   const t = s / c;
 
-  // visual clamp only
+  // Visual clamp only (not math). Line grows without bound near 90°.
+  const yHit = cy - R*t;
   const yClamped = cy - clamp(R*t, -R*3.2, R*3.2);
 
+  // Draw the direction (white) and the hit height (yellow)
   laser(cx, cy, measureX, yClamped);
 
+  // If it's clamped, say "grows without bound" instead of "infinite"
   const wasClamped = Math.abs(R*t) > R*3.2;
 
   neon(measureX, cy, measureX, yClamped, colors.tan, 4);
-  label(measureX, cy + 44, "measuring line: x = 1", "rgba(255,255,255,0.55)");
-  label(measureX + 64, (cy+yClamped)/2, "tan(θ)", colors.tan, "left");
+  label(measureX + 64, (cy+yClamped)/2, "tan(θ)", colors.tan);
 
   if(wasClamped){
-    label(measureX + 170, yClamped, "grows without bound near 90°", colors.bad, "left");
+    label(measureX + 130, yClamped, "grows without bound near 90°", colors.bad);
   } else {
-    const note = (t>=0) ? "above → tan positive" : "below → tan negative";
-    label(measureX + 150, yClamped, note, "rgba(255,255,255,0.65)", "left");
+    // subtle: show sign as up/down
+    const note = (t>=0) ? "hits above → tan positive" : "hits below → tan negative";
+    label(measureX + 140, yClamped, note, "rgba(255,255,255,0.65)");
   }
+
+  // label measuring line
+  label(measureX, cy + 44, "measuring line: x = 1", "rgba(255,255,255,0.55)");
 }
 
-/* ---------- Radians toolkit ---------- */
+/* ---------- Radians toolkit (visual + intuitive) ---------- */
 function drawArcToolkit(cx, cy, R, theta){
-  const std = normRadPos(theta);
+  // 1 rad reference arc (green), always from 0 to 1 rad
+  drawArc(cx, cy, R, 0, -1, "rgba(34,197,94,0.45)", 10);
+  label(cx + R*0.26, cy - R*0.18, "1 rad (reference)", "rgba(34,197,94,0.95)");
 
-  // 1 rad reference arc (green): from 0 to 1 rad
-  drawArcMath(cx, cy, R, 0, 1, "rgba(34,197,94,0.45)", 10);
-  label(cx + R*0.16, cy - R*0.22, "1 rad", "rgba(34,197,94,0.95)");
+  // theta arc (violet)
+  const t = thetaSignedForArc(theta);
+  drawArc(cx, cy, R, 0, -t, "rgba(189,0,255,0.35)", 10);
+  label(cx + R*0.30, cy - R*0.06, "θ arc", "rgba(189,0,255,0.9)");
 
-  // theta arc (violet): from 0 to standard θ
-  drawArcMath(cx, cy, R, 0, std, "rgba(189,0,255,0.35)", 10);
-  label(cx + R*0.22, cy - R*0.05, "θ arc (walked distance)", "rgba(189,0,255,0.9)", "left");
-
+  // show arc endpoints
   dot(cx + R, cy, 4, "rgba(255,255,255,0.55)");
   const px = cx + R*Math.cos(theta);
   const py = cy - R*Math.sin(theta);
   dot(px, py, 6, "#fff");
 
+  // show radius segment and label
   neon(cx, cy, cx+R, cy, "rgba(255,255,255,0.35)", 2);
-  label(cx + R*0.5, cy + 22, "radius r", "rgba(255,255,255,0.55)");
+  label(cx + R*0.5, cy + 22, "radius", "rgba(255,255,255,0.55)");
+}
+
+function drawArc(cx, cy, r, start, end, stroke, width){
+  ctx.save();
+  ctx.lineWidth = width;
+  ctx.strokeStyle = stroke;
+  ctx.beginPath();
+  // arc direction: if end < start, draw anticlockwise true (because canvas y-down)
+  const anticlockwise = end > start;
+  ctx.arc(cx, cy, r, start, end, anticlockwise);
+  ctx.stroke();
+  ctx.restore();
 }
 
 /* =========================================================
-   Micro readout (small, lesson-relevant)
+   Micro readout (small, intuitive)
    ========================================================= */
 function drawMicroReadout(cx, cy, px, py, theta, flags){
   const s = Math.sin(theta), c = Math.cos(theta);
@@ -1913,28 +2194,33 @@ function drawMicroReadout(cx, cy, px, py, theta, flags){
 
   let x = px + 16;
   let y = py - 18;
-  x = Math.max(12, Math.min(state.w-210, x));
+  x = Math.max(12, Math.min(state.w-200, x));
   y = Math.max(18, Math.min(state.h-18, y));
 
   const lines = [];
-  lines.push({k:"cos", v:fmt(c), c:"rgba(0,204,255,0.95)"});
-  lines.push({k:"sin", v:fmt(s), c:"rgba(255,0,85,0.95)"});
-  if(flags.measureLine || flags.labelSet==="tan" || flags.scene==="word"){
+
+  // Always reinforce the core idea: x and y
+  lines.push({k:"x", v:fmt(c), c:"rgba(0,204,255,0.95)"});
+  lines.push({k:"y", v:fmt(s), c:"rgba(255,0,85,0.95)"});
+
+  if(flags.measureLine || flags.scene==="word"){
     lines.push({k:"tan", v:(Number.isFinite(t)?fmt(t):"undef"), c:"rgba(255,204,0,0.95)"});
   }
 
-  const deg = normDeg(radToDeg(theta));
-  const snapInfo = nearestSpecialDeg(deg);
-  const isExact = snapInfo.dist < 0.2;
-  if(isExact && (flags.specialMode || flags.arcMode)){
+  const d = normDeg(radToDeg(theta));
+  const snapInfo = nearestSpecialDeg(d);
+  const isExact = (snapInfo.dist < 0.2);
+  if(isExact && (flags.specialMode || flags.arcMode || flags.scene==="circle")){
     const ex = exactFromDeg(snapInfo.best);
     if(ex){
-      lines.push({k:"θ", v:`${snapInfo.best}°`, c:"rgba(255,255,255,0.85)"});
+      lines.push({k:"sin*", v:ex.sin, c:"rgba(255,0,85,0.85)"});
+      lines.push({k:"cos*", v:ex.cos, c:"rgba(0,204,255,0.85)"});
+      if(flags.measureLine) lines.push({k:"tan*", v:ex.tan, c:"rgba(255,204,0,0.85)"});
       lines.push({k:"rad", v:degToPiFrac(snapInfo.best), c:"rgba(255,255,255,0.85)"});
     }
   }
 
-  const pad=8, lh=16, w=196, h=pad*2 + lh*lines.length;
+  const pad=8, lh=16, w=182, h=pad*2 + lh*lines.length;
 
   ctx.fillStyle = "rgba(0,0,0,0.70)";
   ctx.strokeStyle = "rgba(255,255,255,0.08)";
@@ -1950,12 +2236,44 @@ function drawMicroReadout(cx, cy, px, py, theta, flags){
     ctx.fillStyle = lines[i].c;
     ctx.fillText(lines[i].k.toUpperCase(), x+10, yy);
     ctx.fillStyle = "#ddd";
-    ctx.fillText(lines[i].v, x+66, yy);
+    ctx.fillText(lines[i].v, x+70, yy);
   }
+}
+function roundRect(x, y, w, h, r, fill, stroke){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+  if(fill) ctx.fill();
+  if(stroke) ctx.stroke();
 }
 
 /* =========================================================
-   Word scene
+   Base scenes
+   ========================================================= */
+function drawRadius(cx, cy, px, py, R, theta){
+  neon(cx, cy, px, py, colors.white, 3);
+  dot(px, py, 6, "#fff");
+  angleArc(cx, cy, theta, R*0.18);
+}
+function drawAxes(cx, cy){
+  ctx.strokeStyle = colors.grid;
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(state.w, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, state.h); ctx.stroke();
+}
+function drawCircle(cx, cy, R){
+  ctx.strokeStyle = "#333";
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.stroke();
+}
+
+/* =========================================================
+   Word scene (FIXED: ground + tan is consistent)
+   Word scene (ground + tan consistent)
    ========================================================= */
 function drawWordScene(ox, oy, R, theta, flags){
   const w=state.w;
@@ -1985,27 +2303,43 @@ function drawWordScene(ox, oy, R, theta, flags){
 
   dot(ox, oy, 6, "#fff");
   dot(baseX, topY, 6, "#fff");
-  rightAngle(baseX, oy, 14);
 
-  // θ wedge at ground point inside the triangle
-  if(flags.thetaMark){
-    const vA = {x: baseX - ox, y: 0};         // along ground
-    const vB = {x: baseX - ox, y: topY - oy}; // along line-of-sight
-    drawAngleWedgeAtVertex(ox, oy, vA.x, vA.y, vB.x, vB.y, 26, "θ");
-  }
+  angleArc(ox, oy, theta, 26);
+  rightAngle(baseX, oy, 14);
 
   if(flags.labels){
     label((ox+baseX)/2, oy+18, "Ground (adjacent)", colors.cos);
-    label(baseX+80, (oy+topY)/2, "Height (opposite)", colors.sin, "left");
-    label((ox+baseX)/2+22, (oy+topY)/2-12, "Line of sight (hypotenuse)", "#fff");
+    label(baseX+70, (oy+topY)/2, "Height (opposite)", colors.sin);
+    label((ox+baseX)/2+20, (oy+topY)/2-12, "Line of sight", "#fff");
     label(baseX, oy + 44, "building", "rgba(255,255,255,0.55)");
-    label(ox + 8, oy + 54, "Use: tan(θ) = height / ground", "rgba(255,255,255,0.55)", "left");
   }
 }
 
 /* =========================================================
    Boot
    ========================================================= */
+function buildNav(){
+  const nav = document.getElementById("nav");
+  nav.innerHTML = "";
+  lessons.forEach((L, i) => {
+    const b = document.createElement("button");
+    b.textContent = L.nav;
+    b.onclick = () => setLesson(i);
+    b.id = `nav_${i}`;
+    nav.appendChild(b);
+  });
+}
+function updateNav(){
+  lessons.forEach((_, i) => {
+    const b = document.getElementById(`nav_${i}`);
+    if(b) b.classList.toggle("active", i === state.lessonIndex);
+  });
+}
+function ensureProgress(lessonId){
+  if(!progress[lessonId]) progress[lessonId] = { satPassed:false };
+  return progress[lessonId];
+}
+
 buildNav();
 setLesson(0);
 setTimeout(resize, 20);
