@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Ozempic & Weight Loss</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+/* TABS */
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+/* LAYOUT */
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+/* TYPE */
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+/* CARDS */
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+/* QUOTE */
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+/* EXAMPLE BOX */
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+/* SNAPSHOT */
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+/* STRATEGY */
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+/* ARGS */
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+/* SO-WHAT CHAIN */
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+/* COMPARATIVE WEIGHT */
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* JUDGE OBJECTION */
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+/* ATTACKS */
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* CLASHES */
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+/* POI LIST */
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+/* ROLES */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+/* CLOSINGS */
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+/* EVIDENCE */
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+/* TRAPS */
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+/* EMERGENCY */
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Ozempic is the most appropriate solution for weight loss</span>
+  <span class="hdr-badge">Full Brief</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     SNAPSHOT
+═══════════════════════════════════════════ -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether Ozempic produces results. Almost everyone in the room will accept that it does. The real fight is whether one pharmaceutical treatment can claim the title of "most appropriate" across the wide and varied landscape of people who want or need to lose weight — and whether "most appropriate" means the best lead tool for the largest group, or the best clinical fit across a diverse field.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Not merely that Ozempic works, but that for <strong>medically significant adult weight loss</strong>, semaglutide-class treatment is the best <strong>lead intervention</strong> — strongest on outcomes, realistic adherence, and durable health management.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>"most appropriate"</strong> means the best lead tool for the largest medically relevant group. Prop does not need universal fit — they need the strongest center of gravity.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That obesity is a <strong>chronic biological disease</strong>, and that in chronic disease, durable management is what solution correctly means.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Either that <strong>one drug cannot be the broad best answer</strong> because appropriateness is inherently patient-specific — or that Prop only survives by shrinking and rewriting the motion.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>"most appropriate"</strong> is a field-wide best-fit standard, which a single drug with contraindications, tolerability barriers, and access dependencies cannot satisfy.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That the right model is <strong>triage and patient matching</strong>, not one-drug supremacy — and that this is what appropriateness in medicine actually looks like.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Fight: "Most Appropriate"</div>
+  <p>This is the phrase that decides the round if neither team explicitly controls it. <strong>Proposition's required reading:</strong> "Most appropriate" means the best lead tool for the largest medically relevant group, with manageable tradeoffs. It does not mean perfect for every individual. <strong>Opposition's required reading:</strong> "Most appropriate" means best-fit across a diverse field. Because fit is inherently conditional — depending on patient history, contraindications, cost, and individual circumstances — no single drug can claim the title.</p>
+  <p>The team that defines this phrase first, most clearly, and most consistently will very likely win the round. <strong>Prop should state their definition in the first thirty seconds of the opening speech.</strong> Opp should push back on it immediately. Every subsequent argument flows from whichever definition the judge accepts.</p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     STRATEGY
+═══════════════════════════════════════════ -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route before the round starts, and your highest-reward route for when things are going well. Pick a lane and commit to it — switching lanes mid-round is how teams lose.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Serious adult obesity only. Semaglutide as the strongest lead tool. Chronic disease framing from the start.</strong> Narrow the scope to medically significant adult weight loss, anchor the case in mechanism and outcome data, and use the insulin parallel to handle the "solution vs management" attack before it lands.</div>
+    <div class="route-why">This route avoids the most dangerous objections (cosmetic use, mild cases, contraindicated patients) and keeps every argument on solid clinical ground. The risk is the motion-rewriting attack — defend against it by saying the only intellectually honest reading of a debate about Ozempic is the one that focuses on cases where weight causes health harm.</div>
+    <div class="eg"><div class="eg-label">📌 Anchor Evidence</div><div class="eg-text">The STEP 1 trial (New England Journal of Medicine, 2021): 1,961 adults, mean weight reduction of 14.9% in the semaglutide arm versus 2.4% in the control arm — both receiving identical lifestyle counseling. That gap isolates the drug's contribution and is your single most important piece of evidence.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Chronic disease framing plus "medicine over moralism."</strong> Frame obesity as a chronic biological disease, not a lifestyle failure, and argue that the most humane and outcome-oriented answer to a biological disease is the intervention that most reliably changes the underlying biology. This turns the debate into a values argument as well as an evidence argument.</div>
+    <div class="route-why">This framing is powerful because it reframes the entire moral backdrop of the debate. Semaglutide stops being a shortcut and starts being the right treatment for a real disease. The risk is that it can feel preachy — use it as a supplement to your evidence case, not a replacement for it.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Disciplined, moderate Proposition.</strong> Be explicitly careful from the start: "This is not appropriate for everyone. This is not a cosmetic tool. This is not a perfect drug. But for the largest group of adults with medically significant weight loss needs, it remains the best lead option available." Judges reward teams that demonstrate awareness of complexity.</div>
+    <div class="route-why">This posture combines intellectual honesty with a strong comparative claim. Even in a close loss, this route generates strong speaker points and makes Opp's attacks harder to land cleanly.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Opp has never named a stronger center of gravity.</strong> If the round goes badly, fall back to this: even if everything Opp said is true, they have never identified a treatment that outperforms semaglutide for serious adult obesity at the scale the evidence covers. Their triage model describes boxes but never names what should lead at the medication tier.</div>
+    <div class="route-why">This is not a winning position on its own, but it can hold a ballot when the rest of the case is under pressure. Opp failing to name a stronger answer is a real structural vulnerability that every Prop speaker should be ready to exploit.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Effective is not equal to most appropriate. Win on burden discipline.</strong> State clearly and early that "most appropriate" is a field-wide best-fit standard — then show that field-wide appropriateness requires individual clinical fit that a single drug cannot guarantee. Repeat the burden distinction calmly every time Prop cites another piece of evidence.</div>
+    <div class="route-why">This route requires patience rather than aggression. The risk is coming across as semantic. Counter it by anchoring the burden argument in concrete examples: patients with medullary thyroid carcinoma history (a formal contraindication on the FDA label), patients who cannot tolerate GI side effects, patients whose obesity is driven by corticosteroids for a condition they cannot stop treating.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Punish Prop for every word they quietly substitute.</strong> Every time Prop moves from "Ozempic" to "semaglutide," from "weight loss" to "medically significant obesity," from "solution" to "long-term management" — call it out explicitly. "Each of these substitutions is an implicit admission that the original claim was false. We are debating the motion as written."</div>
+    <div class="route-why">This route has the highest potential upside because it can win the round on a structural argument without requiring Opp to beat Prop on the science. Pair it with a concrete alternative framework so it does not look like an escape from substance.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Pro-treatment, anti-overclaim.</strong> Make clear from the very first speech that Opp is not anti-medication, not anti-semaglutide, and not in favor of telling obese patients to try harder. The frame is: "A good drug can be excellent without being the single best answer for every patient in this field."</div>
+    <div class="route-why">This wins credibility with judges who are wary of the debate becoming a referendum on whether obesity deserves treatment. It keeps the argument where it belongs: on whether the specific field-wide claim in the motion survives scrutiny.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Concede semaglutide's strength, win on the standard.</strong> If Prop lands strong evidence, do not fight the evidence. Concede it directly, then sharpen the burden distinction: "Strong average trial results in a selected clinical population are different from most appropriate solution across a diverse real-world patient field." Conceding strength increases credibility and sharpens the distinction.</div>
+    <div class="route-why">This fallback actually strengthens Opp's credibility by showing the bench you are engaging honestly with the evidence rather than disputing inconvenient facts.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     PROP ARGS
+═══════════════════════════════════════════ -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different part of what makes semaglutide the most appropriate lead tool. Together they show that the drug is not just effective in isolation — it addresses the core mechanism of failure in weight loss, makes the rest of care more achievable, and fits the clinical reality of a chronic disease. Every argument should be connected back to that controlling frame.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Strongest Lead Tool</span></div>
+  <p class="arg-body">For adults with medically significant obesity, semaglutide-class treatment is the strongest lead intervention currently available. The reason is biological: most people who attempt weight loss through diet and exercise alone face a physiological problem, not a character problem. The human body responds to caloric restriction by increasing appetite hormones, decreasing metabolic rate, and making food subjectively more rewarding — a phenomenon researchers describe as metabolic adaptation. This is the biological resistance that makes obesity a chronic condition rather than a solved problem.</p>
+  <p class="arg-body">Semaglutide directly addresses this mechanism. It mimics a gut hormone called GLP-1 (glucagon-like peptide-1), which signals the brain to reduce appetite and increase the feeling of fullness after eating. By changing the hormonal environment in which a patient attempts to lose weight, the drug removes the dominant reason sustained weight loss fails — not willpower deficiency, but biological compensation. The patient is not fighting their own hunger signals as hard. The effort required to achieve the same result becomes physiologically more manageable.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">The STEP 1 trial, published in the New England Journal of Medicine in March 2021, enrolled 1,961 adults with a BMI of 30 or higher and randomly assigned them to semaglutide 2.4mg or placebo, both alongside identical lifestyle counseling. After 68 weeks, the semaglutide group achieved a mean weight reduction of approximately 14.9% of body weight, compared to 2.4% in the placebo group. No non-surgical intervention had previously produced results of this magnitude at this scale. The design of the trial — identical lifestyle support in both arms — isolates the drug's specific contribution.</div></div>
+  <div class="quote">💬 Say this: "The best solution is not the one that sounds morally clean — it is the one that most reliably improves health outcomes. On that standard, no non-surgical intervention currently comes close."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Semaglutide directly reduces the biological resistance — escalating hunger, falling metabolism — that causes most serious weight loss attempts to fail over time</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means patients who previously could not sustain caloric deficit because of biological compensation can now do so at a physiologically manageable level</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the practical ceiling on what diet, exercise, and behavioral support can achieve rises substantially when this intervention is included</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>this is most appropriate</strong> because the most appropriate solution for a medically significant problem is the one that most reliably achieves the medical outcome — and no currently available non-surgical intervention achieves that as consistently or at this scale.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Effective ≠ Appropriate" Response</div>
+    <div class="weight-text">Opp's counter is that "effective" and "most appropriate" are not the same standard. That counter is correct in the abstract — a highly effective treatment can still be inappropriate for a specific patient. But the counter only defeats this argument if Opp can name an alternative that is more effective for the largest relevant group, or can show that the effectiveness gap disappears once side effects are factored in. The evidence supports neither claim. The STEP trials showed a substantially larger outcome than any comparison arm in any contemporary non-surgical trial. Side effects led to complete discontinuation in roughly seven to nine percent of STEP 1 participants — meaning over ninety percent continued. That is the comparative record on the table.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"This proves semaglutide works well in trials, but trial populations are carefully selected and supervised. Does this translate to real-world patients?"</div>
+    <div class="judgeobj-a">Real-world adherence and outcomes are somewhat lower than trial outcomes, as is common with almost all medications. However, a real-world observational analysis of over 175,000 patients published in JAMA Network Open in 2023 showed meaningful real-world weight loss that, while smaller than trial outcomes, still substantially exceeded what dietary programs alone achieved in comparable populations. The argument does not require trial perfection. It requires that the real-world advantage over alternatives be substantial — and the evidence supports that.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">The Look AHEAD trial (NIH, 2001–2012) showed durable weight loss and cardiovascular improvements through intensive behavioral intervention alone — without pharmacological intervention.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Look AHEAD required participants to attend group and individual meetings for years with detailed food tracking and supervised exercise — a level of support that is simply not available at scale in most health systems. Semaglutide produces comparable or better outcomes with a once-weekly injection. What Look AHEAD shows is what is possible under ideal conditions; semaglutide shows what is achievable under realistic ones.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Adherence Enabler</span></div>
+  <p class="arg-body">Semaglutide does not replace diet, exercise, and behavioral support — it makes those interventions more achievable by lowering the biological barriers to following them. A common objection to medication-first approaches is that they replace the "real" work of lifestyle change with a pharmaceutical shortcut. This framing misunderstands how the drug functions. Semaglutide does not exercise for you. It does not choose your food. What it does is reduce the intensity of hunger signals to the point where following a reduced-calorie diet is no longer an act of constant willpower against biological urges.</p>
+  <p class="arg-body">This matters enormously for adherence. The number-one reason behavioral weight loss interventions fail over time is not lack of effort or motivation — it is biological compensation. As a person loses weight, the body progressively increases hunger and reduces metabolic rate, making the same caloric deficit harder and harder to maintain. The Minnesota Starvation Experiment in the 1940s first formally documented this compensation, and decades of subsequent research have confirmed it. Semaglutide interrupts this cycle at the hormonal level — meaning the adherence gains are physiological rather than motivational, and far more durable than willpower alone.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">The STEP 1 trial explicitly paired semaglutide with lifestyle counseling for both the treatment and placebo groups. Lifestyle counseling alone produced approximately 2.4% weight loss. Lifestyle counseling plus semaglutide produced approximately 14.9%. The drug roughly multiplied the effect of the same lifestyle intervention by a factor of six — meaning the same investment in behavioral support yields six times the result when semaglutide is the lead tool.</div></div>
+  <div class="quote">💬 Say this: "This is not 'drug instead of care.' It is the intervention that makes the rest of care work. Semaglutide is the engine — wider care is still the vehicle."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Semaglutide lowers the biological resistance to sustaining the caloric deficit and behavioral changes required for long-term weight management</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the standard components of good weight loss care — reduced-calorie diet, structured exercise, behavioral support — become significantly more achievable for the patient</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the overall care system works better when this intervention is included — not merely that the drug alone produces weight loss</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>this is most appropriate</strong> because "most appropriate" includes which intervention best enables a comprehensive care approach to succeed — and semaglutide uniquely amplifies the effectiveness of the broader system around it.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Just One Tool" Response</div>
+    <div class="weight-text">Opp will argue that this framing proves semaglutide is one useful tool, not "the most appropriate solution." That reframe is precisely what Proposition should invite — because it concedes the drug's central role and only disputes the labeling. Insulin is described as a solution for type 1 diabetes even though it requires diet management, glucose monitoring, and regular clinical review. The relevant question is what the core intervention is that makes the whole management system work — and the answer here is clearly semaglutide, because without it, the same lifestyle interventions produce a fraction of the result.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If semaglutide only works well when combined with lifestyle support, isn't the real answer 'good care including semaglutide' rather than 'semaglutide as the solution'?"</div>
+    <div class="judgeobj-a">"Good care including semaglutide" is exactly what Proposition is claiming is most appropriate — and semaglutide is the component of that care whose presence or absence most determines whether the whole approach succeeds. The argument is not that the drug works in isolation. The argument is that among all the components of comprehensive care, semaglutide is the one whose presence multiplies the effectiveness of everything else. That is what it means to be the lead tool.</div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">The Chronic Disease Argument</span></div>
+  <p class="arg-body">Obesity is increasingly understood by major medical bodies as a chronic biological disease rather than a lifestyle choice. The American Medical Association formally reclassified obesity as a disease in 2013. The American Academy of Pediatrics, the World Health Organization, and the European Association for the Study of Obesity have each issued guidance framing obesity as a chronic multifactorial condition with strong biological and genetic components. This is not a fringe position — it is now mainstream in academic medicine.</p>
+  <p class="arg-body">This matters because the standard for evaluating treatment changes once you correctly identify the nature of the condition. We do not say insulin is an inappropriate solution for type 1 diabetes because it requires daily injection and its benefits cease when you stop. We do not say antihypertensive medication is inappropriate for high blood pressure because blood pressure returns when the medication is withdrawn. In both cases, the treatment is considered highly appropriate precisely because it provides durable, manageable control of the underlying biological dysfunction. The same logic applies to semaglutide and obesity.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">The STEP 4 withdrawal study (2022) showed that approximately two-thirds of weight lost during semaglutide treatment was regained within 52 weeks of discontinuation. Opp will use this as their most important piece of evidence. But it proves exactly what Proposition says: obesity behaves like other chronic conditions. The treatment successfully manages a chronic disease for as long as it is taken. Weight returning when you stop is precisely what happens with blood pressure medication, insulin, and antiretrovirals — and we still call all of those appropriate solutions.</div></div>
+  <div class="quote">💬 Say this: "In chronic disease, durable management is the real solution. We do not call insulin a failure because blood sugar rises when you stop it. The same logic applies here."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Semaglutide addresses a chronic biological dysfunction directly, providing durable hormonal regulation of appetite for as long as treatment continues</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the relevant comparison is not "does this produce a permanent cure" but "does this provide better durable disease management than any available alternative"</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means weight regain upon stopping is not evidence of treatment failure — it is evidence of chronic disease behavior, which this treatment successfully manages</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>calling semaglutide a solution is entirely defensible</strong> — because in chronic medicine, management and solution are the same thing, just as we call blood pressure medication a solution for hypertension even though stopping it causes blood pressure to rise again.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Solution ≠ Management" Response</div>
+    <div class="weight-text">Opp's counter is that this reframes the word "solution" to mean something looser than a plain reading supports. The counter has some semantic force. But in a debate about medicine, a judge applying medical common sense should prefer the medically accurate reading over the naively literal one. No serious clinician uses "solution" to mean only "permanent cure." The force of Opp's argument depends entirely on whether the judge accepts a naive reading of one word over how medicine actually uses language — and Proposition should make this explicit.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If this is really a chronic disease requiring lifelong medication, what happens to patients who cannot afford the drug long-term? Is a solution that only works for people with continuing access actually appropriate?"</div>
+    <div class="judgeobj-a">Access and cost are serious real-world concerns, and Prop should not pretend otherwise. But the question of whether a treatment is clinically appropriate is distinct from whether healthcare systems have done enough to make it accessible. Insulin is still the most appropriate treatment for type 1 diabetes even where insulin access is inequitably distributed. The solution to an access problem is better access policy — not abandoning the best treatment. Acknowledge this clearly, then pivot: the debate is about which intervention is most appropriate, not about whether any given insurance system is adequately funded.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">If the treatment must be taken indefinitely to maintain benefit, and the condition returns when you stop, then the drug is managing a symptom rather than solving the underlying condition — which is precisely what the word "solution" does not mean.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Hypertension returns when you stop antihypertensives. Blood sugar rises when you stop insulin. HIV rebounds when you stop antiretrovirals. In every case, we still call the medication a solution. Opp's objection proves obesity is chronic — it does not prove the treatment is inappropriate. These two things are different claims.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     OPP ARGS
+═══════════════════════════════════════════ -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula is consistent across all three arguments: acknowledge semaglutide's genuine strength early, then show why strength in an indicated population is not the same as most appropriate solution for the full field. Conceding strength is not a weakness — it makes the burden distinction sharper and more credible.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Appropriate Care Is Patient-Specific</span></div>
+  <p class="arg-body">Appropriate medical treatment is inherently patient-specific. No single drug can be "the most appropriate solution" across a field as diverse as weight loss, because appropriateness requires fit — and fit cannot be determined without knowing the patient. Consider what a physician actually does when a patient presents with a weight-related health concern. They take a history. They ask about thyroid disorders, polycystic ovarian syndrome, Cushing's syndrome, and the side effects of psychiatric medications — because these secondary causes of weight gain require primary treatment before weight management can begin. They ask about family history of medullary thyroid carcinoma or multiple endocrine neoplasia syndrome type 2, because these are formal contraindications listed on semaglutide's FDA prescribing information. They ask about gastrointestinal history, because patients with gastroparesis face particular risks with GLP-1 agonists.</p>
+  <p class="arg-body">None of this assessment produces a single universal answer. It produces a recommendation tailored to one specific person. The word "appropriate" in medicine means "correct for this patient given these circumstances." Proposition's reading — "best lead tool for the largest group" — is a description of statistical averages in a selected population, not of medical appropriateness across a diverse clinical field.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">The UK's National Institute for Health and Care Excellence (NICE) approved semaglutide for weight management in 2023 — but did so with explicit conditions: specialist weight management service oversight, specific BMI thresholds, and regular review requirements. NICE did not declare it "most appropriate for weight loss" universally. They specified precisely when and for whom it clears the appropriateness bar. That institutional precision is exactly what appropriate medicine looks like — and it is the opposite of the universal claim in the motion.</div></div>
+  <div class="quote qo">💬 Say this: "Good medicine matches treatment to the patient. It does not default to one branded answer. The word 'appropriate' in this motion is doing real clinical work — and it cannot be satisfied by average trial outcomes."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Appropriate treatment in medicine requires patient-specific assessment of indications, contraindications, tolerability, comorbidities, and access</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means what is appropriate for one patient presenting with weight loss concerns is frequently different from what is appropriate for another patient with the same chief complaint</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the category "weight loss" is too heterogeneous for any single intervention to claim the title "most appropriate" without qualifications that effectively rewrite the motion</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion fails on its own terms</strong>: it does not say "most appropriate for many adults with serious obesity" — it says "most appropriate solution for weight loss," which is a field-wide claim that field-wide patient diversity defeats.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Personalization and Hierarchy Can Coexist" Response</div>
+    <div class="weight-text">Prop will argue that even in a world where every patient gets personalized care, there can still be a treatment that most appropriately leads that care for the largest group. The counter is reasonable, but it shifts the burden of the motion. The motion does not say semaglutide is "a strong option in a tiered care model." It says it is "the most appropriate solution." Once Prop acknowledges that many patients need something else first, or instead, or alongside, they have admitted that the motion's claim of supremacy is overbroad. The appropriate answer to the field's heterogeneity is a matching model — not a coronation of one product.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is Opp just saying nothing can ever be called most appropriate? That seems too convenient — and it would mean the standard is impossible to meet."</div>
+    <div class="judgeobj-a">No — some conditions genuinely have a clearly dominant treatment for which "most appropriate" is defensible. Penicillin is most appropriate for streptococcal throat infection in a non-allergic patient. Naloxone is the most appropriate emergency reversal agent for opioid overdose. These cases exist because the patient population is relatively homogeneous and the treatment has no comparably effective alternative. Weight loss is not like this. The population ranges from mildly overweight individuals to patients needing bariatric surgery, from patients with secondary hormonal causes to patients with psychological drivers requiring therapy. The heterogeneity of the field is the specific reason the "most appropriate" standard cannot be met by one drug — not a theoretical objection that applies to all medicine.</div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Right Model Is Triage, Not One-Drug Supremacy</span></div>
+  <p class="arg-body">The most appropriate answer to the field of weight loss treatment is not a single dominant drug but a structured escalation model: assess the patient, apply behavioral and lifestyle support as the universal foundation, add medication when clinically indicated, and escalate to surgery for the most severe cases. The leader of this model is the matching process, not any one product. This is not a hedge or an evasion — it is the actual clinical standard that major obesity guidelines describe as producing the best outcomes at a population level, because it ensures patients receive the level of intervention appropriate to their level of need.</p>
+  <p class="arg-body">A patient who achieves sufficient weight loss through structured dietary and exercise support alone does not benefit from being started on a drug with genuine side effects and significant cost. A patient with BMI above 45 and multiple obesity-related comorbidities may get better outcomes from bariatric surgery than from any medication. Semaglutide occupies a real and important place within this framework — it is a powerful tool for the medication tier — but it is one tier in a model, not the model's answer.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">The European Association for the Study of Obesity (EASO) guidelines, updated in 2020, and the American Gastroenterological Association obesity management guidance (2022) both describe weight management through exactly this kind of stepped-care framework. Neither guideline says "start with semaglutide." Both say: assess severity and readiness, implement lifestyle intervention as the foundational layer, consider medication when lifestyle alone is insufficient, and reserve surgery for patients where its risk-benefit profile is most favorable. This is the clinical standard — and it is a matching model, not a one-drug default.</div></div>
+  <div class="quote qo">💬 Say this: "The right question is not which drug wins. It is which treatment model best fits a diverse field. The answer is assessment, then matching, then escalation — not one product at the center of every decision."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Population-level obesity care achieves the best outcomes through tiered matching: interventions calibrated to patient severity and individual characteristics</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the best-performing care strategy is the one that correctly places each patient on the right tier — not the one that defaults every patient to the same intervention</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a care model centred on semaglutide as the primary answer would over-medicate patients who could be managed less intensively, and under-treat patients who need surgical intervention</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>"most appropriate solution" for the full field is the matching model itself</strong> — within which semaglutide is one important component rather than the defining answer.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Model Describes Boxes But No Leader" Response</div>
+    <div class="weight-text">Prop's counter is that the triage model describes boxes but never names what should usually lead in serious obesity cases — and that when pressed, the honest answer is semaglutide. This counter has real force and Opp must not ignore it. The response is: the triage model does name what leads — clinical assessment leads. What comes next is determined by that assessment, not a default drug. In the large middle of the severity distribution, semaglutide is a strong option in the relevant tier. But "strong option in one tier" is meaningfully different from "most appropriate solution for weight loss," which is the field-wide claim Proposition is making. These are different levels of claim and Proposition has not earned the larger one.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Most real-world patients don't get carefully tiered care — systems are under-resourced. Doesn't that make semaglutide the practically dominant option by default, even if a triage model is theoretically better?"</div>
+    <div class="judgeobj-a">Two-part answer. First, the question of what care patients actually receive is a question about healthcare system failures, not about what is most appropriate. Most appropriate means what should happen, not what happens when systems are under-resourced. Second, even in under-resourced real-world settings, defaulting every patient who wants to lose weight to semaglutide would produce significant harm in contraindicated cases and waste resources in cases where behavioral intervention alone would have been sufficient. The right response to system constraints is better access to comprehensive care — not replacing it with a one-drug default.</div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Excellent for Many ≠ Most Appropriate for the Field</span></div>
+  <p class="arg-body">Semaglutide may be an excellent treatment for many patients in the right clinical context. Opp is not disputing that. The point is that "excellent for many" is a much weaker claim than "most appropriate solution for weight loss." The gap between those two statements is exactly the distance Proposition needs to travel to win the motion — and they cannot travel it.</p>
+  <p class="arg-body">Here is what Opp can fully concede: semaglutide produces substantially greater weight loss than placebo in large randomized trials; it works by a clear and well-understood biological mechanism; it is approved by the FDA for chronic weight management in adults with a BMI of 30 or more; and it represents a genuine scientific advance in obesity medicine. What Opp cannot concede: that "excellent for many" means "most appropriate for the field." Semaglutide carries an FDA-boxed warning regarding thyroid C-cell tumor risk, with a formal contraindication in patients with personal or family history of medullary thyroid carcinoma or MEN2. Its most common side effects — nausea, vomiting, diarrhea, constipation — lead to discontinuation in a meaningful minority. Its cost creates a long-term access and affordability dependency for anyone without stable coverage. And its benefit requires ongoing treatment — creating a continuation dependency that affects appropriateness for anyone who cannot sustain access.</p>
+  <div class="eg"><div class="eg-label">📌 Real Evidence</div><div class="eg-text">NICE's 2023 conditional approval is instructive again: the UK's national clinical guidance authority approved semaglutide with explicit conditions — specialist oversight, BMI thresholds, regular review — rather than as a universal "most appropriate" recommendation. This is a real regulatory body's actual language applied to this specific drug. It describes conditional excellence, not field-wide supremacy — and conditional excellence is exactly what Opp is arguing.</div></div>
+  <div class="quote qo">💬 Say this: "We are not saying semaglutide is bad. We are saying the claim is too big for what has been proven. Excellent for many patients in appropriate contexts is a genuinely weaker claim than most appropriate solution for weight loss."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Semaglutide's effectiveness requires specific patient conditions — absence of contraindications, tolerability of GI side effects, ability to sustain ongoing access — to deliver its full clinical value</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a non-trivial proportion of the population presenting with weight loss concerns face circumstances that make semaglutide not the best option — not because the drug fails in trials, but because the conditions required for its appropriateness are not met</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the gap between "best option in suitable patients" and "most appropriate solution for weight loss" is filled by patients who need a different answer</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion fails</strong>: a field-wide claim requires field-wide appropriateness, and field-wide appropriateness is not provided by a drug with formal contraindications, tolerability barriers, and access dependencies that exclude a meaningful portion of the field.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Hair-Splitting" Response</div>
+    <div class="weight-text">Prop's counter is that Opposition is splitting hairs — conceding so much that it sounds like they are just disputing labels. The response is: the hair being split is the entire motion. The word "most appropriate" creates a high, specific standard. Excellent for many patients in indicated contexts does not meet that standard. If it did, every strong drug in any indication would be described as "the most appropriate solution" for the relevant disease — and that is not how medicine works or talks. The standard matters. The precision is not pedantry. It is what the motion actually requires.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is Opp just being pedantic? Everyone knows the motion means something reasonable, and semaglutide is clearly the dominant modern answer for serious obesity."</div>
+    <div class="judgeobj-a">The precision matters because the claim has real-world implications, not because Opp is playing word games. If we accept that semaglutide is "the most appropriate solution for weight loss" without qualification, we implicitly endorse healthcare systems defaulting to it before individual patient assessment. We endorse its use in patients with formal contraindications. We endorse framing all other approaches as inferior. Each of those outcomes has concrete clinical harms attached. The words in this motion are not decoration — they set the standard being evaluated, and that standard has not been met.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     CLASHES
+═══════════════════════════════════════════ -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. A judge deciding this debate will consciously or unconsciously resolve these clashes and award the ballot to the side that won more of them. Know which clashes your side has the easier burden on — and know which ones you are likely to lose so you can minimize their importance.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 1 — What Does "Most Appropriate" Mean?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That "most appropriate" can be satisfied by demonstrating the strongest overall outcome record for the largest relevant patient group, without requiring perfect fit for every individual. The argument is that a lead tool for a field can hold the title "most appropriate" without being universally applicable — just as surgery is the most appropriate treatment for appendicitis even though some patients cannot safely undergo surgery.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That "most appropriate" is intrinsically a patient-specific standard in medical practice — and that the only honest use of the phrase requires individual clinical fit. Opp needs to demonstrate that Prop's reading reduces "most appropriate" to "statistically best on average," which is a different and weaker standard than the motion's language. Point to NICE's conditional approval language as evidence of how the phrase actually functions in clinical contexts.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">A judge will ask: when a doctor says "this is the most appropriate treatment," what do they mean? If the judge's intuition is that the phrase refers to average population-level outcomes, Prop wins the clash. If the judge's intuition is that the phrase refers to individualized clinical fit, Opp wins it. Prop should shape the judge's frame with a concrete example early: "When we say chemotherapy is the most appropriate treatment for certain cancers, we mean it is the strongest available lead option — not that it suits every patient perfectly." Opp should push back with regulatory precision: "NICE, the FDA, and major clinical bodies never say a treatment is 'most appropriate' without specifying indication and patient characteristics — that precision is what appropriate medicine looks like." Prop loses this clash if they never define the term at all. Opp loses it if they define it so stringently that the judge concludes the standard can never be met by any treatment for any condition.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 2 — What Is the Scope of "Weight Loss"?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That narrowing "weight loss" to "medically significant adult obesity" is the sensible and fair reading of the motion — that a debate about Ozempic is obviously a debate about the health condition Ozempic addresses, not weight management in general. Semaglutide is not FDA-approved for purely cosmetic weight loss in people with healthy BMIs, so the motion's claim is only intelligible in the context for which the drug was designed.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That any narrowing of the motion's scope is a concession rather than a clarification. The motion says "weight loss" — not "medically significant obesity in adults with BMI above 30 who lack contraindications." Every time Prop quietly removes a group from the debate's scope, they are implicitly acknowledging the motion is false for that group. If enough groups are removed, the motion Prop is defending at the end of the round is not the motion they were given.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">A judge will ask: is Prop's narrowing a reasonable interpretation that rescues a sensible motion from an unreasonably literal reading, or is it a rewrite that changes what the motion claims? The answer depends partly on how large the excluded groups are. If Prop's narrowed scope covers a substantial majority of people for whom the debate has meaningful medical stakes, most judges will find the narrowing reasonable. If Opp can show that the excluded groups are numerous and medically significant, the narrowing starts to look like a retreat. Prop loses this clash if they narrow the motion without explicitly defending the narrowing. Opp loses it if they insist on a maximally literal reading that encompasses cosmetic dieting and mild overweight without differentiation — most judges will find that unreasonably broad.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Is Ozempic a Solution or a Management Tool?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the medical use of "solution" is not equivalent to the lay use of "permanent cure." They need at least two concrete examples of treatments universally described as solutions that require ongoing use and lose their benefit when stopped: antihypertensive drugs for high blood pressure, insulin for type 1 diabetes, antiretroviral therapy for HIV. In each case, society and medicine call the treatment a solution even though it must be continued indefinitely.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the weight regain data specifically undermines the word "solution" because the underlying condition is not being addressed — only its symptoms are being suppressed. The STEP 4 withdrawal study (two-thirds of lost weight regained within 52 weeks of stopping) is the key evidence. Opp needs to differentiate between conditions where medication replaces a genuine deficiency (type 1 diabetes — the body cannot produce insulin) and obesity, where multiple non-pharmaceutical pathways remain available.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">This clash is genuinely balanced and the outcome depends heavily on which frame is established earlier in the round. A judge will ask: does the weight regain evidence change the meaning of "solution," or does it merely confirm that obesity is chronic? If the judge accepts the chronic disease framing, Prop wins this clash. If the judge feels that a treatment whose benefit fully reverses upon stopping is not a solution in any meaningful sense, Opp takes it. Prop loses it by being dismissive about weight regain rather than converting it into the chronic disease argument. Opp loses it by failing to differentiate between chronic disease management (their concession) and "solution" in a way that feels meaningful to the judge.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 4 — Can Individualized Care Still Have a Clear Leader?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That personalization and hierarchy are not mutually exclusive. Even in a world where every patient gets personalized care, there can still be a treatment that most appropriately leads that care for the largest group. Cardiac bypass surgery is highly specialized and patient-specific — but within its indicated population, it is the recognized leader of treatment. That does not mean it is right for every chest pain patient. It means that within the indicated population, it has primacy. Semaglutide holds the same position within its indicated population.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the size of the excluded groups is too large for semaglutide to hold the "most appropriate" title for the field as a whole. Opp needs to demonstrate that the groups for whom semaglutide is not the best answer — patients with contraindications, patients who cannot tolerate side effects, patients for whom surgery is more appropriate, patients with secondary causes — collectively represent a substantial portion of the field, not a minor exception. Put numbers on this where possible.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">A judge will ask: how large does the exception need to be before it defeats a field-wide claim? If Opp's excluded groups represent ten percent of the field, most judges will accept Prop's frame that exceptions do not defeat a center of gravity. If the excluded groups represent thirty to forty percent, the claim of supremacy starts to look strained. Prop loses it by failing to acknowledge that some patients are better served by alternatives — if Prop sounds like semaglutide is right for everyone, a judge with any medical knowledge will discount the whole case. Opp loses it by failing to quantify the excluded population — if the excluded groups are described only vaguely, the judge will have no basis for deciding they are large enough to defeat the field-wide claim.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 5 — Do Tradeoffs Dislodge Superiority?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the real comparison is not between semaglutide (with tradeoffs) and a perfect frictionless alternative — it is between semaglutide (with its tradeoffs) and the actual alternatives with their own tradeoffs. Behavioral programs have high dropout rates and require intensive infrastructure. Bariatric surgery carries surgical risk, is irreversible in some forms, and is appropriate only for a subset of patients. Older medications have worse efficacy or side effect profiles. Once compared honestly, semaglutide's tradeoffs do not displace its lead-tool status.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the tradeoffs are not merely comparable to alternatives but are specifically relevant to the word "appropriate." A formal contraindication is not a symmetric tradeoff — it is a categorical exclusion. A drug that requires ongoing access that many patients cannot sustain is appropriate only for patients who can afford it, which limits the field-wide claim fundamentally. Opp needs to show the tradeoffs are qualitatively different in kind from the tradeoffs of competing options.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">A judge will ask: do semaglutide's specific tradeoffs affect the appropriateness claim in a way that is qualitatively different from the tradeoffs of competing options? Prop wins if the judge treats all tradeoffs as commensurate — side effects against dropout rates, contraindications against surgical risk. Opp wins if the judge accepts that formal contraindications and access barriers create categorical exclusions rather than just trade-off costs. Prop loses it by treating contraindications the same as any other side effect without engaging with their formal regulatory significance. Opp loses it by treating every GI side effect as a categorical barrier rather than differentiating between discomfort and genuine safety concerns.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     POIs
+═══════════════════════════════════════════ -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI exposes a gap in the other side's argument, or forces them to say something they would rather not say out loud. Even if declined, the judge hears the question — so a well-chosen POI does work regardless of whether it is accepted. Have your top three ready from memory so you can deliver them calmly and confidently without looking down.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">If semaglutide is genuinely powerful in serious obesity cases, what specifically should lead at the medication tier of your triage model — and what evidence supports it at the same scale as the STEP trials?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">Insulin requires indefinite daily use to maintain its benefit for type 1 diabetes and its effects reverse when stopped. Do you accept that insulin is an appropriate solution for type 1 diabetes — and if so, what specifically distinguishes that case from this one?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Do you accept that "most appropriate" does not require a treatment to be right for every single patient — and if so, how large does the exception need to be before it defeats a field-wide claim?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">If chronic medication is the normal standard of care in other chronic diseases — diabetes, hypertension, HIV — why does the need for ongoing use count as a flaw specifically here?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If semaglutide makes diet, exercise, and behavioral support roughly six times more effective for the same patient — why is that not exactly what "most appropriate" looks like: the intervention that makes the whole care system work?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>When Opp says "you are defending Ozempic, not semaglutide":</strong> The motion clearly refers to semaglutide-class treatment by its most common public name. Debating the brand-label distinction would be like arguing a debate about "aspirin and headaches" only applies to the Bayer brand formulation. No reasonable listener thinks this motion turns on a brand-registration technicality.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>When Opp says "you have rewritten the motion":</strong> The only intellectually honest reading of a debate about a drug approved for clinical obesity treatment is one that focuses on the population for which it was studied and approved. We are not shrinking the motion — we are reading it accurately.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>When Opp says "wider care is still required, so Ozempic isn't the solution":</strong> Insulin is still called the solution for type 1 diabetes even though it requires diet management alongside it. The solution is the lead intervention that makes the whole system work — and without semaglutide, the same lifestyle program produces a fraction of the result.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>When Opp uses the STEP 4 withdrawal data against you:</strong> That data proves exactly what we say — obesity is a chronic disease. Weight returning when medication stops is precisely what happens with antihypertensives and antiretrovirals. We do not say those are not solutions. The same standard applies here.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>When Opp says access and cost affect appropriateness:</strong> Access is a healthcare delivery problem, not a clinical appropriateness problem. The most appropriate treatment for appendicitis does not change based on whether your hospital is well-funded. The solution to an access problem is better access policy — not abandoning the best clinical tool.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Are you defending Ozempic specifically, or have you quietly switched to semaglutide generally — and if the latter, when did you stop defending the motion's actual words?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If your scope excludes cosmetic users, excludes mild cases, excludes contraindicated patients, and excludes surgical candidates — what percentage of the population presenting with weight loss concerns does your narrowed scope actually cover, and is that what the motion says?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">If a patient presents with obesity caused primarily by a corticosteroid they are taking for a serious autoimmune condition they cannot stop treating, is Ozempic still the most appropriate solution for their weight loss?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">NICE approved semaglutide only within a specialist weight management service with specific BMI criteria. Does NICE's conditional approval support your claim that it is the most appropriate solution for weight loss broadly — or does it prove our point that appropriateness is conditional?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If continued use is required to maintain benefit, and access and cost are real barriers in most healthcare systems — at what point does the continuation dependency become relevant to whether this is truly the most appropriate solution?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>When Prop says "you never name a real alternative":</strong> We have named one — a triage and assessment model in which the correct intervention is determined by patient profile and severity. Within that model, medication including semaglutide plays a real role. We are saying the answer to "most appropriate solution for weight loss" is a matching process, not a product.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>When Prop says "you concede semaglutide works, so you've conceded the debate":</strong> We concede semaglutide is excellent for many patients in appropriate contexts. That concession sharpens the burden question. The motion requires most appropriate for weight loss broadly — and excellent for many is meaningfully different from that claim. We are separating strength from supremacy, which is the whole debate.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>When Prop says "your standard means nothing can ever win":</strong> Penicillin is most appropriate for streptococcal throat infection in a non-allergic patient. Naloxone is most appropriate for opioid overdose reversal. These cases exist because the patient population is relatively homogeneous. Weight loss is not like this — the field's heterogeneity is the specific reason this drug cannot win the claim, not a general objection to all medicine.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>When Prop says "you are winning on semantics":</strong> The semantic precision matters because the claim has real clinical implications. If we accept this motion without qualification, we endorse defaulting to semaglutide before patient assessment, including in patients with formal contraindications. The words are not decoration — they set the standard, and the standard has real consequences.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>When Prop says "you are defending diet and exercise":</strong> We are explicitly not saying that. We have stated throughout that medication including semaglutide is an important and appropriate part of comprehensive obesity care for many patients. Our argument is about one-drug supremacy over the full field, not about rejecting pharmaceutical treatment. Prop keeps conflating these two claims to avoid answering the actual argument.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     REBUTTALS
+═══════════════════════════════════════════ -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">The best rebuttals name what the other side has just said, explain specifically why it fails, and connect the failure back to your side's controlling thesis. The starred lines are your top three per side — have them ready to deliver from memory. The numbered ones are strong and can be adapted to fit the moment.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition proved imperfection, not inferiority."</strong> Every objection Opp has made today — side effects, contraindications, weight regain on stopping, access costs — is a description of imperfection, not a demonstration that any alternative performs better across the relevant patient population. We accept that semaglutide is imperfect. So is insulin. So is every effective treatment for every chronic condition. The relevant question is comparative: does any available alternative do better for the largest relevant group? Opp has never named one. That silence is the vote.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Their triage model eventually reaches our answer."</strong> Opp has built a care framework with an assessment tier, a behavioral tier, a medication tier, and a surgical tier. We agree with that framework. The only question is: when a patient reaches the medication tier — after behavioral intervention has proven insufficient and surgery is not indicated — what should be prescribed? Opp has never answered that question. If they answer it honestly, they will name semaglutide. Their own model produces our conclusion at every level where it matters. A framework that eventually reaches your opponent's answer is not a counter-argument — it is a concession.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"The chronic disease parallel is the whole debate."</strong> Opp spent significant time on the STEP 4 withdrawal data — weight returns when you stop. We accept every number in that data. We also accept that blood pressure returns when you stop antihypertensives, that blood sugar rises when type 1 diabetics stop insulin, and that HIV viral load rebounds when patients stop antiretroviral therapy. In every one of those cases, we still call the medication a solution, because in chronic disease, durable management and solution are the same thing. Opp has never explained why obesity is different in principle from those conditions — only asserted that it is. That assertion is not an argument.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Opp's motion-rewriting attack is a brand-law objection in a public health debate. Every participant in this room, including Opp, understood from the moment this motion was announced that it refers to semaglutide-class GLP-1 weight-loss treatment. Nobody thought we were discussing brand-registration distinctions between Ozempic and Wegovy. If Opp's strongest argument is that the commercial name on the prescription differs from the commercial name on the other box, that tells you they ran out of substantive material."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Opposition gave you caveats. We gave you an answer. In a debate about which intervention is most appropriate, the side that named the strongest concrete option, backed by the strongest evidence base, with no comparably powerful alternative named on the other side — that is the side that wins. Prop named semaglutide and explained why. Opp described a process and declined to name what it should produce. At the end of this round, only one team has answered the motion."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Prop proved subgroup strength. The motion required field-wide supremacy."</strong> Everything Proposition has shown today is evidence of semaglutide being a powerful drug for a specific, defined patient population — adults with clinically significant obesity, without contraindications, who can tolerate the side effects, and who can sustain ongoing treatment access. That patient profile is real and large. But the motion does not say "most appropriate solution for a large defined subgroup with favorable characteristics." It says "most appropriate solution for weight loss." Field-wide supremacy and subgroup strength are different claims. Prop has earned the smaller one. They have not earned the larger one.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Count the substitutions."</strong> When this debate started, Prop was defending the claim that Ozempic is the most appropriate solution for weight loss. Track what has happened since then: they moved to semaglutide generally, then to medically significant obesity, then to adults above a BMI threshold, then to patients without contraindications, then from solution to long-term management. Each substitution is individually defensible. Together, they tell you that the motion as originally written was false — and that Proposition knew it. What they have successfully defended is a smaller, narrower, more qualified claim. That is not a win on this motion.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"The chronic disease frame cuts both ways."</strong> Proposition has argued throughout that obesity is a chronic disease, and that in chronic disease, durable management is what solution means. We accept the chronic disease framework. But the chronic disease framework is precisely the context in which individual patient fit matters most — because patients must sustain treatment for years, which means tolerability, access, cost, and personal circumstances are not peripheral details but central determinants of whether treatment is appropriate for that patient. The chronic disease framing strengthens our argument for patient-specific appropriateness. It does not strengthen Proposition's argument for one-drug supremacy.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Prop's best rebuttal to our triage model has been: 'name what leads at the medication tier.' We have answered that: in many patients with clinical obesity who have not responded to lifestyle intervention and are not surgical candidates, semaglutide is a strong option in that tier. What we decline to do is pretend that one strong option in one tier is the same as the most appropriate solution for the full field of weight loss — because these are different claims, and the motion makes the larger one."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"This ballot is anti-overclaim, not anti-drug. We are not asking the judge to conclude that semaglutide is bad, that obesity does not deserve medication, or that pharmaceutical treatment is wrong in principle. We are asking the judge to hold Proposition to the specific words they were given. The motion says most appropriate solution for weight loss. The evidence shows a powerful drug that is excellent in the right clinical context for an important subgroup. Those are different things. The right verdict rewards precision over universalization."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     ROLES
+═══════════════════════════════════════════ -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that lands better later when the other side has committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "most appropriate" clearly and in your own terms before Opp can: the best lead intervention for the largest medically relevant group, with manageable tradeoffs, not required to be perfect for every individual.</div>
+        <div class="role-line"><span class="role-icon">→</span>Define the scope of "weight loss" as medically significant adult obesity, and explain briefly why this is the only intellectually honest reading of a debate about a drug approved for clinical obesity treatment.</div>
+        <div class="role-line"><span class="role-icon">→</span>Frame obesity explicitly as a chronic biological condition — this frame makes the chronic disease argument available to every speaker that follows.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Deep-diving on STEP trial numbers — those belong to Speaker 1. Your job is to set the frame, not fill it with evidence.</div>
+        <div class="role-line"><span class="role-icon">→</span>Any claim that semaglutide is appropriate for cosmetic use, for everyone, or as a replacement for all other care.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build all three arguments in full: lead-tool argument with STEP 1 trial data, adherence-enabler argument with the six-times multiplier framing, and chronic-disease argument with the insulin parallel.</div>
+        <div class="role-line"><span class="role-icon">→</span>Keep everything institutional and concrete — every claim tied to something real and verifiable.</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the actual alternatives and explain their comparative weaknesses so Opp cannot later pretend they offered a superior option you never addressed.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-running the Captain's definitional work at length — that time is better spent on mechanism and evidence.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Win the clashes directly. Engage with each of Opp's arguments and show specifically why they fail. Use the rebuttals from Section 7.</div>
+        <div class="role-line"><span class="role-icon">→</span>Handle the motion-rewriting attack (brand-law objection in a public health debate), the management vs. solution attack (chronic disease parallel), and the conditional-care attack (personalization and hierarchy can coexist).</div>
+        <div class="role-line"><span class="role-icon">→</span>Do burden control: show that Opp's triage model eventually produces Prop's answer at the medication tier — meaning Opp's framework does not defeat Prop's case, it confirms it.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing new arguments or major new examples — your job is to win what is already on the table.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Crystallize the ballot story in two minutes: "Opp gave caveats. We gave an answer. The only side that named a concrete, evidence-backed solution to the motion's question is ours."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the specific concessions Opp made — they acknowledged semaglutide's power, they acknowledged medication belongs in the care model — and explain why those concessions confirm Prop's position rather than undermining it.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>New arguments, long technical detail, or fairness complaints. Just the clean ballot story.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish Opp's posture immediately: you support pharmaceutical intervention for obesity where indicated, semaglutide is a genuine advance, and you are arguing about field-wide supremacy rather than the drug's value. This posture inoculates you against Prop's most damaging framing.</div>
+        <div class="role-line"><span class="role-icon">→</span>Push back on "most appropriate" as a standard: say it requires patient-specific fit, not statistical averages — and say this before Prop's definition has fully landed.</div>
+        <div class="role-line"><span class="role-icon">→</span>Note every substitution Prop makes from the motion's original words and explain why each one is a concession rather than a clarification.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Leading with the brand-label argument — it looks pedantic if it comes first. Lead with substance and use the label point once, briefly, as one item in the motion-rewriting argument.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full Opposition case: conditional-care argument, triage model argument, conditional-excellence argument. Make all three in full.</div>
+        <div class="role-line"><span class="role-icon">→</span>The triage model argument must be concrete — name the EASO guidelines (2020) or AGA framework (2022) so the judge has a real reference point rather than an abstract principle.</div>
+        <div class="role-line"><span class="role-icon">→</span>Concede semaglutide's genuine strength in every argument — it makes you more credible and sharpens the burden distinction.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding anti-medication. Do not fail to offer a concrete alternative framework — vagueness here is fatal.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Prop's narrowing by building a list of every group Prop has excluded from the motion's scope. Make the judge see that the motion Prop is defending at the end of the round is not the motion they were given.</div>
+        <div class="role-line"><span class="role-icon">→</span>Force Prop to specify which single argument independently carries the motion without relying on the other two. Put this question to them directly in a POI and return to it if they do not answer.</div>
+        <div class="role-line"><span class="role-icon">→</span>Challenge Prop's chronic disease framing: explain why it supports patient-specific care rather than one-drug supremacy.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Simply repeating the captain's burden argument without adding clash content. Your job is to use Prop's own words and concessions against them.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the judge feel intellectually disciplined for voting Opp: "This ballot is anti-overclaim, not anti-drug. Prop proved semaglutide is powerful. The motion required something bigger."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the specific narrowing moves Prop made and explain why each is a concession. "The more carefully they read this motion, the smaller the claim they were willing to defend."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Long detours into supply chain history, pricing, or listing every side effect. Just the clean ballot story: subgroup strength is not field-wide supremacy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     CLOSINGS
+═══════════════════════════════════════════ -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening & Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears your captain say. The closing bullets are the last things the judge hears before they deliberate. Both should be memorized and delivered without notes — they signal a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is not about whether Ozempic is useful — it clearly is, in ways that are well-evidenced and medically significant. The question is whether semaglutide-class treatment, for adults with medically significant weight loss needs, represents the most appropriate lead intervention available. We say yes — because it directly targets the biological mechanism that makes sustained weight loss so difficult, produces outcomes no non-surgical alternative currently matches, makes the rest of good care more effective, and fits the clinical reality of a chronic disease that requires durable management rather than a one-time cure."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "Proposition will tell you today that Ozempic is powerful. We agree — semaglutide produces genuinely strong results and represents a real advance in obesity medicine. But agreeing that a drug is powerful is not the same as agreeing with this motion. This motion asks whether Ozempic is the most appropriate solution for weight loss — a field-wide claim that requires field-wide fit. We will show you that appropriate medicine is patient-specific and conditional, that the right model is triage and patient matching rather than one-drug supremacy, and that Proposition only survives this motion by quietly substituting a smaller, more defensible claim for the one they were actually given."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition conceded that semaglutide is powerful, that medication belongs in the care model, and that serious obesity requires real medical treatment. Those concessions confirm our position, not theirs.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The STEP 1 trial isolated the drug's specific contribution: the same lifestyle counseling produced 14.9% weight loss with semaglutide and 2.4% without it. That gap is the answer to which intervention leads.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition's triage model describes a process that eventually reaches semaglutide at the medication tier. A framework that produces our answer is not a counter-argument — it is a concession.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Weight returning when the drug stops proves obesity is chronic — it does not prove the drug is inappropriate. Blood pressure returns when antihypertensives stop. We still call those solutions.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opp gave you caveats. We gave you an answer. The side with the strongest evidence-backed answer to the motion's question wins this round.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>We accepted semaglutide's strength throughout this debate. That concession sharpens the burden question: excellent for many patients in appropriate clinical contexts is meaningfully different from most appropriate solution for weight loss.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Count the substitutions Prop made: Ozempic became semaglutide; weight loss became medically significant obesity; solution became long-term management. Each move is an admission that the original claim was overbroad.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>NICE — the UK's national clinical guidance authority — approved semaglutide with explicit conditions and BMI thresholds. That institutional precision is what appropriate medicine looks like. It is the opposite of the motion's universal claim.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The right answer to "most appropriate solution for weight loss" is a matching process: assess, support, medicate when indicated, escalate when required. That process, not any single product, is what appropriateness in a diverse field looks like.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>This ballot is anti-overclaim, not anti-drug. Vote for the side that took the words of the motion seriously.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     EVIDENCE
+═══════════════════════════════════════════ -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and which need hedging. Use the safer versions whenever you are not certain — a hedged accurate claim is worth more than a confident inaccurate one.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>STEP 1 trial: approximately 14.9% mean weight reduction in semaglutide arm versus 2.4% in placebo arm over 68 weeks</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Semaglutide works by mimicking GLP-1 to reduce appetite and increase satiety</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>"It directly targets appetite biology through a well-understood hormonal mechanism."</td></tr>
+      <tr><td>STEP 4 withdrawal study: approximately two-thirds of lost weight regained within 52 weeks of discontinuation</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Semaglutide carries a formal FDA contraindication in patients with personal or family history of medullary thyroid carcinoma or MEN2</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>NICE approved semaglutide for weight management in England in 2023 with specialist oversight and BMI conditions</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Ozempic is FDA-approved for type 2 diabetes; Wegovy is FDA-approved for chronic weight management — both contain semaglutide at different doses</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The American Medical Association classified obesity as a disease in 2013</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>Note: classification remains debated in some medical quarters; safer to add "though some debate persists within medicine"</td></tr>
+      <tr><td>Real-world observational study of 175,000+ patients showing meaningful real-world weight loss with semaglutide (JAMA Network Open, 2023)</td><td><span class="pill pp">Prop</span></td><td><span class="pill py">⚠️ Plausible</span></td><td>"Real-world observational data shows clinically meaningful weight loss, though smaller than trial outcomes, consistent with most medications."</td></tr>
+      <tr><td>Look AHEAD trial (NIH, 2001–2012) showed durable weight loss through intensive behavioral intervention</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>Note: the primary cardiovascular endpoint was not significantly met, though secondary outcomes were positive. Do not claim it proved cardiovascular benefit.</td></tr>
+      <tr><td>EASO obesity management guidelines (2020) describe a stepped-care triage framework</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>AGA obesity management guidance (2022) describes a stepped-care framework including medication tiers</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Semaglutide is appropriate for "most adults with obesity" without qualification</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">❌ Do Not Claim</span></td><td>Use "most adults with clinically significant obesity who lack contraindications" — the unqualified version is demonstrably false given the FDA label.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     TRAPS
+═══════════════════════════════════════════ -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that handed the other side their framing. These are the specific traps that teams consistently fall into on this motion — and the five arguments that sound clever but reliably backfire for both sides.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Defending Ozempic for everyone, including cosmetic weight loss.</strong> This immediately opens the entire population of people who want to lose weight — most of whom the drug is not approved for, appropriate for, or comparably evidenced for. Every example Opp uses becomes fatal.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Switching between Ozempic, Wegovy, semaglutide, and GLP-1s without explanation.</strong> It makes the case look slippery and gives Opp a credible motion-rewrite argument. Pick "semaglutide-class treatment" and use it consistently throughout.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Dismissing lifestyle and behavioral care as irrelevant or ineffective.</strong> It is factually wrong (Look AHEAD disproves it), it sounds callous, and it validates Opp's attack that Prop reduces care to a drug and nothing else. Say explicitly: wider care still matters, semaglutide makes it work better.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Ignoring the "solution vs. management" distinction.</strong> If the judge accepts the plain language meaning of "solution" as permanent resolution, and you have not pre-empted it with the chronic disease parallel, you lose on the motion's own words without saying anything false about the science.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Letting Opp define "most appropriate" first.</strong> If Opp gets to establish their reading of this phrase before you have established yours, the entire rest of the round is fought on their ground. State your definition in the first thirty seconds of the first speech.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding anti-medicine or implying the answer is just lifestyle.</strong> A single moment of sounding dismissive about real obesity harms destroys Opp's credibility for the rest of the round. State your pro-treatment posture in the very first sentence of the case.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Using "it's just one drug" or "it's just a brand" as if those phrases alone constitute rebuttals.</strong> They do not. Use the patient-specificity argument and the triage model instead — these are substantive, not semantic.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Failing to offer a concrete alternative model.</strong> Opp's single biggest vulnerability is the perception that they are saying "it's complicated" without naming a better answer. Name the triage model, cite EASO or AGA guidelines, say explicitly: assessment, behavioral foundation, medication tier when indicated, surgery for severe cases.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Conceding semaglutide's strength without immediately separating it from the motion's standard.</strong> If the concession is not immediately followed by "strength is not the same as most appropriate for the full field," the judge may process the concession as a general admission that Opp has lost the debate.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding so conditional that the judge thinks nothing can ever win.</strong> Give examples of conditions where "most appropriate" is defensible — penicillin for strep, naloxone for opioid overdose. Show the judge your standard is real and can be met. Just not here, because of this field's heterogeneity.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Ozempic is basically a magic fix and obesity is now solved."</strong> This immediately invites the rebuttal that weight returns when the drug stops, that side effects are real, that access is limited, and that surgery still outperforms it for severe cases. It also makes Prop look scientifically naive. This argument generates more good Opposition attacks than Proposition wins.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Lifestyle intervention never works."</strong> Factually wrong — Look AHEAD and other studies disprove it. It will alienate judges, and it creates a strawman Opp can knock down easily, making the rest of the case look equally overblown.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"Because some patients need surgery, Prop automatically loses the whole motion."</strong> Most judges will understand that surgical and pharmaceutical interventions address different severity levels. Pointing to bariatric surgery only proves that the very top of the severity distribution is better served by surgery — it does not defeat semaglutide's claim for the broad middle of the distribution.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"The debate is already won because Ozempic is not the weight-loss label — Wegovy is."</strong> Even if technically accurate, a judge who votes Opp because of a brand name distinction will feel tricked rather than persuaded. A credibility win matters more than this point is worth. Use the label point once, briefly, as one item in the narrowing argument — never as a standalone argument.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Access and cost prove the drug is not appropriate — therefore Prop loses immediately."</strong> This proves too much. By this logic, expensive cancer treatments are not the most appropriate solutions for cancer because many patients cannot access them. Most judges will distinguish between clinical appropriateness and healthcare funding adequacy. The argument tends to produce a sharp Prop rebuttal that sounds more sensible than the original point.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     EMERGENCY
+═══════════════════════════════════════════ -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your 2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Semaglutide is the best lead tool for medically significant adult weight loss because it directly targets appetite biology — the biological mechanism that makes sustained weight loss so hard — and produces substantially better outcomes than any non-surgical alternative in large randomized trials. STEP 1: 14.9% mean weight reduction vs 2.4% with the same lifestyle support. That gap isolates the drug's contribution.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>In chronic disease, the most appropriate solution is the best durable management pathway, not a one-time cure. Insulin does not permanently cure type 1 diabetes — its benefit reverses when stopped — and we still call it a solution. The same logic applies here. Weight returning when semaglutide stops proves obesity is chronic. It does not prove the treatment is inappropriate.</div>
+
+    <div class="emrg-section">3 Questions to Ask Them</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>What specifically should lead at the medication tier of your triage model — and what evidence supports it at the same scale as the STEP trials?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>If chronic medication is the normal standard of care for other chronic diseases, why does the need for ongoing use count as a flaw specifically here?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>Does "most appropriate" require a treatment to be right for every single patient — and if not, how large does the exception need to be?</div>
+
+    <div class="emrg-section">3 Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Opp proved imperfection, not inferiority. They have never named an alternative that outperforms semaglutide for the largest relevant group."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Their triage model reaches our answer at the medication tier. A framework that produces our conclusion is not a counter-argument — it is a concession."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Weight returning when you stop the drug proves obesity is chronic. It does not prove the drug is inappropriate. Blood pressure does the same when you stop antihypertensives."</div>
+
+    <div class="emrg-section">Opening Line</div>
+    <div class="emrg-quote">"This debate is about whether semaglutide-class treatment is the strongest lead intervention for medically significant adult weight loss. On that question, the evidence gives a clear answer: nothing non-surgical comes close, it directly addresses the biology of failure, and in chronic disease, durable management is exactly what solution means."</div>
+
+    <div class="emrg-section">Closing Line</div>
+    <div class="emrg-quote">"Opp gave caveats. We gave an answer. In a debate about which intervention is most appropriate, the side that named the strongest evidence-backed option — with no comparably powerful alternative named on the other side — wins this round."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound like you are defending Ozempic for everyone, replacing wider care with a drug, or claiming obesity is now solved. Your scope is medically significant adult obesity. Stay there.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your 2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Effective is not the same as most appropriate. Appropriate medicine is patient-specific and conditional. Different patients have different contraindications (medullary thyroid carcinoma history — a formal FDA contraindication), different tolerability profiles for GI side effects, different severity levels, and better-fit pathways. The word "appropriate" in this motion is doing real clinical work, and it cannot be satisfied by average trial outcomes in a selected population.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>The right model is triage and patient matching: assess the patient, apply behavioral support as the universal foundation, add medication when clinically indicated, escalate to surgery for the most severe cases. EASO and AGA guidelines describe exactly this framework. Within it, semaglutide is an important tool at the medication tier — but "important tool in one tier" is much weaker than "most appropriate solution for weight loss," which is what the motion claims.</div>
+
+    <div class="emrg-section">3 Questions to Ask Them</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>Are you defending Ozempic specifically, or quietly switching to semaglutide generally — and if the latter, when did you stop defending the motion's actual words?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>If your scope excludes cosmetic users, mild cases, contraindicated patients, and surgical candidates — how is the motion true for the full field as written?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>NICE approved semaglutide only within a specialist service with specific BMI criteria. Does that conditional approval support your "most appropriate solution" claim — or prove our point?</div>
+
+    <div class="emrg-section">3 Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Prop proved subgroup strength. The motion required field-wide supremacy. These are different claims. Prop earned the smaller one."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Count the substitutions: Ozempic became semaglutide; weight loss became medically significant obesity; solution became long-term management. Each move is an admission that the original claim was overbroad."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"The chronic disease frame supports our case, not theirs. Chronic disease care is exactly where patient-specific fit matters most — because patients must sustain treatment for years, making tolerability, access, and cost central to appropriateness."</div>
+
+    <div class="emrg-section">Opening Line</div>
+    <div class="emrg-quote">"Proposition will tell you semaglutide is powerful. We agree — it is. But the motion does not say semaglutide is powerful. It says Ozempic is the most appropriate solution for weight loss. That is a field-wide claim. And the field is too diverse, the patient profiles too varied, and the conditions for appropriateness too specific for any one drug to carry it."</div>
+
+    <div class="emrg-section">Closing Line</div>
+    <div class="emrg-quote">"Prop proved one thing: semaglutide is strong for many patients in appropriate clinical contexts. The motion required something bigger — most appropriate solution for weight loss as a whole. The gap between what they proved and what they needed to prove is the ballot. This ballot is anti-overclaim, not anti-drug."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound anti-medicine, do not refuse to name a concrete alternative framework, and do not make the brand-label argument your main case. Lead with substance, concede semaglutide's strength immediately, and win on the standard.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
