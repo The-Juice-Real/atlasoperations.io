@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Technology is weakening human thinking ability</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Technology is weakening human thinking ability</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════ SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether technology is useful. Almost everyone agrees it can help people accomplish more. The real fight is about whether the dominant technological environment that most people live inside every day is making human beings better thinkers in themselves — or whether it is giving them better results while the underlying mental faculties quietly deteriorate. The core distinction is <strong>supporting thought</strong> versus <strong>replacing thought</strong>.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That on balance, the dominant modern digital environment erodes the core mental capacities that matter most: sustained attention, the ability to construct internal reasoning without external scaffolding, and the habit of forming independent judgments rather than accepting pre-packaged conclusions.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to prove every technology harms thinking, or that no individual benefits. They need to show the dominant pattern of human-technology interaction tends toward weakening rather than strengthening these capacities.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: engagement-optimized design trains reaction over reflection; cognitive displacement reduces the practice that builds independent skill; and algorithmic curation increasingly performs judgment on behalf of users rather than with them.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That technology does not produce a net weakening of human thinking ability overall — either because it genuinely extends reasoning capacity, because thinking adapts to new conditions rather than declining, or because it dramatically expands intellectual participation for previously excluded populations.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to deny all harms — only that those harms do not amount to broad net weakening across humanity. The motion requires a net claim, not proof that some harms exist.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: tool-extended cognition is still human cognition; a changed cognitive skill profile is not automatically decline; and more people can engage in serious thought because technology has lowered the barriers to participation.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight Inside This Debate</div>
+  <p>The single most important tactical battle is one that often goes unspoken but shapes everything: what does "technology" mean in this motion? <strong>Proposition benefits from the narrow definition</strong> — smartphones, algorithmic social media feeds, search engine dependence, AI writing and summarizing tools, recommendation systems, and engagement-optimized platforms — because this is the genuinely novel and genuinely contested environment. <strong>Opposition benefits from the broader definition</strong> — all tools humans have ever developed, including writing, books, calculators, libraries — because those tools are universally credited with advancing human thought, and forcing Prop to argue against all tools is an almost unwinnable position.</p>
+  <p>Whichever team frames this definitional line <strong>first and most clearly</strong> wins the structural advantage. Proposition must name their interpretation early: dominant contemporary digital environment, not tools in general. Opposition must decide whether to contest it directly — risky — or accept a narrow definition and fight on the substance. Conceding the narrow scope and winning on substance is the stronger Opposition play.</p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Environment design weakens depth + technology increasingly outsources judgment.</strong> Anchor the case in two concrete, observable mechanisms. Both are grounded in reality judges can verify from their own experience. Neither requires sweeping empirical claims about declining intelligence that could be challenged with counter-evidence.</div>
+    <div class="route-why">This route is safe because it concedes nothing that matters. Prop can fully agree that technology produces useful outputs while still winning that the human faculties behind those outputs are being weakened. The argument is about the person, not the result.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Frame the entire debate around who owns the thinking.</strong> Even if technology produces better outputs, even if more people access information, even if problem-solving capacity increases — none of that answers the question of whether the human being is doing the reasoning or merely consuming conclusions a system pre-generated.</div>
+    <div class="route-why">If "ownership of thought" becomes the governing standard, Prop wins even when Opposition demonstrates genuine cognitive benefits — because those benefits accrue to the system, not to the human thinker's independent capacities. The risk is Opp responds that the distinction between "human thinking" and "human-tool thinking" is incoherent. Pre-empt: the distinction matters in every context where tools are unavailable, unreliable, or in conflict — and those contexts are numerous and important.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Cognitive displacement: thinking is a skill built through practice, and convenience removes the struggle that produces understanding.</strong> This argument is accessible, intuitive, and difficult to dismiss. Judges recognize the logic immediately from every other domain of skill development.</div>
+    <div class="route-why">Judges respond to moral clarity paired with operational realism. The displacement argument is accessible and specific enough that even judges skeptical of broad claims about technology will find it persuasive when focused on the particular cognitive steps being displaced.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Narrow the scope explicitly mid-round: this debate is about the dominant contemporary digital environment, not all tools across history.</strong> If the round is going badly because Opp keeps expanding the definition, openly restate the scope as a framing move rather than a concession.</div>
+    <div class="route-why">Use this when Opp's historical analogies — "humans always thought through tools" — are landing with the judge. Acknowledge that older tools often supported cognition, then hold the line that the dominant contemporary environment is specifically and structurally different in ways that matter.</div>
+  </div>
+</div>
+
+<div id="so" class="strat-panel">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Technology extends reasoning capacity + Prop proves some harms, not broad net weakening.</strong> Establish that tool-extended thinking is still human thinking, and then hold Prop to strict burden discipline — the motion requires net weakening across humanity, not documented harms in some users in some environments.</div>
+    <div class="route-why">This route is safe because it concedes real harms without conceding the motion. "Some harms are real and we acknowledge them" is more credible and more persuasive than denial, and it sets up the net-assessment argument clearly.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Reframe as a story about expanding participation.</strong> If more people than ever can now engage in serious intellectual work because technology lowered the barriers — access to explanations, translation, communities of practice, guided learning — then the total thinking capacity of humanity is growing, not shrinking.</div>
+    <div class="route-why">This framing wins on the biggest possible stage because it shifts the question from "are typical users in wealthy countries getting lazier?" to "is humanity as a whole thinking more or less?" If Opp can hold this frame, Prop's attention and displacement arguments — which describe a minority of humanity — cannot carry a motion about humanity overall.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Adaptive intelligence: thinking changes under abundance, and that is not the same as decline.</strong> In information-rich environments, key cognitive skills are different from those required in scarcity. Prop mistakes adaptation for decay. A changed skill profile is not automatically a weaker one.</div>
+    <div class="route-why">Judges who are genuinely uncertain will often find this argument persuasive because it grants Prop's observations while recontextualizing their significance. It sounds intellectually honest and it avoids the trap of sounding like a technology apologist.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Burden discipline: Prop overgeneralizes from some badly designed digital environments to technology overall.</strong> If the round is going badly, hold firm on what the motion actually requires — broad net weakening — versus what Prop has actually proved — harms in some contexts.</div>
+    <div class="route-why">Specific documented harms do not automatically scale up into a general conclusion about all technology and all human beings. The gap between Prop's evidence and their conclusion is always available as a closing argument even when individual exchanges have gone against Opp.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different mechanism by which the dominant digital environment weakens thinking. Together they show that the environment is designed against deep thought, that cognitive practice is being displaced, and that judgment is increasingly outsourced — meeting the motion's threshold from three independent directions.</p>
+
+<!-- ARG 1 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Dominant Digital Environment Is Designed to Undermine the Conditions for Deep Thinking</span></div>
+  <p class="arg-body">Thinking well is not simply a matter of raw intelligence or information access. It is an activity that requires specific conditions: time without interruption, the ability to hold multiple ideas in working memory simultaneously, and the cognitive habit of staying with difficulty rather than switching away from it. These conditions are what the dominant modern digital environment is specifically and structurally designed to undermine.</p>
+  <p class="arg-body">The business model of most dominant digital platforms — social media, short-video applications, algorithmically curated news feeds, notification-driven communication apps — is built around engagement metrics. These platforms are more profitable the longer users spend on them and the more frequently users return. The design consequence is an environment optimized for rapid attention capture, frequent context-switching, intermittent reward loops, and the constant interruption of whatever the user was previously doing. This is not an accidental byproduct. It is the deliberate output of design processes refined over years with billions of dollars of investment. The result is that the mental habits this environment trains are the opposite of the habits that good thinking requires.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">The internal research conducted by Meta — then Facebook — and disclosed through the Facebook Papers leaked in 2021 showed that the company's own researchers had identified that its algorithmic feed amplified emotionally provocative content because that content generated more engagement, even when they knew it made users more distressed and less accurately informed. This is a documented case of a dominant digital platform being designed in ways that structurally work against careful, reflective thinking by its billions of users.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div>
+    <div class="eg-text">Opp may point to the fact that the same digital environment provides access to long-form journalism, academic papers, and educational content that would have been inaccessible a generation ago. This is true and genuinely valuable. However, access to high-quality content does not automatically produce high-quality thinking if the surrounding environment trains users away from the attention and habits needed to engage with it seriously. A library that no one has the concentration to read is not a cognitive win. The question is what cognitive habits the dominant environment actually builds in the average user over time — not what content is theoretically available.</div>
+  </div>
+  <div class="quote qp">💬 Say this: "Good thinking requires conditions: time, focus, and continuity. The dominant digital environment is documented to be designed against all three — not as a side effect, but as a feature of a business model that profits from the absence of those conditions."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>The dominant digital environment is deliberately designed to reward rapid attention-switching and penalize sustained focus — training the cognitive habits of reaction rather than reflection</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the mental capacities required for sustained reasoning — holding complexity, following long chains of logic, evaluating arguments carefully — are less practiced in the dominant mode of technology use</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the internal mental faculties that constitute serious thinking are trained against, not toward, by the environment most people inhabit for most of their waking hours</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's threshold is met: <strong>"technology is weakening human thinking ability"</strong> because the dominant technological environment is documented to undermine the conditions that produce sustained, independent, internally structured reasoning.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "People Have Always Had Distractions" Response</div>
+    <div class="weight-text">Opp's strongest counter is that human attention has always been imperfect and there is no clean before-and-after proof that digital platforms specifically caused attentional decline. This is a fair methodological challenge. However, the Proposition does not need to prove causation in a clinical trial sense. They need to show that the dominant environment is structurally designed against the conditions for good thinking, at a scale and with an intentionality no previous distraction environment achieved. The novelty is not distraction itself — it is distraction-by-design, operating at global scale, for the majority of waking hours, for billions of people.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is this really about technology, or is this about people having bad self-discipline?"</div>
+    <div class="judgeobj-a">The argument is not that individuals lack willpower. The argument is that the environment they operate in has been deliberately engineered by organizations with enormous resources specifically to make it difficult to exercise that willpower. The asymmetry between a billion-dollar platform optimized for engagement capture and an individual user trying to maintain focus is not a failure of personal character — it is a structural feature of the environment. The relevant question is not whether individuals could theoretically resist; it is whether the dominant environment rewards the cognitive habits of good thinking or systematically works against them.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Some attention harms are real in badly designed platforms, but they don't prove overall weakening of thinking ability. The same environment provides access to content that supports deep thinking.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Access to good content matters only if the surrounding environment builds the habits needed to engage with it seriously. The dominant digital environment trains habits of rapid switching and passive consumption that work against sustained engagement — even with good content that is technically available.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 2 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Technology Displaces the Cognitive Practice That Builds Independent Reasoning Ability</span></div>
+  <p class="arg-body">Cognitive skills — like physical skills — are built and maintained through use. The ability to construct a well-organized argument from scratch, to recall relevant information and connect it to new problems, to work through multi-step analysis without external scaffolding, to distinguish a sound inference from a plausible-sounding but logically weak one — none of these abilities are innate or permanent. They exist in proportion to how often and how seriously they are practiced. When technology systematically removes the need to perform these cognitive steps, it does not simply make those steps more convenient. It reduces the practice that produces the underlying skill.</p>
+  <p class="arg-body">The modern digital environment has made it largely unnecessary to perform a wide range of cognitive operations that were previously practiced constantly. Search engines replace the need to maintain organized memory of facts and connections between ideas. Autocomplete and AI drafting tools replace the need to work through how to structure and express an argument. GPS navigation has replaced the habit of building internal spatial maps through active attention. AI summarization tools replace the work of reading and extracting meaning from primary sources. Each individually might seem like a reasonable convenience. Collectively, the aggregate reduction in cognitive practice is significant — and the specific skills being displaced are the ones required for independent, unaided reasoning.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">Research published by Betsy Sparrow, Jenny Liu, and Daniel Wegner (Columbia and Harvard, 2011) — widely known as the "Google effect" studies — found that when people know information is easily retrievable through search, they are less likely to encode it into memory and less likely to remember it even after encountering it. Participants remembered where to find information better than they remembered the information itself. This documents a concrete shift in cognitive strategy: the brain optimizes for the environment it operates in, and in an environment where search is always available, the cognitive investment in internal memory encoding drops.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div>
+    <div class="eg-text">Opp will point out that humans have always offloaded cognition to external tools — writing itself is an external memory system, and books allowed people to store knowledge outside the brain. If those developments didn't weaken thinking, why should search engines or AI assistants? This historical argument sounds compelling but misses a critical distinction. Earlier tools offloaded storage — the capacity to hold and retrieve information. Contemporary tools increasingly offload reasoning — the process of selecting what is relevant, structuring how it connects, evaluating whether it is sound, and generating conclusions. Outsourcing memory is one thing. Outsourcing the reasoning process itself is categorically different and more consequential.</div>
+  </div>
+  <div class="quote qp">💬 Say this: "When the tool gives the conclusion before the user has done the reasoning, output rises but ownership falls. Thinking is built through use. Convenience can remove the struggle that produces understanding."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Technology increasingly removes the need to perform specific cognitive operations — recall, structuring arguments, first-pass analysis, evaluating sources — that were previously practiced as a matter of course</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means those operations are practiced less frequently and less deeply across the population of regular technology users</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the unaided ability to perform them weakens over time — not because people are less intelligent, but because the practice that sustains those skills is being systematically removed from everyday cognitive life</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is met: <strong>"thinking ability"</strong> — understood as the capacity to reason independently without external scaffolding — is demonstrably weakened when the practice that sustains it is removed.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "New Cognitive Skills Emerge" Response</div>
+    <div class="weight-text">Opp's best response is that different cognitive skills emerge to replace the ones that atrophy — navigating information abundance, evaluating sources, formulating effective search queries, and directing AI tools are themselves demanding cognitive skills. This response has genuine merit, and Prop should not dismiss it. The Proposition's strongest answer is to hold the distinction between old and new skills firmly. The old skills being displaced are the skills of independent, unaided, internally structured reasoning. The new skills being developed are largely skills of interface — of navigating between external tools and evaluating their outputs. These are not equivalent: independent reasoning under constraint — on an exam, in a negotiation, in any context without tool access — requires the internal skills, not the interface skills. And it is precisely the internal skills that displacement reduces.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this just how civilization works? Every new tool replaces an old skill, and we don't mourn every obsolete practice."</div>
+    <div class="judgeobj-a">The Proposition is not arguing that all cognitive offloading across history is bad. There is a specific threshold beyond which offloading shifts from supporting cognition to replacing it — and that threshold matters when it involves the reasoning steps themselves, not merely the storage or retrieval of information. When a person can no longer form a judgment without AI assistance, cannot write an argument without autocomplete, cannot follow a complex text without AI summary — those are not the atrophy of obsolete skills the way blacksmithing is obsolete. Those are the atrophy of the core faculties that all other human reasoning depends on.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Different cognitive skills emerge. Navigating information abundance, comparing sources, formulating queries, directing AI — these are genuine reasoning capacities that the digital environment develops. A changed skill profile is not automatically weaker.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Interface skills and independent reasoning skills are not equivalent. Interface skills help when tools are available. Independent reasoning is required when they are not — in every high-stakes context where judgment under constraint matters. The skills most displaced are the ones most needed in those contexts.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 3 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Technology Increasingly Outsources the Cognitive Operations That Constitute Judgment</span></div>
+  <p class="arg-body">Independent judgment — the ability to look at a situation, evaluate competing considerations, and form a reasoned conclusion — is not simply a matter of having the right information. It requires the cognitive work of selecting what is relevant, deciding how different pieces of evidence weigh against each other, identifying where the logic is sound and where it breaks down, and arriving at a conclusion the person can own and defend because they actually did that reasoning. Judgment is the output of a process, not just an answer.</p>
+  <p class="arg-body">The dominant modern digital environment is increasingly structured to provide the output without the process. Algorithmic ranking systems decide what information users see first, effectively determining what most users treat as important without any independent salience assessment on their part. AI summarization tools read sources and provide synthesized conclusions, bypassing the user's engagement with the original material. Recommendation systems curate a person's entire informational environment — historically a product of their own judgment and curiosity — optimized for engagement rather than understanding. AI assistants generate plausible-sounding conclusions across a vast range of questions, and the default mode of use is acceptance rather than interrogation. The architecture of these systems is designed for frictionless consumption, not for active reasoning.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">A widely studied phenomenon during and after the 2016 US presidential election documented the role of algorithmic content curation in shaping political belief. Research by Eli Pariser and subsequent academic work on filter bubbles and echo chambers showed that recommendation algorithms on platforms like Facebook and YouTube systematically served users content reinforcing their existing views, because it generated more engagement than content that challenged or complicated their thinking. Users were not independently surveying the political landscape and forming their own judgments — they were receiving algorithmically pre-curated informational environments that shaped what they treated as credible and important, largely without their awareness.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div>
+    <div class="eg-text">Opp may argue that human judgment has always been mediated by external structures — editors, priests, state censors, and social communities have always shaped what information people encounter — and that algorithmic curation is merely a modern version of these older forms. This is historically grounded. However, the scale, personalization, and opacity of algorithmic curation are qualitatively different. A newspaper editor makes visible, attributable decisions that readers know are being made. An algorithm that shapes a user's entire informational environment invisibly, without disclosure, without the user's awareness, and without any commitment to epistemic goals is a different kind of mediation. The absence of transparency and the absence of epistemic intention are what make it specifically damaging to independent judgment.</div>
+  </div>
+  <div class="quote qp">💬 Say this: "The central question is who is doing the thinking. When algorithms rank salience, AI summarizes sources, and recommendation systems curate judgment before users have done any reasoning, the answer is increasingly: not the human."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Systems that determine what information users see, how it is ranked, how it is summarized, and what conclusions it is said to support are performing those cognitive operations on behalf of users rather than with them</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means users are habitually receiving conclusions they did not build rather than practicing the reasoning process that produces genuine understanding</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the habit and capacity of independent judgment weakens through disuse — not because individuals are less capable, but because the dominant architecture removes the need to exercise that capacity</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is met: <strong>independent judgment</strong> — the most central form of thinking ability — is being structurally displaced by systems that perform it as a service, and habitual non-practice of that capacity is the definition of weakening it.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Users Are Still Making Choices" Response</div>
+    <div class="weight-text">Opp's most powerful response is that users are still making choices — they choose what to search for, what to click, what to ultimately believe — and the existence of assistive systems does not negate the agency of the person using them. This is a real and important point, and Prop should not dismiss it. The Proposition's answer is that choice at the level of "accept or reject this pre-generated conclusion" is categorically different from the cognitive work of constructing a judgment from scratch. A person who evaluates a conclusion they did not build is doing something genuinely different, and cognitively easier, than a person who builds the conclusion themselves. When the easier process becomes the default, the harder process atrophies. This is what the motion is about.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Doesn't this assume technology users are passive recipients? Aren't people capable of engaging critically with what algorithms show them?"</div>
+    <div class="judgeobj-a">The argument is not that people are incapable of critical engagement. It is that the default mode of use — the way the architecture is designed and the way the majority of users actually behave — is passive consumption rather than active interrogation. The existence of power users who engage critically does not describe the dominant pattern. The dominant pattern is acceptance, not interrogation, and it is the dominant pattern that the motion asks us to evaluate. Architecture matters because it determines the path of least resistance, and the path of least resistance in the dominant digital environment is to accept conclusions rather than build them.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Users can still direct, compare, challenge, and verify outputs. Assistance with synthesis doesn't erase judgment — users are still present, still choosing, still exercising agency over what they ultimately accept.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Evaluating a pre-generated conclusion is not the same cognitive activity as constructing one. The first requires far less from the reasoning faculty. When "evaluating a conclusion" becomes the dominant cognitive mode in everyday life, the capacity to "build a conclusion" atrophies — exactly as any skill does when practiced less.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's consistent formula: acknowledge that Prop's concerns about attention and displacement are real — because they are — then show why the net picture is more favorable than Prop claims, why a changed skill profile is not automatically decline, and why the largest story about technology and human thinking is one of expanding participation.</p>
+
+<!-- ARG 1 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Technology Extends Human Reasoning Capacity in Ways That Constitute Genuine Cognitive Gain</span></div>
+  <p class="arg-body">Thinking well has always involved using tools. Writing allowed humans to externalize and manipulate complex thoughts impossible to hold entirely in working memory. Mathematical notation allowed reasoning about quantities and relationships that unaided human intuition could never reach. The printing press enabled the development of intellectual traditions built on accumulated shared knowledge. In every case, the tool did not replace thinking — it extended the range and complexity of what thinking could accomplish.</p>
+  <p class="arg-body">Contemporary digital technology follows this same pattern, extended to new domains and scales. Search engines give ordinary users access to information that would have required encyclopedic memory or specialized library skills a generation ago. Translation tools allow users to engage with ideas expressed in languages they do not speak. Simulation tools allow scientists and policymakers to model complex systems and test hypotheses that would be computationally impossible without assistance. Drafting tools allow people to produce more carefully considered written arguments by making revision less laborious. In each case, the human thinker is still directing the process, still formulating questions, still evaluating outputs, still deciding what matters and why. The tool extends the reach of their reasoning without replacing the reasoning itself.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">The Human Genome Project, completed in 2003, required the processing of approximately three billion base pairs of genetic data and would have been computationally impossible without sophisticated software, databases, and digital analytical tools. The scientists who worked on it were directing extraordinarily complex intellectual work — formulating hypotheses, designing analyses, evaluating results, constructing interpretations. The technology extended what their reasoning could accomplish by several orders of magnitude, not by replacing the thinkers but by amplifying their capacity. This is one of the clearest large-scale examples of technology enabling human cognition to achieve what was genuinely impossible before.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div>
+    <div class="eg-text">Prop will argue that elite scientific projects represent best-case uses of technology by highly trained, highly motivated users in specialized institutional contexts — not representative of how most people engage with technology most of the time. This is a fair and important challenge. The Opposition's answer is twofold: first, the gains from extended cognition are not limited to elite contexts — ordinary users benefit from access to explanations, translations, and guided tools in ways that genuinely improve their understanding; and second, the motion requires a net assessment, not a worst-case assessment. If technology dramatically expands what humanity's best thinkers can achieve, and meaningfully improves the reasoning of many ordinary users, this must be weighed against the habits of passivity in some users — it cannot simply be discarded.</div>
+  </div>
+  <div class="quote qo">💬 Say this: "Humans think through tools. They always have. Tool-extended cognition is still human cognition — and the human who reasons with more powerful tools achieves more, understands more, and solves more than the human without them."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Technology allows human thinkers to process more information, test more hypotheses, construct more complex arguments, and reach more accurate conclusions than unaided cognition alone could achieve</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means tool-extended cognitive performance is genuinely superior to unaided performance on almost any task that matters in the real world</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the human thinking capacity of individuals and institutions operating with technology is greater than it would be without it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: the ability to reason effectively about the world is <strong>expanded, not diminished</strong>, when humans use powerful cognitive tools — and any honest assessment of "thinking ability" must include how effectively humans can actually think, not how effectively they can think in the artificial condition of tool removal.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Better Outputs ≠ Stronger Thinkers" Response</div>
+    <div class="weight-text">Prop's strongest response is to insist on the distinction between the quality of outputs and the strength of the underlying human cognitive faculty — arguing that better results through tool assistance prove stronger human-tool combinations, not stronger human thinkers. This is a genuinely clever distinction. The Opposition's best answer is to challenge its coherence in practice. If a human thinker using technology can reason about more complex problems, evaluate more evidence, reach more accurate conclusions, and do all of this better than they could unaided — in what sense that actually matters for human flourishing are they a "weaker thinker"? The motion is not asking whether humans could think as well in a hypothetical world without any tools. It is asking whether the technology that exists is weakening human thinking ability as it is actually exercised in the world.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"But this argument only works if people are actually using technology to do cognitive work, not just consuming its outputs."</div>
+    <div class="judgeobj-a">This is precisely why this argument should not stand alone. It establishes the ceiling — it proves that technology is capable of extending reasoning in ways that matter. Combined with the participation argument and the adaptation argument, it builds a picture of what technology is doing at its substantial best, against which Prop's documented harms need to be weighed. The answer to "are people actually using it this way?" is: many are, more than ever before, including people who were previously excluded from any access to the tools needed for serious intellectual work.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Better outputs achieved through tool assistance don't prove stronger human thinking — they prove stronger human-tool combinations. The underlying faculty may still be weaker. You need to show the person got stronger, not the system.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">The question is not how people think in the hypothetical condition of tool removal — it is how they think in the world. By every measure that matters in that world — quality of reasoning, complexity of problems solved, accuracy of conclusions — tool-extended human thinking outperforms unaided thinking. That is what "thinking ability" means in practice.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 2 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Thinking Adapts Under New Conditions — A Changed Cognitive Profile Is Not Automatically Decline</span></div>
+  <p class="arg-body">The Proposition's case, in its strongest form, identifies real changes in how people think in the digital environment and treats those changes as evidence of decline. People read differently, remember differently, and form judgments differently when technology is pervasive. But change is not the same as decline, and the Proposition needs to prove not just that thinking has changed but that it has gotten worse in a meaningful overall sense.</p>
+  <p class="arg-body">In an environment of information abundance rather than information scarcity, the most important cognitive skills are different from those that mattered most in a world of scarcity. When information is hard to find, the premium skills are memory retention and the discipline to engage deeply with whatever material is available. When information is effectively unlimited and instantly accessible, the premium skills are different: the ability to formulate precise, targeted questions; the capacity to compare multiple sources and identify where they agree, disagree, and why; the skill of spotting when a synthesized or AI-generated conclusion is subtly wrong; the discipline to follow a thread of reasoning across many different pieces of material and hold it coherently together. These are not lesser cognitive skills. They are different cognitive skills, and in many respects harder — because the volume of material requiring evaluation is vastly greater.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">The rise of fact-checking journalism as a professional discipline — represented by organizations like PolitiFact, FactCheck.org, and the Washington Post Fact Checker, all of which emerged and grew in the era of digital information abundance — illustrates the development of sophisticated new cognitive practices specifically in response to the challenges of the digital environment. Fact-checkers must locate primary sources, evaluate the credibility of multiple competing claims, trace the chain of reasoning from evidence to conclusion, identify logical fallacies and misleading framing, and communicate complex evaluations accessibly. These are demanding, rigorous cognitive operations that emerged as a formal discipline precisely because the digital environment created new cognitive challenges requiring new cognitive disciplines.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div>
+    <div class="eg-text">Prop will argue that professional fact-checkers are a tiny and atypical group, and that widespread sharing of misinformation, the virality of false claims, and the documented failure of large portions of the population to distinguish reliable from unreliable sources shows that adaptive skills are not actually developing at scale. This is a serious and partially accurate challenge. The Opposition's response is that the appropriate comparison is not against an idealized past in which most people were critical thinkers, but against the actual historical baseline. Pre-digital populations were also highly susceptible to propaganda and authority-based reasoning. The question is whether, on net, the new environment produces more rigorous thinking capacity across the population — and the evidence for that is at least as strong as the evidence against it.</div>
+  </div>
+  <div class="quote qo">💬 Say this: "Prop confuses the loss of some unaided sub-skills with the loss of thinking itself. A changed skill profile is not automatically a decline. In a world of information abundance, the cognitive demands are different — not lesser."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>The digital environment creates new and genuinely demanding cognitive challenges around navigation, comparison, synthesis, and verification — which the people who engage seriously with it are developing real capacity to handle</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the overall profile of human thinking is changing rather than uniformly declining — some capacities shift, new ones develop in their place</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's claim that technology is "weakening" human thinking requires showing not just that some things changed, but that the net result is worse in a meaningful overall sense — which Prop has not established</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>a changed cognitive skill profile is not the same as a weakened one</strong> — and the motion requires net decline, not merely documented change.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Not All Skill Profiles Are Equal" Response</div>
+    <div class="weight-text">Prop's strongest response to this argument is to insist that the specific skills being lost — sustained attention, independent judgment, internal reasoning structure — are more foundational and more important than the skills being gained. This is Prop's best move, and it is a genuine and important point. The Opposition's answer is that the Proposition is relying on a contestable and arguably nostalgic hierarchy of cognitive skills — one that privileges the skills developed in a print-based, scarcity-based informational environment and treats them as the universal standard for good thinking. The ability to navigate complexity, evaluate competing sources, and direct sophisticated multi-step processes is not obviously less important than the ability to sit quietly and read a long book without distraction. Both are valuable; neither is the uniquely authentic form of human cognition.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't Opp just making excuses for people who can't concentrate and don't think deeply anymore?"</div>
+    <div class="judgeobj-a">The Opposition is not arguing that shallowness and distraction are fine because they are new. It is arguing that there is a genuine category of valuable cognitive activity that is different from deep solitary reading, and that characterizing the entire shift in cognitive habits as decline requires showing that the new pattern is worse overall — not just different from the old pattern that the judge might personally prefer. The argument is not "bad habits are good." The argument is "new habits are different from old habits, and the net assessment requires evidence, not assumption."</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">The old skills being lost — sustained attention, independent judgment, internal reasoning structure — are more foundational than the new ones. The new skills are skills of interface. The old skills are the foundation everything else stands on.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">That hierarchy is an assertion, not an argument. Prop needs to show that navigating complexity, comparing sources, and spotting flawed reasoning are systematically inferior cognitive activities — not just that they are different from reading long books. The skills of the information-abundance environment are real and demanding. Prop must actually defeat them, not just declare them lesser.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 3 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Technology Lowers the Barriers to Serious Intellectual Participation for People Who Were Previously Excluded</span></div>
+  <p class="arg-body">Any assessment of whether technology strengthens or weakens human thinking must account for who is doing the thinking. If the baseline is a relatively small, highly educated, resource-rich population with access to good libraries, good teachers, and the time for sustained intellectual engagement, then comparing that population's habits to contemporary technology users will produce an unfavorable picture. But that baseline is not humanity. Humanity includes billions of people who, throughout history, had no meaningful access to the information, explanations, and intellectual communities needed to develop and exercise serious cognitive skills.</p>
+  <p class="arg-body">Technology — particularly digital technology with internet access — has fundamentally changed the conditions of intellectual participation for enormous numbers of people who were previously excluded from it. A student in a rural area who could not access university-level mathematics instruction can now work through it step by step using free online resources. A researcher in sub-Saharan Africa who could not access the scientific literature because of the cost of journal subscriptions can now engage with the knowledge frontier in their field. A first-generation university student with no family background in academic discourse can find explanations, examples, and communities of practice that help them develop the cognitive skills that more privileged peers absorbed through years of cultural immersion. If the motion is asking whether technology is weakening human thinking ability overall, the answer must account for these additions to the global intellectual population.</p>
+
+  <div class="eg">
+    <div class="eg-label">📌 Real Example</div>
+    <div class="eg-text">Khan Academy, founded in 2008 and now reaching over 150 million registered users globally, has documented significant learning gains among students with limited access to quality education, particularly in countries like India, Brazil, and across sub-Saharan Africa. Studies of its impact have found that consistent use produces measurable improvements in mathematical reasoning and problem-solving skills. Its model has been replicated and extended by dozens of similar platforms in local languages and for local contexts, fundamentally altering the conditions under which children and adults in low-resource environments develop serious cognitive skills. This is technology directly building thinking ability in populations that were previously excluded from the resources needed to develop it.</div>
+  </div>
+  <div class="eg">
+    <div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div>
+    <div class="eg-text">Prop may argue that access to educational content is not the same as genuine thinking development — that watching explanatory videos is passive consumption, and that the same patterns of passive engagement characterizing social media use also characterize how many users engage with educational technology. This is a real concern in some contexts. The Opposition's response is that the distinction between passive and active engagement is one of implementation and habit, not an inherent property of technology. The evidence from well-implemented educational technology programs shows genuine improvements in measured cognitive skills — not just passive information reception, but improved performance on problem-solving tasks. Prop is importing assumptions about passive engagement from the social media context and applying them to the educational context where they do not reliably hold.</div>
+  </div>
+  <div class="quote qo">💬 Say this: "The motion is about humanity on balance, not only previously privileged users preserving older habits. The largest story about technology and human thinking is one of expanding participation — more people thinking more seriously about more things than at any previous point in history."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Technology has dramatically reduced the cost of accessing the educational resources, explanations, communities of practice, and intellectual tools needed to develop serious thinking skills</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a substantially larger proportion of humanity now has access to the conditions needed for genuine cognitive development than at any previous point in history</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the overall thinking capacity of humanity — measured not just among previously privileged populations but across the full global population — is growing rather than shrinking</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>the broad claim that technology is weakening human thinking ability</strong> cannot survive an honest account of humanity overall, because the largest story is one of expanding participation, not net decline.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "That's a Special Case" Response</div>
+    <div class="weight-text">Prop will try to confine this argument by insisting the motion is fundamentally about the dominant digital environment — smartphones and social media — and that educational technology in optimized deployment contexts is a special case outside the main debate. The Opposition's response is to hold firm on the scope of the motion. "Technology is weakening human thinking ability" is a broad claim about technology and about human thinking. If technology is simultaneously raising the intellectual participation of hundreds of millions of previously excluded people, that evidence belongs in the assessment — it cannot be bracketed as irrelevant without Prop first winning a definitional argument they have not made.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is access to education really the same as stronger thinking? Aren't these users just getting better at passing standardized tests rather than thinking more deeply?"</div>
+    <div class="judgeobj-a">Measured improvements in problem-solving, mathematical reasoning, and reading comprehension in previously under-resourced populations are not trivially dismissed as "mere" test performance. Problem-solving and reasoning skills are what those tests are designed to measure, and if the measurement instruments are well-designed, improved performance is evidence of improved capability. The concern about shallow metric-chasing is a real one in some educational contexts, but it does not apply globally to the documented pattern of cognitive skill development through improved educational access. And even granting that access and genuine development are different, the combination of access plus guided practice — which educational technology provides — is what actual cognitive development requires.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Access to educational content is not the same as thinking ability. The same passive engagement patterns characterizing social media use also affect how many users engage with educational technology. Access is not judgment.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">We concede that access alone is not sufficient — access plus effective engagement is the mechanism. And the evidence from well-implemented programs shows exactly that: genuine improvements in reasoning and problem-solving, not just information exposure. Prop cannot import assumptions from social media engagement and apply them wholesale to guided educational technology.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these clashes convincingly. Know which ones your side has the easier burden on before the round starts.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight — Prop Slight Edge if Framed Well</span><span class="clash-title">Clash 1 — Support vs Replacement: Does Technology Assist Thinking or Substitute for It?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That there is a genuine and consequential distinction between tools that support cognition and tools that replace specific cognitive operations — and that dominant modern technology has crossed that line. They must identify specific cognitive steps (selection, synthesis, evaluation, judgment formation) and show that in dominant use, these steps are performed by the system rather than the user, reducing the practice of the reasoning process itself.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      Either that the distinction between support and replacement is philosophically incoherent — that all powerful tools "replace" cognitive operations in Prop's sense — or that dominant modern technology falls on the support side of the relevant line, because users are still directing, evaluating, and exercising judgment over outputs rather than blindly accepting whatever a system produces.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge wants a concrete, recognizable account of what replacement actually looks like in everyday use — not an abstract philosophical distinction. Prop wins if they describe specific, common scenarios in which a cognitive step is performed by the system and the user's role is reduced to accepting or rejecting a pre-packaged output. Opp wins if they show that even in those scenarios, meaningful human cognitive work is happening. Prop loses this by staying abstract. Opp loses it by describing an idealized careful user that most people recognize as atypical — if judges sense Opp is defending a minority of disciplined users, they will discount the argument.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 2 — Different vs Weaker: Does a Changed Cognitive Profile Constitute Decline?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the specific cognitive capacities being displaced are not merely different from the new ones but more fundamental and more important — that sustained attention and independent judgment are the foundation on which all other cognitive activity depends. Without them, even the new skills of interface navigation and source comparison are performed shallowly. The argument must be hierarchical, not just comparative.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the cognitive skills developing in the digital environment are genuinely rigorous and valuable — not excuses for shallowness dressed in respectable language. They must give judges concrete examples of what adaptive intelligence looks like in practice, and hold Prop to its burden: the motion says "weakening," which implies net decline, not just some losses alongside some gains.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is being asked to make a value judgment about which cognitive capacities matter most. The winner grounds their answer in a concrete account of human capability rather than in nostalgia or sloganeering. Prop loses this clash if their model of good thinking sounds specifically like reading nineteenth-century novels in silence — if it sounds like a defense of a particular cultural tradition rather than a serious account of cognitive capacity. Opp loses it if their account of new cognitive skills turns out on examination to be thin — if "navigating information abundance" proves to be genuinely lesser than the sustained reasoning Prop is defending.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Slight Edge</span><span class="clash-title">Clash 3 — Human Thinker vs System Output: Does Better Performance Prove Stronger Thinking?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That there is a meaningful and non-arbitrary distinction between "the human-tool system produced a better output" and "the human thinker got better at thinking." That human thinking ability is a property of the person's cognitive capacity — that it matters whether the person could have produced a similar result through their own reasoning, not just whether they can arrive at the result through any available means.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That Prop's conception of "unaided human thinking" is neither practically meaningful nor normatively important. In a world where tools are always available and integrated into human cognitive practice, testing thinking by removing tools is like testing athletic ability by requiring people to compete without shoes. The relevant measure of thinking ability is what humans with their full cognitive repertoire can achieve.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is deciding whether the standard for human thinking ability should be unaided or assisted performance. Prop has a strong intuitive pull: there is something natural about the idea that your thinking ability is what you can do in your own head. Opp has a strong pragmatic pull: in real life, we never think without some tools. Prop loses by pushing the unaided standard so far it becomes absurd — implying genuine thinking requires no external aids at all. Opp loses by refusing to engage with the intuition that a person who can only reason by outsourcing to a system is relevantly different from one who can reason independently — especially in contexts where tools are unavailable.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Slight Edge</span><span class="clash-title">Clash 4 — Average Use vs Best Use: Whose Behavior Decides the Motion?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the motion is properly decided by the dominant pattern of use — the way the majority of technology users actually engage with technology in their daily lives — rather than by best-case scenarios of disciplined, expert use. The dominant pattern is characterized by passive consumption, acceptance of pre-packaged conclusions, and reduced practice of independent reasoning.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That "typical use" is not necessarily passive and cognitively depleting for all users, and that the hundreds of millions of people gaining genuine cognitive capabilities through technology must count in any net assessment. The motion is about humanity overall — not just the habits of technology users in wealthy, already-educated societies.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is deciding what the motion is asking: the central tendency of human cognitive experience with technology, or the net aggregate effect across all users. A judge interpreting the motion as asking about common experience favors Prop. A judge interpreting it as asking about net global effects will be more receptive to Opp's participation argument. Prop loses by ignoring or dismissing genuine gains for previously excluded populations — making the case entirely about habits in wealthy, already-educated societies. Opp loses by relying primarily on elite or expert use to defend a motion that is clearly about ordinary experience — defending a model of technology use most judges will not recognize as representative.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 5 — Broad Motion vs Narrow Harms: Does the Evidence Scale to the Claim?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the harms they document are not exceptional, peripheral, or reversible — that they describe the dominant pattern of how the dominant technology shapes everyday cognitive life for the majority of technology users. The specific examples must connect to a general account of why the dominant technological environment systematically tends to produce these effects.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That Prop's evidence, taken at face value, is too concentrated in specific platforms, specific populations, or specific use patterns to support the broad claim the motion makes. The motion says "technology is weakening human thinking ability" — a general claim that Prop's specific examples cannot support without scaling up the argument adequately.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: did Prop describe a feature of the dominant technological environment, or a feature of some specific technologies in some specific contexts? If the harms Prop describes are features of most technology most people use most of the time, the broad motion is supported. If they are features of the worst-designed platforms used in the worst ways, the motion requires more than the evidence provides. Prop loses this clash if their examples are limited to social media and short-form content platforms, because those can be cast as exceptional bad actors. Opp loses it if they spend the whole round defending exceptional good uses without engaging the dominant pattern.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: exposes a gap in the other side's argument, or forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly and confidently under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Is your argument based on how most people actually use technology most of the time, or on how a disciplined, reflective user could theoretically use it?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If a person cannot reproduce the reasoning behind a conclusion without the tool that generated it, in what sense have they become a stronger thinker rather than a more dependent one?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Is arriving at a correct answer through AI assistance the same as understanding why that answer is correct — and does that distinction make any difference for thinking ability?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">If algorithms rank what information users see first, and that ranking determines what most users treat as important — how is the user's judgment of salience independent?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Are you defending human thinking ability, or are you defending convenient outputs? Because those are different claims and this motion is about the first one.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "humans always use tools":</strong> We are not attacking all tool use across history. We are arguing that today's dominant systems increasingly replace reasoning steps — selection, synthesis, judgment — rather than merely support them. That is a categorical distinction, and Opp has not answered it.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "different not weaker":</strong> Different is not a defense if the new cognitive pattern is more dependent on external systems, less capable of operating independently, and weaker in precisely the faculties required when tools are unavailable. Adaptation in the direction of dependence is not neutral.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "access expands thinking":</strong> Access to information is valuable. Access is not judgment. The question is whether the dominant digital environment builds the reasoning process needed to turn information access into genuine cognitive development — and our case is that it systematically undermines that process.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "the motion is too broad":</strong> The ordinary debate understanding of this motion is the dominant contemporary digital environment shaping everyday cognition — not every invention in human history equally. We have been precise about our target from the start.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>One-line principle:</strong> Useful technology can still produce weaker thinkers. Better outputs are not the same as stronger human minds. This debate is about the second thing.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Are you criticizing all technology broadly, or only some digital platforms with specific harmful design choices? Because those are very different claims with very different burdens.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">Are books, writing systems, and calculators part of your claim — and if not, what principle distinguishes those tools from the ones you are criticizing?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Why does externalizing a cognitive step automatically count as weakening rather than extending human capability? What is your principle for when offloading becomes damaging?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">How do you distinguish decline from adaptation? You need to prove the new pattern is worse — not just that it is different from the old one you prefer.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Are you proving net weakening of human thinking ability overall — or only documenting visible harms in some users in some environments? Because the motion requires the first, and you appear to be proving the second.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "dominant real-world use or ideal disciplined use?":</strong> We are not arguing every user is disciplined and reflective. We are arguing that even among ordinary users, genuine cognitive gains are occurring — through access to explanations, guided learning, communities of practice. And the gains among previously excluded populations must count in any honest net assessment.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "if you can't reproduce the reasoning, are you stronger?":</strong> The relevant question is whether you can think effectively about the problems that matter in your life — not whether you could think equally effectively with all tools removed. By every measure that matters in practice, tool-extended human thinking outperforms unaided thinking. That is what thinking ability means.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "access is not judgment":</strong> We concede that access alone is not sufficient. Our argument is that access plus practice, plus correction, plus participation in communities where thinking is discussed and evaluated — that combination builds genuine cognitive capacity. We are not defending passive consumption.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "algorithms undermine independent judgment":</strong> No information environment is neutral — editors, social networks, reputations, and peer communities have always shaped what people treat as important. The question is whether algorithmic curation systematically undermines judgment in a way older forms did not. We say it does not, because users retain the capacity to compare, seek alternatives, and verify.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>One-line principle:</strong> Some harms are real. They do not prove broad net weakening. The motion requires a net verdict, and on that net verdict, humanity is thinking more, not less.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side just argued, explain specifically why it fails, and connect the failure back to your thesis. The starred lines are your top three per side — have them ready from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition has proved that technology is useful. They have not proved that it produces stronger thinkers."</strong> Every compelling example the Opposition offered showed technology helping someone accomplish more — the Human Genome Project, Khan Academy, fact-checkers. But accomplishment is not the same as thinking ability. A person who produces a better result because a tool did part of the cognitive work has not demonstrated stronger thinking any more than a person who lifts more weight with a machine has demonstrated stronger muscles. Opp needs to show the human faculty got stronger. They showed the output got better. Those are different claims.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Access to information is not the same as independent judgment."</strong> When Opp runs the participation argument, acknowledge the genuine value of expanded access — then show it does not answer the motion. Having better inputs to a reasoning process is valuable only if the process is happening. The Proposition's case is precisely that the dominant digital environment systematically makes the process less necessary by providing pre-packaged conclusions alongside the information. Access plus outsourced evaluation is not stronger independent thinking.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Different is not a defense when the new pattern is more dependent and less self-directed."</strong> When Opp runs the adaptive intelligence argument, take it seriously and then press it: a pattern of thinking that is less capable of operating without external scaffolding, and less practiced in forming judgments without algorithmic pre-curation, is not just different from the old pattern. It is worse in the specific ways that matter for human cognitive autonomy and the capacity to function as an independent rational agent. Adaptation in the direction of greater dependence is not a cognitive upgrade.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Opposition's best-case users do not answer Prop's case about dominant real-world effects. Scientists extending their research capacity, students in well-implemented educational programs, professional fact-checkers — these are all real and valuable. They are also atypical. The motion requires a net assessment across the dominant technological environment as experienced by the majority of users. That environment is primarily the smartphone feed, the AI-generated answer, the algorithmically curated informational bubble — not the research lab. Opp needs to defend those dominant experiences, not retreat to exceptional ones."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Support is not the same as replacement, and Opp has not actually defended the distinction they need to defend. They have used the historical fact that humans always thought through tools as a full response to Prop's support-versus-replacement distinction. But 'humans have always used tools' does not address whether today's dominant tools perform reasoning operations on behalf of users. It asserts the distinction does not exist. It does not show us which side of the relevant line contemporary technology falls on."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition has proved some harms in some environments — not broad net weakening across humanity."</strong> Prop's evidence, taken at full strength, establishes that specific digital platforms designed around engagement metrics have some harmful effects on attention and information quality for some users in some contexts. This is a legitimate and documented concern. But the motion says "technology is weakening human thinking ability." That is a claim about the net effect of technology overall. The Proposition has proved a narrower case and is trying to draw a broader conclusion. Name the gap explicitly and hold it throughout the round.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Humans have always thought through tools — and Prop has not established what is categorically different about current technology."</strong> Writing externalizes and restructures reasoning. The printing press changed the intellectual practices of civilizations. Mathematical notation extended what kinds of reasoning were possible. If those transformations were not cognitive weakening despite fundamentally changing how humans think, Prop needs to explain what crosses a line those transformations did not. They have asserted the distinction between storage tools and reasoning tools; they have not established it rigorously. The historical argument remains unanswered.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition systematically ignores the largest story about technology and human thinking."</strong> Billions of people are now thinking more seriously, more rigorously, and about more complex matters than they could without technology — because the barriers to intellectual participation that previously excluded them have been substantially reduced. Prop acknowledged this without engaging with it. But the motion is about humanity. Humanity includes the students whose mathematics education has been transformed by digital tools, the researchers who can now engage with the global scientific literature, the first-generation students who can now access the resources that develop serious cognitive skills. These people are the majority of humanity. Their cognitive gains belong in the assessment.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"A changed cognitive skill profile is not automatically decline, and Prop has not shown systematic inferiority. The Proposition's hierarchy — in which sustained attention and independent judgment are more foundational than navigation, synthesis, and source evaluation — has been asserted throughout this debate but not defended against our challenge. Why should the skills developed in a print-based, scarcity-based informational environment be the universal standard for good thinking, rather than one historically specific cognitive profile among several? Prop needs to show the old skills are uniquely foundational in a way that makes their displacement constitute net decline. They have not done this."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Proposition proves risk and misuse — they do not prove that technology's basic relationship to human thinking is weakening. The harmful effects they document — attention fragmentation, passive consumption, algorithmically mediated judgment — are features of specific design choices made by specific companies optimizing for specific commercial goals. They are not inherent to digital technology as such. The Opposition concedes that these design choices are genuinely harmful. We do not concede that they represent technology's fundamental relationship to human thinking ability. The question is whether what Prop describes is the nature of the relationship or the failure mode."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later when the other side has committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define scope in the first sixty seconds: dominant contemporary digital environment — smartphones, algorithmic feeds, AI assistants, search dependence — not all tools across history. Do this before Opp's broad definition sets the judge's expectations.</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "thinking ability" in terms that will frame the whole debate: sustained attention, internal reasoning structure, independent judgment.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the support-versus-replacement distinction immediately. Announce the team's arguments clearly so judges can follow the case structure throughout.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding anti-technology. The opening line must make clear Prop is not attacking all tools — it is arguing that useful systems can still produce weaker thinkers. Get this distinction on the record early.</div>
+        <div class="role-line"><span class="role-icon">→</span>Over-developing any single argument. The job is framing and launching — depth comes from the team.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Carry the full constructive case. All three arguments, fully developed, with mechanisms, examples, and explicit So What chains connecting each argument to the motion's specific words.</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the support-versus-replacement distinction concrete — give specific, recognizable scenarios where a cognitive step is performed by the system rather than the user.</div>
+        <div class="role-line"><span class="role-icon">→</span>End every argument with: "This meets the motion's threshold because..." — do not leave the connection implicit.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Getting absorbed in hypothetical case distinctions at the expense of the affirmative moral case. The judge needs to leave this speech knowing what Prop is for, not just what it is against.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly address Opp's three arguments — extended cognition, adaptive intelligence, participation expansion — explicitly and in sequence. Engage with what they actually said.</div>
+        <div class="role-line"><span class="role-icon">→</span>Press the "different not weaker" argument: force Opp to show that the new skill profile is not just different but specifically not worse in independence and depth. Make them do the comparative work, not just assert it.</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuild the core comparative: "Opp proved usefulness. They needed to prove stronger human thinkers. They proved one thing. They needed to prove another."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire affirmative case from scratch. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, judges will notice the most important challenges have gone unanswered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Collapse the round into two big questions: did Opp prove that better outputs mean stronger human thinkers? Did Opp's participation argument address the dominant pattern of use or only exceptional cases?</div>
+        <div class="role-line"><span class="role-icon">→</span>Close with: "They showed you better outputs. We showed you weaker human judgment. Those are different things, and this debate was always about the second one."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Relitigating every POI exchange. A closing that sounds like a rebuttal speech loses register. Give the judge a narrative, not a recap.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Frame Prop as overclaiming: "The question is not whether technology has harms. It is whether those harms prove broad net weakening of human thinking ability — and they do not."</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the burden standard that will govern the rest of the debate: the motion requires net decline overall, not proof of some harms in some contexts. If this is not established early, Prop will claim victory based on documented harms without ever engaging with the net-assessment question.</div>
+        <div class="role-line"><span class="role-icon">→</span>Acknowledge real harms explicitly. Do not deny that attention fragmentation and engagement-optimized design are real problems. Conceding this early is more persuasive than appearing to defend Silicon Valley.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding like a technology apologist. Any hint of "technology is always good" will immediately discredit the case with judges who have experienced digital distraction in their own lives.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full Opposition case: reasoning extension, adaptive intelligence, participation expansion. Each argument fully developed with examples and explicit So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>Include ordinary-user examples alongside elite ones. If every example describes specialized professional use, Prop will correctly note this describes a tiny minority and will dominate the average-use clash.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the burden line early and return to it: "Some harms are real. They do not prove the motion. The motion requires net decline. Here is why we win on net."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining the philosophy of extended mind at the expense of concrete examples. The case must be grounded in recognizable reality, not just cognitive science theory.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly address Prop's three arguments — environment design, cognitive displacement, outsourced judgment — explicitly and in sequence. Engage with what they actually said, not a generic version of Prop's case.</div>
+        <div class="role-line"><span class="role-icon">→</span>Hold Prop to the burden on the "different not weaker" clash: they must show that the new skill profile is systematically worse in independence and depth — not just different. Make them do the hierarchical work, not just assert it.</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuild the net-assessment: "Some harms plus some gains does not automatically equal net weakening. Net weakening requires that the losses outweigh the gains. Prop has not done that accounting."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Pretending independent bodies or user discipline fully solves the problems Prop describes. Judges who understand platforms and human behavior know this is naive. Concede the real concern, then show why it does not win the motion.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple: "Vote on the motion as written. It requires broad net weakening. Prop proved some documented harms. That gap is why Opposition wins."</div>
+        <div class="role-line"><span class="role-icon">→</span>Close with: "They proved some risks and bad habits. They did not prove that humanity is thinking worse overall. That is what the motion required, and they fell short."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-opening technical arguments about whether specific platforms are well-designed. The closing should be principled, clear, and memorable — about what the motion required and what each side proved.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is not about whether technology is useful. Almost every technology that matters is useful. The question is something more important and less obvious: whether a system can be genuinely useful while simultaneously making the people who use it worse thinkers. We believe it can. We believe it already is. And we will show you exactly why."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "The Proposition will tell you a story about attention spans shrinking, algorithms replacing judgment, and humans passively receiving conclusions they did not earn. Some of that story is true. But a true story about some harms is not the same as proof that technology is weakening human thinking ability — a claim about all technology, about net effects, and about humanity as a whole. That is what they need to prove. We are here to explain why they cannot."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>This round is about who is doing the thinking. Useful technology can still produce weaker thinkers. The dominant digital environment is documented to be designed against the conditions thinking requires.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Older tools mostly stored information. Newer systems increasingly pre-structure judgment — ranking salience, synthesizing sources, generating conclusions before users have reasoned through anything.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition showed better outputs. They did not show stronger human minds. Those are different claims and this debate was always about the second one.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Access without discernment is not cognitive strength. Convenience without practice does not build the faculties that reasoning requires.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They showed you more accomplished outcomes. We showed you the human faculties behind those outcomes being systematically weakened. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The motion requires broad net weakening — not proof of some harms in some environments. Prop described some risks and bad design choices. They did not prove the net verdict the motion requires.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Tool-extended cognition is still human cognition. Humans have always thought through tools, and the human who reasons with more powerful tools achieves more, not less.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>A changed skill profile is not automatically a decline. The cognitive demands of information abundance are different from those of information scarcity — not lesser.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>More people can enter serious thought because of technology. The largest story about humanity and cognitive capacity is expansion, not decline.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They proved misuse and risk. They did not prove that humanity is thinking worse overall. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Algorithms and recommendation systems shape information exposure and determine what most users treat as important</td><td><span class="pill pp">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Modern digital platforms are often designed around maximizing engagement rather than user understanding or wellbeing — documented in the 2021 Facebook Papers</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>"Major platforms have documented internal research showing engagement optimization degrades information quality for users."</td></tr>
+      <tr><td>Technology dramatically expands access to information, education, and intellectual communities globally</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The "Google effect" studies (Sparrow, Liu, Wegner 2011) found that knowing information is searchable reduces memory encoding</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified — peer reviewed; replication mixed</span></td><td>"Research by Sparrow and colleagues found evidence that knowing information is searchable reduces memory encoding; this result has been influential though replication has been inconsistent."</td></tr>
+      <tr><td>Frequent interruption and context-switching in digital environments makes sustained deep concentration harder</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, causation contested</span></td><td>"Persistent interruption is plausibly associated with difficulty sustaining deep focus — this is supported by available evidence though causal direction is debated."</td></tr>
+      <tr><td>Reduced practice of cognitive operations can weaken unaided performance of those operations</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Well-supported in principle; specific cognitive application harder to prove cleanly</span></td><td>"The general principle that skills require practice to be maintained is well-established; applying this specifically to cognitive skills displaced by technology is theoretically sound but methodologically difficult to prove."</td></tr>
+      <tr><td>External cognitive aids can reduce routine cognitive load and make higher-order work more feasible</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Plausible with theoretical support</span></td><td>"External aids may free cognitive capacity for more complex tasks — this is theoretically well-grounded but depends heavily on how the freed capacity is used."</td></tr>
+      <tr><td>Khan Academy has produced measurable learning gains in under-resourced populations globally</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified — multiple studies; effect sizes vary by implementation quality</span></td><td>"Khan Academy has documented positive effects on learning outcomes in multiple contexts; strongest results come from high-engagement implementations."</td></tr>
+      <tr><td>Technology likely increases the number of people able to participate in serious thinking-intensive activities</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Plausible, verified for access; translation to developed thinking capacity requires further mechanism</span></td><td>"Technology demonstrably lowers barriers to intellectual participation; translating that access into genuine cognitive development requires effective engagement, not access alone."</td></tr>
+      <tr><td>Filter bubble and echo chamber research documents algorithmic curation shaping political belief formation (Pariser; Bakshy et al.)</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Documented research tradition; magnitude of effects actively debated</span></td><td>"Research on algorithmic curation documents meaningful effects on information environments users experience; exact magnitude of filter bubble effects on belief formation is actively debated in the literature."</td></tr>
+      <tr><td>Fact-checking journalism as a professional discipline emerged and grew specifically in response to digital information abundance</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Human Genome Project required computational tools that made the project possible — illustrating technology extending human reasoning capacity</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps for this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Attacking all technology too broadly and sounding anti-progress.</strong> Any sentence that sounds like "phones are destroying humanity" will be read by judges as cultural complaint rather than argument. Prop must consistently specify that the target is the dominant contemporary digital environment — engagement-optimized platforms, algorithmic feeds, AI assistants — not tools in general. Every time the argument drifts toward general anti-technology sentiment, redirect to the specific structural mechanisms.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Defending memorization as the gold standard of thinking.</strong> If any Prop speaker implies that the ability to retrieve information from memory without search tools is the measure of good thinking, they have walked into Opp's strongest historical reframe. Memory retrieval is a component of thinking, not its core. Prop's target must be reasoning, judgment, and the construction of understanding — not memory performance specifically.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Failing to make the support-versus-replacement distinction concrete.</strong> This distinction is the conceptual center of Prop's case, and if it remains abstract it will not land. Judges need to be able to picture what "replacement" looks like in practice. The best examples: an AI tool generating a complete argument submitted without evaluating whether the reasoning holds; an algorithmic feed deciding what information a user treats as politically important; an AI summary replacing engagement with a primary source. Specific, recognizable, genuinely concerning.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Relying too heavily on vague attention span decline claims.</strong> The claim that attention spans have measurably declined is surprisingly hard to prove rigorously and is more contested than popular discourse suggests. The attention argument is strongest when framed as: "The dominant digital environment is designed to reward rapid attention-switching and penalize sustained focus, and this design trains habits that work against deep thinking" — a claim about design and trained habits, not a claim about measured biological changes in attention capacity.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Ignoring or dismissing the access and participation gains.</strong> No Proposition case is complete if it does not engage seriously with the participation argument. The hundreds of millions of people who now have access to educational resources previously inaccessible to them are not a footnote — they are a major part of the story. If Prop simply ignores this, they will lose judges who correctly see it as a significant counter to the net-weakening claim. Acknowledge the gains honestly, then explain why access alone does not build the reasoning processes needed to turn it into genuine cognitive development.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Denying obvious harms and sounding like a technology apologist.</strong> Opp must not dispute that attention fragmentation is real, that engagement-optimized design is harmful, or that some patterns of technology use genuinely reduce the quality of reasoning. Denying these things is both empirically indefensible and rhetorically disastrous. Judges who experience the effects of digital distraction in their own lives will immediately distrust an Opposition that sounds like it is defending Silicon Valley. Acknowledge real harms explicitly and early — then insist they do not prove the broad net-weakening thesis.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Equating access to information with thinking ability.</strong> The participation argument fails if it relies on the claim that access to information is itself a form of cognitive capacity. Access provides the inputs for thinking. Thinking is what you do with those inputs. The correct version of the argument is: technology provides access to explanations, communities of practice, guided exercises, and feedback mechanisms — and this combination, when engaged with actively, builds genuine cognitive skills. Access alone is not the claim. Access plus effective engagement is.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Only defending elite or exceptional users.</strong> If every Opp example is a scientist extending research capacity with sophisticated computational tools, or a professional fact-checker developing advanced source evaluation skills, the case will be discounted as describing a minority of humanity in specialized contexts. The motion is about humanity overall. The case needs examples from ordinary life — the first-generation student who can now access university-level instruction, the non-English speaker who can now engage with ideas in other languages, the person in a rural area who can now participate in intellectual communities that would have been completely inaccessible before.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Repeating "humans have always used tools" without addressing what is different now.</strong> This historical argument is a necessary foundation but is not a complete response. Prop will always respond: "Yes, but today's tools are different — they do not just store and retrieve but synthesize, curate, and judge." If Opp's only answer is "but humans have always used tools," they are not engaging with this distinction. Opp needs to either refute the distinction or show that current tools still fall on the support side of the relevant line in dominant use — not just reassert the historical pattern.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Hiding behind burden discipline instead of providing a positive model.</strong> The burden discipline argument — insisting Prop has not proved net broad weakening — is necessary but not sufficient on its own. If Opp's entire case is "you haven't met your burden," they will lose to any Prop team that has provided a reasonably compelling positive case. Opp needs a genuine positive vision: an account of what stronger human thinking capacity looks like in the digital age, why it is stronger rather than just different, and why the net picture of technology's effects on human cognition is better characterized as expansion than as decline.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Phones are bad" style cultural complaint.</strong> This argument shows up when a debater is out of specific material and falls back on the general feeling that smartphones are degrading public discourse. The problem is that it is not grounded in specific mechanisms the motion requires, cannot be tested against evidence, and makes Prop sound nostalgic rather than analytical. Cultural complaint is not an argument. Use it as a one-line closing color after a real argument — never as a substitute for one.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Civilization is cognitive outsourcing" as a complete Opposition argument.</strong> This is the philosophical observation that all of civilization can be understood as the externalization of human cognitive functions. It sounds very smart when first introduced. But as a complete argument it proves too much: if every externalization of cognition is equivalent, there is no basis for Opp to acknowledge any harm — which forces them to deny obvious harms, the worst trap available. Use this argument as a foundation for the extended mind thesis, not as a full rebuttal to the displacement argument.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"Technology destroys authenticity" as a major Prop pillar.</strong> Some debaters frame the Proposition's case in terms of authentic human experience — the idea that thinking shaped by algorithms is less genuinely "yours." This framing has intuitive appeal but is very difficult to ground in anything testable. The motion is about thinking ability, not authenticity. Judges who share the intuition will already hold it; judges who don't will ask "what does authenticity mean and why does it matter for this motion?" and Prop will not have a clean answer.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"It's really capitalism, not technology" as a main Opposition case.</strong> The argument that harms Prop documents are caused by the profit motive of technology companies rather than digital technology itself is analytically interesting and partially correct. But as the main Opp case in a debate about whether "technology is weakening human thinking ability," it is a dodge. The motion is about technology as it actually exists and is experienced — not technology in some hypothetical form uncoupled from its actual economic context. Judges will correctly see this as avoiding the motion rather than engaging with it.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>Child-specific harms as the center of either side's case.</strong> Research on effects of digital technology on children and adolescents is real and important but has two problems as the center of either side's argument: it is contested in its methodology in ways that expose the side relying on it to effective challenge, and the motion is about technology and human thinking broadly, not a specific developmental population. A case built around child-specific harms will be rebuttable with evidence about adult users. Reference child-specific evidence as supporting material rather than as the core of the argument.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This debate is not about whether technology is useful. It is about whether useful systems can produce weaker thinkers. We argue: yes, they already do. The dominant digital environment is designed against the conditions thinking requires, displaces the practice that builds independent reasoning, and outsources the cognitive operations that constitute judgment.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Environment designed against deep thought:</strong> Dominant platforms are built around engagement metrics that reward rapid attention-switching and penalize sustained focus. This trains cognitive habits that are the opposite of what good thinking requires.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Judgment increasingly outsourced:</strong> Algorithms rank salience, AI summarizes sources, recommendation systems curate entire informational environments — all before the user has done any independent reasoning. When systems perform the cognitive steps that constitute judgment, the capacity for independent judgment weakens through disuse.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">Is your argument based on how most people actually use technology, or on how a disciplined ideal user could theoretically use it?</div>
+    <div class="emrg-quote">If I cannot reproduce the reasoning behind a conclusion without the tool that generated it, in what sense have I become a stronger thinker?</div>
+    <div class="emrg-quote">Are you defending human thinking ability, or are you defending convenient outputs? Because those are different claims and this motion is about the first one.</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"Opposition proved that technology is useful and produces better outputs. They have not proved that it produces stronger thinkers. Those are different claims and the motion is about the second one."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "This debate is not about whether technology is useful. The question is whether useful systems can produce weaker thinkers. We believe they can. We believe they already do."</div>
+    <div class="emrg-quote">Closing: "They showed you better outputs. We showed you weaker human judgment. Those are different things, and this debate was always about the second one."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound anti-technology in general. Do not defend memorization as the standard. Do not stay abstract on support-versus-replacement — make it concrete. Do not ignore the access and participation argument.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>The question is not whether technology has harms. It is whether those harms prove broad net weakening of human thinking ability — a claim about all technology, about net effects, and about humanity as a whole. That is what the motion requires. That is what Prop cannot prove.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Technology extends reasoning capacity:</strong> Tool-extended cognition is still human cognition. The human who reasons with more powerful tools achieves more, understands more, and solves more than the human without them. Better thinking outcomes are evidence of stronger thinking, not a distraction from it.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Some harms ≠ broad net weakening:</strong> Prop has proved that specific platforms with specific harmful design choices produce some negative effects on some users in some contexts. That is a narrower finding than the motion requires. Some harms plus real gains — especially the expansion of intellectual participation globally — does not add up to net weakening.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">Are you criticizing all technology broadly, or only some digital platforms with specific harmful design choices? Because those are very different claims with very different burdens.</div>
+    <div class="emrg-quote">Why does externalizing a cognitive step automatically count as weakening rather than extending human capability?</div>
+    <div class="emrg-quote">Are you proving net weakening of human thinking ability overall — or only documenting visible harms in some users in some environments?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We concede real harms. They do not prove the motion. The motion requires broad net weakening across humanity. The largest story about humanity and technology is expanding participation, not net decline. That is why Opposition wins."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "Some of Prop's story is true. But a true story about some harms is not the same as proof that technology is weakening human thinking ability overall. That is what they need to prove, and we are here to explain why they cannot."</div>
+    <div class="emrg-quote">Closing: "They proved some risks and bad habits. They did not prove that humanity is thinking worse overall. That is what the motion required, and they fell short."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not deny obvious harms. Do not sound like you are defending Silicon Valley. Do not equate access with thinking. Do not repeat "humans always use tools" without addressing what is different now. Provide a positive vision, not just burden discipline.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
