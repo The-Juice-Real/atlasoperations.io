@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Gold Medal Playbook — A Gift to JCI Nomadic</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --Y:         #f0c040; /* Gold */
+  --Y-glow:    rgba(240, 192, 64, 0.15);
+  --r-m: 16px;
+  --t-m:   clamp(14px, 2.8vw, 17px);
+  --t-xl:  clamp(32px, 7vw, 52px);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Literata', Georgia, serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 120px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Google Translate Widget Positioning */
+#google_translate_element {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: 1px solid var(--line) !important;
+  padding: 4px 10px !important;
+  border-radius: 100px !important;
+}
+.goog-te-gadget-simple span { 
+  color: var(--ink-2) !important; 
+  font-size: 10px !important; 
+  text-transform: uppercase; 
+  font-family: 'Syne', sans-serif !important;
+}
+
+/* Hero Section */
+.hero {
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 25px;
+  text-align: center;
+}
+.hero-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--Y);
+  margin-bottom: 20px;
+  display: block;
+}
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: var(--t-xl);
+  font-weight: 800;
+  line-height: 0.95;
+  background: linear-gradient(to bottom, #fff 40%, var(--ink-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Motion Grid */
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.motion-card {
+  background: var(--surf-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-m);
+  padding: 30px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.motion-card:hover {
+  border-color: var(--Y);
+  transform: translateY(-8px);
+  background: var(--surf-2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--Y-glow);
+}
+
+.motion-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--surf-3);
+  line-height: 1;
+  margin-bottom: -10px;
+  transition: color 0.3s;
+}
+.motion-card:hover .motion-num {
+  color: var(--Y);
+  opacity: 0.3;
+}
+
+.motion-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.motion-label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--line);
+}
+.motion-card:hover .motion-label::before {
+  background: var(--Y);
+}
+
+.motion-title {
+  font-family: 'Syne', sans-serif;
+  font-size: var(--t-m);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  min-height: 3em;
+}
+
+.motion-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.motion-blueprint {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  color: var(--Y);
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.motion-card:hover .motion-blueprint {
+  opacity: 1;
+}
+.motion-arrow {
+  font-size: 20px;
+  color: var(--ink-3);
+  transition: transform 0.3s, color 0.3s;
+}
+.motion-card:hover .motion-arrow {
+  transform: translateX(5px);
+  color: var(--Y);
+}
+
+@media (max-width: 600px) {
+  .motion-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Language Widget -->
+<div id="google_translate_element"></div>
+
+<section class="hero">
+  <span class="hero-tag">A Gift for JCI Nomadic</span>
+  <h1 class="hero-title">The Gold Medal Playbook</h1>
+</section>
+
+<main class="motion-grid" id="motionGrid">
+  <!-- JavaScript populated motions -->
+</main>
+
+<!-- Google Translate Widget Logic -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', 
+    includedLanguages: 'mn', 
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+const motions = [
+  "Artificial intelligence poses a threat to the future of humanity.",
+  "Ozempic is the most appropriate solution for weight loss.",
+  "Mongolia should allow foreign banks to operate in the country.",
+  "Nuclear weapons guarantee peace.",
+  "Isolating people with mental illnesses from society is wrong.",
+  "Mongolia should not extract rare earth elements.",
+  "Allowing citizens to monitor traffic violations in exchange for rewards is wrong.",
+  "Members of Parliament should not lose their seats due to ethical violations.",
+  "People with autism should be required to wear identification markers.",
+  "Technology is weakening human thinking ability.",
+  "Online persona determines a person's social status.",
+  "In the age of artificial intelligence, knowledge outweighs creativity in importance."
+];
+
+const grid = document.getElementById('motionGrid');
+motions.forEach((title, index) => {
+  const i = index + 1;
+  const card = document.createElement('a');
+  card.href = `https://atlasoperations.io/jci-temp/motion${i}`;
+  card.className = 'motion-card';
+  
+  card.innerHTML = `
+    <div class="motion-num">${i < 10 ? '0' + i : i}</div>
+    <div class="motion-label">Competitive Brief</div>
+    <div class="motion-title">${title}</div>
+    <div class="motion-footer">
+      <span class="motion-blueprint">Victory Blueprint</span>
+      <span class="motion-arrow">→</span>
+    </div>
+  `;
+  
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
