@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — In the Age of AI, Knowledge Outweighs Creativity in Importance</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">In the age of artificial intelligence, knowledge outweighs creativity in importance</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not asking whether knowledge is good or whether creativity is good. Both sides will agree that both matter. The real question is comparative: in a world where AI exists and is increasingly powerful, which human capacity becomes more decisive overall — human knowledge or human creativity?</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>AI makes output abundant enough that the decisive human bottleneck is no longer <strong>producing</strong> content — it is <strong>judging</strong> it. That requires knowledge: domain understanding, evaluative literacy, and the ability to recognize when an output is wrong, misleading, or unsafe.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>This shift is comparative and <strong>AI-specific</strong> — not merely that knowledge was always important, but that AI specifically raises its relative importance by scaling generation faster than it scales evaluation.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Knowledge outweighs creativity <strong>across society broadly</strong> — not just in regulated professions — because the evaluation bottleneck applies to every person who uses AI outputs to make any consequential decision.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>AI reduces the comparative advantage of standard, codified, retrievable knowledge <strong>more</strong> than it reduces the value of creative direction. When AI helps anyone reach a competent baseline, the differentiating human edge shifts toward what AI cannot easily compress.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The most valuable human contribution in an AI-assisted world is <strong>upstream</strong> — framing problems, choosing directions, deciding what is worth building — not downstream checking of outputs AI has already produced.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Necessary is <strong>not</strong> the same as more important. Prop proves knowledge remains useful; Opp proves creativity becomes the decisive differentiator in the specific conditions AI creates.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight</div>
+  <p><strong>Knowledge:</strong> Proposition wants it to mean understanding, evaluative literacy, and deep domain comprehension — the kind that lets a doctor know which AI-suggested diagnosis is implausible. Opposition wants it to mean standard, codified, retrievable competence — the kind AI can already assist with. If Opposition wins the narrow definition, the compression argument becomes much stronger. If Proposition wins the broad definition, they risk inflating "knowledge" until it quietly absorbs every positive human trait and the motion becomes trivially true by definition.</p>
+  <p><strong>Creativity:</strong> Opposition wants it to mean problem selection, strategic reframing, and adaptive synthesis — a serious intellectual skill present in scientists, executives, and engineers, not just artists. Proposition wants to keep creativity meaning the generation of novel ideas, something AI already does tolerably well in many domains. The definitional fight is whether creativity means artistic originality or upstream strategic direction. <strong>The cleanest handling for both sides:</strong> knowledge = domain understanding and evaluative competence. Creativity = generating non-obvious, useful ideas, frames, or combinations across any field.</p>
+</div>
+
+</div></div>
+
+<!-- STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has four possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>The Evaluation Bottleneck.</strong> AI increases the supply of outputs — drafts, summaries, answers, concepts — so rapidly that the limiting factor in every important task becomes not producing content but evaluating it. Knowledge is what allows a person to evaluate correctly. This route is safe because it is grounded in something happening visibly right now and directly engages the motion's phrase "in the age of AI."</div>
+    <div class="route-why">If Proposition does nothing else, it must win this route cleanly. The risk is that Opposition absorbs the position and argues their alternatives also cover evaluation. Stay specific: the evaluation bottleneck is about AI-generated content that looks plausible but may be wrong, and only domain knowledge catches the difference.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Autonomy Protection.</strong> In an AI-mediated information environment, people who lack sufficient knowledge become dependent on systems they cannot properly assess. They cannot tell good AI outputs from bad ones, reliable recommendations from unreliable ones, or accurate AI content from plausible-sounding falsehood. Creativity does not solve this problem — only knowledge does.</div>
+    <div class="route-why">Higher reward because it carries genuine social weight and connects to anxieties about misinformation, AI manipulation, and the erosion of critical thinking. Risk: it can become generic "misinformation is bad" unless kept tightly comparative. The key move is always "creativity doesn't rescue a person who can't tell good information from bad."</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Priority in Serious Decisions.</strong> In medicine, law, engineering, governance, and finance, creativity is only useful after a knowledge threshold is met. Knowledge prevents catastrophically wrong decisions; creativity can only improve within the boundaries correctness establishes first. This route is intuitive and the examples are clear.</div>
+    <div class="route-why">Risk: sounds like Prop only wins in regulated professions. Must explicitly extend to ordinary citizens, students, and workers. The framing that works: "Those sectors prove the principle most clearly. But every person who uses AI outputs to make any consequential decision faces the same evaluation problem — at a lower stakes level."</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Trust and Responsibility.</strong> The person who matters institutionally — who signs off, who is accountable, whose name is on the work — must be the person who understands it. Creativity can generate options; knowledge is what makes a person trustworthy enough to be given responsibility for a consequential decision.</div>
+    <div class="route-why">Works as a fallback because it does not compete directly with Opposition's direction-and-framing argument. It concedes that creativity may produce value while arguing knowledge is what earns legitimate authority over the outcome. Keep in reserve if the main arguments are being challenged hard.</div>
+  </div>
+</div>
+
+<div id="so" class="strat-panel">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Compression of Standard Competence.</strong> AI makes standard summaries, routine drafting, and basic information retrieval far more accessible. When AI helps anyone reach a reasonably informed baseline quickly, the comparative advantage of possessing standard knowledge shrinks. The premium shifts toward what AI does less well: creative direction, reframing, synthesis.</div>
+    <div class="route-why">Safe because it does not require Opposition to claim knowledge becomes worthless — only that its comparative edge decreases. Key line: "We do not need knowledge to vanish. We only need its marginal advantage to shrink. AI visibly shrinks it."</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Problem Selection and Reframing.</strong> The most valuable human skill in an AI-assisted world is deciding what problem actually matters and what direction is worth pursuing. AI is extremely powerful once a task is defined, but it requires human direction to determine what task is worth defining in the first place. This positions creativity as the upstream skill that everything else depends on.</div>
+    <div class="route-why">Highest reward because it reframes creativity as the precondition for effective AI use — not a luxury after knowledge is in place, but the input that determines what knowledge to acquire and how to deploy AI assistance. The Netflix example is the cleanest illustration available.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Adaptive Recombination.</strong> AI tools, workflows, and professional norms are changing faster than any accumulated body of domain knowledge can track. The winners are those who can creatively recombine what exists, redesign processes around new tools, and adapt rapidly. This rewards creativity more than static knowledge possession and matches what judges observe in the technology world.</div>
+    <div class="route-why">Judges tend to find this compelling because it matches observable real-world experience. Grounding in the 2022–2024 AI workflow adoption period makes it concrete and timely rather than theoretical.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Differentiation Under Abundance.</strong> When average competence becomes cheap and widely accessible — which is what AI does to standard knowledge — economic and social value shifts toward distinctiveness. The person who brings a fresh frame, an unexpected combination, or an original direction stands out in a way that solid-but-standard knowledge does not.</div>
+    <div class="route-why">Works as a fallback because it can absorb Prop's strongest claims: yes, knowledge is useful for verification; but what creates distinctive value in an AI-abundant world is creativity. Use when losing structural arguments to keep the comparative case alive on a different terrain.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">All three arguments must be run comparatively, not absolutely. Proving knowledge is important is not enough. Proposition must prove that AI specifically raises its importance relative to creativity, and that this shift applies broadly across society.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Evaluation Bottleneck</span></div>
+  <p class="arg-body">Artificial intelligence has fundamentally changed the economics of content production. Where it once required human skill and time to produce a legal brief, a medical summary, a financial analysis, or a persuasive argument, AI systems can now produce plausible-looking versions of all of these things in seconds. The supply of outputs has increased dramatically. What has not increased at the same rate is the human capacity to evaluate whether those outputs are correct, safe, contextually appropriate, and worth acting on. That evaluation requires knowledge — not the ability to recall facts from memory, but the deeper domain understanding that lets a person recognize when something is wrong.</p>
+  <p class="arg-body">This argument does not claim AI output is always wrong. It claims that plausible-looking outputs, which may be subtly or seriously incorrect, are now produced faster than human judgment can keep pace with — and that the limiting factor in any consequential AI-assisted task has therefore shifted from producing content to evaluating it. That shift is precisely what the motion describes.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">In 2023, American lawyers Steven Schwartz and Peter LoDuca submitted a legal brief in a federal court case citing multiple judicial precedents. The citations had been generated by ChatGPT. Several of the cited cases did not exist. The lawyers had used the AI output without sufficient legal knowledge to verify it, and the error was caught only when opposing counsel checked the citations. The judge sanctioned the lawyers. This is not an isolated case of carelessness — it is a structural example of what happens when AI output meets insufficient evaluative knowledge. The AI was generative enough to produce plausible-sounding legal text. What was missing was the knowledge to judge it.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition may argue that AI also assists with evaluation — that AI can fact-check, flag errors, and cross-reference sources, so the knowledge requirement for evaluation also decreases. This counter lands but does not win. Evaluating the evaluator still requires knowledge: if a person uses AI to fact-check AI, they need enough domain understanding to judge which checking system to trust and when its results are reliable. Second, the evaluation problem involves judgment about context, ethical fit, and downstream consequence — areas where AI does not yet handle reliably. AI scales generation faster than it scales reliable judgment, so the gap between output supply and evaluation capacity widens rather than narrows.</div></div>
+  <div class="quote qp">💬 Say this: "AI has changed the supply of outputs. It has not changed the need for judgment. And judgment requires knowledge."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI increases the supply of plausible outputs faster than it increases human capacity to verify those outputs</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the decisive human task in any consequential setting shifts from producing content to judging it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the capacity that determines success and prevents failure is evaluative knowledge, not the creativity that generated more options</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which meets the motion's threshold: "in the age of AI" is precisely the age in which evaluation becomes the bottleneck. <strong>Knowledge is what allows humans to clear it. Generation is abundant; judgment is scarce.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "AI Also Compresses Evaluation" Counter</div>
+    <div class="weight-text">Opposition's best counter is that AI assistance with evaluation means the knowledge requirement also decreases — if AI can flag errors, the human does not need as much domain knowledge to catch them. The asymmetry is that AI scales generation dramatically faster than it scales reliable evaluation. AI-generated content has already far outpaced AI-generated verification. The tools for generating plausible-looking legal, medical, and scientific content are widely available; the tools for reliably verifying that content at the same scale are not. The gap is widening, not narrowing, which means the evaluation bottleneck grows more acute over time, not less.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"This proves knowledge is necessary for verification — but does it prove knowledge is more important overall? Maybe creativity still matters more in a different domain, like setting strategy, even if knowledge wins in verification."</div>
+    <div class="judgeobj-a">The motion asks what outweighs what in overall importance across society, not in any single domain. Verification and evaluation are not niche activities. Every person who uses AI outputs to make a decision — a student writing an essay, a manager reading an AI-generated report, a citizen reading AI-summarized news — faces this evaluation problem. The evaluation bottleneck is the central challenge facing everyone who interacts with AI, which is to say most people in the modern world. It is not a limited professional concern; it is a universal condition of AI-mediated life.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">AI compresses the knowledge needed for evaluation, not just generation. Your bottleneck argument proves knowledge matters for checking, not that it outweighs creativity overall.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">Generation scales faster than evaluation, and the gap is widening. The evaluation bottleneck becomes more decisive over time, not less. And evaluation is not a niche task — it applies to every person using AI outputs to make any consequential decision.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">In Serious Decisions, Knowledge Has Priority Over Creativity</span></div>
+  <p class="arg-body">There is a pattern observable across every high-consequence domain: creativity produces value only after a threshold of knowledge has been met. A creative surgical approach that ignores human anatomy causes death. A creative financial structure that misunderstands regulatory requirements creates legal liability. A creative architectural design that misapplies structural engineering produces buildings that fail. Knowledge is not one input among several in these contexts — it is the precondition without which creativity cannot function safely. And the effect of AI in these domains is not to remove the need for that knowledge threshold; if anything, it raises the stakes because AI-assisted errors can be deployed at scale.</p>
+  <p class="arg-body">The practical formulation is this: creativity can improve a good decision, but knowledge prevents a bad one. When the question is which human capacity to prioritize, invest in, or rely on when they conflict, the answer is knowledge — because the failure of knowledge produces harm that the presence of creativity alone cannot prevent.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">In 2018 and 2019, Boeing's 737 MAX aircraft was involved in two fatal crashes — Lion Air Flight 610 and Ethiopian Airlines Flight 302 — killing 346 people. The aircraft incorporated a new automated system called MCAS, designed as a creative engineering solution to a balance problem caused by larger engines. However, pilots had not received adequate training and lacked the knowledge of the system's behavior required to override it correctly in an emergency. The creative technical solution was in place. The knowledge required to use it safely was absent. The result was catastrophe. This is not a case where more creativity would have helped — it is a case where more knowledge would have prevented mass death.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition may point to Apple under Steve Jobs: Jobs overrode expert engineering opinion with creative direction in designing the original iPhone's single-button interface, producing something transformative. This is a genuine case of creative direction overriding conventional knowledge-based caution, and it succeeded. But it does not defeat the argument. Jobs worked with teams of engineers whose deep knowledge made the creative vision executable. The creative direction was valuable, but knowledge was present in the organization even if not concentrated in Jobs personally. More importantly: the question is which capacity has priority when they conflict, not which is more visible in a success story. The Boeing case shows the asymmetric cost of the knowledge failure. The iPhone case shows the value of creativity when knowledge is already present.</div></div>
+  <div class="quote qp">💬 Say this: "Creativity can improve a good decision. Knowledge prevents a bad one. Under AI, the scale of bad decisions that knowledge prevents has grown — because AI-assisted errors are deployed faster and further than human errors ever were."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>In high-consequence domains, correctness must be established before novelty can be safely pursued, and knowledge is what establishes correctness</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means even when creativity is the visible source of innovation, knowledge is the invisible prerequisite without which that innovation fails or causes harm</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means when society must choose what to invest in and what to rely on when the two capacities conflict, knowledge must come first because it governs whether creative outputs are safe to deploy</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which connects directly to the motion: "outweighs in importance" is exactly the priority question this argument addresses. <strong>When knowledge and creativity conflict, knowledge must win. AI raises the stakes because AI-assisted creative errors scale further and faster than human ones.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Only Wins in Regulated Professions" Counter</div>
+    <div class="weight-text">Opposition's counter is that this argument only wins in medicine, aviation, and law, and the motion asks about society more broadly. The response is that the pattern of knowledge as precondition does not disappear outside regulated professions — it becomes less visible because the consequences of failure are less immediate. A student who uses AI to generate a history essay without knowing enough history to evaluate it learns false things. A small business owner who uses AI to draft a contract without understanding contract law signs away rights. A voter who reads AI-generated political summaries without civic knowledge to assess them votes on false premises. The high-stakes professional examples prove the principle most clearly, but the principle applies at every level of consequential decision-making. The scale of the population facing this problem is society-wide.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Doesn't this argument prove that knowledge and creativity are both needed — that they work together? Why isn't the lesson just 'you need both'?"</div>
+    <div class="judgeobj-a">The motion asks which outweighs which — which is more important — not which is required. The argument is about priority under conditions of trade-off: if you have to develop one more than the other, invest in one more than the other, or trust one more when they conflict, which one should win? The Boeing case is instructive precisely because a creative solution was deployed without adequate knowledge, and the result was mass death. That outcome tells us about priority: knowledge determines whether creative solutions are safe to deploy at all. That priority relationship is what makes knowledge more important, not merely also necessary.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">This argument lives in regulated professions. The motion covers all of society. You haven't shown knowledge outweighs creativity for ordinary workers, students, or citizens.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">The high-stakes examples prove the principle. But students evaluating AI essays, workers using AI-drafted communications, and citizens reading AI-summarized news all face the same evaluation problem at a lower stakes level. The pattern is universal; the consequences just vary in severity.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Knowledge Protects Autonomy in an AI Information Environment</span></div>
+  <p class="arg-body">When AI increasingly mediates how people receive information — through AI-curated feeds, AI-generated search summaries, AI-drafted explanations, AI-recommended content — a person without sufficient knowledge cannot meaningfully assess what they are shown. They are not empowered by AI; they are dependent on it. Their understanding of the world is shaped by systems they cannot interrogate, correct, or meaningfully resist. This structural dependence is not a hypothetical risk. It is the condition of most people's relationship to information in AI-mediated environments — and it produces populations that believe they are informed when they are not.</p>
+  <p class="arg-body">Creativity does not solve this problem. A person cannot creatively think their way out of being shown false information if they lack the knowledge to recognize it as false. The capacity that protects people from becoming credulous conduits for AI-mediated misinformation is domain knowledge — the ability to assess whether a claim is plausible, a source is reliable, or a summary has omitted something essential.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">During the COVID-19 pandemic, algorithmically amplified health misinformation spread rapidly across social media platforms. Research from the Reuters Institute and the Oxford Internet Institute documented significant spread of false health claims. Public health researchers consistently identified health literacy — the ability to assess medical claims critically — as a key predictor of whether people could navigate this environment successfully. The people who navigated it best were not primarily the most creative thinkers; they were the people with enough domain knowledge to assess medical claims against established scientific frameworks. Creativity did not differentiate the resilient from the misled. Knowledge did.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition may argue that creative thinkers were the ones who questioned official narratives and found their way around misinformation — that the ability to challenge inherited frames is a creative skill. This argument proves too much. The capacity to question effectively is not free-floating creativity — it is structured evaluation that requires enough baseline knowledge to know which sources are credible, what a clinical trial establishes, and why a particular claim is implausible. Without that knowledge, creative questioning produces flat-earth believers as readily as it produces critical thinkers. Productive skepticism requires a knowledge foundation. Creativity without that foundation is just contrarianism.</div></div>
+  <div class="quote qp">💬 Say this: "The social danger of AI is not too few ideas. It is confident dependence without understanding — a world where people feel informed because they have received AI-generated content they lack the knowledge to assess."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI-mediated information environments supply people with outputs they cannot always evaluate without prior knowledge</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means people who lack that knowledge become structurally dependent on AI systems — believing they are informed when they are not</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the social danger of AI is not a shortage of ideas but widespread confident dependence without understanding</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which connects to the motion because knowledge is what protects human autonomy in an AI world. <strong>Creativity does not rescue a person who cannot tell good information from bad. That is the specific threat AI creates, and knowledge is the specific capacity that meets it.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Autonomy Also Requires Creativity" Counter</div>
+    <div class="weight-text">Opposition's counter is that autonomy requires creativity too — the ability to challenge default frames, imagine alternatives, and reject inherited assumptions. A highly knowledgeable but uncreative person may simply accept the status quo more confidently. This is fair and Proposition should not dismiss it. But the asymmetry is directional: a knowledgeable person without much creativity can still identify when they are being misled. A creative person without sufficient knowledge cannot. The floor condition for autonomy is knowledge. Creativity adds to it but cannot substitute for it. Under the motion's comparative frame, knowledge is more foundational to the protection of autonomous agency in an AI information environment.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"This argument sounds like what educators have always said about critical thinking. How is it specific to AI rather than a general case for education?"</div>
+    <div class="judgeobj-a">The AI context changes the scale and speed of the problem in a way that makes it qualitatively different. Before AI, a person without deep domain knowledge was still limited in how quickly they could encounter and act on false information. In an AI-mediated world, a person can be served hundreds of plausible-looking false claims per day, personalized to their existing beliefs, at no cost to the generator. The evaluation problem does not just persist in the AI age — it becomes dramatically more acute. The argument is specifically about what AI does to the balance between output supply and evaluation capacity, not a general claim about education.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">Autonomy also requires the creative capacity to question, challenge, and imagine alternatives. Your argument proves knowledge is one component of autonomy, not that it outweighs creativity.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">Knowledge is the floor condition. Creativity enhances autonomy when knowledge is already present. Without knowledge, creative questioning is just contrarianism — it produces conspiracy theorists as readily as critical thinkers. The floor condition is what determines the comparative weight.</div></div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opposition's consistent formula throughout the round: concede that knowledge matters — because it does — then show that AI specifically reduces its comparative advantage while leaving creative direction's comparative advantage intact or increasing it.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">AI Compresses Standard Competence</span></div>
+  <p class="arg-body">The comparative importance of any skill is partly a function of how scarce it is. If AI makes standard, codified knowledge more widely accessible — if someone who previously would have needed years of training to reach a competent baseline can now get there much faster with AI assistance — then the comparative advantage of possessing that standard knowledge shrinks. The premium shifts to what AI does not easily replicate. This is not a claim that knowledge becomes irrelevant. It is a claim that the marginal value of standard knowledge possession decreases relative to the marginal value of the things AI cannot easily compress — including creative direction, problem framing, and adaptive synthesis.</p>
+  <p class="arg-body">The motion is comparative: it asks what outweighs what in the age of AI. Opposition does not need knowledge to vanish. It only needs the advantage of possessing standard knowledge to shrink — and AI visibly shrinks it.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">GitHub Copilot, the AI-assisted coding tool launched publicly by GitHub and OpenAI in 2022, was studied by GitHub researchers who found productivity gains for developers using it on routine coding tasks. The structural implication is that the gap between an experienced developer and a less experienced one narrows for standard, well-defined tasks — the kind Copilot handles well. The competitive advantage increasingly lies not in knowing the syntax and patterns of established languages, which Copilot assists with, but in understanding what to build, why, and how to architect a system creatively. The knowledge floor rises for everyone; the creative ceiling is what differentiates.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will cite the same coding environment and argue that developers still need deep knowledge to use Copilot well — the tool produces bugs and security vulnerabilities that only a knowledgeable developer catches. This is true. But it does not defeat the compression argument. The motion is comparative. Even if a knowledgeable developer uses Copilot better than an ignorant one, the gap between them for routine tasks is smaller than it was without the tool. That is the compression. Proposition's counter proves knowledge remains necessary — which Opposition never denied. It does not prove the comparative advantage of standard knowledge possession increases under AI. It does not.</div></div>
+  <div class="quote qo">💬 Say this: "Necessary is not the same as more important. Proposition proves knowledge remains useful. We prove the age of AI specifically reduces its comparative advantage — and that is what the motion asks."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI reduces the cost of reaching a competent knowledge baseline in many domains, compressing the advantage that previously came from simply knowing more than others</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means in a world where AI helps most people access reliable information and produce competent outputs, the differentiating human variable is not standard knowledge possession but creative capacity</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the comparative value of creativity increases relative to the comparative value of standard knowledge in an AI-assisted world</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which meets the motion's threshold for Opposition: the motion asks what outweighs what specifically in the age of AI. <strong>AI's most visible effect on the knowledge-creativity balance is to compress the former's comparative advantage and expand the latter's. That is why creativity outweighs in this specific age.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Access Is Not Understanding" Counter</div>
+    <div class="weight-text">Proposition's best counter is that AI reduces the cost of retrieving information, not the importance of understanding it — and that retrieval and understanding are different things. This is accurate, and Opposition should concede it. But Opposition's claim is incremental and comparative: we do not need understanding to vanish. We need the marginal advantage of standard knowledge to shrink. And employers, labor markets, and professional outcomes already show evidence of this shift — premiums for strategic, creative, and directional skills are increasing relative to premiums for domain factual knowledge. The knowledge threshold may rise, but the marginal return to additional standard knowledge decreases as AI coverage expands. The comparison goes Opposition's way.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Doesn't this argument assume AI assistance is available and reliable everywhere? For most people in most of the world, AI access is limited. Isn't Opposition's case only true in well-resourced contexts?"</div>
+    <div class="judgeobj-a">The motion asks about the age of AI as a historical condition, not about current penetration rates of specific tools. The trend of AI access expanding is well-established and broadly acknowledged. More importantly, the motion is asking us to evaluate what is comparatively more important given what AI does — and the answer to that question is the same whether we are describing the present state or the near-future trajectory. The compression argument holds wherever AI is present, and the direction of the trend is toward broader presence, not narrower. The motion is about the age, not today's exact coverage map.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Access to information is not the same as understanding it. AI retrieval does not compress the evaluative knowledge required to judge AI outputs. Your compression argument conflates retrieval with comprehension.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">Agreed — and we don't need them to be the same. We only need the marginal advantage of standard knowledge to shrink. Even if understanding remains important, when AI elevates everyone's baseline, the differentiator moves to what AI cannot provide: creative direction and framing.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Creativity Is the Premium Skill Because It Sets Direction</span></div>
+  <p class="arg-body">AI systems are powerful tools for executing defined tasks. Given a clear brief, a specified problem, and an established direction, AI can produce outputs of remarkable quality and speed. What AI cannot reliably do — and what represents the upstream human contribution that everything else depends on — is decide what problem is actually worth solving, choose which direction is genuinely promising, reframe a situation so that a different set of solutions becomes visible, or identify that the existing frame is wrong. These are creative acts, and they are not downstream of knowledge. They often precede and determine what knowledge is needed.</p>
+  <p class="arg-body">In an AI-assisted world, the person who asks the better question, sees the problem differently, or chooses a direction others have not considered creates more value than the person who applies existing knowledge more correctly. The decisive human edge has moved upstream — from answering known questions to deciding which questions are worth asking.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Reed Hastings and Marc Randolph founded Netflix in 1997 as a DVD rental service. Blockbuster had more industry knowledge of the video rental market. The transformative act was not superior knowledge — it was creative reframing: not "how do we run a better video rental store" but "how do we make accessing entertainment as frictionless as possible." That reframing led to subscription models, recommendation algorithms, and eventually streaming. Blockbuster had the domain knowledge advantage throughout the critical period. Netflix had the creative directional advantage. The directional advantage won decisively.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that Hastings still needed knowledge — of technology, business models, content rights — to execute the creative direction, and that without knowledge the vision would have been useless. This is true. But it does not establish that knowledge outweighs creativity in importance. Blockbuster had more industry knowledge than Netflix for years after Netflix launched, and it still lost. The knowledge advantage was real and it still lost. What determined the outcome was directional creativity. Proposition's counter proves that knowledge was necessary — which Opposition concedes — but not that it was decisive. The decisive variable was creative direction, and the evidence supports that conclusion.</div></div>
+  <div class="quote qo">💬 Say this: "AI is most powerful once the task is defined. The human edge lies in defining the right task. The most valuable human skill in an AI world is not answering questions better — it is asking better questions in the first place."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI is most powerful when tasks are clearly defined, which means the upstream decision about what task to define becomes the decisive human contribution in any AI-assisted workflow</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the most valuable human capacity is not knowing more correct facts but seeing differently — choosing what problem matters and what direction creates value</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means creativity becomes the premium skill because it is the input that determines everything that follows, including what knowledge to acquire and how to deploy AI assistance effectively</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which meets the motion's threshold for Opposition: in the age of AI, the capacity that most determines consequential outcomes is upstream creative direction. <strong>Knowledge tells you how to answer. Creativity tells you what is worth answering. In an AI world, the second is what humans do that AI cannot yet replicate at scale.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Good Problem Selection Requires Knowledge" Counter</div>
+    <div class="weight-text">Proposition's counter is that good problem selection requires knowing the domain well enough to recognize which problems are real and which have been tried. This is true, and Opposition should concede the baseline requirement. But the asymmetry is about where the decisive advantage lies. Two people with the same knowledge base but different creative capacities will diverge dramatically in the directions they choose. Two people with different knowledge bases but the same creative direction will narrow quickly once the less-knowing person can use AI to fill competence gaps. The comparative premium is on the creative capacity, which cannot be compressed by AI in the way that knowledge gaps can. The Netflix-Blockbuster example demonstrates this asymmetry directly: same market knowledge gap for years, different creative direction, decisive outcome.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Isn't 'direction-setting' and 'problem selection' really just deep expertise — knowing the domain well enough to see which problems matter? If so, is Opposition just describing a different kind of knowledge rather than something genuinely different?"</div>
+    <div class="judgeobj-a">There is genuine overlap at the edges, but the two are distinguishable in practice and in outcome. A person with extensive medical knowledge knows the established treatment protocols for a disease. A creative medical researcher asks whether the disease has been framed correctly in the first place — whether the symptoms attributed to one condition might constitute a different underlying mechanism. The creative act precedes the knowledge application and cannot itself be reduced to having more facts. The question "what if we are solving the wrong problem" is not answered by knowing more about the current problem. It is answered by creative reframing — and that is what differentiates the people who change fields from the people who execute within them.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Problem selection still requires knowledge. You can't choose the right direction if you don't understand the domain. Creative direction without knowledge is uninformed guessing — and guessing at scale is dangerous.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">Concede the baseline. But the decisive differentiator is still creative capacity: two people with the same knowledge diverge based on their creative direction. Two people with different knowledge converge as AI fills the knowledge gaps. The premium is on what AI can't compress — and that is creative direction, not knowledge possession.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">In Fast-Changing AI Environments, Adaptive Creativity Matters More</span></div>
+  <p class="arg-body">AI tools, workflows, and professional norms are changing faster than any accumulated body of domain knowledge can track. In this environment, the competitive advantage belongs not to the person with the deepest repository of knowledge about how things were done before — which may already be partially obsolete — but to the person who can creatively reconfigure what exists now, redesign their processes around new tools, and adapt their approach as the landscape shifts. This is adaptive creativity: the capacity to synthesize new combinations from available resources, to experiment productively, and to redesign workflows rather than apply inherited ones.</p>
+  <p class="arg-body">This kind of creativity is not a luxury of artists and entrepreneurs. It is a survival skill for anyone operating in rapidly changing professional environments — and the AI age is rapidly changing environments across nearly every profession simultaneously.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The introduction of large language models into marketing, legal, consulting, and content workflows between 2022 and 2024 created a visible split in professional outcomes. Organizations and individuals who creatively redesigned their workflows around AI tools — figuring out new combinations of human and AI contribution, new quality-control processes, new client deliverable formats — captured productivity gains and competitive advantages. Those who applied existing professional knowledge without redesigning their approach were slower to adapt. McKinsey Global Institute research from 2023 documented that workers who combined AI tools with creative workflow adaptation reported substantially higher productivity gains than those who used AI as a simple substitution for existing tasks. The differentiating factor was creative recombination, not deeper domain knowledge.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that adapting to AI tools requires deep knowledge of those tools and of the domains they are applied to — that creative recombination without knowledge produces novelty without reliability. A creatively redesigned legal workflow that lacks sufficient legal knowledge still produces bad legal work. This is correct but does not win. The point is not that knowledge becomes irrelevant to adaptation — it is that in fast-changing environments, the person whose primary advantage is their existing knowledge stockpile is at a structural disadvantage compared to the person whose primary advantage is the creative capacity to learn, recombine, and redesign. Knowledge is an input to creative adaptation; it does not substitute for the creative capacity itself.</div></div>
+  <div class="quote qo">💬 Say this: "When tools change fast, direction and recombination matter more than stockpiled competence. The person who redesigns their workflow around new tools beats the person who applies the old workflow more knowledgeably."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI is changing the tools, workflows, and norms of professional life faster than stable knowledge repositories can be updated</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means relying primarily on accumulated knowledge becomes a form of structural lag — being most expert in how things were done before they changed</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the people who thrive in AI-saturated environments are those who creatively reconfigure what is available rather than apply what was established</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which meets the motion's threshold for Opposition: "in the age of AI" is specifically a high-change environment in which adaptive creativity is not just useful but the primary means of remaining competitive. <strong>Knowledge is the raw material; creativity is what turns it into something valuable under fast-changing conditions.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Deep Understanding Also Helps Adaptation" Counter</div>
+    <div class="weight-text">Proposition's counter is that deep understanding helps with adaptation — a person who deeply understands the principles of their domain can apply those principles to new tools faster than someone who only knows the current toolset. This is true, and it is Proposition's strongest version of the response. But the asymmetry is in the rate of change. If the environment changes faster than deep knowledge can be updated, the adaptively creative person — who does not depend on an accurate knowledge repository to redesign their approach — will outcompete the deeply knowledgeable person applying principles that no longer fit the new landscape. The creative capacity for redesign is more robust under fast change precisely because it does not depend on accumulated knowledge being current. And the AI age is defined by change faster than knowledge can track.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Isn't 'adaptive creativity' just smart learning — which is itself a knowledge-building activity? If adapting to new AI tools means building new knowledge about those tools, isn't this argument actually evidence for knowledge?"</div>
+    <div class="judgeobj-a">The process of creative adaptation is not reducible to knowledge acquisition even though it produces new knowledge as a byproduct. The creative step — deciding how to recombine tools, which new process to design, what experiment to run — precedes and shapes what knowledge gets built. A highly knowledgeable but non-creatively adaptive person will build knowledge about the old workflow applied to new tools. A creatively adaptive person will build knowledge about a redesigned workflow that better fits the new tools. The creative decision about what to learn comes first, and it determines what knowledge ends up being relevant. That sequencing is why adaptive creativity is the more decisive capacity under conditions of rapid change.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Adapting to new AI tools still requires deep understanding of those tools. Creativity without knowledge of what you're combining produces unreliable novelty. Deep understanding enables better adaptation, not worse.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">True — but the decisive variable under fast change is not who knows more about yesterday's tools. It is who can redesign fastest around today's tools. That is creative capacity, and it is more robust under the rate of change the AI age produces than accumulated knowledge stockpiles are.</div></div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least three convincingly. Know which ones your side has the easier burden on before you begin.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Burden</span><span class="clash-title">Clash 1 — What Does AI Commoditize More: Generation or Standard Competence?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win By Showing</div>
+      That retrieval is not understanding — AI compresses the cost of accessing information, but not the importance of the evaluative knowledge required to judge it. The bottleneck was always evaluation; AI makes the bottleneck more acute by scaling the supply of outputs that need evaluating.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win By Showing</div>
+      That the marginal value of standard knowledge possession decreases meaningfully in an AI world, and that this decrease is larger than the decrease in the value of creativity. The compression is real, directional, and significant enough to shift the comparative balance.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge asks: what is the better model of what AI actually does to the knowledge-creativity balance? Does it compress the value of knowing things, or does it shift the location of the knowledge bottleneck from possession to evaluation? The judge will lean toward whichever side gives the clearer account of the mechanism. Abstract claims that AI changes everything will not satisfy; what satisfies is a specific, traceable explanation. Proposition loses this clash by failing to distinguish memorization from understanding — if the judge thinks Prop is defending the importance of knowing facts that AI can retrieve, they lose. Opposition loses this clash by conceding that AI assistance with knowledge retrieval is equivalent to genuine understanding — because then Prop's evaluation bottleneck becomes uncontested.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Burden</span><span class="clash-title">Clash 2 — What Is the Real Bottleneck: Evaluation or Direction?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win By Showing</div>
+      That the single most consequential point of failure in AI-assisted work is the evaluation of outputs, not the selection of directions. Getting the direction wrong is recoverable; getting the evaluation wrong produces wrong medical decisions, faulty legal conclusions, or false civic beliefs that people act on.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win By Showing</div>
+      That upstream direction is not just strategically valuable but is the point where the most decisive human contribution happens. A correct evaluation of an answer to the wrong question is less valuable than a creative selection of the right question. The bottleneck is before the task is defined, not after it.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge asks: in a real sequence of consequential human decisions, which step matters most — deciding what to do, or checking whether you did it correctly? The judge will be moved by whichever side gives a more complete account of the failure modes — what actually goes wrong when the bottleneck fails. Dramatic examples carry weight only if they clearly demonstrate the specific bottleneck. Proposition loses this clash if they cannot show that evaluation failures are more consequential than direction failures at a societal scale. Opposition loses it if they cannot show that direction-setting is genuinely a creative act rather than a form of applied knowledge — if they cannot separate "choosing what problem to solve" from "knowing enough about the domain to see which problems are real."</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 3 — Does Proposition Prove Necessity or Greater Importance?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win By Showing</div>
+      Not just that knowledge remains necessary in an AI world — which Opp concedes — but that the role of knowledge becomes more decisive specifically because of AI. Must show AI changes the comparative importance of knowledge upward, not merely that knowledge was always important.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win By Showing</div>
+      Consistently force the distinction between necessary and more important throughout the debate. Every time Prop gives an example where knowledge is required, acknowledge it, then argue the comparison still favors creativity — that creativity is the decisive differentiator even in Prop's own examples.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">This is a technical analytical clash that judges who understand comparative debate will decide based on which side better engages the comparative framing. A judge will ask: is Proposition actually showing that AI raises the relative importance of knowledge, or are they showing it remains as important as always? Only the former wins the motion. Proposition loses this clash — and often loses the round — by arguing for the importance of knowledge in absolute terms rather than showing how AI specifically raises its relative importance. Opposition loses this clash by failing to press it clearly and consistently, allowing Proposition to slide from necessity arguments to importance arguments without challenge.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Burden</span><span class="clash-title">Clash 4 — Broad Society vs. Narrow Sectors</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win By Showing</div>
+      That the knowledge-as-priority argument extends beyond medicine, law, and aviation to the full range of human activity affected by AI — students using AI for schoolwork, workers using AI for job tasks, citizens receiving AI-mediated information, families making health and financial decisions with AI assistance.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win By Showing</div>
+      That the creativity-as-premium argument extends beyond startups, design, and branding to the full range — including creative problem-solving in government, healthcare, education, and ordinary professional life. Must show creativity matters for most people, not just innovators.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge decides based on which side more successfully generalizes their best argument to the full breadth of society. The motion asks about importance in general, not in any single sector. A side that only wins in regulated professions or only in innovation-intensive industries has won less than half the motion. Proposition loses this clash by staying in doctor-lawyer-engineer territory and not extending to everyday users. Opposition loses this clash by staying in startup-artist-entrepreneur territory and not showing how creative direction matters to ordinary workers, students, and citizens.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Depends on Judge Values</span><span class="clash-title">Clash 5 — Foundation vs. Differentiation</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win By Showing</div>
+      That being foundational — the precondition without which other capacities cannot function safely — constitutes a form of greater importance, not merely a different role. A foundation is not just necessary but more important because it determines whether what is built on top of it is sound.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win By Showing</div>
+      That being foundational is not the same as being the most important source of human advantage in the AI age. A foundation can be necessary and widely accessible while the differentiating premium lies in the creative capacity that determines what gets built on it, not in the foundational material itself.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge on this clash is making a values judgment about what importance means in the motion's context — importance to whom, for what purpose, measured how. The judge will lean toward whichever side makes the cleaner, more explicit argument about what "importance" means. Proposition loses this clash by treating foundational necessity as self-evidently equivalent to highest importance without arguing for that equivalence. Opposition loses this clash by accepting that creativity is a luxury add-on rather than arguing that in an AI world, it is the primary source of distinctive human value.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: exposes a gap in the other side's argument, or forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>If creativity matters more, who verifies whether the AI output is actually correct?</strong> Forces Opposition to either concede that verification matters — which grants Proposition significant ground — or say AI handles verification, which opens the devastating response that using AI to check AI creates a circularity problem that only knowledge can break.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>Are you proving that creativity is attractive in some domains, or that it is more important overall?</strong> The necessity-versus-importance POI. Most effective during Opposition's Captain or first speaker, before they have explicitly addressed the comparative frame. The goal is to plant in the judge's mind that Opposition has not cleanly established greater importance — only greater attractiveness or economic premium.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>If AI can generate ideas as well as retrieve information, why is creativity uniquely scarce?</strong> Challenges Opposition's assumption that creativity is the residual human capacity that AI cannot compress. If AI already produces novel combinations and suggests directions — as generative AI demonstrably does — Opposition must explain specifically what kind of creativity they mean and why AI cannot produce it.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>Does your argument still hold outside design, branding, and technology startups — does it work for nurses, teachers, or civil servants?</strong> The scope extension challenge. Forces Opposition to broaden their creativity argument to mundane professional contexts or implicitly concede the case is narrow.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>What matters more in an AI age: producing more options, or identifying which options are safe to use?</strong> A values-level POI that reframes the debate around what society needs from its citizens and professionals. Most effective when delivered crisply and allowed to sit with the judge without a rushed follow-up.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "if AI gives knowledge instantly, why is knowledge more important?":</strong> Access to information is not the same as understanding it. AI can retrieve information; what it cannot supply is the domain knowledge to assess whether that information is true, contextually appropriate, and safe to use. The evaluation problem is not solved by more retrieval — it is intensified by it.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "aren't you defending memorization?":</strong> Not at all. We are defending domain understanding and evaluative literacy — the kind that lets a person recognize a flawed AI output, identify a dangerous recommendation, or assess whether an AI-generated summary has omitted something crucial. These are not things you learn by memorizing facts. They are built through genuine comprehension.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "isn't creativity what tells AI what to do?":</strong> Creative direction is only useful if you can tell whether the direction you have chosen is feasible, sound, and not heading toward disaster. Knowledge is what tells you that. Direction without understanding is not creative leadership — it is uninformed guessing, and in an AI world, uninformed guessing at scale is more dangerous, not less.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "don't you only win in high-risk professions?":</strong> The principle applies most visibly in high-risk settings because the consequences of failure are clearest. But every person who uses AI outputs to make any consequential decision faces the same structural evaluation problem at a lower stakes level. The motion is about importance across society, and the evaluation problem is present across society.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "you're proving necessity, not greater importance":</strong> We are proving that AI specifically raises the importance of knowledge by scaling the supply of outputs faster than it scales the capacity to evaluate them. This is not a static argument that knowledge always mattered — it is a dynamic argument about what AI does to the comparative balance. AI raises the evaluation bottleneck even as it lowers the retrieval cost.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>Are you proving that knowledge is necessary — or that it is more important than creativity?</strong> The single most important POI in the debate for Opposition to land. Should be offered early and often. The goal is not to destroy a specific argument but to establish the comparative frame that Proposition must meet and often has not met cleanly.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>If the age of AI changes nothing about this debate, why does the motion specifically mention it?</strong> Forces Proposition to explain what specifically about AI raises the importance of knowledge — rather than simply arguing for the importance of knowledge in general. If Proposition cannot explain the AI-specific mechanism, they are not answering the motion they were given.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>If AI helps everyone reach a competent knowledge baseline, why doesn't the premium shift to creativity?</strong> The compression mechanism in POI form. Targets the logical inference Proposition needs to block: if AI compresses knowledge access, the comparative return to additional knowledge possession should fall, and the comparative return to creativity should rise.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>Are you confusing the foundation of a building with the most important part of it?</strong> Targets the foundational-necessity argument. Being foundational or precondition-setting is not the same as being most important. The most important thing about a building might be what it is designed to do — a creative act — not the concrete in its base.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>Does your world reward the person who checks outputs carefully — or the person who decided what to build in the first place?</strong> Reframes the debate around where value is actually generated, not just where safety is maintained. Invites Proposition to either concede that value creation is the relevant standard, or argue that safety is more important than value creation — a defensible but limited position.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "how can creativity matter more if false outputs are dangerous?":</strong> We do not deny that checking matters. We argue the comparative premium — the thing that distinguishes exceptional outcomes from average ones — has shifted toward creative direction and framing. Checking is important; it is not the source of distinctive human value in an AI world.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "isn't access different from understanding?":</strong> Yes, and we agree. But our argument only requires the comparative advantage of standard knowledge possession to shrink — not for understanding to vanish. The baseline of understanding rises for everyone with AI assistance; the marginal return to additional standard knowledge decreases.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "who verifies in your world?":</strong> Verification still happens and it matters. But verification is not the primary source of distinctive human value — it is a threshold condition. The human contribution that creates rather than merely preserves value is upstream creative direction and framing.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "isn't creativity without knowledge just noise?":</strong> We are not defending creativity in the absence of knowledge. We are defending the claim that once a knowledge baseline is more accessible through AI assistance, creativity becomes the key differentiator. We defend creativity built on an AI-assisted floor of adequate understanding — not ignorant creativity.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "are you only talking about the arts and design?":</strong> We are not talking about arts and design primarily at all. We are talking about problem selection in medicine, strategic direction in business, workflow redesign in operations, political reframing in governance, and adaptive synthesis in any domain undergoing rapid change. Creativity in our definition means generating non-obvious, useful directions across every field.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side has just argued, explain specifically why it fails, and connect the failure back to your overall thesis. The starred lines are your top three per side — have them ready from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>They confuse access to information with possession of understanding.</strong> When Opposition argues AI compresses knowledge, they need to be challenged on exactly what they mean. AI reduces the cost of retrieving packaged information — summaries, answers, data. What AI does not supply is the understanding required to assess whether that information is correct, contextually relevant, and safe to apply. Retrieving a medical answer and understanding enough medicine to know whether it applies to this patient are different things. Access is not understanding, and the entire compression argument depends on conflating them.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Scarcity does not automatically determine importance.</strong> Opposition implies that because AI makes knowledge more accessible and creativity comparatively scarcer, creativity must therefore be more important. But importance and scarcity are different things. Breathable air is less scarce than diamonds but more important. The argument that AI makes creativity scarcer does not by itself establish that creativity becomes more important — it only establishes that it becomes more economically differentiated. Proposition must press this distinction every time the scarcity logic appears.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Opposition proves differentiation — we prove decisiveness. These are different kinds of importance.</strong> Opposition's best arguments show that creativity creates distinctive value and differentiates people and organizations. Proposition's arguments show that knowledge determines whether consequential decisions succeed or fail. In a world where the failure of a consequential decision costs lives, financial security, or civic functioning, decisiveness matters more than differentiation. Opposition wins the premium; Proposition wins the stakes. Stakes outweigh premiums.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">Creativity without evaluative grounding produces unreliable outputs at scale. The creative direction argument only works if the direction is grounded enough in reality to be executable. Problem selection without domain knowledge often selects the wrong problem — not because the selector lacks imagination, but because they lack the knowledge to distinguish real problems from merely interesting-seeming ones. In an AI world where creative directions can be executed faster and at greater scale than before, uninformed creative direction is not just less valuable — it is actively more dangerous.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">The accountability for AI outputs follows the person with knowledge, not the person with ideas. When something goes wrong with AI-generated content — a wrong medical recommendation, a discriminatory algorithm, a false legal brief — the accountability falls on the person who should have known enough to catch it. Not on the person who had the creative idea to use AI in the first place. The locus of professional and legal responsibility in AI-assisted work is where the knowledge requirement sits, and that is what makes knowledge more important in any domain where accountability matters.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Proposition proves knowledge remains useful — not that it becomes more important. Those are different claims.</strong> This is the single most important rebuttal for Opposition to land cleanly and repeatedly. Every time Proposition gives an example where knowledge is needed, acknowledge it explicitly — "yes, knowledge matters here" — and then immediately force the comparative: does this show that knowledge matters more than creativity, or only that it remains necessary? The motion requires Proposition to show greater comparative importance, not mere continued relevance. Most of Proposition's evidence only establishes the second.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Proposition inflates knowledge into every positive human trait.</strong> Watch for Proposition using "knowledge" to mean judgment, wisdom, responsibility, evaluative literacy, critical thinking, contextual sensitivity, and accountability all at once. When the word quietly absorbs every admirable cognitive trait, the motion becomes trivially true by definition rather than by argument. Opposition should name this move explicitly when it happens: "Notice that Proposition has now expanded 'knowledge' to mean every good thing humans can do. That is not a definition — it is a rhetorical sweep that the judge should reject."</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>The premium human edge has moved upstream, not downstream. Proposition wins validation; we win where new value comes from.</strong> Proposition's world rewards the person who catches mistakes. Opposition's world rewards the person who decided what to build in the first place. In a world where AI catches many mistakes already and its error-catching improves continuously, the human value in downstream evaluation decreases over time. The human value in upstream direction — what to build, why, and for whom — does not decrease as AI improves. If anything, it increases because AI makes downstream execution more powerful once direction is set correctly.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">AI compresses standard competence — and Proposition's own examples often demonstrate it. The fact that lawyers need to verify AI-generated citations is not evidence that knowledge is more important — it is evidence that AI already got close enough to plausible legal writing to be usable, showing how much of the standard competence task it has absorbed. The remaining verification step is real, but the dramatic compression of the drafting, research, and structuring task is equally real. Proposition sees only the residual verification need; they miss the compression that has already happened.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">Our definition of creativity is not art class — and Proposition knows it. When Proposition narrows creativity to artistic expression or novel ideas without practical grounding, call it out. The creativity Opposition describes is present in every domain where someone decides which problem actually matters, redesigns a process around new tools, or synthesizes information from multiple fields in a non-obvious way. This is what scientists, engineers, executives, and effective civil servants do. It is not narrow or exotic. Proposition's narrowing is definitional sleight of hand, not a substantive argument.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later once the other side has committed to a position.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define terms cleanly: knowledge = domain understanding and evaluative competence, not memorization. Creativity = generating non-obvious useful ideas or frames, not art. Establish this before Opposition can redefine.</div>
+        <div class="role-line"><span class="role-icon">→</span>Set the team theme in one sentence: "AI scales generation; humans still need knowledge to judge what is true and usable." Return to this sentence in every speech.</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the necessity-vs-importance distinction from the opening: explain why AI specifically raises the importance of knowledge, not just that knowledge was always important. This closes the most dangerous Opposition line before it opens.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Presenting three full arguments — give two cleanly rather than three incompletely. The civic extension belongs to Speaker 1.</div>
+        <div class="role-line"><span class="role-icon">→</span>Inflating "knowledge" beyond understanding and evaluative literacy in the opening definition. If the definition is set correctly here, it cannot be legitimately attacked as memorization for the rest of the round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Broaden the case from serious sectors to ordinary AI users: students, workers, voters, consumers. The evaluation bottleneck must feel universal, not confined to professionals with advanced degrees.</div>
+        <div class="role-line"><span class="role-icon">→</span>Add the autonomy and information environment argument. Develop the specific mechanism: AI scales false-seeming-plausible content faster than it scales the human capacity to evaluate it, and knowledge is what creates the evaluation capacity.</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the COVID misinformation example land with full context — health literacy, not creative thinking, was the differentiator.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Restating the Captain's definitions in detail — refer briefly and move on. This speech should feel like extension and broadening, not repetition.</div>
+        <div class="role-line"><span class="role-icon">→</span>Overloading the speech with rebuttals — there is nothing yet to rebut from this position. Stay constructive.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Main rebuttal wall. Directly engage Opposition's compression, direction-setting, and adaptive recombination arguments in sequence. Concede what is concedable, then force the comparative: does any of this show creativity matters more, or only that it also matters?</div>
+        <div class="role-line"><span class="role-icon">→</span>Distinguish retrieval from understanding cleanly. Identify the specific moment in each of Opposition's examples where knowledge is doing the decisive work, not creativity.</div>
+        <div class="role-line"><span class="role-icon">→</span>Close by rebuilding — the judge must leave hearing why Proposition wins, not just why Opposition loses. Give one clean comparative claim at the end.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing large new constructive material. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, the judge will notice the most important challenges have gone unanswered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Crystallize into a ballot story: Opposition proved creativity is differentiating. Proposition proved knowledge is decisive. In a world where wrong AI outputs carry real consequences, decisiveness outweighs differentiation.</div>
+        <div class="role-line"><span class="role-icon">→</span>Compare two worlds simply: in Prop's world, evaluation is the bottleneck and knowledge clears it; in Opp's world, direction is the premium and creativity provides it. Explain why the bottleneck world is the real one.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Line-by-line rebuttal in a closing. Give the judge two or three decisive points and a memorable framing, not a recap of the round. A closing that is primarily defensive has already lost the narrative.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Reframe the motion as comparative from the first sentence. "The motion is not whether knowledge matters — it is what matters more. And in the age of AI, that question has a new answer."</div>
+        <div class="role-line"><span class="role-icon">→</span>Block definition inflation immediately. If Proposition has already defined knowledge broadly, name it explicitly: "My opponents have defined knowledge to include judgment, wisdom, and evaluative literacy — every positive cognitive trait. That is not a definition; it is a sweep."</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal early that Opposition is also for protecting people from AI harms — the disagreement is about what comparative importance means in this specific historical context, not about whether knowledge matters.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Anti-knowledge rhetoric of any kind. Any phrasing implying knowledge is obsolete or worthless hands Proposition the round and makes Opposition look intellectually irresponsible.</div>
+        <div class="role-line"><span class="role-icon">→</span>Making creativity sound like it only means art, design, or entrepreneurship. Define it as problem selection, reframing, and adaptive synthesis across all domains from the opening.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Deepen the case with examples from non-obvious creative domains: strategy, government, healthcare administration, manufacturing, education. The adaptive recombination argument needs grounding in how real organizations responded to AI workflow change in 2022–2024.</div>
+        <div class="role-line"><span class="role-icon">→</span>Give the ranked alternatives model for the direction argument: show that creative direction is present in science (hypothesis formation), medicine (reframing disease categories), government (policy design), and education (curriculum design) — not just startups and branding.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Loading up with rebuttals — that belongs to Speaker 2. Stay constructive and use this speech to broaden the case across sectors so it feels universal rather than narrow.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Force the necessity-vs-importance distinction on every Proposition argument. Name the specific moment in each argument where Proposition proves knowledge remains useful but not that it becomes more important comparatively.</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish definitional inflation if it has occurred. Point to specific lines where Proposition used "knowledge" to mean everything admirable and explain why this is rhetorical sleight of hand, not argument.</div>
+        <div class="role-line"><span class="role-icon">→</span>Close with the comparative formulation: "Proposition wins validation — they have shown knowledge remains useful. We win where new value comes from — creativity sets the direction that everything else, including AI itself, follows."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing large new constructive arguments at this stage. Focus on comparative logic and definitional discipline. Judges at this point in the round need to see engagement, not fresh material.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Reduce the round to one comparative vote: Proposition showed knowledge is useful. Opposition showed AI specifically shifts the comparative premium toward creativity. The motion asks which outweighs which in the age of AI — and AI's defining effect is compression of standard competence and elevation of creative direction.</div>
+        <div class="role-line"><span class="role-icon">→</span>Closing line: "When competence becomes easier to access, the premium shifts to direction. In the age of AI, the decisive human edge is creative."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Ending on vague language about human creativity or the importance of imagination. End on the comparative logic. The judge needs a clear reason to vote Opposition, not an inspiring sentiment.</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding anti-knowledge in the closing. It undermines Opposition's credibility and gives Proposition a cheap rebuttal.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "Artificial intelligence has changed the supply of outputs. It has not changed the need for judgment. And in the age of AI, judgment — which requires knowledge — has become the decisive human bottleneck. We are not here to argue that creativity is worthless. We are here to argue that when AI scales the production of plausible-looking outputs faster than humans can evaluate them, the capacity that determines whether those outputs are safe, correct, and worth acting on is knowledge. That is what outweighs. That is what we will prove."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "The motion is not whether knowledge matters. It is what matters more — and in the age of AI, that question has a new answer. When AI helps anyone reach a competent baseline quickly, the comparative advantage of possessing standard knowledge shrinks. The premium shifts to what AI cannot easily compress: the capacity to see differently, to ask better questions, to decide what is actually worth building. That is creativity. And in the age of AI specifically, it outweighs."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>AI has changed the supply of outputs, not the need for judgment. Generation is abundant. Judgment is the bottleneck. Knowledge is what allows humans to clear it.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Access to information is not the same as understanding it. Opposition conflates retrieval with comprehension throughout their case. Those are different things, and the evaluation problem lives in the gap between them.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Creativity can improve a good decision. Knowledge prevents a bad one. In an AI world where bad decisions can be executed faster and at greater scale than before, the capacity that prevents them is what outweighs.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition proves creativity is differentiating. We prove knowledge is decisive. Stakes outweigh premiums. Vote for the motion.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Necessary is not the same as more important. Proposition proved knowledge remains useful. They did not prove it becomes more decisive in the age of AI. Those are different claims and the motion requires the second.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>AI compresses standard competence — Proposition's own examples show it. The lawyers who used ChatGPT show AI handling the drafting and structuring task. The verification gap is real but smaller than the compression that created it.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The premium human edge has moved upstream. Proposition wins validation — showing knowledge catches errors. We win where new value comes from — creativity sets the direction that AI then executes.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>When competence becomes easier to access, the premium shifts to direction. In the age of AI, the decisive human edge is creative. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>In 2023, lawyers Schwartz and LoDuca submitted AI-generated fictitious case citations in a federal court and were sanctioned by the judge</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>— This was widely reported and confirmed by court documents. Safe to cite without hedging.</td></tr>
+      <tr><td>GitHub Copilot was found in research to produce measurable productivity gains for developers on routine coding tasks</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Partially Contested</span></td><td>"Research commissioned by GitHub suggested productivity gains for certain routine coding tasks, though the study was conducted by an interested party and the scope in real-world deployment is still being assessed."</td></tr>
+      <tr><td>AI tools including large language models are widely used for drafting, summarizing, searching, and generating content across professional and educational settings</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>— The adoption of tools like ChatGPT, Copilot, and Gemini is well documented across industry and mainstream coverage. No hedging required.</td></tr>
+      <tr><td>AI reduces the comparative advantage of possessing standard, codified knowledge by making routine information tasks easier</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Plausible, Not Measured</span></td><td>"AI assistance makes many standard knowledge tasks easier to perform, which suggests the comparative advantage of possessing standard knowledge may decrease over time."</td></tr>
+      <tr><td>AI increases the volume of plausible-looking outputs that humans must evaluate, creating an evaluation bottleneck</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, Widely Accepted</span></td><td>"AI generates more output per unit of human effort, which increases the volume of content that humans working alongside AI must assess for accuracy and fit."</td></tr>
+      <tr><td>The Boeing 737 MAX crashes in 2018 and 2019 were caused in part by pilots lacking adequate knowledge of the MCAS system's behavior</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>State clearly that inadequate pilot training was one of multiple contributing factors identified in official investigations. Do not claim it was the sole cause.</td></tr>
+      <tr><td>Netflix succeeded over Blockbuster primarily due to creative reframing of the problem rather than superior market knowledge</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Interpretive</span></td><td>This is an interpretive historical claim that most commentators accept but some contest. Say "Netflix's transformation is widely attributed to creative strategic reframing rather than superior industry knowledge" — do not present it as a settled empirical finding.</td></tr>
+      <tr><td>During COVID-19, health literacy was a key predictor of the ability to evaluate health misinformation accurately, documented by Reuters Institute and Oxford Internet Institute research</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>The specific causal claim — that health literacy predicted resistance to misinformation better than creative thinking — has not been directly tested in head-to-head comparison. Say "public health researchers consistently identify health literacy as a key predictor of accurate health information evaluation."</td></tr>
+      <tr><td>McKinsey research from 2023 documented higher productivity gains from AI adoption among workers who combined AI tools with creative workflow adaptation</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Partially Supported</span></td><td>"McKinsey and major consultancies have documented significant variation in AI productivity gains, with organizational adaptation and workflow redesign — rather than tool access alone — being key differentiators." Do not attribute the specific "creative adaptation" framing as McKinsey's language without verifying.</td></tr>
+      <tr><td>Employers value both analytical and creative skills highly in the AI era, with evidence from World Economic Forum and LinkedIn Future of Work reports</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>— Multiple workforce surveys identify both skill types as highly valued. Safe to cite.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Defining knowledge so broadly it absorbs every positive human trait.</strong> When "knowledge" quietly expands to include judgment, wisdom, responsibility, evaluative literacy, and critical thinking all at once, the motion becomes trivially true by definition. Judges notice this and it makes the entire case look like definitional manipulation rather than genuine argument. Define knowledge tightly and consistently throughout all four speeches.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like they are defending memorization.</strong> If any Proposition speaker implies that AI threatens the importance of knowledge by making facts retrievable, they have ceded the most important analytical ground before the debate has even started. "Knowledge" must always appear alongside "understanding," "evaluation," and "assessment" — never alongside "recall," "retention," or "information storage."</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Living only in doctors, lawyers, and engineers.</strong> High-stakes regulated professions are clear examples, but they represent a small fraction of AI users. If the judge leaves thinking Proposition's case only applies to professionals with advanced degrees, they will vote Opposition on scope. Extend explicitly and early to students, workers, voters, and ordinary consumers.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Proving necessity but never explaining greater importance.</strong> Every time Proposition says "knowledge is needed to evaluate AI outputs," a careful judge thinks "needed, yes — but is it more important than creativity?" If Proposition never explicitly addresses the comparative, they win a lesser claim than the motion requires. Every argument must include a step that says not just "knowledge is needed" but "AI specifically raises its comparative importance."</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Dismissing creativity so aggressively the case sounds unrealistic.</strong> If Proposition routinely diminishes creativity as a luxury or a frill, they will lose credibility with judges who have personal or professional experience in creative fields. The strongest Proposition cases concede creativity's value clearly and explicitly, then argue that knowledge's value rises more in the specific conditions AI creates. Concede freely; compare sharply.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Saying or implying that knowledge is obsolete, cheap, or irrelevant.</strong> This is the most catastrophic own-goal available to Opposition. Any suggestion that knowledge no longer matters will alienate judges, provide Proposition with easy rebuttals, and make Opposition sound intellectually irresponsible. The formula "real problem, different comparative weight" is a strength. "Knowledge is obsolete" is a round-ender.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Making creativity sound like it only means art, design, or entrepreneurial invention.</strong> If Opposition's examples are all from Silicon Valley, advertising agencies, and film production, the judge will note that most of society does not work in those sectors. Creativity must be shown to be present and decisive in healthcare administration, government policy, education, manufacturing, and ordinary professional life — not just industries where creativity is already valorized.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Having no real answer to the evaluation and accountability argument.</strong> Proposition's verification argument — someone must check AI outputs and that requires knowledge — is strong and intuitive. If Opposition simply says "AI can verify itself" or dismisses the concern, they lose ground with any judge who takes professional accountability seriously. Acknowledge that verification matters; argue it is a threshold condition, not the source of distinctive value.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Acting as if problem selection requires no knowledge at all.</strong> If Opposition says that creative problem selection is purely creative and requires no knowledge, Proposition will demolish them with examples of creative direction that failed catastrophically due to ignorance. Opposition must concede the baseline knowledge requirement while arguing that the decisive differentiator is still the creative capacity to see and choose differently.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Proving that creativity is economically attractive rather than comparatively more important.</strong> The strongest Opposition cases often produce a feeling that creativity is glamorous and associated with success. But excitement and economic premium are not the same as importance. Importance must be argued in terms of consequences — what fails when creativity is absent, what succeeds when it is present, why it becomes more decisive in an AI world. Proving creativity is economically differentiated is not the same as proving it outweighs knowledge in the terms the motion requires.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Knowledge is power" (Prop).</strong> This is too generic to function as a debate argument. Every judge has heard it. It proves nothing about the comparative question and invites Opposition to respond with equally generic statements about creativity being the engine of progress. It also sounds defensive. Avoid entirely.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Creativity is what makes us human" (Opp).</strong> This is a romantic claim that invites Proposition to ask what definition of human is being used and why it is relevant to a comparative importance question. It sounds like Opposition is conceding that the debate is about something other than practical consequences — which is not what Opposition wants to concede. Make the argument instrumentally, not philosophically.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"AI means memorization is dead, so knowledge loses" (Opp).</strong> This is a strawman of Proposition's strongest case and is immediately identifiable as such. Proposition will say they are not defending memorization, point to their definition, and the speaker who made this argument will look like they did not listen to the opening. It also makes Opposition look like they have not thought beyond knowledge's most trivial form.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"All useful creativity is downstream of knowledge" (Prop).</strong> This is too strong to be true and generates the natural rebuttal that all useful knowledge application is also downstream of creative direction — and then neither side has proven comparative importance. Make the softer, accurate version: in high-consequence settings, knowledge has to come first as a priority condition. That is defensible. The absolute version is not.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Verification can just be outsourced to AI" (Opp).</strong> This is an extremely dangerous concession that Proposition will exploit immediately. If AI verifies AI, any error in the content being checked passes through the checking process unchallenged. The argument also implies that no human understanding of the domain is required at any point — which is exactly what Proposition needs Opposition to say in order to demolish the entire Opposition case with a single counterexample. Never say it.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>AI scales generation; humans still need knowledge to judge what is true and usable. In the age of AI, generation is abundant. Judgment is the bottleneck. Knowledge is what clears it.</div>
+
+    <div class="emrg-section">2 Winning Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>The Evaluation Bottleneck: AI makes plausible-looking outputs abundant. The decisive human task shifts from producing to evaluating. Evaluation requires domain knowledge — not retrieval, understanding. The lawyers who submitted AI-generated fictitious citations show what happens when this evaluative knowledge is absent.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Priority in Serious Decisions: In every high-consequence domain, knowledge is the precondition for safe creativity. The Boeing 737 MAX crashes show the cost of deploying a creative technical solution without the knowledge required to use it safely. AI raises the stakes because AI-assisted errors scale further and faster than human ones.</div>
+
+    <div class="emrg-section">3 Killer POIs</div>
+    <div class="emrg-quote">If creativity matters more, who verifies whether the AI output is actually correct?</div>
+    <div class="emrg-quote">Are you proving creativity is attractive — or that it is more important overall?</div>
+    <div class="emrg-quote">If AI can generate ideas as well as retrieve information, why is creativity uniquely scarce?</div>
+
+    <div class="emrg-section">3 Best Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "AI compresses knowledge": Access to information is not the same as understanding it. Retrieval and evaluation are different problems — and AI scales the supply of things needing evaluation faster than it scales the capacity to evaluate them.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "creativity sets direction": Direction without knowledge is uninformed guessing at scale. Good problem selection requires knowing the domain well enough to distinguish real problems from merely interesting-seeming ones.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "you're proving necessity not importance": We are proving that AI specifically raises the comparative importance of knowledge by scaling outputs faster than judgment. That is the AI-specific mechanism the motion asks for — not a static claim that knowledge always mattered.</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "AI has changed the supply of outputs. It has not changed the need for judgment. Judgment requires knowledge."</div>
+    <div class="emrg-quote">Closing: "In the age of AI, generation is abundant. Judgment is the bottleneck. Knowledge is what allows humans to clear it."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound like you are defending memorization. Do not confine your case to doctors and lawyers — extend to students, workers, and citizens. Do not dismiss creativity as unimportant — concede its value, then argue knowledge's value rises more under AI.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>The motion is not whether knowledge matters — it is what matters more. In the age of AI, that question has a new answer: when AI compresses standard competence, the premium shifts to creative direction. Necessary is not the same as more important.</div>
+
+    <div class="emrg-section">2 Winning Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Compression of Standard Competence: AI makes routine knowledge tasks easier, compressing the comparative advantage of possessing standard knowledge. The GitHub Copilot effect on coding productivity gaps shows the compression at scale. The differentiating variable is not who knows more — it is who can direct and recombine more creatively.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Creativity Sets Direction: AI is most powerful once a task is defined. The decisive upstream human contribution is deciding what task is worth defining. Netflix's reframing of the entertainment access problem — not superior market knowledge — determined the dominant competitive outcome. Creative direction is the input that determines everything that follows.</div>
+
+    <div class="emrg-section">3 Killer POIs</div>
+    <div class="emrg-quote">Are you proving that knowledge is necessary — or that it is more important than creativity?</div>
+    <div class="emrg-quote">If the age of AI changes nothing, why does the motion specifically mention it?</div>
+    <div class="emrg-quote">If AI helps everyone reach a competent baseline, why doesn't the premium shift to creativity?</div>
+
+    <div class="emrg-section">3 Best Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "evaluation is the bottleneck": Proposition proves knowledge remains useful — not that it becomes more important comparatively. Necessary and more important are different claims, and the motion requires the second.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "knowledge has priority in serious decisions": Those examples prove knowledge is a precondition — not that it outweighs creativity once the precondition is met. Foundation is not the same as most important. The building's purpose outweighs its concrete.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "knowledge protects autonomy": Creativity also protects autonomy — the ability to question defaults, imagine alternatives, and reject inherited frames. And knowledge without creativity produces confident acceptance of the status quo, not genuine autonomy.</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "The motion is not whether knowledge matters. It is what matters more — and in the age of AI, that question has a new answer."</div>
+    <div class="emrg-quote">Closing: "When competence becomes easier to access, the premium shifts to direction. In the age of AI, the decisive human edge is creative."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not imply knowledge is obsolete or irrelevant. Do not make creativity mean only art and design — it means problem selection, reframing, and adaptive synthesis across every domain. Do not say "verification can be outsourced to AI" — this is an immediate round-ender that Proposition will use to demolish you.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
