@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Мэтгэлцээний бэлтгэл — ХОУ ба Хүн төрөлхтөн</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #0a0b0f;
+  --ink:        #eceef5;
+  --ink-2:      #9ba3bc;
+  --ink-3:      #555e78;
+  --surf-1:     #13151d;
+  --surf-2:     #1a1d28;
+  --surf-3:     #22263a;
+  --line:       #252938;
+  --P:          #5b9cf6;
+  --P-bg:       #0d1e38;
+  --P-mid:      #1a3a6a;
+  --O:          #f2614a;
+  --O-bg:       #2a0d0a;
+  --O-mid:      #5a1a12;
+  --Y:          #f0c040;
+  --Y-bg:       #2a2208;
+  --G:          #3fcf8e;
+  --W:          #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:    clamp(10px, 1.8vw, 12px);
+  --t-s:     clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:     clamp(14px, 2.8vw, 17px);
+  --t-l:     clamp(17px, 3.5vw, 22px);
+  --t-xl:    clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+/* TABS */
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+/* LAYOUT */
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+/* TYPE */
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+/* CARDS */
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+/* QUOTE */
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+/* EXAMPLE BOX */
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+/* SNAPSHOT */
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+/* STRATEGY */
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+/* ARGS */
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+/* ATTACKS */
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* CLASHES */
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+/* POI LIST */
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+/* ROLES */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+/* CLOSINGS */
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+/* EVIDENCE */
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+/* TRAPS */
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+/* EMERGENCY */
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Шийдэл</span>
+  <span class="hdr-motion">Хиймэл оюун ухаан хүн төрөлхтний ирээдүйд аюул занал учруулж байна</span>
+  <span class="hdr-badge">Хуудас 1</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Хураангуй</button>
+  <button class="tab"      onclick="go('strat',this)">🗺 Стратеги</button>
+  <button class="tab"      onclick="go('pargs',this)">🔵 Дэмжигч</button>
+  <button class="tab"      onclick="go('oargs',this)">🔴 Няцаагч</button>
+  <button class="tab"      onclick="go('atk',this)">⚔️ Дайралт</button>
+  <button class="tab"      onclick="go('clash',this)">⚡ Мөргөлдөөн</button>
+  <button class="tab"      onclick="go('pois',this)">💬 Асуулт</button>
+  <button class="tab"      onclick="go('reb',this)">🥊 Няцаалт</button>
+  <button class="tab"      onclick="go('roles',this)">👤 Үүрэг</button>
+  <button class="tab"      onclick="go('close',this)">🎯 Хаалт</button>
+  <button class="tab"      onclick="go('evid',this)">📋 Баримт</button>
+  <button class="tab"      onclick="go('traps',this)">🚫 Урхи</button>
+  <button class="tab"      onclick="go('emrg',this)">🚨 Яаралтай</button>
+</nav>
+
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">Энэ мэтгэлцээн яг юуны тухай вэ?</h1>
+<p class="page-sub">Энэ мэтгэлцээн хиймэл оюун ухаан (ХОУ) хүмүүсийг агнадаг робот бүтээх тухай биш юм. Харин илүү нарийн бөгөөд ноцтой асуудал болох ХОУ нийгмийн тогтолцоонд нэвтрэх явцдаа хүн төрөлхтний өөрийн ирээдүйн төлөө хамтын шийдвэр гаргах, хариуцлага тооцох, итгэлцэл бий болгох чадварыг алгуур мөхөөж байгаа эсэх тухай юм.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 ДЭМЖИГЧ ТАЛЫН БАТЛАХ ЗҮЙЛ</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>ХОУ нь хүн төрөлхтний ирээдүйд <strong>бүтцийн ноцтой аюул</strong> учруулж байгааг батлах. Энэ нь хүн төрөлхтөн өөрийгөө удирдах тогтолцоо болон нөхцөл байдалд хохирол учруулж буйг илэрхийлнэ.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Бүх зүйл мөхнө гэж батлах албагүй. ХОУ бүтцийн ноцтой аюул учруулж байгааг батлах нь хангалттай.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Гол санаа: ХОУ нь чухал шийдвэрүүд дээрх <strong>хүний хяналтыг сулруулж</strong>, аюултай эрх мэдлийг цөөнхөд төвлөрүүлж, ардчиллын үндэс болох олон нийтийн бодит мэдээлэлд тулгуурласан хэлэлцүүлгийг хүндрүүлж байна.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 НЯЦААГЧ ТАЛЫН БАТЛАХ ЗҮЙЛ</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Эрсдэлүүд бодитой боловч эдгээр нь ХОУ-аас бус, харин <strong>хүний буруутай хэрэглээ ба институцийн сул байдлаас</strong> үүдэлтэйг батлах.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Эдгээр хор уршгийг <strong>зохицуулах боломжтой</strong> тул "хүн төрөлхтний ирээдүйд учрах аюул" гэж нэрлэх нь хэтрүүлэг болохыг харуулах.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Гол санаа: Энэ бол <em>удирдах боломжтой ноцтой сорилт</em> болохоос биш, иргэншлийг мөхөөх бүтцийн аюул биш юм.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ Мэтгэлцээн доторх нуугдмал тэмцэл</div>
+  <p>Хамгийн чухал тодорхойлолтын мөргөлдөөн бол <strong>"хүн төрөлхтний ирээдүйд учрах аюул занал"</strong> гэдгийг хэрхэн ойлгох явдал юм. Дэмжигч тал үүнийг <em>бүтцийн ноцтой аюул</em> гэж тайлбарлахыг хүснэ. Харин Няцаагч тал үүнийг <em>мөхөлд хүргэх, зогсоох боломжгүй хүч</em> гэж томьёолохыг хичээнэ.</p>
+  <p>Энэ тодорхойлолтын маргаанд ялсан тал мэтгэлцээнийг бүхэлд нь чиглүүлнэ. <strong>Дэмжигч тал энэ нэр томьёог эртхэн тодорхойлох хэрэгтэй. Няцаагч тал үүнийг даруй эсэргүүцэх ёстой.</strong></p>
+</div>
+
+</div></div>
+
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Ялалтад хүрэх шилдэг замууд</h1>
+<p class="page-sub">Баг бүрт хэд хэдэн тоглолтын төлөвлөгөө бий. Өөрийн хамгийн аюулгүй болон хамгийн өндөр ашигтай замаа мэддэг байх хэрэгтэй.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Дэмжигчийн замууд</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Няцаагчийн замууд</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Хамгийн аюулгүй зам</span></div>
+    <div class="route-what"><strong>Хариуцлагагүй шилжүүлэг + эрх мэдлийн төвлөрөл + баталгаажуулалтын тэнцвэргүй байдал.</strong> Эдгээр гурван аргументыг хооронд нь холбож, хүний хяналттай засаглалыг хэрхэн сүйтгэж байгааг харуулах.</div>
+    <div class="route-why">Энэ нь хамгийн хамгаалалт сайтай зам юм, учир нь үүний жишээг өнөөдрийн бодит ертөнцөөс харж болно. Ирээдүйн хор хөнөөлийг таамаглах шаардлагагүй.</div>
+    <div class="eg"><div class="eg-label">📌 Жишээ</div><div class="eg-text">Нидерландын татварын байгууллага халамжийн залиланг илрүүлэх алгоритм ашигласан жишээг дурдаж болно. Мянга мянган гэр бүлийг үндэслэлгүй буруутгасан ч хэн ч шийдвэрийг тайлбарлаж чадаагүй.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Хамгийн өндөр ашигтай зам</span></div>
+    <div class="route-what"><strong>Бүтцийн уралдааны динамик нь аюулгүй байдлыг алдагдуулдаг.</strong> ХОУ-ын салбарт төр, компани бүр өрсөлдөгчөөсөө түрүүлж нэвтрүүлэхийн тулд хурдыг аюулгүй байдлаас дээгүүрт тавьж байгааг аргумент болгох.</div>
+    <div class="route-why">Энэ зам нь хүчтэй, учир нь зөвхөн асуудал үүссэнийг бус, харин <em>яагаад асуудал байнга үүсэх болохыг</em> тайлбарладаг.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Хамгийн аюулгүй зам</span></div>
+    <div class="route-what"><strong>Шалтгаан ба үр дагаврыг зааглах, бүх зүйлийг "аюул биш сорилт" гэж томьёолох.</strong> Дэмжигч талын хэлж буй бүх хор уршиг нь хүний буруу шийдвэрээс хамааралтай. Энэ нь ХОУ биш, харин хүний засаглалын асуудал гэж шахах.</div>
+    <div class="route-why">Энэ нь Дэмжигч талд хүнд ачаа үүрүүлдэг хамгийн цэвэр зам юм.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Хамгийн өндөр ашигтай зам</span></div>
+    <div class="route-what"><strong>Шийдлийг эргүүлэх: Хүн төрөлхтөн ХОУ-тай байснаас ХОУ-гүй байвал орчин үеийн цогц асуудлуудад (уур амьсгал, цар тахал) илүү их өртөх болно.</strong> ХОУ бол аюул биш, харин хүн төрөлхтнийг амьд үлдэх чадвартай болгож буй хэрэгсэл юм.</div>
+    <div class="route-why">Энэ нь мэтгэлцээнийг "ХОУ хэр аюултай вэ?" гэдгээс "ХОУ-гүй бол юу болох вэ?" гэдэг рүү шилжүүлнэ.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Дэмжигч талын гурван аргумент</h1>
+<p class="page-sub">Эдгээр аргументууд нь нийгмийг өөрийгөө засах, удирдах чадварт ХОУ хэрхэн нөлөөлж байгааг харуулна.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Хэн ч хариуцлага хүлээхгүй болно</span></div>
+  <p class="arg-body">ХОУ системүүд нийгмийн халамж, шүүх засаглал, эрүүл мэнд, санхүүгийн эрсдэлийн үнэлгээ зэрэг чухал шийдвэрүүдийг гаргаж эхлэхэд нэг асуудал үүсдэг: албан ёсоор хариуцаж буй хүмүүс эдгээр шийдвэрийг тайлбарлах, ойлгох, эсвэл эсэргүүцэх чадваргүй болж байна.</p>
+  <div class="eg"><div class="eg-label">📌 Бодит жишээ</div><div class="eg-text">Нидерландын хүүхэд асрах тэтгэмжийн дуулиан (2013–2021). Алгоритм ашигласан залилан илрүүлэх систем 26,000 гаруй гэр бүлийг үндэслэлгүйгээр "залилан мэхлэгч" гэж тэмдэглэсэн. Систем "тэгж хэлсэн" учраас хүмүүсийн гомдлыг хүлээж аваагүй.</div></div>
+  <div class="quote">💬 Ингэж хэлээрэй: "Чухал шийдвэрүүдийг тайлбарлах эсвэл эсэргүүцэх боломжгүй ирээдүй бол аль хэдийн аюулд орсон ирээдүй юм."</div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Эрх мэдэл цөөнхөд төвлөрч байна</span></div>
+  <p class="arg-body">ХОУ нь хяналт тавьж буй этгээдийн чадавхыг эрс нэмэгдүүлдэг. Энэ нь эрх мэдлийн тэнцвэрийг иргэдээс холдуулж, ХОУ-ын дэд бүтэц, өгөгдөл, тооцоолох хүчин чадалтай төр засаг болон том корпорациуд руу шилжүүлж байна.</p>
+  <div class="eg"><div class="eg-label">📌 Бодит жишээ</div><div class="eg-text">Хятадын Нийгмийн Кредитийн Систем нь иргэдийн зан төлөвийг хянах, оноо өгөхөд ХОУ-ыг ашигладаг бөгөөд энэ нь аялах, зээл авах, боловсрол эзэмших эрхэд нөлөөлдөг.</div></div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Худал хуурмаг үнэнээс хямд болов</span></div>
+  <p class="arg-body">Ардчилсан засаглал нь иргэдийн бодит мэдээлэлд тулгуурлан дүгнэлт гаргах чадвараас хамаардаг. ХОУ нь хуурамч, төөрөгдүүлсэн мэдээллийг маш хурдан, хямд, өргөн хүрээнд үйлдвэрлэх боломжийг олгож, үнэнийг баталгаажуулах үйл явцыг боломжгүй болгож байна.</p>
+  <div class="eg"><div class="eg-label">📌 Бодит жишээ</div><div class="eg-text">2024 оны Словакийн сонгуулийн өмнө сөрөг хүчний удирдагчийн хоолойг ХОУ-аар дуурайлган хийсэн аудио бичлэг тарсан. Сонгууль болохоос 48 цагийн өмнө гарсан тул үнэнийг батлах хугацаа байгаагүй.</div></div>
+</div>
+
+</div></div>
+
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Няцаагч талын гурван аргумент</h1>
+<p class="page-sub">Эрсдэлийг хүлээн зөвшөөрч, харин тэр нь яагаад "хүн төрөлхтний ирээдүйн аюул" биш болохыг харуулах.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Бурууг зөв зүйлдээ тохох</span></div>
+  <p class="arg-body">Дэмжигч талын дурдаж буй бүх хор хөнөөл нь хүний буруу сонголтоос хамааралтай. ХОУ өөрөө аюул биш, харин хүний буруу засаглал, дарангуйлал, богино хугацааны ашиг хонжоо хайх хандлагыг өсгөгч хэрэгсэл юм.</p>
+  <div class="quote qo">💬 Ингэж хэлээрэй: "Аюул бол ХОУ биш, харин хүчирхэг хэрэгслийг буруугаар ашиглаж буй хүмүүс юм."</div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Хүмүүс алдаагаа засдаг</span></div>
+  <p class="arg-body">Хүн төрөлхтний институциуд технологийн хор уршгийг хууль тогтоомж, зохицуулалтаар засаж залруулж ирсэн түүхтэй. Европын холбооны ХОУ-ын тухай хууль (EU AI Act) зэрэг нь бид аль хэдийн дасан зохицож эхэлснийг харуулж байна.</p>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">ХОУ-гүй ертөнц илүү аюултай</span></div>
+  <p class="arg-body">Уур амьсгалын өөрчлөлт, цар тахал, санхүүгийн систем зэрэг орчин үеийн цогц асуудлууд хүний тархины чадавхаас давж гарсан. ХОУ бол эдгээр аюулаас амьд үлдэхэд туслах амин чухал хэрэгсэл юм.</p>
+  <div class="eg"><div class="eg-label">📌 Бодит жишээ</div><div class="eg-text">AlphaFold систем нь биологийн 50 жилийн турш шийдэж чадаагүй уургийн бүтцийн асуудлыг шийдсэнээр шинэ эм, вакцин гаргах процессыг эрс хурдасгасан.</div></div>
+</div>
+
+</div></div>
+
+<div id="atk" class="page"><div class="wrap">
+
+<h1 class="page-title">⚔️ Дайралт ба Няцаалт</h1>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">ДЭМЖИГЧ талд ирэх дайралтууд</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Өндөр</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Бүх асуудал хүний буруу хэрэглээнээс үүдэлтэй, ХОУ-аас биш."</div>
+        <div class="d-answer">Цөмийн зэвсэг бас "хэрэгсэл" боловч бид үүнийг хүн төрөлхтний ирээдүйн аюул гэж үздэг. ХОУ-ын хор хөнөөлийн цар хүрээ, хурд нь хүний хяналтаас давж байгаа нь түүнийг аюул болгож байна.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">НЯЦААГЧ талд ирэх дайралтууд</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Өндөр</div></div>
+      <div class="d-content">
+        <div class="d-attack">"ХОУ дэндүү хурдан хөгжиж байгаа тул хууль тогтоомж хэзээ ч гүйцэхгүй."</div>
+        <div class="d-answer">Хууль тогтоомж заавал хөгжилтэй нь уралдах албагүй, харин хамгийн ноцтой цэгүүдэд саад тотгор бий болгох нь хангалттай. Түүхэнд бид бүх хүчирхэг технологийг ийм замаар удирдаж ирсэн.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<div id="clash" class="page"><div class="wrap">
+<h1 class="page-title">⚡ Мөргөлдөөний гол цэгүүд</h1>
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Няцаагчид амархан</span><span class="clash-title">Аюул уу, Сорилт уу?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">Дэмжигч тал ХОУ-ыг бүтцийн аюул гэж батлах ёстой.</div>
+    <div class="clash-side">Няцаагч тал үүнийг засаж болох засаглалын асуудал гэж харуулах ёстой.</div>
+  </div>
+</div>
+</div></div>
+
+<div id="pois" class="page"><div class="wrap">
+<h1 class="page-title">💬 Асуултууд (POI)</h1>
+<div class="mini-box">
+  <div class="mini-box-label">🔵 Дэмжигчийн асуулт</div>
+  <div class="mini-box-text">Хэрэв худал мэдээлэл үйлдвэрлэх зардал тэг болж, үнэнийг шалгах зардал хэт өндөр болбол ардчилал хэрхэн оршин тогтнох вэ?</div>
+</div>
+<div class="mini-box">
+  <div class="mini-box-label">🔴 Няцаагчийн асуулт</div>
+  <div class="mini-box-text">ХОУ-гүйгээр хүн төрөлхтөн уур амьсгалын өөрчлөлт шиг цогц аюулыг шийдэж чадах уу?</div>
+</div>
+</div></div>
+
+<div id="reb" class="page"><div class="wrap">
+<h1 class="page-title">🥊 Шилдэг няцаалтууд</h1>
+<p class="page-sub">Өрсөлдөгчийнхөө логикийг эвдэх бэлэн зааварчилгаа.</p>
+</div></div>
+
+<div id="roles" class="page"><div class="wrap">
+<h1 class="page-title">👤 Илтгэгчдийн үүрэг</h1>
+<div class="role-card">
+  <div class="role-name">Ахлагч (Нээлт)</div>
+  <div class="role-line">Тодорхойлолтыг тогтоох, багийн гол үзэл санааг танилцуулах.</div>
+</div>
+</div></div>
+
+<div id="close" class="page"><div class="wrap">
+<h1 class="page-title">🎯 Хаалтын үгс</h1>
+<div class="opening-box op">
+  "Бид өнөөдөр ХОУ-ын ашиг тусыг үгүйсгээгүй, харин түүний учруулж буй бүтцийн аюулыг анхааруулж байна."
+</div>
+</div></div>
+
+<div id="evid" class="page"><div class="wrap">
+<h1 class="page-title">📋 Баримт нотолгоо</h1>
+<table class="ev-table">
+  <thead><tr><th>Баримт</th><th>Тал</th><th>Төлөв</th></tr></thead>
+  <tbody>
+    <tr><td>Нидерландын тэтгэмжийн дуулиан</td><td>Дэмжигч</td><td>Батлагдсан</td></tr>
+    <tr><td>AlphaFold-ын амжилт</td><td>Няцаагч</td><td>Батлагдсан</td></tr>
+  </tbody>
+</table>
+</div></div>
+
+<div id="traps" class="page"><div class="wrap">
+<h1 class="page-title">🚫 Хэрхэн ялагдах вэ? (Түгээмэл алдаа)</h1>
+<div class="trap-item">💀 Шинжлэх ухааны уран зөгнөлт (роботууд бослого гаргах г.м) ярих нь шүүгчийн итгэлийг алдана.</div>
+</div></div>
+
+<div id="emrg" class="page"><div class="wrap">
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5 минутын яаралтай хуудас</div>
+  <p>Мэтгэлцээн эхлэх гэж байгаа бол зөвхөн үүнийг унш!</p>
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
