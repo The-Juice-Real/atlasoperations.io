@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Online Persona Determines a Person's Social Status</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'mn', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Online persona determines a person's social status</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════ SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether online persona matters. Everyone in the room agrees it does. The real question is whether online persona is the <em>dominant practical force</em> that allocates social status in modern life — not just one input among many, but the primary mechanism through which people rank and are ranked by others.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That online persona is not merely relevant or influential, but that it functions as the <strong>main engine of social status</strong> in contemporary society — the factor that, when present, most consistently determines where a person lands in the social hierarchy.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to prove online persona is the only factor — only that it is the <strong>decisive one</strong> across modern social settings where most new relationships form.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: status is allocated before it is verified, and allocation happens through visible digital signals — making online persona the operative sorting mechanism of modern social life.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Either that status is <strong>too plural and context-specific</strong> to be determined by one digital layer, or that online persona is important but still falls short of what the word <strong>"determines"</strong> actually demands.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to deny that online persona matters — only that important is not the same as determinative, and that status in its full sense is governed by factors that online persona cannot monopolise.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: a powerful filter is still not a determinant. First-contact ranking is not final standing. Conduct, not persona, is what stabilises social status over time.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight Inside This Debate</div>
+  <p>The most important tactical battle is one that neither side will announce out loud: the fight over what <strong>"determines"</strong> means. <strong>Proposition wants a weaker reading</strong> — dominant practical determinant, the factor that most consistently governs ranking in the settings where most new social relationships form. <strong>Opposition wants a stronger reading</strong> — something closer to "controls" or "decides," a monopolistic force that overrides other factors rather than merely outweighing them in common situations.</p>
+  <p>Whichever team frames this definitional line <strong>first and most clearly</strong> wins the structural advantage for the round. Proposition should establish their reading in the first thirty seconds and return to it repeatedly. Opposition should challenge it immediately and explain why the weaker reading trivialises the motion — if "determines" just means "often matters most," the motion becomes almost impossible to oppose.</p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Status Allocation:</strong> Most status judgments happen in low-information settings. Online persona is the primary low-information sorting tool. First allocation has compounding effects.</div>
+    <div class="route-why">This route is safe because it is defensible even if Opp lands some of their best arguments. Even if conduct matters more over time, Prop can hold that initial allocation happens through online persona — and that initial allocation gates everything that follows. The risk is that Opp says this only proves first impressions. The defence: first allocation matters disproportionately because most real opportunities happen before deeper verification.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Legibility Beats Hidden Value:</strong> Status is a social phenomenon — it exists in what others perceive, not in what is privately true. Hidden value is socially inert. Online persona is the dominant legibility mechanism of the modern era.</div>
+    <div class="route-why">This argument is the most powerful version of the case because it reframes the debate at the level of what status even is. If status must be legible to be real, and online persona is the dominant legibility mechanism, then online persona is not merely correlated with status — it is the mechanism through which status becomes socially operative. The risk: it requires careful philosophical setup and can sound abstract without sufficient grounding in examples.</div>
+    <div class="eg"><div class="eg-label">📌 Supporting Example</div><div class="eg-text">danah boyd's research on networked publics documents how people actively manage their digital presentations specifically because they understand those presentations to shape their social standing. The research consistently finds that digital visibility is treated as social capital — not because people are confused, but because the correlation between online legibility and social treatment is observable in everyday experience.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Status Conversion:</strong> Online persona converts into differential treatment — and differential treatment is what social status actually is in practice. The mechanism is empirically grounded in observable behaviour.</div>
+    <div class="route-why">Judges across all formats respond to mechanism arguments — arguments that explain not just what happens but how and why. This route appeals to judges because it is behavioural and observable rather than theoretical. It requires no appeal to abstract social theory; it only requires the judge to accept that how people respond to you is your social status.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Social Proof Cascade:</strong> People borrow status judgments from visible endorsement. Online persona is where that endorsement is quantified and displayed at scale, creating self-reinforcing prestige hierarchies.</div>
+    <div class="route-why">Use this when the other routes are being challenged effectively. It does not require online persona to be the deepest or most authentic measure of status — only the most practically functional one in how status spreads. The cascade argument does not need to claim status is created from nothing; it claims that the mechanism by which status is distributed runs through online visibility.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Plural Status Systems:</strong> Status is not one thing. It operates differently across professional life, friendship, family, institutions, and specialist communities. One digital layer cannot simultaneously determine all of them.</div>
+    <div class="route-why">This route is safe because it is almost impossible to rebut entirely. Prop cannot show that online persona dominates every status arena, so Opp can anchor itself in the exceptions and demand that Prop explain them. The key is to run this as a structural argument — not just "here are some exceptions" but "the very concept of a single determinant is inconsistent with how status actually works."</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Transmission Belt:</strong> Online persona does not create status — it transmits pre-existing status resources (wealth, beauty, credentials, network centrality). The profile is the interface, not the source. Recognition is not creation.</div>
+    <div class="route-why">This is high-reward because it agrees with almost everything Prop says about online visibility while still denying the motion. It does not sound like Opp is dismissing social media — it sounds like they are offering a more precise analysis of how social media actually works. The risk: Prop responds that origin stories don't matter for determination, and that the profile is still the operative mechanism. Have the counter ready: the determinant is at the beginning of the causal chain, and online persona is in the middle of it.</div>
+    <div class="eg"><div class="eg-label">📌 Supporting Example</div><div class="eg-text">Brooke Duffy's research on aspirational labour in social media documents extensively how the most successful online presences are systematically built on prior advantages — visual appeal, resources, time, network access. The platform amplifies these advantages; it does not originate them. Organic success stories from near-zero are exceptional by definition, not typical.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Validation Through Conduct:</strong> A profile can start belief; only conduct stabilises status. The Elizabeth Holmes case shows how persona-based status collapses when conduct contradicts it — proving conduct is the underlying determinant.</div>
+    <div class="route-why">Judges respond well to arguments that invoke time and durability. This framing tells a recognisable story — we have all seen people who generated excitement online but failed to sustain it — and positions Opp as having the more complete theory of how status actually persists. The key is to connect the example explicitly to the word "determines": if conduct is what decides whether status endures or collapses, then conduct is the determinant, not the persona that preceded it.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Determination Threshold:</strong> Prop proves importance, not determination. Every argument they make establishes that online persona influences, shapes, or filters social outcomes. None of it establishes the monopolistic control that "determines" actually requires.</div>
+    <div class="route-why">Use this when Opposition is struggling on mechanism and example arguments. It does not require winning any empirical argument — only holding the line on what the word means. The risk: it can sound like semantic fastidiousness without substance. Always pair with at least one concrete example of a status system that runs independently of online persona to ground the definitional argument in observable reality.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument establishes a different mechanism through which online persona governs social ranking. Together they show that status is allocated through online channels, that allocation produces treatment outcomes that constitute status, and that social proof cascades make the mechanism self-reinforcing.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Status Allocation: Most Status Judgments Happen Before People Know Each Other Well</span></div>
+  <p class="arg-body">Social status in modern life is largely determined by online persona because most meaningful status judgments happen in low-information settings — before people have the time or opportunity to assess each other through direct experience. When people encounter someone new — a potential employer, a potential friend, a potential romantic partner, a new colleague — their initial judgment relies heavily on visible signals. In contemporary society, the dominant visible signal has shifted to what can be found online. A quick check of a person's social media profiles, their LinkedIn page, their digital footprint, or their online community standing now functions as the primary low-information status tool.</p>
+  <p class="arg-body">People form impressions based on what they can see, and what they can see is increasingly digital. The person with a compelling online presence gets the interview, the invitation, the response, the access. The person without one does not. Status is not only what you carry privately — it is what determines how you are treated. And how you are treated is shaped before you arrive.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">A 2018 CareerBuilder survey found that approximately 70 percent of employers in the United States reported using social media to screen candidates during the hiring process, with 57 percent reporting they had decided not to interview a candidate because of something found — or not found — online. A candidate with no professional digital presence, or with a presence that contradicted their application, was disadvantaged before they had spoken a word. Their status as a serious professional candidate was determined, in that moment, by their online persona.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp will point to people who achieve high status through purely offline channels — a revered elder in a rural community, a celebrated academic known only within a narrow field — as evidence that online persona is not the universal sorting mechanism. These cases are real. But they represent domains where physical proximity is the only practical channel for status formation. They do not show that online persona fails to determine status where it is the primary available channel — which describes the majority of modern digitally-mediated social environments. The exceptions exist in domains that predate digital socialisation, not in the settings where most new social relationships now form.</div></div>
+  <div class="quote qp">💬 Say this: "Status is allocated before it is verified. That allocation determines access. That access determines everything that follows. In modern life, allocation happens through online persona — and that is what the motion identifies as determining social status."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Online persona functions as the primary low-information sorting tool in the settings where most new social relationships form</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means most first-contact status judgments are made on the basis of what is visible online</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the opportunities, invitations, and relationships that flow from those initial judgments are distributed on the basis of online persona</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means online persona <strong>determines social status</strong> because the motion asks what mechanism drives social ranking in modern life — and this is the mechanism that operates at scale, at the moment when allocation actually happens.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "First Impressions Are Not Final Standing" Response</div>
+    <div class="weight-text">Opposition's best counter is that first-contact sorting is not the same as determination of final status. That argument is accurate but misses the structural point. First allocation produces compounding effects: it determines access to networks, and networks determine future allocation. The person who does not get the interview never gets the chance to demonstrate competence. The person whose profile signals low status before the first meeting is negotiating from a structurally disadvantaged position before a word has been spoken. The anchoring effect in social psychology — the tendency for early information to disproportionately shape later interpretation — means the initial ranking colours every subsequent interaction. Opp's counter wins only if status is defined as something that only solidifies over years, but that definition excludes most of what status actually does in modern social life: gate-keep opportunity.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this just about first impressions? Don't people revise their judgments quickly once they actually know each other?"</div>
+    <div class="judgeobj-a">Research on impression formation suggests they do not revise as quickly or as thoroughly as we imagine. The anchoring effect means early information disproportionately shapes later interpretation. A person introduced as impressive is more likely to have their contributions noticed, their mistakes forgiven, and their ambitions supported. The initial online-persona-based ranking does not merely precede enduring status — it shapes the environment in which enduring status forms. Revision is real but partial, and the starting position matters enormously for the trajectory.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">This only proves first impressions. Determination requires governing final standing, not just opening position. First filter is not the same as final outcome.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">First filter decides who gets access to the situations where final standing is built. Control access, and you control the trajectory. The filter is not everything — but it decides who gets to play the longer game, which makes it structurally determinative even under Opp's own definition.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Status Conversion: Online Persona Changes How People Are Treated, and Treatment Is What Status Is</span></div>
+  <p class="arg-body">Online persona determines social status because it directly converts into differential treatment — and differential treatment is not a consequence of status, it is what status actually is. Status is not an internal state. It is a social relationship: the pattern of how others respond to a person. Someone has high status when others are more responsive to their messages, more likely to invite them into high-value spaces, more likely to attribute competence and credibility to their contributions, more patient when they make mistakes. Someone has low status when the opposite patterns apply.</p>
+  <p class="arg-body">If online persona is the mechanism through which these patterns of differential treatment are established and maintained, then online persona determines status by definition — because the definition of status is the pattern of differential treatment. The theoretical distinction between treatment and status is not one that the lived experience of social life recognises.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The influencer marketing industry provides one of the clearest illustrations. When an individual builds a large and engaged online following — regardless of formal credentials, institutional position, or offline social network — brands, events, media outlets, and other individuals begin treating them differently. They are invited to product launches, offered early access to opportunities, granted interviews they would not otherwise receive, given the kind of deference normally reserved for established experts. Their status in those interactions is based directly on their online audience. Their online persona has converted into differential treatment, and that differential treatment is their social status in those arenas.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp will argue that influencer status is shallow and fragile — that it collapses when conduct is scrutinised. Numerous examples of influencers suffering dramatic falls in status after private conduct became public support this. However, the fragility of persona-based status does not undermine the claim that online persona determined that status while it held. The examples of collapse actually support Prop: they show that online persona was so central to the person's standing that changes in their online presentation immediately altered their social position. If the persona were merely reflecting deeper status rather than creating it, its contradiction would cause only a minor correction — not catastrophic collapse.</div></div>
+  <div class="quote qp">💬 Say this: "Status matters because it changes how others act toward you. Online persona changes how others act toward you. That is not a coincidence — it is a mechanism. And when the mechanism that produces a pattern is the determinant of that pattern, the motion is correct."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Online persona shapes the pattern of how others respond to, include, and defer to a person</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the practical experience of high or low status — whether messages are answered, whether invitations arrive, whether ideas are taken seriously — is determined by digital presentation</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means status is not something separate from online persona that online persona merely influences — rather, online persona is the operational mechanism through which status is produced and distributed</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is correct: <strong>online persona determines social status</strong> because determination requires showing that online persona is the practical engine that produces status — and that is exactly what Status Conversion demonstrates.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Conduct Stabilises Status" Response</div>
+    <div class="weight-text">Opp's counter is that conduct, not persona, is what stabilises status over time. This is accurate for certain long-horizon status systems. But it mistakes the question. The motion asks what determines social status, not what sustains it indefinitely. A mechanism can be determinative even if subsequent inputs modify the outcome — just as a coin toss that determines who goes first in a game is genuinely determinative even though the game's outcome then depends on other factors. Online persona determines where people enter the status system and how they are treated while they are in it. Conduct modifies that over time. The determining force is still the initial and ongoing online presentation.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Aren't the examples here — influencers, recruiters — a narrow slice of modern social life? Do ordinary people in ordinary friendships really experience status through online persona?"</div>
+    <div class="judgeobj-a">The relevant population is not limited to influencers and job-seekers. The same dynamic operates whenever two people form a new social connection and one of them checks the other's online presence before or during that process. In urban and digitally connected populations — which describes most of the social environments where status competition happens — this is the default rather than the exception. Research on how people use social media in relationship formation consistently finds that people actively manage their digital presentations specifically because they understand those presentations to shape their social standing.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Treatment without conduct validation is provisional and everyone recognises it as such — meaning it is not genuine status in any meaningful sense, only hype or impressionability.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">If the treatment a person receives is indistinguishable from the treatment they would receive if their status were "genuinely earned" — same invitations, same deference, same access — then for practical purposes it is real status. The motion asks what determines social status. Social status is precisely a pattern of social treatment. If the mechanism produces that pattern, it produces status.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Social Proof Cascade: Visible Endorsement Creates Self-Reinforcing Status Hierarchies</span></div>
+  <p class="arg-body">Online persona determines social status because the visibility of social endorsement in digital environments creates self-reinforcing status hierarchies — people do not assess status independently, they copy the signals that others around them have already generated. Human beings are deeply susceptible to social proof — the tendency to use the apparent judgments of others as a shortcut for their own assessments.</p>
+  <p class="arg-body">Online environments make social proof extraordinarily visible. The number of followers, the volume of engagement, the calibre of associations, the prestige of accounts that endorse you — all of these are immediately quantified and displayed in ways that offline social proof never was. When a person's online profile shows that many others already regard them highly, this functions as a direct input into how new observers rank them. Each endorsement increases visibility, which increases the probability of further endorsement, which increases status — regardless of whether any individual observer has independently verified the basis for that endorsement.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Matthew Salganik, Peter Sheridan Dodds, and Duncan Watts published a study in Science in 2006 titled "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market" demonstrating that when participants could see how many times a song had already been downloaded, the results became both more unequal and less predictable than when they could not see that information. Popular songs became much more popular, and the specific winner was often arbitrary — but once a song got ahead, visibility compounded its advantage. This experiment is widely cited as evidence that social proof cascades, not underlying quality, drive status allocation in visible social environments. Online persona operates on exactly this logic at scale.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp will point to viral figures who rose fast and fell faster as evidence that cascade-generated status is unstable and therefore not "real" status. These cases are real — and they are instructive. They demonstrate that online persona is central to status rather than peripheral to it. The collapse happens when conduct contradicts online persona — which means the persona was load-bearing. If online persona were merely reflecting deeper status rather than determining it, contradiction by offline conduct would cause a minor correction, not collapse. The severity of the collapse proves the magnitude of the dependence.</div></div>
+  <div class="quote qp">💬 Say this: "People do not always judge for themselves. They copy the apparent consensus. Online persona is where that consensus is formed and quantified. The cascade is not a distortion of how status works — it is how status works in modern social environments."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Online persona generates visible signals of social endorsement which function as status inputs for new observers</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means people's rankings of each other are shaped not by independent assessment but by the apparent consensus that online visibility creates</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means status is allocated in large part through a social proof mechanism that runs through online platforms</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means online persona does not just display status — it produces it through the self-reinforcing logic of cascade endorsement, satisfying the motion's standard because <strong>determination requires showing that online persona is the active generative mechanism of status</strong> — and the cascade demonstrates exactly that.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Hype Is Not Durable Status" Response</div>
+    <div class="weight-text">Opp argues that cascade-generated status is unstable and therefore not genuine standing. This is philosophically interesting but loses on the practical level. If the treatment a person receives while the cascade is running is indistinguishable from treatment given to someone whose status is "genuinely earned" — same invitations, same deference, same opportunities — then for practical purposes it is real. The motion asks what determines social status, and social status is a pattern of social treatment. If the cascade produces that pattern, it produces status. Whether that status is philosophically deserving is a different question — and one the motion does not ask.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Doesn't the social proof argument just describe online popularity, not social status in its full sense? Aren't these different things?"</div>
+    <div class="judgeobj-a">The distinction between popularity and status only holds if status means something beyond the treatment one receives — something like deserved respect or moral standing. But in sociological terms, status is defined precisely by the pattern of differential treatment: who gets listened to, invited in, deferred to, and given the benefit of the doubt. The cascade produces exactly that pattern. If Opp wants to argue that genuine status requires something beyond those treatment patterns, they need to specify what it requires and explain why online persona cannot produce it — not merely assert that popularity and status are different.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Social proof creates desirability and visibility — not durable authority, trust, or respect. Those are different things and the cascade only produces the first category, not the second.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Status in practice is measured by treatment outcomes, not by whether the standing is philosophically "deep." If visibility produces deference, access, and opportunity — which it demonstrably does — then it produces status by the only operational measure available. Opp is defining status normatively to escape an empirical argument.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula: begin by conceding that online persona is genuinely important — because it is — then demonstrate that important is not determinative. Each argument identifies a mechanism that governs social status independently of online persona, or shows that online persona is a conduit for deeper forces rather than a source of its own.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Plural Status Systems: One Digital Layer Cannot Simultaneously Determine All of Social Life</span></div>
+  <p class="arg-body">Online persona cannot determine social status because social status is not a single ranking — it is a family of different rankings that operate across different domains, each governed by its own logic, and no single mechanism can simultaneously determine all of them. Consider how differently status is allocated across even a small set of common social environments.</p>
+  <p class="arg-body">In a professional institution — a law firm, a hospital, a university department — status is primarily determined by seniority, demonstrated competence, institutional credibility, and the respect of colleagues who have worked alongside a person directly. In a long-term friendship group, status is governed by loyalty, reciprocity, shared history, and reliability in difficult moments. In a specialist community — craftspeople, martial artists, musicians — status is earned through visible skill demonstrated in person, over years of practice. In family structures, status is shaped by roles, age, responsibility, and behavioural history within the unit. None of these systems allocates status primarily through online persona.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The academic world provides one of the clearest cases. A researcher's standing within their discipline is determined by the quality and influence of their published work, their institutional affiliation, their citation count in peer-reviewed literature, and the reputation they have built through conference presentations and collaboration. A professor at a leading research university who has no personal social media presence whatsoever — which describes a significant number of senior academics — loses no standing within their field because of that absence. Their status is determined by decades of scholarly conduct, not by their online presentation.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will point to the fact that even in academic environments, online visibility increasingly matters — researchers with active social media presences can reach wider audiences and attract more collaborators. This is accurate. But it shows that online persona can augment status in some academic contexts, not that it determines status in the domain overall. The senior researcher with no social media presence and a dominant citation record still outranks the junior researcher with a large following but a thin publication record. In that domain, non-digital factors are still determinative, and online persona is supplementary at best.</div></div>
+  <div class="quote qo">💬 Say this: "Status is not one ladder. It is many — and they run on different engines. Online persona can be a powerful engine in some of them. But one engine cannot simultaneously power all of them. That is why it cannot determine social status as such."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Defeats the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Different domains of social life allocate status through fundamentally different mechanisms, each responsive to different inputs</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means no single factor — including online persona — is capable of determining status across all of them simultaneously</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means even where online persona is highly influential, it governs one arena while other arenas run on independent logics</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>determination requires online persona to govern social status as such</strong> — not merely one particular arena of ranking — and the plurality of status systems shows it does not.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Online Persona Is the Dominant Entry-Ranking Tool Across All Domains" Response</div>
+    <div class="weight-text">Prop's counter is that online persona is still the dominant first filter even across diverse domains — the common entry-ranking mechanism before domain-specific evaluation begins. This is a strong argument and must not be dismissed. The correct response is structural: a first filter and a determinant are structurally different things. A first filter narrows the pool; a determinant decides the outcome. The law firm that uses LinkedIn to screen candidates still decides partnership on the basis of years of demonstrated competence, client relationships, and professional judgment — none of which is online. The filter shapes who enters the process. It does not determine where they end up. Prop's counter proves influence at the entry point. It does not prove determination of the destination.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Does this argument prove too much? Could it be used to deny that anything 'determines' status — making the Opposition case trivially easy to run?"</div>
+    <div class="judgeobj-a">This argument does not claim nothing determines status; it claims that determination, to mean anything, requires a mechanism that operates across the relevant domain rather than just within one slice of it. The motion makes a general claim about social status. A counter-example from a domain where online persona does not operate at all is not a technicality — it is a direct refutation of the generality of the claim. The burden to show that online persona "determines" social status requires showing it operates as a determinant across the breadth of social life. Plurality of status systems shows that it does not clear that bar.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Online persona is the dominant entry-ranking tool across all domains — even if domain-specific evaluation follows, everyone passes through the digital first filter first.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Entry-ranking is not determination. The motion asks what determines social status — meaning governs the outcome — not what creates the starting impression. Many status systems also operate through referral, role, institutional membership, and direct relationship that bypass the digital filter entirely. The filter is not universal; and even where it applies, it does not control the destination.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Validation Through Conduct: A Profile Can Start Belief; Only Conduct Stabilises Status</span></div>
+  <p class="arg-body">Online persona may produce provisional ranking, but enduring social status — the kind of standing that actually persists and commands consistent deference — is determined by conduct, not persona. The initial ranking that online persona creates is unstable — it is a hypothesis held by others about a person's worth, and that hypothesis is constantly being revised in light of actual behaviour.</p>
+  <p class="arg-body">When conduct confirms the online persona, status consolidates. When conduct contradicts it, status erodes or collapses. This means conduct is the decisive variable: online persona sets a baseline expectation, but conduct is what determines whether that expectation is sustained or revised. Over time, the determinant of a person's actual standing is their behavioural track record, not their digital presentation. If the motion asks what governs social status — not what creates an initial impression — the answer is conduct.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The case of Theranos founder Elizabeth Holmes illustrates this with unusual clarity. Holmes built an extraordinarily compelling public persona — ranked among the most powerful women in technology, featured on magazine covers, commanding enormous investment, occupying the highest rungs of Silicon Valley's status hierarchy. Her media and digital presence was impeccable. But the conduct of her company — systematic falsification of blood testing results, deception of patients and investors — was diametrically opposed to her persona. When the conduct became public through John Carreyrou's investigative work at the Wall Street Journal beginning in 2015, her status collapsed with extraordinary speed. Persona was unable to sustain the status indefinitely because conduct contradicted it. In the end, conduct was determinative.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will argue that Holmes's case actually proves their point — that her persona created enormous status that persisted for years, and its collapse only confirms how load-bearing the persona was. This is a reasonable reading of the case. But it misses the structural point. The collapse demonstrates that persona-based status is unstable — it persists only so long as conduct does not contradict it. This means conduct is the underlying variable that either sustains or destroys what persona creates. If conduct were irrelevant, the persona would not have collapsed. The fact that contradictory conduct destroyed the status proves that conduct is the deeper determinant.</div></div>
+  <div class="quote qo">💬 Say this: "A profile can start belief. Only conduct stabilises it. The Holmes case proves this perfectly: when the conduct contradicted the persona, the status vanished. That proves the persona was not the determinant — it was the scaffolding. Conduct was the foundation."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Defeats the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Conduct over time either validates or invalidates the expectations created by online persona</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means whether an initial status ranking endures depends not on the persona that created it but on the behaviour that follows</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means personas and reputations based on them are unstable assets that can only be sustained by underlying behavioural alignment</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means conduct, not online persona, is the determinant of social status in the fullest sense — because <strong>determination requires governing not just the starting point of a status trajectory but its ultimate destination</strong> — and that destination is set by behaviour.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Allocation Happens Before Conduct Has Time to Matter" Response</div>
+    <div class="weight-text">Prop will counter that the motion is about how status is allocated, not how it is ultimately retained. Their argument: by the time conduct has had its effect, status has already been allocated in consequential ways. This is a real tension in the debate. The response is that the motion uses the word "determines" in the present tense — it asks about how social status is governed, not about how a first impression is created. If a large portion of social status is ultimately determined by whether conduct validates or overrides persona, then persona is not the determinant — it is the starting condition. A variable that sets a starting condition but does not control the final outcome is an influence, not a determinant.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Doesn't this argument only apply to high-profile public cases like Holmes? In ordinary social life, do people scrutinise each other's conduct carefully enough for this mechanism to matter?"</div>
+    <div class="judgeobj-a">The conduct-validation mechanism operates at every level of social life, not just among public figures. In every friendship group, workplace, neighbourhood, and community, people continuously update their assessments of others based on observed behaviour. The person who presents warmly online but behaves coldly or unreliably in direct interaction loses status in that circle over time. The mechanism does not require national media scrutiny — it requires only the ordinary social observation that human beings have always engaged in. The difference between Holmes and a local community member is scale, not mechanism.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Many important status decisions happen before long-term validation is possible — the interview, the invitation, the first impression. Waiting for conduct to validate is a luxury most social transactions don't afford.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">That proves provisional advantage, not determination of status in the thicker sense. The question is not whether online persona creates early advantages — it does. The question is whether those early advantages constitute determination of social status. A starting advantage that can be and routinely is overridden by subsequent conduct is an influence, not a determinant. Prop proves the starting position. We prove what sets the destination.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Transmission Belt: Online Persona Transmits Status Resources; It Does Not Create Them</span></div>
+  <p class="arg-body">Online persona does not determine social status — it transmits it. The real determinants of social status are the underlying assets a person possesses: their wealth, physical appearance, educational credentials, institutional affiliations, and social network centrality. Online persona is the channel through which these assets are made visible, but it is not the source of the status those assets create.</p>
+  <p class="arg-body">When a person's online profile commands attention and converts into differential treatment, it does so because of the upstream assets that the profile is displaying. A profile that signals wealth is compelling because wealth is compelling. A profile that displays elite institutional credentials is prestigious because those credentials carry prestige generated by the institution, not by the profile. The profile is the interface — the means by which pre-existing status resources are rendered legible in digital environments. The determinant is the asset behind the interface, not the interface itself. Recognition is not creation.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Brooke Duffy's research on aspirational labour in social media documents extensively how successful online presences are systematically built on prior advantages: visual appeal that is socially valued, resources that allow for high-quality production and access to desirable spaces, and connections that open doors to exclusive environments. The platform amplifies these advantages; it does not originate them. Researchers studying digital inequality consistently find that the most compelling online presences reflect underlying social advantages rather than creating social standing from scratch. The organic success narrative — zero to influence on merit alone — is available because it is exceptional, not because it is typical.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will counter that origin stories don't matter for determination — what matters is the operative mechanism through which status is allocated in practice. Even if the assets came first, the profile is still the channel through which society encounters them. Without the profile, the assets would not translate into social status at scale. The response: this conflates the medium with the message. A television broadcast does not determine the outcome of an election — the candidates, policies, and circumstances do. Removing the broadcast does not neutralise the underlying political forces; it merely changes the channel. Similarly, removing an online profile from a wealthy, credentialed, well-networked individual does not eliminate their status — it forces that status to express itself through other channels. The determinant is the underlying resource, not the display mechanism.</div></div>
+  <div class="quote qo">💬 Say this: "Recognition is not creation. When a profile commands attention, ask what the attention is responding to. Usually, it is wealth, beauty, credentials, or network — not the fact that someone made a profile. The profile is a window. The determinant is what is on the other side of it."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Defeats the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Online persona primarily functions as a visibility mechanism for pre-existing status resources — wealth, credentials, appearance, network centrality</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the social status that someone's profile commands is usually traceable to upstream assets rather than to the profile itself</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means online persona is a dependent variable — what it projects is determined by what a person already possesses before they open their account</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>the causal arrow runs from assets to persona to visibility</strong> — not from persona to status — and determination requires being at the beginning of the causal chain, which online persona is not.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Without Legibility, Assets Are Socially Inert" Response</div>
+    <div class="weight-text">Prop's strongest version of the counter: without legibility, status resources cannot be socially activated at scale, and online persona is the dominant legibility mechanism. This is their most defensible ground. The response: legibility does not require an online profile — it requires any mechanism that makes assets visible. For most of human history, status resources have been made legible through physical presence, institutional role, referral, and reputation within communities. Online persona is one legibility mechanism among several, not the only one. If status can be made legible through offline channels — and it demonstrably can — then the online channel is not the determinant; it is one of several possible conduits. Removing one conduit does not remove the status; it only redirects it.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"What about people who built genuine status from near-zero through online platforms alone — no prior wealth, credentials, or elite network? Don't those cases disprove the transmission belt argument?"</div>
+    <div class="judgeobj-a">These cases exist and are important. The response is that they are exceptions — not the pattern. For every genuinely organic success story, there are thousands of profiles from equally talented people who did not achieve the same status because they lacked the upstream advantages — the visual presentation, the equipment, the time, the network — to make their content reach its potential audience. The organic success narrative is available because it is exceptional. The typical pattern is that online presence amplifies existing advantages rather than creating status from scratch. Exceptions do not disprove systematic patterns; they require explanation of why they are exceptions.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Even if assets are upstream, the profile is still the operative social mechanism — what society actually uses to encounter and rank those assets. The causal origin doesn't change what the operative mechanism is in practice.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">The operative mechanism and the determinant are not the same thing. A translator is the operative mechanism for communication between speakers of different languages. But the translator does not determine the meaning of what is said. Removing the translator does not change what was meant — it changes the channel. The profile is the channel. The assets are the meaning. The motion asks what determines status, not what channel it travels through.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these convincingly. Know your burden on each before the round starts.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Slight Edge</span><span class="clash-title">Clash 1 — Influence Versus Determination</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That "determines" means dominant practical determinant — the factor that most consistently governs how social ranking happens across modern social settings — and that online persona satisfies this standard. They must establish the definition early and prevent Opp from replacing it with a stronger reading that trivialises the motion. Their strongest move: if Opp cannot name a more powerful, more consistent, more practically operative determinant of social ranking in modern life, the motion stands under any reasonable reading of "determines."
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That "determines" carries a stronger burden than Prop wants — something closer to "controls" or "decides" — and that under that reading, pointing to a single context where a person holds high status despite a weak online presence is enough to deny determination. Their strongest move: under Prop's weaker reading, "determines" becomes almost synonymous with "often matters most," which trivialises the motion and makes it impossible to oppose — showing Prop's definition is too weak to be the intended meaning.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge wants the definition that makes the debate most meaningful — suspicious of a definition that trivialises the motion and equally suspicious of one that makes it impossible to oppose. They will reward the side that gives them a clear, defensible definition AND wins the substantive arguments under it. Prop loses this clash if they spend too much time arguing online persona matters without defending their reading of "determines." Opp loses if they win the definitional argument but fail to show their reading is the right one — a sceptical judge who thinks the definition is too demanding will simply grant Prop's reading and move on to substance.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 2 — First Filter Versus Final Standing</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That first-contact status allocation has compounding effects — that the treatment someone receives at first contact shapes their subsequent access to the situations where status is built and confirmed. The first filter decides who gets the chance to play the longer game, making it structurally determinative even if it does not control the endpoint directly. Most meaningful status allocation happens before repeated interaction corrects anything.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That a mechanism which determines starting position but not final destination is an influence, not a determinant. Examples of people who entered with weak online profiles but built high status through conduct — and examples of people who entered with strong profiles but fell — demonstrate that the trajectory is not set at first contact. The score at halftime is not the final score.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: is the status allocated at first contact the same status the motion is asking about, or is it a preliminary sort substantially revised by later inputs? The winner gives the most concrete account of how the status that matters — the kind that shapes life outcomes and opportunity access — is actually assigned and maintained. Prop loses if they cannot show that first allocation produces lasting effects rather than temporary ones. Opp loses if they acknowledge that first allocation shapes access while failing to explain why that does not already satisfy "determines" — because if access to status-building situations is itself determined by online persona, the motion may already be won.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Slight Edge</span><span class="clash-title">Clash 3 — Legibility Versus Hidden Substance</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That status, by its nature, cannot exist independently of social perception. A person who is genuinely competent but not recognised as competent does not have high status — they have the basis for a potential claim to status that has not yet been realised. Status is the actual pattern of deference and treatment, not the potential to deserve it. Hidden value is not social capital. What is socially legible is what becomes socially real.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That even if visibility matters, the content of what is visible — the substance behind the persona — is still doing the real causal work. A compelling profile cannot permanently substitute for the competence, reliability, and character that produce genuine standing. When substance is absent, legibility-based status is unstable, which proves it is not determined by the legibility mechanism but by the substance being (or not being) displayed.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge wants a clear account of what social status consists in before arguing about what determines it. Prop wins by providing the most coherent and sociologically grounded definition of status: it is a pattern of social treatment, not a private truth about a person's worth. Opp wins by showing that even if status is defined by treatment, stable treatment requires substance, which puts substance upstream of the persona that displays it. Prop loses if they define status as whatever produces immediate social impressions — that makes status synonymous with appearance. Opp loses if they define status as deserved standing — that substitutes a normative concept for a sociological one.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 4 — Engine Versus Transmission Belt</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the online persona is not simply an interface for pre-existing assets but an active generative mechanism — that it does something to status that would not happen without it. Their best move: a person whose offline assets are minimal but who has built genuine social standing through their online presence — proving the platform is generative, not just reflective. If removing an online presence would substantially reduce a person's standing even when their underlying assets remain intact, the platform is partially determinative.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That in the overwhelming majority of cases, online persona is powerful because of what it is displaying, not because it is displaying it. The platform does not add to a person's status so much as transmit the status their underlying assets generate. In the absence of those assets, the platform produces only temporary hype — not durable standing. Removing a high-asset person's online presence does not eliminate their status; it reroutes it.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: does the online persona change what a person's status would otherwise be, or does it only change how quickly and widely that status is distributed? If removing an online presence would leave status fundamentally unchanged because it would merely reroute through other channels, the platform is a conduit. If removing it would reduce status substantially, the platform is partially determinative. Prop loses if they cannot produce convincing cases of status genuinely created by online persona independently of upstream assets. Opp loses if they cannot show that the assets, rather than the platform, are the consistent predictor of status outcomes across different cases.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 5 — Treatment Versus Durable Respect</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That status is experienced and consequential in the present — that a person who receives high treatment right now has high status right now, regardless of what happens later. Life opportunities, access, and network effects compound in the present. Waiting for conduct to validate status over years is a luxury most social transactions do not afford. Status is not a retrospective judgment but a current experience, and online persona governs that current experience.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That treatment in the absence of conduct-based validation is fragile and therefore not genuine status in any meaningful sense — closer to impression management, buzz, or hype. What Prop describes can be withdrawn instantly when persona and conduct diverge, proving it was always provisional. The kind of stable social standing that makes status a meaningful life resource requires durability, and durability requires conduct.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge wants to know: is the question about status as experienced in the moment, or status as established over time? The motion uses the present tense — "determines" — suggesting a current, ongoing process. But "social status" often implies something more durable than a momentary pattern. The winner squares this tension most coherently. Prop loses if they define status so narrowly — as any current pattern of differential treatment — that they win trivially while conceding everything that makes status sociologically interesting. Opp loses if they demand such a high standard of durability that virtually nothing "determines" social status — making their case conceptual fastidiousness rather than genuine engagement with how social ranking works.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: exposes a gap in the other side's argument, or forces them to say out loud something they would rather leave implicit. Have your top three ready from memory so you can deliver them calmly and confidently under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">If people do not know you personally, and they are deciding how to rank you, what practical information are they using besides visible signals — and in the modern world, are those visible signals not primarily digital?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If online persona only influences status rather than determining it, can you name the stronger practical determinant that operates at first contact in modern social settings? Because if there isn't one, your side has not proven the motion wrong — it has just refused to define it clearly.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Is it not the case that who gets the opportunity to demonstrate their competence offline is itself determined by their online presentation — meaning online persona gates access to the situations where conduct can even be evaluated?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Are you defining status by what is privately true about a person, or by how others actually treat them in practice? Because if it is the latter, and online persona governs treatment, then online persona governs status — by your own definition.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If a strong online persona generates early status effects — better access, more invitations, greater responsiveness — do those early effects not compound even if conduct later modifies the baseline, meaning online persona has already determined a significant portion of the trajectory?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "do you mean determines or influences strongly?":</strong> We mean dominant practical determinant — the factor that most consistently governs how ranking happens in the settings where most new social relationships form. Not sole cause. Not irresistible force. The most operationally decisive factor in contemporary social life.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "can high-status people exist with weak online personas?":</strong> Yes, in domains that predate digital socialisation — senior academics, private family networks, insular professional hierarchies. Our claim is about where the dominant modern sorting mechanism operates, not about whether every status system in every context is digital. The exceptions exist at the margins of modern social life, not at its centre.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "visibility is not the same as respect":</strong> We are not arguing that attention equals moral esteem. We are arguing that in social practice, status is the pattern of treatment that determines who gets opportunities, deference, and access. Visibility produces that pattern. Whether the treatment is philosophically deserved is a different question — one the motion does not ask.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "why is a polished profile determinative rather than promotional?":</strong> Because the gap between promotion and determination is closed when the promotion consistently produces the treatment outcomes that constitute status. At that point, the distinction between promoting and determining is semantic, not real.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "why is the profile the determinant rather than the upstream assets?":</strong> Because the assets are socially inert without legibility. In the modern world, online persona is the dominant legibility mechanism. The determinant is the mechanism that makes the causal chain operative — and that is the online persona.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">When you say "determines," do you mean determines — or merely influences very strongly? Because if you mean the latter, the motion becomes almost impossible to oppose, which suggests that is not its intended meaning.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">Can high-status people exist with weak or absent online personas? Because if the answer is yes — and it demonstrably is in multiple domains — then online persona cannot be the determinant of social status in the general sense the motion claims.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Is visibility the same thing as respect in your model? Because if it is, you have defined status as appearance — and if it is not, you need to explain exactly how visibility produces the kind of stable deference you are claiming constitutes status.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">If a profile can be carefully constructed to present a persona that does not match a person's actual conduct — and it demonstrably can — why is that constructed persona determinative rather than merely promotional? What happens when the construction meets reality?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If online persona is primarily a display mechanism for upstream assets — wealth, beauty, credentials, network — then why is the display the determinant rather than the assets it displays? Can you name a case where the profile succeeded without those assets?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "if people rank what they can see, why isn't online persona determinative?":</strong> Because what is seen first is not the same as what determines enduring standing. A screening mechanism is not a determinant. The audition decides who gets on stage. It does not determine the performance's outcome.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "what matters more than digital legibility?":</strong> No single factor across all circles — and that is exactly our point. Status is plural and context-dependent. The concept of a single dominant determinant is inconsistent with how status actually works in human social life.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "bad posts cost opportunities — doesn't that prove the motion?":</strong> It proves importance, not monopolistic control. Many things can damage your chances in specific contexts. That does not make any of them the determinant of social status across all contexts.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "who gets repeated interaction if not those with strong profiles?":</strong> Many status systems also run through referral, role, institutional membership, and existing relationships — none of which depend on prior digital credibility screening. The filter is not universal.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "Prop proves actual ranking while Opp proves only deep truth":</strong> We are not describing a hidden moral truth versus social reality. We are describing provisional ranking — which online persona can create — versus stable status — which requires conduct to consolidate. Both are social realities. The motion asks about the second one.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">A rebuttal works best when it directly names what the other side just argued, explains specifically why it fails, and connects the failure back to your thesis. The starred lines are your top three per side — have them ready from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition proves deep truth. We prove actual ranking."</strong> When Opp runs the plural status or conduct-based arguments, acknowledge the premise and then show it does not reach where they need it to go. Yes, there are private virtues, specialist communities, and long-term relationships where online persona is less relevant. We agree. But the motion asks about social status — the pattern of ranking in social life — and in the settings where modern social ranking happens at scale, online persona is the operative mechanism. Opp has described the person in full. We have described the person as society actually sees and ranks them.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"First allocation matters most because it decides access to everything that follows."</strong> When Opp runs the first-filter-not-final-standing argument, the response is structural. First allocation produces compounding effects. The person who does not get the initial invitation never gets the chance to demonstrate the conduct that would build long-term status. The person whose profile signals low status before the first meeting is already negotiating from a disadvantaged position. The first filter is not everything — but it decides who gets to play the longer game. That is what makes it determinative, not merely preliminary.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Even if persona reflects upstream assets, it is still the operative status interface — and the interface is where status becomes socially real."</strong> When Opp runs the transmission belt argument, acknowledge the premise and then show it does not lead where they think it does. Even granting that wealth, beauty, and credentials are upstream, those assets produce no social status in settings where they have no visibility. Online persona is what makes those assets legible at scale. The determinant is the mechanism that turns potential into actuality. The profile is that mechanism in modern social life.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Correction later does not erase earlier status effects. The anchoring effect in social psychology shows that early information disproportionately shapes later interpretation. The status allocated at first contact based on online persona does not disappear when conduct subsequently modifies it — it becomes the baseline from which all subsequent adjustments are made. Earlier advantages are baked in."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Opp's examples of non-digital status are systematically drawn from domains that predate digital socialisation — academic seniority, family hierarchy, specialist craft communities. These are real. But they are not where most new social relationships form in the modern world. The relevant question is not whether digital-era status systems have completely replaced all prior ones — it is whether online persona is the dominant mechanism in the settings where most of modern social ranking actually happens."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition proves relevance. They needed to prove determination. Those are different arguments."</strong> Every argument Prop makes establishes that online persona influences, shapes, accelerates, or filters social outcomes. None of it establishes that online persona controls them in a way that overrides other factors. A powerful first impression is still not a determinant if the trajectory after that impression is governed by other forces. The distinction between influence and determination is not semantic — it is structural, and Prop has not bridged the gap.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"A gateway is not the journey. A profile can start belief; only conduct stabilises it."</strong> When Prop runs the Status Allocation or Status Conversion arguments, acknowledge the mechanism and then show it only establishes a starting position. The gateway decides who enters the process. It does not determine the destination. Every case Prop cites of online persona converting into differential treatment is a case where that treatment was sustained only by ongoing alignment between persona and conduct — or collapsed when they diverged. The conduct-validation mechanism is always running in the background, making conduct the underlying determinant.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Recognition is not creation. The profile amplifies what exists; it does not author it."</strong> When Prop argues that online persona is the operative status interface, acknowledge the point and then reframe it: the profile is the window, not the house. What gives a profile its social power is what it is displaying — the underlying assets, credentials, conduct, and network that pre-exist the profile. Remove the window and the house still stands. Remove the underlying assets and the most carefully curated profile produces only temporary attention, not durable standing.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"They confuse visibility, desirability, and respect. These three things are not the same. Online persona can generate the first two reliably. It does not reliably generate the third — the kind of stable, repeated deference across varied contexts and over time that characterises social status in its fullest sense. Prop has shown that online persona produces visibility and sometimes desirability. They have not shown that it produces the durable respect that constitutes status at the level the motion claims."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Prop's examples are systematically drawn from the settings most favourable to their case — influencer culture, digital-first professional networking, online community hierarchies. But the motion does not say online persona determines status in those settings. It says online persona determines social status — a general claim about how status works across the full range of social life. The examples don't generalise to the motion's scope."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "determines" as dominant practical determinant in the first thirty seconds — before Opp's stronger reading sets the judge's expectations. Return to this definition every time Opp tries to shift the standard.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the framing the team will return to throughout: this debate is not about who deserves status, it is about what people actually use to rank each other. In modern life, that is online persona.</div>
+        <div class="role-line"><span class="role-icon">→</span>Announce the three argument structure clearly — Status Allocation, Status Conversion, Social Proof Cascade — so judges can follow the case architecture throughout the debate.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending too long on examples at this stage. Every second on illustration is a second not spent on framing and definition — which is where this round is often decided. Leave examples for Speaker 1.</div>
+        <div class="role-line"><span class="role-icon">→</span>Claiming that online persona is the only factor. That position is extreme, indefensible, and will hand Opp their easiest POI of the debate.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Carry the full constructive case: Status Allocation with the CareerBuilder example and compounding-effects argument; Status Conversion with the influencer marketing example; Social Proof Cascade with the Salganik et al. study. Each argument with mechanism, example, and So What chain.</div>
+        <div class="role-line"><span class="role-icon">→</span>For each argument, end with an explicit sentence connecting it to the motion's specific words: "This satisfies the standard of determination because..."</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the three most dangerous Opposition angles by name: plural status systems, conduct stabilises status, transmission belt. Name them, concede what must be conceded, and show why they do not defeat the motion.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Getting so absorbed in hypothetical case distinctions that the affirmative moral case gets lost. The judge needs to leave this speech knowing what Prop is for, not just what it is against.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly answer Opp's three arguments — Plural Status Systems, Validation Through Conduct, Transmission Belt — explicitly and in sequence. Engage with what they actually said, not a generic version of their case.</div>
+        <div class="role-line"><span class="role-icon">→</span>Attack every instance where Opp used the word "serious" or "durable" without defining it. Make Opp specify what standard they are applying or concede it is undefined.</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuild the comparative: "Opp proved that status is complex and that conduct matters over time. They needed to prove that online persona is not the dominant practical determinant of social ranking in modern life. They proved one thing. They needed to prove the other."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire affirmative case from scratch. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, the judge will notice that the most important challenges have not been answered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Give the judge a clear comparative story: "Opposition described the person in full — private virtues, long-term conduct, hidden substance. We described the person as society actually sees and ranks them. The motion asks about the second. On that question, the motion stands."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the three big clashes and explain which side won each. Do not just assert — give the judge one sentence on why Prop won each clash.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Relitigating specific POI exchanges or example disputes. The closing should be a narrative, not a recap. Judges want to know the story of the debate, not a catalogue of its moments.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the concession clean, early, and disarming: "Online persona matters. We accept that completely. A recruiter checking LinkedIn, a person evaluating a potential friend's profile, a community sizing up a newcomer — online persona is doing real work in all of those situations. That is not the motion."</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the threshold line immediately: "A powerful filter is still not a determinant." Return to this line every time Prop describes online persona doing something important.</div>
+        <div class="role-line"><span class="role-icon">→</span>Challenge Prop's definition of "determines" in the first two minutes. Explain why their weaker reading trivialises the motion — "if determines just means often matters most, what would oppose this motion look like?"</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the whole opening on definitional argument without moral content. The judge needs the Opp case to feel substantive from the start, not just definitionally resistant.</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding dismissive of digital social life. Any sentence that sounds like social media does not matter will lose the register argument with every judge in the room.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full Opposition case: Plural Status Systems with the academic domain example; Validation Through Conduct with the Holmes case; Transmission Belt with Duffy's research. Each argument with mechanism, example, and So What chain.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the line "a gateway is not the journey" early and return to it whenever Prop argues that first-contact allocation is sufficient for determination.</div>
+        <div class="role-line"><span class="role-icon">→</span>Attack the Status Conversion argument directly: acknowledge that treatment follows visibility, then show that treatment without conduct validation is provisional — meaning everyone involved recognises it as such, meaning it is not stable status.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Over-explaining the transmission belt at the expense of the other two arguments. The plural status argument is Opp's most structurally sound position and should receive the most development time.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Force Prop into the hardest version of their position. Take the clearest case where non-digital factors obviously determine status — a senior academic with no social media, a respected community leader with no online presence — and make Prop explain why their theory accounts for these cases without abandoning the motion.</div>
+        <div class="role-line"><span class="role-icon">→</span>Collapse Prop's case into a single framing: "They have shown that online persona is visible, that visibility produces attention, and that attention sometimes produces short-term deference. None of that is determination of social status. They have shown importance. The motion claims something stronger."</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer the compounding-effects argument directly: early advantages compound, yes — but only if subsequent conduct sustains them. Compounding from a starting condition does not make the starting condition the determinant of the final outcome.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing new constructive arguments. Speaker 2's value is in consolidating and crystallising what Opposition has already established, not in opening new fronts that give Prop's closing something to attack.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple. "Prop won the loudest layer of modern status — the layer that is visible, fast, and digital. We won the full structure. They showed you the entry point. We showed you what determines where people end up. The motion asks about the second."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the most important concession Prop made in the round — usually the acknowledgment that conduct modifies status over time — and explain why it was fatal to their case: if conduct modifies the outcome, then the thing that was modified is not the determinant.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-opening definitional arguments as though they have not been settled. If the definitional fight has been won, reference it briefly and move to the comparative narrative. Closings that are too technical lose register.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorised and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is not about who deserves status. It is not about who has worked hardest, or who is most genuinely talented, or who possesses the deepest character. It is about what modern society actually uses to rank people — what mechanism determines who gets invited, who gets answered, who gets believed, who gets access. And in modern social life, that mechanism is increasingly, dominantly, and practically, the online persona."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "The clever version of the Proposition case is this: online persona matters. We agree completely. It shapes first impressions, it affects early access, it compresses social information into visible signals that people use as shortcuts. We accept all of that. But that is not what the motion says. The motion says that online persona determines social status. And important is not the same as determinative."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Status is social, not private. What is social must be legible. What is legible at scale in the modern world is increasingly digital. Online persona is the primary legibility mechanism of contemporary social life.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition proved that conduct matters over time and that status systems are plural. They did not prove that online persona is not the dominant practical determinant of social ranking across modern social settings. They proved complexity. The motion requires only dominance.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>First allocation matters most because it determines access to the situations where long-term status is built. The first filter is not everything — but it decides who gets to play the longer game.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Status changes how others treat you. Online persona changes how others treat you. That is not a coincidence — it is a mechanism. And when the mechanism that produces a pattern is the dominant force shaping that pattern, it determines it.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They described the person in full. We described the person as society actually sees and ranks them. This debate is about the second. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Important is not determinative. A powerful filter is still not a determinant. Proposition proved online persona matters enormously. They needed to prove it governs social status — not just shapes the starting position. They proved one thing. They needed to prove the other.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>First ranking is not final standing. The gateway is not the journey. What happens at first contact is real and consequential — but the trajectory after first contact is governed by conduct, and conduct is the deeper determinant.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Projection is not validation. Recognition is not creation. The profile amplifies what a person already possesses — it does not author their status. The causal arrow runs from assets to persona to visibility, not the other way around.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They confuse visibility and respect. Online persona reliably produces the first. It does not reliably produce the stable, durable, conduct-validated deference that constitutes social status in its full sense.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They won the loudest part of modern status. We won the full structure. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>CareerBuilder (2018) found approximately 70% of US employers use social media to screen job candidates, with 57% having declined to interview a candidate based on what they found online</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, verify before citing</span></td><td>"Multiple employer surveys from the 2010s consistently found that a majority of employers reported using social media as a screening tool in the hiring process."</td></tr>
+      <tr><td>Salganik, Dodds, and Watts (2006) "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market" published in Science — showing social proof cascades determine downloads more than underlying quality</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified — cite with confidence</span></td><td>— Note: extrapolation from music downloads to social status more broadly is an interpretive step, not established in the study itself.</td></tr>
+      <tr><td>danah boyd's research on networked publics documents how people actively manage digital presentations to shape social standing</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified — boyd's work is real and well-regarded</span></td><td>—</td></tr>
+      <tr><td>Online persona converts into differential treatment in professional contexts — invitations, responsiveness, attributed credibility</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Well-supported general claim</span></td><td>—</td></tr>
+      <tr><td>Brooke Duffy's research on "not quite there" aspirational labour in social media documents how successful presences are systematically built on prior advantages</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified — Duffy's work is real and directly relevant</span></td><td>—</td></tr>
+      <tr><td>Elizabeth Holmes built her status primarily through public persona management; it collapsed when John Carreyrou's Wall Street Journal investigation beginning in 2015 exposed the conduct contradicting it</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified — cite with confidence</span></td><td>—</td></tr>
+      <tr><td>Senior academics with no social media presence retain high disciplinary status based on citation record and institutional affiliation</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified — well-supported general claim</span></td><td>—</td></tr>
+      <tr><td>Impression revision following anchor effects — early information disproportionately shapes later interpretation and is not fully corrected by subsequent experience</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Directionally supported by anchoring research</span></td><td>"Social psychology research on anchoring effects suggests that early impressions disproportionately shape subsequent interpretation, making first-contact ranking more persistent than intuition suggests."</td></tr>
+      <tr><td>Neil Hamilton's political career was effectively ended in the UK through party action, public exposure, and electoral consequence without formal seat removal</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified — historical fact</span></td><td>— Note: this example is more relevant to the parliamentary ethics motion than the online persona motion. Use the Holmes case instead for this motion.</td></tr>
+      <tr><td>Status is plural across different social domains and each domain rewards different qualities — based on Bourdieu's field theory and subsequent sociological work</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Well-established theoretical framework</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps for this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Defending "determines" as if it means "sole or only cause."</strong> As soon as Prop sounds like they are claiming online persona is the only factor in social status, Opp will offer a single counter-example and walk away with the definition. Every Prop speaker must use "dominant," "primary," or "most practically operative" — never "only." The moment that word escapes, the definitional argument is lost.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Conflating fame with status.</strong> Follower counts, viral moments, and media coverage produce a form of visibility that can be mistaken for status but is structurally different from the durable social standing that commands consistent respect in relevant communities. If Prop builds their case entirely on influencer culture and viral attention, Opp will correctly distinguish these from genuine social status and the case collapses.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Making the case exclusively about youth, dating, and social media influencers.</strong> If every example is a 24-year-old on Instagram, the judge will correctly infer that the claim only holds for a narrow subset of social life. Prop needs examples across age groups, professional contexts, and social settings — at minimum: professional recruitment, social relationship formation, and specialist community credibility.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Running three versions of the same argument as if they were three separate arguments.</strong> If Status Allocation, Status Conversion, and Social Proof Cascade all reduce to "visible signals shape ranking," the team has run one argument three times. Each argument needs its own distinct mechanism — allocation, treatment, cascade — not just three different illustrations of the same point.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Allowing Opp to define status as only deep trust and long-term validation.</strong> If Prop does not contest this definition early, they will spend the rest of the debate conceding every example that involves sustained status while arguing only about initial sorting — which is not enough to win the motion. Define status as the actual pattern of treatment people receive in practice, and hold that definition explicitly against Opp's normative version.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Making it sound like online persona is trivial or that social media does not matter.</strong> Opp must begin every rebuttal and argument from a position of agreement — online persona is genuinely important and influential — before building to the claim that important is not determinative. Any team that sounds dismissive of digital social life loses the intuitive argument with the judge before they have made a single analytical point.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Winning the semantic argument on "determines" while losing the substantive argument about social reality.</strong> A judge who agrees that the word requires a high standard will still need to be convinced that, under Prop's weaker reading, they fail. Winning definitions without winning mechanics is not enough. Opp must win both.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Saying "real life matters" or "conduct matters" without explaining the mechanism.</strong> If Opp's rebuttal to every Prop argument is a vague gesture toward offline relationships and genuine conduct, without explaining how those channels operate and why they outweigh digital ones in the relevant settings, the judge will find the case underdeveloped. Every "conduct matters" claim needs: a specific mechanism, a specific domain where it operates, and an explanation of why it outweighs the online channel in that domain.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Relying too heavily on exceptional cases of high-status individuals with weak online presences.</strong> Senior academics and private community leaders are real but marginal cases. If Opp's entire case rests on the margins of social life rather than its common modes, Prop will correctly point out that exceptions do not disprove dominant general patterns — and they will be right. Ground the case in structural arguments about how status systems work, not just in exceptional examples.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Conceding that online persona dominates first-contact sorting and access allocation without explaining why that does not satisfy "determines."</strong> This is the hardest trap to avoid because the concession is intellectually correct. The necessary follow-up: determination requires governing the destination, not just the departure point. Have that argument prepared in detail before the round, not as an improvised response under pressure.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"False status is still status" (Prop).</strong> This argument attempts to close the conduct-based challenge by claiming that status produced by false persona still counts as real status. But it trivialises the entire concept: if false status counts, there is no meaningful distinction between status and any pattern of temporary attention. Judges will be sceptical, and it will invite Opp to define status normatively in a way that Prop has no clean counter to.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"All status is now online" (Prop).</strong> This is the most aggressive version of Prop's case and the most fragile. Any single counter-example — a status system that operates independently of digital channels — disproves it, and Opp will have several ready. Prop should argue that online persona is the dominant mechanism in modern social settings, not that it has monopolised all status systems. The bold version sounds confident; it is also obviously false.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"Likes and follower counts automatically equal respect" (Prop).</strong> This is one of the weakest things Prop can say. Opp will immediately offer examples of highly followed accounts that are viewed with contempt or mockery — comedy accounts that people follow to laugh at, accounts that are famous for embarrassing themselves — and the argument collapses instantly. Prop should define status as differential treatment and access, not as numerical endorsement.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"Adults in serious institutions ignore online persona" (Opp).</strong> This is demonstrably false as an empirical claim, and any judge who has observed professional hiring practices, public intellectual culture, or academic reputation management in the digital era will know it. Opp should concede that online persona matters even in serious institutions, and focus instead on whether it determines the outcomes within them. The categorical version is indefensible.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Moral status is publicly performed online" (Prop).</strong> This is an interesting philosophical claim but a poor debate argument. It invites a reply about the distinction between authentic moral standing and performed identity that is both accurate and damaging, and it shifts the debate onto philosophical terrain where Opp has the structural advantage. Keep the argument behavioural and sociological, not philosophical.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This debate is not about who deserves status. It is about what people actually use to rank each other. In modern life, that is online persona — the dominant sorting mechanism in the settings where most new social relationships form.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Status Allocation:</strong> Most status judgments happen before people know each other well. In those low-information settings, online persona is the primary sorting tool. First allocation has compounding effects — it determines access to the situations where long-term status is built.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Status Conversion:</strong> Online persona changes how people are treated — who answers, who invites, who defers. Differential treatment is what social status actually is in practice. If online persona governs the pattern of how others respond to you, it governs your status.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">If people do not know you personally, what determines how they rank you besides visible signals — and in the modern world, are those signals not primarily digital?</div>
+    <div class="emrg-quote">Who gets the chance to demonstrate their competence if not the person who is first seen as credible? Doesn't online persona gate access to the situations where conduct can even be evaluated?</div>
+    <div class="emrg-quote">If you say "conduct stabilises status," what happened to all the status effects that were distributed before conduct had time to correct the initial online-persona-based ranking?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"Opposition proved that deep truth exists and conduct matters over time. They did not prove that online persona is not the dominant practical mechanism through which social ranking actually happens in modern life. They proved complexity. The motion requires only dominance."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "This debate is not about who deserves status. It is about what modern society uses to rank people. In modern life, that mechanism is the online persona."</div>
+    <div class="emrg-quote">Closing: "They described the person in full. We described the person as society actually ranks them. The motion is about the second. Vote Proposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not say online persona is the "only" factor. Do not conflate fame with status. Do not make the case exclusively about influencers and young people. Do not let Opp define status as "deserved standing" without challenging that definition explicitly.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>Online persona matters enormously. That is not the motion. The motion says it determines social status. A powerful filter is still not a determinant. First-contact ranking is not final standing. Important is not the same as decisive.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Plural Status Systems:</strong> Status is not one thing. Professional respect, friendship trust, family standing, specialist authority — all run on different logics, none of which are primarily digital. One online layer cannot simultaneously determine all of them. The motion's generality fails.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Validation Through Conduct:</strong> A profile can start belief; only conduct stabilises it. The Holmes case: a perfect persona, an impeccable public presence, and when conduct contradicted it, the status collapsed immediately. That collapse proves conduct was always the underlying determinant — the persona was the scaffolding, not the foundation.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">When you say "determines," do you mean determines — or merely influences very strongly? Because if the latter, the motion becomes almost impossible to oppose.</div>
+    <div class="emrg-quote">Can high-status people exist with weak or absent online personas? Because if yes — and it demonstrably is in multiple domains — online persona cannot be the general determinant the motion claims.</div>
+    <div class="emrg-quote">If Elizabeth Holmes's impeccable persona collapsed the moment conduct contradicted it, doesn't that prove conduct was always the determinant — not the persona that masked it?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We are not saying online persona is trivial. We are saying that proving online persona is important and influential does not prove it determines social status. Those are structurally different claims. Prop proved the first. The motion requires the second."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "The clever Proposition case is that online persona matters. We agree. That is not the motion. The motion says it determines social status. And important is not the same as determinative."</div>
+    <div class="emrg-quote">Closing: "They won the loudest part of modern status. We won the full structure of it. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound dismissive of social media. Do not say "real life matters" without a mechanism. Do not rely only on exceptional high-status people with no online presence. Do not concede that online persona dominates first-contact sorting without immediately explaining why that does not satisfy "determines."</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
