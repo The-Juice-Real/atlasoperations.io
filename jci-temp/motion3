@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Mongolia Foreign Banks</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Mongolia should allow foreign banks to operate in the country</span>
+  <span class="hdr-badge">Full Brief</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about globalization as a philosophy. Almost everyone will accept that foreign banks can bring some benefits. The real fight is whether Mongolia should use regulated foreign-bank entry to fix a concentrated, underperforming banking system — or whether the state should hold the door shut because banking is strategic infrastructure and crisis control matters more than peacetime gains.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>licensed, regulated, phased foreign-bank entry</strong> makes Mongolia's banking system more contestable, more capable, and harder for incumbents to coast in — overall better than the status quo.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>managed contestability</strong> produces real system improvement — not universal day-one gains for every borrower, but a meaningful upgrade to the overall system compared to concentrated incumbency with no competitive pressure.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>sovereignty</strong> means choosing the conditions of entry — not avoiding entry altogether. Mongolia's existing Banking Law already contemplates foreign-bank structures.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That even under regulation, the <strong>first-order gains are too narrow</strong> — concentrated at the top end of the market — and the systemic and sequencing risks are serious enough that Mongolia should not allow entry now.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That <strong>crisis governability</strong> matters more than peacetime competition: practical control in stress is not guaranteed by formal legal authority when the parent institution is in another jurisdiction.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That the correct alternative is <strong>fix-then-open</strong>, with a specific and nameable readiness standard — not permanent exclusion — and that domestic reform tools have not yet been exhausted.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight</div>
+  <p>When the motion says "allow foreign banks to operate," it does not specify terms. <strong>Proposition's strongest model:</strong> licensed, prudentially regulated, phased entry under Bank of Mongolia supervision. This is not deregulation. This is a controlled, rule-governed entry process using a legal framework Mongolia already has. <strong>Opposition's temptation:</strong> to treat the motion as if it means uncontrolled, open-door foreign bank presence — the kind of chaotic entry that caused problems in the 1990s.</p>
+  <p>If Opposition successfully implants the chaotic-entry image in the judge's mind, they win arguments they have not actually earned. <strong>Proposition must define the model in the first thirty seconds.</strong> Force Opposition to argue against controlled entry, not against a phantom of financial chaos. If Opposition cannot name what is specifically wrong with licensed, supervised entry and instead argues in abstract terms about sovereignty and crisis risk, they are debating their own imagination.</p>
+</div>
+</div></div>
+
+<!-- STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route before the round starts, and your highest-reward route for when things are going well. Pick a lane and commit — switching lanes mid-round is how teams lose.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Contestability against concentration. Anchor every argument in market structure.</strong> Mongolia's top four banks control 89% of assets. That is not a neutral baseline — it is a structural failure that imposes real costs on every borrower in the country. Foreign bank entry, even modest in scale, creates a credible competitive threat that forces incumbents to improve pricing, service, and products. This route is hardest to lose because the concentration facts are verified and the mechanism is straightforward.</div>
+    <div class="route-why">The vulnerability is that Opposition will argue competition at the top doesn't help ordinary borrowers. Defend by conceding that gains may start at the upper end, then insisting the burden is overall system improvement — not equal first-round benefit for every borrower. That concession-then-hold move wins credibility without surrendering the argument.</div>
+    <div class="eg"><div class="eg-label">📌 Anchor Facts</div><div class="eg-text">Top 4 banks = 89% of assets (World Bank Financial Sector Assessment, verified). Mongolia's Banking Law already provides a legal pathway for foreign-bank structures (legalinfo.mn, verified). Banking sector = over 90% of all financial sector assets (Bank of Mongolia Annual Report, verified).</div></div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Regulated entry as a better reform mechanism than indefinite protected waiting.</strong> Sheltered markets are where reform is easiest to postpone. Incumbent banks with no competitive pressure have no commercial reason to accept stricter governance or more demanding supervision — only regulatory reasons, which they can lobby away. Foreign bank entry creates external competitive pressure that is harder to neutralize through political influence.</div>
+    <div class="route-why">The risk is that Opposition will challenge you to prove entry reliably produces reform. Counter it with the institutional logic: incumbents who face the prospect of losing their most profitable clients have a commercial incentive to improve that regulatory pressure alone cannot produce. Mexico post-1994 is your supporting example.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Disciplined, moderate Proposition with honest concessions.</strong> "We are not claiming foreign banks fix everything. We are not claiming instant gains for every borrower. We are claiming that a banking system with regulated foreign entry is better overall than a banking system with protected concentration and no competitive pressure." Judges reward teams that demonstrate complexity awareness.</div>
+    <div class="route-why">This posture makes Opposition's attacks harder to land. Every time Opp says "but what about X?" you have already acknowledged the concern and explained why it doesn't defeat the overall argument. Even in a close loss, this route generates strong speaker points.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>"Opposition has no endpoint and no alternative mechanism."</strong> If the round goes badly, fall back to this: Opp said "fix it first" but never named what fixed looks like, who assesses readiness, or what mechanism produces domestic reform in a protected market. Their position amounts to an indefinite veto. The judge should ask: what is the Opposition's concrete alternative path to a better-performing Mongolian banking sector?</div>
+  </div>
+</div>
+
+<div id="so" class="strat-panel">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Effective is not the same as most appropriate. Win on burden discipline.</strong> State clearly and early that even under regulation, the practical first-order gains are concentrated at the top of the market while systemic risk is distributed broadly. Repeat this distributional asymmetry calmly every time Proposition cites another piece of evidence about the benefits of competition.</div>
+    <div class="route-why">Anchor this route in concrete examples: the 2008 Eastern Europe/Vienna Initiative story for crisis governability, and the Sub-Saharan Africa evidence on foreign-bank concentration in premium segments. The risk is sounding like you are defending incumbent banks. Counter immediately by acknowledging concentration is a real problem and naming the domestic reform path you actually support.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Punish Proposition for every quiet substitution they make.</strong> Every time Prop narrows from "allow foreign banks to operate" to "licensed, phased, regulated entry" — call it out. Every time they acknowledge gains start at the premium end — lock that concession in. Track the distance between the motion as written and the narrower claim Prop is actually defending, and make the judge see that gap.</div>
+    <div class="route-why">This route has the highest potential upside because it can win on a structural argument without requiring Opp to beat Prop on every substantive point. Pair it with a concrete alternative framework so it doesn't look like you are just evading the substance.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Pro-reform, anti-overclaim, anti-wrong-sequence.</strong> Make clear from the first speech that Opp supports banking reform, supports competition, and does not want incumbent banks to be permanently protected. The frame is: "A reform-oriented answer requires getting the sequence right. Foreign bank entry before the supervisory foundations are adequate is the wrong sequence — not the wrong destination."</div>
+    <div class="route-why">This wins credibility with judges who are skeptical of debate teams that sound like they are arguing for maintaining a status quo everyone agrees is bad. Keeps the argument where it belongs: on sequence and public interest, not on anti-foreign sentiment.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Concede semaglutide's — sorry, concede the competition gains, win on the standard.</strong> If Prop lands strong contestability arguments, do not fight those. Concede the gains exist at the premium end. Then sharpen the distributional argument: strong average gains for a narrow segment combined with broadly socialized risk is not a public-interest case. Conceding strength increases your credibility and sharpens the distinction.</div>
+  </div>
+</div>
+</div></div>
+
+<!-- PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different mechanism by which regulated foreign bank entry improves Mongolia's banking system. Together they show the system is better competitive, better capable, and more likely to actually reform — compared to the alternative of continued protected concentration. Every argument should connect back to that controlling frame.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Contestability Against Concentration</span></div>
+  <p class="arg-body">Mongolia's banking sector is not a functioning competitive market. The top four banks control approximately 89 percent of total banking assets, which means customers — whether individuals, small businesses, or larger firms — have virtually no credible alternatives when a bank offers poor loan terms, slow service, or inadequate products. Incumbents in concentrated markets face almost no penalty for underperformance, because customers have nowhere else to go. They do not need to compete for business. They simply need to exist.</p>
+  <p class="arg-body">Foreign bank entry, even at modest initial scale, changes this calculus. When a licensed foreign bank begins operating in Mongolia, it offers the profitable customers and firms that domestic banks care most about a credible alternative. The threat of losing those clients — not the actual departure, but the credible possibility of it — is what forces incumbents to respond. They must improve pricing, service quality, loan turnaround times, and product offerings to retain business they previously held by default. This is the mechanism of contestability: the market becomes better not primarily because foreign banks serve everyone, but because their presence forces domestic banks to behave as if they had to compete.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">Poland's banking sector opening during EU accession in the late 1990s and early 2000s produced measurable improvements in bank efficiency, product breadth, and technology adoption among domestic players. Poland's regulatory environment for the opening was supervised and phased — not a chaotic liberalization. The Polish banking sector today is among the more developed in Central and Eastern Europe, and much of that trajectory is connected to the competitive dynamics that foreign entry introduced. The key parallel for Mongolia: Poland's opening happened within a clear regulatory framework, not as deregulation.</div></div>
+  <div class="quote qp">💬 Say this: "Managed contestability beats protected concentration. The choice is not between a perfectly functioning domestic system and a risky foreign one — it is between a concentrated system with no competitive pressure and a regulated system where incumbents must actually compete."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Foreign bank entry gives profitable customers credible alternatives for the first time, creating competitive pressure on the incumbent banks that currently dominate 89% of the market</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means incumbents must improve pricing, service quality, and products to retain their most commercially important relationships</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the overall quality and responsiveness of Mongolia's banking sector rises — not because foreign banks serve everyone, but because the market structure changes</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion is met</strong> — because allowing foreign banks to operate is precisely the mechanism that creates this improvement. Without entry, the mechanism does not exist. The motion asks whether Mongolia should allow it; the answer is yes because system improvement follows.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Competition at the Top Doesn't Help Ordinary Borrowers"</div>
+    <div class="weight-text">Opposition will argue that competition in the premium segment does not automatically translate to benefits for SMEs, rural borrowers, or lower-income households. That observation is correct in the near term — and Prop should concede it honestly. The weight argument is that the burden for the motion is overall system improvement, not equal first-round distribution to every borrower. A banking sector where incumbents face genuine competition on their most profitable relationships — where they have a commercial incentive to improve — is structurally better than a banking sector where they face none. That structural improvement is real even if it begins at the upper end.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"Mongolia is not Poland. Doesn't institutional maturity, supervisory capacity, and market size matter for whether this mechanism actually works?"</div>
+    <div class="judgeobj-a">Yes, they do — and none of those differences eliminates the mechanism. They affect the pace and scale of the competitive effect, but concentrated markets with no foreign entry remain concentrated markets with no competitive pressure regardless of country size. The implementation in Mongolia needs to be carefully phased, which is why Prop's model is regulated, supervised, phased entry — not instant full liberalization. The Poland example shows the direction; Mongolia's implementation would be appropriately calibrated to its institutional context.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Foreign banks in Sub-Saharan Africa concentrated in urban, corporate, and export-oriented segments — delivering benefits to those already well-served while withdrawing from marginal segments. This is the pattern Mongolia should expect.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">That evidence identifies an unequal distribution of benefits, not an absence of benefits. The motion does not require equal distribution — it requires overall system improvement. A banking sector where premium segments are more competitive still produces real economic value. And the African examples often involved much weaker regulatory environments than Mongolia's existing Banking Law provides.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Product Depth and Capability Upgrade</span></div>
+  <p class="arg-body">Competition is not the only benefit of foreign bank entry. The second major benefit is capability. Foreign banks operating across multiple countries bring specialized expertise that Mongolia's banking sector currently handles poorly or does not handle at all: trade finance for import and export transactions, structured credit, sophisticated risk assessment, treasury management for larger firms, and project finance for capital-intensive investments. These are not abstract luxuries. For a commodity-exporting country like Mongolia — whose economy depends on coal, copper, and cashmere sold in international markets — access to competent trade finance and project lending is a real economic constraint, not a marginal inconvenience.</p>
+  <p class="arg-body">When foreign banks bring these capabilities into Mongolia's market, two things happen. First, Mongolian firms that previously could not access these services locally — and therefore either went without or paid to access them through overseas banking relationships — can now access them domestically. Second, domestic banks that observe foreign competitors successfully offering these services face pressure to develop similar capabilities over time. The capability upgrade therefore spreads beyond the foreign banks themselves, raising the ceiling of what the overall ecosystem can do.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">Singapore's deliberate opening to major international banks from the 1970s onward — Citibank, HSBC, Deutsche Bank, and others — accelerated the development of sophisticated financial products and international expertise in its market. Singapore became the financial hub of Southeast Asia not despite foreign bank presence but in significant part because of it. Mongolia's ambitions are very different from Singapore's, but the underlying mechanism — foreign expertise raising the capability ceiling of a banking system — operates at any scale. Even a single well-capitalized foreign bank with strong trade finance operations changes what is available in the market.</div></div>
+  <div class="quote qp">💬 Say this: "We are not selling magic. We are selling a more capable banking system. Mongolia's commodity export economy needs trade finance and project lending that the current concentrated domestic sector cannot adequately provide."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Foreign banks bring trade finance, structured credit, and sophisticated underwriting capabilities that are currently unavailable or poorly developed in Mongolia's banking sector</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means Mongolian firms — particularly those engaged in commodity export and infrastructure investment — can access financial products that better match their actual needs</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means Mongolia's banking system can better support the country's real economic activity, deepening what the ecosystem as a whole can do</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion is met</strong> — allowing foreign banks to operate is the mechanism through which these capabilities enter the system. Excluding foreign banks forecloses the capability upgrade entirely, and the economy bears the cost of that gap indefinitely.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Elite-First Gains" Response</div>
+    <div class="weight-text">Opposition's strongest counter is that capability improvements benefit only the already-bankable top end — large firms, trade-oriented businesses, financially sophisticated clients. Prop concedes the sequencing: yes, gains likely start at the upper end. The weight argument is that a country unable to properly finance its export sector, attract project finance for infrastructure, or offer competitive treasury services to its larger firms is economically constrained in ways that affect the whole economy. Better export financing means more export revenue. Better project finance means more infrastructure investment. Those effects do not stay contained at the top of the market.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"Mongolia's real banking problem is serving small businesses and rural borrowers — problems foreign banks won't touch. Isn't the capability argument solving the wrong problem?"</div>
+    <div class="judgeobj-a">Mongolia's banking sector has multiple failures, and foreign banks directly address some of them while creating conditions — competitive pressure, capability raising — that help with others indirectly. SME finance and rural inclusion are real and serious problems, documented by the World Bank's 2024 report. Prop does not claim foreign banks will fix those directly. The argument is that the banking system has more than one failure, and addressing some of them is better than addressing none. The SME and rural finance problems require targeted domestic policy reform — but that is no reason to also leave the trade finance and competition problems unaddressed.</div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Regulated Entry Beats Indefinite Protected Waiting</span></div>
+  <p class="arg-body">Opposition's implicit alternative is that Mongolia should first fix its domestic banking sector — improve supervision, strengthen governance, resolve structural distortions — and only then consider allowing foreign bank entry. The problem with this position is not that it is wrong about what needs fixing. Mongolia's supervisory capacity, corporate governance standards, and crisis management tools do need strengthening. The problem is that sheltered markets are precisely the environments in which reform is most easily postponed.</p>
+  <p class="arg-body">Incumbent banks in a protected market have strong incentives to resist reform that would expose them to real accountability — stricter governance requirements, stronger supervisory oversight, cleaner ownership structures. They can capture the political process, influence regulatory decisions, and delay change indefinitely. History is full of "fix it first" positions that never produced a fixed system because the protection of the market removed the pressure that would have forced the fixing. Foreign bank entry creates external pressure that is harder to neutralize through political influence. An incumbent that knows a foreign competitor will take its most profitable clients if it does not improve has a real commercial incentive to improve — not a regulatory incentive that can be lobbied away.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">Mexico's banking sector before the 1994 peso crisis was domestically concentrated and poorly supervised — a protected system that had been reprivatized but lacked effective regulatory constraint. The crisis exposed severe weaknesses that had accumulated behind incumbent protection. The subsequent opening to foreign bank participation — including BBVA, Citigroup, and HSBC — introduced both capital and competitive pressure that accelerated the development of Mexico's regulatory framework. While the transition was difficult, the post-opening period produced a more stable and better-supervised banking sector than the pre-crisis protected period had managed to build. Mongolia's pre-entry situation has structural similarities: concentrated incumbency, developing supervision, and reform that has been easier to delay than to implement.</div></div>
+  <div class="quote qp">💬 Say this: "Sovereignty is choosing the rules of entry — not avoiding entry. Opposition's 'not now' has never become a 'here is when.' Protected markets do not reform themselves. The pressure has to come from somewhere."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Sheltered markets generate a political economy in which domestic banking reform is easiest to postpone — incumbents have every incentive to resist the governance and supervisory changes that would constrain them</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means "fix it first" positions, without a specific endpoint and enforcement mechanism, functionally become indefinite delay</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means regulated foreign bank entry — which creates commercial competitive pressure that incumbents cannot lobby away — is a more reliable path to a better banking sector than waiting for protected domestic reform</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion is met</strong> — not merely because entry brings direct benefits, but because the alternative of continued protection is not a neutral holding position. It is an environment that actively resists the reform the sector needs.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Sequencing" Response</div>
+    <div class="weight-text">Opposition's strongest counter is that adding cross-border supervisory complexity before Mongolia's regulatory foundations are adequate is poor sequencing. This argument requires Opposition to name a specific, verifiable readiness standard and explain credibly why Mongolia will reach it without the pressure that foreign entry creates. If Opposition cannot name that threshold — and in a debate setting they typically cannot with specificity — then "fix it first" is not a policy position. It is an indefinite veto. The judge should put this question directly to Opp: ready when? According to whom? Enforced by what mechanism?</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"But doesn't Mexico's example also show that opening before supervision is adequate can cause serious crises? Isn't that exactly what Opposition is warning about?"</div>
+    <div class="judgeobj-a">The Mexico 1994 crisis happened largely in the domestic banking sector — poorly supervised domestic banks with weak governance, not foreign bank entry. The post-crisis opening to foreign participation was part of the recovery, not the cause of the problem. The lesson from Mexico is: concentrated, poorly supervised domestic banking is itself a crisis risk. The question is whether foreign bank entry under regulation reduces or increases that risk compared to continued protected concentration. The evidence from Mexico points toward foreign entry under regulation being part of the solution, not the problem.</div>
+  </div>
+</div>
+</div></div>
+
+<!-- OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula is consistent across all three arguments: acknowledge the real costs of concentration early, then show why the specific mechanism of foreign bank entry creates risks and distributional problems that outweigh the gains at this stage. Conceding that concentration is a problem is not a weakness — it makes every subsequent argument more credible.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Banking Is Strategic Infrastructure — Crisis Control Matters More Than Peacetime Gains</span></div>
+  <p class="arg-body">Banking is not an ordinary service sector. It is strategic infrastructure in the same way that water, energy, and communications networks are strategic infrastructure. When banking fails, it does not affect only the direct participants in banking transactions — it cascades through every part of the economy that depends on credit, payment systems, and financial intermediation. That means almost everyone. Because of this, the most important test for any banking policy is not how it performs when things are going well. The most important test is whether the government can control the situation when things go badly.</p>
+  <p class="arg-body">Foreign banks operating in Mongolia introduce a specific and serious complication to crisis governance. When a foreign bank branch or subsidiary faces stress, the decisions that matter most — whether to inject liquidity, whether to reduce credit exposure, whether to retrench operations — are made not in Ulaanbaatar but in the parent institution's headquarters in another country. That parent institution's first obligation is to its own shareholders and its home-country regulator, not to the Bank of Mongolia. Legal authority on paper does not change operational priorities in practice. Mongolia can write whatever rules it likes about what a foreign bank must do in a crisis — but enforcing those rules against an institution whose parent is in another jurisdiction, in the time frame that banking crises demand, is genuinely difficult.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">During the 2008 global financial crisis, foreign bank subsidiaries and branches operating in Eastern European countries — particularly the Baltic states and Hungary — began withdrawing credit lines and reducing local lending as their parent institutions tried to shore up capital at home. These credit contractions were driven not by local economic conditions but by decisions made in London, New York, and Frankfurt. The home governments of those parent banks had to negotiate emergency coordination frameworks — the Vienna Initiative — to prevent total credit collapse in Eastern European host countries. The host countries that had allowed foreign bank entry had no independent control over those decisions. Mongolia, smaller and without equivalent bilateral regulatory relationships, would face even greater difficulty in such a scenario.</div></div>
+  <div class="quote qo">💬 Say this: "The real test is not peacetime elegance. It is crisis governability. And in a crisis, who controls liquidity, retrenchment, and strategic priorities? Not the Bank of Mongolia. The parent institution."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Foreign bank operations create cross-border dependencies in the most critical decisions — liquidity provision, credit maintenance, operational continuity — at exactly the moment when those decisions matter most</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means Mongolia's government faces reduced practical control over the banking system during stress, precisely when control is most needed for macroeconomic stability</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion introduces a systemic governance cost that formal regulation cannot fully neutralize — because legal authority and operational control in a crisis are different things</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion fails the public-interest test</strong> — because allowing foreign banks to operate now, before Mongolia's crisis management capacity is adequately developed, imposes a systemic governance cost that outweighs the peacetime competitive gains Proposition has described.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Regulation Manages the Risk" Response</div>
+    <div class="weight-text">Proposition will argue that regulation keeps the risk manageable — that the Bank of Mongolia has legal authority to set conditions on foreign bank entry and enforce them. The weight argument is that legal authority and practical operational control are genuinely different things in a banking crisis. Mongolia can legally require a foreign bank to maintain liquidity ratios — but if the parent institution is itself in crisis and directing its Mongolia branch to repatriate capital, enforcing that requirement requires cross-border legal action in a time frame that banking crises do not allow. The Eastern Europe/Vienna Initiative example is not theoretical. It happened to host countries with more developed bilateral regulatory relationships than Mongolia currently has with any foreign bank's likely home country.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"Doesn't the crisis argument prove too much? By this logic, no country should ever allow foreign banks — they all face the same cross-border coordination challenge."</div>
+    <div class="judgeobj-a">The challenge is much more acute for a small, commodity-dependent economy like Mongolia than for countries with larger, more diversified economies and more developed bilateral regulatory relationships. The asymmetry is real: the gains from foreign bank entry in Mongolia's market are smaller in absolute terms — the market is small — while the systemic governance costs are proportionally large for an economy where the banking sector accounts for over 90% of all financial sector assets. Countries with large, diversified economies and deep regulatory partnerships can manage the cross-border coordination challenge better. Mongolia is not yet in that position.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">The Vienna Initiative example is exceptional — foreign bank entry doesn't normally produce crises. Most countries that have allowed foreign banks have not experienced Vienna-style emergency coordination situations.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Correct — foreign bank entry does not cause crises. But when crises happen — for any reason, including commodity price shocks that Mongolia is especially vulnerable to — the presence of foreign banks whose crisis behavior is governed by external parent priorities makes the crisis harder to manage. Mongolia needs to ask not whether crisis is likely, but whether it has the tools to manage it when it comes.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Gains Are Concentrated at the Top — The Risks Are Borne by Everyone</span></div>
+  <p class="arg-body">Proposition's case rests on benefits that are real but narrow. Foreign banks entering Mongolia will most rationally target the most profitable and least risky segment of the market: large, creditworthy corporations; firms with international trade exposure; businesses with strong collateral and audited financial statements. These are the clients that generate the most revenue for the least risk. This is not a criticism of foreign banks — it is rational commercial behavior. But it means that the clearest, most immediate gains from foreign bank entry flow to a segment of the Mongolian economy that is already comparatively well served.</p>
+  <p class="arg-body">Meanwhile, the risks of foreign bank entry are distributed much more broadly. Systemic risk in banking does not respect the boundary between clients who benefit and clients who do not. If a foreign bank's operations contribute to a credit boom and subsequent contraction, or if a crisis at a parent institution triggers a withdrawal of credit lines, the economic consequences — reduced credit availability, tighter lending conditions, economic contraction — are felt across the whole economy, including by SMEs, rural borrowers, and lower-income households who received no direct benefit from the foreign bank's presence.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">Research by the IMF and World Bank on foreign bank entry in Sub-Saharan African economies following liberalization in the 1990s and 2000s found consistently that foreign banks concentrated activity in urban areas, export-oriented sectors, and larger formally registered firms. They brought real benefits to those segments — better trade finance, improved products, lower pricing for premium clients. But they also accelerated the withdrawal of credit from marginal segments of the market, because their entry raised the opportunity cost for domestic banks to serve high-cost, lower-return clients. The gains were concentrated; the adjustment costs were dispersed.</div></div>
+  <div class="quote qo">💬 Say this: "Better premium banking is not the same as better public-interest banking. Proposition has shown that the top of the market improves. They have not shown that the system improves in the ways that matter most for the majority of Mongolians."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Foreign banks in Mongolia would most rationally produce their clearest early gains among large, creditworthy, trade-linked firms — the top segment of the market, already comparatively well served</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the population of direct beneficiaries is narrow while systemic risk is distributed across the whole economy, including the most vulnerable segments</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion asks Mongolia to socialize risk in exchange for gains that accrue primarily to those who least need the help</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the public-interest threshold is not met</strong> — a policy that concentrates gains at the top and distributes risk broadly does not constitute the kind of system improvement that serves the country's overall interest, even if aggregate outcomes technically improve.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Overall System Improvement" Response</div>
+    <div class="weight-text">Proposition will argue that the burden is overall system improvement, not equal distribution, and that upper-end improvements still constitute system improvement. The weight argument is that burden arguments do not eliminate the relevance of distributional analysis. A judge applying genuine public-interest analysis must weigh not just whether aggregate outcomes improve, but whether the distribution of those outcomes is fair enough to justify the policy. When benefits are concentrated in an already-privileged segment while risks are socialized across everyone — including the most vulnerable — that distributional failure is itself a reason to reject the motion, not a secondary consideration.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"But the current system also fails SMEs and rural borrowers. Doesn't the status quo already impose exactly the distributional failure you are complaining about?"</div>
+    <div class="judgeobj-a">Yes — and Opp must acknowledge this directly rather than pretending the status quo is fine. The current system does fail SMEs and rural borrowers. Mongolia's banking sector's treatment of SMEs is documented as constrained, collateral-heavy, and insufficiently patient. Opp's argument is not that the current system is good. It is that foreign bank entry is not the mechanism that will fix these specific problems — and that the mechanism most likely to address SME and rural finance is targeted domestic policy reform, not a competitive opening that will rationally direct foreign bank attention elsewhere. The status quo has costs. The question is whether those costs justify this specific reform mechanism at this specific time.</div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Fix the Referee Before Inviting Stronger Teams</span></div>
+  <p class="arg-body">Opposition is not arguing that Mongolia should never allow foreign banks. The argument is about sequence. Mongolia's banking sector has known, documented weaknesses in supervision, governance, and structural integrity. The Bank of Mongolia's supervisory capacity is still developing. Corporate governance standards in the Mongolian banking sector have been identified as a concern by international assessors. Ownership structures in some domestic banks have involved conflicts of interest that proper governance frameworks should resolve.</p>
+  <p class="arg-body">Adding foreign bank operations to this environment — before those foundational weaknesses are adequately addressed — means asking a developing supervisory apparatus to simultaneously manage a harder oversight task. Cross-border bank supervision is more complex than domestic bank supervision. It requires coordination with foreign regulators, understanding of foreign institutional structures, and the ability to assess risks that originate outside Mongolia's legal and economic environment. If Mongolia's supervisors cannot yet reliably manage domestic banks well, adding foreign banks does not give them better tools — it gives them harder problems on a weaker foundation.</p>
+  <div class="eg"><div class="eg-label">📌 Real-World Example</div><div class="eg-text">The Baltic states — Estonia, Latvia, and Lithuania — provide a constructive counter-model. They opened their banking sectors to foreign participation, predominantly Scandinavian banks, but did so after investing substantially in supervisory capacity and governance frameworks during the EU accession process. The result was a banking sector that, while heavily foreign-owned, was also well-supervised and more resilient than comparable post-Soviet banking sectors that opened without that foundation. The lesson is not "never open" — it is "the sequence of opening relative to supervisory readiness matters considerably for outcomes."</div></div>
+  <div class="quote qo">💬 Say this: "Fix the referee before inviting stronger teams. We support reform. We are asking for the correct sequence of reform — not permanent exclusion."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Mongolia's supervisory framework currently has identified weaknesses in capacity, governance oversight, and crisis management tools — weaknesses that international assessors have documented</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means adding cross-border bank supervision before those weaknesses are addressed creates a harder supervisory task in an already-strained environment</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the risk of inadequate oversight is higher than it would be if entry happened after the supervisory foundation was strengthened — creating a sequencing problem even if the direction of reform is correct</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion's timing is wrong</strong> — not the destination. Mongolia should allow foreign banks to operate, but not before the supervisory infrastructure is credibly adequate to manage them. Allowing them now, before that foundation is ready, is imprudent rather than merely cautious.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Protected Markets Don't Reform" Response</div>
+    <div class="weight-text">Proposition's strongest counter is that protected markets generate the political economy in which domestic reform is most easily postponed, so "fix it first" is functionally indefinite delay. Opp's response has two parts. First: there is a difference between competitive pressure and cross-border operational complexity. Domestic reform pressure can be created through stronger governance requirements, more demanding supervisory standards, and international technical assistance — without simultaneously adding the supervisory burden of overseeing foreign bank operations. Second: name the readiness standard. Opp should commit to a specific, verifiable endpoint — adequate supervisory capacity confirmed by IMF assessment, resolution framework in place, governance reforms implemented. These are specific, not indefinite. "Fix it first" becomes credible when "it" is named.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection</div>
+    <div class="judgeobj-q">"Doesn't naming a readiness standard still amount to delay? And if domestic reform requires competitive pressure to happen, aren't you just describing a chicken-and-egg problem that Prop's entry mechanism solves?"</div>
+    <div class="judgeobj-a">The delay is acknowledged and justified by asymmetric downside. If the delay costs Mongolia some competitive pressure for a few years while supervision is strengthened, the economy continues functioning as it does today — with the same costs as the current concentrated system. If premature opening leads to a crisis that the Bank of Mongolia cannot manage — or to cross-border complications during a commodity price shock — the consequences are macroeconomic destabilization, not mild inconvenience. Asymmetric downside justifies cautious sequencing. On the chicken-and-egg point: competitive pressure for domestic reform can come from sources other than foreign bank entry — governance requirements, ownership transparency mandates, IMF conditionality, and supervisory upgrade programs are all tools that create reform pressure without the cross-border supervisory complexity.</div>
+  </div>
+</div>
+</div></div>
+
+<!-- CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. A judge deciding this debate will consciously or unconsciously resolve these clashes and award the ballot to the side that won more of them. Know which clashes your side has the easier burden on — and which ones you are likely to lose so you can minimize their importance.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 1 — Contestability vs. Crisis Governability</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the competitive improvements produced by regulated foreign bank entry are real, meaningful, and durable enough to justify accepting the additional complexity of cross-border banking supervision. Prop does not need to prove that crisis risk disappears. They need to prove that the crisis risk under regulated entry is manageable and is outweighed by the structural benefits of competition. Specifically: that the Bank of Mongolia's existing legal framework is credible enough to manage entry safely, and that the alternative of continued concentrated incumbency is itself a crisis risk that Opp has not accounted for.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That practical control over banking behavior during stress — not formal legal authority, but real operational control — is genuinely compromised by foreign bank operations. Opp needs the Eastern Europe/Vienna Initiative story to be concrete, not abstract. The argument must show specifically how a commodity-price shock or parent-institution crisis would play out differently in a Mongolia with foreign banks versus a Mongolia without them — and why that difference is large enough to outweigh the peacetime contestability gains.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">The judge asks two questions in sequence. First: is the contestability gain real? If Prop cannot show a credible mechanism by which foreign bank entry changes incumbent behavior — not just theoretically but in a way that applies to Mongolia's market structure — the gain is speculative. Second: is the crisis risk qualitatively different from the risks that already exist in a concentrated banking system? Concentration itself is a crisis risk — Iceland's entirely domestic banking system collapsed spectacularly in 2008. If Opp treats the current concentrated system as risk-free while treating foreign entry as risky, a judge who knows banking history will penalize that asymmetry. Prop loses this clash if they claim regulation fully resolves the crisis coordination problem. Opp loses it if they treat current concentration as risk-free.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 2 — Elite-First Gains vs. Public-Interest Reform</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the burden is overall system improvement — not equal distribution — and that even if gains start at the upper end, the overall banking system is meaningfully better with foreign bank entry. Prop should also argue that upper-end improvements have economy-wide effects through trade finance, investment, and competitive pressure on incumbents. A banking sector that better serves exporters means more export revenue. Better project finance means more infrastructure. Those effects travel down through the economy.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the concentration of gains at the top — combined with the broad distribution of systemic risk — represents a distributional failure serious enough to outweigh aggregate improvement claims. Opp must show this is not abstract but a predictable, documented pattern based on the Sub-Saharan Africa evidence. Make the judge feel the specific unfairness: the people who benefit first are the largest firms; the people who absorb the risk if something goes wrong are everyone.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">This is the clash where the judge's prior commitments matter most. A judge who thinks about policy in terms of aggregate efficiency will find Prop's argument more compelling. A judge who thinks about policy in terms of fairness and who bears risk will find Opp's argument more compelling. Prop wins this clash by anchoring the judge's frame to overall system improvement as the relevant standard. Opp wins by getting the judge to apply a distributional lens. Prop loses if they try to argue foreign banks will directly reach SMEs and rural borrowers in the near term — they will not, and overclaiming destroys credibility. Opp loses if they fail to acknowledge that the current system is also failing SMEs and rural borrowers — if Opp implies the status quo serves the public interest, a well-informed judge will find that implausible and discount the argument.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Reform Pressure vs. Reform Sequencing</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That domestic reform of Mongolia's banking sector is genuinely more likely to happen with the external competitive pressure of foreign bank entry than without it. This requires a credible account of why incumbent banks would resist reform in a protected market but could not resist reform under competitive pressure — and why other sources of reform pressure (regulatory requirements, IMF conditionality) have proven insufficient without competitive pressure alongside them.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That domestic reform can be achieved through better governance requirements, stronger supervision, and targeted regulatory intervention without adding cross-border operational complexity — AND that Opp has a specific, nameable readiness standard, not just a vague call for preparation. "Fix it first" without naming what "fixed" means is not a policy position. Opp must commit to a specific endpoint.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">The judge weighs this primarily by asking which side has the more credible account of how reform actually happens in concentrated banking markets. This is an empirical question and the evidence is mixed — some sectors reformed without foreign entry, others accelerated reform because of it. The judge must decide which story applies more credibly to Mongolia's specific situation. Prop loses if they cannot explain specifically why Mongolia's domestic political economy would not produce reform without foreign bank entry — the general claim that "protected markets delay reform" needs to be connected to Mongolia's specific incumbent-regulator relationships. Opp loses if they cannot name a specific, credible reform path — "fix it first" without a defined endpoint is an indefinite veto, and the judge will penalize it as such.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 4 — Sovereignty as Rule-Setting vs. Sovereignty as Stress-Time Control</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That sovereignty — Mongolia's right to govern its own economy — is not compromised by regulated foreign bank entry. The argument is that choosing who enters, under what conditions, and subject to what rules is itself an exercise of sovereignty. Mongolia's Banking Law already contemplates foreign-bank structures. Licensed, supervised entry is Mongolia's sovereign decision, not an erosion of sovereign control. Sovereignty includes the right to admit entrants under rules that Mongolia sets.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That formal legal sovereignty is not the same as practical operational control during a crisis. Being able to write rules about what foreign banks must do is different from being able to enforce those rules against an institution whose parent is operating under a different regulatory regime in a different country. The Vienna Initiative example is the concrete proof: host countries had formal legal authority and still could not prevent foreign banks from reducing credit in ways driven by parent institution priorities.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">The judge asks: when practical sovereignty matters most — in a crisis — does Mongolia have the tools to exercise it? If formal regulatory authority is a credible approximation of operational control, Prop wins. If practical operational control requires more than formal authority — requires actual leverage over the institution's decision-making in real time — Opp wins. Prop loses this clash if they treat formal legal authority as equivalent to operational control in a crisis — any judge who understands how banking crises work will know these are different things. Opp loses this clash if they use "sovereignty" as a slogan without explaining the specific mechanism by which formal legal authority breaks down — vague sovereignty appeals are rhetoric, not argument.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Easier Burden</span><span class="clash-title">Clash 5 — Status Quo Cost vs. Reform Risk</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the current concentrated banking system is not a neutral, stable baseline. It imposes real costs on the Mongolian economy: higher pricing on loans, lower service quality, product gaps, and structural fragility from concentration itself. Those costs are ongoing and significant. The status quo is not safe — it is a slow drain on economic performance and a structural vulnerability if incumbent banks fail. Concentration risk is crisis risk too.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the risks associated with premature foreign bank entry are more serious than the costs of the current concentrated system — not that the current system is fine, but that the specific risks of the proposed change outweigh the specific costs of the current situation. Opp cannot win this clash by treating the status quo as acceptable. They must show the change is specifically worse than the status quo, not just that the status quo has problems.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This Clash</div>
+    <div class="judgeobj-q">This is the clash where Prop has the easier burden, and a good Prop team should exploit this. The judge weighs it by asking: has Opp given me a credible reason to prefer the current situation, given that both sides acknowledge it has real problems? If Opp cannot do this — if their position is simply "the risks of change are high" without a compelling account of what makes the status quo acceptable — Prop wins by default. Prop loses this clash if they understate the risks of reform, making their case sound like an advertisement rather than a serious policy argument. Opp loses — as they very frequently do on this clash — if they allow the debate to proceed as though the status quo is cost-free. Concentration is costly. Indefinite delay is costly. Opp must engage with these costs seriously.</div>
+  </div>
+</div>
+</div></div>
+
+<!-- POIs -->
+<div id="pois" class="page"><div class="wrap">
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI exposes a gap in the other side's argument or forces them to say something they would rather not say out loud. Even if declined, the judge hears the question — so a well-chosen POI does work regardless of whether it is accepted. Have your top three ready from memory so you can deliver them calmly and confidently without looking down.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">If this is not permanent delay — if you genuinely support foreign bank entry at some point — can you tell us specifically what readiness looks like and when Mongolia will get there?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">When you argue for protecting Mongolia's banking sector from foreign competition, are you protecting the stability of the financial system — or are you protecting the profitability of the four banks that control 89% of assets?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">If foreign bank entry is licensed, supervised, and phased under Bank of Mongolia control — using Mongolia's existing Banking Law — why are you arguing as if the motion means deregulation?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Why is it impossible for Mongolia to improve its supervisory capacity alongside a carefully phased entry process, rather than requiring one to come before the other?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Given that Mongolia's top four banks control 89% of assets, what competitive mechanism — without foreign bank entry — will produce the pricing improvements and service quality gains that your side has not disputed are needed?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>When Opp says "foreign banks will cherry-pick premium clients":</strong> Some likely will, at least initially. That still changes the parts of the market that incumbent banks care most about. When a premium corporate client threatens to leave for a foreign competitor, Golomt Bank's revenue is at risk. That commercial threat forces incumbents to respond. Contestability does not require foreign banks to serve everyone — it requires that they create a credible threat to the most profitable relationships.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>When Opp says "you can't prove SME gains":</strong> Correct — and we are not trying to. Our burden is overall system improvement, not guaranteed benefits for every market segment on day one. A more competitive and more capable banking system is a better banking system even if some improvements take time to diffuse through the market.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>When Opp says "this surrenders sovereignty":</strong> Sovereignty is the right to choose the conditions of entry — not the obligation to exclude. Mongolia choosing to license a foreign bank under specific capital requirements, supervisory obligations, and behavioral rules is an exercise of sovereignty. The alternative — permanently excluding foreign banks because the government cannot trust its own regulatory framework — is an admission that the framework is not working.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>When Opp uses the 2008 Eastern Europe example:</strong> The Vienna Initiative was needed because host countries had weaker bilateral regulatory relationships with the home countries of their foreign banks. The lesson is about the importance of strong regulatory coordination frameworks — which Mongolia can build as part of a phased entry process. It is not a lesson that foreign bank entry is impossible to manage safely.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>When Opp says "why not just reform domestic banks?":</strong> Because sheltered markets generate precisely the political economy in which domestic banking reform is easiest to postpone. Incumbent banks with no competitive pressure have no commercial penalty for resisting stronger governance requirements. Domestic reform is easier to achieve when incumbents have a commercial reason to want to improve rather than only a regulatory reason to resist getting caught.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Under your model, which segment of the Mongolian economy benefits first — small and medium businesses and ordinary borrowers, or premium corporates and trade-linked firms?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If the gains from foreign bank entry flow primarily to already-bankable top-tier clients, why should the full Mongolian public absorb the systemic risk of cross-border banking complexity?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">What specific problem are you solving with foreign bank entry that stronger domestic regulation — better governance requirements, improved supervisory standards, reformed lending rules — could not solve directly?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">In a genuine financial crisis, who has the final practical priority over a foreign bank's decisions about liquidity and credit in Mongolia — the Bank of Mongolia, or the parent institution's board and home regulator?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Can you point to a comparable economy where foreign bank entry produced measurable improvement in financial inclusion for small borrowers — not just premium clients — within a reasonable time frame?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>When Prop says "when exactly is Mongolia ready?":</strong> When Mongolia has completed an IMF Financial Sector Assessment Program evaluation confirming that supervisory capacity is adequate; when the Banking Law's governance provisions have been implemented and assessed; and when Mongolia has a credible bank resolution framework in place. These are specific. The timeline for achieving them is Mongolia's to determine — but the endpoint is nameable and not indefinite.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>When Prop says "are you protecting incumbents?":</strong> No — and we demonstrate this by explicitly acknowledging that concentration is a real problem requiring real solutions. The distinction is between supporting reform — yes — and supporting this specific mechanism of reform at this specific moment — no. We pair our caution about foreign bank entry with a concrete domestic reform path. That is not incumbent protection; it is correct sequencing.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>When Prop says "concentration requires real competition":</strong> We agree. But not all entry solves concentration well. Elite-focused foreign bank entry may deepen market segmentation rather than address the core concentration problem, because the segment where foreign banks compete may not significantly overlap with the segment where concentration causes most harm to ordinary Mongolians. Contestability in one segment is not contestability across the market.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>When Prop says "regulation can manage foreign banks":</strong> On paper, in peacetime, partly — yes. The limitation is in practice, during stress, in the time frame that banking crises demand. We are not saying regulation is useless. We are saying formal legal authority and practical operational control are different things when a parent institution in another jurisdiction is making the real decisions.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>When Prop says "are you anti-foreign investment?":</strong> No. This is selective caution in a strategic sector during a specific developmental window. Our argument applies specifically to bank operations — not to foreign direct investment generally, not to trade, not to foreign participation in other sectors of Mongolia's economy. Banking's strategic infrastructure status makes it a special case, not a proxy for broader economic openness.</span></li>
+    </ul>
+  </div>
+</div>
+</div></div>
+
+<!-- REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">The best rebuttals name what the other side has just said, explain specifically why it fails, and connect the failure back to your side's controlling thesis. The starred lines are your top three per side — have them ready to deliver from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Risk existing is not risk defeating the motion."</strong> Opposition has proved that cross-border banking involves risks that do not exist in a purely domestic system. That is true. But the motion does not require Prop to prove that regulated foreign bank entry is risk-free. It requires Prop to prove that the overall banking system is better with regulated entry than without it. Every banking policy involves risk. The relevant question is: which risks are more serious — the risks of regulated foreign bank entry, or the risks of continued concentrated incumbency with no competitive pressure? Opposition has not shown that the risks of entry are worse than the risks of the status quo. Until they do, risk existing is not risk defeating the motion.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Cherry-picking concedes the contestability argument."</strong> When Opposition says foreign banks will cherry-pick premium clients, they are conceding that foreign banks will enter the most commercially important segment of the market — the segment that incumbent banks care about most and work hardest to retain. That is exactly where the contestability effect operates. The incumbents do not need to lose those clients — they need to face the credible possibility of losing them. A foreign bank competing for the largest and most profitable corporate clients in Mongolia creates a real commercial threat to the domestic banks whose profitability depends on those clients. Opposition cannot simultaneously argue that foreign banks will cherry-pick premium clients and argue that foreign bank entry will have no competitive effect on incumbents.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition has given no endpoint."</strong> Opposition has argued for sequencing — for Mongolia to fix its domestic banking sector before allowing foreign bank entry. But at no point in this debate has Opposition named a specific, verifiable standard for when Mongolia would be ready, who would assess readiness, or what happens if that assessment concludes readiness has not been reached. Without those specifics, "fix it first" is not a policy position — it is an indefinite veto dressed up as responsible sequencing. Ready when? According to whom? Enforced by what mechanism? If Opposition cannot answer those questions, their position amounts to permanent exclusion.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Strategic infrastructure is an argument for better competition, not protected concentration. Opposition has argued that banking is strategic infrastructure and therefore must be protected from foreign entry. But strategic infrastructure that is poorly run, concentrated among a small number of players, and immune from competitive pressure is not less dangerous because it is domestic — it is more dangerous. If banking is truly strategic, that is a reason to ensure it is competitive, capable, and well-managed — not a reason to leave its current dominant players comfortable in their concentration."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"The comparative burden is system improvement, not equal day-one benefits. Opposition spent significant time arguing that foreign bank entry will not immediately improve things for SMEs and rural borrowers. We acknowledge this. But the motion does not require instant equal benefits. It asks whether Mongolia should allow foreign banks to operate — and the standard for yes is whether doing so makes the overall banking system better. A more competitive, more capable system that serves the upper market better and creates pressure on incumbents to improve is a better system than the current concentrated, underperforming alternative."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Better premium banking is not the same as public-interest banking reform."</strong> Proposition has argued that the overall banking system improves with foreign bank entry. But the specific improvements they have described — more competitive pricing for premium clients, better trade finance, more sophisticated underwriting — are improvements that primarily benefit clients who are already comparatively well served. When Proposition says the system is "better," they mean it is better for a specific segment. Mongolia's most serious banking failures — the constraint on SME finance, the collateral-heavy lending that locks out smaller borrowers, the limited reach into rural areas — are not addressed by foreign banks whose commercial incentives point them toward exactly the opposite segment. Proposition has proved that premium banking improves. They have not proved that Mongolia's banking system improves in the ways that matter most for the majority of Mongolians.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Legal control on paper is not crisis control in practice."</strong> Proposition has argued that regulation preserves sovereignty — that because Mongolia can set the rules for foreign bank entry, it retains control. This conflates legal authority with operational control. Mongolia can legally require that a foreign bank maintain certain liquidity ratios and follow certain operational rules. But if that bank's parent institution, operating under a different regulatory regime in a different country, is directing its Mongolia branch to retrench capital during a crisis, enforcing Mongolia's legal requirements requires cross-border legal action in a time frame that banking crises do not allow. That is not a theoretical concern — it is what happened to Eastern European host countries during the 2008 crisis, before the Vienna Initiative created emergency coordination mechanisms that Mongolia has no equivalent of.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"More entrants do not automatically create broad competition."</strong> Proposition's contestability argument assumes that introducing foreign banks creates competition that benefits the broad market. But contestability works specifically when new entrants threaten incumbents for the clients that drive incumbent behavior. If foreign banks exclusively serve premium corporates and trade-linked firms, domestic incumbent banks may simply partition the market — ceding premium corporate banking to foreign competitors while retaining, unchallenged, their dominant position in the retail, SME, and mid-market segments where the majority of Mongolian banking customers are. The contestability effect is real in the premium segment. It is not automatically real across the market.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Proposition's examples don't transfer. Poland's banking opening happened within the EU accession process — an unusually powerful external governance framework with enormous institutional reform incentives. Singapore's opening happened in an environment of exceptionally strong regulatory capacity. Neither transfers directly to Mongolia's context. The gains Prop is describing are the gains that accrue when entry is well-managed in a strong institutional environment. Mongolia is not yet that environment — which is precisely our sequencing argument."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Domestic reform pressure can come from governance without cross-border risk. Proposition argues that domestic reform is impossible without the external competitive pressure of foreign bank entry — that protected markets never reform themselves. This overstates the case. Domestic reform pressure can be created by strengthening governance requirements, requiring independent boards, mandating transparent ownership structures, and strengthening supervisory standards in ways that impose real accountability on incumbent banks. Countries have successfully reformed concentrated banking sectors without foreign bank entry. Mongolia has not yet exhausted those tools."</span></li>
+    </ul>
+  </div>
+</div>
+</div></div>
+
+<!-- ROLES -->
+<div id="roles" class="page"><div class="wrap">
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that lands better later. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define the model in the first thirty seconds: licensed, prudentially regulated, phased entry under Bank of Mongolia supervision. Not deregulation. Not open borders. Mongolia already has the legal framework for this.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the comparative burden: overall system improvement compared to the current situation — not equal day-one benefits for every Mongolian, not a perfect risk-free system.</div>
+        <div class="role-line"><span class="role-icon">→</span>Frame the round's central question as managed contestability versus protected concentration. Plant the key questions: What is Opp's alternative? When exactly is Mongolia ready? What mechanism produces competition in a concentrated market without foreign entry?</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Running the full substantive arguments with evidence — that is Prop 1's job. Frame, don't fill.</div>
+        <div class="role-line"><span class="role-icon">→</span>Any claim that foreign banks will immediately help SMEs, rural borrowers, or every Mongolian equally.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build all three arguments in full: contestability with the 89% concentration facts and Poland example; capability upgrade with the trade finance angle and Mongolia's commodity economy; regulated entry as a superior reform mechanism with the Mexico example.</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the cherry-picking counter and the crisis risk counter before Opposition makes them — showing the judge that Prop has thought about these objections seriously.</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the actual alternatives and explain their comparative weaknesses so Opp cannot later claim they offered a superior option Prop never addressed.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-running the Captain's definitional work at length. Trust the frame was set and move directly into mechanism and evidence.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Win the clashes directly. Engage with each of Opp's arguments and show specifically why they fail. Primary targets: crisis control (regulated entry keeps governance risk manageable), cherry-picking (why elite-first gains still change the contestability calculus), and sequencing (why "fix it first" has no endpoint).</div>
+        <div class="role-line"><span class="role-icon">→</span>Do burden control: show that Opp's triage-and-sequence model eventually produces Prop's answer as the necessary reform mechanism — meaning Opp's framework does not defeat Prop's case, it confirms it.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing major new constructive arguments. Your job is to win what is already on the table. A judge who sees Prop 2 introducing fresh extensions rather than defending against Opp's attacks will conclude Prop cannot answer those attacks.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Crystallize the ballot story: "Opp proved risk exists. They did not prove exclusion is better. They never told you when Mongolia would be ready. The only side that named a concrete, evidence-backed improvement to Mongolia's banking system is ours."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name Opp's key concessions — they acknowledged concentration is a problem, they acknowledged reform is needed — and explain why those concessions confirm Prop's position.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>New arguments, long technical detail, or fairness complaints. Just the clean ballot story: managed contestability beats protected concentration, and Opp had no endpoint.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish Opp's posture immediately: you support pharmaceutical — sorry, you support banking reform, you acknowledge concentration is a real problem, you are not defending incumbent banks, and you are not opposing foreign investment in general. This inoculates against Prop's most damaging framing.</div>
+        <div class="role-line"><span class="role-icon">→</span>Contest the burden: push back on the "overall system improvement" standard and argue that for a motion about public interest, distributional analysis matters — who gains first and who absorbs risk are not secondary questions.</div>
+        <div class="role-line"><span class="role-icon">→</span>Note every substitution Prop makes from the motion's original words and explain why each is a concession that the unrestricted version of the motion fails.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding like a defender of the status quo. Every speech must acknowledge concentration's costs before making the sequencing argument.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build all three Opposition arguments in full. For crisis control: use the Vienna Initiative example concretely — what specifically happened, what Mongolia lacks that Eastern Europe had. For distributional asymmetry: use the Sub-Saharan Africa evidence and make the judge feel the specific unfairness. For sequencing: cite real readiness standards, not vague preparation talk.</div>
+        <div class="role-line"><span class="role-icon">→</span>Concede semaglutide's — concede Prop's evidence on the contestability mechanism in every argument. Conceding that the mechanism is real and then showing why it doesn't win the motion is far more persuasive than disputing the mechanism.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding anti-reform or anti-medication — anti-banking reform, that is. Pair every caution argument with a named alternative reform path.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Prop's narrowing. Build a list of every group and scenario Prop has implicitly excluded — contraindicated patients — sorry, every segment Prop has acknowledged won't directly benefit near-term — and make the judge see the gap between "the motion as given" and "the narrower claim Prop is actually defending."</div>
+        <div class="role-line"><span class="role-icon">→</span>Challenge the automatic link between foreign bank entry and broad public-interest competition. Push the distributional argument: entry produces competition in one tier; that is not the same as competition across the market.</div>
+        <div class="role-dont-label">🚫 Avoid</span>
+        <div class="role-line"><span class="role-icon">→</span>Simply repeating the captain's burden argument without adding clash content. Use Prop's own words and concessions against them — show the judge the movement from the opening position to the defended position.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the judge feel intellectually disciplined for voting Opp: "This ballot is about sequencing and public interest, not about opposing foreign banks. Prop proved that regulated entry can work in theory. They did not prove it is wise for the Mongolian public now."</div>
+        <div class="role-line"><span class="role-icon">→</span>Name the specific narrowing moves Prop made — from the unrestricted motion to the carefully qualified model — and explain why each narrowing is an implicit acknowledgment that the original claim was overbroad.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Long detours into regulatory technicalities or lists of side effects. Just the clean ballot story: gains are narrow, risks are broad, and the sequence of reform matters for who actually benefits.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<!-- CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears your captain say. The closing bullets are the last things the judge hears before they deliberate. Both should be memorized and delivered without notes.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is about regulated entry, not reckless opening. The question before us is whether Mongolia should use its existing legal authority to license foreign banks under Mongolian supervision — not whether it should throw open its doors without rules. We say yes: managed contestability produces a better banking system than protected concentration. Mongolia's top four banks control 89% of assets and face no meaningful competitive pressure. That is not a neutral baseline. It is a structural failure. Regulated foreign bank entry is the mechanism that changes it."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "The question is not whether foreign banks can be licensed. Of course they can. The question is whether allowing them to operate in Mongolia's banking sector now — before the supervisory foundations are ready, and when the clearest gains flow to the top of an already unequal market — is wise policy for the Mongolian public interest. We support banking reform. We support competition. We are asking for the right sequence of reform, not permanent exclusion. And we will show you that the sequence matters enormously for who actually benefits and who absorbs the risk."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>This was about regulated entry, not reckless opening. Opp debated a phantom of financial chaos. Prop's model is licensed, supervised, phased — using Mongolia's existing Banking Law. Opp never named what is specifically wrong with that model.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opp proved risk exists. They did not prove that exclusion is better than regulated entry. Every banking system involves risk. Compare this risk against the risk of concentrated incumbency — not against zero.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>"Cherry-picking" concedes the contestability argument. If foreign banks take the most profitable corporate clients, incumbents face a real commercial threat. That threat changes behavior. That is exactly how contestability works.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opp's "fix it first" never became a real readiness standard. They never told you when Mongolia would be ready, who would assess it, or what mechanism produces domestic reform in a protected market without competitive pressure. That silence is the vote.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Managed contestability beats protected concentration. The side that named a concrete mechanism for a better banking system, backed by verified evidence, with no comparably credible alternative named on the other side — wins this round.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Banking is strategic infrastructure. The real test is not peacetime elegance — it is crisis governability. In a crisis, who controls liquidity and credit decisions in Mongolia? Not the Bank of Mongolia. The parent institution in another country.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Prop's clearest gains flow to the largest, most creditworthy firms in Mongolia first. The people who absorb the risk if something goes wrong are everyone. That distributional asymmetry is not a side issue — it is the public-interest test for this motion.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Public-interest banking reform is not the same as premium competition improvement. Prop proved the top of the market gets better. They did not prove that Mongolia's banking system improves in the ways that matter most for most Mongolians.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Sequencing is not protectionism when the downside is systemic. We named the readiness standard: adequate supervisory capacity confirmed by IMF assessment, a credible resolution framework, governance reforms implemented. That is specific. That is not indefinite delay.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Do not trade public-interest sequencing for elite-first banking gains. Vote for the side that took the public-interest question seriously — not the side that reframed it as a competition policy debate.</div>
+  </div>
+</div>
+</div></div>
+
+<!-- EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and which need hedging. Use the safer versions whenever you are not certain.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Mongolia's financial sector is dominated by banks, accounting for over 90% of total financial sector assets as of end-2024</td><td><span class="pill pp">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>Source: Bank of Mongolia Annual Report (mongolbank.mn)</td></tr>
+      <tr><td>Mongolia's top 4 banks account for approximately 89% of total banking assets</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>Source: World Bank Financial Sector Assessment (Open Knowledge Database)</td></tr>
+      <tr><td>SME lending in Mongolia is characterized by short maturities, small loan sizes, and heavy collateral reliance</td><td><span class="pill pp">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>Source: World Bank 2024 report on financial sector development in Mongolia</td></tr>
+      <tr><td>Mongolia's Banking Law already contemplates a legal pathway for foreign-invested banks, branches, or representative offices</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>Source: Banking Law of Mongolia (legalinfo.mn)</td></tr>
+      <tr><td>The Vienna Initiative (European Bank Coordination Initiative) was established in 2009 to address foreign bank retrenchment risk in Eastern European host countries during the 2008 crisis</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>Source: EBRD and IMF documentation on the Vienna Initiative</td></tr>
+      <tr><td>Poland's banking sector opening during EU accession produced measurable improvements in efficiency and product breadth among domestic players</td><td><span class="pill pp">Prop</span></td><td><span class="pill py">⚠️ Plausible</span></td><td>"Central and Eastern European economies that opened banking sectors during EU accession generally experienced improvements in banking efficiency alongside foreign bank entry, though the causal relationship is debated."</td></tr>
+      <tr><td>IMF and World Bank research on foreign bank entry in Sub-Saharan Africa found consistent concentration in urban, corporate, and export-oriented segments</td><td><span class="pill po">Opp</span></td><td><span class="pill py">⚠️ Plausible</span></td><td>"International evidence on foreign bank entry in lower-income markets consistently finds foreign institutions serve premium segments first, with limited immediate spillover to smaller borrowers."</td></tr>
+      <tr><td>Mexico's banking sector opening after the 1994 peso crisis — including BBVA, Citigroup, HSBC entry — was associated with improved supervisory standards in the post-opening period</td><td><span class="pill pp">Prop</span></td><td><span class="pill py">⚠️ Plausible</span></td><td>"Mexico's post-1994 banking sector opening to foreign participation is broadly associated with a more stable post-reform period compared to the pre-crisis protected era, though causation is complex."</td></tr>
+      <tr><td>The Baltic states invested substantially in supervisory capacity before opening to foreign bank participation and achieved better outcomes than comparable post-Soviet banking sectors that opened without that foundation</td><td><span class="pill po">Opp</span></td><td><span class="pill py">⚠️ Plausible</span></td><td>"The Baltic states are generally cited as examples where EU-accession supervisory investment preceded and enabled successful foreign bank integration — though the comparison with non-accession economies involves many confounding factors."</td></tr>
+      <tr><td>Foreign bank entry in Mongolia will directly and quickly improve SME or rural financial inclusion</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">❌ Do Not Claim</span></td><td>No evidence supports this as a near-term direct effect. Prop's argument should be overall system improvement through contestability, not direct SME benefit.</td></tr>
+      <tr><td>The current concentrated Mongolian banking system is risk-free or stable in a way that foreign entry would destabilize</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">❌ Do Not Claim</span></td><td>Concentration is itself a systemic risk. Iceland 2008 is the refutation. Opp must acknowledge the costs of concentration before making the sequencing argument.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div></div>
+
+<!-- TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that handed the other side their framing. These are the specific traps that teams consistently fall into on this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Claiming foreign banks will directly fix SME or rural finance near-term.</strong> This is almost certainly false, immediately demolishable, and will make the rest of the case look equally overblown. Your scope is overall system improvement through contestability. Stay there.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Treating regulation as a complete answer to crisis risk.</strong> Claiming regulation fully resolves the cross-border coordination problem is technically false and any judge with banking knowledge will know it. Argue that the risk is manageable and outweighed — not that it disappears.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like the argument is "foreign is better."</strong> If Prop's speeches give any impression that foreign institutions are inherently superior to Mongolian ones, they have made the wrong argument. The argument is about concentrated versus contested markets — not national origin of institutions.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Letting Opposition define the ballot as sovereignty versus globalization.</strong> This is Opp's most favorable framing and it is false to the debate. The correct frame is whether regulated banking sector entry improves a specific market structure. Keep it specific and technical, not philosophical.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Running five weak arguments instead of three strong ones.</strong> Investor confidence, digital services, talent spillovers, financial inclusion, income growth — all of these are soft and all can be demolished. Three mechanically rigorous arguments defended under pressure beat five soft claims every time.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like you are defending incumbent banks.</strong> This is Opp's most dangerous failure mode. One moment of appearing to protect the market position of Mongolia's existing dominant banks destroys credibility for the entire round. State your pro-reform posture in the first sentence of the case and repeat it whenever Prop attacks.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Offering delay with no endpoint.</strong> "Fix it first" without a specific, verifiable readiness standard is not a policy position — it is an indefinite veto. Name the endpoint: adequate supervisory capacity per IMF FSAP assessment, resolution framework in place, governance reforms implemented. Be specific or Prop wins the sequencing clash by default.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Using "sovereignty" as a slogan without a mechanism.</strong> "Banking is sovereign infrastructure" requires a specific argument about what practical control breaks down and how. Without the mechanism — who controls what decision in a crisis — sovereignty appeals are rhetoric, not argument.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Ignoring the costs of concentration.</strong> A banking sector with 89% of assets in four banks is not a neutral baseline. If Opp debates as though the status quo is risk-free and cost-free, Prop simply points to the concentration facts and asks why those costs are not equally concerning. Acknowledge the costs. Then explain why this specific mechanism at this specific time is the wrong response.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Debating an extreme Prop model instead of the regulated one.</strong> If Opp spends their time arguing against unregulated, open-border foreign bank entry, they are not engaging with the model Prop has defined. A Prop team that clearly defines their model at the start will be able to point out repeatedly that Opp is arguing against a position nobody is defending. Engage with the controlled, phased, Bank of Mongolia-supervised model.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Foreign banks will save Mongolian SMEs."</strong> This is factually false as a near-term prediction. Foreign banks entering a new market have no commercial incentive to lend to small, information-poor borrowers with limited collateral. Making this claim gives Opp a devastating rebuttal and makes everything else Prop says seem equally overblown.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Domestic banks are inherently safer because they are local."</strong> Factually false and easily demolished. Iceland 2008 — a banking collapse driven entirely by domestic banks — is the instant refutation. Local ownership does not produce better governance or better crisis outcomes. Opp should argue for the crisis governability mechanism, not for the unsustainable claim that domestic institutions are inherently more stable.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"Investor confidence and openness will attract more foreign direct investment."</strong> The causal chain from "foreign banks allowed" to "Mongolia attracts significantly more FDI" is long, contested, and impossible to verify in a debate context. It makes Prop sound like an advertisement for economic liberalization rather than a grounded argument about banking sector improvement. Leave this out entirely.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"Profit repatriation is the main problem with foreign banks."</strong> This proves too much — by the same logic, Mongolia should not allow any foreign business to operate in the country. As a standalone argument it makes Opp sound anti-foreign investment in a way that undermines the entire case. It is a supporting concern at most, not a primary argument.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"More bank logos equal more competition."</strong> The number of institutions is not the same as the competitiveness of the market for all segments. If foreign banks concentrate in the premium segment while domestic incumbents remain dominant elsewhere, the market has more logos without having more competition for most customers. Prop must make the specific contestability argument — that competition for the premium segment changes incumbent behavior throughout their operations — not the superficial "more banks equals more competition" claim.</span></li>
+    </ul>
+  </div>
+</div>
+</div></div>
+
+<!-- EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+    <div class="emrg-section">Your 2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Mongolia's top four banks control 89% of assets with no meaningful competitive pressure. Regulated foreign bank entry creates contestability — the commercial threat of losing profitable clients forces incumbents to improve pricing, service, and products. This is not deregulation. It is licensed, supervised, phased entry under Bank of Mongolia control using Mongolia's existing Banking Law.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Sheltered markets are where reform is easiest to postpone. Incumbent banks with no competitive pressure have no commercial reason to accept stronger governance or supervision — only regulatory reasons they can lobby away. Foreign bank entry creates external competitive pressure that is harder to neutralize. "Fix it first" without an endpoint is an indefinite veto, not a policy position.</div>
+
+    <div class="emrg-section">3 Questions to Ask Them</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>If this is not permanent delay, when exactly is Mongolia ready — and who decides?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>Are you protecting public stability, or protecting the profitability of the four banks that control 89% of the market?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>If entry is licensed and regulated under Bank of Mongolia supervision, why are you arguing as if this means deregulation?</div>
+
+    <div class="emrg-section">3 Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Risk existing is not risk defeating the motion. Compare regulated entry against the risks of continued concentrated incumbency — not against zero risk."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Cherry-picking concedes the contestability argument. If foreign banks compete for premium corporate clients, those clients' possible departure forces incumbents to respond. That is exactly how contestability works."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Opp gave no endpoint. Ready when? According to whom? Enforced how? Without answers, 'fix it first' is an indefinite veto."</div>
+
+    <div class="emrg-section">Opening Line</div>
+    <div class="emrg-quote">"This debate is about regulated entry, not reckless opening. Should Mongolia use its existing legal authority to license foreign banks under Mongolian supervision — or keep the door shut and leave a 89%-concentrated banking system with no competitive pressure? We say open it, under rules. Managed contestability beats protected concentration."</div>
+
+    <div class="emrg-section">Closing Line</div>
+    <div class="emrg-quote">"Managed contestability beats protected concentration. Opp proved risk exists. They did not prove exclusion is better. And they never told you when Mongolia would be ready. The answer to that question is still waiting."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not claim foreign banks will directly fix SMEs or rural borrowers near-term. Do not claim regulation eliminates crisis risk. Do not sound like the argument is "foreign is better." Your scope is regulated entry improving a concentrated market structure. Stay there.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+    <div class="emrg-section">Your 2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Banking is strategic infrastructure. In a crisis — a commodity price shock, a parent-institution failure — the decisions that matter are made not in Ulaanbaatar but in the parent institution's headquarters in another country. Legal authority on paper is not operational control in a crisis. The Vienna Initiative (2009) exists because Eastern European host countries discovered exactly this gap. Mongolia has no equivalent bilateral coordination framework.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>The gains are concentrated at the top of the market; the risks are borne by everyone. Foreign banks will rationally target large corporates and trade-linked firms. Those are real benefits for a narrow segment. Systemic risk from cross-border banking complexity is distributed across the whole economy. A policy that concentrates gains at the top and socializes risk broadly is not a public-interest case — even if aggregate outcomes technically improve.</div>
+
+    <div class="emrg-section">3 Questions to Ask Them</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>Who benefits first: small businesses and ordinary borrowers, or premium corporates and trade-linked firms?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>If the gains go to the most bankable clients first, why should the whole Mongolian public absorb the systemic risk of cross-border banking complexity?</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>In a genuine financial crisis, who has the final practical priority over liquidity and credit decisions — the Bank of Mongolia, or the parent institution's board and home regulator?</div>
+
+    <div class="emrg-section">3 Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Better premium banking is not public-interest reform. Prop proved the top of the market gets better. They did not prove Mongolia's banking system improves in the ways that matter most for most Mongolians."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"Legal control on paper is not crisis control in practice. Formal authority does not produce the fast, cross-jurisdiction coordination that banking crises demand. The Vienna Initiative proves this."</div>
+    <div class="emrg-line"><span class="emrg-icon">★</span>"More entrants do not automatically create broad competition. Foreign banks and domestic incumbents can partition the market — foreigners serve premium clients, incumbents retain everyone else unchallenged."</div>
+
+    <div class="emrg-section">Opening Line</div>
+    <div class="emrg-quote">"The question is not whether foreign banks can be licensed. Of course they can. The question is whether allowing them to operate now — before Mongolia's supervisory foundations are adequate, and when the clearest gains flow to the top of an already unequal market — is wise policy for the Mongolian public interest."</div>
+
+    <div class="emrg-section">Closing Line</div>
+    <div class="emrg-quote">"Do not trade public-interest sequencing for elite-first banking gains. The first beneficiaries are the largest, most creditworthy firms. The people who absorb the risk are everyone. That is not a better banking system. That is a better deal for some people, with shared risk for all."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound like you are defending incumbent banks. Do not offer delay with no endpoint — name the readiness standard (IMF FSAP assessment, resolution framework, governance reforms). Do not use "sovereignty" as a slogan without the specific crisis-control mechanism behind it.</span></div>
+  </div>
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
