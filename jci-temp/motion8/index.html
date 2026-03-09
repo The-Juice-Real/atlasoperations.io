@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Members of Parliament Should Not Lose Their Seats Due to Ethical Violations</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+<!-- Paste this immediately after the opening <body> tag in your HTML files -->
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'mn', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Members of Parliament should not lose their seats due to ethical violations</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════ SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether ethics matters. Both sides agree that ethical misconduct is serious and politicians should face consequences. The real fight is much narrower: whether losing a parliamentary seat is an appropriate sanction for ethical violations specifically — as opposed to legal or criminal ones — and whether the alternative sanctions available are sufficient to address serious misconduct without the democratic damage of canceling representation.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That seat loss is a uniquely severe democratic sanction — one that cancels an election result — and that ethical standards are too broad, interpretive, and politically contestable to safely serve as the trigger for that sanction.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to claim that ethics rules are meaningless or that misconduct has no consequences — only that seat forfeiture is too severe and too easily abused for this particular kind of trigger.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: serious accountability can still exist through suspension, censure, role stripping, committee removal, inquiry, party penalty, and criminal referral — <strong>without the democratic harm of canceling representation</strong>.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That some ethical violations are serious enough that continued officeholding becomes itself a democratic problem — not just an embarrassment, but a substantive distortion of legitimate representation.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to defend removal for every ethics breach — only that some serious cases make seat loss the right last-resort remedy and that abolishing it entirely creates a structural gap nothing else can fill.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: a seat is <strong>conditional public authority</strong>, not a permanent personal right. Some non-criminal misconduct destroys the legitimacy of continued officeholding, and lesser sanctions leave the seat — the instrument of the abuse — intact.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight Inside This Debate</div>
+  <p>The most important tactical battle is one that neither side will announce out loud: the fight over what counts as an "ethical violation" for the purposes of this motion. <strong>Proposition benefits from defining "ethical violations" broadly</strong> — covering all non-criminal ethics breaches, from minor conflicts of interest to expense irregularities — making the category wide and heterogeneous, which makes the abuse-risk argument easier to run. <strong>Opposition benefits from narrowing the definition</strong> — restricting it to serious, grave, well-documented non-criminal misconduct like repeated undisclosed conflicts that directly corrupted votes — making the cases within it relatively clear and the sanction more proportionate.</p>
+  <p>Whichever team frames this definitional line <strong>first and most clearly</strong> wins the structural advantage for the round. Proposition should open with the broad definition and then argue the category is too heterogeneous to safely ground seat forfeiture. Opposition should open by narrowing explicitly: "We are not defending removal for every ethics breach. We are defending it for the most serious cases only." Let that framing land before Proposition's definition sets the judge's expectations.</p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Harsh sanction needs hard trigger + discretion invites abuse + strong non-seat sanctions exist.</strong> Anchor the case in the principle that the harsher the sanction, the clearer the trigger must be — and ethical standards cannot clear that bar.</div>
+    <div class="route-why">This route is safe because it concedes nothing that matters. Prop can fully agree that the conduct is serious, that the MP deserves punishment, and that the sanctions imposed should be severe — while still winning the argument that seat loss specifically is the wrong tool for this trigger. The risk is that Opp absorbs this and argues their most serious cases satisfy the clarity requirement. Pre-empt by distinguishing the best-designed ethics process from the hard legal trigger that seat forfeiture actually requires.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Ethics-based seat removal as a clean-looking political purge tool.</strong> Make Opp sound like it is handing factional elites and parliamentary majorities a mechanism to erase political rivals under the cover of principled accountability.</div>
+    <div class="route-why">This argument has high reward because it reframes Opposition's position from "we hold MPs accountable" to "we give powerful insiders a mechanism to purge." If it lands, it changes the emotional center of gravity of the round. The risk is that Opp responds with strong procedural safeguards — independent bodies, published criteria, appeal rights — and if Prop has not pre-loaded a response, the framing advantage disappears. Always pair with: "Process improvements reduce abuse risk, they do not eliminate it. And the error cost here — a canceled election result — is categorically different from the error cost of lesser penalties."</div>
+    <div class="eg"><div class="eg-label">📌 Supporting Example</div><div class="eg-text">Academic research from the V-Dem project at the University of Gothenburg on democratic backsliding documents how formally neutral parliamentary procedures in majority-captured legislatures have been repurposed to marginalize opposition members. Formal ethics and conduct processes exhibit the same structural vulnerability: majority control creates systematic incentives for selective enforcement. The formal mechanism looks principled from outside while being politically operated from inside.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Accountability with restraint.</strong> "We punish hard. We do not let ethical judgment cancel elections." Frame Prop as the grown-up, measured, democratic-values-consistent position and force Opp to sound more aggressive and potentially antidemocratic.</div>
+    <div class="route-why">Judges respond to moral clarity paired with operational realism. This framing — not no punishment ever, but no electoral nullification on ethical grounds — sounds both principled and practical. It convinces judging panels who take ethics seriously but are suspicious of giving parliamentary bodies the power to override electoral choices.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Even if the MP is unfit, seat forfeiture is still the wrong sanction.</strong> Unfitness for office and the specific sanction of seat removal are two separate questions. Opp must prove both. If it only proves unfitness, it has not won the round.</div>
+    <div class="route-why">Use this when Opp's individual case examples are landing well and Prop is losing ground on "some MPs are clearly unfit." Concede the underlying unfitness — quickly and clearly — then hold the line that proving unfitness does not automatically prove seat forfeiture is the correct remedy. Make Opp answer the sanction question specifically, not just the conduct question.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Election is not immunity + some non-criminal misconduct is disqualifying + seat loss as last-resort backstop.</strong> Establish that a seat is conditional public authority, that office-unfitness is broader than criminal guilt, and that abolishing seat loss entirely creates a gap no alternative fills.</div>
+    <div class="route-why">This route is safe because it is narrow, honest, and does not overclaim. It focuses on worst cases and explains why they require worst-case remedies. It avoids the two biggest Opp traps: sounding like you defend removal for every ethics breach, and sounding naive about abuse risk.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Force Prop into the "clearly unfit but still seated" corner.</strong> Press the clearest case of disqualifying non-criminal misconduct — systematic conflict-corrupted voting — and make Prop defend keeping that MP in their seat. Either they say yes, which sounds absurd, or they carve out exceptions that undermine their categorical rule.</div>
+    <div class="route-why">If Opp can get Prop to say "yes, that MP keeps the seat," the round is effectively over. The moment that sentence comes out, every judge in the room feels the moral problem with Prop's position. The risk is that Prop responds with "prosecute it" — so pre-load the counter: criminal prosecution takes years during which the MP continues in office, and criminal law does not reach all forms of office-unfitness. Have both responses ready before Prop deploys them.</div>
+    <div class="eg"><div class="eg-label">📌 The Core Case Study</div><div class="eg-text">An MP found to have systematically voted on legislation while holding undisclosed financial interests affecting those votes. No crime was proven — the evidentiary threshold for corruption offenses is high and prosecutors exercise discretion. But the conduct is clearly documented, clearly persistent, and clearly connected to the exercise of parliamentary authority. Under Prop's model, that MP keeps their seat, their vote, and their legislative authority. Make Prop defend that outcome.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Democracy includes ongoing legitimacy, not just the initial vote.</strong> Frame Opp as having a richer, more complete theory of democratic representation: voters didn't consent to be represented by someone who is systematically self-dealing. Removing the seat is not antidemocratic — it is the restoration of democratic integrity.</div>
+    <div class="route-why">Most judges find this framing compelling because it answers the "you're overriding voters" charge directly and with a positive account rather than just a defensive one. Position Opp as protecting democratic legitimacy from the inside, not undermining it from the outside.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>If losing the structural arguments, double down on the alternatives being insufficient.</strong> Even if Opp's position on abuse risk is taking damage, pivot to: Prop's alternatives leave the seat, vote, and legitimacy of continued officeholding intact. In the worst cases, that is the ongoing harm. No lesser sanction addresses it.</div>
+    <div class="route-why">Use this when Prop's "improve the process" response is landing well against the abuse-risk argument. Concede that the process can be improved — then hold the line that even a perfectly designed process that produces a finding of serious ethical violation still needs seat loss as an available remedy when the seat itself is the instrument of the misconduct. Process improvements don't change what the sanction can actually do.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different reason why seat forfeiture is the wrong sanction for this trigger. Together they show that the sanction is too severe, the trigger is too contestable, and the alternatives are sufficient — making the motion correct.</p>
+
+<!-- ARG 1 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Severity of a Sanction Must Match the Clarity of Its Trigger</span></div>
+  <p class="arg-body">Seat loss is not just another parliamentary penalty. When an MP loses their seat, the constituents who voted for them lose their representative — sometimes for the remainder of a parliamentary term, sometimes permanently. A by-election, even where required, does not restore the original electoral choice. For a sanction of that weight and democratic consequence, the triggering standard must be correspondingly hard, clear, and resistant to interpretation.</p>
+  <p class="arg-body">Criminal conviction — the standard that typically grounds legal disqualification — provides exactly that kind of clarity. A conviction requires proof beyond reasonable doubt, a publicly reviewable legal process, defined statutory offenses, and judicial oversight. Parliamentary ethics codes are structurally different: they use broad, standards-based language — words like "integrity," "propriety," "bringing the house into disrepute" — that require significant judgment to apply. That judgment is not neutral. It is exercised by human beings with institutional positions, factional loyalties, and political interests. The principle is simple: the harsher the sanction, the clearer the trigger must be. For seat forfeiture, the trigger must be hard. Ethical judgment is not.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The British House of Commons expenses scandal of 2009 illustrates this risk precisely. When the scale of MPs' claims became public, political pressure to remove members was intense and, in some cases, indiscriminate. MPs who had made genuine errors were bundled together with those who had committed outright fraud under the same wave of public and institutional pressure. The parliamentary standards regime at the time was not equipped to handle proportionality assessments under political pressure. A seat-loss sanction applied in that environment would have been extremely difficult to calibrate fairly — demonstrating that even well-resourced democracies cannot insulate ethics processes from the contextual forces that make precise proportionality so hard to achieve.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp may point to South Africa, where Section 47 of the Constitution allows for removal of National Assembly members found guilty of certain conduct, as evidence that functioning democracies can implement disqualification standards that work. But the South African provisions tie disqualification to specific, legally defined offenses — they are closer to criminal disqualification than open-ended ethical judgment. They do not support broad ethics-based seat removal. The counter-example actually reinforces Prop's point: jurisdictions that do allow disqualification tend to rely on hard legal criteria, not interpretive ethical assessments.</div></div>
+  <div class="quote qp">💬 Say this: "The harsher the sanction, the clearer the trigger must be. Seat loss is as harsh as democratic sanctions get. The trigger — ethical judgment — is as contestable as standards get. That mismatch is the core of what the motion identifies as wrong."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Ethical standards are broad, interpretive, and applied under institutional and political pressure — they vary based on who is applying them, what the political context is, and how well-resourced the subject is</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means seat loss triggered by ethical findings will, in practice, correlate with political vulnerability as much as with actual severity of misconduct</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the sanction is not being distributed fairly or consistently — it is a tool whose application cannot be reliably separated from the political pressures surrounding it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is correct: <strong>MPs should not lose their seats due to ethical violations</strong> because "ethical violation" — as a trigger — is not hard or clear enough to safely ground a sanction this severe and this irreversible.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Good Process Solves the Clarity Problem" Response</div>
+    <div class="weight-text">Opp's best counter is that procedural safeguards — independent review bodies, published criteria, appeal rights, clear thresholds — can reduce the abuse risk enough to make the sanction viable. That counter is partially correct. Process improvements do reduce abuse risk. But they reduce it, not eliminate it. And here the asymmetry is decisive: on Prop's side, the error cost of wrongly removing a seat is canceling an election result, which is irreversible in the short term. On Opp's side, the error cost of wrongly not removing a seat is that an MP continues in office until the next election, which is time-limited. The asymmetric severity of these two error types means that even residual abuse risk on Prop's side — after good process is added — still outweighs the residual insufficiency on Opp's side.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Couldn't we design an ethics process rigorous enough that it's no more prone to abuse than a criminal trial? Is Prop just assuming all ethics processes will be bad?"</div>
+    <div class="judgeobj-a">The answer is not that ethics processes are necessarily incompetent or corrupt — it is that even a well-designed ethics process operates with inherently more interpretive latitude than a criminal one, because the standards it applies are inherently broader. You can make a criminal trial fairer by improving its procedures. You can also improve an ethics process. But you cannot turn an inherently discretionary ethical judgment into the kind of hard, clear, judicially reviewable finding that should ground an irreversible democratic sanction. The problem is structural, not just procedural. No amount of process improvement eliminates the interpretive character of the underlying standard.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Some ethical breaches are serious and clear enough — systematic conflict-corrupted voting, for instance — that the clarity problem doesn't apply to the cases Opp is defending. Not all ethical judgments are equally vague.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Even if some cases are clear, rules must be designed for the category as a whole. The category "ethical violations" as a trigger for seat loss will be applied across all cases — including the ambiguous, politically pressured, and contested ones. Opp's clearest case does not make the rule safe for the full range of cases it will cover.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 2 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Ethical Judgment as a Seat-Removal Tool Creates Systematic Abuse Risk</span></div>
+  <p class="arg-body">Once a legislature establishes that ethical findings can forfeit seats, it has created an instrument with a specific and dangerous property: it can be used to remove political opponents under the cover of principled accountability. Political actors in every legislature have permanent incentives to weaken rivals, control majorities, and shape the composition of the house in their favor. Criminal law is a barrier against weaponizing these incentives because it requires external enforcement — police, prosecutors, courts — that are at least partially insulated from legislative politics. Ethics processes are not. They typically originate within parliamentary institutions, are subject to institutional pressures, and are applied by people who have political relationships with the subjects of investigation.</p>
+  <p class="arg-body">The abuse risk is highest in three specific scenarios: when a governing majority controls the composition of the ethics body; when a coalition partner faces pressure to exclude a politically inconvenient member; and when media or public pressure campaigns make the costs of not removing someone feel higher than the costs of removing them unfairly. In each of these scenarios, the ethics process is being used not as a neutral accountability mechanism but as a factional tool. The broader and more interpretive the ethical standard, the easier it is to find a rationale that fits.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Academic observers of democratic backsliding, including scholars associated with the V-Dem project at the University of Gothenburg, have documented how formally neutral parliamentary procedures in legislatures under dominant majority control can be repurposed to marginalize opposition members. Hungary's constitutional transformation provides the most studied case. While Hungary's specific mechanisms differ from a pure ethics-process model, the structural pattern — formally principled procedures operated for factional ends — is exactly the risk Prop identifies. Ethics removal powers, operated by majority-controlled bodies, exhibit exactly the same structure: legitimate on paper, weaponizable in practice.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp may point to the UK's Independent Parliamentary Standards Authority (IPSA) and the Independent Adviser on Ministers' Interests as examples of genuinely independent ethics enforcement. These bodies exist and provide meaningful independence compared to purely internal committees. But two points limit this counter-example's force. First, even the most independent ethics bodies operate within political environments where their findings have political consequences — independence is real but partial. Second, and more critically, Prop's argument is not that independent bodies are impossible. It is that countries implementing seat-loss sanctions will not all have well-designed independent bodies, and for those that don't, the abuse risk is exactly as Prop describes. A good example in one jurisdiction does not make the rule safe across all jurisdictions.</div></div>
+  <div class="quote qp">💬 Say this: "A clean-looking ethics process can become a political purge tool. The cleaner it looks, the more dangerous it is — because it is harder to challenge. This is not a hypothetical risk. It is a structural feature of any ethics process that can remove seats."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Once seat forfeiture is a possible outcome of an ethics process, actors who control or influence that process gain a powerful tool for political elimination — a tool that looks principled from outside while being operatable for factional ends from inside</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means over time, the ethics process becomes part of the political competition rather than a check on it — legitimate misconduct findings become harder to distinguish from politically motivated ones</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means public trust in the ethics regime itself erodes, and the very institution designed to protect democratic integrity becomes a tool for undermining it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is correct: <strong>MPs should not lose their seats due to ethical violations</strong> because ethical violation findings are themselves susceptible to political manipulation, making "ethical violation" an unsafe trigger for an irreversible democratic sanction.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Abuse Risk Doesn't Justify Abolishing the Sanction" Response</div>
+    <div class="weight-text">Opp's strongest counter is that any accountability mechanism can be abused, and abuse risk is a reason to improve the process, not abolish a sanction. This is a genuine point — but the asymmetry defeats it. The abuse risk associated with seat removal is categorically different from the abuse risk associated with lesser penalties. When a censure motion is politically motivated, the consequence is a political embarrassment. When a seat-removal finding is politically motivated, the consequence is the cancellation of an electoral mandate and the alteration of the legislative composition. The severity of the potential abuse outcome justifies a higher threshold of confidence that abuse has been prevented — a threshold that ethics processes cannot reliably meet, for the structural reasons already given.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is Prop just saying that because some actors might abuse this power, nobody should have it? Don't we usually accept abuse risk in exchange for accountability?"</div>
+    <div class="judgeobj-a">Yes, we usually accept abuse risk for accountability tools — but the cost-benefit calculation is different here. For lesser penalties, we accept some abuse risk because the stakes of any individual abuse are limited. For seat forfeiture, the stakes of any individual abuse are canceling an election result — a qualitatively different kind of harm. This is not just quantitatively but categorically different, and that justifies categorical caution about which triggers can safely produce this sanction. We don't apply the same abuse-tolerance standard to imprisoning someone for life as we do to fining them — because the consequences of error are categorically different. The same logic applies here.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Every accountability tool can be abused. The answer is thresholds, independence, published criteria, and appeal rights — not abolishing the consequence entirely. Prop's logic would eliminate every powerful accountability mechanism.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Not every powerful accountability mechanism carries the same error cost. We accept robust abuse-prevention for criminal imprisonment because wrongful imprisonment is catastrophic. We must apply the same logic to wrongful seat removal, because wrongful seat removal cancels an electoral mandate. The error cost justifies the higher standard of abuse-prevention — and ethics processes cannot meet that standard structurally.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 3 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Serious Accountability Is Achievable Without Seat Forfeiture</span></div>
+  <p class="arg-body">Rejecting seat forfeiture as a sanction is not the same as rejecting accountability. The alternatives available to a legislature dealing with serious ethical misconduct are substantial, and their combined effect can be both punitive and practically constraining. A legislature can: suspend an MP for an extended period, removing their ability to vote and participate for months or the remainder of a session; strip all committee memberships, removing their ability to scrutinize legislation in their areas of interest; strip all leadership roles — shadow ministerial positions, committee chairs, parliamentary private secretaryships; issue a formal censure creating a permanent public record; require repayment of improperly obtained benefits; publish the full findings of an investigation, exposing the conduct to the public and to the constituent electorate; refer the matter to law enforcement for criminal investigation; and require enhanced ongoing disclosure obligations.</p>
+  <p class="arg-body">None of these cancel the election result. None remove the democratic choice voters made. But none of them are trivial. An MP who is suspended, stripped of all committee roles and leadership positions, publicly censured, and facing a criminal referral is being held accountable in ways that are severe, public, and materially constraining. The claim that only seat loss achieves real accountability misrepresents how much these alternatives actually do.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The case of Neil Hamilton in the United Kingdom in the 1990s illustrates the power of non-seat accountability. Hamilton, accused of accepting cash for parliamentary questions, faced intense public and party pressure, was stripped of his ministerial role, lost his party's support in the subsequent election, and was effectively ended as a political career — all without formal seat removal during his term. The combination of party action, public exposure, and electoral consequence produced accountability that was comprehensive without requiring parliamentary ethics processes to forfeit his seat. This does not prove non-seat sanctions always work perfectly — but it shows that the combination of party sanction, exposure, and electoral accountability can impose genuine costs and effectively end a political career.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp will argue that in cases where an MP has been found to have systematically voted while holding undisclosed financial conflicts, the alternatives leave the seat, vote, and legislative authority intact — which is the core problem. This is Opp's strongest point. The response is specific: in cases where the conduct is that serious and the evidence that clear, the appropriate route is criminal referral and prosecution. Systematic self-dealing through parliamentary activity is likely to disclose criminal offenses — fraud, corruption, misconduct in public office — that can and should be handled through law enforcement. The existence of a hard case does not prove ethics processes should have seat-removal power; it proves criminal law should be applied more vigorously in those cases.</div></div>
+  <div class="quote qp">💬 Say this: "We punish hard without crossing into electoral nullification. Suspension, censure, role stripping, inquiry, criminal referral — these are not trivial. They are severe. They just do not cancel the vote of a constituency. That is a deliberate line, not a gap."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Multiple punitive and constraining sanctions short of seat loss are available and capable of being combined into a severe accountability response that punishes, constrains, exposes, and politically damages the wrongdoer</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the choice is not between seat loss and impunity — it is between seat loss and a package of serious sanctions that materially address the misconduct without the democratic damage of canceling representation</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means "no seat loss" does not translate to "no meaningful accountability" — it translates to accountability through mechanisms that do not carry the democratic and abuse risks of seat forfeiture</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion is correct: <strong>MPs should not lose their seats due to ethical violations</strong> because the available alternatives are sufficient to meet the accountability need, and because seat forfeiture carries democratic costs and abuse risks that those alternatives do not.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Alternatives Leave the Seat Intact" Response</div>
+    <div class="weight-text">Opp's counter is that alternatives leave the seat, vote, and legitimacy of continued officeholding untouched — and in the worst cases, that is the ongoing harm. Prop's response is that Opp must prove not just that the person is still in their seat, but that their effective power and influence has not been materially reduced. An MP who is suspended, stripped of all committee roles and leadership positions, publicly censured, and facing an active criminal referral is not exercising the same power as an MP in good standing. Their influence over legislation is severely curtailed. Their ability to attract support and credibility within the house is gone. The residual power that remains — principally their vote — is real but limited, and it is constrained by the democratic value of preserving the electoral choice that put them there.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't Prop describing a situation where the MP still has their seat and still gets to vote on legislation? Isn't that exactly the problem Opp is identifying?"</div>
+    <div class="judgeobj-a">Yes, the MP retains their vote — and that is a deliberate feature of Prop's position, not a flaw. The reason it is deliberate: an MP's vote represents the electoral choice of a constituency, and canceling that representation has democratic costs that must be weighed against the benefit of removing the vote. The assumption that a retained vote is itself an ongoing harm is only true if the MP is continuing to vote in ways that affect the conduct that gave rise to the misconduct finding. In cases where the misconduct involved the exercise of that vote through specific corrupt arrangements, the appropriate remedy is a criminal investigation into corruption — not an ethics finding that forfeits the seat. For cases that don't reach criminal corruption, the remaining vote is constrained by all the other sanctions that have been applied.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">In the worst cases — systematic conflict-corrupted voting — the alternatives don't touch the core problem. The seat, vote, and legislative legitimacy remain. The MP continues to exercise the authority they abused.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">In those cases — truly systematic corruption of voting — the conduct is criminal, and criminal prosecution is the right route. Opp cannot use the hardest cases to justify ethics-based seat removal for the full range of ethics breaches the motion covers. If the conduct is criminal, prosecute it. If it is not criminal, our alternatives address it.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's consistent formula: acknowledge that Prop's concerns about abuse and proportionality are real — because they are — then show why the specific cases Opp defends are serious enough, clear enough, and resistant enough to the alternatives that seat loss remains necessary as a last-resort backstop.</p>
+
+<!-- ARG 1 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">A Parliamentary Seat Is Conditional Public Authority, Not a Permanent Right</span></div>
+  <p class="arg-body">The most important conceptual move Opp needs to make is to reframe what a parliamentary seat actually is. Prop tends to treat a seat as something close to a democratic property right: once awarded by voters, it belongs to the MP for the duration of the term unless a very specific and hard legal trigger is met. Opp must displace this framing with a more accurate one: a parliamentary seat is an exercise of delegated public authority. Voters delegate to their representative the power to make law, hold government to account, and participate in the governance of the country. That delegation is not unconditional. It is premised on the expectation that the representative will exercise that authority with basic integrity.</p>
+  <p class="arg-body">Every functional democracy maintains some form of conduct or standards framework for its legislature. Those frameworks exist precisely because the people who established them understood that election to parliament does not automatically confer immunity from the standards that apply to public office generally. A parliament that can suspend, censure, and shame but can never remove a member who has gravely violated the conditions of their office has established a category of official who is untouchable — not through electoral strength, but through a structural gap in the accountability regime.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The United Kingdom's Recall of MPs Act 2015 provides a well-documented real-world example of a functioning democracy concluding that a route to seat loss beyond criminal conviction is sometimes appropriate. The Act was introduced after cross-party parliamentary recognition that the existing sanctions — suspension, censure, the Standards process — were insufficient in cases of serious misconduct. It creates a mechanism by which constituents can trigger a by-election if their MP is suspended from the House for a specified period. The political consensus that produced that Act reflected a widely shared view that the pre-existing sanctions were leaving a gap in the most serious cases — exactly the gap Opp identifies.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop may point to the United States, where members of Congress are rarely expelled and where the expulsion standard is very high — a two-thirds vote for "disorderly behavior" — as evidence that mature democracies set very hard thresholds for seat loss. This is a real pattern. But the counter is that the American experience reflects a specific constitutional design choice, not a universal democratic principle. Many other functioning democracies — including New Zealand and the United Kingdom — have established or expanded non-criminal disqualification mechanisms precisely because the American model was seen as leaving an accountability gap. One design choice does not establish a universal democratic norm.</div></div>
+  <div class="quote qo">💬 Say this: "Election is powerful, but it is not unconditional. A parliamentary seat is not a trophy — it is delegated public authority. When that authority is grievously abused, the delegation itself becomes problematic. That is not antidemocratic. It is democracy protecting its own conditions of legitimacy."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Parliamentary seats represent delegated conditional authority — not permanent personal entitlements — and the conditions include basic ethical conduct in the exercise of that authority</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means when those conditions are seriously and persistently violated, the delegation itself becomes problematic — not because voters made a bad choice at the time of election, but because the person they elected has since ceased to exercise authority in the way the delegation presupposes</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means retaining the seat in the face of serious ongoing ethical compromise is not protecting democracy — it is perpetuating a distorted form of representation where the seat-holder exercises public authority they no longer hold legitimately</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>MPs should sometimes lose their seats due to ethical violations</strong>, because in the worst cases, the ethical violation has destroyed the legitimacy of continued officeholding in a way that no lesser sanction can adequately address.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Conditional on What, Decided by Whom?" Response</div>
+    <div class="weight-text">Prop's strongest counter is that the conditionality claim is too vague to be actionable and too discretionary to be safe — "conditional on what, decided by whom?" The response is that conditionality is real and manageable when narrowed appropriately. Opp is not arguing that any ethical shortcoming justifies seat loss — it is arguing that a narrow category of serious, well-documented, objectively severe ethical violations can. The conditionality does not need to be infinitely broad to be meaningful. And the "decided by whom?" question is a process design question, not a principled objection to the existence of the sanction. It is answered by designing the right process — independent oversight, published criteria, robust appeal rights — not by abolishing the sanction entirely.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If the seat is conditional, why should that condition be enforced by parliamentary processes rather than by voters at the next election? Isn't electoral accountability the right mechanism?"</div>
+    <div class="judgeobj-a">Two specific answers. First, elections happen at fixed intervals — typically four or five years. Serious ongoing ethical compromise that emerges mid-term creates a real problem that cannot wait for the next scheduled election without cost: during that interval, the compromised MP continues to vote on legislation, sit on committees, and exercise authority that their conduct has undermined. Second, elections do not reliably punish ethical misconduct — voters may not receive accurate information about the extent of the misconduct, party loyalty may insulate incumbents from electoral consequences, and the constituency may be safe enough that no realistic challenger can win. Electoral accountability is real but insufficient — which is precisely why standards regimes exist alongside it in every functioning democracy.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Conditional authority doesn't automatically justify seat forfeiture — it justifies accountability, which we provide through serious alternatives. The conditionality claim tells us something should happen; it doesn't specify what.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">We agree that conditionality doesn't automatically mean seat loss. We argue that in the most serious cases — where the authority itself is the instrument of the misconduct — only removing the authority addresses the core problem. Prop's alternatives constrain the person; they don't remove the authority. In those cases, they are structurally insufficient.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 2 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Some Non-Criminal Misconduct Is Genuinely Disqualifying</span></div>
+  <p class="arg-body">Office-unfitness and criminal guilt are not the same thing, and insisting on criminal conviction as the only trigger for seat loss is an artificially narrow position that would leave clearly unfit MPs in their seats solely because their misconduct did not cross into legally defined criminal territory. Consider what makes an MP unfit for continued office. It is not primarily about whether they broke a specific statutory rule. It is about whether they can exercise the functions of their role with the integrity those functions require. An MP who has repeatedly failed to disclose financial conflicts of interest that directly affected their votes on relevant legislation has compromised their ability to perform their representative function honestly. An MP who has used parliamentary privilege to mislead the house on matters affecting their personal financial position has degraded the deliberative function of the legislature.</p>
+  <p class="arg-body">None of these behaviors need result in a criminal conviction. Prosecutors exercise discretion, evidentiary thresholds for criminal guilt are high, and some misconduct falls into legal grey zones. But all of them make the continued exercise of parliamentary authority deeply problematic. The artificial boundary between criminal and non-criminal misconduct is not a principled democratic safeguard — it is an accident of how criminal codes are written. If that space is treated as a zone of complete immunity from serious consequences, the ethics regime becomes a performance: it can name, shame, and temporarily inconvenience, but it cannot actually touch the power that was abused.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The case of Australian Senator Bob Day, found by the High Court of Australia in 2017 to have been incapable of being chosen as a senator because of his financial relationship with the Commonwealth, illustrates the principle. While the legal mechanism was constitutional rather than ethics-based, the underlying logic — that a financial conflict of interest can render continued officeholding constitutionally and democratically illegitimate, without criminal conviction — is exactly what Opp is arguing. The Court found that Day's financial arrangements meant he could not be a validly chosen senator, not because he had committed a crime, but because the structural conditions for legitimate representation were not met.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will argue that if conduct is truly serious — genuinely involving corrupt self-dealing — then it likely discloses a criminal offense, and the right route is prosecution. The response is threefold: first, criminal prosecution requires proof beyond reasonable doubt, and the subjective elements of corruption offenses are often very difficult to prove even when the structural misconduct is clear. Second, prosecutors exercise discretion and conduct that is office-disqualifying may not be prioritized. Third, even if prosecution is eventually pursued, it may take years — during which the compromised MP continues in office. The need for an ethics-based mechanism is precisely that it can operate more quickly, on conduct that criminal law does not cleanly reach.</div></div>
+  <div class="quote qo">💬 Say this: "Not every unfit MP is a convicted criminal. If criminal guilt were the only standard that mattered, the entire ethics regime would have nothing to do that criminal law does not already cover. The ethics regime exists precisely to fill the space between what criminal law reaches and what legitimate public office requires."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Office-unfitness is a broader category than criminal guilt, and some forms of serious non-criminal misconduct — persistent undisclosed conflicts, sustained deception of the house, systematic self-dealing — genuinely make continued officeholding incompatible with legitimate representation</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means if seat loss requires criminal conviction, a class of clearly unfit MPs will be structurally shielded from the most serious consequence of ethics processes</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the ethics regime for those MPs becomes a constrained accountability mechanism that can impose minor penalties but cannot address the core problem: the person continues in an office they are no longer fit to hold</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>MPs should sometimes lose their seats due to ethical violations</strong>, because in the most serious cases, the ethical violation has destroyed the fitness for office in a way that no lesser sanction can adequately address — and the ethics regime must be able to reach those cases.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "If It's Serious, Prosecute It" Response</div>
+    <div class="weight-text">Prop's strongest counter is that any case serious enough to justify seat loss is likely serious enough to support criminal prosecution, and prosecution is the proper route. The asymmetry that defeats this counter is timing and reach. Criminal prosecution, even when it succeeds, often takes years. During those years, the MP continues to exercise the authority their misconduct has compromised. And criminal law's reach is limited to defined offenses — it does not reach all forms of office-unfitness. The ethics regime exists to fill that gap, and filling it with a consequence less severe than the one available under criminal law creates a perverse structure where being below the criminal threshold protects you not just from prosecution but from any meaningful consequence for continued officeholding.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"How do you draw the line between non-criminal misconduct that is disqualifying and misconduct that is merely serious? Isn't Opp at risk of making the category infinitely expansive?"</div>
+    <div class="judgeobj-a">The category can be narrowed by reference to a combination of factors: the nature of the misconduct (direct abuse of the office rather than private conduct), its persistence over time (not a single lapse but a pattern), its relationship to the exercise of parliamentary authority (affecting votes, use of parliamentary resources, conduct in the chamber), and its objective severity as assessed by an independent body. Not every ethics breach meets these criteria. Most do not. The category Opp is defending is genuinely narrow — it covers cases where all four of those factors are present. The fact that the line is hard to draw in every case does not mean it cannot be drawn at all; it means the process for drawing it must be careful and well-designed.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">You are smuggling in crime-lite examples — conduct that is criminal-adjacent and should be prosecuted rather than handled by ethics processes that have seat-removal power.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">We are using examples of structural conflicts, repeated nondisclosure, and sustained deception affecting legislative duty — not unproven crime. These are not crime-adjacent; they are office-incompatible. The distinction between criminal guilt and office-fitness is real. Our examples illustrate the second category specifically, not the first.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARG 3 -->
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Lesser Penalties Often Leave the Core Problem Intact</span></div>
+  <p class="arg-body">Prop's strongest practical claim is that alternatives to seat loss can achieve meaningful accountability. Opp must take this claim seriously and defeat it on its own terms. The argument is that the alternatives are not sufficient in the most serious cases — not because they are poorly designed, but because they leave untouched the specific thing that constitutes the problem. When an MP has gravely compromised their office — say, by systematically voting on legislation in which they held undisclosed financial interests — what exactly is the harm? It is not just a reputational harm or an embarrassment. It is a substantive distortion of the legislative process: votes were cast, laws were made, and public resources were allocated by someone who was not exercising independent judgment but was acting in their own financial interest.</p>
+  <p class="arg-body">A censure, however strongly worded, does not undo those votes. A suspension, however long, does not remove the MP from the position they used to pursue those interests. A public inquiry, however thorough, does not prevent the MP from returning to exactly the same exercise of authority when the inquiry concludes. If the seat itself is the instrument of the misconduct — if the vote, the committee role, the legislative access, the parliamentary privilege are the mechanisms through which the harm was done — then the only sanction that addresses the core problem is the one that removes those mechanisms.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The UK's Recall of MPs Act 2015 was introduced partly because of precisely this recognition. The political consensus that produced that Act — with cross-party support — reflected a widely shared view that the pre-existing sanctions were insufficient in cases where MPs had committed serious misconduct but had not been criminally convicted: the existing regime could punish, suspend, and censure, but could not, in extreme cases, remove the person from the position itself. The Act's creation of a democratic route to seat loss for serious misconduct represents a real-world legislature identifying exactly the problem Opp is identifying and legislating to address it.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will argue that role stripping and suspension specifically do constrain the MP's practical power — if you cannot sit on the committee where your conflict existed, you cannot continue to abuse that position. This is partially true in specific cases. But most serious ethical misconduct does not attach to a single committee role — it attaches to the general exercise of parliamentary authority, including plenary voting, participation in debates, access to information, use of parliamentary status for external dealings, and the ongoing legitimacy that continued officeholding confers. And in cases where misconduct is systematic rather than single-incident, removing one role mistakes a symptom for the cause.</div></div>
+  <div class="quote qo">💬 Say this: "If the seat remains untouched in the worst cases, the core problem remains untouched. The seat is not just a symbol — it is the instrument of the authority that was abused. Criticizing the person while leaving the authority intact is not accountability. It is a performance of it."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>When the parliamentary seat — the vote, the access, the authority, the legitimacy of continued officeholding — is the instrument or the context of the misconduct, sanctions that leave the seat intact do not address the core problem</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means an MP who has been censured and stripped of committee roles but retains their seat continues to occupy a position of legitimate public authority that their conduct has made illegitimate</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the parliamentary institution continues to function as though that MP's participation in it is a valid exercise of delegated public authority — when, on the facts found, it is not</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: <strong>MPs should sometimes lose their seats due to ethical violations</strong>, because in cases where the ethical violation is specifically about the exercise of the authority the seat confers, retaining the seat is not a democratic protection — it is a structural failure of accountability.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Alternatives Materially Constrain Power" Response</div>
+    <div class="weight-text">Prop's counter is that Opp must prove why seat loss specifically is necessary, not just emotionally satisfying. This is a fair challenge. Opp's response is that the question of whether the seat is itself the instrument of misconduct is empirically answerable in specific cases — it is not a matter of emotional satisfaction but of logical coherence. If an MP's misconduct consisted of using their vote to benefit their financial interests, and the sanction leaves their vote intact, then the sanction has not addressed the specific wrong. Prop's alternatives are not emotionally unsatisfying — they are structurally incomplete for that category of case. The distinction is between punishing the person and addressing the conduct: lesser penalties do the former; only seat removal does both.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't Opp describing a very narrow category of cases? If so, does it really justify establishing seat loss as a consequence of ethical violations generally?"</div>
+    <div class="judgeobj-a">Yes — the category is narrow, and that is precisely the point. Opp is not arguing that every ethics breach should lead to seat loss. It is arguing that the last-resort sanction must remain available for the narrow category where it is specifically appropriate. The motion as worded — "Members of Parliament should not lose their seats due to ethical violations" — is categorical: it rules out seat loss entirely, for all ethical violations, including the narrow category where it is genuinely necessary. Opp's case does not require the category to be large; it requires it to be non-empty. And the cases described — systematic conflict-corrupted voting, deliberate sustained deception affecting legislative duties — are not hypothetical. They are the cases that motivated the development of recall and removal mechanisms in real legislatures.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Power can be fragmented and constrained without seat loss. Suspension, committee removal, leadership stripping, inquiry — together these materially limit an MP's effective power and address the misconduct without canceling the electoral result.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">In cases where the vote itself is the instrument of the misconduct — where the MP voted under financial conflicts — constraining other forms of power does not address the vote. The vote remains. The legislative act remains. The distortion of the democratic process that was produced by that vote remains. No alternative sanction undoes it or prevents future votes from being similarly distorted.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these clashes convincingly. Know which ones your side has the easier burden on before the round starts.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 1 — Does Serious Non-Criminal Misconduct Ever Justify Seat Loss?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That even if some non-criminal misconduct is genuinely serious, seriousness is necessary but not sufficient to justify seat forfeiture. The additional requirements for seat forfeiture — a hard and clear trigger capable of being applied without systematic abuse risk — are not met by ethical standards. Use the principle: the harsher the sanction, the clearer the trigger must be. Then argue the clarity required for seat loss exceeds what ethics standards can provide, even in clear-seeming cases.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      At least one clear category of non-criminal misconduct that is both objectively severe and sufficiently defined that Prop cannot plausibly argue it requires more clarity than it has. The systematic conflict-of-interest voting example is Opp's strongest case: it is clearly identifiable (the MP voted on legislation affecting their undisclosed financial interests), clearly repeated (not a single lapse), and clearly connected to the exercise of parliamentary authority.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: has either side established a principled limiting principle that is specific enough to be actionable? Prop wins if it can show that even the clearest ethics cases fall below the threshold required for seat forfeiture. Opp wins if it can identify a specific, bounded category of misconduct that is clear enough to ground seat forfeiture and serious enough to require it. The judge is most likely to award this clash to Opp if Prop fails to engage specifically with Opp's clearest examples. Prop loses this clash the moment a speaker says anything that sounds like "even in that case, they keep the seat" in response to a case that is genuinely egregious. Opp loses it if they fail to define "serious" with any precision — if the category turns out to mean whatever the ethics body decides is serious, Prop's abuse-risk argument becomes unanswerable.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 2 — Which Institutional Risk Is More Dangerous — Purge or Impunity?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the risk of weaponized ethics removal is not just hypothetical but structural — flowing from the design of ethics processes themselves — and that it produces a categorically worse democratic outcome than the impunity risk. The wrongfully removed MP represents a canceled election result. The impunity risk is bounded by the electoral cycle — the worst case is the MP serves out their term before voters can remove them.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the impunity risk is real, ongoing, and not adequately addressed by the alternatives Prop offers. The compromised MP who serves a full term without seat loss continues to exercise abused authority for years, the damage is cumulative, and the risk of weaponization is manageable through process safeguards in a way that Prop's alternatives cannot compensate for.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking which side has quantified its risk more concretely and compared the two risks more rigorously. Saying "our risk is bad" without explaining how bad, compared to the other side's risk, does not win this clash. The winner is the side that can say: "here is the actual democratic harm when our risk scenario occurs, here is the actual democratic harm when their risk scenario occurs, and here is why ours is less severe or less likely." Prop loses this clash if it only establishes general abuse risk rather than structural abuse risk — the former is a reason to improve processes, the latter is a reason to reconsider the sanction. Opp loses it if it sounds naive about politicization — if it acts as though independent bodies fully solve the abuse risk, judges will find the response unconvincing.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Are the Alternative Sanctions Enough?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      Specifically and with mechanism, how the combination of available sanctions actually constrains an MP's power and punishes misconduct in a way proportionate to the wrong. Not just listing the sanctions — explaining the mechanism by which each one constrains the specific form of power that was abused, engaging with Opp's specific examples rather than speaking in generalities.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That in the specific category of cases where the seat itself is the instrument of misconduct, the alternatives do not touch the core problem. Explaining what "the core problem" actually is in those cases — not just that the MP behaved badly, but that they continue to exercise the specific authority through which the harm was done — and which power the vote, the committee access, the legislative authority — is unaddressed by each alternative sanction.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is assessing the quality of specific engagement, not the volume of examples or the length of the sanctions list. The winner is the side that engages with the other side's specific scenario rather than talking past it. Judges strongly reward this. Prop loses this clash if it only lists alternatives without explaining how they work in practice in specific cases — a list is not an argument. Opp loses if it overstates the inadequacy of alternatives by describing scenarios where the alternatives would in fact be sufficient. If Prop can point to a realistic scenario where alternatives do genuinely address the problem, and Opp has not pre-empted that, Opp loses this clash on the specific exchange.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 4 — Is Democracy Only the Initial Vote?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the initial electoral mandate has substantial ongoing weight — voters chose this person, and parliamentary processes overriding that choice on interpretive ethical grounds constitute a real and significant democratic harm. Not treating the mandate as absolute — but showing the bar for overriding it must be very high, and that ethical judgment does not reliably clear that bar.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That democratic representation is richer than point-in-time electoral choice — voters delegated authority on the assumption of ongoing ethical conduct, and ongoing compromise of that conduct is itself a democratic harm. The specific harm of continued compromised representation is greater than the harm of the electoral disruption caused by seat loss.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is looking for which side has a more complete theory of democratic representation — not just a stronger intuition. The winner explains specifically what representation consists of, what voters were actually consenting to when they elected someone, and what happens when those conditions are violated — rather than asserting conclusions. Judges reward conceptual precision above almost anything else on this clash. Prop loses if it sounds like the electoral mandate is absolute — that position is extreme and most judges will not accept it. Opp loses if it sounds like voters' choices don't matter — if the conditionality claim becomes so broad that any parliamentary body could override any electoral result for sufficiently vague reasons.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 5 — Who Has the More Defensible Limiting Principle?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That its bright-line rule — no seat loss for ethics, only for law — is more resistant to manipulation and more democratically safe than Opp's threshold-based approach. Bright-line rules, even when they produce some individually suboptimal outcomes, are more predictable, less manipulable, and more consistent across different political environments than threshold tests.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That its limiting principle is specific enough to prevent the category from expanding beyond the serious cases it is designed to cover — defining "serious" in terms of objective criteria (direct abuse of office, persistence, connection to parliamentary authority, independent assessment) rather than the ethics body's judgment alone.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: which limiting principle is more robust under adversarial pressure? If a debate opponent can expand the category by pointing to borderline cases, the limiting principle is weak. If the principle holds even when pushed on hard cases, it is strong. The winner maintains their principle under the hardest factual pressure the other side can generate. Prop loses this clash if its bright-line rule produces a clearly absurd result — an obviously unfit MP who keeps their seat — that the bright line feels more like a loophole than a principle. Opp loses it if it cannot specify "serious" beyond "we'll know it when we see it" — that formulation is exactly what Prop's abuse-risk case is designed to attack.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: exposes a gap in the other side's argument, or forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly and confidently under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">What exact standard separates a "serious ethical violation" from a "politically convenient" one — and who applies that standard under your model?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">Who makes the final seat-loss decision under your model, and why should we trust that decision-maker will not be subject to the political pressures you say you want to address?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Why should standards broader than legal disqualification be strong enough to remove an elected MP — and if they can be, what stops the category from expanding?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">If the conduct is genuinely grave — truly disqualifying — why is criminal prosecution not the proper route, and what does it tell us that you prefer ethics removal to criminal conviction?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Why are suspension, leadership stripping, committee removal, full public inquiry, and criminal referral — combined — not sufficient before you void the seat?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "can an MP be unfit without a conviction?":</strong> Yes — and they should face very serious sanctions: suspension, role removal, referral for prosecution. What they should not face is seat forfeiture based on ethical judgment alone, because the standards establishing unfitness are not hard enough to safely ground a sanction of that democratic severity.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "you are creating a safe zone below criminal law":</strong> We are not creating a safe zone — we are maintaining a zone where serious sanctions apply but the specific sanction of seat forfeiture does not, because ethical judgment is not an appropriate trigger for an irreversible democratic sanction. There is a categorical difference between "protected from serious consequences" and "protected from one specific consequence that is too severe for this trigger."</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "what removes abused power in your model?":</strong> Suspension removes presence in the chamber. Committee removal eliminates specific access. Role stripping removes institutional influence. Referral removes the possibility of cover-up. None of those are trivial. The assumption that only seat loss removes power conflates the seat with the full package of power — and the full package is addressable without voiding the seat.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "why should voters wait while that MP keeps legislating?":</strong> Because the alternative — allowing parliamentary ethics processes to cancel election results — creates risks that are worse than the problem it solves. The MP faces severe current sanctions. Voters have the opportunity to remove them at the next election. But we do not hand parliaments the power to override electoral choices on ethical grounds, because that power is too dangerous and too easy to misuse.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "one-line principle":</strong> Misconduct should be punished seriously. Representation should not be canceled lightly. Ethical judgment is not a safe enough trigger for an irreversible democratic sanction.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Can an MP who has systematically voted on legislation while holding undisclosed financial interests in its outcome be described as fit for continued office — yes or no? Because either answer creates a problem for you.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If yes, why must that MP keep their seat — and what message does that send to the voters who elected them to exercise honest, unconflicted judgment on their behalf?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">After all your alternative sanctions are applied — suspension, censure, committee removal — is the MP's vote on future legislation still present in the chamber? And if that vote was the instrument of the misconduct, how have you addressed the core problem?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Is your model a safe zone for MPs whose misconduct falls just below the criminal threshold — meaning the worse the design of the misconduct, the safer they are from real consequences?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If you say "prosecute it," what happens during the years between the ethics finding and the prosecution outcome — and who authorizes the MP to continue exercising the authority they have been found to have abused?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "who decides / under what standard?":</strong> An independent body — independent from the governing majority — operating on publicly published criteria, with full reasons given for every finding, and access to appeal. The "who decides" question is a process design question. It has answers. It is not an objection to the existence of the sanction.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "ethics removal invites weaponization":</strong> Any accountability tool can be abused — that is a reason for better design, not abolition. We accept that abuse risk justifies careful process design, independent oversight, and published standards. We deny that it justifies abolishing the sanction entirely, because abolition creates a structural gap nothing else fills.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "why not just prosecute it?":</strong> Criminal prosecution operates on a proof-beyond-reasonable-doubt standard that many cases of serious misconduct will not meet. It takes years during which the compromised MP continues to exercise authority. And criminal law's reach is limited to defined offenses — it does not reach all forms of office-unfitness. The ethics regime exists to cover that space.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "you are overriding voters":</strong> In rare, severe cases — yes, and deliberately so. Because democratic legitimacy includes the ongoing lawful and ethical exercise of office, not just the frozen result of an election. Voters did not consent to be represented by someone who is systematically acting in their own financial interests rather than those of their constituents.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "one-line principle":</strong> Election grants authority. Serious ethical compromise can destroy the legitimacy required to continue holding that authority.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side just argued, explain specifically why it fails, and connect the failure back to your thesis. The starred lines are your top three per side — have them ready from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition has described bad behavior. They have not justified this specific sanction."</strong> Showing that misconduct is serious proves the MP should face consequences. It does not, by itself, prove that the specific consequence of seat forfeiture is proportionate or safe. Opp has been moving from "the misconduct is egregious" to "therefore the most severe sanction is appropriate" without bridging the gap. Name the gap explicitly: they proved bad conduct. They have not proved why seat loss, specifically, is the right answer to it.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Conditional authority does not automatically mean seat forfeiture."</strong> When Opp runs the conditional-authority argument, acknowledge the premise and then show it does not lead where they want it to. Even if we accept that the authority is conditional, there are many ways to enforce conditions: suspension, role removal, public censure, criminal referral. None of those require canceling the seat. The conditionality argument shows that something should happen. It does not specify what. Opp has not answered the sanction question — only the misconduct question.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Every time Opp says 'serious,' ask: according to whom, and under what standard?"</strong> "Serious ethical violation" is doing enormous work in Opp's case. If they cannot operationalize it — cannot specify criteria that distinguish serious from politically convenient — the category is undefined, and Prop's abuse-risk argument applies in full force. Make a habit in rebuttal of pointing to every instance where Opp has asserted "serious" without defining it. Ask the question directly: what exactly makes a violation serious enough, and who applies that test?</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"The answer to severe misconduct is serious sanctions — not necessarily the maximum sanction. In criminal law, we do not give the maximum sentence for every serious offense. Proportionality is a principle of punishment, not a concession to wrongdoers. Serious misconduct justifies serious sanctions, but seat loss — the most democratically disruptive sanction available — should be reserved for triggers that are correspondingly hard and clear. Opp has not shown that ethical judgment clears that bar."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Trust also collapses when ethics procedures become clean-looking purge tools. Opp argues that impunity for ethical violations destroys public trust. True. But public trust is also destroyed when ethics processes are seen as politically weaponized. The MPs removed under politically motivated ethics proceedings in captured parliaments around the world were not seen as accountability successes — they were seen as abuses of institutional power. Both forms of trust collapse are real. Opp does not own the trust argument."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition gives you criticism without removal of the abused power."</strong> All of Prop's alternatives — censure, suspension, role stripping, inquiry — are forms of criticism and temporary constraint. They do not remove the seat, the vote, or the legislative authority. In the specific cases where misconduct involves the exercise of that authority, the alternatives address the symptom while the underlying problem — continued exercise of corrupted authority — persists. An MP who has been found to have voted on legislation affecting their undisclosed financial interests continues, after all of Prop's alternatives, to have a vote. That vote is what they abused. Prop has not addressed that.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Not every unfit MP is a convicted criminal."</strong> Prop implies that criminal conviction is or should be the only trigger for seat loss. But criminal conviction and office-unfitness are not the same category. Many forms of conduct that make someone genuinely unfit for public office — systematic dishonesty, sustained conflicts of interest, ongoing abuse of position — do not meet the specific elements required for criminal offenses. That gap is exactly what ethics regimes exist to fill. If Prop responds to every example with "prosecute it," press specifically: what if the conduct is clearly wrong but does not meet the criminal standard? What if prosecution fails or takes years? What happens in that gap?</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Abolishing seat loss entirely creates a structural gap that no other sanction fills."</strong> Prop's position is not "fix the process" but "abolish the outcome." That is an overreaction that creates a class of MP who is, by design, untouchable at the most fundamental level. No institutional design should be built around making a category of official completely immune from the most serious consequence of their misconduct. Even if that immunity is rarely relevant in practice, its existence distorts the incentive structure for everyone who knows it exists.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Representation is not only about occupancy of the seat — it is about the legitimacy of that occupancy. Prop's core democratic argument is that the seat represents voters' choices and should be protected. But the voters' choice was made on the assumption that their representative would exercise honest, unconflicted judgment on their behalf. When that assumption is shown to be false — when the representative has been systematically acting in their own interests rather than their constituents' — the seat's occupancy does not represent those voters' genuine choices. It represents a distortion of them."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Abuse risk does not justify abolishing the backstop — it justifies designing it carefully. Every accountability mechanism in every institution can in theory be weaponized. The answer to that risk is procedural protection — independence of investigation, published standards, review mechanisms, appeal rights — not the permanent removal of a consequence from the menu. We have described those protections. Prop has not engaged with them; it has argued that any residual risk justifies abolishing the sanction. That standard would eliminate every serious accountability tool in democratic governance."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later when the other side has committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "ethical violations" in the first sixty seconds — broad enough to be honest, framed to show the category is heterogeneous and therefore unsafe as a basis for seat removal. Do this before Opp's narrow definition sets the judge's expectations.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish immediately that Prop does not defend corrupt MPs: "We are not here to say misconduct does not matter. We are here to say seat forfeiture is too severe and too dangerous a sanction for this kind of trigger."</div>
+        <div class="role-line"><span class="role-icon">→</span>Announce the three main arguments clearly so judges can follow the case structure throughout: severe sanction needs hard trigger; discretion invites abuse; strong alternatives exist.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Over-developing the alternative sanctions list — that is Speaker One's job. Every second spent there is a second not spent on framing and definition, which is where this round is often decided.</div>
+        <div class="role-line"><span class="role-icon">→</span>Claiming no involuntary restriction on any MP is ever justified — this is indefensible and hands Opp their strongest attack.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Carry the full constructive case: why seat loss is special; why ethics standards are politically contestable; why alternatives are materially meaningful. Give all three arguments full development with examples and So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>For the alternatives, explain the mechanism — not just the list. How specifically does each sanction constrain the form of power that was abused? The judge needs mechanism, not enumeration.</div>
+        <div class="role-line"><span class="role-icon">→</span>End every argument with an explicit sentence connecting it to the motion's specific words: "This meets the motion's threshold because..."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Getting so absorbed in hypothetical case distinctions that the affirmative moral case gets lost. The judge needs to leave this speech knowing what Prop is for, not just what it is against.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly answer Opp's three arguments — conditional authority, non-criminal disqualification, alternatives insufficient — explicitly and in sequence. Engage with what they actually said, not a generic version of Opp's case.</div>
+        <div class="role-line"><span class="role-icon">→</span>Attack "serious" and "last resort" as under-defined. Press: who decides? Under what standard? What prevents weaponization? Make Opp specify or concede the category is indefinable.</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuild the comparative: "Opp proved bad behavior. They needed to prove seat loss is the right sanction. They proved one thing. They needed to prove two."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire affirmative case from scratch. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, the judge will notice that the most important challenges have not been answered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Collapse the round into two big questions: has Opp proved that seat forfeiture specifically is the right sanction — not just that misconduct is serious? Has Opp addressed the abuse risk in a way that is structurally convincing rather than procedurally optimistic?</div>
+        <div class="role-line"><span class="role-icon">→</span>Close with: "Opp proved misconduct can be serious. They never proved why seat forfeiture is the right sanction. We give you accountability with restraint. Vote Proposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Relitigating every POI exchange or example. A closing that sounds like a rebuttal speech loses register. Give the judge a narrative, not a recap.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Narrow the motion's target explicitly in the first two minutes: "We are not defending removal for every ethics breach. We are defending it for the most serious cases only — where the conduct is clear, persistent, and directly connected to the exercise of parliamentary authority."</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the conditional-authority frame: "A seat is delegated public authority, not a permanent personal entitlement. Election is powerful — but it is not unconditional."</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal Opp's moral calibration early: not stigma, not diagnosis-by-diagnosis, but serious-cases-only. The judge must know from the start that Opp is principled and narrow, not aggressive and broad.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the whole opening on wording without giving moral content. Winning the definitional argument but losing the moral argument has not yet won the round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full Opposition case: conditional authority, non-criminal disqualification, and alternatives insufficient. Each argument fully developed with examples and So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the line "Prop's alternatives leave the seat, the vote, and the legislative legitimacy intact — in the worst cases, that is the ongoing harm" early and return to it throughout.</div>
+        <div class="role-line"><span class="role-icon">→</span>Specify the standard every time: direct abuse of office, persistence, connection to parliamentary authority, independent assessment — never mental illness as a class or diagnosis alone. The moment Opp sounds like it is treating all MPs in a category as problematic, Prop's abuse-risk argument becomes unanswerable.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining procedural mechanics at the expense of moral substance. The case must rest on why serious ethical violations destroy the legitimacy of continued officeholding — not just on how the review process works.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Force Prop into the "clearly unfit but still seated" corner. Take the clearest, hardest case — systematic conflict-corrupted voting — and make Prop defend keeping that MP seated. Name it specifically. Ask the question directly. Make them answer it.</div>
+        <div class="role-line"><span class="role-icon">→</span>Defend the backstop against Prop's abuse-risk argument: "Abuse risk argues for better design, not abolition. Every serious accountability tool can be abused. We do not abolish courts because courts can be corrupted. We improve them."</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer Prop's structural abuse case: distinguish between structural abuse risk (design of the institution creates systematic incentives for misuse) and abuse risk in general. If Prop only establishes the latter, the "fix the process" response wins.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Pretending the process fully solves politicization. Judges who understand institutional politics know that independence is a matter of degree. Sounding naive about this discredits the rest of the speech.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple. Clean decision rule: "Vote on the motion as written. Prop's best case is that broad ethics-based seat removal is dangerous — which we also believe. What they have not defended is the literal motion, which abolishes seat loss entirely, even for the serious cases we have described. Vote on the actual motion."</div>
+        <div class="role-line"><span class="role-icon">→</span>Close with: "Our side keeps a last-resort backstop for the worst cases. Their side abolishes it. Democracy requires not just the initial vote but the ongoing legitimate exercise of the authority that vote confers. Vote Opposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-opening technical model design arguments — that belongs in earlier speeches. The closing should be principled, clear, and memorable, not technical.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is not about whether misconduct should have consequences. It should, and we say it will. This debate is about whether the specific consequence of losing a parliamentary seat — a consequence that cancels the result of an election — is the right sanction for ethical violations rather than for the kind of hard, clear legal trigger that alone can safely justify that outcome. We say it is not. We punish hard. We do not let ethical judgment override elections."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "Election is powerful. It is the foundation of democratic legitimacy. But it is not immunity. When Members of Parliament are elected, they receive delegated public authority — authority granted on the condition that they exercise it with basic integrity. If they gravely violate that condition, continued officeholding is not the protection of democracy. It is its distortion. Some ethical violations are serious enough that continued holding of the seat becomes the problem, not just the person."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The harsher the sanction, the clearer the trigger must be. Seat loss is as harsh as democratic sanctions get. Ethical judgment is as contestable as standards get. That mismatch is the core of what the motion identifies as wrong.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition proved that ethical misconduct can be serious. They needed to prove that seat forfeiture specifically is the right response, that ethical judgment is a safe enough trigger, and that the abuse risk is truly solved. They did not prove any of those things.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Once ethical judgment can remove seats, factions and institutional actors gain a powerful tool for political elimination under the cover of principled accountability. Process improvements reduce that risk — they do not eliminate it.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Suspension, censure, leadership stripping, committee removal, public inquiry, party penalties, and criminal referral are not trivial. They are severe. They punish the wrongdoer and constrain their power without the democratic damage of canceling representation.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>We give you accountability with restraint. We punish hard. We do not let ethical judgment cancel elections. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Election grants authority. Serious ethical compromise can destroy the legitimacy required to continue holding that authority. Democracy is not only the moment of election — it includes the ongoing legitimate exercise of the power voters delegated.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Not every unfit MP is a convicted criminal. The gap between criminal guilt and office-unfitness is exactly what ethics regimes exist to fill. Abolishing seat loss from that regime leaves the gap structurally unfilled — regardless of how many lesser sanctions exist.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Proposition's alternatives leave the seat, the vote, and the legislative legitimacy of continued officeholding intact. In the worst cases — where the vote was the instrument of the misconduct — that is not accountability. It is a performance of it.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Abuse risk does not justify abolishing the backstop. It justifies designing it carefully. We have described those design safeguards. Proposition has not engaged with them — it has argued that any residual risk justifies abolishing the sanction entirely.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Our side keeps a last-resort backstop for the worst cases. Their side abolishes it. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Every major democratic legislature maintains formal codes of conduct or standards regimes for members that go beyond criminal law requirements</td><td><span class="pill pp">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Parliamentary ethics codes typically use broad, standards-based language that requires significant interpretive judgment to apply</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The UK's Recall of MPs Act 2015 creates a mechanism by which constituents can trigger a by-election if their MP is suspended from the House for a specified period</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Mental Health Act 1983 in England and Wales — used as Prop's analogy for least-restrictive standards — contains explicit least restriction principles governing compulsory detention</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Australian High Court found in 2017 that Bob Day was incapable of being chosen as a senator due to his financial relationship with the Commonwealth — without a criminal conviction</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Office-unfitness and criminal guilt are not always identical — parliamentary conduct bodies have found members in breach of conduct requirements in cases where no criminal prosecution was pursued</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Most parliamentary systems include a range of sanctions short of seat removal — suspension, censure, committee removal, financial penalties — that can be applied in response to misconduct</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The British House of Commons expenses scandal of 2009 demonstrated that ethics processes operating under political pressure struggle to maintain proportionality between different levels of culpability</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Academic research from the V-Dem project at the University of Gothenburg documents how formally neutral parliamentary procedures in majority-captured legislatures have been repurposed to marginalize opposition members</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, contested</span></td><td>"Scholars of democratic backsliding have documented cases where formally neutral parliamentary procedures were adapted for factional purposes under dominant majority control — Hungary is the most studied example."</td></tr>
+      <tr><td>Neil Hamilton's political career was effectively ended in the UK through party action, public exposure, and electoral consequence — without formal seat removal during his term</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>South Africa's Constitution Section 47 allows for removal of National Assembly members found guilty of certain conduct — but the triggers are legally defined, not open-ended ethical judgment</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The political consensus behind the UK's Recall of MPs Act 2015 reflected a widely shared view that pre-existing sanctions were insufficient in serious cases — evidenced by cross-party support for the Act</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Directionally supported</span></td><td>"The Recall of MPs Act 2015 received cross-party support and was introduced in part because of recognized limitations in pre-existing sanctions for serious non-criminal misconduct."</td></tr>
+      <tr><td>Public trust in democratic institutions is harmed both by obvious impunity for misconduct and by accountability processes perceived to be politically motivated or selectively applied</td><td><span class="pill pp">Both</span></td><td><span class="pill pw">⚠️ Plausible with academic support</span></td><td>"Research on institutional legitimacy suggests public trust can be eroded both by inadequate accountability and by accountability processes perceived as politically weaponized."</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps for this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like a defender of corrupt MPs.</strong> Any sentence that sounds like "even in that case, they keep the seat" — without immediately and clearly explaining why the alternatives are sufficient — will be read by judges as protection of corruption. Prop must actively and repeatedly distance itself from this interpretation. Every time Opp describes a hard case, acknowledge that the conduct is wrong before explaining why seat loss is not the answer. The acknowledgment must come first.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Saying "if it is serious, prosecute it" as though that resolves everything.</strong> This move sounds logical but is very weak. It assumes prosecutors will take the case. It ignores the time gap during which the MP continues in office. And it implies Prop is comfortable with the MP staying in office while criminal proceedings continue. If Prop falls back entirely on criminal prosecution for serious cases, Opp's "what about the gap" POI becomes unanswerable.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Treating representation as absolute.</strong> If any Prop speaker implies the electoral mandate cannot ever be qualified or conditioned — that voters' choices are immune from any parliamentary interference — judges will find this position extreme. Prop's position is that ethical standards specifically are too broad to safely ground seat forfeiture, not that the mandate is absolute. State it as absolute and lose the register argument.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Only listing the alternative sanctions without explaining how they work.</strong> A list is not an argument for sufficiency. Saying "there is censure, suspension, committee removal, inquiry, party action, criminal referral" tells the judge what the options are — it does not tell them why those options are enough. For each alternative, briefly explain the mechanism by which it actually constrains power and punishes misconduct. Without that, Opp's "these leave the seat intact" rebuttal goes unanswered.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Overclaiming that all ethics standards are vague or all ethics processes are corrupt.</strong> Prop's argument is strongest when framed as a structural concern rather than a condemnation of all ethics regimes everywhere. If Prop says ethics standards are always too vague to be useful, or that all ethics processes are politically motivated, it makes claims that are demonstrably false. The argument should be: structural design of ethics processes creates risks that are unacceptable when the sanction is seat forfeiture — not that every ethics process is inevitably corrupt.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Defending removal for every ethics breach.</strong> If Opp sounds like it is saying any ethical violation can justify seat loss, the abuse-risk argument becomes devastating and unanswerable. Opp's model only works if it is genuinely narrow — limited to the most serious, most objectively documentable, most office-specific cases. Every time an Opp speaker implies the category is wide, they hand Prop exactly the ammunition they need to show that the sanction is disproportionate and dangerous.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Never defining "serious" beyond assertion.</strong> "Serious ethical violations" is doing enormous work in Opp's case, and it must be cashed out with real operational content or it collapses. If the only answer to "what counts as serious?" is "an independent body decides," then the independent body's judgment is the standard, and Prop's abuse-risk argument applies in full. Opp must define "serious" in terms of objective criteria: direct abuse of parliamentary authority, persistence, objective documentation, severity. Without those criteria, the category is definitionally hollow.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding naive about politicization.</strong> Opp's weakest moment tends to be when it responds to the abuse-risk argument as though independent bodies fully solve the problem. Every informed judge knows that institutional independence is a matter of degree and that even formally independent bodies can be pressured, captured, or poorly designed. If Opp says "don't worry, it's independent" without acknowledging residual risk, it loses credibility. The right answer is: "The risk is real, and it justifies careful design — but it does not justify abolishing the sanction."</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Leaning on trust rhetoric without mechanism.</strong> Phrases like "voters need to believe their parliament is clean" are emotionally resonant but analytically empty unless connected to a specific mechanism. How exactly does seat loss restore trust? Why does censure or suspension not restore the same amount of trust? What specifically is the mechanism by which retaining a sanctioned MP's seat causes ongoing trust damage? Opp must answer these questions concretely rather than asserting the trust argument as self-evident.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Using only quasi-criminal examples.</strong> If all of Opp's examples involve misconduct that sounds like it is on the edge of criminal conduct — cash-for-questions, fraud-adjacent behavior — Prop will respond with "prosecute those cases" and sound persuasive. Opp must include genuinely non-criminal but office-disqualifying examples: persistent undisclosed conflicts of interest, sustained misleading of the house on matters of public policy, systematic use of parliamentary status for personal advantage through legal but compromising financial relationships.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"The seat belongs to voters, full stop."</strong> This argument proves too much: if the seat absolutely belongs to voters, then no sanction — not even suspension — is legitimate, because any interference with the MP's exercise of their mandate overrides voters' choices. Prop cannot both run this argument and endorse suspension, censure, and role stripping. The consistent version of the argument is: "The seat has democratic value that should be heavily protected" — not that it is beyond any qualification.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Public trust matters" as a standalone argument.</strong> This is a conclusion dressed up as a premise. Public trust matters to both sides — the question is which model better protects it. Using "public trust" as though it is a consideration that only one side can invoke is intellectually lazy and will not impress any serious judge. It can be used as a one-line closer after a real argument but should never substitute for one.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"Due process solves the abuse problem."</strong> This sounds like a sophisticated procedural response but is actually a concession dressed up as a defense. Once you say "the process solves it," you have accepted that the problem is real and are relying entirely on process design to manage it. The stronger argument is: abuse risk is real, justified caution about it is appropriate, the right response is the best possible process plus acceptance that some residual risk remains — not pretending the problem is solved.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"Criminal law covers the serious stuff."</strong> This is demonstrably false as an empirical matter, and Opp will destroy it with examples. There are many categories of seriously office-disqualifying conduct that criminal law does not reach — persistent non-disclosure, misleading the house, structural conflicts of interest that do not amount to corruption. Any speaker who says criminal law covers the serious stuff will find themselves defending the proposition that these categories are not serious, which is neither defensible nor accurate.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Only seat loss can ever deter misconduct."</strong> This is an overreach that undermines the argument it supports. Deterrence research consistently shows that certainty of sanction is a stronger deterrent than severity. A well-enforced regime of lesser penalties can produce stronger deterrence than a severe but rarely imposed sanction. The argument that should be made is not "only seat loss deters" but "in the most serious cases, lesser penalties are structurally insufficient regardless of their deterrent effect."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════ EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This debate is not about whether misconduct should have consequences. It should. It is about whether seat forfeiture — a sanction that cancels an election result — is the right consequence for ethical violations specifically.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Harsh sanction, hard trigger:</strong> Seat loss is uniquely severe. Ethical standards are broad, interpretive, and politically contestable. The harsher the sanction, the clearer the trigger must be. Ethical judgment does not provide the clarity seat forfeiture requires.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Punish hard without canceling the seat:</strong> Suspension, censure, role stripping, committee removal, inquiry, party penalties, criminal referral — combined, these are severe, public, and materially constraining. They are not impunity. They are accountability without electoral nullification.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">What exact standard separates a serious ethical violation from a politically convenient one — and who applies that standard under your model?</div>
+    <div class="emrg-quote">After all your sanctions — suspension, censure, committee removal — why is seat loss specifically necessary rather than emotionally satisfying?</div>
+    <div class="emrg-quote">If the conduct is genuinely serious, why is criminal prosecution not the proper route, and what does it tell us that you prefer ethics removal to criminal conviction?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"Opp proved bad behavior. They needed to prove seat loss is the right sanction. Those are two different arguments and they only made one of them."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "We punish hard. We do not let ethical judgment cancel elections. That is what this motion defends and we will show you why it is right."</div>
+    <div class="emrg-quote">Closing: "Opposition proved misconduct can be serious. They never proved why seat forfeiture specifically is the right answer to it. Vote Proposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not sound like you are protecting corrupt MPs. Do not say "prosecute it" as if that resolves everything. Do not treat the electoral mandate as absolute. Do not list sanctions without explaining how they work.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>A parliamentary seat is conditional public authority, not a permanent personal right. Some ethical violations destroy the legitimacy of continued officeholding. Abolishing seat loss entirely creates a structural gap nothing else can fill.</div>
+
+    <div class="emrg-section">2 Core Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span><strong>Election is not immunity:</strong> Authority is delegated on conditions including ethical conduct. When those conditions are gravely violated, the delegation itself becomes problematic. Not every unfit MP is a convicted criminal. Office-unfitness is broader than criminal guilt.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span><strong>Alternatives leave the core problem intact:</strong> In cases where the vote was the instrument of the misconduct — systematic conflict-corrupted voting — suspension and censure don't touch the vote. The seat remains. The legislative distortion remains. Only seat loss addresses that.</div>
+
+    <div class="emrg-section">3 POIs Ready to Deploy</div>
+    <div class="emrg-quote">Can an MP who has systematically voted on legislation while holding undisclosed financial interests be described as fit for continued office — yes or no?</div>
+    <div class="emrg-quote">After all your sanctions are applied, is that MP's vote still present in the chamber? And if the vote was the instrument of the misconduct, how have you addressed the core problem?</div>
+    <div class="emrg-quote">What happens in the gap between an ethics finding and a criminal prosecution outcome — who authorizes the MP to continue exercising the authority they have been found to have abused?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We are defending serious, last-resort cases only — direct abuse of parliamentary authority, persistent, objectively documented, independently assessed. Not every ethics breach. The most serious ones. The motion abolishes seat loss even for those. That is what we oppose."</div>
+
+    <div class="emrg-section">Opening + Closing Lines</div>
+    <div class="emrg-quote">Opening: "Election is powerful. But it is not unconditional. A parliamentary seat is delegated public authority. Some ethical violations are serious enough that the delegation itself becomes illegitimate."</div>
+    <div class="emrg-quote">Closing: "Our side keeps a last-resort backstop. Their side abolishes it even for the worst cases of non-criminal ethical compromise. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not defend removal for every ethics breach. Do not leave "serious" undefined. Do not sound naive about politicization — say the risk is real and justifies careful design. Do not rely only on the wording argument without moral substance.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
