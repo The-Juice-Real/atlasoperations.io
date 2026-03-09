@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — People With Autism Should Be Required to Wear Identification Markers</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">People with autism should be required to wear identification markers</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SNAPSHOT
+═══════════════════════════════════════════════════════════════ -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not a simple contest between public safety and human dignity in the abstract. Both sides agree those values matter. The real fight is much sharper: does a universal, compulsory, visible marker worn by all diagnosed autistic people actually solve a real problem that cannot be solved another way — and is that solution proportionate to the burden it places on everyone it covers?</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>A visible marker creates meaningful safety value in fast, unplanned public encounters where the real risk lies — situations where a stranger or frontline worker has seconds to interpret someone's behaviour before responding.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That safety value depends specifically on the system being <strong>universal and compulsory</strong> — a voluntary system that strangers cannot rely on does not function as a safety tool.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The burden of forcing all autistic people to display their diagnosis publicly is <strong>real but proportionate</strong> — the severity of the harm being prevented is serious enough to justify that level of compulsion.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Diagnosis is the <strong>wrong trigger</strong> for this policy — the real safety concern applies to a specific subset of autistic people, not the entire diagnosed population, and the gap between them is large enough to make the policy overbroad.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Forced public disclosure of a medical diagnosis is a <strong>serious civic burden</strong> — it removes control over deeply personal information in every public interaction for life, not merely a physical inconvenience.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Less coercive alternatives solve enough of the actual safety problem to make the most coercive version of this policy <strong>unnecessary</strong> — useful is not the same as necessary.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight</div>
+  <p>The biggest definitional question — one that will rarely be stated cleanly in the round — is what "required identification markers" actually means in practice. Proposition will want to define this narrowly: a small, discreet wearable functioning as an emergency identifier. That framing makes the burden sound modest and the benefit sound concrete. Opposition must resist this narrowing. The fair reading of the motion is a visible, standardised marker broadly required whenever autistic people move through public space, with at most narrow exceptions for physical impossibility.</p>
+  <p>This fight matters because a narrow reading makes Proposition's job much easier — of course a small wristband might help in some emergencies. The broader, accurate reading forces Proposition to defend something genuinely harder: <strong>compulsory public disclosure of diagnosis as a condition of ordinary public life, applied to every autistic person regardless of support needs, communication abilities, or personal circumstances.</strong> Both sides should establish their preferred definition early. Judges will likely settle on the broader reading because the motion's language does not naturally imply a narrow emergency-only device.</p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STRATEGY
+═══════════════════════════════════════════════════════════════ -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well. Know which clash you are targeting with each route.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Build the entire case around the first-minute problem in high-stakes unplanned encounters.</strong> The scenario is a person in a meltdown or shutdown in a public place — a train station, a shopping centre, a street — and a stranger or security officer who has no idea what is happening and defaults to a threat response. A visible marker changes that first interpretation before trained support can arrive.</div>
+    <div class="route-why">This route is safe because it is concrete, emotionally resonant, and hard to dismiss. It keeps Proposition anchored to something specific rather than making sweeping claims about autism in general. The risk is that Opposition absorbs this position and argues their alternatives cover this scenario well enough to defeat necessity.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Win the legibility argument — that a universal, compulsory marker is functionally different from a voluntary one because strangers can only rely on a signal they know will be there.</strong> This neutralises the Opposition's entire alternatives case in one move.</div>
+    <div class="route-why">If this argument lands, it shows that voluntary systems are weaker not just in edge cases but structurally. The risk is that it sounds like Proposition is arguing for coercion on administrative grounds. Frame it as being about emergency readability, not convenience, and the reward is large.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Be the side that honestly concedes the burden.</strong> Say openly and early that forcing autistic people to publicly disclose their diagnosis is a serious imposition — then argue proportionality directly. Judges distrust sides that minimise the cost of their own policy.</div>
+    <div class="route-why">Intellectual honesty about the burden earns credibility that carries through the whole round. A Proposition that names the problem with its own policy before Opposition does almost always looks more trustworthy to the judge than one that has to be dragged to the concession.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Narrow to the lost or separated person scenario.</strong> This involves individuals who genuinely cannot self-advocate in a crisis and where a marker provides immediate, readable information to any member of the public without requiring training or infrastructure.</div>
+    <div class="route-why">Use this when the main arguments are being beaten back. It is the case hardest for Opposition to dismiss because it involves people who are demonstrably unable to help themselves in the moment. Keep it in reserve as a concrete grounding point if the round becomes too abstract.</div>
+  </div>
+</div>
+
+<div id="so" class="strat-panel">
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Lead with the heterogeneity argument.</strong> Autism is an extraordinarily wide spectrum and a policy applying to everyone with a diagnosis sweeps in enormous numbers of people who face none of the specific risks Proposition is pointing to. This is factually unassailable and does not require Opposition to deny that any autistic person ever faces any risk.</div>
+    <div class="route-why">This route reframes the whole motion as a problem of precision: the policy is badly designed because it targets a diagnostic category rather than the actual conditions that create the safety concern. Safe because it is grounded in the DSM-5 framework itself — the diagnosis acknowledges enormous diversity.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Win the necessity argument cleanly.</strong> Not just listing alternatives but explaining why they solve enough of the actual problem that the most coercive version of the policy is not justified. Show that voluntary IDs, targeted support plans, and trained emergency protocols together cover the realistic range of scenarios Proposition describes.</div>
+    <div class="route-why">If Opposition can show this coverage, Proposition's entire case collapses to "this would be slightly more convenient" — which is not a sufficient justification for compelled public disclosure. The reward is winning every clash simultaneously because necessity defeat is the nuclear option in policy debate.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Be precise and restrained about the rights argument.</strong> Frame it not as "rights trump everything" but as "serious burdens require serious proof of necessity, and that proof is missing here." This sounds measured and reasonable — exactly what judges want from the side resisting a policy.</div>
+    <div class="route-why">Judges are often uncomfortable with absolutist rights claims. Proportionality and necessity are legal standards that signal sophistication and fairness rather than ideology. A judge who might be sympathetic to Proposition's safety concern will still be able to vote Opposition on necessity grounds without feeling they are endorsing cruelty.</div>
+  </div>
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>The proportionality argument: even if the marker sometimes helps, the burden — permanent, compelled, public disclosure of a diagnosis to every stranger encountered for life — is disproportionately large relative to the benefit, which accrues only in rare, specific emergencies.</strong></div>
+    <div class="route-why">Use when losing structural arguments. It does not require Opposition to deny any of Proposition's examples. It simply says the trade is a bad one. The permanent/occasional asymmetry is emotionally intuitive and logically clean — exactly the combination that wins close rounds.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROP ARGS
+═══════════════════════════════════════════════════════════════ -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">All three arguments must hold together simultaneously. Proving the marker is sometimes helpful is not enough. Proposition must prove that compulsion is what makes the system work, and that the work it does justifies the cost.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Immediate Recognition in High-Stakes Encounters</span></div>
+  <p class="arg-body">The most dangerous moments for some autistic people occur not in controlled environments with trained staff, but in unplanned, fast-moving public situations where a stranger or frontline worker must interpret unfamiliar behaviour in seconds without any prior information. Behaviour that is the result of sensory overload, a meltdown, or communicative shutdown — non-responsiveness, repetitive movement, distress vocalisation, apparent uncooperativeness — is routinely misread as aggression, intoxication, mental health crisis, or criminal behaviour. That misreading can escalate into physical restraint, police involvement, or serious harm. A visible marker changes the first interpretation. It gives the stranger or officer a different opening frame — this person is autistic — which enables a different first response: slower, quieter, less confrontational, more patient.</p>
+  <p class="arg-body">This argument does not claim a marker guarantees a better outcome in every case. It claims the marker produces a meaningfully better average outcome across a large number of unplanned encounters by changing the first cognitive frame the stranger applies. That improvement is the safety value Proposition is pointing to, and it is only available if the marker is reliably present — which requires it to be required.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Research published in Academic Emergency Medicine in 2017 found that autistic individuals were significantly more likely to be physically restrained in emergency departments than neurotypical patients presenting with similar levels of distress, and that staff frequently did not know the patient was autistic until well after first contact had been made. Separately, a 2020 study by Saleh Almuteiri and colleagues in the Journal of Autism and Developmental Disorders examined 34 documented fatalities of autistic individuals in interactions with US law enforcement over a six-year period. In virtually all cases, officers did not know the person was autistic at the time of first contact. The recurring feature — officer ignorance of the person's diagnosis at the moment of first contact — is precisely what a visible marker addresses.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition will argue that the research on law enforcement fatalities highlights a problem of inadequate training and systemic institutional failure rather than identification, and that the solution is to fix policing rather than put the burden on autistic people. This counter is partially correct — better training and systemic reform would also reduce these outcomes. But it has two weaknesses. First, it is not an argument against the marker; it is an argument for doing something else in addition. Second, systemic reform is a long-term project with no guaranteed timeline, whereas a marker is an immediate intervention. Waiting for systemic change to fix a severe, ongoing harm is itself a choice with real costs.</div></div>
+  <div class="quote qp">💬 Say this: "This debate is about the first minute — before a trained support worker arrives, before the person in distress can explain themselves, before a stranger knows anything except that something is wrong. In that first minute, a visible marker changes a confrontation into a conversation."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>A visible marker changes the first cognitive frame a stranger or officer applies to a person in distress</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the initial response is more likely to be cautious, patient, and non-confrontational rather than threat-oriented</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the escalation cascade — physical restraint, police involvement, preventable injury — becomes less likely before any trained support has arrived</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's threshold is met: the requirement to wear identification markers is specifically justified as the instrument triggering the changed first response. <strong>Without the requirement being universal, the marker cannot be relied upon. Without reliability, the protection collapses.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Training Produces the Same Response" Counter</div>
+    <div class="weight-text">Opposition's best counter here is that trained staff in predictable settings — hospitals, schools, public transport hubs — already receive or could receive autism awareness training that would produce the same changed response without any marker. This counter has real force in those specific settings. But it fails to address the scenario this argument is built on: the unplanned encounter in a random public location with an untrained stranger. Training requires predictability — you must know in advance that the person you might encounter is autistic. A visible marker creates that predictability in real time, for anyone, anywhere. The training argument is a partial solution that leaves the hardest cases unaddressed.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Does a marker actually change what a stranger does in a stressful situation, or do people revert to default responses regardless of what the person in front of them is wearing?"</div>
+    <div class="judgeobj-a">The marker does not guarantee a better response — there are documented cases where medical alerts have been ignored. But the argument does not require perfection. It requires the marker to be meaningfully better than nothing on average across a large number of encounters. The documented pattern of misinterpretation in the absence of any information suggests that even a partial improvement in first-frame recognition has significant aggregate value. Proposition is not claiming a cure for institutional failure; they are claiming a measurable improvement at the moment of first contact.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">Invest in training and systemic reform instead of placing the identification burden on autistic people. The problem is institutions, not the absence of markers.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">Training requires predictability. A marker creates predictability in real time, in unplanned encounters with untrained strangers. Both things can be true simultaneously — the argument is not that training is bad but that it leaves the hardest case unaddressed.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Uniform Signals Create Public Legibility — and Legibility Requires Compulsion</span></div>
+  <p class="arg-body">A public safety signal only functions as a safety tool if the people who need to act on it can recognise it and trust that it will be present. A voluntary identification system — where some autistic people choose to wear a marker and others do not — produces a signal that strangers and emergency personnel cannot rely on. If a marker is sometimes present and sometimes not, its absence means nothing. A first responder who sees someone without a marker has no way of knowing whether that person is autistic but chose not to wear one, or simply is not autistic. The signal becomes uninterpretable. This is not a bureaucratic concern about administrative tidiness; it is a functional concern about whether the system can actually do the job it is designed to do.</p>
+  <p class="arg-body">Universal uptake — which in practice requires a requirement — is what turns an individual choice into a readable public system. When markers are required, their presence tells a stranger the person is autistic, and their absence tells the stranger the person is probably not. That interpretive value is what makes the system function as safety infrastructure rather than just an individual option.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The Hidden Disabilities Sunflower scheme — a voluntary lanyard-based identification programme introduced by several UK airports and supermarket chains in the 2010s — was widely praised but also documented to reach only a small fraction of eligible users. Surveys of scheme participants found that staff recognition of the lanyard varied significantly depending on training and awareness levels, and that the voluntary nature meant both uptake and recognisability remained patchy years after launch. The scheme is beneficial and worth having, but it illustrates precisely the legibility gap that a voluntary system cannot close: you cannot teach people to rely on a signal that is not always there when it matters.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition will argue that the Sunflower scheme shows voluntary systems can work, and that the solution to patchiness is more investment in awareness rather than compulsion. This is a valid developmental argument — with more resources, voluntary schemes may become more effective. However, it does not resolve the structural problem. Even a well-funded voluntary scheme cannot guarantee that the person who needs protection most will be wearing the marker, because voluntary systems by definition permit non-participation. Universality does not just improve coverage numerically — it changes the interpretive logic entirely. If markers are required, their absence becomes meaningful.</div></div>
+  <div class="quote qp">💬 Say this: "A signal strangers cannot rely on is a weak safety system. The word 'required' in this motion is not a regrettable feature — it is the technical precondition for the system to work."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>A compulsory marker system changes the interpretive value of both the presence and absence of a marker</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means strangers and emergency responders can use the marker as a reliable input to their response decisions rather than an uncertain cue</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the marker functions as public safety infrastructure rather than just an individual choice that happens sometimes to be visible</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's threshold is met: the word "required" is precisely what creates the system's functional reliability. <strong>A voluntary system creates a cue some people have. A required system creates a universal readable code. That difference is what the motion is justifying.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Legibility Doesn't Justify Coercion" Counter</div>
+    <div class="weight-text">Opposition's best counter is that public legibility does not automatically justify coercion — that even if a universal system would be more legible, forcing a protected group to display their diagnosis in public crosses a line that cannot be justified by administrative convenience. Proposition must not let this framing stand. The argument is not about convenience; it is about the difference between a system that functions and one that does not. A voluntary Sunflower scheme with 20 percent uptake is not a weaker version of the same thing — it is a functionally different thing. The legibility argument is about whether the policy can deliver its stated benefit at all, not whether it would be slightly more efficient if universal.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Even if universality helps, will strangers actually learn to read these markers reliably without substantial public education? A marker worn by everyone means nothing if nobody knows what it means."</div>
+    <div class="judgeobj-a">Universality and public education are complements, not substitutes. Proposition's argument does not claim that a marker alone creates legibility — it claims that a marker, as part of a public system with associated public awareness, creates legibility in a way that a voluntary system cannot, even with the same public education effort. The universality is what gives the education campaign a reliable referent. You can teach people what a symbol means if the symbol is always there when it matters.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">Legibility does not justify coercion. A more readable system is not a more justified system. These are different questions and Prop has only answered the first.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">This is not about convenience — it is about whether the system can function at all. A voluntary system is structurally incapable of creating the reliability that makes the safety benefit real. Legibility here is a functional requirement, not a preference.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Severity of Potential Harm Justifies a Standing Precaution</span></div>
+  <p class="arg-body">When evaluating whether a precautionary policy is justified, frequency alone is not the right metric. Some risks are severe enough that a standing precaution is justified even if the triggering event is relatively rare, because the value of a standing precaution is precisely that it is always present when the rare but severe situation arises. Some of the risks that occur when autistic people — particularly children, nonspeaking adults, or those with high support needs — are in public without any identification are not merely inconvenient. They include being separated from caregivers without any information available to reunite them, encountering escalating emergency situations that result in physical harm, or experiencing a crisis that is mismanaged because no one present understands the person's needs. These are severe outcomes. Their relative rarity is not a sufficient argument against a standing precaution.</p>
+  <p class="arg-body">The proper comparison is to seatbelts: worn on every drive even though most drives do not result in accidents. The logic is the same — the cost of the precaution in ordinary situations is low, and the benefit when the severe situation arises is high. The asymmetry justifies the standing requirement.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The 2020 study by Almuteiri and colleagues in the Journal of Autism and Developmental Disorders examined 34 documented fatalities of autistic individuals in US law enforcement encounters over six years. In virtually all cases, the officers did not know the person was autistic at the time of the encounter. The researchers were careful not to claim identification alone would have prevented every outcome, but the recurring feature — officer ignorance of diagnosis at the moment of first contact — is precisely what a visible marker addresses. These events are not frequent relative to the total autistic population, but they are severe, irreversible, and preventable. That combination is exactly what justifies a standing precaution.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition will argue that the research actually highlights inadequate training and systemic racism in policing, and that the burden of solving this problem should not fall on autistic people. This is partially valid as a policy critique. But it does not defeat the argument because it does not show the marker lacks independent value. A marker and better training are not mutually exclusive. And systemic reform is a long-horizon project — it does not help the person in the encounter happening tomorrow morning.</div></div>
+  <div class="quote qp">💬 Say this: "Frequency is not the only metric. Severity matters. A standing precaution against low-frequency, high-severity, irreversible harm is proportionate in a way that the frequency argument alone cannot capture."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>A standing precaution is always in place when needed, including in the rare, unpredictable moments when it matters most</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the benefit includes preventing a small number of severe, often irreversible harms — not just improving a larger number of lower-stakes encounters</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the aggregate benefit justifies a real but proportionate burden even when the triggering situations are not frequent</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's threshold is met: the requirement is justified as a standing safeguard against severe harm, present precisely when autistic people are least able to self-advocate and strangers are least equipped to interpret the situation. <strong>A voluntary marker is absent whenever the individual chooses not to wear it — which may be precisely the moment protection is most needed.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Permanent Burden for Occasional Benefit" Counter</div>
+    <div class="weight-text">Opposition's strongest counter is that the burden of permanent, public, compelled disclosure is itself a severe ongoing harm affecting every autistic person every day, while the benefit accrues only occasionally, and that trading one group's everyday burden for protection against another group's occasional risk is not proportionate. Proposition must meet this directly rather than minimising it. The honest response is that the burden is real and significant, but it is not equivalent in kind to the harms being prevented. A severe outcome in an emergency — death, serious injury, prolonged traumatic detention — is categorically different from the ongoing social burden of disclosure, serious as that burden is. Proportionality does not mean the burdens must be identical; it means the benefit must be of sufficient magnitude to justify the cost. Proposition's position is that it is.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Who exactly is in the population facing these severe risks? The research seems to focus on children and nonspeaking adults — a subset of the autistic population. Is it proportionate to require a marker of everyone with a diagnosis when the severe harms are concentrated in a much narrower group?"</div>
+    <div class="judgeobj-a">This is the sharpest challenge and must be answered directly. The diagnostic category is used as the policy trigger because the public cannot be expected to know in advance which autistic people fall into the high-risk subset — and neither can strangers assess this in real time. The marker is applied at the level of diagnosis because that is the only category readable to an untrained stranger in an emergency. This is imperfect targeting, and Proposition should say so, but it is functional targeting in a way that more precise alternatives are not.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔴 Opp will say</div><div class="mini-box-text">The severe harms you describe apply to a subset of autistic people. Requiring a marker of everyone with a diagnosis to address risks concentrated in a small subset is not proportionate.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔵 Your defense</div><div class="mini-box-text">The diagnostic category is the only publicly readable trigger available in real-time. Strangers cannot assess support needs on the street. Imperfect targeting is still functional targeting. The alternative — no trigger at all — leaves the people most at risk with no protection.</div></div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     OPP ARGS
+═══════════════════════════════════════════════════════════════ -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opposition's consistent formula: concede that real safety concerns exist — because they do — then show that the motion uses the wrong trigger, imposes the wrong burden, and ignores better tools. Conceding the real problem is not a weakness. It is what makes Opposition credible rather than callous.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Compelled Public Disclosure of a Protected Characteristic</span></div>
+  <p class="arg-body">The burden that this motion places on autistic people is not the physical inconvenience of wearing an object. It is the loss of control over who knows their medical diagnosis. When a person wears a visible marker identifying them as autistic, every stranger they pass, every person they sit beside on public transport, every colleague they encounter in a shared space, every date, every job interview conducted in a public coffee shop — all of them have been involuntarily told something deeply personal about that individual's neurology. That information affects how people are perceived, how they are treated, what assumptions are made about their competence, their reliability, and their communication. In many contexts, that information is protected by law precisely because of the discrimination it can attract. This motion requires autistic people to surrender that protection as a condition of ordinary public movement, for life, without consent.</p>
+  <p class="arg-body">The burden is not the object. It is what the object communicates. The motion's word "required" is what creates the forced disclosure — it eliminates the individual's ability to make a contextual judgment about when disclosure serves them. A voluntary marker allows disclosure where it helps and privacy where it matters. The requirement removes that judgment permanently, in every context, for everyone with a diagnosis.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The experience of HIV-positive individuals required by some US state laws in the 1980s and early 1990s to disclose their status in certain contexts illustrates the real-world consequences of compelled health disclosure. Research published by the American Journal of Public Health documented that mandatory disclosure policies in HIV contexts produced not just privacy harms but deterrence effects — people avoided diagnosis or treatment to avoid the disclosure obligation. While autism is not HIV and the contexts differ, the structural parallel is precise: when the state compels disclosure of a medical characteristic, the burden is not merely the act of disclosure but the cascade of social consequences that follow, including in some cases deterring people from seeking help at all.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that voluntary medical alert bracelets — for diabetes, epilepsy — are worn by millions of people without producing the discrimination cascade Opposition describes. This comparison fails on two grounds. First, medical alert bracelets for these conditions are voluntary — the person retains control over disclosure. The motion eliminates that choice. Second, autism in many contexts carries a heavier burden of stigma and misperception than a diabetes alert, because it is associated — often incorrectly — with intellectual disability, dangerous behaviour, or incompetence. The voluntary nature of the comparison is the critical structural difference, and Proposition's example actually proves Opposition's point: when the choice is available, people use it for the contexts where it helps. The motion removes the choice.</div></div>
+  <div class="quote qo">💬 Say this: "The burden is not wearing an object. It is losing control over who knows your diagnosis in every public interaction for life. That is what 'required' means, and that is what this debate must actually weigh."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Forced disclosure of diagnosis to all strangers in public removes autistic people's control over deeply personal information</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means in every public interaction, the terms of engagement are set by the marker before the person has a chance to present themselves</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the autistic person's identity is pre-defined to every stranger they encounter, regardless of whether the information is relevant, helpful, or wanted in that context</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which meets the motion's threshold for Opposition: the motion's requirement is what creates the forced disclosure. <strong>A serious ongoing burden applied to every autistic person in every public context requires serious proof of necessity. That proof has not been provided.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Disclosure Is Proportionate to Severe Harm" Counter</div>
+    <div class="weight-text">Proposition's best counter is that disclosure is justified by proportionality — the safety benefit is serious enough to outweigh the disclosure burden. Opposition must not simply reassert that rights matter; that sounds absolutist. Instead, show that the proportionality calculation fails on its own terms. The safety benefit is concentrated in a subset of situations affecting a subset of the population, while the disclosure burden hits every autistic person in every public encounter every day. The asymmetry is not between safety and dignity in the abstract — it is between a diffuse, constant, universal burden and a concentrated, occasional, partial benefit. That is not a proportionate trade.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"How serious is the discrimination risk really? Autism awareness has increased substantially, and in many contexts the diagnosis carries far less stigma than it once did. Is Opposition overstating the disclosure harm?"</div>
+    <div class="judgeobj-a">Stigma varies enormously by context, and the policy is applied universally regardless of context. In some professional, educational, or social environments, disclosure of an autism diagnosis is manageable or welcome. In others — certain employment contexts, dating contexts, legal contexts, some cultural communities — it carries real costs. A compulsory policy cannot be tailored to context; it applies everywhere, including the contexts where the costs are highest. The argument is not that disclosure always causes severe harm — it is that the compulsory removal of the choice to disclose always removes the person's ability to protect themselves in the contexts where disclosure is most costly.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Disclosure is a real burden, but it is proportionate to the severity of the harms prevented. A real but bounded restriction is justified when the alternative is severe, irreversible harm.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">The proportionality calculation fails because the burden is constant and universal while the benefit is occasional and concentrated. A trade that imposes an everyday burden on all to prevent occasional harm for some requires much stronger proof of necessity than Proposition has provided.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Diagnosis Is the Wrong Trigger Because Autism Is Heterogeneous</span></div>
+  <p class="arg-body">Autism is not a single condition with a single presentation. It is a spectrum of neurodevelopmental profiles ranging from individuals who are nonspeaking, have high support needs, and may not be able to navigate public space independently, to individuals who are highly verbal, academically accomplished, professionally successful, and entirely capable of self-determination in public life. The only thing that unites these individuals under one diagnostic category is a shared cluster of neurological characteristics — not a shared level of risk or support need. The motion applies the same policy to the entire diagnosed population. This means a nonspeaking autistic child who genuinely cannot self-advocate in an emergency and a published author who happens to have an autism diagnosis are treated identically. The policy is designed around a diagnostic category that sweeps far too broadly.</p>
+  <p class="arg-body">The actual safety concern Proposition points to is specific: wandering, communication breakdown in emergencies, inability to self-advocate in crisis. These conditions apply to a subset of autistic people. A policy triggered by diagnosis rather than these specific conditions necessarily burdens everyone with the diagnosis, even though the rationale for the burden applies to far fewer of them.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The DSM-5, which has governed autism diagnosis since 2013, explicitly consolidated what were previously distinct diagnoses — including Asperger's syndrome and pervasive developmental disorder not otherwise specified — into a single autism spectrum disorder category. This consolidation was accompanied by significant debate precisely because of the enormous variation within the resulting category. Dr. Stephen Ozonoff of the UC Davis MIND Institute has published extensively on within-spectrum variability, noting that autistic individuals differ from one another more than they differ from the general population on many measures. A policy that treats this population as homogeneous for purposes of compulsory public identification is using a category that its own diagnostic framework acknowledges is defined by diversity, not uniformity.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that autism's heterogeneity is actually an argument for the marker — precisely because presentations are so diverse, strangers cannot assess on the spot what any given autistic person might need, so a universal signal removes the need for that on-the-spot assessment. This is a clever inversion and deserves a direct answer. The response is that heterogeneity undermines the marker's functional value at the moment of encounter. Knowing that a person is autistic does not itself tell a stranger what response is appropriate. A marker tells you a diagnostic category, not a support need. The stranger who sees the marker still has to guess what the person needs. The heterogeneity Proposition uses to justify marking everyone simultaneously explains why the mark does not give the stranger enough information to help.</div></div>
+  <div class="quote qo">💬 Say this: "Real problem, wrong trigger. The safety concern Proposition describes applies to a subset. The burden the motion imposes applies to everyone with a diagnosis. That gap is not a detail — it is a fundamental mismatch between the policy and the problem it claims to solve."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Using diagnosis as the policy trigger means the burden falls on everyone with the diagnosis while the actual safety concern applies to a specific subset</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the vast majority of people carrying the burden receive no benefit from the policy while bearing its full cost</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the policy is radically overbroad — sweeping in a large population to address a problem concentrated in a much smaller one</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails on its own terms: "people with autism" is the stated scope of the requirement, but Proposition's justification does not extend to all people with autism. <strong>That gap is not a design choice — it is a fundamental mismatch between the policy and the problem, and no amount of safety benefit can justify imposing a burden on people for whom the rationale does not apply.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Diagnosis Is the Only Readable Trigger" Counter</div>
+    <div class="weight-text">Proposition's counter is that in chaotic real-time encounters, diagnosis is the only trigger available — more precise targeting requires information that no stranger has in the moment. This is the strongest version of Proposition's position on this clash, and Opposition must take it seriously rather than dismissing it. The response is that a policy's burden should be calibrated to the risk it addresses, and when the gap between burden and risk is as large as it is here — with diagnosis potentially covering millions of people who face none of the identified risks — the right answer is not to apply the broader policy but to find better tools. The inability to target precisely in real time is a limitation of the proposed tool, not a justification for using the wrong tool.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Is Opposition really saying there is no shared feature of autism that makes a universal policy appropriate? Does this argument imply categorical policies are never allowed to use diagnostic categories?"</div>
+    <div class="judgeobj-a">No. Opposition is not arguing that categorical policies are always wrong — they are arguing that this particular categorical policy uses a category that is far too wide relative to the problem. Some categorical policies are appropriate when the category and the risk align closely. Here, they do not. The category of "has an autism diagnosis" and the category of "faces the specific safety risks Proposition describes" are not close to identical, and the distance between them is what makes the policy overbroad.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Autism's heterogeneity is why we need the marker — strangers can't assess on the spot, so a universal signal does the work of identification that real-time assessment cannot.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">Heterogeneity also means the marker tells the stranger almost nothing useful — it signals a diagnostic category, not a support need. The very diversity Prop invokes as justification simultaneously explains why the marker fails to provide what the stranger needs to actually help.</div></div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Less Restrictive Alternatives Defeat the Necessity of This Policy</span></div>
+  <p class="arg-body">The existence of a real problem does not automatically justify the most coercive solution available. Policy necessity requires that the proposed tool be not just useful but necessary — meaning that no less restrictive alternative can adequately address the same problem. There are at least three categories of less restrictive alternatives that together cover the realistic range of scenarios Proposition has described. First, voluntary identification tools — medical alert bracelets, identification cards, phone-based apps, or choice-based wearables — allow individuals who want or need identification to have it, without compelling those who do not. Second, targeted support plans for individuals assessed to have high support needs or significant wandering risk provide more intensive, personalised protection for the subset who genuinely need it, without applying any burden to the broader population. Third, trained emergency protocols in settings where autistic people are likely to encounter public services — police forces, emergency departments, schools, public transport systems — reduce harm from first-contact misinterpretation by changing the behaviour of responders rather than placing the identification burden on autistic people themselves.</p>
+  <p class="arg-body">These three alternatives together form a credible architecture — not just a list of possibilities but a ranked model that addresses Proposition's hardest cases. Opposition does not need these alternatives to be perfect; they need to be good enough to defeat the most coercive model.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Project Lifesaver International — a US-based programme adopted by hundreds of law enforcement agencies across North America since 1999 — provides voluntary tracking and identification devices to individuals, including many autistic people, assessed to be at wandering risk. The programme works on an opt-in basis with families and carers, targets individuals actually at elevated risk, and has documented thousands of successful locates with an average search time of around thirty minutes according to the programme's published reports. This is a targeted, voluntary, effective programme that directly addresses one of Proposition's core scenarios — the lost or wandered autistic person — without requiring universal compulsory identification of every diagnosed individual.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that voluntary programmes like Project Lifesaver cover only those who choose to participate and know they need the protection — they cannot help the autistic person whose wandering risk was not anticipated, or the adult who was not enrolled, or the person who encounters a crisis in a setting where no prior arrangement was made. This is a legitimate limitation. However, Opposition does not need alternatives to be perfect; they need to show alternatives are good enough to defeat the most coercive version of the policy. A world where voluntary identifiers, targeted plans, and trained emergency protocols are robustly implemented addresses the vast majority of Proposition's scenarios. The remaining gap is real but narrow — and narrow residual gaps do not justify universal compulsion.</div></div>
+  <div class="quote qo">💬 Say this: "Proposition has proven the marker is useful. They have not proven it is necessary. Useful is not the same as necessary — and the existence of workable less coercive alternatives is what makes necessity fail."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>The existence of less restrictive alternatives that address the genuine safety problem means compulsion is not the only way to achieve the benefit</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means Proposition's policy fails the necessity test — it is not the minimum required to achieve the stated goal but the most coercive option available</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the disclosure burden falls on every autistic person not because it is necessary but because the policy's architects chose not to implement the harder work of targeted, voluntary, and institutional alternatives</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails: the requirement applies universally, but if alternatives demonstrate that universality is not necessary, <strong>the requirement is not justified. A burden that is not necessary cannot be proportionate regardless of how it compares in absolute terms.</strong></div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Alternatives Are Fragmented and Unreliable" Counter</div>
+    <div class="weight-text">Proposition's strongest counter is that alternatives are fragmented and unreliable in random public moments — voluntary systems are only present when someone has chosen to use them, trained protocols are only operative in institutions where training has occurred, and targeted plans are only available for individuals who have been formally identified. Opposition's response is that these limitations do not justify the compulsory alternative; they justify investing in making the voluntary and targeted alternatives more robust. Proposition has not shown that the alternative approach is fundamentally incapable of solving the problem — they have shown that current implementations are imperfect, which is a different and weaker argument. The answer to imperfect alternatives is better alternatives, not universal coercion.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Pre-Answer This Silent Judge Doubt</div>
+    <div class="judgeobj-q">"Is Opposition really committed to funding and implementing these alternatives, or is this just a rhetorical escape — claiming alternatives exist without being willing to build them?"</div>
+    <div class="judgeobj-a">In a debate round, Opposition is defending a principle, not administering a government. The principle is that policy necessity requires that less coercive alternatives be explored before compulsion is imposed. If Proposition were in government and could show that alternatives had been genuinely tried and found inadequate, the necessity argument would be weaker. But the motion proposes compulsion as the first tool, without reference to an alternative architecture that has been tried and failed. In that context, the existence of alternatives that appear workable is sufficient to defeat necessity.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box"><div class="mini-box-label">🔵 Prop will say</div><div class="mini-box-text">Alternatives are incomplete. They leave the hardest case — the unplanned encounter with no prior arrangement, no marker, no trained responder — entirely unaddressed. Your alternatives cover the prepared world, not the real one.</div></div>
+    <div class="mini-box"><div class="mini-box-label">🔴 Your defense</div><div class="mini-box-text">The narrow residual gap Prop describes does not justify universal compulsion. A policy that burdens millions to address a gap affecting thousands is not proportionate — it is the maximally coercive solution to a minimally residual problem. Improve the alternatives; don't coerce the population.</div></div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CLASHES
+═══════════════════════════════════════════════════════════════ -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least three convincingly. Know which ones your side has the easier burden on before you begin.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 1 — Diagnosis vs. Risk as the Policy Trigger</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win This By Showing</div>
+      That diagnosis is a functionally necessary trigger — not that it is ideal, but that any more precise alternative trigger is not available in the kind of real-time, unplanned encounter where the policy matters. "This person is autistic" is the most readable signal available to a stranger in the moment, even if imperfect, because no more precise signal is publicly legible in real time.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win This By Showing</div>
+      That the mismatch between the diagnostic category and the actual risk population is large enough that the policy is genuinely overbroad — not merely imprecise in inevitable ways, but sweeping in an entirely different population alongside the one it was designed for. Enough autonomous, low-risk autistic people exist in the category that universality is not justified.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge will ask: how big is the mismatch, and does it matter? If Opposition can give a credible sense of the proportion of autistic people who face none of the specific risks Proposition describes, the judge will be troubled by a universal policy. If Proposition can show that even a relatively autonomous autistic person might in an unusual emergency benefit from the marker, the judge will be less troubled by overbreadth. The critical variable is whether Proposition's argument requires universal application to function, or whether it is merely convenient. Proposition loses this clash by implying all autistic people are equally at risk. Opposition loses it by denying that any autonomous autistic person could ever benefit from identification in an emergency — that denial is empirically implausible.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 2 — Safety Device vs. Compelled Disclosure</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win This By Showing</div>
+      That the disclosure burden, while real, is proportionate to the safety benefit. Must acknowledge the burden directly — not minimise it — and then argue the trade is defensible given the severity of the harms being prevented. The seatbelt analogy is available but must address the disclosure distinction.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win This By Showing</div>
+      That disclosure is the substantive burden, not just the mechanism of wearing something. Make judges feel the weight of lost informational self-determination — every stranger in every context now knows something deeply personal about you, without consent, forever. The seatbelt analogy fails because a seatbelt does not tell strangers your medical history.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge asks: what kind of burden is this really? The more vividly Opposition has explained the real social consequences of disclosure, the more seriously the judge weighs it. If Opposition has only asserted that disclosure is bad without explaining how and why, the judge discounts it as rhetorical. Proposition loses this clash immediately if any speaker calls the burden "minor," "cosmetic," or "trivial" — judges who understand the real weight of compelled medical disclosure will penalise this and carry that credibility damage through the rest of the round. Opposition loses it if they argue that no burden is ever proportionate to any rights violation — that sounds absolutist and judges will push back.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Slight Edge</span><span class="clash-title">Clash 3 — Universal Legibility vs. Voluntary and Targeted Alternatives</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win This By Showing</div>
+      That the alternatives have a structural weakness — not just a current funding gap — that cannot be solved without compulsion. Identify the specific scenario where alternatives definitively fail and the marker definitively helps, and show that scenario is not vanishingly rare.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win This By Showing</div>
+      That the alternatives are not just theoretically possible but practically workable at the level of coverage needed to make Proposition's most compelling scenarios less likely. Rank and specify the alternatives rather than listing them vaguely. Walk through what each alternative covers and how they combine.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge asks: has Opposition given me a credible alternative model, or just a list of nice things that might exist? If Opposition has said "voluntary IDs plus targeted plans plus trained protocols" without explaining how those three together cover Proposition's hardest cases, the judge finds Proposition's argument more compelling. If Opposition walks through coverage, the judge finds necessity harder to sustain. Proposition loses this clash by conceding that alternatives solve most cases and then failing to explain why the residual gap justifies universal compulsion. Opposition loses it by offering only a vague alternatives pile without specifying what each alternative covers.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Easier Burden</span><span class="clash-title">Clash 4 — First-Minute Practicality</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win This By Showing</div>
+      A specific, vivid, realistic scenario: a person in a specific kind of distress, in a specific public setting, encountered by an untrained stranger who has seconds to decide. Show that the marker changes that specific interaction in a meaningful way that alternatives cannot replicate in that exact moment.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win This By Showing</div>
+      A concrete first-minute answer — not systemic reform arguments that require time to take effect. The three-part answer: choice-based identification for those who want it means many autistic people in Prop's scenario will already be identified; trained protocols reduce harm even when no marker is present; and alternatives improve over time in ways universal compulsion does not.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">The judge assesses which side's account of the first minute is more concrete and believable. The side with the specific scenario, specific mechanism, and specific outcome wins this clash. Vague claims about what strangers do or do not notice lose it. Proposition loses this clash if the scenario they describe is one that trained protocols already address in the setting Proposition specifies. Opposition loses this clash entirely if they have no concrete first-minute answer at all — relying instead on "training will eventually help" is not an answer to what happens tomorrow morning.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 5 — Constant Burden vs. Occasional Benefit</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">🔵 Prop Must Win This By Showing</div>
+      That the severity — not the frequency — of the benefit cases is great enough to justify a constant precautionary measure. The seatbelt comparison: worn on every drive even though most drives do not result in accidents. The irreversibility of severe emergency outcomes is the key asymmetry.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">🔴 Opp Must Win This By Showing</div>
+      That the seatbelt analogy fails because a seatbelt does not disclose your identity. The constant burden is not physical inconvenience — it is permanent, compelled, universal disclosure of a medical diagnosis to every person encountered. That burden is qualitatively different and the occasional benefit must be correspondingly larger to justify it.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Decides This — and What Loses It</div>
+    <div class="judgeobj-q">A judge asks: what kind of burden is the constant one, and what kind of benefit is the occasional one? If the constant burden is merely physical inconvenience, proportionality favours Proposition. If the constant burden is compelled medical disclosure, it is much heavier, and the occasional benefit needs to be correspondingly severe to justify it. Proposition loses this clash by relying on the seatbelt analogy without addressing the disclosure distinction. Opposition loses it by only making the proportionality argument without specifically distinguishing the disclosure nature of the burden from ordinary physical inconvenience.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     POIs
+═══════════════════════════════════════════════════════════════ -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: exposes a gap in the other side's argument, or forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly and confidently under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>What is your first-minute answer in an unplanned public emergency?</strong> Forces Opposition to commit to a specific, concrete alternative in real time. If they give a vague answer — "training" or "better systems" — Proposition can respond in their next speech that training and systems require prior planning and do not help a stranger encountering a person in distress on a street corner for the first time.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>If the identification system is voluntary, how is a stranger supposed to rely on it when it may simply not be present?</strong> Directly attacks the functional logic of the voluntary alternative. Not asking whether voluntary IDs exist — Opposition will say they do — but whether a signal that is sometimes present and sometimes absent is functionally useful to someone who must act on it in real time.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>If some autistic people genuinely cannot self-advocate in an emergency, why is an opt-in system sufficient to protect them?</strong> Identifies the hardest case for voluntary alternatives: the person who most needs protection is least likely to have arranged it in advance. Targets the gap between who voluntary systems serve and who the policy is most concerned with protecting.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>What alternative trigger, other than diagnosis, would actually be readable to an untrained stranger in a chaotic public encounter?</strong> Challenges the heterogeneity argument by demanding they name a practically superior alternative. If they cannot name one that is more precise and equally legible in real time, their heterogeneity argument proves less than they claim.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>If a severe harm is both foreseeable and preventable, what principle prevents the state from requiring a proportionate standing precaution?</strong> Forces Opposition to articulate the limit of their position — they are arguing the burden is disproportionate, not that no burden could ever be justified. Moves the debate to proportionality ground, which is where Proposition wants to be.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "why diagnosis rather than assessed risk?":</strong> Assessed risk requires prior knowledge that is not available to the person who most needs to act on it — the stranger encountering a person in crisis for the first time. The assessment happens somewhere, in advance, by professionals. The encounter happens now, on a street, between someone who does not know the person and someone who cannot communicate their needs. The diagnostic marker is the only thing that bridges that gap in real time.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "isn't this compelled disclosure?":</strong> Yes, and Proposition should say so directly. The disclosure is a real burden. The argument is that its cost is proportionate to the severity of the harm being prevented. The risk of misidentification in an emergency — physical restraint, improper detention, death in an encounter with law enforcement — is severe enough to justify a significant burden if that burden genuinely reduces the risk.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "why burden everyone for a subset problem?":</strong> Because public emergencies do not allow individualized assessment in real time. The marker does not claim all autistic people are equally vulnerable — it provides information that changes the first frame of any encounter. The cost of over-coverage is the burden on autonomous individuals; the cost of under-coverage is severe harm to those who cannot self-advocate. The second cost is greater.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "autism is too heterogeneous for one rule":</strong> The marker does not claim to address different support needs. It claims to signal a category. The stranger who sees it still needs to respond to what they observe, but they start from a different and better frame. The heterogeneity of presentation makes fast category recognition by a stranger more valuable, not less.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "why apply this to adults too?":</strong> Because the risks Proposition describes are not limited to children. Nonspeaking autistic adults, adults who experience meltdowns or crisis situations in public, and adults who cannot communicate effectively in an emergency encounter the same first-minute problem as a separated child, and a policy that covers only children leaves that population unprotected.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>Why should diagnosis, rather than demonstrated risk, trigger the burden?</strong> The cleanest formulation of the heterogeneity argument as a POI. Forces Proposition to either defend diagnosis as the correct trigger — which requires dealing with its overbreadth — or to concede that a more targeted trigger would be better, which weakens their argument for universality.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>Why should all autistic people be publicly identified for a safety problem that your own examples place in a specific subset of the diagnosed population?</strong> Makes the overbreadth concrete. If Proposition's examples involve children or nonspeaking adults, this POI highlights the gap between those examples and the universal policy they are defending.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>If the benefit of the marker is its utility in occasional emergency situations, why is permanent, compelled disclosure proportionate to that occasional benefit?</strong> The proportionality POI. Forces Proposition to either defend proportionality directly — which is defensible but requires a specific argument — or to claim the benefit is more frequent than their examples suggest, which is a harder argument to make.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>What makes this policy necessary rather than merely useful?</strong> The necessity POI. Forces Proposition to engage with the alternatives world rather than treating the marker as the only conceivable solution. Simple, clean, and very hard to answer without either engaging with alternatives seriously or conceding that necessity has not been proven.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>Is the primary beneficiary of this policy autistic people themselves — or strangers and institutions who find autistic people easier to process?</strong> Reframes the entire debate. Who benefits from this policy? If the primary beneficiaries are institutions and strangers rather than autistic people themselves, the justificatory logic of the policy changes significantly.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "what is your first-minute answer?":</strong> Three-part answer delivered quickly: voluntary identification for those who choose it, so many autistic people who want to be identified will be; targeted plans for individuals assessed as high-risk for Proposition's specific scenarios; and institutional emergency protocols in the settings — police, hospitals, transport — where those encounters most often occur. None alone is perfect, but together they address the realistic range of scenarios Proposition has named.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "voluntary systems miss the most vulnerable":</strong> The most vulnerable should be the direct targets of targeted support plans — the second element of Opposition's alternative model. A targeted plan for a nonspeaking autistic child who regularly uses public transport is more specific, more useful, and less burdensome than a universal marker. The solution to voluntary systems missing the vulnerable is to identify and support the vulnerable directly, not to burden everyone.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "rights are not absolute":</strong> Agreed. Opposition accepts that rights can be constrained when necessity and proportionality conditions are met. The argument here is that those conditions are not met: the trigger is too broad, the burden is not calibrated to the risk, and less coercive alternatives exist. This is not an absolutist rights argument — it is a proportionality and necessity argument applied to this specific policy.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "a universal signal is more legible":</strong> Legibility does not automatically justify coercion. Proposition needs to show not just that a universal system would be more legible, but that legibility at that level is necessary to achieve the safety benefit and cannot be approximated by a well-implemented voluntary system. They have not shown that. More legible is not the same as necessary.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "some people cannot choose for themselves":</strong> Those people are a specific subset of the diagnosed population, and they can be identified and supported through targeted mechanisms. A universal rule is not required to help those individuals — it is the most convenient rule from an administrative perspective, but convenience is not necessity. Support those who need it directly rather than burdening everyone.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REBUTTALS
+═══════════════════════════════════════════════════════════════ -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side has just argued, explain specifically why it fails, and connect the failure back to your overall thesis. The starred lines are your top three per side — have them ready to deploy from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Opposition never cleanly solves the random stranger problem.</strong> Opposition's three alternatives — voluntary IDs, targeted plans, and trained protocols — are all excellent in settings where someone has prior knowledge or prior preparation. But the hardest scenario involves none of those conditions: a person who has not chosen to wear an identifier, in a setting with no prior plan, encountering someone with no training. Opposition's model is silent in that exact moment. Proposition's marker is present precisely there, because it is attached to the person. That is not a slight on the alternatives — it is a recognition of what each tool can and cannot do.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Voluntary systems are structurally weaker in the scenarios that matter most.</strong> Voluntary systems are least useful exactly where public reliance matters most, because the individuals who most need identification — those in crisis, those who cannot self-advocate, those who have been separated from carers — are precisely the individuals least likely to have taken prior steps to enrol. Voluntarism privileges the prepared and autonomous, which means it underserves the vulnerable by design, not by accident.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>The diagnostic category is being used as a practical safety trigger, not as a moral judgment about autistic people.</strong> When Opposition argues that diagnosis is the wrong trigger, they imply Proposition is claiming all autistic people are equally at risk. Proposition is not claiming that. The marker is not saying this person is helpless or incapable. It is providing a category that tells a stranger to apply a different interpretive frame. That frame change is valuable even in encounters with highly autonomous autistic people, because the marker prevents false positives of misidentification as well as providing support in genuine emergencies.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">Severity of potential harm justifies standing precautions even when triggering events are infrequent. The value of a precaution is properly measured not by how often it is needed but by the cost of the events it prevents. The documented cases of autistic individuals killed or seriously harmed in law enforcement encounters where the officer did not know the person was autistic are not frequent relative to the total autistic population — but they are severe, irreversible, and preventable. That combination is what makes the standing precaution proportionate.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">Training and targeted supports help but do not replace a real-time readable cue in unplanned public encounters. Opposition is right that training and targeted plans reduce the frequency and severity of the encounters Proposition describes. But training operates in institutions and requires prior implementation. In the unplanned encounter on a public street between an untrained person and an autistic person in distress, neither training that has not been received nor a plan that was not made is available. The marker is the only tool present in that moment precisely because it is attached to the person.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Proposition proves some benefit, not necessity.</strong> The entire Proposition case demonstrates that a visible marker could be helpful in certain scenarios. That is a much weaker claim than what is required to justify compulsory universal disclosure. Useful is not the same as necessary. The question is whether the benefit is achievable by less coercive means, and Proposition has not shown that less coercive alternatives fundamentally fail. They have shown that current implementations are imperfect — which is an argument for investing in better implementations, not for overriding individual autonomy across an entire diagnostic population.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>Proposition's examples describe a subset, not the population the policy covers.</strong> Every example Proposition offered — the child who has wandered, the nonspeaking adult in a meltdown, the person in a crisis who cannot communicate — describes an autistic person with high support needs in a specific kind of emergency. These are real and serious cases. But the policy applies to every person who has ever received an autism diagnosis, including the vast majority who are highly autonomous, who communicate easily, who have never wandered, and who are fully capable of deciding for themselves whether they want to carry an identifier. Proposition has proven that some autistic people in some situations benefit. They have not proven that everyone with a diagnosis should be compelled to display it.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>The burden is compelled disclosure of a medical diagnosis, not the physical act of wearing something.</strong> Proposition has framed the burden as modest — wearing a small marker is a minor inconvenience. But the burden is not the object; it is what the object communicates. Every autistic person in every interaction — professional, romantic, social, legal — is now identifiable as having an autism diagnosis without consent. The comparison to seatbelts fails because seatbelts do not tell strangers your medical history. The judge must not allow this reframing to go unchallenged.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">Less restrictive alternatives defeat the case for the most coercive model. Proposition has argued that alternatives are imperfect. Opposition agrees. Perfection is not the standard. The standard is whether the alternatives are workable enough to defeat the most coercive option. A world in which voluntary identification is widely available, in which individuals with high support needs have targeted plans, and in which emergency services have autism awareness training prevents the vast majority of the severe outcomes Proposition has described. The residual gap is too narrow to justify a compulsory policy covering every autistic person.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">A policy can increase legibility without being proportionate. Proposition's legibility argument is logically coherent — universal markers are more reliably readable than voluntary ones. Opposition accepts that. But logical coherence and policy justification are different things. A policy can be more readable and still be unjustified. Legibility is a property of the system's design; proportionality is a judgment about whether the system is justified. Proposition has proven the first; they have not proven the second.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ROLES
+═══════════════════════════════════════════════════════════════ -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later when the other side has committed to a position. Know your lane.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "required identification markers" as broad, visible, standardised public markers broadly required in public life — establish this before Opposition narrows it in the first sixty seconds.</div>
+        <div class="role-line"><span class="role-icon">→</span>Frame the round as being about the first minute. "This debate is about what strangers can do in the first minute, before perfect training or tailored support arrives."</div>
+        <div class="role-line"><span class="role-icon">→</span>Perform the honest concession: forcing autistic people to publicly disclose their diagnosis is a real and significant burden — and then frame the case around why that burden is proportionate. Do this before Opposition names the burden, because doing it first looks intellectually honest and pre-empts their strongest attack.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending time on evidence detail — that is Speaker 1's territory.</div>
+        <div class="role-line"><span class="role-icon">→</span>Calling the burden "minor," "cosmetic," or "trivial." This is the single most expensive mistake a Proposition Captain can make.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full case with examples and mechanisms. Walk through the first-minute scenario in enough detail that the judge can picture it. Use the law enforcement research accurately and carefully.</div>
+        <div class="role-line"><span class="role-icon">→</span>Explain specifically why voluntary alternatives are structurally weaker — not just assert it — by working through the interpretive logic of what a voluntary system can and cannot guarantee.</div>
+        <div class="role-line"><span class="role-icon">→</span>Push the key line: "Their model starts after someone already knows what is happening. Ours works at the moment confusion begins."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Describing autistic people as though the population is uniformly at risk. Examples must be specific about who faces the specific risks and why the marker helps across a heterogeneous population.</div>
+        <div class="role-line"><span class="role-icon">→</span>Overclaiming evidence. The research documents a pattern of misinterpretation in the absence of information — it does not prove markers would have prevented every bad outcome.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer Opposition's three core arguments directly and in sequence. Concede the disclosure burden is serious, then argue proportionality specifically. Distinguish between targeting based on support need and targeting based on diagnosis.</div>
+        <div class="role-line"><span class="role-icon">→</span>Identify the specific first-minute scenario that alternatives leave unanswered and make it vivid. Re-centre on public uncertainty: the problem is not autistic people's capacity; it is strangers' inability to interpret unfamiliar behaviour without any information.</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuild the positive case after rebuttals — judge must leave hearing why Proposition wins, not just why Opposition loses.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire affirmative case from scratch. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, the judge will notice the most important challenges have not been answered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Crystallise into a ballot story. Opposition proved that narrow alternatives exist. But they never cleanly solved the random stranger problem. They never showed voluntary systems are structurally sufficient. And they did not defeat the severity argument.</div>
+        <div class="role-line"><span class="role-icon">→</span>Closing line: "They offer optionality after recognition. We offer protection at the moment confusion begins. Vote for the motion."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Line-by-line rebuttal in a closing. A Proposition closing that is primarily defensive has already lost the narrative. Give the judge two or three decisive points and a memorable framing, not a recap.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Stop Proposition from owning the definitional frame. If Prop establishes that markers are a modest safety tool comparable to a wristband, the round is harder. State immediately that the motion requires compulsory public disclosure of a medical diagnosis — not an optional safety device.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the three-argument architecture: compelled disclosure, wrong trigger, less restrictive alternatives defeat necessity. Signal the necessity standard from the opening: "useful is not the same as necessary."</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal early that Opposition is also for protecting autistic people from harm — the disagreement is about trigger, burden, and necessity, not about whether safety matters.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the whole opening on wording without giving moral content. An Opposition Captain who wins the definitional argument but loses the moral argument has not yet won the round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full case with specifics. For heterogeneity: reference the diagnostic range from Asperger's-profile individuals to nonspeaking adults and make concrete the gap between the diagnostic population and the risk population Proposition is actually concerned with.</div>
+        <div class="role-line"><span class="role-icon">→</span>Give the ranked alternatives model: (1) voluntary identification for those who want it, (2) targeted support plans for those assessed to have high support or wandering risk, (3) institutional emergency protocols in the settings where relevant encounters occur. These three form a credible architecture, not a list.</div>
+        <div class="role-line"><span class="role-icon">→</span>Specify the standard every time: clinical severity and individual necessity, never diagnosis alone. Any phrasing that implies people with autism as a class pose risks hands Proposition the round.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overplaying stigma in speculative or melodramatic ways. "Markers will lead to targeting by predators" is a claim that sounds alarmist without specific evidence and will be dismissed. Stick to documented and demonstrable effects.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Proposition's concessions. If Prop has conceded that some autistic people need identification in some emergencies, name it explicitly and show it does not defeat the necessity argument. Then collapse the round onto trigger, necessity, and proportionality.</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer the first-minute challenge directly and concretely — the three-part alternative model, delivered quickly. Do not dodge it.</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the necessity formulation land: "Proposition has proven that a marker could sometimes help. They have not proven it is necessary. That gap is where Opposition wins."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Allowing Proposition to frame the round as compassion versus ideology. Return constantly to: our standard is clinical necessity and individual assessment, not mental illness as a threat category.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Give the judge one clean narrative: Proposition identified a real problem facing some autistic people in some situations. Then they chose the wrong trigger, the most coercive solution, and a burden that hits everyone to address a risk concentrated in a subset.</div>
+        <div class="role-line"><span class="role-icon">→</span>Closing line: "They identified a real problem for some people, then chose the wrong trigger and the most coercive solution. Target vulnerability and risk, not autism as an identity category. Vote Opposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Long lists, example dumps, and line-by-line answers. The closing is the frame through which the judge remembers the round. Make it short, clear, and resonant on both the logical and human level.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CLOSINGS
+═══════════════════════════════════════════════════════════════ -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is about the first minute — before a trained support worker arrives, before the person in distress can explain themselves, before a stranger knows anything except that something is wrong. In that first minute, a visible marker changes a confrontation into a conversation, and sometimes that is the difference between a safe outcome and an irreversible one. We are not here to argue that autistic people are helpless or uniformly at risk. We are here to argue that when confusion begins in a public emergency — before anyone knows what is happening — a universal, readable signal is what makes a different first response possible. That is what this motion defends. And we are right."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "This motion is not about optional support tools. It is about forcing every person in this country with an autism diagnosis to wear that diagnosis visibly in public — to every stranger, in every context, for life, without consent. Proposition will tell you this makes autistic people safer. We do not dispute that identification can sometimes help. We dispute whether the word 'required' in this motion is justified — whether compulsion is necessary rather than merely useful, whether the burden falls on the right people, whether there are less coercive ways to address the real problem. On each of those questions, Opposition wins."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The first minute matters more than ideal theory. Opposition's alternatives all require prior planning, prior knowledge, or prior training. None of them work in the exact scenario where the marker matters most: the unplanned public encounter, right now, with no preparation on either side.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>A signal strangers cannot rely on is a weak safety system. Opposition's voluntary model is not a weaker version of our system — it is a functionally different one, because the absence of the marker means nothing. Universality is what creates interpretive value.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>We conceded a real burden and still won proportionality. The disclosure burden is serious. But it does not compare in kind to the severe, irreversible outcomes the marker prevents in the cases Proposition has described. Proportionality does not require identical burdens — it requires sufficient justification.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition proved alternatives exist. They did not prove alternatives solve the hardest case. Their model starts after someone already knows what is happening. Ours works at the moment confusion begins.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>They offer optionality after recognition. We offer protection when confusion begins. Vote for the motion.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>This motion forces public disclosure of a medical diagnosis to every stranger in every public context for life. That is the burden on the table. Not wearing an object — losing control over who knows your diagnosis, permanently, universally, without consent. Proposition did not make that burden disappear.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Proposition's examples describe a subset. The burden hits everyone. A nonspeaking autistic child and a published author who happens to have a diagnosis are treated identically by this policy. That mismatch is not a detail — it is the whole problem.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Real problem, wrong trigger. We accepted the safety concern from the beginning. We denied that diagnosis is the right instrument for addressing it, and we offered a ranked alternative model that addresses the same concern without universal compulsion.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Proposition proved some benefit. They did not prove necessity. Those are different claims, and the second one is what the burden of compulsion requires.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Target vulnerability and risk, not autism as an identity category. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     EVIDENCE
+═══════════════════════════════════════════════════════════════ -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Autism is a heterogeneous spectrum with enormous variation within the diagnosed population, as acknowledged by the DSM-5 framework itself</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Some autistic children and youth face elevated wandering and elopement risk with associated serious safety consequences</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>Say "some autistic children and youth, particularly those with high support needs" — not "autistic people generally"</td></tr>
+      <tr><td>The DSM-5 consolidated Asperger's syndrome and pervasive developmental disorder not otherwise specified into a single autism spectrum disorder category in 2013</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Hidden Disabilities Sunflower scheme — a voluntary lanyard-based identification programme — was introduced in UK airports and supermarkets and has documented variable uptake and recognition</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>Say "voluntary schemes have documented uptake limitations" rather than citing specific uptake percentages unless verified in advance</td></tr>
+      <tr><td>Research published in Academic Emergency Medicine in 2017 found autistic individuals more likely to be physically restrained in emergency departments than neurotypical patients with similar distress presentations</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Directionally supported</span></td><td>"Research documents a pattern of overrepresentation of autistic individuals in physical restraint incidents in emergency departments" — verify specific statistics before citing</td></tr>
+      <tr><td>A 2020 study by Almuteiri and colleagues examined documented fatalities of autistic individuals in US law enforcement encounters over a six-year period, finding that officers typically did not know the person was autistic at the time of the encounter</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Verify before citing</span></td><td>"Research documents recurring cases of autistic individuals involved in adverse law enforcement encounters where the officer did not know of the diagnosis at first contact"</td></tr>
+      <tr><td>Project Lifesaver International has been adopted by hundreds of US law enforcement agencies and documents thousands of successful locates with an average search time of approximately thirty minutes</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Self-reported figures</span></td><td>"Project Lifesaver and similar targeted voluntary programmes document high success rates in their published reports" — do not cite specific numbers without independent verification</td></tr>
+      <tr><td>Mandatory disclosure policies in HIV contexts in the US have been associated with deterrence effects — people avoiding diagnosis or treatment to avoid disclosure obligations</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>State clearly this is analogous evidence from a different context — do not assert the same dynamic will definitely occur in autism disclosure without qualification</td></tr>
+      <tr><td>Visible autism markers may improve first interpretation by strangers in emergency encounters</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, not proven</span></td><td>"Markers may improve first interpretation in some public encounters, based on the documented pattern of misinterpretation in their absence" — no controlled study directly comparing outcomes with and without markers</td></tr>
+      <tr><td>Targeted voluntary programmes solve enough of the identified safety problem to defeat the necessity of universal compulsory identification</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Plausible, depends on implementation</span></td><td>"Targeted and voluntary alternatives, if robustly implemented, would address the majority of the scenarios Proposition has described and solve enough to challenge necessity"</td></tr>
+      <tr><td>Dr. Stephen Ozonoff of UC Davis MIND Institute has published on within-spectrum variability showing autistic individuals differ substantially from one another on many measures</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TRAPS
+═══════════════════════════════════════════════════════════════ -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps that teams fall into on this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Treating autism as a homogeneous vulnerability category.</strong> The fastest way to lose credibility is to talk about autistic people as though they are uniformly vulnerable or uniformly at risk. This is factually wrong, and any competent Opposition speaker will call it out with the DSM-5 heterogeneity point immediately. Proposition's argument does not require this claim. Keep examples specific and language careful.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Calling the burden small, minor, or trivial.</strong> If any Proposition speaker says or implies that wearing a visible marker is a minor inconvenience comparable to wearing a name badge, they will lose the disclosure clash immediately. Any judge who understands that the burden is compelled public disclosure of a medical diagnosis — not the physical act of wearing something — will penalise this framing and carry that credibility damage through the rest of the round.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like the policy exists for institutional convenience rather than individual protection.</strong> If Proposition's case can be summarised as "this makes it easier for institutions and strangers to process autistic people," they have a serious problem. Every argument must be framed around protection of autistic people from specific harms, not around making public administration more efficient.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Overclaiming evidence for marker effectiveness.</strong> There is no controlled study showing that visible autism markers reduce adverse outcomes in emergency encounters. There are documented patterns of misidentification in the absence of information. These are different claims. If Proposition overstates the evidence and Opposition calls it out, the evidentiary credibility of the whole case suffers.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Building the case only on child scenarios without defending universality.</strong> The strongest Proposition examples involve children. But the motion applies to all people with autism, including highly autonomous adults. If the case is built only on child cases, a competent Opposition will ask in the first POI why the policy extends to adults, and Proposition will be scrambling. Proactively defend universality across age groups.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span><strong>Denying that any autistic person ever faces real safety or communication risks.</strong> Opposition's case does not require this. If any speaker implies Proposition invented the wandering risk or the law enforcement encounter problem, they lose credibility with any judge who has read anything about autism. The concession "real problem, wrong trigger" is a strength, not a weakness. Use it from the start.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Sounding like rights are absolute.</strong> "You cannot require a medical disclosure no matter what" is an absolutist position that most judges will reject. Opposition must not occupy the absolutist ground. Their position is proportionality and necessity. "Serious burdens require serious proof of necessity" is the right framing; "you can never do this" is not.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Failing to have a concrete first-minute answer.</strong> This is the trap that destroys Opposition rounds most often. If Proposition delivers a vivid first-minute scenario and Opposition's answer is "training will fix this eventually," the judge will find Proposition more compelling. The three-part answer — voluntary IDs, targeted plans, institutional protocols — must be prepared, rehearsed, and deliverable in thirty seconds.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Offering a vague alternatives pile instead of a ranked, specified model.</strong> "There are alternatives" is not a winning argument. Specifying that voluntary identification, targeted support plans, and institutional emergency training together cover the majority of Proposition's described scenarios is a winning argument. The specificity is what makes it credible. A vague alternatives pile sounds like Opposition is avoiding rather than answering.</span></div>
+    <div class="trap-item"><span>💀</span><span><strong>Overplaying stigma in speculative or melodramatic ways.</strong> Claiming that visible autism markers will lead to autistic people being targeted by predators or systematically attacked is speculative and melodramatic. Judges will discount it. The disclosure argument works without this: the burden is the permanent, compelled loss of informational self-determination in all public contexts. That is serious enough on its own.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Markers would normalise neurodiversity" (Prop).</strong> This reframing is incoherent. Compulsory visible identification does not normalise neurodiversity — it makes neurodiversity compulsorily visible, which is a different thing. The argument also concedes the marker is being required for positive social reasons rather than safety reasons, which undermines the entire Proposition safety justification.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Mandatory disclosure will cause families to avoid seeking diagnosis" (Opp).</strong> This is a plausible concern in theory but requires empirical support that does not exist for this specific policy context. If you make it, state it as a risk supported by analogous evidence, not a confident prediction. The safer version: "analogous mandatory disclosure policies in other medical contexts have produced deterrence effects, and this is a documented risk."</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"This is basically the same as historical badging of minority groups" (Opp).</strong> This comparison — to the yellow star, to forced identification of minorities under totalitarian regimes — is the rhetorical nuclear option and should almost never be used. It is inflammatory, invites easy dismissal as hyperbole, and substitutes historical emotional resonance for logical argument. If the argument is that compelled public disclosure of a protected characteristic is a serious harm, make that argument directly. The historical comparison adds nothing and risks a great deal.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"Markers will definitely increase predatory targeting" (Opp).</strong> This is a speculative prediction stated as a certainty. The concern is genuine, but the certainty is false and will be dismissed immediately by any judge applying an evidence standard. State it as a documented risk pattern based on analogous evidence, or do not state it at all.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Public service coordination" as a stand-alone argument (Prop).</strong> Arguing that markers help hospitals, schools, and transit authorities coordinate better is an administrative convenience argument disguised as a safety argument. Judges who notice this will find it less compelling than the genuine first-minute safety scenarios. Stick to the safety argument; public coordination is not sufficient justification for compelled medical disclosure.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     EMERGENCY
+═══════════════════════════════════════════════════════════════ -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This debate is about the first minute — before trained support arrives, before the autistic person can explain themselves, before a stranger knows anything except that something is wrong. A marker changes what happens in that minute.</div>
+
+    <div class="emrg-section">2 Winning Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Immediate recognition in high-stakes encounters: strangers misread autistic behaviour as threatening, and a visible marker changes the first frame before any training or support can operate.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Uniform signals only work if reliably present, which requires compulsion. A voluntary system with uncertain uptake cannot be relied upon by anyone. The word "required" is the functional precondition for the system to work.</div>
+
+    <div class="emrg-section">3 Killer POIs</div>
+    <div class="emrg-quote">What is your first-minute answer in an unplanned public emergency?</div>
+    <div class="emrg-quote">If the system is voluntary, how is a stranger supposed to rely on it when it may simply not be present?</div>
+    <div class="emrg-quote">If some autistic people cannot self-disclose in an emergency, why is opt-in sufficient to protect them?</div>
+
+    <div class="emrg-section">3 Best Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "diagnosis is wrong trigger": Emergencies do not allow precise individualized assessment in real time. Diagnosis is the only publicly readable signal available to an untrained stranger in the moment. Imperfect targeting is still functional targeting.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "this is compelled disclosure": Yes, and it is proportionate. The severity of the harms prevented — death, serious injury in law enforcement encounters — justifies a real but bounded burden.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "use voluntary alternatives": They are structurally absent exactly where they are needed most — unplanned encounters with people who chose not to or could not arrange prior identification.</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "This debate is about the first minute. We offer protection at the moment confusion begins."</div>
+    <div class="emrg-quote">Closing: "They offer optionality after recognition. We offer protection when confusion begins. Vote for the motion."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not imply all autistic people are helpless or uniformly at risk. Do not call the disclosure burden minor or trivial. Do not let the round become about whether markers are convenient — keep it on whether they are necessary given the severity of what they prevent.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This motion forces every autistic person to wear their diagnosis in public, without consent, in every interaction, for life. The question is not whether identification can sometimes help — it can. The question is whether compulsion is necessary rather than merely useful.</div>
+
+    <div class="emrg-section">2 Winning Arguments</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Compelled public disclosure of a medical diagnosis: the burden is not wearing an object — it is losing control over who knows your diagnosis in every public encounter for life. That burden requires serious proof of necessity.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Diagnosis is the wrong trigger: the safety concern applies to a subset; the burden hits everyone with the diagnosis. Real problem, wrong trigger.</div>
+
+    <div class="emrg-section">3 Killer POIs</div>
+    <div class="emrg-quote">Why should diagnosis rather than demonstrated risk trigger the burden?</div>
+    <div class="emrg-quote">If the benefit is occasional emergency use, why is permanent disclosure proportionate?</div>
+    <div class="emrg-quote">What makes this necessary rather than merely useful?</div>
+
+    <div class="emrg-section">3 Best Rebuttals</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "first-minute answer": Three parts — voluntary IDs for those who choose them, targeted plans for high-risk individuals, institutional protocols for settings where encounters occur. Together they address the realistic range of scenarios.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "universal legibility": Legibility does not justify coercion. More readable is not the same as necessary. Proposition has proven the first; they have not proven the second.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>On "severity justifies broad safeguards": Severity does not erase the necessity test or the proportionality requirement. Target the people who face the severity directly rather than burdening everyone with the diagnosis.</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "This motion is not about optional support tools. It is about forcing every autistic person to wear their diagnosis in public, without consent, for life. That requires serious justification. Proposition has not provided it."</div>
+    <div class="emrg-quote">Closing: "Real problem, wrong trigger, most coercive solution. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not deny that some autistic people face real safety and communication risks — concede "real problem, wrong trigger" from the start. Do not imply rights are absolute. Do not offer a vague alternatives pile — give the ranked three-part model every time.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
