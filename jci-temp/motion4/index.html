@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Nuclear Weapons Guarantee Peace</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+/* TABS */
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+/* LAYOUT */
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+/* TYPE */
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+/* CARDS */
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+/* QUOTE */
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+/* EXAMPLE BOX */
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+/* SNAPSHOT */
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+/* STRATEGY */
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+/* ARGS */
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+/* SO-WHAT CHAIN */
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+/* COMPARATIVE WEIGHT */
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* JUDGE OBJECTION */
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+/* ATTACKS */
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* CLASHES */
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+/* POI LIST */
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+/* ROLES */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+/* CLOSINGS */
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+/* EVIDENCE */
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+/* TRAPS */
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+/* EMERGENCY */
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+
+<!-- Paste this immediately after the opening <body> tag in your HTML files -->
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'mn', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Nuclear weapons guarantee peace</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('atk',this)">⚔️ Attacks</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     SNAPSHOT
+═══════════════════════════════════════════ -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether nuclear weapons matter. Almost everyone agrees they have some effect on international behaviour. The real fight is about two sharper questions: whether that effect is strong enough to be called a <em>guarantee</em>, and whether what nuclear weapons produce actually qualifies as <em>peace</em> in any meaningful sense.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That nuclear weapons create such a powerful and reliable deterrent effect that they can fairly be described as the <strong>strongest peace-preserving safeguard</strong> available in the real world.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to prove nuclear weapons create a paradise free of all conflict — only something meaningfully stronger than "nuclear weapons probably help a bit."</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: nuclear weapons make direct great-power war <strong>suicidal</strong>, force caution in crises, and remain the strongest structural brake on civilizational conflict in a world without a reliable global authority.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That whatever effect nuclear weapons have, calling it a <strong>guarantee is an overstatement</strong> that collapses under scrutiny — because no human-run system with accident risk and catastrophic failure modes can meet that standard.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That what passes for peace under nuclear deterrence is actually a <strong>fragile, coercion-backed arrangement</strong> that fails the definition of genuine peace on any serious reading.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to prove nuclear weapons have no value — only that their value falls short of the motion's specific and strong claim.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Fight Inside This Debate</div>
+  <p>The word <strong>"guarantee"</strong> is the most important word in this motion and almost certainly the word neither team defines carefully enough in their first speech. If "guarantee" means something close to reliable near-certainty, Proposition faces a very hard burden, because no human-run security system has come close to that standard and the consequences of failure here are uniquely catastrophic. If "guarantee" means "strongest available structural safeguard in an imperfect world," Proposition's burden becomes considerably easier.</p>
+  <p>The word <strong>"peace"</strong> runs a close second. If peace means simply the absence of direct large-scale interstate war between major powers, Proposition has a real argument. If peace means something broader — genuine security, freedom from coercion, and the absence of armed conflict in any form — Proposition is in serious trouble, because proxy wars, nuclear blackmail, and the constant threat of annihilation have never disappeared. <strong>Whichever team frames these definitions first and most clearly wins the structural advantage for the whole round.</strong></p>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     STRATEGY
+═══════════════════════════════════════════ -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Deterrence prevents direct major-power war, and preventing direct major-power war is the most important peace metric.</strong> Anchor the case in the observable fact that no direct great-power conflict has occurred between nuclear-armed states since 1945.</div>
+    <div class="route-why">This route is safe because it is tied to a real and documented phenomenon. The risk is that it is conservative enough that Opp can accept most of it while still winning on the word "guarantee."</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Nuclear weapons actively discipline crisis decision-making in ways non-nuclear conflicts do not.</strong> Argue that nuclear stakes specifically changed how leaders behaved at the most dangerous moments — not just as a background condition, but as an active force in real-time decisions.</div>
+    <div class="route-why">This is powerful because it argues something stronger than "war hasn't happened." The risk is that Opp uses the Cuban Missile Crisis as evidence that deterrence nearly failed, and the outcome depended heavily on luck.</div>
+    <div class="eg"><div class="eg-label">📌 Example</div><div class="eg-text">The Cuban Missile Crisis of October 1962: both the US and Soviet Union stepped back from the brink of direct confrontation over thirteen days precisely because both sides knew what the staircase ended with. Kennedy's military advisers recommended air strikes; nuclear stakes specifically changed the calculation of what "winning" meant.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Nuclear weapons are ugly, imperfect, and morally uncomfortable — but they remain the strongest available backstop against catastrophic war in a world without a reliable global authority.</strong> Engage honestly with the costs and risks of deterrence rather than pretending they do not exist.</div>
+    <div class="route-why">Judges who are skeptical of Prop's claim will often still vote Proposition if they are persuaded that no alternative mechanism is meaningfully stronger. This comparative realism approach is the most intellectually honest and often the most persuasive.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Even granting that nuclear weapons do not guarantee all forms of peace, they guarantee the most consequential form: prevention of large-scale, civilizational war between major powers.</strong> Narrow the motion when under pressure on the word "guarantee."</div>
+    <div class="route-why">This is a partial concession but it may be enough to win if Prop can persuade the judge that this category of war is weightier than everything else Opposition points to.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Attack the word "guarantee" directly and consistently.</strong> Any security system that depends on fallible humans, imperfect early-warning technology, and complex command structures cannot guarantee anything. Proposition chose the word — hold them to it.</div>
+    <div class="route-why">This route is safe because it requires no grand empirical claims — only showing that the system can fail, which is easy to demonstrate with documented near-miss events.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Reframe what deterrence actually produces: not peace, but armed paralysis — a condition where great powers refrain from attacking each other not because the system is peaceful but because they are mutually holding each other's populations hostage.</strong></div>
+    <div class="route-why">If Opposition wins this reframing, Proposition's strongest examples work against them: the Long Peace becomes evidence of how high the stakes of failure are, not evidence the system is working reliably.</div>
+    <div class="eg"><div class="eg-label">📌 Example</div><div class="eg-text">The Cold War produced the Korean War (est. 2.5 million dead), the Vietnam War (est. 1.5–3.5 million dead), proxy conflicts across Angola, Afghanistan, and Central America — all while the great powers pointed missiles at each other's cities. That is not peace; that is armed paralysis with the violence redirected.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Be generous about deterrence's merits while winning on the specific word.</strong> Accept that nuclear deterrence has real and significant value — then argue that accepting its value does not require accepting the motion. The motion does not say "nuclear weapons help preserve peace" — it says they <em>guarantee</em> peace. These are different claims.</div>
+    <div class="route-why">This sounds credible rather than naive, avoids the trap of sounding like Opp is defending reckless proliferation, and keeps the ballot on the definitional question that Opp has the easier burden on.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Double down on tail risk.</strong> Even if deterrence works ninety-nine times out of a hundred, the hundredth failure produces a potential extinction event. A system whose failure mode is civilizational collapse cannot meet any reasonable standard of guarantee, because guarantee is precisely the word we invoke when the cost of failure is unacceptable.</div>
+    <div class="route-why">Use this when Proposition is clearly winning the deterrence-works argument — concede the track record, then make the tail risk point clearly and without exaggeration.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     PROP ARGS
+═══════════════════════════════════════════ -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different mechanism of how nuclear weapons preserve peace. Together they show that deterrence is not merely a background condition — it is an active, structural force that disciplines great-power behaviour in specific and documented ways.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Nuclear Weapons Make Direct War Between Major Powers Suicidal</span></div>
+  <p class="arg-body">The core logic of nuclear deterrence is clear: if a state possesses nuclear weapons and the ability to deliver them even after absorbing an enemy's first strike — a capability known as second-strike capability — then any aggressor contemplating a direct attack must accept that the attack will result in its own destruction. No rational political or military goal is worth national annihilation. Therefore, rational actors armed with second-strike capability will not initiate direct war against each other.</p>
+  <p class="arg-body">This is not a theoretical proposition. The United States and the Soviet Union — two states with incompatible ideologies, massive conventional military forces, and direct competition across every region of the globe — never fought each other directly across the entire Cold War, which lasted roughly from 1947 to 1991. International relations scholars including John Lewis Gaddis call this period "the Long Peace" precisely because it represented something genuinely unusual in the history of great-power competition: the two dominant powers of the era never exchanged a single shot directly. The contrast with the pre-nuclear era is striking — in the first half of the twentieth century alone, Europe produced two world wars within thirty years.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Ukraine gave up its nuclear weapons under the 1994 Budapest Memorandum in exchange for security guarantees from Russia, the United States, and the United Kingdom. Russia subsequently invaded Ukraine in 2014 and again in 2022. By contrast, no nuclear-armed state has ever had its territory seized by a foreign power. The contrast is precisely what Prop's deterrence mechanism predicts — and what it explains.</div></div>
+  <div class="quote">💬 Say this: "The one thing that changed decisively in the strategic environment after 1945 was the presence of nuclear weapons. No other factor — not trade, not institutions, not democracy — can explain why the two most heavily armed rivals in history never fired at each other directly."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Nuclear weapons make direct attack between major powers equivalent to accepting national destruction</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means rational actors will not initiate direct great-power war</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the most catastrophic category of armed conflict — the kind that has historically killed tens of millions and destabilised entire civilisations — is effectively suppressed</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means nuclear weapons meet the motion's threshold: preventing the most destructive form of war is precisely what it means to <strong>guarantee peace at the international level</strong> — the mechanism that matters most for whether large-scale civilizational destruction occurs is functioning as designed.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Other Causes" Response</div>
+    <div class="weight-text">Opposition will argue the Long Peace has other causes — international institutions, economic interdependence, democratic spread. This is worth acknowledging seriously, because it is not silly. But it does not dislodge the deterrence argument for two reasons. First, all those alternative explanations applied to Europe before 1914, when interdependence was high, institutions existed, and democracy was spreading — and none of them prevented two world wars. The one thing that changed was nuclear weapons. Second, Prop does not need to prove nuclear weapons are the <em>only</em> cause — only that they are the <em>strongest structural safeguard</em>. Even if other factors contribute, deterrence provides the hardest brake on direct escalation because it is the factor that makes direct war unsurvivable regardless of what any institution or trade relationship says.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"But correlation is not causation. We haven't had a great-power war — but can you actually prove nuclear weapons are why? Maybe it would have been peaceful anyway."</div>
+    <div class="judgeobj-a">Controlled experiments in international security are impossible — we cannot run the same historical period with and without nuclear weapons. But the absence of a controlled experiment does not mean we cannot reason causally. The mechanism is clear, the timing correlates precisely with acquisition of second-strike capability, and the strategic logic is accepted by the defence establishments of every major nuclear power on earth. No serious analyst believes the United States and Soviet Union avoided direct war because of the United Nations. The mechanism deterrence proposes is the most compelling available explanation, and in the absence of a comparably strong alternative, judges should accept it.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">The Long Peace may have other causes. And correlation is not causation — maybe great powers were simply too exhausted and too economically integrated after 1945 to fight again regardless of nuclear weapons.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Every alternative explanation — exhaustion, interdependence, institutions — also applied before World War I and World War II, and those wars still happened. The decisive new variable after 1945 was nuclear weapons. The mechanism is the strongest explanation available, and Prop only needs to show it is the strongest — not the only — cause.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Nuclear Weapons Force Caution and Deliberation in Crises</span></div>
+  <p class="arg-body">Even setting aside the prevention of war itself, nuclear weapons change how crises unfold. When decision-makers know that escalation could lead to nuclear exchange, they are far more likely to slow down, seek diplomatic backchannels, and accept compromises they would otherwise refuse. The existential stakes create a structural incentive to de-escalate that does not exist in conventional conflicts.</p>
+  <p class="arg-body">The pattern — crisis followed by careful diplomacy followed by de-escalation — appears repeatedly across the Cold War. The Berlin crises, the Taiwan Strait crises of the 1950s, and the Able Archer 83 nuclear war scare all followed similar patterns: high tension, serious risk of miscalculation, and ultimately restraint. The common thread is that every decision-maker knew the staircase had no good floor at the top.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The Cuban Missile Crisis of October 1962. President Kennedy's military advisers initially recommended air strikes and a ground invasion. Soviet submarines in the area were armed with nuclear torpedoes with authority to use them under certain conditions. Over thirteen days of intense back-channelling and direct Kennedy-Khrushchev communication, the crisis was resolved without a shot fired. Both leaders, aware of where escalation ended, chose negotiated retreat over military confrontation. This is deterrence's crisis-caution mechanism in action at its most acute.</div></div>
+  <div class="quote">💬 Say this: "Leaders may gamble with soldiers; they are far less willing to gamble with cities. The same catastrophic stakes that create risk also create restraint — and near-brink episodes consistently end in stepping back, not crossing the line."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Knowledge that escalation leads to nuclear exchange makes leaders treat crises as problems requiring management rather than military opportunities</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the instinctive human tendency to use force to resolve disputes is actively counteracted by the existential stakes nuclear weapons create</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the space for diplomatic resolution expands precisely when it is most needed — the moments where wars actually start</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means nuclear weapons meet the motion's threshold by not merely preventing war in the abstract but by <strong>actively shaping behaviour during the most dangerous moments</strong> — demonstrating a guarantee mechanism that operates in real time, not just in theory.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Fear Causes Panic" Response</div>
+    <div class="weight-text">Opposition will argue that the same fear that creates caution can also cause panic — that compressed timelines and paranoid leadership can trigger preemptive launches. The 1983 Able Archer exercise, during which Soviet leadership genuinely feared a NATO first strike was underway, supports this concern. But the historical pattern favours Prop's reading: in every documented case of a serious nuclear crisis, the outcome was de-escalation, not exchange. The reason is structural — the costs of being wrong about a preemptive launch are catastrophic, and the uncertainty about whether a perceived threat is real is always high, so leaders consistently choose to wait and verify rather than fire. Fear creates caution more often than it creates panic because the alternative to caution is national annihilation.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"You're asking me to give nuclear weapons credit for the Cuban Missile Crisis ending well — but it also nearly ended catastrophically. Isn't that evidence against you?"</div>
+    <div class="judgeobj-a">The Cuban Missile Crisis is evidence that the deterrence system was under enormous stress and survived. The fact that it was close is important, but the fact that both sides stepped back is what matters for the motion. Every security system faces stress tests. The question is whether it performs when tested. In the most consequential nuclear standoff in history, deterrence held. That is not proof of perfection — but it is evidence that the mechanism works under the most extreme conditions it has ever faced.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Fear can also compress timelines, trigger preemptive launches, and produce miscalculation. The Able Archer 83 exercise nearly triggered a Soviet preemptive strike based on a false belief that NATO was attacking. Fear is not reliably stabilising.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">In Able Archer, Soviet leadership chose to wait and verify rather than act. That is the caution mechanism working — under stress, in the dark, with imperfect information, the structural incentive to avoid being wrong still prevailed. The pattern across all documented nuclear crises is de-escalation, not exchange. One consistent outcome across eighty years is not luck — it is mechanism.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">In a World Without a Reliable Global Authority, Deterrence Is the Strongest Available Backstop</span></div>
+  <p class="arg-body">One persistent objection to the deterrence argument is that it is a defence of an ugly, dangerous, and morally compromised system. That is correct in every empirical detail. The question the motion asks, however, is not whether we should be proud of the system but whether it provides the strongest available structural safeguard for peace.</p>
+  <p class="arg-body">The honest answer requires asking what the alternatives are. The United Nations Security Council, the primary international institution designed to prevent aggression, has a structural veto problem: any permanent member can block enforcement action against themselves or their allies. In practice, this means that when a great power chooses to fight, no international institution can reliably stop it. The only mechanism that has consistently constrained great powers from direct aggression against each other is the unsurvivable cost of nuclear retaliation.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Russia's invasion of Ukraine in 2022 illustrated the Security Council's structural failure plainly. Russia vetoed the resolution condemning its own invasion. International law was clear; institutional enforcement was paralysed. Ukraine had given up its nuclear weapons under the 1994 Budapest Memorandum — and received written guarantees from Russia, the US, and the UK that were subsequently ignored. Nuclear-armed states have not experienced this fate. The deterrent works as a structural safeguard in a way that international institutions have repeatedly failed to match.</div></div>
+  <div class="quote">💬 Say this: "Judge the world as it is, not as we wish it to be. In the actual international system — without a world government, with a paralysed Security Council — deterrence is the last and most durable enforcement tool. Ugly, dangerous, and still the strongest available."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>In a world without an effective global enforcement authority, the only mechanisms that reliably deter powerful states from aggressing against other powerful states are those whose costs cannot be absorbed or avoided</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the unsurvivable cost of nuclear retaliation provides a restraint that legal norms and institutional pressure cannot match</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means nuclear weapons function as the last and most durable guarantee available in the actual international system</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's threshold is met: <strong>guaranteeing peace in the real world requires the strongest available restraint mechanism</strong>, and nuclear deterrence is that mechanism in a way that nothing else currently is. The standard is comparative, not absolute, and Prop wins on any fair comparative reading.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Best Bad Option" Response</div>
+    <div class="weight-text">Opposition's best response is that "best available bad option" is not the same as "guarantee." If the alternatives are also inadequate, the honest conclusion is that nothing guarantees peace — not that nuclear weapons do. This is a legitimate philosophical point. But it misreads the motion. The motion says nuclear weapons guarantee peace — it does not say some alternative guarantees peace better. The question is whether this mechanism, evaluated on its own terms, provides a sufficiently robust structural safeguard to meet a fair reading of "guarantee." In the actual international system, where no better mechanism exists, the mechanism that makes direct great-power war suicidal provides the closest thing to a guarantee that international security is capable of producing. That is what "guarantee" means in context.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this just arguing that everything is bad and nuclear weapons are slightly less bad? That sounds like a defence of the least bad option, not a guarantee."</div>
+    <div class="judgeobj-a">Yes — Prop is making a comparative claim, not an absolute one. But this is exactly how security systems are evaluated in the real world. The question is never whether a system is perfect but whether it is the strongest available. Nuclear deterrence, measured against every alternative currently operating in international affairs, provides the most reliable structural brake on great-power aggression that exists. That is what "guarantee" means in context — not metaphysical certainty but structural reliability that outperforms every alternative. Prop should own this framing rather than shy away from it.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">"Best available" is not "guarantee." If the alternatives are also weak, the right conclusion is that nothing guarantees peace — not that nuclear weapons do. Prop is lowering the bar to make their case winnable.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">The motion asks about this mechanism, not the alternatives. The question is whether nuclear deterrence provides a structural guarantee — and in the real world without a better option, the mechanism that makes direct great-power war unsurvivable is the closest thing to a guarantee that international security is capable of producing. "Best available structural safeguard" is a fair reading of "guarantee" in context.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     OPP ARGS
+═══════════════════════════════════════════ -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula is consistent across all three arguments: acknowledge that deterrence has value — because it clearly does — then show why that value falls short of the specific and strong claim the motion makes. Conceding deterrence's merits is not a weakness; it is what makes Opp credible rather than naive.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">"Guarantee" Is Too Strong for Any System This Fragile and This Fallible</span></div>
+  <p class="arg-body">A guarantee is a promise that a system will deliver its intended outcome reliably enough that we can depend on it. We use the word in contexts where failure is unacceptable — building codes guarantee structural safety, surgical protocols guarantee minimum patient standards. The word carries specific weight. It means: you can count on this.</p>
+  <p class="arg-body">Nuclear deterrence is a system that has come within minutes of catastrophic failure on multiple documented occasions. It depends on fallible human beings operating under stress with imperfect information. It depends on early-warning systems that have produced false alarms serious enough to nearly trigger responses. And it carries a failure mode — nuclear exchange — that is unique in human history for its irreversibility and potential scale of destruction. A system with this profile cannot be described as guaranteeing anything.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">September 1983: Soviet early-warning systems detected what appeared to be an incoming American missile strike. A Soviet officer named Stanislav Petrov — acting on his own judgment rather than established protocol — concluded the alert was a software malfunction and did not report an incoming attack to his superiors. He was right. Had Petrov followed protocol, the Soviet response procedure might have been triggered. Nuclear war was averted not by the deterrence system working as designed — but by one person making a good judgment call in the middle of the night. That is not a guarantee. That is luck.</div></div>
+  <div class="quote qo">💬 Say this: "A system that nearly caused nuclear war because a Soviet officer trusted his instincts over his instruments is not a system that guarantees anything. Stanislav Petrov's good judgment is not a structural guarantee — it is precisely the kind of thing a guarantee is supposed to make unnecessary."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Any system that depends on human judgment under stress, has documented near-catastrophic failures, and would produce existential consequences upon a single failure cannot meet the standard implied by "guarantee"</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means calling nuclear deterrence a guarantee is a fundamental misdescription of what the system actually is</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion makes a claim stronger than the evidence can support</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails on its own terms — not because nuclear weapons have no value, but because <strong>the specific word Proposition chose requires a reliability that the system's documented track record cannot support</strong>. Precision matters when discussing civilization-ending weapons.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "No System Is Perfect" Response</div>
+    <div class="weight-text">Prop's best response is that no security system is perfect and demanding perfection from nuclear deterrence while not applying the same standard to alternatives is unfair. This is a reasonable framing — but it misidentifies what Opp is actually asking. Opp is not demanding perfection. Opp is pointing out that "guarantee" implies a level of reliability that this specific system, with this specific failure mode, cannot deliver. The asymmetry matters enormously: when a fire suppression system fails, the failure mode is a building burning down. When nuclear deterrence fails, the failure mode may be millions of deaths and potentially civilizational collapse. The word "guarantee" is precisely the word we should be most careful about applying to a system whose single failure produces an irreversible catastrophe of that magnitude.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If you hold nuclear deterrence to this high a standard, doesn't that mean no security system can ever 'guarantee' anything? Isn't this just a semantic trick?"</div>
+    <div class="judgeobj-a">The standard is calibrated to the stakes, not applied uniformly. We do not demand absolute guarantee from every system, but we should demand it — or at least something much closer to it — from systems whose failure produces irreversible civilizational harm. The reason we have strict building codes for skyscrapers but not for garden sheds is that we calibrate safety standards to the cost of failure. Applying a rigorous reading of "guarantee" to a nuclear deterrence system is not a semantic trick — it is the appropriate application of a high standard to the highest-stakes system in existence. If anything, Prop should have to explain why they chose the word "guarantee" for a system that nearly failed due to a software error costing less than a dollar.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">No security system is perfect. Demanding certainty from nuclear deterrence while not applying the same impossible standard to any available alternative is unfair — and under any fair comparative standard, deterrence has performed consistently for eighty years.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">The standard is calibrated to the failure mode, not applied universally. When the failure mode is civilizational collapse, "usually works" is not enough to earn the word "guarantee." And Stanislav Petrov is not a structural guarantee — he is evidence that the system's reliability depends on the quality of individuals who happen to be on shift. That is the opposite of a guarantee.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">What Nuclear Weapons Produce Is Not Peace — It Is Terror-Backed Paralysis</span></div>
+  <p class="arg-body">Peace is not simply the absence of one specific category of violence. When we describe a condition as peaceful, we mean something more than that the major powers are not directly shooting at each other — we mean that people are secure, free from coercive threats, and able to live without the constant shadow of potential annihilation. By that standard, the condition nuclear weapons produce is not peace. It is armed standoff, where both sides are restrained from attacking each other not because the international system is working well but because they are each pointing weapons at the other's population.</p>
+  <p class="arg-body">Meanwhile, nuclear-armed states have used their arsenals as instruments of political coercion even without using them directly. Russia's nuclear posture has been explicitly cited as a factor constraining Western military responses to its actions in Ukraine. North Korea's nuclear weapons programme has enabled it to extract concessions and avoid the regime-change operations applied to non-nuclear states like Iraq and Libya. The nuclear weapon, in this light, is not a tool of peace — it is a tool of coercive power available only to those who have it.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The Cold War period was saturated with armed conflict despite nuclear deterrence suppressing direct great-power war. The Korean War killed an estimated 2.5 million people. The Vietnam War killed between 1.5 and 3.5 million. Wars in Angola, Mozambique, Afghanistan, Cambodia, and Nicaragua were fuelled and prolonged by great-power proxy competition. These were not spontaneous local conflicts — they were extensions of the great-power rivalry into theatres where nuclear weapons could not be used without triggering direct confrontation. Nuclear deterrence did not end great-power competition; it moved it into bodies that couldn't afford nuclear weapons.</div></div>
+  <div class="quote qo">💬 Say this: "Mutual hostage-taking may create restraint, but it is not peace. If two people are pointing guns at each other across a room, the absence of shooting does not make the room peaceful. Nuclear deterrence has produced the international equivalent of that room — armed, tense, and one mistake away from catastrophe."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Nuclear weapons suppress direct great-power war while enabling proxy warfare, coercive nuclear signalling, and permanent mutual hostage-taking</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the condition they produce bears no resemblance to genuine peace in any meaningful sense of that word</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's use of "peace" is fundamentally misleading when applied to a system that has produced decades of proxy conflict, nuclear blackmail, and civilisation-scale threat</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails because what nuclear weapons guarantee — if they guarantee anything — is not <strong>peace</strong> but armed paralysis, and the distinction between those two things is precisely what this debate should turn on.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Proxy Wars Are Less Catastrophic" Response</div>
+    <div class="weight-text">Prop's best counter is that proxy wars and political coercion, however tragic, are enormously less destructive than direct great-power war, and preventing the worst category of violence is the core function of any peace-preserving system. This is a real argument with real weight, and Opp should acknowledge it seriously. But it does not rescue the motion for two reasons. First, calling a system that produces proxy wars, nuclear blackmail, and permanent existential threat a system that "guarantees peace" is a misuse of language so significant that it changes the meaning of the claim. Second, the suffering produced by proxy conflicts is not somehow less real because it occurs below the nuclear threshold. The approximately 20 million people estimated to have died in Cold War proxy conflicts were not consoled by the fact that their deaths were not a direct great-power war.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't preventing world war inherently more important than preventing proxy conflicts? Don't the twenty million deaths from proxy wars need to be weighed against the potential hundreds of millions from a direct nuclear war?"</div>
+    <div class="judgeobj-a">Scale absolutely matters — preventing a great-power nuclear exchange is arguably the single most important security goal in existence, and Opp should say so clearly. But meeting that goal does not constitute guaranteeing peace. It constitutes preventing the worst possible outcome, which is not the same thing. Guaranteeing peace requires producing a condition that actually resembles peace — and a condition including decades of proxy warfare, nuclear coercion, and permanent mutual annihilation threat does not resemble peace. The honest framing is: nuclear weapons may be the strongest available brake on the worst possible outcome, but the worst possible outcome is not the only measure of peace, and the motion claims something stronger than "prevents the worst."</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Proxy wars and coercion, while tragic, show that deterrence is working — escalation is being contained below the level of direct great-power war. The violence is capped. That is evidence of success, not failure.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Redirecting violence rather than eliminating it does not satisfy the definition of peace. Calling a system that moves violence into smaller countries "peace" is a definition that excludes most of the people who died violently under it. Containing the worst outcome is not the same as guaranteeing peace — it is guaranteeing something less, and the motion's word should mean what it says.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">The Catastrophic Downside Risk Defeats Any Claim of Guarantee</span></div>
+  <p class="arg-body">The concept of a guarantee is not just about how often a system succeeds — it is also about what happens when it fails. A bridge is not safely guaranteed if it holds traffic reliably 99.9 percent of the time but collapses completely once a decade. A medical treatment is not guaranteed safe if it produces its intended benefit in most patients but kills a small percentage. The combination of failure probability and failure consequence determines whether something can honestly be called a guarantee.</p>
+  <p class="arg-body">For nuclear deterrence, the failure mode is unique in all of human security architecture. If deterrence fails — if a nuclear exchange occurs — the consequences are not merely very bad. They are potentially irreversible at a civilizational level. A 2022 study published in the journal Nature Food estimated that a nuclear exchange between the United States and Russia could trigger agricultural collapse severe enough to cause over five billion deaths from famine within two years, beyond immediate blast and radiation casualties. Even granting substantial uncertainty in such estimates, the basic point is undeniable: nuclear deterrence failure is a category of event that human civilisation may not recover from.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">According to research documented in Eric Schlosser's book Command and Control, there have been dozens of significant accidents, false alarms, and near-misses in nuclear weapons systems — including B-52 bombers crashing with armed nuclear weapons aboard, communications failures that briefly appeared to indicate incoming attacks, and at least one case where a missile nearly launched due to a faulty computer chip costing less than a dollar. This is the documented fragility of the system we are being asked to call a guarantee.</div></div>
+  <div class="quote qo">💬 Say this: "A system whose failure mode is the potential end of civilisation cannot be described as guaranteeing anything — because what it would be guaranteeing, upon failure, is not peace but the end of the conditions under which human civilisation exists."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>A security system whose failure mode is potential civilizational collapse cannot provide a guarantee in any meaningful sense of the word</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means nuclear deterrence — whose failure scenario is potentially civilization-ending and whose probability of failure has been demonstrated by multiple near-miss events to be non-trivial — cannot meet the guarantee standard</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails not because nuclear weapons have no deterrent value but because the specific word "guarantee" is incompatible with a system whose failure means the end of everything the guarantee was supposed to protect</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>this argument is self-defeating for Proposition in the worst way</strong>: the more one nuclear exchange would cost, the more outrageous it is to call the system that might produce one a guarantee of peace.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "All Systems Have Risks" Response</div>
+    <div class="weight-text">Prop's best response is that all security systems carry risks, that nuclear deterrence's risk is lower than the risk of great-power war without it, and that comparative risk is the right framework. This comparative framing is legitimate, and Opp should concede that deterrence may produce better expected outcomes than a nuclear-free world of great-power competition. But the comparative argument proves that nuclear weapons are the least bad option — it does not prove that they guarantee peace. These are different claims. Proposition's fallback to comparative reasoning is itself an admission that the guarantee framing cannot be sustained. The moment Prop says "we are arguing nuclear weapons are the best available option in an imperfect world," they have conceded the debate — because the motion does not say "best available option."</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't your argument just that something could go wrong? Doesn't that apply to every security system? Why is this argument more than the general observation that things can fail?"</div>
+    <div class="judgeobj-a">The objection is correct in the abstract but misses the specific asymmetry that makes it apply with unusual force here. The reason this argument has more bite than the general observation that "things can go wrong" is the combination of three factors that are unique to nuclear deterrence: the failure mode is irreversible, the failure mode affects everyone on the planet regardless of their involvement, and the probability of failure — while difficult to quantify — has been demonstrated by multiple documented near-miss events to be non-trivial. That combination — irreversibility, universality, and demonstrated non-trivial probability — is what makes "guarantee" the wrong word here in a way it would not be for most other security systems.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">All security systems carry risks. Nuclear deterrence's risk — properly measured against the alternative of great-power war without deterrence — is lower, not higher. Comparative risk is the right framework, and under it, deterrence wins.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Comparative risk proves nuclear weapons are the least bad option — not that they guarantee peace. Those are different claims, and the motion makes the stronger one. The moment Prop retreats to "best available in an imperfect world," they have conceded that "guarantee" is too strong a word for their case. That concession is worth naming explicitly for the judge.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     ATTACKS
+═══════════════════════════════════════════ -->
+<div id="atk" class="page"><div class="wrap">
+
+<h1 class="page-title">⚔️ What They'll Throw at You</h1>
+<p class="page-sub">These are the most common and dangerous attacks each side will face. The danger level tells you how much preparation time to invest. Read the defense carefully — the goal is not to memorize lines, but to genuinely understand the logic so you can adapt it under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on PROP — if you're arguing FOR the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Guarantee is too strong a word for any system that has nearly failed on documented occasions."</div>
+        <div class="d-answer">Counter this by locking in your definition of "guarantee" before Opp does. "Guarantee" in the context of international security means "strongest available structural safeguard in a non-ideal world" — not metaphysical certainty. No security system that depends on human decisions can guarantee certainty, and demanding that standard would make the word meaningless in any real-world application. Then note that the pattern across eighty years of nuclear crisis has consistently been de-escalation, not exchange — and that consistent performance across eight decades under the most severe stress tests in history is precisely what a structural guarantee looks like. <strong>Define this in the very first speech.</strong></div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Deterrence is not peace — it is terror-backed stability, and those are different things."</div>
+        <div class="d-answer">This is Opp's most conceptually important attack, and it needs a direct answer. Contest the distinction: in international relations — which is the context in which nuclear weapons operate — peace is primarily understood as the absence of direct large-scale interstate war between major powers. Scholars including John Lewis Gaddis describe the post-1945 period as "the Long Peace" specifically on this basis. Calling the outcome "stability rather than peace" is a philosophical refinement that does not change the substantive outcome for the people who did not die in a direct great-power war. <strong>Make this argument explicitly and early.</strong></div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Proxy wars, coercion, and permanent annihilation threat continued throughout the nuclear era — where exactly is the peace?"</div>
+        <div class="d-answer">Acknowledge proxy wars explicitly — Prop teams that pretend the Korean War and Vietnam War did not happen look like they missed half the world's history. Then explain why the existence of proxy conflicts is actually evidence that deterrence is working: the fact that United States and Soviet competition expressed itself through proxies in Korea, Vietnam, Angola, and Afghanistan — rather than directly — shows that escalation was being contained below the catastrophic threshold. The violence did not disappear, but it was capped. That is what successful deterrence looks like in a world that still has competing great powers and deep ideological disagreements.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Accidents, miscalculation, and near-misses make nuclear peace luck-dependent, not guaranteed."</div>
+        <div class="d-answer">Acknowledge the near-miss record honestly — the Stanislav Petrov incident is real and it matters. Then make the structural response: risk exists in every system, and the question is whether nuclear stakes uniquely force caution and restraint despite those risks. In every documented case of a serious nuclear crisis, the outcome was de-escalation, not exchange. The structural reason is that the catastrophic cost of being wrong creates a powerful incentive to wait and verify rather than fire — even under stress, even with imperfect information. That consistent pattern across eight decades is evidence that the caution mechanism works structurally, not just accidentally.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Your logic implies proliferation — if deterrence creates peace, shouldn't every state have nuclear weapons?"</div>
+        <div class="d-answer">Have this answer ready because it will come. Prop is defending the deterrent effect of nuclear weapons among existing nuclear powers with established strategic doctrine, command structures, and deterrent relationships — not arguing that every state should acquire them. Proliferation introduces exactly the instability and miscalculation risks that make deterrence fragile: states without established second-strike capability, without reliable command-and-control systems, and without the decades of crisis-management experience that nuclear powers have developed. The deterrence argument is not a universal argument for acquisition — it is an argument about the structural effect of the specific deterrent relationships that actually exist.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on OPP — if you're arguing AGAINST the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Nuclear deterrence prevented World War III — isn't eighty years of no direct great-power war the strongest available evidence that deterrence guarantees the most important kind of peace?"</div>
+        <div class="d-answer">Never deny that deterrence has prevented direct great-power war — because it probably has, and denying it will destroy Opp's credibility. Accept the point directly and clearly: nuclear deterrence has likely been a major factor in preventing direct great-power conflict, and that is enormously important. Then make the precise argument: the Long Peace proves usefulness, not guarantee. A treatment that has worked in most patients for eighty years is valuable — but we would not say it "guarantees" a cure if the failure mode is death and if documented near-misses show the mechanism can fail. The distinction between "has consistently worked" and "guarantees" is exactly what this debate is about, and Opp wins by holding it consistently.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Preventing world war outweighs everything else — proxy violence is small compared to what deterrence prevents, so the system qualifies as guaranteeing peace on any reasonable weighing."</div>
+        <div class="d-answer">Acknowledge that preventing great-power war matters enormously — say so explicitly, and mean it. Then hold the distinction: preventing the worst outcome is not the same as guaranteeing peace. The motion claims something stronger than "prevents the worst category of violence." It says nuclear weapons guarantee peace — implying that what they produce is actually peace, not merely the absence of the worst possible war. A world with 20 million proxy war deaths, permanent nuclear coercion, and multiple documented near-misses from accidental exchange is not well-described as a world where peace has been guaranteed. Hugely important to prevent great-power war; still not enough to call the whole system a peace guarantee.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Fear stabilises leaders — the Cuban Missile Crisis proves that nuclear stakes produce the exact caution mechanism that constitutes the guarantee."</div>
+        <div class="d-answer">The Cuban Missile Crisis is available to both sides, and Opp needs to use it rather than concede it to Prop. Accept that the crisis ended well — then note that it also nearly ended catastrophically, and that how close it came was not known to most participants at the time. Soviet submarines in the area had authority to fire nuclear torpedoes under certain conditions. One Soviet officer, Vasili Arkhipov, voted against launching a nuclear torpedo during the crisis — a vote that required unanimity to block. The crisis's good ending depended on the judgment of specific individuals in specific moments. That is not a structural guarantee — that is luck that happened to be good. Fear can also compress timelines and produce preemptive panic, as the Able Archer 83 exercise showed.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Even if deterrence is imperfect, alternatives are worse — so it still qualifies as the strongest available guarantee, which is all the motion requires."</div>
+        <div class="d-answer">This comparative realism move is Prop's most sophisticated argument, and Opp needs a specific response. Accept the comparative claim — nuclear deterrence is probably better than the available alternatives at preventing direct great-power war. Then argue that "better than available alternatives" is a different and weaker claim than "guarantees peace." The motion does not say nuclear weapons are the best available option; it says they guarantee peace. If Prop needs to lower the bar to "best available in an imperfect world" to make their case, that is itself evidence that the guarantee framing cannot be sustained. The fallback to comparative reasoning is a concession, and Opp should name it as one.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"In IR, peace means absence of major war — and by that academic definition, deterrence has guaranteed it."</div>
+        <div class="d-answer">Even under Gaddis's narrow "Long Peace" definition, Opp can still win. First, contest that the academic definition is the right one for the motion — a motion aimed at a general audience should use a general audience's understanding of "peace," which includes more than the absence of direct great-power war. Second, and more importantly, even under the narrow academic definition, the proxy wars, brinkmanship, and coercive nuclear signalling of the Cold War represent serious failures of peaceful international relations. The IR scholars who coined "Long Peace" as a descriptive term were not endorsing the Cold War as a peaceful period in any full sense — they were noting one specific absence of a specific kind of war. That specific absence, while important, does not constitute the full guarantee the motion claims.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     CLASHES
+═══════════════════════════════════════════ -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these clashes convincingly. Know which ones your side has the easier burden on before the round starts — and know which ones you are likely to lose, so you can minimise their importance.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 1 — Meaning of "Guarantee"</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That "guarantee" can fairly mean "strongest available structural safeguard in a non-ideal world" — a comparative rather than absolute standard — and that this reading is contextually appropriate for a motion about international security rather than being a motivated rewrite designed to lower the bar.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That even a generous reading of "guarantee" requires more reliability than a system with documented near-miss events, fallible human decision-makers, and an irreversible civilizational failure mode can deliver — and that precision matters most when the word is applied to civilization-ending weapons.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This is the most important definitional clash in the round — whoever wins it shapes how every other argument is evaluated. A judge will ask: which side gave me a more useful and contextually appropriate definition, and which side actually showed their definition is satisfied by the evidence? Prop loses this clash if they never directly define "guarantee" in their first speech, leaving themselves vulnerable to Opposition's framing. Opp loses it if they define "guarantee" so strictly that any judge can see the standard is impossibly demanding, making it look like a semantic trick rather than a substantive argument. The judge is looking for the side that disciplined itself to one coherent definition and proved it was — or was not — satisfied.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Slight Edge</span><span class="clash-title">Clash 2 — Meaning of "Peace"</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That in the context of international relations — which is the context in which nuclear weapons operate — peace is primarily understood as the absence of direct large-scale interstate war between major powers, and that scholars like Gaddis use the term "Long Peace" on exactly this basis.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That defining peace exclusively as the absence of direct great-power war makes the word so narrow that it excludes the experiences of tens of millions who died in Cold War proxy conflicts, nuclear coercion victims, and everyone living under permanent annihilation threat — a definition that cannot be taken seriously outside a narrow academic context.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">A judge will ask: which definition of peace is most useful for evaluating the real-world effects of nuclear weapons? They will be skeptical of a definition so narrow it is compatible with enormous ongoing violence — but also skeptical of a definition so broad that no security arrangement could ever qualify as peaceful. Prop loses this clash by only ever talking about great-power war and never acknowledging proxy conflicts, making them look like they are ignoring half the world's suffering. Opp loses it by arguing that no condition short of universal peace and security counts, making their standard impossibly idealistic and therefore easy to dismiss.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Deterrence Success vs Catastrophic Tail Risk</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the consistent success of deterrence in preventing direct great-power war across eighty years is more important than the low probability of catastrophic failure — and that the probability of failure is lower under deterrence than under any available alternative arrangement.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That when the failure mode is civilizational collapse, even a small non-trivial probability of failure is enough to defeat a guarantee claim — because guarantee is precisely the word we invoke when failure is unacceptable, and no system whose single failure may kill billions can wear that label honestly.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This clash is genuinely even because it is fundamentally a philosophical disagreement about risk evaluation. A judge will decide by asking: which side gave me a reason to believe their framework for evaluating risk is more appropriate here? Prop wins if they can show the expected-value calculation favors deterrence over alternatives. Opp wins if they can show that irreversibility and civilizational scale deserve special weight beyond expected-value calculation — that we should not average away extinction-scale outcomes across decades of success. Concrete examples of near-miss events from both sides will be decisive. Opp needs the documented near-miss record to feel vivid and real, not abstract.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Slight Edge</span><span class="clash-title">Clash 4 — Proxy Conflict as Failure vs Capped Substitute</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That proxy conflicts, however tragic, are qualitatively different from and less destructive than direct great-power war — and that the fact they remained proxy conflicts rather than escalating to direct confrontation is evidence that deterrence is working exactly as the mechanism predicts.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That redirecting violence into smaller, weaker countries rather than eliminating it does not satisfy the definition of peace — and that the people who died in Korea, Vietnam, Angola, and Afghanistan represent a genuine failure of the system, not evidence that the system is succeeding.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This is primarily a values question: does preventing the worst outcome constitute success, even if significant violence persists? A judge who thinks comparatively and consequentially will likely favour Prop. A judge who evaluates outcomes against an absolute standard of peace will likely favour Opp. The key for both sides is to not look indifferent to the suffering of actual people — Prop loses this clash by appearing to dismiss proxy war deaths as acceptable collateral, and Opp loses it by failing to acknowledge that the scale difference between proxy wars and direct nuclear great-power war is real and enormous.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Slight Edge</span><span class="clash-title">Clash 5 — Whether Comparative Realism Saves the Motion</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That a fair reading of "guarantee peace" in the context of a motion about international security means "provides the strongest available structural safeguard" — and that demanding certainty is an impossible standard that no security system could meet, making it an inappropriate reading of the motion's language.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That accepting Prop's comparative-realist reframing changes the motion from "nuclear weapons guarantee peace" to "nuclear weapons are the least bad available option" — and that if Prop needs to rewrite the motion to make it winnable, that is itself evidence that the motion as written cannot be defended.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">A judge will decide by asking whether Prop's contextual reading of "guarantee" is a fair interpretation or a motivated rewrite. If Prop has been consistent from the start in arguing that "guarantee" means "strongest available structural safeguard" — applied to every argument throughout the round — a judge may accept it as a legitimate interpretation. If Prop only introduces this reading when under pressure, it will look like a retreat. Prop loses this clash by introducing the comparative-realism argument only as a defensive fallback. Opp loses it by failing to name explicitly that Prop's retreat to "best available option" is itself a concession that the guarantee claim cannot stand on its own.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     POIs
+═══════════════════════════════════════════ -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: it exposes a gap in the other side's argument that they have not addressed, or it forces them to concede something they would rather not say out loud. The best ones do both. Have your top three ready from memory so you can deliver them calmly and confidently under any conditions.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Do you deny that nuclear deterrence has materially constrained direct war between major powers — and if so, what explains eighty years of no direct great-power conflict?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">What alternative mechanism more reliably prevents great-power conquest in the world as it currently exists — with a paralysed Security Council and no world government?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">If proxy wars and coercion continued under nuclear deterrence, why have they not escalated into direct great-power war — isn't that exactly what the deterrence mechanism predicts and delivers?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Are you rejecting nuclear deterrence itself, or only rejecting the word "guarantee"? Because if it is only the word, we can have a definitional conversation — but if it is the mechanism, you owe us an empirical explanation for the Long Peace.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If fear of nuclear consequences is destabilising overall, why has direct war between nuclear-armed peers remained consistently absent for eight decades — shouldn't we have seen the panic and miscalculation you describe by now?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>"Guarantee" in this debate means "strongest available structural safeguard in the real world"</strong> — not metaphysical certainty. We have said this from the opening speech. Opp keeps arguing against a standard we never claimed.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">We fully acknowledge proxy wars and the moral costs of deterrence — but <strong>imperfect peace still counts if the most destructive possible war is prevented</strong>. The question is comparative, and nothing available prevents direct great-power war more reliably.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">When Opp says "stability, not peace," they are conceding that the mechanism works — <strong>they are only disputing a label</strong>. Preventing direct major interstate catastrophe is the core peace function in international relations, and deterrence delivers it.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">We are defending the deterrent logic of existing nuclear powers with established doctrine and command structures — <strong>not arguing every state should acquire nuclear weapons</strong>. That is a separate question the motion does not ask.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Other factors — trade, institutions, democracy — also existed in 1910. They did not prevent World War I or World War II. <strong>The decisive new variable after 1945 was nuclear weapons</strong>, and the mechanism that changed was the unsurvivable cost of direct attack.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Define "guarantee" exactly — not comparatively, not contextually, but precisely. What would have to be true of this system for it to fail your definition of guarantee?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If a single accidental launch is possible — and the Stanislav Petrov incident shows that one nearly occurred in 1983 — on what grounds do you call this system guaranteed?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">If proxy wars, nuclear coercion, and permanent annihilation threat continue alongside nuclear deterrence, on what definition is this peace — rather than armed paralysis with the violence redirected to smaller countries?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Are you defending peace, deterrence, or stability? Because those are three meaningfully different things — and the motion specifically requires the first one.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Your best case today is that nuclear weapons deter major war and are the least bad available option. Why does that prove a stronger claim than the weaker motion you wish you were defending?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">We do not deny deterrence works at all — we deny that <strong>working is the same as guaranteeing</strong>. A seatbelt works without guaranteeing survival in every crash. The distinction is the entire debate.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">We do not need a superior alternative to win this debate. <strong>The burden is entirely on Proposition</strong> to prove their positive claim. We win by showing the claim is not met — not by designing a better international security system.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Preventing great-power war is enormously important and we have said so throughout this debate. But <strong>important is not the same as guaranteed</strong>, and something can be highly valuable without guaranteeing the full outcome it is associated with.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Precision is exactly what this motion requires. When the motion uses the word <strong>"guarantee" in the context of civilization-ending weapons</strong>, the appropriate response is to hold that word to a meaningful standard — not relax it for convenience.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Our case rests on three non-moral pillars: <strong>definitional precision, documented fragility, and the logic of catastrophic tail risk</strong>. This is not moral discomfort with nuclear weapons — it is burden analysis applied to a specific and strong claim.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     REBUTTALS
+═══════════════════════════════════════════ -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side has just argued, explain specifically why it fails, and connect the failure back to your overall thesis. The starred lines are your top three per side — have them ready to deploy from memory. The numbered ones are strong but can be adapted.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition's best case proves nuclear weapons are ugly, risky, and morally uncomfortable. It does not prove they are not the strongest available structural safeguard against the most catastrophic form of warfare."</strong> When Opposition acknowledges — as they must — that deterrence materially constrains direct great-power war, they have already conceded the core of what Proposition needs. The remaining debate is about whether "guarantee" is the right word. Proposition's definition of that word — strongest available structural safeguard — is contextually appropriate, consistently applied, and supported by eighty years of outcome evidence.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"'Not perfect' is not the same as 'not peace-guaranteeing' in comparative international politics."</strong> Every alternative security mechanism that has ever existed is also imperfect. The United Nations did not prevent the Korean War, the Vietnam War, or Russia's invasion of Ukraine. International law did not stop a single twentieth-century genocide. If Opposition's standard is perfection, no security system passes. If their standard is comparative reliability — and it must be, because perfection is impossible — nuclear deterrence holds up better than any alternative they can name.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"The existence of proxy wars is not evidence that deterrence failed — it is evidence that deterrence succeeded in containing escalation to a level below the catastrophic threshold."</strong> The fact that the United States and Soviet Union competed violently through proxies in Korea, Vietnam, Angola, and Afghanistan while never firing directly at each other is precisely what successful deterrence looks like. The violence did not disappear — but it was capped at a level orders of magnitude less destructive than direct great-power war. Calling that a failure of the peace system is like calling a firebreak a failure because fire still burned on the other side of it.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"If Opposition concedes — as they must, or they lose the empirical argument entirely — that nuclear deterrence materially restrains direct major-power war, they have conceded the mechanism that gives Proposition their case. The remaining debate is about words: whether 'guarantee' is the right word and whether 'peace' is the right word. Proposition's definitions of those words are contextually appropriate, internally consistent, and established from the first speech. Opposition is disputing labels on a phenomenon they concede is real and significant."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Opposition's standard for 'guarantee' is so absolute that it would make the word inapplicable to any security system that has ever existed or ever could exist. No human institution guarantees anything with certainty. Applying this impossible standard only to nuclear deterrence, while implicitly accepting weaker standards for the alternatives they prefer, is asymmetric and analytically unfair. Judges should reject a standard designed to produce a predetermined conclusion."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition has been consistently weakening the motion throughout this round."</strong> They began by saying nuclear weapons "guarantee peace." They are now saying nuclear weapons "help deter major war" or are "the best available option in an imperfect world." These are genuinely different claims, and the difference matters. Judges should vote on the motion as written — not on the weaker version Proposition has retreated to under pressure. That retreat is itself the most important thing that happened in this debate: it shows Proposition knows their original claim cannot be sustained.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Stability under mutual annihilation threat is not peace — it is a condition where two or more parties refrain from killing each other directly because doing so would guarantee their own destruction."</strong> This is the logic of a standoff, not the logic of peace. If two people are pointing guns at each other across a room, the absence of shooting does not make the room peaceful. Nuclear deterrence has produced the international equivalent of that room — armed, tense, and one mistake away from catastrophe. That is not a condition Proposition should be comfortable calling guaranteed peace.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Partial success against one category of war is not a guarantee of peace."</strong> Proposition has shown at best that nuclear weapons reduce the probability of direct great-power conflict. This proves a useful effect. It does not prove a guaranteed outcome. A vaccine that reduces infection risk by ninety percent is valuable, but we would not say it "guarantees" you will not get sick. The same precision matters here — and it matters more, because the failure mode is civilizational collapse rather than personal illness. "Usually works" is not the same as "guarantees," and the motion's word choice is what the debate should turn on.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"The catastrophic downside of deterrence failure is not just bad — it is the kind of bad that retroactively defeats the concept of guarantee. A guarantee is valuable because it allows us to plan around the promised outcome. If the system fails once, and that single failure kills hundreds of millions of people and collapses civilisation, then the preceding decades of successful deterrence were not a guarantee of peace — they were a reprieve. Guarantees do not work on reprieve logic."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"'Best available' is a fallback defence, not proof of the actual motion. Proposition has spent this round edging toward arguing that nuclear deterrence is the least bad option in an imperfect world. That may be true. It is also not the motion. The motion says nuclear weapons guarantee peace — not that they are the best-available imperfect tool. The gap between those two claims is where Opposition wins this round, and Proposition has never closed it."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     ROLES
+═══════════════════════════════════════════ -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later in the round when the other side has already committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "guarantee" as "strongest available structural safeguard in the real world" in the first sixty seconds — before Opp gets a chance to raise the bar.</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "peace" as primarily the absence of direct large-scale interstate war between major powers — anchor this in Gaddis's "Long Peace" usage.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the team thesis and the comparative realism frame: judge the world as it is, not as we wish it to be. What is the strongest available structural safeguard? That is what "guarantee" means.</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the two highest-danger Opp attacks — guarantee wording and deterrence-is-not-peace — briefly and confidently.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Taking over the constructive case — that is Speaker One's job. Every second on arguments is a second not spent on framing, which is where the round is often decided before a single example is given.</div>
+        <div class="role-line"><span class="role-icon">→</span>Any discussion of nuclear proliferation as a policy position — this invites the wrong debate and a trap Opp will exploit.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Carry the full constructive case: the suicidal-cost deterrence mechanism, the crisis-caution argument with the Cuban Missile Crisis as the centrepiece, and the comparative realism / no-world-government argument with Ukraine as the counterexample.</div>
+        <div class="role-line"><span class="role-icon">→</span>End every argument with an explicit sentence connecting it back to the motion's specific words — "this meets the threshold of guaranteeing peace because..."</div>
+        <div class="role-line"><span class="role-icon">→</span>Keep everything anchored to real and observable facts rather than speculative futures.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending significant time rebutting Opposition's first speech — the round is not yet decided by clash, and time spent in long rebuttal here is time not spent building the constructive case.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer all three Opp attacks — the guarantee wording attack, the false peace argument, and the catastrophic tail risk argument — explicitly and in sequence.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the "imperfect peace still outweighs" move: acknowledge what Opp got right, then show why none of it defeats Prop's core mechanism and framework.</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Opp's concession that deterrence materially constrains direct war — if they said it, name it and show why it is the first half of Prop's case.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Introducing large new constructive arguments — the judge has the structure established and what they need now is clarity and clash engagement, not new material that did not get developed earlier.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Reduce the entire round to one ballot story. Identify the single most important question — did deterrence provide the strongest structural safeguard against the most catastrophic war? — and explain clearly why Prop won it.</div>
+        <div class="role-line"><span class="role-icon">→</span>The closing line: "Ugly but effective, and nothing more effective exists. In a world without a world government, deterrence is the strongest available guarantee of peace. Vote Proposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the closing time answering Opp attacks line-by-line — a Proposition closing that is primarily defensive has already lost the narrative. The story should feel authoritative and forward-looking.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Lock the wording burden immediately and explicitly: say that Opp concedes deterrence has real value, and that the question is whether it meets the specific and high standard of "guarantee."</div>
+        <div class="role-line"><span class="role-icon">→</span>Introduce the two definitional frames: "useful is not guaranteed" and "deterrence is not peace." These should be named and established before Opp has even given a substantive argument.</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal that Opp will argue on precision, not denial — this positions the team as analytically rigorous rather than naively anti-deterrence.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Long mechanism expansion — that is Speaker One's job. An Opposition Captain who spends their speech explaining why deterrence is fragile leaves the definitional framing work undone.</div>
+        <div class="role-line"><span class="role-icon">→</span>Any impression of denying that the Long Peace is real or that deterrence has worked in some sense — this destroys Opp credibility for the rest of the round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Develop the full Opposition case: the guarantee burden argument with the Stanislav Petrov incident and documented near-misses, the false peace argument with Cold War proxy conflict examples, and the catastrophic downside argument with the Nature Food 2022 study and the Command and Control accident record.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the line "their case proves nuclear weapons can deter major war — not that they guarantee peace" early and return to it throughout.</div>
+        <div class="role-line"><span class="role-icon">→</span>Concede deterrence's merits within each argument — it makes you more credible, not less, and prevents Prop from spending their time pointing out concessions you never made.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining moral objections to nuclear weapons — the case rests on definitional precision, documented fragility, and tail risk logic, not on moral discomfort. Moral discomfort is for editorials, not for winning this round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish the wording shift. Name explicitly that Prop has moved from "guarantee peace" to "best available option in an imperfect world" — and explain why this retreat is the most important thing that happened in the round.</div>
+        <div class="role-line"><span class="role-icon">→</span>Force Prop to specify which single argument independently carries the motion — put this question to them directly and return to it if they do not answer clearly.</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer the comparative realism argument: "best available" is different from "guarantee," and Prop's fallback to the former proves they cannot sustain the latter.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining the tail risk argument at length — the judge understood it from Speaker One. Speaker Two's job is to use it as a closing mechanism, not to re-deliver it from scratch.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple and unforgiving. The clean decision rule: "Vote on the motion as written. The motion says 'guarantee peace.' Prop's best case is that nuclear weapons deter major war and are the least bad available option. If you agree that 'guarantee' means something more than 'usually helpful,' you have no choice but to vote Opposition."</div>
+        <div class="role-line"><span class="role-icon">→</span>The closing line: "At best, Proposition proved deterrence utility. They did not prove guaranteed peace. Stable is not guaranteed, and deterrence is not peace. Vote Opposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Granular extension of earlier speakers' arguments — the judge is synthesising, not tracking line-by-line. Give them one clean narrative to hold onto, not a summary of everything Opp said.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     CLOSINGS
+═══════════════════════════════════════════ -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening & Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears your captain say. The closing bullets are the last things the judge hears before they deliberate. Both should be memorised and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "The question this motion asks is not whether nuclear weapons are good. It is whether they are the strongest structural guarantee against the worst war human civilisation has ever produced. We will show that they are — not because deterrence is perfect, but because in the real world, where no global authority can stop a great power that wants to fight, the threat of unsurvivable retaliation is the only mechanism that has ever reliably held. Before 1945, great powers went to war with each other roughly every generation. After nuclear weapons, they have not fought directly once. That is not an accident. That is deterrence working. That is peace being guaranteed."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "Proposition will tell you today that nuclear weapons preserve peace. We agree — they have likely been a major factor in preventing direct great-power conflict, and that matters enormously. But agreeing that nuclear weapons have deterrent value is not the same as agreeing with this motion. This motion uses the word 'guarantee.' We will show you that a system which nearly caused nuclear war because a Soviet officer trusted his judgment over his instruments in 1983 does not guarantee anything. We will show you that what nuclear weapons produce is not peace but armed paralysis, with the violence redirected into smaller countries. And we will show you that Proposition's best case proves a weaker motion than the one they signed up to defend."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The core peace question is whether great-power war is prevented — and nuclear weapons make direct major war suicidal in a way no alternative mechanism does.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Eighty years without direct great-power conflict is not luck — it is the deterrence mechanism performing consistently under the most severe stress tests in history.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Imperfect peace, including proxy conflicts and coercion, still counts if it prevents the most destructive possible war — and nothing available prevents that war more reliably than deterrence.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition offered criticism. They did not name a stronger structural restraint. In the real world, ugly but effective beats morally neat but less secure.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Guarantee means strongest structural safeguard in a non-ideal world — and nuclear deterrence is that safeguard. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Watch what Proposition is actually defending by the end of this round: not "nuclear weapons guarantee peace" but "nuclear weapons are the best available option in an imperfect world." That is a retreat, and it is a concession.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Stanislav Petrov's good judgment on one September night is not a structural guarantee — it is precisely the kind of thing a guarantee is supposed to make unnecessary.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Twenty million proxy war deaths, permanent nuclear coercion, and a world held perpetually at mutual annihilation point is not a condition we should be comfortable calling guaranteed peace.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>One credible failure path — and there are several documented — defeats a guarantee claim. That is what guarantee means: the failure path must be remote enough to be genuinely negligible. It is not.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Vote on the actual motion. Stable is not guaranteed. Deterrence is not peace. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     EVIDENCE
+═══════════════════════════════════════════ -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable, and offers safer versions of the ones that are not. Use the safer versions whenever you are not certain.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Multiple states continue to possess nuclear weapons and rely on deterrence doctrines</td><td><span class="pill py">Both</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>No direct great-power war has occurred between nuclear-armed states since the first nuclear weapons were used in 1945</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Ukraine gave up its nuclear weapons under the 1994 Budapest Memorandum; Russia later invaded Ukraine</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Cuban Missile Crisis lasted thirteen days in October 1962 and was resolved without direct US-Soviet military exchange</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Nuclear use would have catastrophic humanitarian consequences — mass casualties and potentially civilizational disruption</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Stanislav Petrov chose not to report a false alarm from Soviet early-warning systems in September 1983, averting a potential Soviet response</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Eric Schlosser's book Command and Control documents dozens of significant accidents and near-misses in US nuclear weapons systems</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Nuclear deterrence is the primary cause of the absence of direct great-power war since 1945</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, unverifiable</span></td><td>"Nuclear deterrence is widely considered the strongest structural factor — though other causes including economic interdependence also contributed"</td></tr>
+      <tr><td>Nuclear weapons create caution in crises and force leaders to seek diplomatic resolution</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, unverifiable</span></td><td>"Nuclear stakes are widely argued to create caution in crises, and this is supported by the documented record of Cold War crisis management"</td></tr>
+      <tr><td>Proxy conflict and coercive rivalry coexist with nuclear deterrence and represent genuine violence</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>A 2022 Nature Food study estimated a large US-Russia nuclear exchange could cause agricultural collapse killing over 5 billion from famine</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Contested</span></td><td>"Research modelling suggests a large-scale nuclear exchange could produce catastrophic secondary effects including severe agricultural disruption — exact figures vary significantly by model"</td></tr>
+      <tr><td>Nuclear peace depends on fallible human systems as demonstrated by multiple documented near-misses</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     TRAPS
+═══════════════════════════════════════════ -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps that teams consistently fall into on this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span>Never clearly defining "guarantee" in the first speech. If Proposition does not define this word explicitly and early, Opposition will define it for them — and Opposition will choose the strictest possible reading. The definition of "guarantee" as "strongest available structural safeguard in the real world" needs to be on the floor in the Captain's first sixty seconds.</span></div>
+    <div class="trap-item"><span>💀</span><span>Claiming nuclear weapons alone caused the Long Peace. This invites a detailed rebuttal about every other factor Prop ignored and makes them look like they missed the complexity of the period. The correct claim is that deterrence is the strongest single factor — not the only factor.</span></div>
+    <div class="trap-item"><span>💀</span><span>Ignoring proxy wars and coercion entirely. A Proposition team that acts as if Cold War proxy conflicts did not happen will appear to have missed half the world's history. The correct approach is to acknowledge proxy wars explicitly, explain why they represent evidence that deterrence is working (escalation is being contained), and compare their scale to the direct great-power wars they replaced.</span></div>
+    <div class="trap-item"><span>💀</span><span>Accidentally defending nuclear proliferation. At some point, an Opposition speaker or POI will ask: "If deterrence produces peace, shouldn't every state have nuclear weapons?" Have the answer ready: Prop defends the deterrent logic of existing nuclear-armed states with established strategic doctrine — not universal acquisition, which introduces exactly the instability and miscalculation risks that make deterrence fragile.</span></div>
+    <div class="trap-item"><span>💀</span><span>Conceding the deterrence-is-not-peace distinction without a fight. If Prop simply accepts that what nuclear weapons produce is "stability rather than peace" — even by implication — they have effectively conceded that their vocabulary is wrong. Contest the distinction directly: in international relations, preventing direct major interstate war is the core peace function, and calling the outcome "stability" rather than "peace" is a philosophical refinement that does not change the substantive outcome.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span>Denying that nuclear deterrence has any value at all. If Opposition argues that nuclear weapons have produced no meaningful restraint on great-power behaviour, they will look empirically irresponsible. The Long Peace is real. The absence of direct great-power war for eighty years is remarkable by historical standards. Denying that deterrence played any role invites Prop to spend the rest of the round pointing at the evidence. Opp's correct position: deterrence has value, but value is not the same as guarantee, and deterrence is not the same as peace.</span></div>
+    <div class="trap-item"><span>💀</span><span>Acting as though preventing world war is not uniquely important. If Opp's argument implies that the tens of millions of lives saved by preventing direct great-power conflict do not matter significantly, they will lose the judge's sympathy immediately. Acknowledge directly and emphatically that preventing great-power war matters enormously — then hold the distinction: even enormous importance does not turn the outcome into a guaranteed peace.</span></div>
+    <div class="trap-item"><span>💀</span><span>Getting trapped into defending immediate unilateral disarmament. Prop will sometimes try to reframe the debate as being between nuclear weapons and a dangerous nuclear-free world. If Opp accepts this framing, they are defending a policy most judges will find naively dangerous. Resist by pointing out: the motion is about whether nuclear weapons guarantee peace, not about whether they should be abolished. "We are not here defending disarmament — we are contesting an overstatement."</span></div>
+    <div class="trap-item"><span>💀</span><span>Making only moral arguments about nuclear weapons without burden analysis. If Opp's case is primarily "nuclear weapons are wrong and their existence is morally indefensible," they will lose to Prop's comparative realism framing. Most competitive judges are evaluating whether the motion's claim is correct — not moral objections to the technology. Keep the case on definitional precision, documented fragility, and tail risk logic.</span></div>
+    <div class="trap-item"><span>💀</span><span>Forgetting that the easiest path is the overclaim argument. The easiest way for Opp to win is to consistently point out that Prop's best case proves a weaker motion than the one on the table. "Nuclear weapons help deter major war" is not the same as "nuclear weapons guarantee peace." Opp teams sometimes get distracted trying to win every individual argument when their strongest position is simply: whatever Prop proved, it was not the motion.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Nuclear weapons are good because fear is always rational."</strong> This sounds like a clean Prop argument but proves too much — fear is not always rational, leaders are not always rational, and the history of nuclear near-misses includes cases where fear nearly produced catastrophe rather than restraint. Prop should argue that nuclear stakes force caution — not that fear is reliably rational, which is empirically false and Opp will demonstrate it easily.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Nuclear weapons are bad, therefore they cannot preserve peace."</strong> This is a non sequitur for Opp. Many harmful things produce some beneficial effects — the question is whether this harmful thing produces the specific beneficial effect the motion claims. Arguing from the badness of nuclear weapons to the conclusion that they cannot preserve peace skips the empirical question entirely and looks lazy.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>"No world war since 1945 proves the motion by itself."</strong> For Prop, this is circular. The absence of something does not prove the mechanism that prevented it. Prop needs to show why nuclear weapons specifically deserve credit — not just point at the outcome. Correlation is not causation, and Opp will use exactly that objection to neutralise this argument if it is deployed without the supporting mechanism.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>"Any risk means deterrence never works."</strong> For Opp, this is too absolute and easy to reject. Deterrence obviously works in some sense — zero direct great-power wars in eighty years is not nothing. Opp's argument is not that deterrence never works but that its fragility defeats the specific word "guarantee." Stay on the precise argument and do not overclaim.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>"Mongolia's unique geopolitical position uniquely decides the truth of this motion."</strong> Whether the motion is true or false does not depend on any single country's geopolitical situation. Bringing in the specific circumstances of one non-nuclear landlocked country as a supposedly decisive example will look like an evasion of the core arguments about the nuclear-armed major powers whose deterrent relationships the motion is actually about.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ═══════════════════════════════════════════
+     EMERGENCY
+═══════════════════════════════════════════ -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your 2 Core Definitions</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Peace</strong> = absence of direct major-power war. This is how international relations scholars use the term — the "Long Peace" after 1945 is called that because direct great-power conflict has not occurred, not because all violence disappeared.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Guarantee</strong> = strongest available structural safeguard in a non-ideal world. Not metaphysical certainty — no security system delivers that. The comparative standard: does nuclear deterrence provide stronger structural protection than any available alternative? Yes.</div>
+
+    <div class="emrg-section">3 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Second-strike capability makes direct great-power war suicidal — and the Long Peace is the eighty-year evidence. Ukraine gave up nukes; Russia invaded. No nuclear state has ever been invaded. The mechanism works.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Nuclear stakes forced caution in crises — the Cuban Missile Crisis ended with negotiation, not war, because both sides knew where the staircase ended.</div>
+    <div class="emrg-line"><span class="emrg-icon">3.</span>With a paralysed Security Council and no world government, deterrence is the only remaining structural brake on great-power aggression. Ugly but effective. Nothing more effective exists.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">What alternative mechanism more reliably prevents great-power conquest in the world as it currently exists — with a paralysed Security Council and no world government?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"Imperfect does not mean unreliable, and unreliable does not mean the strongest available structural safeguard fails to be a guarantee. We are arguing comparatively — and nothing compares."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "Ugly but effective — and nothing more effective exists. In a world without a world government, deterrence is the strongest available guarantee of peace."</div>
+    <div class="emrg-quote">Closing: "Ugly but effective. Vote Proposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not leave "guarantee" undefined. Do not claim nuclear weapons are the only cause of the Long Peace. Do not ignore proxy wars. Do not accidentally defend proliferation.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">2 Core Frames</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Useful is not guaranteed.</strong> Deterrence has value — say so clearly. But having value is not the same as providing a guarantee. A seatbelt has value without guaranteeing survival in every crash. The distinction is the entire debate.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Deterrence is not peace.</strong> What nuclear weapons produce is armed paralysis — mutual hostage-taking backed by annihilation threat, with the violence redirected into proxy conflicts in smaller countries. That is not peace.</div>
+
+    <div class="emrg-section">3 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Stanislav Petrov's good judgment on one night is not a structural guarantee — it is exactly what a guarantee is supposed to make unnecessary. The system nearly failed due to a software error.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Twenty million proxy war deaths, nuclear coercion, and permanent mutual annihilation threat — that is not peace. That is the violence redirected, not eliminated.</div>
+    <div class="emrg-line"><span class="emrg-icon">3.</span>When the failure mode is civilizational collapse, even a non-trivial failure probability defeats a guarantee claim. One credible failure path is enough.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">If a single accidental launch is possible — and Stanislav Petrov shows one nearly happened in 1983 — on what grounds do you call this system guaranteed?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We concede deterrence has value. We deny that value is the same as guarantee, and we deny that what deterrence produces is peace. Prop's best case proves a weaker motion than the one they are defending."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "We agree deterrence matters. We deny that it guarantees peace. Those are different claims — and the motion makes the stronger one."</div>
+    <div class="emrg-quote">Closing: "Stable is not guaranteed. Deterrence is not peace. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not deny the Long Peace is real. Do not dismiss proxy war deaths as irrelevant. Do not get pushed into defending immediate disarmament. Do not make only moral arguments — stay on precision, fragility, and tail risk.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
