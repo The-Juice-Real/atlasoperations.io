@@ -143,6 +143,26 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
 .arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
 .arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
 .arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+/* SO-WHAT CHAIN */
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+/* COMPARATIVE WEIGHT */
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+/* JUDGE OBJECTION */
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
 .mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
 @media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
 .mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
@@ -402,6 +422,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">The mechanism here is not dramatic. Nobody decides overnight to hand over control. It happens gradually: an algorithm recommends a decision, humans approve it without deep scrutiny because it would take too long to scrutinize thousands of them, and over time the habit of rubber-stamping becomes the norm. When something goes wrong, responsibility is diffuse — the engineers say they built what they were asked to, the managers say they followed the algorithm's recommendation, and the institution says the system was independently audited. Nobody is actually accountable.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The Dutch childcare benefits scandal (2013–2021) is a direct preview of this dynamic. The Dutch tax authority ran an algorithmic fraud detection system that wrongly flagged over 26,000 families — many of them ethnic minorities — as fraudulent, demanding repayment of benefits they had legitimately received. The system ran for years. Internal officials could not fully explain its criteria. Victims appealed and were denied because the system "said so." It took a parliamentary inquiry and years of legal battles to undo the damage. This happened not with general AI, but with a relatively simple algorithmic system — and accountability failed completely.</div></div>
   <div class="quote">💬 Say this: "A future where major decisions cannot be explained or meaningfully challenged — that is already a threatened future, regardless of whether the decisions are technically correct."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI embeds itself into consequential decisions while making those decisions opaque and unchallengeable</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means humans lose the practical ability to contest, correct, or hold anyone accountable for those decisions</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the institutions that are supposed to protect people from bad governance quietly stop functioning as advertised</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>AI structurally damages the foundations of accountable human self-governance</strong> — which is exactly what "a threat to humanity's future" means in this debate. Not robots. Not extinction. The slow hollowing out of the systems humans use to govern themselves.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Opp's Governance Response</div>
+    <div class="weight-text">Opp will tell you that governance adapts — that regulations, liability, and audits will eventually correct for this. But notice the asymmetry: by the time governance catches up, the habit of delegating without scrutiny has already become embedded in institutions. The Dutch welfare algorithm ran for <em>eight years</em> before it was stopped. The damage to those 26,000 families was done. Governance that arrives after lock-in has already occurred is governance that cannot fully restore what was lost. That is what makes this structural rather than merely temporary — the damage accumulates before the correction arrives.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this just a problem of bad implementation? Better-designed AI systems with proper auditing requirements could restore accountability. Why is this AI's fault rather than a design failure?"</div>
+    <div class="judgeobj-a">The problem is not any single implementation — it is the structural incentive to deploy AI systems at a scale and speed that makes proper auditing economically impractical. If a system is making thousands of decisions per day across millions of cases, meaningful human review of each decision is simply not feasible. The scale that makes AI valuable is the same scale that makes accountability difficult. That is not a fixable design flaw; it is a structural tension built into the technology's most attractive feature.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔴 Opp will say</div>
@@ -420,6 +462,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">Critically, this is not just a story about authoritarian governments. In democracies, the same dynamics play out through economic channels: a small number of technology companies now control the AI infrastructure that billions of people depend on for information, communication, and economic participation. That concentration of infrastructure translates into concentration of influence over what people see, believe, and decide — which is precisely the kind of power that democratic theory says should be distributed and checked.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">China's Social Credit System uses AI-driven data aggregation to monitor and score the behavior of citizens and businesses, with scores affecting access to travel, loans, education, and employment. Critics have documented cases where individuals were blacklisted based on opaque criteria they could not contest. This is one end of the spectrum — but the same capability infrastructure (mass data collection, behavioral scoring, automated decision-making) is also present in democratic countries in the form of credit scoring, insurance pricing algorithms, and targeted political advertising. The technology is the same; only the legal and political constraints differ.</div></div>
   <div class="quote">💬 Say this: "Humanity's future is not only about physical survival. It includes freedom, distributed agency, and the ability to contest power. AI is structurally shifting all three of those things in the wrong direction."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI dramatically amplifies the surveillance, targeting, and persuasion capabilities of whoever controls it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the gap in power between those who have frontier AI infrastructure and those who do not grows structurally wider</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means citizens, smaller states, and civil society lose the capacity to meaningfully contest or check the decisions of those who hold that infrastructure</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the distributed agency and contestable power that a liveable human future requires is being structurally eroded</strong> — not through a single dramatic event, but through the quiet accumulation of capability in fewer and fewer hands.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Opp's "Governance Will Fix It" Response</div>
+    <div class="weight-text">The concentration of power argument is particularly resistant to the governance-adaptation response, because <em>the same concentration of power that is the problem also shapes the governance response</em>. The companies and states that hold frontier AI infrastructure have enormous influence over the regulatory processes that are supposed to constrain them. This is not a conspiracy theory — it is a well-documented feature of how powerful industries interact with their regulators, from finance to pharmaceuticals to social media. The question is not whether some governance will happen, but whether the entities being governed are so powerful that the governance remains genuinely constraining. With AI infrastructure, there are serious reasons to doubt it.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Concentration of power has happened before with every major infrastructure technology — railways, telecoms, the early internet. Antitrust law and public utility regulation eventually restructured those industries. Why is AI different?"</div>
+    <div class="judgeobj-a">The historical analogy is instructive but cuts both ways. Railways and telecoms were concentrated for decades before regulation restructured them — and during those decades, the concentrated power did real harm that regulation only partially reversed. More importantly, AI infrastructure is qualitatively different from railways because it controls information environments and decision systems rather than physical logistics. The entity that controls what people see, believe, and decide has a different and deeper kind of power than the entity that controls where their goods travel. Antitrust law was not designed for that kind of power, and the regulatory tools available have not yet caught up to it.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔴 Opp will say</div>
@@ -438,6 +502,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">The asymmetry is the key point here. A single journalist investigating a story may take weeks to verify facts and produce a reliable account. A generative AI system can produce thousands of plausible-seeming variations of a false version of that story in minutes, translated into multiple languages, personalized for different audiences, and distributed across dozens of platforms simultaneously. Truth verification has not sped up to match. The gap between making falsehoods and checking them has never been wider — and it is getting wider every year as the technology improves.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">In the lead-up to the 2024 Slovakian parliamentary election, an AI-generated audio clip was released appearing to show opposition leader Michal Šimečka discussing how to buy votes. The clip spread rapidly on social media just 48 hours before the election — too late for fact-checkers to reach most voters. Šimečka's party lost. While it is impossible to attribute the outcome solely to the fake audio, the incident illustrates exactly the asymmetry Prop is describing: the cost of producing the deception was near zero; the cost of credibly debunking it in time was prohibitively high.</div></div>
   <div class="quote">💬 Say this: "A civilization that can no longer reliably maintain shared public reasoning cannot govern any of its other challenges — including the challenge of governing AI itself."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>AI makes producing convincing falsehoods near-free while verification remains slow and expensive</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the epistemic environment citizens need to form informed political judgments becomes systematically less reliable</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means democratic accountability — the mechanism by which humans check the power of their governments — begins to malfunction at a structural level</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>this argument is self-reinforcing in the worst way</strong>: if humanity cannot maintain the shared reasoning that governance depends on, it loses its capacity to make collective decisions about its own future — including the decision about how to govern AI itself.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Opp's "Societies Will Adapt" Response</div>
+    <div class="weight-text">Opp's adaptation argument works when the problem is a new type of harmful content that institutions can learn to identify and counter over time. This argument is different in kind, because <em>the adaptation itself requires the shared epistemic environment that is being degraded</em>. Fact-checking institutions, media literacy programmes, and verification norms all depend on public trust in some shared set of reliable sources. When AI industrialises personalised, continuous, multilingual disinformation at scale, it attacks that shared trust directly — making the very adaptation Opp describes harder to achieve. You cannot build the lifeboat while the flood is rising faster than you can build.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Societies survived the printing press, yellow journalism, and Soviet propaganda. What is categorically different now beyond speed and scale?"</div>
+    <div class="judgeobj-a">Speed and scale are not cosmetic differences here — they change the structural relationship between production and verification. When pamphlets spread propaganda in the 18th century, physical distribution was the bottleneck, giving institutions time to respond. When Soviet media ran disinformation, the cost of production meant only well-resourced states could do it at scale. AI removes both friction points simultaneously: production is instant and free, scale is unlimited. The Slovak deepfake spread to most voters before any fact-checker could respond — not because fact-checkers were bad, but because the new environment made it structurally impossible for them to win in time. That is a categorical change, not just a faster version of the same thing.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔴 Opp will say</div>
@@ -466,6 +552,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">This matters for the motion because the motion asks whether <em>AI poses a threat</em> — not whether humans with AI can cause harm, which is obviously true of almost any powerful technology. To carry the motion, Prop needs to show that AI is the independently decisive cause of the danger, not merely a tool that amplifies pre-existing human tendencies toward misuse, authoritarianism, and short-termism. If the decisive variable is always human governance, then the motion misidentifies the threat.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The EU's General Data Protection Regulation (GDPR) and the EU AI Act demonstrate that governance can meaningfully constrain AI deployment when political will exists. The GDPR imposed real costs on data collection practices that companies had previously treated as cost-free. The EU AI Act bans certain high-risk AI applications outright and imposes transparency requirements on others. These laws are imperfect and partially effective — but they show that the decisive variable is governance quality, not AI capability. Countries with stronger institutions will experience AI differently from countries with weaker ones, because the technology is the same but the human choices surrounding it differ.</div></div>
   <div class="quote qo">💬 Say this: "The threat is bad governance and bad actors who choose to misuse powerful tools. AI is the amplifier of those choices — but the decisive cause remains human, which means the motion misattributes the danger."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Every harm Prop describes — surveillance, manipulation, accountability erosion — requires specific human actors to make specific bad choices to materialize</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the decisive causal variable is human governance quality and political choice, not AI capability per se</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means AI is not an independent civilizational force — it is a force multiplier whose direction and magnitude are determined by the humans and institutions deploying it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion's framing is wrong</strong>: it asks whether AI poses a threat, when the accurate answer is that bad governance enabled by AI poses a threat. That is a governance problem, not an AI problem — and the motion fails on that distinction.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Prop's "Amplification Is Enough" Response</div>
+    <div class="weight-text">Prop will say that at sufficient scale, the amplifier becomes part of the threat. But this argument proves too much: electricity amplifies industrial pollution, the internet amplifies radicalisation, nuclear technology amplifies state violence. If amplification alone is enough to make a technology a "threat to humanity's future," then every powerful general-purpose technology qualifies, and the motion loses all discriminating meaning. Prop needs to show that AI crosses a threshold those technologies did not — that there is something about AI specifically that makes it a structural threat rather than a powerful tool in bad hands. They have not established that threshold convincingly, which means this argument holds.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If we know that bad actors will reliably misuse AI — and the history of powerful technology suggests they will — isn't it a bit naive to say 'just govern it better'? Isn't predictable misuse essentially the same as AI itself being the threat?"</div>
+    <div class="judgeobj-a">Predictable misuse is not the same as inevitable, ungovernable, humanity-level threat — and the difference matters enormously for the motion. Nuclear weapons are predictably misused in the sense that states have built arsenals that threaten millions of lives. But we do not conclude from that prediction that nuclear technology poses an unstoppable threat to humanity's future, because we have developed governance frameworks — arms control treaties, non-proliferation agreements, deterrence doctrines — that have so far kept the worst outcomes from occurring. The same logic applies to AI: predictable misuse calls for determined governance, not for labelling the technology a civilizational threat.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔵 Prop will say</div>
@@ -484,6 +592,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">The key insight is that governance does not need to outrun technological development — it only needs to create enough friction at critical deployment points to keep the worst harms manageable. A regulation that slows a dangerous deployment by two years, or a liability framework that changes the cost calculus for reckless deployment, can prevent serious harm without requiring perfect foresight or instant legislative response. The question is not whether governance is fast enough to eliminate risk; it is whether it is adaptive enough to prevent catastrophe.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The development of pharmaceutical regulation after the thalidomide disaster of the late 1950s and early 1960s is a model for how this works. Thalidomide caused severe birth defects in thousands of children across Europe and was only narrowly blocked from the US market by a single FDA reviewer who demanded more safety data. The disaster was horrific — but it led directly to dramatically strengthened drug approval processes that have prevented countless subsequent harms. Governance was reactive, imperfect, and came at a terrible cost — but it adapted. The pharmaceutical industry today is governed by a framework that did not exist before that crisis.</div></div>
   <div class="quote qo">💬 Say this: "Human institutions are fallible and often slow — but they are also corrigible, meaning they can and do change in response to visible harm. That capacity to self-correct is what separates a serious challenge from an unstoppable threat."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Human institutions have a consistent track record of adapting to powerful technologies through regulation, liability, and professional norms — even when those responses were late, imperfect, and costly</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the baseline expectation should be that governance will adapt to AI harms as they become visible, as it adapted to pharmaceutical dangers, financial risk, and aviation safety</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the harms Prop describes, while serious, are not structurally ungovernable — they are governable at the level of friction that has historically been sufficient to prevent humanity-level catastrophe</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion fails its own threshold</strong>: a threat to humanity's future requires something that cannot be sufficiently governed. AI harms can be. Serious challenge, not civilizational threat.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Prop's "Race Dynamics" Response</div>
+    <div class="weight-text">Prop's strongest counter is that competitive race dynamics — between companies, between nations — structurally underprovide safety and ensure governance always arrives too late. This is a real concern, but it does not establish that governance will fail to prevent humanity-level harm. Race dynamics delayed pharmaceutical safety regulation too — drugs were rushed to market for competitive advantage well before thalidomide. But the governance response, when it came, was robust enough to prevent the industry from becoming a structural threat to humanity's future. The relevant question is not whether race dynamics exist, but whether they prevent <em>enough</em> governance response to stop catastrophic, irreversible, humanity-level harm. History suggests the answer is no.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Pharmaceutical regulation came after thousands of children were harmed. Isn't 'governance eventually adapts' cold comfort when the damage done in the meantime could be on a civilizational scale?"</div>
+    <div class="judgeobj-a">This is the right question, and the answer is that the scale of harm in the governance lag matters enormously — which is exactly why Opp needs to be honest that governance is imperfect, and why we are not claiming that adaptation is painless or costless. The argument is more precise: governance does not need to prevent all harm; it needs to prevent <em>humanity-level, irreversible, structural</em> harm — the kind of harm that removes humanity's future capacity for self-determination. The harms that occur during governance lags are serious and real, but they are recoverable in ways that a genuine civilizational threat is not. That distinction is what the motion turns on.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔵 Prop will say</div>
@@ -502,6 +632,28 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
   <p class="arg-body">When we evaluate whether AI "poses a threat to the future of humanity," we should compare it not to an imaginary world without AI-related risks, but to a world that simply confronts all those same complex problems with less intelligence assistance than we have now. In that comparison, AI often looks less like a threat and more like a necessary adaptation to an already complicated and dangerous world.</p>
   <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">AlphaFold, DeepMind's AI system, solved one of the most important open problems in biology — protein structure prediction — with an accuracy that decades of traditional methods had not achieved. This breakthrough has accelerated research into new antibiotics, vaccines, and treatments for diseases including some cancers and neurodegenerative conditions. The scientists who would have spent careers on this problem can now focus on the next layer of questions. In a world where drug-resistant bacteria are projected to kill 10 million people per year by 2050, tools that accelerate medical science are not peripheral to humanity's future — they are central to it.</div></div>
   <div class="quote qo">💬 Say this: "Humanity's future is often better protected by more intelligence and greater capability than by less. The question is not whether AI is risk-free — nothing powerful is. The question is whether humanity is better equipped to face its future with this tool or without it."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Humanity already faces existential-scale challenges — pandemic preparedness, antimicrobial resistance, climate modelling — that are straining human cognitive and institutional capacity</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the alternative to AI-assisted governance is not a safer status quo, but the same dangerous world with less capability to manage it</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means evaluating AI's relationship to humanity's future requires a genuine comparison: a world with AI risks and AI benefits versus a world with fewer AI risks but also fewer AI capabilities</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means <strong>the motion's framing is structurally incomplete</strong>: calling AI "a threat to humanity's future" ignores the other side of the ledger entirely — the ways AI is actively protecting that future against threats that would be far harder to manage without it. A verdict that ignores half the evidence is not a verdict the judge can rely on.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Argument Outweighs Prop's "Benefits Don't Cancel Danger" Response</div>
+    <div class="weight-text">Prop is right that benefits and dangers can coexist — that is not in dispute. What is in dispute is the <em>overall verdict</em> the motion demands. "Threat to humanity's future" is a sweeping, categorical label implying that AI's overall relationship to humanity's long-term prospects is net-negative and structurally dangerous. A technology simultaneously accelerating drug discovery, enabling better pandemic response, improving climate modelling, and expanding access to expertise for billions in developing countries does not fit that label accurately — not because its dangers are imaginary, but because the label is calibrated for something far more one-sided than the actual picture. Prop's three arguments describe real problems in specific domains. This argument describes the full picture the motion is actually asking the judge to assess.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this a bit of a whataboutism? The motion asks whether AI poses a threat — not whether it also has benefits. These seem like separate questions. Why is the benefits side relevant to the threat question?"</div>
+    <div class="judgeobj-a">They would be separate questions if the motion were asking "does AI have any dangerous applications?" — but it is not. It asks whether AI poses a threat to humanity's <em>future</em> — a forward-looking, comprehensive verdict about this technology's overall relationship to humanity's long-term prospects. When the question is framed that way, a genuine comparison between the world with AI and the world without it becomes directly relevant. If humanity's future is meaningfully better protected — against disease, against climate failure, against governance complexity — by having AI than by not having it, then the technology's relationship to humanity's future is not accurately described as a "threat." The benefits are not a distraction from the motion; they are part of what the motion is actually asking the judge to weigh.</div>
+  </div>
+
   <div class="mini-2">
     <div class="mini-box">
       <div class="mini-box-label">🔵 Prop will say</div>
@@ -652,6 +804,10 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
       That Prop's evidence, even taken at face value, shows serious governance challenges and policy failures — not a structural threat to humanity's future. Opp needs to hold a high and consistent standard: a threat to humanity's future is categorically different from a set of major problems that governance is already responding to imperfectly.
     </div>
   </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This is the most important clash in the round — whoever wins the definitional argument shapes how every other argument is evaluated. A judge will ask: did Prop establish a clear, defensible threshold early and consistently hold it? Or did they drift between different framings? Prop loses this clash if the word "threat" feels vague or inflated by the end. Opp loses it if they spent the whole round arguing against extinction scenarios that Prop never actually made. The judge is looking for the side that disciplined itself to one coherent definition and proved it was met — or wasn't.</div>
+  </div>
 </div>
 
 <div class="clash">
@@ -665,6 +821,10 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
       <div class="clash-side-label">Opp Must Win This By Showing</div>
       That the decisive causal variable in every harm Prop describes is human deployment choices and institutional quality — not AI capability per se. The same AI capability can be used for surveillance or for privacy protection; the difference is governance. That means AI is not the independent cause the motion requires it to be.
     </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">A judge will instinctively find the causation argument intuitive — it feels reasonable that humans, not tools, are morally responsible for harm. Prop needs to overcome that intuition by making the amplification argument crisp and concrete: not "AI makes things worse" in the abstract, but "AI specifically removes the friction points — cost, time, coordination — that previously kept these harms at a manageable scale." If Prop can make the judge feel the difference between pre-AI and post-AI capabilities vividly, they win this clash. If the argument stays at the level of "AI is powerful," Opp wins it easily.</div>
   </div>
 </div>
 
@@ -680,6 +840,10 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
       That governance does not need to be contemporaneous with deployment to prevent humanity-level harm — it only needs to create enough friction at critical points to keep the worst outcomes from becoming permanent. Historical examples like pharmaceutical regulation, aviation safety, and financial regulation all show reactive governance that was imperfect and lagging but ultimately sufficient to prevent systemic catastrophe.
     </div>
   </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This clash is genuinely even because both sides have strong intuitive backing: the race dynamics argument feels true (we can all see it happening), and the adaptive governance argument also feels true (regulation does eventually happen). The judge will break the tie by asking: which side gave me a reason to believe their version applies specifically to AI at the scale and speed it is developing now? Prop wins if they can show that the lock-in risk — power concentrating or epistemic infrastructure degrading before governance arrives — is qualitatively different from previous governance lags. Opp wins if they can show that friction mechanisms exist already and are slowing the worst outcomes, even imperfectly. Concrete examples from both sides will be decisive here.</div>
+  </div>
 </div>
 
 <div class="clash">
@@ -694,6 +858,10 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
       That when a technology has enormous protective upside — accelerating medicine, improving crisis response, enabling scientific discovery at scale — the appropriate verdict on that technology is not the sweeping label "threat to humanity's future." The motion's language is too broad and too negative to apply accurately to something this complex and this genuinely valuable.
     </div>
   </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">Most judges will find Opp's position on this clash more persuasive unless Prop makes a careful and explicit argument. The intuition that "something that cures diseases cannot really be a threat to humanity's future" is strong, and Prop needs to directly address it rather than just repeating that benefits and dangers coexist. The winning move for Prop is the cigarette or internal combustion engine analogy — not to prove AI is net-negative, but to prove that net-positive and structurally dangerous are not mutually exclusive. If Prop makes that argument clearly, the clash is winnable. If they just say "benefits don't matter to the motion," judges will find it evasive.</div>
+  </div>
 </div>
 
 <div class="clash">
@@ -707,6 +875,10 @@ em{font-style:normal;color:var(--Y);font-weight:500;}
       <div class="clash-side-label">Opp Must Win This By Showing</div>
       That while both phenomena are real and serious, they are contingent — dependent on specific political choices that can be changed — and governable through mechanisms that are already developing. Serious, real, and contingent is different from structural, irreversible, and threatening to humanity's future as a whole.
     </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This is Prop's best clash to win, because the phenomena are observable and the examples are vivid. A judge will find power concentration and the Slovak deepfake more concrete and memorable than abstract governance optimism. Opp's strongest response here is the contingency argument — "this depends on political choices, not AI itself" — but it requires Opp to have already won Clash 2 (AI vs. human misuse) for it to land. If Opp lost Clash 2, the contingency argument feels like moving the goalposts. Prop should therefore ensure they develop Clash 5 material in close connection with the Clash 2 amplification argument — the two reinforce each other and are most effective when treated as a package.</div>
   </div>
 </div>
 
