@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Isolating People With Mental Illnesses From Society Is Wrong</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+.route-why+.eg{margin-top:var(--sp-s);}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+<!-- Paste this immediately after the opening <body> tag in your HTML files -->
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'mn', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Isolating people with mental illnesses from society is wrong</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('atk',this)">⚔️ Attacks</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether psychiatric treatment should exist. Almost everyone agrees that care and support for mental illness are important. The real fight is about two sharper questions: whether mental illness itself can justify removing people from ordinary social life as a general principle, and whether treatment-oriented separation counts as the kind of "isolation" the motion condemns.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That isolating people with mental illnesses from ordinary social life — from family, work, school, and community — is wrong as a <strong>general social principle</strong>, because mental illness does not reduce a person's claim to belong.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to prove that no restriction on any person's participation is ever justified — only that mental illness as a status cannot serve as the basis for exclusion from ordinary life.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: the default is inclusion; restriction is the narrow exception; the right standard is least restrictive care; and status-based isolation causes <strong>structural harm that perpetuates itself</strong>.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That the motion is too categorical — that some meaningful isolation from ordinary society is justified in real cases, particularly in acute crisis, making "is wrong" an overstatement that cannot stand as a <strong>universal moral claim</strong>.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to defend stigma-based, diagnosis-category-level exclusion — only that some specific, necessity-based separation is genuinely justified and defeats the motion's universal language.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: some separation is <strong>responsible care</strong>, not abandonment; inclusion without capacity can be neglect; and justified exceptions defeat a universal moral claim.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Fight Inside This Debate</div>
+  <p>The biggest definitional fight — one that will rarely be stated cleanly in the round — is whether <strong>treatment-oriented, temporary, clinically-governed separation</strong> counts as the kind of "isolation from society" the motion condemns. Proposition's position is that it does not: therapeutic intervention is categorically different from exile because of its purpose, duration, legal governance, and reintegration focus. Opposition's position is that it does count meaningfully: removing someone from their home, their family, and their community is isolation from ordinary society regardless of what you call it, and if that isolation is sometimes justified, the motion fails.</p>
+  <p>Whichever team frames this definitional line <strong>first and most clearly</strong> wins the structural advantage for the entire round. Proposition loses if they never explain why therapeutic separation is morally distinct. Opposition loses if they refuse to acknowledge that purpose, duration, and oversight might constitute morally relevant differences.</p>
+</div>
+
+</div></div>
+
+<!-- STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Inclusion as the moral default, individualized least-restrictive care as the governing standard, and narrow crisis intervention as the allowed exception.</strong> Anchor the case in the principle that mental illness cannot serve as a categorical basis for exclusion from social life.</div>
+    <div class="route-why">This route is safe because it does not require Proposition to claim that no restriction on any person's movement is ever justified. It only requires holding the line that the starting point is inclusion, the burden is on institutions to justify restriction, and the standard is necessity rather than diagnosis. The risk is that Opposition absorbs this position and argues their crisis cases already satisfy it.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Show that normalizing isolation creates structural harm that perpetuates itself — hardening stigma, suppressing help-seeking, and making reintegration progressively harder for everyone with a mental illness.</strong></div>
+    <div class="route-why">This argument is powerful because it shifts the debate from individual cases to systemic consequences, and systemic consequences are much harder for Opposition to rebut with crisis-case examples. If Proposition can show that the social permission to isolate causes harm at the structural level regardless of how any individual case is handled, they win even against Opposition's most sympathetic examples.</div>
+    <div class="eg"><div class="eg-label">📌 Example</div><div class="eg-text">Japan's historically high psychiatric institutionalization rates — with average lengths of hospital stay far exceeding those in Western Europe — have been associated with strong cultural stigma, reduced help-seeking, and severe difficulty reintegrating. Japan's own mental health policymakers have acknowledged that the institutionalization model perpetuates the very isolation it claims to treat. This is a real-world demonstration of structural harm at scale.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Care without exile — a society can take mental illness seriously, intervene intensively where necessary, protect individuals and communities, and do all of this without removing people from their social standing.</strong></div>
+    <div class="route-why">Judges respond to moral clarity paired with operational realism. This framing — not no intervention ever, but no exile — sounds both principled and practical. It is the version of the case that convinces judging panels who are sympathetic to mental health treatment but suspicious of broad categorical exclusion.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Even if some temporary therapeutic separation is conceded, the motion targets the broader social practice of isolation based on mental illness as a status — and that practice is still wrong regardless of narrow clinical exceptions.</strong></div>
+    <div class="route-why">Use this when Opposition's crisis-case examples are landing well. Concede the existence of narrow therapeutic separation, then hold the line that this is not what the motion condemns — the motion targets categorical, status-based exclusion from ordinary social life, and that practice remains wrong even if individualized clinical necessity can justify temporary restriction.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Attack the motion's universal language directly and consistently. The motion says isolation "is wrong" — full stop. A universal moral claim falls if any meaningful class of justified cases exists. Hold Proposition to their actual words.</strong></div>
+    <div class="route-why">This route is safe because it requires no grand empirical claims — only showing that some form of isolation from ordinary society is sometimes justified, which is easy to demonstrate with reference to legal frameworks authorizing involuntary psychiatric detention in every developed country.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Reframe what genuine inclusion means in practice: insisting on participation in ordinary settings when those settings cannot safely provide the care someone needs is not compassion — it is abandonment with better language.</strong></div>
+    <div class="route-why">If Opposition wins this reframing, Proposition's inclusion argument works against them: the call for inclusion without acknowledging when ordinary settings are inadequate looks like prioritizing ideological principle over the real needs of real people in acute crisis.</div>
+    <div class="eg"><div class="eg-label">📌 Example</div><div class="eg-text">Early intervention in psychosis research from Orygen in Victoria, Australia, documents that a subset of patients experiencing the most severe first episodes of psychosis require periods of inpatient stabilization before returning to community care — and that their long-term outcomes are significantly better when that inpatient period is provided. This shows that temporary separation from ordinary settings can be part of achieving the inclusion Proposition claims to value, not a barrier to it.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>Be generous about inclusion's merits while winning on the specific word. Accept that inclusion is the right default — then argue that accepting a default does not require accepting the motion's absolute language, which rules out all justified exceptions.</strong></div>
+    <div class="route-why">This sounds credible rather than callous, avoids the trap of appearing to defend broad exclusion of mentally ill people, and keeps the ballot on the definitional question where Opposition has the easier burden.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>If losing the structural arguments, double down on the treatment-versus-motion tension: Proposition has conceded that therapeutic separation is permitted, which means they have conceded that some isolation from ordinary society is justified, which means the motion as written is false.</strong></div>
+    <div class="route-why">Use this when Proposition is clearly winning the principle argument — point to their own concession that some intervention involves separation, and argue that whether they call it "therapeutic" or "least restrictive" does not change what it is: a person removed from their home, family, and community. That is isolation from society, and if it is sometimes right, the motion is too broad.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different dimension of why isolation from society is the wrong response to mental illness. Together they show that the default must be inclusion, the standard for any exception must be individualized necessity, and the structural consequences of normalizing isolation are severe.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Mental Illness Does Not Erase a Person's Equal Standing in Society</span></div>
+  <p class="arg-body">Every person, regardless of their medical or psychological condition, retains a fundamental claim to participate in the social structures that make up ordinary life — family relationships, work, education, community, and public space. This claim is not conditional on the comfort of institutions, on productive contribution, or on the absence of difficulty. It exists because belonging to society is not a privilege granted to those who are easy to include; it is a status that comes with being human.</p>
+  <p class="arg-body">When society treats mental illness as grounds for reduced belonging — as a reason to remove someone from their family, school, workplace, or community — it creates a two-tier system of social membership. People without mental illness belong by default. People with mental illness belong only conditionally, only if their condition is manageable enough not to inconvenience institutions. This conditional belonging is not equal standing. It is a subordinate status dressed in the language of protection. Once society accepts that mental illness is grounds for exclusion, the burden shifts: instead of institutions having to justify why a particular person must be restricted for a particular reason, the mentally ill person must justify why they deserve to remain included. That reversal of burden is the core of the wrong the motion identifies.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The history of deinstitutionalization in the United States illustrates what the alternative looks like. Prior to deinstitutionalization, people with serious mental illnesses were routinely confined to large state psychiatric hospitals, often for years or decades, with minimal treatment and significant loss of ordinary social participation. The shift toward community-based care — supported by the Community Mental Health Act of 1963 — was premised precisely on the recognition that long-term institutional isolation harmed patients, severed social ties, and treated diagnosis as grounds for removing people from society rather than treating them within it. People who remained connected to community structures — employment programs, supported housing, outpatient care — had substantially better outcomes. The principle underlying that policy shift was that mental illness does not justify removal from social life.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition might point to deinstitutionalization's failures — homelessness, inadequate care, visible public suffering — as evidence that community inclusion without proper support is harmful. This is factually accurate. But what went wrong was not the principle of inclusion — it was the failure to fund adequate community-based support. The error was abandonment, not inclusion. This actually strengthens Proposition's position: the answer to inadequate community care is better community care, not a return to isolation.</div></div>
+  <div class="quote">💬 Say this: "The burden is on institutions to justify restriction, not on mentally ill people to prove they deserve belonging. When we reverse that burden — when the default becomes removal — we have created a social class defined by conditional membership."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>When mental illness is treated as a basis for social exclusion, society creates a class of people whose participation is conditional rather than equal</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means institutions treat diagnosis as a signal for removal rather than support — and the person with a mental illness must constantly prove they deserve inclusion</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means people with mental illnesses face systematic barriers to the relationships, employment, and community participation that are essential to both recovery and ordinary life</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met: <strong>isolating people with mental illnesses from society is wrong</strong> because it treats mental illness as grounds for reduced belonging — a practice that is incompatible with equal standing and causes direct, ongoing harm to the people subjected to it.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Equal Standing Allows Temporary Restrictions" Response</div>
+    <div class="weight-text">Opposition will argue that equal standing is compatible with temporary restrictions during periods of severe incapacity — that even a person with full social standing can be restricted in specific circumstances. This counter is not wrong in itself, but it does not defeat this argument. Proposition is not arguing that no restriction ever exists. The argument operates at the level of principle: mental illness as a status cannot serve as the categorical basis for exclusion from social life. The question of whether a particular restriction is individually justified is a separate question. The asymmetry is this: Opposition's point requires them to specify individual necessity — specific risk, specific incapacity, specific situation. Proposition's argument about equal standing requires no such specification because it answers a different question: whether diagnosis alone is grounds for social exclusion. It is not, and nothing Opposition says about individually-justified restriction changes that.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Does this argument prove too much? If mental illness cannot be grounds for any social restriction, does that mean a person experiencing a severe psychotic episode must be left in a supermarket or family home regardless of what is happening?"</div>
+    <div class="judgeobj-a">No. Equal standing does not mean unrestricted participation in every setting at every moment. It means that the starting point is inclusion, the burden is on institutions to justify restriction, and where restriction exists it must be specific, proportionate, temporary, and aimed at returning the person to ordinary life. The argument does not say a person in acute crisis cannot be taken to a hospital. It says that mental illness alone — as a diagnosis, as a status — is not grounds for removing a person from their social standing. Those are categorically different claims, and the judge must not conflate them.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Equal standing is compatible with temporary restrictions during severe incapacity. Recognizing that someone in acute psychotic crisis needs intensive supervised care does not deny their equal standing — it takes seriously the reality of what they are experiencing.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">We agree that individually-justified restriction is compatible with equal standing. Our argument is that mental illness as a status cannot be the basis for exclusion. Those are different claims. The question is who bears the burden — institutions justifying restriction, or mentally ill people justifying inclusion. We say institutions bear it. That principle is what Opp has not addressed.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Right Standard for Any Intervention Is Least Restrictive Care — Not Removal From Society</span></div>
+  <p class="arg-body">Even in cases where some form of intervention is genuinely necessary — where a person is experiencing a crisis that cannot be managed safely in an ordinary setting — the morally correct response is the minimum restriction necessary, applied for the minimum time necessary, with the explicit goal of returning the person to their ordinary social life as quickly as possible. This standard — known in mental health law and clinical ethics as the principle of least restrictive care — exists precisely because society has already recognized that removal from ordinary social life causes harm.</p>
+  <p class="arg-body">The principle does not say no restriction is ever justified. It says every restriction must be justified by specific necessity, not by diagnosis, and the least restrictive option must be tried first. A person in crisis is not automatically someone who needs to be removed from their family, community, or social environment. They may need additional support, intensive outpatient care, crisis intervention, or medication adjustment — all of which can happen without isolating the person from society. Systems that apply least restrictive care as their governing standard have better patient outcomes, lower rates of long-term institutionalization, and stronger reintegration results.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">England and Wales provide a well-documented example. The Mental Health Act 1983, as amended by the Mental Health Act 2007, contains an explicit least restriction principle: patients must be given care in the least restrictive environment possible, with a clear preference for voluntary treatment over compulsory detention and community-based care over hospital admission. The Care Quality Commission, which regulates mental health services in England, has documented that when this principle is applied rigorously — with proper community support, crisis resolution teams, and home treatment options — rates of hospital admission fall and patient outcomes improve. This is a real system that takes mental illness seriously, intervenes where necessary, and does so without defaulting to isolation from society.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition will argue that least restrictive care sometimes results in hospital admission, and that hospital admission is itself a form of isolation from ordinary society. This is true — but it does not defeat the argument. The least restrictive care principle governs whether hospital admission is justified: it requires community-based alternatives to be considered first, admission to be time-limited and reviewed, and discharge planning to begin immediately. The fact that this principle sometimes produces temporary separation as its outcome does not mean isolation from society is the right standard. The governing principle is still necessity, proportion, and reintegration — not diagnosis or status.</div></div>
+  <div class="quote">💬 Say this: "Intervention may sometimes be justified. Exile is not. That is the difference, and it is the line the least restrictive care principle exists to hold."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>When least restrictive care governs intervention decisions, restrictions are tied to specific necessity rather than to diagnosis, which means isolation from society — broad, status-based, categorical exclusion — is never the default</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means people with mental illnesses retain their ordinary social connections except in the specific circumstances where restriction is genuinely and individually necessary</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a credible alternative to isolation exists that achieves safety without exile — and that alternative is already operating in real mental health systems around the world</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met: <strong>isolating people with mental illnesses from society is wrong</strong> because the governing moral standard for all mental health intervention — least restriction, individual necessity, reintegration focus — leaves no room for the broad, status-based exclusion the motion targets.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Least Restrictive Care Still Produces Isolation" Response</div>
+    <div class="weight-text">Opposition's strongest counter is that the least restrictive care principle sometimes produces the outcome of isolation, so it does not defeat their position. That counter fails because it proves less than it claims. If the outcome of individualized, necessity-based assessment sometimes results in temporary separation, that does not justify isolation as a general social practice. The asymmetry is important: Proposition's standard is individualized, calibrated, and reintegration-focused. Opposition's position — that some isolation from ordinary society is justified — does not specify what standard governs when isolation is appropriate, how long it may last, or what it aims to achieve. Proposition's standard is more principled, more protective of individual rights, and more consistent with demonstrated good outcomes in real mental health systems.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is this argument really just saying that psychiatric hospitals should exist and be governed by good principles? That seems uncontroversial — why does it win the round?"</div>
+    <div class="judgeobj-a">The argument is doing something more than defending good hospital practice. It is establishing that the governing moral standard for all intervention in mental health contexts must be the minimum restriction necessary, individually justified, and reintegration-focused. That standard directly contradicts the social practice the motion targets: the general, category-level isolation of people with mental illnesses from ordinary life. The argument wins the round not by defending hospitals but by establishing that the correct moral framework leaves no room for the broad, status-based exclusion the motion identifies as wrong. Any system that starts from "mental illness justifies removal from social life" is operating from the wrong standard — and that wrong standard is what the motion condemns.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Least restrictive care sometimes concludes that hospital admission is the appropriate response. Prop's own standard produces isolation as an outcome, which means Prop has endorsed situations where isolation is the right answer — and that is exactly what Opp is defending.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Our standard governs when restriction is appropriate. It requires individual necessity, proportionality, and reintegration focus. Opp's position — that mental illness justifies isolation — requires none of those things. The question is whether the governing standard is necessity or diagnosis. We say necessity. That is the difference the motion is about.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Normalizing Isolation Causes Long-Run Structural Harm That Perpetuates Itself</span></div>
+  <p class="arg-body">When society normalizes the isolation of people with mental illnesses from ordinary life — when it becomes socially acceptable to exclude, remove, or sequester people on the basis of a psychiatric diagnosis — the harm does not stop with the individuals removed. The normalization of isolation creates structural conditions that make mental illness more dangerous, more hidden, and harder to treat in three specific ways.</p>
+  <p class="arg-body">First, it creates strong incentives to conceal diagnoses and avoid treatment. If acknowledging mental illness leads to job loss, family exclusion, or social removal, rational people will avoid disclosure. This means people who need early treatment do not get it, and manageable situations become severe crises. Second, it entrenches the social perception that people with mental illnesses are dangerous or incompatible with ordinary participation — a perception that then feeds back into every institution, making barriers to inclusion progressively higher even for people who are functioning well. Third, it makes reintegration exponentially harder: a person isolated from their workplace, social network, and community does not simply return to those structures when isolation ends. The longer and more pervasive the isolation, the harder the return.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Japan's approach to mental illness illustrates what structural isolation produces at scale. Japan has had one of the highest rates of psychiatric bed occupancy among developed nations, with average lengths of psychiatric hospital stay historically far exceeding those in Western Europe — often measured in months or years rather than days or weeks. Research has documented that this long-term institutional approach is associated with high rates of social disconnection, severe difficulty reintegrating into employment and community life, and strong cultural stigma that causes people to avoid mental health services until crises are severe. Japan's own mental health policymakers have acknowledged that the institutionalization model perpetuates stigma and isolation rather than resolving the conditions that require care.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opposition might argue that Japan represents an extreme case of long-term institutionalization, not what they are defending — which is temporary, necessary, crisis-based separation. But structural harms do not require decades of institutionalization to materialize. Research on short-term involuntary admissions in the UK and US shows that even brief coercive hospitalization is associated with reduced likelihood of future voluntary treatment-seeking and increased social isolation following discharge. The argument is about what happens when isolation becomes socially normalized as a response to mental illness — and that normalization creates the structural incentives for concealment and avoidance regardless of whether the specific isolation is long or short.</div></div>
+  <div class="quote">💬 Say this: "The danger is not only the isolated room. The danger is the social rule behind it — the rule that says mental illness is grounds for removal. That rule is what hardens stigma, suppresses help-seeking, and makes recovery harder for everyone it touches."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>When society normalizes isolation as a response to mental illness, it creates incentives for concealment and avoidance of treatment, entrenches stigma across institutions, and makes reintegration progressively harder</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means more people develop severe crises that could have been prevented, more institutions exclude people on the basis of diagnosis, and more people who complete treatment find themselves unable to return to ordinary life</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the practical outcomes of isolation are worse recovery, more severe crises, and more entrenched social exclusion than would exist under an inclusion-based model</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met not only on moral grounds but on consequential ones: <strong>isolating people with mental illnesses from society is wrong</strong> because it produces the opposite of what it claims to achieve, both for individuals and for society as a whole.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Targeted Isolation Is Still Justified" Response</div>
+    <div class="weight-text">Opposition's best counter is that some isolation is still justified even if broad isolation is harmful — that the existence of structural harm from widespread isolation does not prove that targeted, temporary separation is wrong. That counter is correct as far as it goes but does not address the argument's central claim, which is about what normalization does at the structural level. Proposition is not arguing that Opposition is defending Japan's psychiatric hospital system. Proposition is arguing that the social acceptance of isolation as a legitimate response to mental illness — even in its moderate forms — creates structural conditions that harm everyone with a mental illness, including those who are never formally isolated. The asymmetry: Opposition's best cases are narrow individual situations. Proposition's argument operates at the level of social norms and their consequences, which is the level at which the motion is pitched.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this argument really about implementation failure — bad systems, underfunded services — rather than about isolation itself being wrong? Couldn't a well-designed, humane system of temporary isolation avoid these structural harms?"</div>
+    <div class="judgeobj-a">The structural harms identified are not primarily the result of poorly designed systems. They are the result of the practice of isolation itself. When isolation from ordinary social life is an available and socially sanctioned response to mental illness, the incentives for concealment and the mechanisms of stigma follow structurally — regardless of how well-designed the specific isolation system is. A person who knows that acknowledging their mental illness may result in removal from their job, family, or community will conceal that illness whether the removal is well-designed or poorly designed. The harm comes from the social permission to isolate, not only from how that isolation is implemented.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">The structural harms you describe come from abusive, lazy, or stigma-based isolation — not from the targeted, necessity-based, legally-governed separation we are defending. A well-designed system avoids these harms.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">The harm comes from the social permission to isolate, not only from how isolation is implemented. Once society accepts that mental illness is grounds for removal, the incentives for concealment and the mechanisms of stigma follow — regardless of design quality. The permission itself is the problem, and no amount of good design eliminates the structural effect of that permission.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula is consistent across all three arguments: acknowledge that inclusion is the right default — because it clearly is — then show why justified exceptions exist that defeat the motion's universal language. Conceding inclusion's value is not a weakness; it is what makes Opp credible rather than callous.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Motion Is Too Categorical — Justified Cases Defeat a Universal Moral Claim</span></div>
+  <p class="arg-body">The motion states that isolating people with mental illnesses from society is wrong. It does not say it is often wrong, usually wrong, or wrong in most cases. It says it is wrong, full stop. A universal moral claim of this form is defeated if a meaningful, real category of justified cases exists. If even one significant class of cases can be identified in which isolating a person with a mental illness from ordinary society is morally permissible — or even morally required — then the motion's absolute language cannot stand.</p>
+  <p class="arg-body">Opposition's position is not that isolation is generally a good response to mental illness. It is the narrower and more defensible claim that some cases of separation from ordinary society are genuinely justified, and that a motion which says isolation is simply wrong cannot accommodate those cases without breaking down. When we say something is wrong, we mean it should not happen, that doing it is blameworthy. But if a psychiatric team detains a person in acute psychotic crisis under legally authorized emergency procedures, with proper oversight and a reintegration plan, they are not doing something wrong. They may be doing something genuinely necessary and humane. If that is true, the motion fails.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The Mental Health Act 1983 in England and Wales, and equivalent legislation in most developed legal systems, provides for compulsory detention — the involuntary hospitalization of people with severe mental illnesses — when specific criteria are met: the presence of a serious mental disorder, risk to the person or to others, and the unsuitability of community-based alternatives. Courts, legislators, and medical ethicists across the world have concluded that this kind of isolation is sometimes not only permissible but legally mandated. That consensus exists not because these systems are indifferent to rights — they include extensive procedural protections — but because they recognize that some situations require it. The existence and legitimacy of these legal frameworks directly demonstrates that not all isolation of people with mental illnesses from society is wrong.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that compulsory detention as regulated by the Mental Health Act is not the kind of isolation the motion condemns — that it is therapeutic, temporary, and reintegration-focused, and therefore belongs in a different moral category. Opposition's answer: whether the detention is called therapeutic or punitive, the person has been removed from their home, social relationships, and ordinary social participation. The purpose may differ, but the fact of isolation from ordinary society is real. Proposition's attempt to distinguish treatment from isolation depends on drawing a line the motion itself does not draw. The motion says isolating people with mental illnesses from society is wrong — it does not say so unless it is therapeutic.</div></div>
+  <div class="quote qo">💬 Say this: "If a psychiatric team detains a person in acute psychotic crisis under legal oversight, with a reintegration plan and procedural protections, and we call that wrong — we have made the motion mean something no serious moral framework could endorse. The motion fails the moment justified exceptions exist."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Legal systems across the world have created frameworks authorizing isolation from ordinary society for people with mental illnesses in specific circumstances, representing a considered moral and legal judgment that such isolation can be justified</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a category of morally permissible isolation from ordinary society exists in reality — not just in theory</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's claim that isolating people with mental illnesses from society is wrong cannot be universally true</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails on its own terms: <strong>"wrong" implies universality, and universality is defeated by the existence of a real, significant, and widely recognized category of justified exceptions</strong> — legal, clinical, and ethically endorsed across virtually every developed society.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "These Are Narrow Exceptions That Don't Defeat the General Principle" Response</div>
+    <div class="weight-text">Proposition's counter is that these justified cases are narrow exceptions that do not defeat the general principle the motion is trying to establish. That counter would be more persuasive if the motion were worded differently — if it said "generally wrong" or "wrong as a governing principle." But it is not. And the asymmetry matters: Proposition is asking the judge to accept a reading of the motion that requires mental illness to never be grounds for removal from ordinary social life even in the most severe situations. Opposition is asking the judge to accept that a motion which says isolation is wrong must be false if some isolation is right. That is not an unreasonable interpretive principle — it is the standard application of how universal moral claims work.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is this argument just clever wording? Is Opposition really defending a principle, or just exploiting the motion's phrasing to avoid engaging with its actual moral content?"</div>
+    <div class="judgeobj-a">This is a genuinely substantive argument, not a semantic trick. The motion's wording reflects a moral claim with real consequences. If a debating society, legislator, or community accepts that isolating people with mental illnesses from society is wrong — full stop — they are committed to opposing compulsory detention, emergency hospitalization, and all other forms of involuntary restriction. That is a real position with real implications, and it is wrong — which is why Opposition is arguing against it. The motion's language is not an accident. It reflects a genuine moral claim, and Opposition's argument is that the genuine moral claim is too broad to be defensible.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">These narrow clinical exceptions do not defeat a motion about the general social practice of isolation. The motion targets status-based exclusion from ordinary life — not individually justified clinical intervention under legal oversight.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">The motion says isolation "is wrong" — not "is generally wrong." Any justified case defeats a universal claim. Prop needs to explain why the motion's actual words don't mean what they say. If they need to rewrite the motion to make it winnable, that is itself evidence the motion as written cannot be defended.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">Stabilization of Severe Crises Sometimes Requires Separation From Ordinary Social Settings</span></div>
+  <p class="arg-body">There are specific, identifiable situations in which a person's mental illness produces such severe symptoms that ordinary social settings — their home, their family, their workplace — cannot safely accommodate what is happening. Acute psychosis, in which a person loses contact with reality and may be experiencing terrifying hallucinations or delusions, can make ordinary environments genuinely unsafe. Severe suicidal crisis, in which a person is actively planning to end their life, may require a level of supervision and intervention that simply cannot be provided in an ordinary household. In these specific, severe situations, separation from ordinary social life is not an act of exclusion — it is an act of care.</p>
+  <p class="arg-body">The argument is not that these situations are common. They are not. The argument is the much narrower claim that in specific cases where this level of severity is present, separation from ordinary society may be the form that responsibility takes — and it is not morally wrong to provide it. The word "stabilization" matters here: the purpose is to provide an environment in which symptoms can be addressed, medication adjusted, safety maintained, and the person returned to ordinary life as quickly as possible. Without stabilization, the alternative is not humane inclusion — it is unmanaged crisis in settings that cannot contain it.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Crisis stabilization units — short-term, residential, non-hospital facilities designed to provide intensive support during acute mental health crises — represent a well-documented model of how temporary separation from ordinary social settings can be both humane and effective. SAMHSA program evaluations in the United States have associated crisis stabilization units with reductions in emergency department visits and inpatient admissions. The existence of these units demonstrates two things simultaneously: first, that some situations genuinely require separation from ordinary social settings; and second, that this separation, when properly designed, is not an act of social exclusion but an act of clinical care.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that crisis stabilization units are exactly what they support — least restrictive care, temporary, reintegration-focused, not the kind of broad social isolation the motion targets. But this counter actually helps Opposition more than it helps Proposition. If Proposition concedes that crisis stabilization units involve some form of separation from ordinary social life but argue that this separation is justified, they have acknowledged the core Opposition claim: some isolation of people with mental illnesses from society is morally permissible. Whether Proposition calls it "therapeutic separation" or "crisis care," they are conceding that the motion cannot be literally true.</div></div>
+  <div class="quote qo">💬 Say this: "Sometimes separation is the form that responsibility must take. That is not an admission that isolation is good — it is a recognition that some situations require care that ordinary settings cannot provide."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Certain severe mental health crises generate conditions — acute loss of contact with reality, active suicidal planning, profound incapacity — that ordinary social settings are not equipped to manage safely</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means removing a person from those settings temporarily and providing supervised, intensive care is not an act of wrongful exclusion but an act of clinical necessity</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a category of separation from ordinary society exists that is morally justified, humane, and in the person's genuine interest</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's claim that isolating people with mental illnesses from society is wrong cannot be universally true, because <strong>the specific cases Opposition describes are not instances of wrong — they are instances of responsible care</strong>, and a universal moral claim cannot survive the existence of such cases.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "These Are Narrow Emergency Cases That Don't Constitute a Social Principle" Response</div>
+    <div class="weight-text">Proposition's best counter is that these are narrow emergency exceptions that do not constitute a general social practice of isolation, and therefore do not make the general principle wrong. That counter fails for two reasons. First, it does not actually refute Opposition's argument — it concedes it. If Proposition agrees that some separation is permissible in emergencies, the motion cannot be true as stated. Second, these cases are not trivially narrow. Millions of people across the world are involuntarily hospitalized each year under emergency mental health legislation. Proposition needs to show that the motion's absolute language is defensible even in these real cases — and they cannot do that without either denying that any involuntary separation is ever justified, which is clinically indefensible, or conceding that justified separation exists.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't Opposition basically saying that some mentally ill people are dangerous and need to be removed? That sounds like stigma dressed up as clinical care."</div>
+    <div class="judgeobj-a">This objection must be answered directly and firmly. Opposition's argument is not that people with mental illnesses are dangerous as a class. The argument is that specific, severe symptoms in specific, severe situations — not diagnosis as a category — may create conditions requiring supervised care outside ordinary social settings. The trigger for intervention is the severity of the symptom presentation, not the diagnosis. A person with schizophrenia who is managing their condition well, working, and maintaining relationships is not a candidate for any form of separation. A person of any diagnosis — or no diagnosis — who is experiencing a severe acute crisis may be. Opposition's standard is symptom-severity plus individual necessity, not diagnosis alone. Judges who conflate those two things are making an error that Opposition must correct.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">These situations call for least restrictive care — individualized, proportionate, reintegration-focused. That is exactly our model. You are defending our position, not defeating it.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">If Prop's model includes individualized clinical separation — which they have now conceded — then they have accepted that some isolation from ordinary society is justified. Whatever name they give it, the motion says that isolation is wrong. Their own model refutes their own motion.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Inclusion Without Safe Capacity Is Not Compassion — It Can Be Neglect</span></div>
+  <p class="arg-body">The moral force behind Proposition's case rests partly on the idea that inclusion in ordinary society is always better than separation from it — that keeping people connected to their families, communities, and daily lives is inherently compassionate and that separation is inherently harmful. This assumption is often correct. But it is not always correct, and the motion requires it to be always correct.</p>
+  <p class="arg-body">When the settings in which a person is being included do not have the capacity to support them safely — when a family cannot manage severe symptoms, when a school cannot provide needed supervision, when a workplace cannot safely accommodate someone in acute crisis — then insistence on inclusion in those settings is not obviously compassionate. It may leave the person without the care they need. It may place unbearable pressure on family members who are not equipped to provide psychiatric care. In these circumstances, the compassionate response may not be inclusion in ordinary life but separation to a setting that can actually provide what the person needs.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Early intervention in psychosis programs in Australia — particularly those operated through Orygen in Victoria — have been studied extensively. The Orygen model emphasizes maintaining community connections and minimizing hospital admissions. But the research associated with Orygen's work has also documented that a subset of patients experiencing the most severe first episodes of psychosis require periods of inpatient care not because community inclusion is wrong in principle, but because the severity of their presentation temporarily exceeds what any community setting can safely manage. When those patients receive adequate inpatient stabilization before returning to community care, their long-term outcomes are significantly better than when they are kept in community settings through an acute episode those settings cannot contain. Temporary separation from ordinary social settings, when clinically necessary, is not harmful to the goal of inclusion — it is part of achieving it.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Proposition will argue that the solution to inadequate community capacity is better community capacity — more crisis teams, more outpatient support, better family resources — not a default to separation. This is a good policy argument, but it does not defeat Opposition's position in the debate as it is actually happening. Even in the best-resourced mental health systems in the world, there are situations where ordinary social settings cannot safely contain what is happening during an acute crisis. That is not a consequence of underfunding. It is a consequence of the nature of severe psychiatric crises. Proposition's response — build better capacity — is a long-term aspiration, not an answer to what happens tomorrow morning.</div></div>
+  <div class="quote qo">💬 Say this: "Inclusion without safe capacity is not compassion. It is abandonment with better branding. If the setting a person is being included in cannot provide what they need, including them in it is not doing them good."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>When ordinary social settings cannot safely provide the care a specific person needs at a specific moment, placing them in those settings anyway does not serve their wellbeing</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means separation to a setting that can provide appropriate care is not a violation of rights — it is the form that adequate care takes</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means a category of isolation from ordinary society exists that is not only permissible but morally preferable to the alternative of underprovided inclusion</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's claim that isolating people with mental illnesses from society is wrong cannot be universally true, because in these cases <strong>isolation is not the wrong — it is the responsible choice</strong>, and calling it wrong misidentifies what genuine care for the person requires.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Build Better Community Capacity" Response</div>
+    <div class="weight-text">Proposition's strongest counter is that building adequate community capacity eliminates the need for this argument altogether. That counter has rhetorical force but does not work as a logical rebuttal for two reasons. First, it concedes that in the absence of adequate community capacity, Opposition's argument holds — which means the motion is wrong in any real-world jurisdiction that lacks that capacity, which is every jurisdiction. Second, even with adequate community capacity, there will remain situations where the severity of a specific crisis temporarily exceeds what even well-resourced community settings can safely manage. No community mental health system in the world has eliminated the need for any inpatient capacity. The asymmetry: Proposition's counter is aspirational, while Opposition's argument is grounded in how mental health crises actually work.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Likely Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Is this argument just defending the status quo of underfunded services? Is Opposition saying that because systems are inadequate, isolation is justified — which seems like rewarding failure?"</div>
+    <div class="judgeobj-a">Opposition's argument does not depend on systems being inadequate. Even if community mental health services were significantly better resourced, there would remain a category of situations where the acute severity of the presentation temporarily requires supervised care in a setting with clinical capacity. That is not a consequence of underfunding — it is a consequence of the nature of severe psychiatric crises. A person experiencing a first episode of severe psychosis benefits from stabilization in a setting that can monitor them, adjust medication safely, and ensure their safety — in any health system, under any circumstances. Opposition is not defending weak systems. They are pointing to an irreducible minimum of situations where separation is clinically necessary regardless of how good community systems are.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">The answer to insufficient community capacity is better community capacity, not a default to isolation. You are defending system failure and calling it principle.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Even with optimal community capacity, some acute crisis presentations temporarily exceed what any community setting can safely manage. That is a clinical reality, not a funding failure. The motion asks whether isolation is ever justified — and the answer is yes, for this irreducible category of severe acute situations, regardless of system quality.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ATTACKS -->
+<div id="atk" class="page"><div class="wrap">
+
+<h1 class="page-title">⚔️ What They'll Throw at You</h1>
+<p class="page-sub">These are the most common and dangerous attacks each side will face. The danger level tells you how much preparation time to invest. Read the defense carefully — the goal is not to memorize lines but to understand the logic so you can adapt it under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on PROP — if you're arguing FOR the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"The motion is too absolute — some isolation is clearly justified in acute crisis cases, so 'is wrong' cannot stand."</div>
+        <div class="d-answer">Counter this by locking in your definition of "isolation" before Opp does. The motion targets status-based, categorical exclusion from ordinary social life — not every temporary therapeutic intervention. Then distinguish what Prop supports (individualized, least-restrictive, reintegration-focused care) from what the motion condemns (mental illness as a category-level basis for social exclusion). Say clearly: crisis intervention proves narrow exceptions exist; it does not prove that isolating mentally ill people from society is a justified social principle. <strong>State this distinction in the very first speech.</strong></div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Psychiatric wards are still isolation from ordinary society — removing someone from their home, family, and work is isolation, whatever you call it."</div>
+        <div class="d-answer">Accept that hospital admission involves some physical separation from ordinary settings — it is too easy for Opp to demonstrate this and denial looks evasive. Then make the principled distinction: purpose, duration, legal governance, necessity, and reintegration orientation make therapeutic care categorically different from the exile the motion condemns. The same physical fact — removal from ordinary settings — can be a different moral act depending on what governs it, how long it lasts, and what it aims to achieve. Explain these four factors explicitly and name them for the judge.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Society owes duties to others too — families, bystanders, and communities have safety interests that sometimes justify removing a person in severe crisis."</div>
+        <div class="d-answer">Agree that safety interests of others are real and matter — Prop teams that ignore this lose credibility on safety. Then explain why those interests are addressed by individualized, proportionate restriction rather than broad social isolation: the trigger for restriction is specific identified risk in a specific situation, not mental illness as a category. A person with a mental illness who poses no specific risk to anyone has the same claim to participation in ordinary life as anyone else. Safety is handled by individual assessment, not categorical exclusion.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Inclusion without safe capacity is abandonment — if a community setting cannot manage what is happening, insisting on inclusion is not compassionate."</div>
+        <div class="d-answer">Acknowledge that this is a real concern and not a bad argument. Then explain why the answer is least restrictive care — not broad social isolation. If a community setting cannot manage a specific situation, the response is to find the least restrictive setting that can — which may involve temporary supervised care. But this is individualized necessity, not a general social license to isolate people with mental illnesses. The answer to inadequate community settings is better community settings plus individualized assessment, not a categorical rule that mental illness justifies social exclusion.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"If Prop concedes some therapeutic separation is allowed, they have conceded that some isolation of mentally ill people from society is justified — so the motion is too broad."</div>
+        <div class="d-answer">This is the sharpest Opp move and needs a precise answer. Prop is making two claims simultaneously: first, that therapeutic separation is morally distinct from the isolation the motion condemns — different in purpose, governance, duration, and reintegration focus; and second, that even if therapeutic separation counts as some form of isolation, it falls outside the category the motion targets, because the motion targets the general social practice of exclusion based on mental illness as a status, not individualized clinical necessity. The first claim is the stronger answer; the second is the fallback. Have both ready and deploy them in order.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on OPP — if you're arguing AGAINST the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Mental illness does not erase equal standing — your position reduces mentally ill people to a class defined by conditional membership, which is exactly the wrong it claims to cure."</div>
+        <div class="d-answer">Never deny that equal standing matters — because it does, and denying it hands Prop the moral high ground for the entire round. Accept the principle directly and clearly: people with mental illnesses have full equal standing and that standing must be respected. Then make the precise argument: equal standing is compatible with temporary restrictions during periods of severe incapacity. Even a person with full equal standing can be restricted in specific circumstances when specific conditions are met. Recognizing that someone in acute psychotic crisis needs intensive supervised care is not denying their standing — it is taking seriously the reality of what they are experiencing. The standard is clinical necessity, not categorical subordination.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Isolation worsens recovery, hardens stigma, and makes reintegration harder — your position causes the very outcomes it claims to prevent."</div>
+        <div class="d-answer">Acknowledge the structural harm argument seriously — it has real evidence behind it. Then hold the distinction: broad, normalized, status-based isolation may produce those harms. Short-term, treatment-oriented separation — governed by legal oversight, reintegration-focused, and triggered by clinical necessity rather than diagnosis — is different in kind, not just degree. The evidence showing stigma and poor outcomes from institutionalization comes from systems that used diagnosis as the standard for separation, not from systems that use clinical necessity. Opposition is defending the second standard, not the first.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Treatment is categorically different from exile — you are collapsing a principled moral distinction to score a definitional point."</div>
+        <div class="d-answer">The distinction has moral content — Opposition should acknowledge this rather than dismiss it. Then make the precise Opposition response: the distinction matters in some moral contexts, but the motion's language does not contain an exception for therapeutic intent. If the motion had said "stigma-based isolation is wrong" or "exile is wrong" or "permanent exclusion is wrong," Opposition's distinction would be relevant. But the motion says isolation from society is wrong, and temporary supervised care in a clinical setting involves isolation from ordinary society in a real and meaningful sense. The purpose differs; the fact of removal from home, family, and community remains.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Diagnosis is not a proxy for danger — most people with mental illnesses never pose any risk to themselves or others, so there is no general case for their isolation."</div>
+        <div class="d-answer">Agree completely and say so explicitly — this is not something Opposition should contest. Most people with mental illnesses never need any form of supervised separation, and Opp has never argued otherwise. Then hold the precise claim: Opposition's standard is not diagnosis. It is clinical severity, specific symptom presentation, and individual necessity. Opposition is defending the narrow category of acute situations where that standard is met — not diagnosing all people with mental illnesses as candidates for isolation. If Prop argues that Opp treats mental illness as a risk category, correct them directly: our standard is severity of presentation, not diagnostic label. These are different things.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Isolation substitutes for responsible investment in community care — your position rewards the failure to build adequate systems."</div>
+        <div class="d-answer">Acknowledge the policy critique — underfunded community services are a real problem and Opposition does not defend them. Then make the specific rebuttal: Opposition's argument does not depend on systems being inadequate. Even in well-resourced systems, there is an irreducible minimum of acute situations where separation is clinically necessary regardless of community capacity. No mental health system anywhere in the world has eliminated the need for all inpatient care. The irreducible minimum exists not because systems have failed but because severe psychiatric crises have a severity profile that temporarily exceeds what any community setting can safely manage.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these clashes convincingly. Know which ones your side has the easier burden on before the round starts.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 1 — What Counts as "Isolation"?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the kind of isolation the motion targets is status-based, categorical exclusion from ordinary social life — removal from family, work, community, and participation in public life on the basis of a mental illness diagnosis — and that this is categorically different from temporary, necessary, individualized, therapeutic separation. Prop must show the distinction is principled, not convenient.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That any meaningful removal from ordinary social settings counts as isolation from society in a sense relevant to the motion — that purpose and duration do not change the fundamental character of what is happening, which is that a person has been removed from home, family, and community. The motion does not contain a therapeutic-intent exception.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">This is the most important definitional clash in the round. The judge will ask: which side gave me a more useful and contextually appropriate understanding of the kind of isolation the motion is about? Prop loses this clash by failing to articulate the distinction clearly and early — if they wait until challenged to explain why psychiatric admission is not the kind of isolation the motion targets, it sounds like post-hoc rationalization. Opp loses this clash by relying entirely on the observation that hospital admission involves separation from ordinary life without explaining why that makes it morally equivalent to stigma-based social exclusion. A judge will not automatically accept that "both involve removal from ordinary settings" makes them the same moral act.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 2 — Do Justified Exceptions Defeat the Motion?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the motion is best read as a claim about social practice and general principle — roughly, "mental illness should not be grounds for social exclusion" — and that the existence of narrow clinical exceptions does not defeat that principle, because the principle operates at the level of governing social norm rather than universal exceptionless rule.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the motion's words mean what they say — "is wrong" is a universal claim — and that universal claims fall if meaningful justified cases exist. The cases Opp points to are real, recurring, legally recognized, and morally endorsed by every major legal and medical system in the world. They are not hypothetical edge cases.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">A judge is weighing interpretive fairness against logical precision. A judge applying fair reading will ask what the motion is most plausibly trying to claim as a moral proposition — which favors Prop, because the motion seems to be targeting a social practice rather than making a claim about every possible edge case. A judge applying strict literal reading will favor Opp, because the universal language falls if any meaningful justified case exists. Prop loses this clash by conceding that some therapeutic separation is justified without explaining why this does not make the motion false — the concession is necessary but must be paired with a clear argument about why it does not destroy the motion. Opp loses it by winning too narrowly — winning only the wording point without providing moral substance about why the cases they defend genuinely matter.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Safety vs. Belonging</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That safety is not a binary choice between isolating people with mental illnesses and leaving dangerous situations unmanaged. Individualized, proportionate, least-restrictive care can handle safety needs without defaulting to broad exclusion from ordinary social life. The framing of safety vs. belonging is a false dilemma.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That in specific, real situations, safety genuinely requires removal from ordinary social settings — that the choice is not a false dilemma but a real one, and that in those specific situations, safety considerations are sufficient to justify isolation that the motion would otherwise condemn.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is assessing which side's account of how safety works in mental health contexts is more realistic. Prop loses this clash by sounding as if safety concerns are always manageable in ordinary settings if only systems were better designed — this sounds unrealistic and loses the judge's confidence. Opp loses this clash by allowing Prop to paint them as treating mental illness as a threat category. Opp must constantly return to their specific standard — severity of symptoms, actual necessity, individual assessment — and resist any framing that characterizes their position as "mentally ill people are dangerous."</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Slight Edge</span><span class="clash-title">Clash 4 — Treatment vs. Exile</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the moral distinction between therapeutic, temporary, reintegration-focused separation and punitive or categorical exclusion is real, principled, and sufficiently clear that a judge can apply it — and that purpose, duration, necessity, and outcome-orientation make these categorically different moral acts, not just semantically different ones.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That different purpose does not automatically create a different moral category — that isolation is isolation in the relevant sense regardless of intent, and that the motion's language does not contain an exception for therapeutic intent. Different purpose, same fact of removal from ordinary social life.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is deciding whether purpose, duration, necessity, and reintegration focus are morally relevant factors that distinguish two superficially similar acts — or whether these are rationalizations that obscure the fundamental fact of removal from ordinary social life. Most judges will find that purpose and governance matter morally — medical treatment is different from assault even though both involve bodily interference — and will award this clash to Prop if Prop has explained the distinction clearly and specifically. Prop loses by treating the distinction as self-evident without explaining it. Opp loses by refusing to acknowledge that any morally relevant difference exists between therapeutic and punitive isolation — a judge who believes purpose matters morally will find this unconvincing.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 5 — What Is the Real Danger?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the real danger is the normalization of status-based exclusion from ordinary social life — the creation of a social rule that treats mental illness as grounds for reduced belonging — and that the structural consequences of that normalization are more serious and more widespread than the dangers of unmanaged inclusion that Opp points to.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the real danger is the opposite: moralizing necessary clinical intervention as wrongdoing, which creates barriers to care that some people genuinely need and leaves the people who need the most intensive support without recourse. A principle that makes crisis intervention "wrong" harms the most vulnerable people it claims to protect.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: which danger is more serious, more real, and more directly addressed by the motion? Prop wins if they can show that normalizing isolation creates structural harm at a scale and depth that exceeds the harm from unmanaged inclusion. Opp wins if they can show that their crisis cases represent a real and non-trivial category of need that Prop's principle cannot accommodate. Prop loses by spending too much time on abstract principle and not enough on the concrete structural consequences of normalizing isolation. Opp loses by failing to connect their crisis-case examples to the motion's broader claim — if Opp's evidence is all about acute cases but the motion is about the general social practice, Opp has proven a narrow case while Prop has argued a broader one.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: it exposes a gap in the other side's argument, or it forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly and confidently under any conditions.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Do you say mental illness itself justifies isolation, or only specific risk in specific cases? Because those are very different standards, and the motion is about the first one.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If only specific cases justify restriction, why are you defending isolation of people with mental illnesses as a class rather than restriction of specific individuals in specific circumstances?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">What safeguards does your position include to prevent temporary isolation from becoming indefinite exclusion — and if those safeguards exist, aren't you just describing our model?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">In the cases you are defending, are you isolating someone because they are mentally ill, or because they pose a specific identifiable risk — and if it is the second, why should mental illness as a category bear the burden?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If the real basis for the separation you are defending is specific clinical necessity rather than mental illness as a diagnosis, then what exactly are you defending that we are not already defending ourselves?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On involuntary hospitalization:</strong> We support temporary, necessary, least-restrictive intervention under legal oversight. We reject social exclusion based on mental illness as a norm. Those are different practices, and we have explained the differences throughout this round.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "you concede some isolation":</strong> We concede that some therapeutic restriction exists and is sometimes appropriate. We do not concede that the motion is false — the motion targets the general social practice of exclusion based on mental illness as a status, and that practice is still wrong regardless of whether narrow clinical necessity can justify temporary restriction.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "you are rewriting the motion":</strong> We are making a principled moral distinction between two practices that look similar on the surface and are morally different in substance. That is not rewriting the motion — it is analyzing it.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On acute crisis cases:</strong> Those cases prove that narrow, individually-justified intervention can sometimes be necessary. They do not prove that mental illness justifies isolation from ordinary social life as a general social principle. Prop supports the first; the motion condemns the second.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On public safety:</strong> Safety is protected through individualized, proportionate measures — the specific risk in the specific situation justifies the specific response. What it does not justify is a general social rule that mental illness reduces a person's claim to participate in ordinary life.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">Do you accept any form of involuntary separation from ordinary society at all — yes or no? Because any honest answer creates a problem for you.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If you accept that some therapeutic separation is justified, why is the motion not false as stated — what word in the motion creates room for the exception you have just conceded?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">What specifically makes a psychiatric ward — where a person is removed from their home, family, workplace, and community — not an isolation from ordinary society in any meaningful sense?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">Are you saying treatment-oriented separation is not isolation at all, or that it is a kind of isolation that is justified? Because if it is the second, you are agreeing with us that some isolation is justified.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">If a person is in severe acute crisis and their family, school, and community genuinely cannot safely manage the situation tomorrow morning, what exactly do you say should happen in practice?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "you think mentally ill people are dangerous":</strong> We have never said that. Our standard is clinical severity and individual necessity — not diagnostic category. A person with a mental illness who is managing their condition is not a candidate for any form of separation. We have said this repeatedly and clearly.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "you only have edge cases":</strong> Our cases include millions of people involuntarily hospitalized each year under legally mandated frameworks that exist in every developed country. These are not hypothetical edge cases — they are real, recurring, and legally recognized by every major legal and medical system in the world.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On stigma:</strong> We reject stigma-based and diagnosis-based exclusion. We defend necessity-based, proportionate, individually-assessed separation in specific clinical situations. These are different practices, and Prop has not shown otherwise.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On long-term segregation:</strong> We do not defend indefinite or permanent segregation — we have said this from the start. We defend temporary, necessity-based, legally-governed separation. The motion's language does not distinguish between these. That is the motion's problem, not ours.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On inclusion as norm:</strong> We broadly agree that inclusion is the right default. We deny that accepting a default requires accepting the motion's absolute language, which rules out all justified exceptions. "Default" and "universal rule" are different things, and the motion makes the universal claim, not the default claim.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side has just argued, explain specifically why it fails, and connect the failure back to your overall thesis. The starred lines are your top three per side — have them ready to deploy from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition's entire case rests on collapsing all forms of separation into one moral category."</strong> A psychiatric ward admission during a legally-authorized, clinically-governed, time-limited, reintegration-focused crisis response is not the same moral act as a family refusing to include a relative in ordinary life because they have been diagnosed with schizophrenia, or an employer refusing to hire someone because of their psychiatric history. Opposition's cases all involve therapeutic intervention under procedural oversight. The motion targets the broader social practice of exclusion based on mental illness as a status. Those are different things, and the judge must not allow Opposition to win by treating them as identical.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Opposition's crisis-case examples prove that narrow exceptions exist — they do not prove that isolating people with mental illnesses from society is a justified general social response."</strong> A general social principle is not vindicated by the existence of emergency exceptions. Emergency intervention — involuntary hospitalization under legal criteria, crisis stabilization, supervised care in acute situations — exists in every legal and clinical system in the world. Their existence does not mean that mental illness justifies social exclusion as a category-level principle. It means that in specific situations, specific interventions are necessary. That is Proposition's position too.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Treatment aimed at reintegration is not the same moral act as exile from society."</strong> The purpose of psychiatric treatment — to stabilize, support, and return the person to ordinary life — is fundamentally different from the purpose of social exclusion, which is to remove a person from ordinary life because they are considered incompatible with it. That difference in purpose corresponds to different institutional practices, different legal frameworks, different outcomes for individuals, and different social messages about who belongs in ordinary life. Opposition has not explained why purpose does not matter morally. Until they do, this distinction holds.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Safety concerns are real and Proposition takes them seriously. But safety is not best served by broad isolation from society — it is best served by individualized, proportionate, least-restrictive intervention that addresses the specific safety need in the specific situation. The evidence from jurisdictions that have moved toward least-restrictive care models shows that safety outcomes do not worsen when isolation is reduced — and in many cases improve, because people are more willing to seek early help when they know it will not result in social exclusion."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"System weakness may explain why isolation is used, but it does not morally justify it. When a school excludes a student with mental illness because it lacks the resources to support them, or when a family isolates a member because they have no access to mental health services, the explanation for the exclusion may be understandable. But that does not make the exclusion right. The motion asks whether isolation is wrong, not whether it is understandable."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition has conceded justified therapeutic separation and then tried to relabel it."</strong> They call it "least restrictive care" or "therapeutic intervention" or "crisis response." But whatever label they apply, they have accepted that a person with a mental illness can be removed from their home, family, workplace, and community — which is isolation from ordinary society in any meaningful sense. Once that concession is made, the motion cannot be literally true, and Proposition is engaged in a naming exercise rather than a principled moral argument.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Treatment-oriented separation is still isolation from ordinary society in a meaningful sense."</strong> The fact that it is temporary, clinically-governed, and aimed at reintegration does not change the fact that the person is not at home, not with their family, not at work, not in their community. Those are the features that constitute ordinary social life. A person in a psychiatric ward has been removed from all of them. Proposition's distinction — therapeutic versus exile — may have some moral relevance, but it does not eliminate the fact of isolation from society. And if justified isolation from society exists, the motion fails.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Equal standing does not mean unrestricted participation in every setting at every moment of severe incapacity."</strong> Even people with full equal standing can be restricted in specific circumstances when specific conditions are met. A person in acute psychotic crisis whose contact with reality is severely disrupted is in a situation of significant incapacity, and recognizing that incapacity does not reduce their equal standing. It recognizes reality. Managing that reality may require temporary separation from ordinary social settings. That is not a denial of standing — it is care that takes incapacity seriously.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"The least restrictive care principle does not answer whether some isolation can be morally justified. Even a least restrictive care standard sometimes concludes that inpatient admission is the appropriate response in a specific situation. Proposition cannot hide behind least restrictive care as if it eliminates isolation. It governs when isolation is appropriate, but it does not eliminate isolation as an outcome. And if least restrictive care — Proposition's own standard — sometimes requires isolation, then Proposition has itself endorsed situations in which isolation from society is the right response."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Proposition attacks abusive, lazy, stigma-based isolation and wins against that version of the motion. But they do not defend the motion against the version Opposition has described — the considered, necessity-based, legally-governed, clinically-justified separation we have defended throughout this round. Proposition has not shown that this version of isolation is wrong. They have shown that other, worse versions are wrong, which is something Opposition also agrees with. The round should be decided on the specific, real cases Opposition has pointed to, and on whether those cases are wrong."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later in the round when the other side has committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define "isolation" as status-based, categorical exclusion from ordinary social life — not every temporary therapeutic intervention — in the first sixty seconds before Opp sets a different frame.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish the team thesis: inclusion as the moral default, individualized least-restrictive care as the governing standard for any exception, and mental illness as a status being an insufficient basis for social exclusion.</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the two highest-danger Opp attacks — the overbreadth argument and the "treatment is still isolation" argument — briefly and confidently, so the judge knows Prop has thought about them before Opp raises them.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Taking over the constructive case — that is Speaker One's job. Every second on arguments is a second not spent on framing and definition, which is where this round is often decided.</div>
+        <div class="role-line"><span class="role-icon">→</span>Claiming that no involuntary psychiatric intervention is ever justified — this is clinically indefensible and hands Opp their most powerful attack.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Carry the full constructive case: equal standing, least restrictive care, and structural harm from normalizing isolation. Give all three full development with examples and So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>End every argument with an explicit sentence connecting it to the motion's specific words — "this meets the motion's threshold because..."</div>
+        <div class="role-line"><span class="role-icon">→</span>Prioritize the structural harm argument — it is the most powerful and hardest to rebut with individual crisis cases. If the judge leaves this speech with a clear picture of what normalization does at the structural level, Prop is well-positioned even if Opp's individual cases land with some force.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Getting so absorbed in hypothetical case distinctions that the affirmative moral case gets lost. The judge needs to leave this speech knowing what Prop is for, not just what it is against.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly answer Opp's three arguments — overbreadth, stabilization requires separation, inclusion without capacity — explicitly and in sequence.</div>
+        <div class="role-line"><span class="role-icon">→</span>Reinforce the treatment-versus-exile distinction and explain why it holds even against Opp's best attacks.</div>
+        <div class="role-line"><span class="role-icon">→</span>Expose the gap in Opp's case: they have shown that narrow exceptions exist, but they have not shown these exceptions vindicate the general social practice of isolating people with mental illnesses from ordinary life.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire affirmative case from scratch. If time is spent re-explaining Prop's arguments rather than engaging with Opp's, the judge will notice that the most important challenges have not been answered.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Tell the judge a story about what happened in this round and why Prop won it. Opposition proved that narrow crisis intervention exists. But that is Prop's position too. What Opp failed to prove is that the general social practice of isolating people with mental illnesses from ordinary life is justified — which is what the motion is about.</div>
+        <div class="role-line"><span class="role-icon">→</span>The closing line: "Care without exile — that is the principle this motion affirms and that we have defended throughout this round. Vote Proposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the closing time answering Opp attacks line-by-line. A Proposition closing that is primarily defensive has already lost the narrative.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Stop Prop from owning the moral frame. If Prop establishes from the start that they are for compassionate inclusion and Opp is for fear-based exclusion, the round is lost before it starts. State immediately that Opp is also for compassionate care — the disagreement is about whether the motion's absolute language can accommodate justified exceptions.</div>
+        <div class="role-line"><span class="role-icon">→</span>Lock in the definitional challenge early: treatment-oriented separation is still isolation from ordinary society in a meaningful sense. This must be on the floor before Prop's definitional framework sets the judge's expectations.</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal Opp's moral substance early: not stigma, not diagnosis-based removal, but necessity-based care in specific acute situations. The judge must know from the start that Opp is calibrated, not callous.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the whole opening on wording without giving moral content. An Opposition Captain who wins the definitional argument but loses the moral argument has not yet won the round.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full Opposition case: overbreadth of the motion, stabilization requires separation, inclusion without safe capacity can become neglect. Each argument fully developed with examples and So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy the line "Prop's case proves inclusion is the right default — it does not prove that justified exceptions cannot exist" early and return to it throughout.</div>
+        <div class="role-line"><span class="role-icon">→</span>Specify the standard every time: clinical severity, specific symptom presentation, individual necessity — never diagnosis alone. Any reference to mental illness as a class-level risk category hands Prop the stigma argument.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining moral objections to broad exclusion — the case rests on the overbreadth argument and clinical necessity, not on moral discomfort with stigma, which Opp agrees with.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Prop's concessions and hold the line on the definitional fight. If Prop has conceded that therapeutic separation sometimes exists and is permitted, name it explicitly: they have accepted that some isolation of people with mental illnesses from ordinary society is justified, and the motion cannot be literally true.</div>
+        <div class="role-line"><span class="role-icon">→</span>Force Prop to specify what distinguishing feature of therapeutic separation removes it from the motion's scope — and show why that feature, whatever it is, is not in the motion's language.</div>
+        <div class="role-line"><span class="role-icon">→</span>Answer Prop's structural harm argument: broad, normalized, stigma-based isolation may cause those harms; necessity-based, legally-governed, individually-assessed separation of the kind Opp defends does not produce them in the same way.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Allowing Prop to paint Opp as the "fear disguised as realism" side. Return constantly to: our standard is clinical necessity and individual assessment, not mental illness as a threat category.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple. The clean decision rule: "Vote on the motion as written. The motion says isolation from society is wrong. Prop's best case is that broad, stigma-based, diagnosis-category exclusion is wrong — which we also believe. What they have not defended is the literal motion, which condemns all isolation including the justified cases we have described. Vote on the actual motion."</div>
+        <div class="role-line"><span class="role-icon">→</span>The closing line: "Our side defended calibrated, necessity-based care — not stigma, not abandonment. Some separation is responsible care, and the motion cannot accommodate that truth. Vote Opposition."</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Relitigating every example. Give the judge one clean narrative, not a recap of every point both sides made.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This motion asks whether mental illness can be used as a reason to push someone out of ordinary life — out of their family, their work, their school, their community. We say it cannot. Mental illness is a medical condition. It does not reduce a person's claim to belong. The right response to mental illness is support, not exile. We are not here to argue that no clinical intervention ever involves restriction — we are here to argue that mental illness as a status cannot be the basis for removing people from the social fabric of their lives. That is what this motion says is wrong. And it is right."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "Proposition will tell you today that isolation from society is wrong — and we agree that broad, stigma-based, diagnosis-category exclusion from ordinary life is wrong. But agreeing with the principle Proposition wants to debate is not the same as agreeing with this motion. The motion says isolation from society is wrong, full stop. We will show you that some isolation — temporary, necessity-based, legally governed, clinically justified — is not wrong. It is sometimes what responsible care looks like. And a motion that condemns even that cannot stand."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The motion is about whether mental illness can be grounds for social exclusion — for reduced belonging in family, work, community, and public life. It cannot. That is equal standing, and it has not been refuted.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opposition proved that narrow, individually-justified crisis intervention exists. They have not proved that mental illness justifies isolation from society as a general social principle. Those are different claims, and the motion is about the second one.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Normalizing isolation hardens stigma, suppresses help-seeking, and makes reintegration harder — structural harms that follow from the social permission to isolate, not just from how isolation is implemented.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The right standard is least restrictive care, not removal from society. That standard — embedded in law across the world — proves that safety and belonging are not in conflict. They are compatible, and the motion affirms that compatibility.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Care without exile. That is what this motion defends. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Watch what Proposition is actually defending by the end of this round: not "isolation from society is wrong" but "stigma-based, diagnosis-category exclusion is wrong." That is a narrower and better motion — but it is not the motion on the table.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Proposition conceded that some therapeutic separation is permitted. A person removed from their home, family, workplace, and community is, in any meaningful sense, isolated from society. If that is sometimes justified — and Prop concedes it is — the motion fails.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Insisting on inclusion in settings that cannot safely provide the care someone needs is not compassion — it is abandonment with better language. Some situations require care that ordinary settings cannot provide. Recognizing that is not stigma. It is realism.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Our standard throughout: clinical necessity, individual assessment, legal oversight, and reintegration focus. Not diagnosis alone. Not fear. Not stigma. Calibrated care — and the motion condemns even that.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Some separation is responsible care. The motion cannot accommodate that truth. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable, and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Social support and inclusion are associated with better mental health outcomes and lower rates of relapse</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Stigma associated with mental illness reduces help-seeking and worsens treatment outcomes</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Community Mental Health Act of 1963 in the United States initiated a shift toward community-based care and away from long-term institutional confinement</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The Mental Health Act 1983 in England and Wales contains an explicit least restriction principle governing involuntary detention and care</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Modern mental health policy across most developed countries broadly favors community inclusion over long-term institutionalization</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Japan has historically had significantly higher psychiatric bed occupancy and longer average lengths of psychiatric hospital stay than Western European countries</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Many legal systems authorize emergency involuntary psychiatric intervention under specific criteria including serious mental disorder and risk of harm</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Acute psychosis and severe suicidal crisis can require supervised care that ordinary social settings are not equipped to provide safely</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Crisis stabilization units in the United States have been associated with reduced emergency department visits and inpatient admissions in program evaluations</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Contested</span></td><td>"Crisis stabilization programs have been associated with reduced reliance on emergency hospitalization in some evaluations, though evidence quality varies across programs"</td></tr>
+      <tr><td>Japan's long-term institutionalization model has been associated with stigma, help-avoidance, and poor reintegration outcomes</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, contested</span></td><td>"Japan's own mental health policymakers have acknowledged that its institutionalization model is associated with cultural stigma and barriers to reintegration — the causal relationship is complex"</td></tr>
+      <tr><td>Orygen's early intervention research in Australia documents that some patients experiencing severe first episodes of psychosis have better long-term outcomes with inpatient stabilization</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Directionally supported</span></td><td>"Early intervention in psychosis research, including from Australian programs, has found that some severe presentations benefit from inpatient stabilization before returning to community care"</td></tr>
+      <tr><td>Short-term involuntary psychiatric admissions are associated with reduced likelihood of future voluntary treatment-seeking in some research</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Contested</span></td><td>"Some research suggests coercive hospitalization may reduce future voluntary help-seeking, though findings vary by context and study design"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps that teams fall into on this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span>Sounding as if no involuntary psychiatric intervention is ever justified. This position is clinically indefensible, and any experienced judge will immediately recognize it as such. Proposition must be clear from the outset that they support crisis intervention — they just insist it be the minimum necessary, individually justified, and reintegration-focused.</span></div>
+    <div class="trap-item"><span>💀</span><span>Failing to explain the treatment-versus-exile distinction clearly and early. This distinction is Prop's most important line-drawing move and also the one that sounds most like rationalization if not rigorously explained. If Prop simply asserts that psychiatric hospitalization is different from social isolation without explaining specifically what makes it different — purpose, duration, legal governance, necessity, reintegration orientation — Opposition will attack it and the judge will not have the tools to defend it.</span></div>
+    <div class="trap-item"><span>💀</span><span>Overclaiming that all restriction is stigma. Prop's structural harm argument, taken too far, can sound like any attempt to restrict any person with a mental illness in any context is an act of stigmatization. The structural harm argument is about what happens when isolation is normalized as a general social response — not about what happens when a specific individual receives a specific restriction for a specific reason.</span></div>
+    <div class="trap-item"><span>💀</span><span>Ignoring the duties society has to people other than the person with a mental illness. When a person in acute crisis poses a real risk to others, Proposition cannot simply ignore that. A credible Prop case acknowledges that individualized restriction can address safety concerns for others as well as for the person themselves — handled through proportionate individual assessment, not categorical exclusion.</span></div>
+    <div class="trap-item"><span>💀</span><span>Building a case that is all principle and no operational content. A judge who hears Prop argue eloquently about equal standing and dignity without a credible account of what actually happens during a severe psychiatric crisis will find the case unsatisfying. Prop must have an operational model — least restrictive care, crisis teams, individualized assessment, legal oversight — that shows how the principles translate into practice.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span>Sounding as if all people with mental illnesses are dangerous or incompatible with ordinary social life. This is the stigma trap, and it is the single fastest way to lose a round on this topic. Every time Opposition argues for separation, they must specify that the basis is clinical severity and individual necessity, not diagnosis as a category. Any phrasing that implies people with mental illnesses as a class pose risks will hand Prop the round.</span></div>
+    <div class="trap-item"><span>💀</span><span>Relying only on the wording argument without providing moral substance. If Opposition's entire case is "the motion says 'is wrong' but some isolation is right, so the motion fails," a judge will find the argument technically correct but morally thin. Opposition needs to explain specifically why the cases they defend are morally justified — not just that they exist and defeat the universal claim.</span></div>
+    <div class="trap-item"><span>💀</span><span>Defending broad exclusion from ordinary social life rather than necessity-based exceptions. The difference is enormous. If Opposition's position can be characterized as "people with mental illnesses can be removed from ordinary society when their presence is inconvenient," they have lost. If their position is "people in acute psychiatric crisis may require temporary supervised care in specific situations when ordinary settings genuinely cannot safely manage the situation," they have a defensible case.</span></div>
+    <div class="trap-item"><span>💀</span><span>Having no safeguards against indefinite or lazy segregation. If Opposition is defending some forms of isolation without specifying what governs its use, its duration, its oversight, and its endpoint, they are implicitly defending a position that could justify permanent institutionalization. State the safeguards explicitly: legal oversight, independent review, time limits, clinical justification requirements, and active discharge planning.</span></div>
+    <div class="trap-item"><span>💀</span><span>Allowing Prop to paint them as "fear disguised as realism." Prop's best rhetorical move is to position their case as genuine compassion and Opp's case as fear masquerading as responsible management. Opp must resist this framing at every turn — not by denying that fear and stigma are real problems, but by constantly distinguishing their position from fear-based exclusion and anchoring it to clinical necessity and individual care.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>"Most mentally ill people are not violent" as a core Prop plank.</strong> This argument is statistically accurate but strategically unnecessary and potentially harmful. Unnecessary because Prop's case is about equal standing and least restrictive care — it does not depend on dangerousness statistics. Potentially harmful because it implicitly accepts the framework in which the debate is about whether people with mental illnesses pose risks, which is Opposition's framing. Proposition should not enter that terrain.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>"Society is judged by how it treats the most vulnerable" as a standalone argument.</strong> This is a rhetorical flourish rather than an argument. It sounds inspiring but proves nothing on its own, and experienced judges will find it evasive if it substitutes for actual analysis of the motion. It can be used as a one-line closer but should not be a central argument.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>Opp using inadequate community systems as a primary moral justification for isolation.</strong> This argument says, essentially, that because society has failed to invest in community mental health care, isolation of mentally ill people is justified. That is not a moral argument — it is an admission of failure. Opp should reference system inadequacy only as evidence about the real world in which their cases occur, never as a moral justification.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>Prop claiming that therapeutic care settings are not isolation at all.</strong> This claim is too strong and too vulnerable to attack. A psychiatric ward clearly involves some removal from ordinary social life. Prop does not need to deny this — they need to explain why that removal, in its specific form and context, is categorically different from the isolation the motion condemns. Denying the fact of separation invites Opp to point at the obvious and makes Prop look evasive.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>Relying heavily on Mongolia-specific or highly localized examples that the judge cannot verify.</strong> Both sides have access to well-documented examples from major legal and health systems — the UK's Mental Health Act, Australia's early intervention research, Japan's institutionalization patterns, the US deinstitutionalization history — that are more credible, better-evidenced, and more universally relevant. Local examples should be used only if they add specific value that global examples do not.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This motion is about pushing mentally ill people out of normal life — out of family, work, community. It is not about whether emergency treatment should exist.</div>
+
+    <div class="emrg-section">2 Core Definitions</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Isolation</strong> = status-based, categorical exclusion from ordinary social life based on mental illness as a diagnosis. Not every therapeutic intervention.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>The governing standard</strong> = least restrictive care — minimum restriction necessary, individually justified, reintegration-focused. Crisis intervention allowed under that standard.</div>
+
+    <div class="emrg-section">3 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Mental illness does not reduce equal standing — the burden is on institutions to justify restriction, not on mentally ill people to justify inclusion.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>The right standard is least restrictive care — England and Wales have embedded this in law, and it works better than default isolation.</div>
+    <div class="emrg-line"><span class="emrg-icon">3.</span>Normalizing isolation hardens stigma, suppresses help-seeking, and makes reintegration harder — Japan's institutionalization model shows this at scale.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">Is your standard for isolation based on a person's diagnosis, or on specific risk in a specific situation? Because if it is the second, you are defending our position, not defeating our motion.</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"Crisis intervention proves narrow necessity-based exceptions exist. It does not prove that mental illness justifies isolation from ordinary social life as a general social principle. Those are different claims."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "Mental illness does not reduce a person's claim to belong. The right response is support, not exile. Vote Proposition."</div>
+    <div class="emrg-quote">Closing: "Care without exile. Vote Proposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not claim no involuntary intervention is ever justified. Do not leave the treatment/exile distinction unexplained. Do not ignore proxy cases like safety concerns of others. Do not make the case all dignity and no operational model.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>The motion says isolation "is wrong" — full stop. Some isolation is justified. Justified exceptions defeat a universal moral claim. The motion is too broad.</div>
+
+    <div class="emrg-section">2 Core Frames</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Some separation is responsible care.</strong> Temporary, necessity-based, legally-governed, clinically-justified separation is not exile — but it is isolation from ordinary society, and it is sometimes right.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>Inclusion without capacity is not compassion.</strong> If the setting cannot safely provide what someone needs, insisting on inclusion is abandonment with better language.</div>
+
+    <div class="emrg-section">3 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Legal systems worldwide authorize compulsory detention — that is isolation from ordinary society, it is legally mandated, and it is not wrong.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>Acute psychosis and severe suicidal crisis can require supervised care that ordinary settings genuinely cannot provide — temporary separation is sometimes the form care takes.</div>
+    <div class="emrg-line"><span class="emrg-icon">3.</span>Prop has conceded that some therapeutic separation exists and is permitted — that concession defeats the universal motion.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">If you accept that some therapeutic separation is justified, what word in the motion creates room for the exception you have just conceded?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We agree inclusion is the right default. We deny that accepting a default requires accepting the motion's absolute language, which rules out justified exceptions. Default and universal rule are different things."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "We agree that stigma-based exclusion is wrong — and so does Prop. But the motion does not say stigma-based exclusion is wrong. It says isolation is wrong. Those are different claims."</div>
+    <div class="emrg-quote">Closing: "Some separation is responsible care. The motion cannot accommodate that truth. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not deny that inclusion is the right default. Do not imply mentally ill people are dangerous as a class. Do not defend broad exclusion — only necessity-based exceptions. Do not rely only on wording without moral substance.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
