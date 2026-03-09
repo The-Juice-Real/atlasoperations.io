@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Debate Prep — Allowing Citizens to Monitor Traffic Violations in Exchange for Rewards Is Wrong</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0b0f;
+  --ink:       #eceef5;
+  --ink-2:     #9ba3bc;
+  --ink-3:     #555e78;
+  --surf-1:    #13151d;
+  --surf-2:    #1a1d28;
+  --surf-3:    #22263a;
+  --line:      #252938;
+  --P:         #5b9cf6;
+  --P-bg:      #0d1e38;
+  --P-mid:     #1a3a6a;
+  --O:         #f2614a;
+  --O-bg:      #2a0d0a;
+  --O-mid:     #5a1a12;
+  --Y:         #f0c040;
+  --Y-bg:      #2a2208;
+  --G:         #3fcf8e;
+  --W:         #f97316;
+  --r-xs: 6px; --r-s: 10px; --r-m: 14px;
+  --t-xs:   clamp(10px, 1.8vw, 12px);
+  --t-s:    clamp(12px, 2.2vw, 13.5px);
+  --t-body: clamp(13px, 2.5vw, 15px);
+  --t-m:    clamp(14px, 2.8vw, 17px);
+  --t-l:    clamp(17px, 3.5vw, 22px);
+  --t-xl:   clamp(22px, 5vw,   32px);
+  --sp-xs: clamp(4px,1vw,6px); --sp-s: clamp(8px,2vw,12px);
+  --sp-m: clamp(12px,3vw,18px); --sp-l: clamp(18px,4vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;font-size:var(--t-body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:normal;color:var(--Y);font-weight:500;}
+
+.hdr{position:sticky;top:0;z-index:200;background:var(--surf-1);border-bottom:1px solid var(--line);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);}
+.hdr-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;}
+.hdr-motion{flex:1;font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;color:var(--ink-2);line-height:1.3;}
+.hdr-badge{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;background:var(--Y-bg);color:var(--Y);padding:3px 10px;border-radius:20px;white-space:nowrap;border:1px solid #4a3a10;}
+
+.tabbar{position:sticky;top:49px;z-index:199;background:var(--surf-1);border-bottom:2px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-s);gap:2px;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.05em;padding:10px 14px;border:none;background:none;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab:hover{color:var(--ink-2);}
+.tab.on{color:var(--ink);border-bottom-color:var(--Y);}
+
+.page{display:none;}
+.page.on{display:block;}
+.wrap{max-width:780px;margin:0 auto;padding:var(--sp-m) var(--sp-m) 80px;}
+
+.page-title{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:var(--sp-s);}
+.page-sub{font-size:var(--t-m);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-l);max-width:60ch;}
+.sec-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:var(--sp-m) 0 var(--sp-s);}
+
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.pp{background:var(--P-bg);color:var(--P);border:1px solid var(--P-mid);}
+.po{background:var(--O-bg);color:var(--O);border:1px solid var(--O-mid);}
+.py{background:var(--Y-bg);color:var(--Y);border:1px solid #4a3a10;}
+.pg{background:#0d2e1a;color:var(--G);border:1px solid #1a5a30;}
+.pw{background:#2a1a08;color:var(--W);border:1px solid #5a3010;}
+
+.card{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-m);margin-bottom:var(--sp-s);overflow:hidden;}
+.card.cp{border-color:var(--P-mid);}
+.card.co{border-color:var(--O-mid);}
+.card.cy{border-color:#4a3a10;}
+.card-hd{display:flex;align-items:center;gap:var(--sp-s);padding:var(--sp-s) var(--sp-m);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;border-bottom:1px solid transparent;transition:background .15s;}
+.card-hd:active{background:rgba(255,255,255,.03);}
+.card.cp .card-hd{background:rgba(91,156,246,.07);}
+.card.co .card-hd{background:rgba(242,97,74,.07);}
+.card.cy .card-hd{background:rgba(240,192,64,.05);}
+.card.open .card-hd{border-bottom-color:var(--line);}
+.card-hd-icon{font-size:18px;flex-shrink:0;}
+.card-hd-text{flex:1;min-width:0;}
+.card-hd-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;line-height:1.25;}
+.card-hd-sub{font-size:var(--t-s);color:var(--ink-3);font-family:'Literata',serif;font-weight:400;margin-top:1px;}
+.card-chev{color:var(--ink-3);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:var(--sp-xs);}
+.card.open .card-chev{transform:rotate(180deg);}
+.card-bd{display:none;padding:var(--sp-m);}
+.card.open .card-bd{display:block;}
+
+.quote{border-left:3px solid var(--Y);background:var(--Y-bg);border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-m);color:var(--ink);line-height:1.6;margin:var(--sp-s) 0;}
+.quote.qp{border-color:var(--P);background:var(--P-bg);}
+.quote.qo{border-color:var(--O);background:var(--O-bg);}
+
+.eg{background:var(--surf-3);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.eg-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.eg-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.div{border:none;border-top:1px solid var(--line);margin:var(--sp-m) 0;}
+
+.snap-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+@media(max-width:520px){.snap-split{grid-template-columns:1fr;}}
+.snap-side{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.snap-side.sp{border-color:var(--P-mid);background:rgba(91,156,246,.06);}
+.snap-side.so{border-color:var(--O-mid);background:rgba(242,97,74,.06);}
+.snap-side-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-s);}
+.sp .snap-side-title{color:var(--P);}
+.so .snap-side-title{color:var(--O);}
+.snap-point{display:flex;gap:var(--sp-s);padding:var(--sp-xs) 0;font-size:var(--t-body);line-height:1.65;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);}
+.snap-point:last-child{border-bottom:none;}
+.snap-dot{flex-shrink:0;color:var(--ink-3);margin-top:4px;}
+.key-fight{background:rgba(240,192,64,.06);border:1px solid #4a3a10;border-radius:var(--r-m);padding:var(--sp-m);}
+.key-fight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-s);}
+.key-fight p{font-size:var(--t-body);color:var(--ink-2);line-height:1.7;}
+.key-fight p+p{margin-top:var(--sp-s);}
+
+.strat-switcher{display:flex;gap:var(--sp-xs);margin-bottom:var(--sp-m);}
+.stab{flex:1;padding:var(--sp-s) var(--sp-m);border-radius:var(--r-s);font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surf-2);color:var(--ink-3);transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.stab.on-p{background:var(--P-bg);border-color:var(--P-mid);color:var(--P);}
+.stab.on-o{background:var(--O-bg);border-color:var(--O-mid);color:var(--O);}
+.strat-panel{display:none;}
+.strat-panel.on{display:block;}
+.route-row{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.route-row:last-child{border-bottom:none;}
+.route-tag{margin-bottom:var(--sp-s);}
+.route-what{font-size:var(--t-body);color:var(--ink);line-height:1.65;margin-bottom:var(--sp-xs);}
+.route-why{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.arg{padding:var(--sp-m) 0;border-bottom:1px solid var(--line);}
+.arg:last-child{border-bottom:none;padding-bottom:0;}
+.arg-header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s);}
+.arg-n{font-family:'Syne',sans-serif;font-size:var(--t-xl);font-weight:800;color:var(--line);line-height:1;flex-shrink:0;}
+.arg-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:700;line-height:1.2;color:var(--ink);}
+.arg-body{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;margin-bottom:var(--sp-s);}
+.arg-body+.arg-body{margin-top:calc(var(--sp-s) * -1 + var(--sp-xs));}
+
+.sowhat{background:var(--surf-1);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.sowhat-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--P);margin-bottom:var(--sp-xs);}
+.sowhat.so-o .sowhat-label{color:var(--O);}
+.sowhat-text{font-size:var(--t-body);color:var(--ink);line-height:1.75;}
+.sowhat-chain{display:flex;flex-direction:column;gap:var(--sp-xs);margin-top:var(--sp-xs);}
+.sowhat-step{display:flex;gap:var(--sp-s);align-items:flex-start;font-size:var(--t-body);color:var(--ink-2);line-height:1.65;}
+.sowhat-arrow{flex-shrink:0;color:var(--Y);font-weight:700;margin-top:2px;}
+
+.weight{background:var(--Y-bg);border:1px solid #4a3a10;border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;}
+.weight-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--Y);margin-bottom:var(--sp-xs);}
+.weight-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.judgeobj{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);margin:var(--sp-s) 0;border-left:3px solid var(--ink-3);}
+.judgeobj-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.judgeobj-q{font-size:var(--t-body);color:var(--ink-2);font-style:italic;margin-bottom:var(--sp-s);line-height:1.65;}
+.judgeobj-a{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.mini-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-s);}
+@media(max-width:480px){.mini-2{grid-template-columns:1fr;}}
+.mini-box{background:var(--surf-2);border-radius:var(--r-s);border:1px solid var(--line);padding:var(--sp-s) var(--sp-m);}
+.mini-box-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-xs);}
+.mini-box-text{font-size:var(--t-s);color:var(--ink-2);line-height:1.65;}
+
+.danger-row{display:flex;gap:var(--sp-m);padding:var(--sp-m) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.danger-row:last-child{border-bottom:none;padding-bottom:0;}
+.d-indicator{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;width:44px;padding-top:4px;}
+.d-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dh .d-dot{background:var(--O);box-shadow:0 0 6px var(--O);}
+.dm .d-dot{background:var(--W);box-shadow:0 0 6px var(--W);}
+.dl .d-dot{background:var(--G);box-shadow:0 0 6px var(--G);}
+.d-txt{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;}
+.dh .d-txt{color:var(--O);}
+.dm .d-txt{color:var(--W);}
+.dl .d-txt{color:var(--G);}
+.d-content{flex:1;min-width:0;}
+.d-attack{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);margin-bottom:var(--sp-s);line-height:1.3;}
+.d-answer{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+
+.clash{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:var(--sp-s);}
+.clash-hd{background:var(--surf-2);padding:var(--sp-s) var(--sp-m);display:flex;align-items:center;gap:var(--sp-s);flex-wrap:wrap;}
+.clash-title{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:700;color:var(--ink);line-height:1.2;}
+.clash-body{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:480px){.clash-body{grid-template-columns:1fr;}}
+.clash-side{padding:var(--sp-m);font-size:var(--t-body);color:var(--ink-2);line-height:1.75;}
+.clash-side:first-child{border-right:1px solid var(--line);background:rgba(91,156,246,.05);}
+@media(max-width:480px){.clash-side:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+.clash-side:last-child{background:rgba(242,97,74,.05);}
+.clash-side-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.clash-side:first-child .clash-side-label{color:var(--P);}
+.clash-side:last-child .clash-side-label{color:var(--O);}
+
+.poi-list{list-style:none;}
+.poi-item{display:flex;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+.poi-item:last-child{border-bottom:none;padding-bottom:0;}
+.poi-n{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;color:var(--ink-3);flex-shrink:0;width:20px;padding-top:4px;}
+.poi-text{font-size:var(--t-body);color:var(--ink-2);line-height:1.75;flex:1;}
+.poi-text strong{color:var(--ink);}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:500px){.role-grid{grid-template-columns:1fr;}}
+.role-card{background:var(--surf-2);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-m);}
+.role-name{font-family:'Syne',sans-serif;font-size:var(--t-m);font-weight:800;margin-bottom:var(--sp-s);line-height:1.2;}
+.role-do-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--G);margin-bottom:var(--sp-xs);}
+.role-dont-label{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--O);margin:var(--sp-s) 0 var(--sp-xs);}
+.role-line{display:flex;gap:var(--sp-s);font-size:var(--t-s);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-xs);}
+.role-icon{flex-shrink:0;}
+
+.opening-box{border-radius:var(--r-m);border-left:4px solid;padding:var(--sp-m);margin-bottom:var(--sp-s);font-size:var(--t-m);line-height:1.7;color:var(--ink);}
+.opening-box.op{background:var(--P-bg);border-color:var(--P);}
+.opening-box.oo{background:var(--O-bg);border-color:var(--O);}
+.opening-box-who{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--sp-s);}
+.op .opening-box-who{color:var(--P);}
+.oo .opening-box-who{color:var(--O);}
+.closing-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-top:var(--sp-m);}
+@media(max-width:500px){.closing-2{grid-template-columns:1fr;}}
+.closing-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.closing-panel.cp{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.closing-panel.co{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.closing-panel-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.cp .closing-panel-title{color:var(--P);}
+.co .closing-panel-title{color:var(--O);}
+.bullet-row{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.bullet-row:last-child{border-bottom:none;}
+.bullet-icon{flex-shrink:0;color:var(--ink-3);}
+
+.ev-table-wrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--line);}
+.ev-table{width:100%;border-collapse:collapse;font-size:var(--t-s);min-width:500px;}
+.ev-table th{background:var(--surf-2);color:var(--ink-3);font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:var(--sp-s) var(--sp-m);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+.ev-table td{padding:var(--sp-s) var(--sp-m);vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.65;}
+.ev-table tr:last-child td{border-bottom:none;}
+.ev-table tr:hover td{background:rgba(255,255,255,.02);}
+
+.trap-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);margin-bottom:var(--sp-m);}
+@media(max-width:500px){.trap-2{grid-template-columns:1fr;}}
+.trap-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.trap-panel.tp{border-color:var(--P-mid);}
+.trap-panel.to{border-color:var(--O-mid);}
+.trap-title{font-family:'Syne',sans-serif;font-size:var(--t-s);font-weight:700;margin-bottom:var(--sp-m);}
+.tp .trap-title{color:var(--P);}
+.to .trap-title{color:var(--O);}
+.trap-item{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;padding:var(--sp-xs) 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.trap-item:last-child{border-bottom:none;}
+
+.emrg-banner{background:rgba(242,97,74,.08);border:1px solid var(--O-mid);border-radius:var(--r-m);padding:var(--sp-m);margin-bottom:var(--sp-m);text-align:center;}
+.emrg-banner-title{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;color:var(--O);margin-bottom:var(--sp-xs);}
+.emrg-banner-sub{font-size:var(--t-body);color:var(--ink-2);}
+.emrg-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-s);}
+@media(max-width:540px){.emrg-2{grid-template-columns:1fr;}}
+.emrg-panel{border-radius:var(--r-m);border:1px solid;padding:var(--sp-m);}
+.emrg-panel.ep{border-color:var(--P-mid);background:rgba(91,156,246,.05);}
+.emrg-panel.eo{border-color:var(--O-mid);background:rgba(242,97,74,.05);}
+.emrg-who{font-family:'Syne',sans-serif;font-size:var(--t-l);font-weight:800;margin-bottom:var(--sp-m);}
+.ep .emrg-who{color:var(--P);}
+.eo .emrg-who{color:var(--O);}
+.emrg-section{font-family:'Syne',sans-serif;font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:var(--sp-m) 0 var(--sp-s);}
+.emrg-line{display:flex;gap:var(--sp-s);font-size:var(--t-body);color:var(--ink-2);line-height:1.7;margin-bottom:var(--sp-s);}
+.emrg-line:last-of-type{margin-bottom:0;}
+.emrg-icon{flex-shrink:0;color:var(--ink-3);margin-top:3px;}
+.emrg-quote{background:var(--surf-2);border-left:3px solid;border-radius:0 var(--r-xs) var(--r-xs) 0;padding:var(--sp-s) var(--sp-m);font-size:var(--t-body);line-height:1.7;color:var(--ink);margin-bottom:var(--sp-s);}
+.ep .emrg-quote{border-color:var(--P);}
+.eo .emrg-quote{border-color:var(--O);}
+.fatal{background:rgba(242,97,74,.1);border:1px solid var(--O-mid);border-radius:var(--r-s);padding:var(--sp-s) var(--sp-m);font-size:var(--t-s);color:var(--O);line-height:1.6;margin-top:var(--sp-m);display:flex;gap:var(--sp-s);align-items:flex-start;}
+</style>
+</head>
+<body>
+<!-- Paste this immediately after the opening <body> tag in your HTML files -->
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'mn', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<header class="hdr">
+  <span class="hdr-label">Motion</span>
+  <span class="hdr-motion">Allowing citizens to monitor traffic violations in exchange for rewards is wrong</span>
+  <span class="hdr-badge">Full Prep Packet</span>
+</header>
+
+<nav class="tabbar">
+  <button class="tab on"  onclick="go('snap',this)">📸 Snapshot</button>
+  <button class="tab"     onclick="go('strat',this)">🗺 Strategy</button>
+  <button class="tab"     onclick="go('pargs',this)">🔵 Prop Args</button>
+  <button class="tab"     onclick="go('oargs',this)">🔴 Opp Args</button>
+  <button class="tab"     onclick="go('atk',this)">⚔️ Attacks</button>
+  <button class="tab"     onclick="go('clash',this)">⚡ Clashes</button>
+  <button class="tab"     onclick="go('pois',this)">💬 POIs</button>
+  <button class="tab"     onclick="go('reb',this)">🥊 Rebuttals</button>
+  <button class="tab"     onclick="go('roles',this)">👤 Roles</button>
+  <button class="tab"     onclick="go('close',this)">🎯 Closings</button>
+  <button class="tab"     onclick="go('evid',this)">📋 Evidence</button>
+  <button class="tab"     onclick="go('traps',this)">🚫 Traps</button>
+  <button class="tab"     onclick="go('emrg',this)">🚨 Emergency</button>
+</nav>
+
+<!-- SNAPSHOT -->
+<div id="snap" class="page on"><div class="wrap">
+
+<h1 class="page-title">What Is This Debate Really About?</h1>
+<p class="page-sub">This debate is not about whether citizens should be allowed to report dangerous driving. Almost everyone agrees a witness to a serious road incident should be able to call the police. The real fight is whether the state should design and fund a system in which ordinary citizens are financially rewarded for monitoring and reporting other citizens' traffic violations. The reward — not reporting — is the pivot of the entire round.</p>
+
+<div class="snap-split">
+  <div class="snap-side sp">
+    <div class="snap-side-title">🔵 PROP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That rewarded citizen monitoring is the <strong>wrong enforcement design</strong> — not merely risky or imperfect, but fundamentally illegitimate — because the payment changes the nature of the arrangement in a way that cannot be engineered away by safeguards.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Prop does <strong>not</strong> need to show every version is catastrophically dangerous — only that something essential is corrupted by the reward, and that corruption survives Opposition's best-designed model.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: the state stops <strong>receiving help</strong> and starts <strong>purchasing peer accusation</strong> — and the front-end distortion this creates cannot be fixed by back-end verification.</span></div>
+  </div>
+  <div class="snap-side so">
+    <div class="snap-side-title">🔴 OPP MUST PROVE</div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>That at least one narrow, verified, state-controlled version of this model is <strong>not inherently wrong</strong>. If a reasonable design exists — verified evidence, modest post-verification reward, state control, abuse penalties — the motion's absolute claim fails.</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>Opp does <strong>not</strong> need to defend broad vigilante-style schemes — only the narrow, specific model they have defined. One reasonable non-wrong version defeats the word "wrong."</span></div>
+    <div class="snap-point"><span class="snap-dot">✦</span><span>The core story: the reward <strong>solves a real participation gap</strong> around a legitimate act in a public-risk space, and citizens report while the <strong>state decides</strong> — no coercive power is ever delegated to private citizens.</span></div>
+  </div>
+</div>
+
+<div class="key-fight">
+  <div class="key-fight-label">⚡ The Hidden Definitional Fight</div>
+  <p>The deepest disagreement in this debate is whether the financial reward is a minor implementation detail — a mechanism to make an otherwise legitimate act happen more reliably — or whether it is the moral and structural pivot that changes the entire character of the arrangement. Proposition will argue that the moment money enters the equation, the citizen is no longer a witness helping the state but a paid monitor with a financial stake in finding violations. Opposition will argue that the presence of a reward does not transform a legitimate act into a corrupt one, just as compensation does not corrupt many other legitimate public activities.</p>
+  <p>Whichever team frames this definitional line <strong>first and most clearly</strong> wins the structural advantage for the entire round. Prop loses if it cannot explain precisely what the reward does to the citizen's role. Opp loses if it defends reporting well but defends the reward badly.</p>
+</div>
+
+</div></div>
+
+<!-- STRATEGY -->
+<div id="strat" class="page"><div class="wrap">
+
+<h1 class="page-title">Best Routes to Win</h1>
+<p class="page-sub">Each team has multiple possible game plans. Know your safest route — the one you can always fall back on — and your highest-reward route for when the round is going well.</p>
+
+<div class="strat-switcher">
+  <button class="stab on-p" onclick="strat('sp','so',this)">🔵 Prop Routes</button>
+  <button class="stab"      onclick="strat('so','sp',this)">🔴 Opp Routes</button>
+</div>
+
+<div id="sp" class="strat-panel on">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Focus tightly on what the reward does to the enforcement pipeline before verification begins.</strong> The reward changes what citizens choose to monitor, film, and report. Verification is a back-end filter — it cannot fix a distorted front end. This is a structural argument that does not require assuming bad faith from anyone.</div>
+    <div class="route-why">This route is safe because it is mechanistic and institutional, not moral or emotional. It avoids the trap of sounding like Prop opposes all citizen reporting, and it is difficult for Opp to dismiss because it operates on incentive logic rather than assumptions about individual character.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>The state should not buy peer accusation as a tool of everyday civic enforcement.</strong> This argument operates at the level of civic principle — what kind of relationship between citizens and state a democratic society should institutionalize — and can be very persuasive to judges who think about the moral architecture of public law.</div>
+    <div class="route-why">The reward is high because this reframing lets Prop define the real stakes: not a policy question about effectiveness but a values question about whether the state should monetize the act of watching and reporting on neighbours' everyday conduct.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>"Ordinary reporting yes; paid monitoring no."</strong> Most judges have an intuition that these two things are different. Prop's job is to make that intuition precise and defensible — not a vague discomfort but a clear account of what changes when the state attaches financial reward to the act of peer monitoring.</div>
+    <div class="route-why">Judges respond to clarity. This distinction, stated plainly and returned to at every opportunity, is extremely persuasive. It also protects Prop from the "you oppose all citizen reporting" mischaracterization.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Turn Opp's defensive moves against them.</strong> Every safeguard Opp adds is an implicit concession that the underlying incentive creates a specific danger. The more they narrow, the more they prove the incentive is dangerous and the weaker their claimed benefit becomes.</div>
+    <div class="route-why">Use this when Opp has landed good hits. Name each safeguard and explain what danger it responds to. Show that Opp's survivable model is either broad and corrosive or narrow and marginal — there is no version that is both safe and meaningful enough to justify the moral cost.</div>
+  </div>
+
+</div>
+
+<div id="so" class="strat-panel">
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pg">✅ Safest Route</span></div>
+    <div class="route-what"><strong>Define a narrow, reasonable model from the first speech and defend it consistently throughout.</strong> Verified evidence. Meaningful violations. Modest post-verification reward. State control over all sanctions. Abuse penalties. This model only needs to be not-wrong to defeat the motion's absolute language.</div>
+    <div class="route-why">This route is safe because it requires no grand empirical claims — only showing that one reasonable version of the scheme is defensible. The motion says "wrong," not "sometimes problematic." One non-wrong version is sufficient.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">🎯 Highest-Reward Route</span></div>
+    <div class="route-what"><strong>Reframe the reward as the solution to a genuine collective-action problem, not as the source of a moral failure.</strong> Public goods are routinely underprovided when individuals bear all the cost and diffuse social benefit follows. A modest reward compensates for the hassle cost of completing a legitimate act — it does not corrupt the act's character.</div>
+    <div class="route-why">If Opp wins this framing, Prop's inclusion argument works against them: the call for citizen participation without any mechanism to overcome individual inertia is an aspiration, not a policy.</div>
+    <div class="eg"><div class="eg-label">📌 Example</div><div class="eg-text">Taiwan's citizen dashcam reporting scheme for traffic violations allows citizens to submit footage of violations and receive a share of the resulting fine only after verification by traffic police. The scheme has operated for years with broad public awareness and has not been characterised by systematic abuse or significant erosion of civic trust. This is a real, functioning model that demonstrates one reasonable version of the scheme can exist without crossing the moral line the motion identifies.</div></div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill py">👨‍⚖️ Most Judge-Pleasing Route</span></div>
+    <div class="route-what"><strong>"Citizens report; the state decides."</strong> No private citizen in this scheme punishes anyone, fines anyone, or exercises any coercive authority. All enforcement decisions are made by state officials applying legal criteria. The citizen's role is entirely evidential. Judges who are uncomfortable with vigilante justice will be reassured by this framing.</div>
+    <div class="route-why">This sounds credible rather than callous, keeps the ballot on the definitional question where Opp has the easier burden, and prevents Prop from winning on bounty-hunting framing without engaging with what actually happens in the scheme.</div>
+  </div>
+
+  <div class="route-row">
+    <div class="route-tag"><span class="pill pw">🛡 Fallback Route</span></div>
+    <div class="route-what"><strong>Press Prop repeatedly and specifically on "wrong."</strong> Every time Prop lands an argument about distortion or role corruption, acknowledge the concern and immediately ask: does this prove wrongness or imperfection? The distinction between "requires safeguards" and "is wrong" is enormous — and Prop must prove wrongness.</div>
+    <div class="route-why">Use this when Prop is clearly winning the principle argument. Point to their own concessions about narrow therapeutic separation and show that their survivable model also involves things they approve of but that amount to what Opp is defending.</div>
+  </div>
+
+</div>
+
+</div></div>
+
+<!-- PROP ARGS -->
+<div id="pargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔵 Prop's Three Arguments</h1>
+<p class="page-sub">Each argument targets a different dimension of why the reward makes the scheme wrong. Together they show that the reward changes the citizen's role, distorts the intake pipeline before verification begins, and that Opp's own defensive moves prove the incentive is the problem.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">The Reward Fundamentally Changes the Citizen's Role</span></div>
+  <p class="arg-body">When a citizen witnesses a traffic violation and reports it without any financial incentive, their role in the enforcement system is that of an incidental witness. They happened to see something and chose to pass that information on. They have no ongoing stake in the outcome. They are not scanning the road hoping to find violations. They are not choosing what to report based on ease of documentation or financial return.</p>
+  <p class="arg-body">The moment the state attaches a financial reward to the report, all of this changes. The citizen now has a financial stake in finding violations and in having those violations confirmed. They are no longer an incidental witness — they are an incentive-shaped monitor. The relationship between citizen and state has shifted from one in which the citizen is helping the state to one in which the state is purchasing a service: go out, monitor fellow citizens, find violations, and report them. That is a categorically different role, and the state has created it deliberately by design.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The United States' use of financial rewards for informants in drug enforcement provides a structurally analogous case. Multiple academic studies, including work reviewed in the context of asset forfeiture reform debates, have found that financial incentives for informants substantially distort the information reaching law enforcement. Informants are far more likely to report people they have personal grievances with, to target situations where seizure is profitable, and to structure their accounts to maximise payout likelihood. The point is not that all informants lie — it is that financial incentives change the selection and framing of information before any verification occurs. The same structural logic applies here.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp may point to the US IRS whistleblower programme, which pays informants a percentage of recovered funds for reporting tax fraud, as a legitimate and widely accepted financial-incentive reporting scheme. The reason this does not rescue the traffic scheme is that the IRS programme targets serious, hidden, large-scale financial crimes that are structurally invisible to formal enforcement — not everyday conduct that takes place in public and that any officer can observe directly. The social and institutional contexts are entirely different, and the analogy fails on that basis.</div></div>
+  <div class="quote">💬 Say this: "The state stops receiving help and starts buying accusation. That shift — from witness to financially motivated monitor — is the wrong the motion identifies, and it is created by design the moment the reward enters the equation."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>The reward gives citizens a financial stake in finding violations and having them confirmed — which changes their role from incidental witness to incentive-shaped monitor</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the state is not passively receiving help from citizens who happen to observe something — it is actively creating a class of financially motivated monitors with a stake in other citizens' violations</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the enforcement system now includes a layer of private actors systematically influenced by financial self-interest in deciding what to observe, whom to target, and what to report</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met: <strong>the scheme is wrong</strong> because the state has institutionalised paid peer monitoring — a state-designed structure in which citizens are purchased as monitors of one another's everyday conduct — and this crosses the line from legitimate enforcement support into something structurally and morally different.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Incentives Don't Corrupt Legitimate Acts" Response</div>
+    <div class="weight-text">Opp will say financial incentives are present in many legitimate activities and their presence does not automatically corrupt those activities. That is true as a general principle. The asymmetry is that in most legitimate compensated activities, the compensation is for a service performed — teaching, policing, nursing — and the activity's legitimacy does not depend on finding wrongdoing in other people. The citizen monitor's reward specifically depends on another citizen being found to have violated the law. That creates a structural conflict of interest different in kind from ordinary professional compensation. Prop's argument holds even after Opp's counter lands because the specific feature of the reward — contingency on a neighbour's guilt — is the problem, and that feature is not resolved by noting that other compensated activities exist.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't the problem what people do with the incentive, not the incentive itself? If someone acts professionally and honestly, why does the incentive structure matter?"</div>
+    <div class="judgeobj-a">Institutional design is not only about what honest actors do in ideal circumstances. It is about what incentive structures make systematically more likely across a population of diverse actors over time. Even if most participants act honestly, the structure of the incentive makes it systematically easier and more rewarding to over-report, to target specific individuals, and to omit inconvenient context. The judge should be thinking not about the best-case citizen monitor but about what the average behaviour of a large population of financially incentivised monitors looks like over time — and the structural incentive analysis tells us that picture is distorted.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Many socially useful activities are compensated. A reward for legitimate reporting does not make the reporting corrupt — it makes a legitimate act happen. The act's character comes from what the citizen observes and reports, not from whether they are paid.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">The specific feature that matters is that this reward is contingent on another citizen's guilt. That is different from ordinary compensation for a service. A teacher is not paid more when students fail. A nurse is not paid more when patients deteriorate. This reward depends on a neighbour being found wrong — and that structural feature changes everything.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Reward Distorts the Intake Pipeline Before Verification Begins</span></div>
+  <p class="arg-body">Opp will rely heavily on verification as their central safeguard. It is a real safeguard — it ensures that fines are only issued for genuine violations, and it is a meaningful protection against false reports. But verification happens at the back end of the process. What this argument addresses is what the financial incentive does at the front end: the stage at which citizens decide what to monitor, what to film, and what to submit. No verification mechanism can retroactively correct a distorted selection process.</p>
+  <p class="arg-body">When citizens are financially motivated to report violations, they will rationally gravitate toward violations that are easy to observe, easy to document on a phone camera, and highly likely to be confirmed by the reviewing authority. A car running a red light on a busy intersection is easy to film and hard to dispute. A driver who is demonstrably impaired but whose impairment requires expert assessment is much harder to document compellingly and much less likely to produce a payout. The incentive structure systematically favours the simple, frequent, and visually obvious over the serious and contextually complex — which means the state ends up receiving a case pool shaped by private incentives rather than genuine public-safety priorities.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The UK's experience with privately operated speed cameras provides a closely analogous institutional case. In the early 2000s, several local authorities in England contracted with private operators who received a share of revenue from speeding fines. Parliamentary and press investigations, including reporting by the BBC and review by the House of Commons Transport Committee, found that camera placement was disproportionately concentrated at locations generating high volumes of low-level speeding violations — drivers marginally above the limit on wide, straight, low-risk roads — rather than at high-accident-rate junctions where serious danger concentrated. The financial structure of the arrangement shaped what was monitored. The same logic applies to citizen monitoring: the reward shapes where the camera is pointed and what gets submitted, before anyone verifies anything.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp may point to Taiwan's citizen-reporting scheme and argue that it demonstrates high participation and functional operation. The volume of reports generated is not by itself proof that the right violations are being reported or that the case pool reflects genuine public-safety priorities rather than the distribution of easily filmable minor infractions. A high volume of reports is entirely consistent with Prop's prediction that the reward structure incentivises easy, frequent violations. The Taiwan example shows that participation was high — it does not show that the intake pipeline was undistorted.</div></div>
+  <div class="quote">💬 Say this: "Verification checks the back end. Our argument is about what the reward does to the front end. You cannot filter your way out of a distorted selection process."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Financial rewards shape citizen behaviour at the point of selection — what to watch for, what to film, and what to submit — before any verification occurs</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the state receives a case pool reflecting what is easy and financially worthwhile to report rather than what is genuinely dangerous or serious</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means enforcement resources are directed partly by private financial incentives rather than by systematic public-safety assessment</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met: <strong>the scheme is wrong</strong> because a state enforcement system that deliberately builds financial distortion into its intake process has surrendered a core feature of legitimate enforcement — that priorities are set by public-safety criteria, not by what is most profitable for private monitors to report.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "Category Restrictions Reduce Distortion" Response</div>
+    <div class="weight-text">Opp's strongest counter is that threshold requirements and category restrictions can limit the scheme to serious violations, reducing the distortion problem. That is a meaningful point and Prop should not dismiss it. But the asymmetry is this: category restrictions reduce the scope of the distortion; they do not eliminate the incentive to seek out the easiest cases within the permitted category. And the more restrictions Opp adds, the fewer eligible violations there are — which means participation drops and the scheme produces only marginal benefit. Prop wins either way: broad categories mean significant distortion, and narrow categories mean the scheme barely justifies the moral cost of its introduction.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't this true of every evidence-gathering system? Police officers also choose where to patrol based on what is easiest to enforce. Why is citizen monitoring worse?"</div>
+    <div class="judgeobj-a">Police officers are publicly employed professionals whose deployment decisions are subject to institutional oversight, policy directives, and public transparency requirements. Their incentive structure is designed and managed by the state. The citizen monitor's incentive structure is personal financial self-interest. When the state directs a police officer to patrol a school zone, it is exercising institutional authority over a public employee. When the state offers a financial reward to any citizen who films a violation, it is releasing an undirected incentive into the public and accepting whatever distorted output that incentive produces. These are not equivalent structures.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Restrict categories to meaningful violations, verify all evidence, and punish abuse — imperfect intake is still better than routine under-detection by formal enforcement alone.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">Category restrictions reduce the scope of distortion — they do not eliminate it within the permitted category. And the narrower the category, the smaller the participation and the smaller the claimed benefit. The narrowing reveals the dilemma: broad enough to matter means broad enough to distort.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">Opposition's Best Model Is Self-Defeating</span></div>
+  <p class="arg-body">This argument is structural and strategic, operating across the whole debate. To survive, Opp must narrow their model significantly. They need verified evidence requirements, meaningful-violation thresholds, modest post-verification rewards, penalties for false or malicious reports, state control over all enforcement decisions, and probably category restrictions on which violations qualify. Every single one of these safeguards is a direct response to a recognised danger in the scheme.</p>
+  <p class="arg-body">Opp does not add verification requirements because verification is pleasant — they add them because unverified reports are dangerous. They do not add penalties for false reports because such penalties are costless — they add them because false reports are a real and predictable problem. Each safeguard implicitly concedes that the underlying incentive creates a specific danger. Once all safeguards are in place, the scheme either produces marginal benefit and requires heavy administrative infrastructure to avoid being corrosive, or it is so restricted it barely justifies the moral cost of institutionalising paid peer monitoring.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The United States False Claims Act whistleblower provisions allow private individuals to sue on behalf of the government when they discover fraud against federal programmes, with successful relators receiving a portion of recovered funds. The scheme has significant safeguards — legal representation requirements, judicial oversight, strict pleading standards, and a government right to take over or dismiss cases. Despite all these safeguards, it has been extensively documented as generating large volumes of meritless or duplicative filings, substantial litigation costs, and strategic use by law firms hunting for profitable targets rather than genuine public harm. Even a heavily safeguarded financial-incentive reporting scheme produces significant distortions requiring constant management.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Opp</div><div class="eg-text">Opp will say that all responsible public policy requires safeguards, and safeguards do not prove a model is illegitimate — they prove it was responsibly designed. That is true as a general principle. The reason it does not rescue Opp here is that ordinary safeguards respond to ordinary implementation risks. The safeguards this scheme requires — abuse penalties, distortion-reduction mechanisms, anti-targeting provisions — are specifically antidotes to dangers generated by the core incentive of paying citizens to report neighbours. That is a different category of safeguard. It is not analogous to adding privacy protections to a public database. It is adding a specific antidote to a specific poison the scheme itself creates.</div></div>
+  <div class="quote">💬 Say this: "Their best model is either broad and corrosive or narrow and marginal. Every safeguard they add proves the incentive is dangerous. The cage reveals the nature of what it contains."</div>
+
+  <div class="sowhat">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Every safeguard Opp requires is a response to a danger the reward itself creates — verification against false reports, abuse penalties against targeting, category restrictions against distorted selection</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the more responsibly Opp designs their model, the more they implicitly admit that the raw incentive is dangerous</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the survivable Opp model is one so restricted and managed that its participation rates, case volumes, and enforcement benefits are marginal</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's standard is met: <strong>the scheme is wrong in design</strong> — a model requiring this much engineering to be minimally safe, and that after all that engineering produces only marginal benefit, has not demonstrated it is the right tool for the enforcement problem it claims to solve.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Opp's "One Decent Version Defeats the Motion" Response</div>
+    <div class="weight-text">Opp will correctly point out that one reasonable, narrowed model is sufficient to defeat an absolute claim — and they are right about the burden. The asymmetry is that Opp's own narrowing process shows their best model is reached by removing most of the features that made the scheme meaningful in the first place. If the "one decent version" that survives is a scheme of marginal benefit and heavy administrative cost, Prop does not need to prove wrongness in every version — it only needs to show that no version is both legitimate and useful enough to justify the moral cost of institutionalising paid peer monitoring. Opp's narrowed model fails that test.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Isn't it unfair to punish a policy for having safeguards? Does Prop want Opp to propose a reckless scheme with no safeguards so it can be more easily attacked?"</div>
+    <div class="judgeobj-a">No, and Prop should say so clearly. The issue is not that safeguards are bad. The issue is what specific dangers the safeguards are responding to. When safeguards are responses to dangers created by the core mechanism — when abuse penalties are specifically antidotes to the targeting and false-report behaviour the payment incentive predictably generates — their presence is evidence about the nature of that core mechanism. A safeguard against structural distortion proves the structure is distorting. That is the argument, and it is not about punishing responsible design.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Opp will say</div>
+      <div class="mini-box-text">Safeguards are normal policy design. All responsible public programmes include protections against misuse. The presence of safeguards is evidence the model was designed carefully, not evidence it is wrong.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Your defense</div>
+      <div class="mini-box-text">The specific safeguards this scheme requires are responses to specific dangers the payment structure creates. They are not generic good governance. They are antidotes to the predictable effects of the incentive itself — and antidotes prove the presence of poison.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- OPP ARGS -->
+<div id="oargs" class="page"><div class="wrap">
+
+<h1 class="page-title">🔴 Opp's Three Arguments</h1>
+<p class="page-sub">Opp's formula is consistent across all three arguments: acknowledge that the underlying act is legitimate, establish the public-risk context, and show that a modest reward makes that legitimate act actually happen. The goal is never to defend broad or reckless schemes — only to show that one reasonable, bounded version is not wrong.</p>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">01</span><span class="arg-title">Traffic Violations Are Legitimate Subjects of Citizen Evidence in a Public-Risk Space</span></div>
+  <p class="arg-body">Traffic violations are not private acts. They are committed in shared public space, by people operating machinery that can kill or seriously injure other road users and pedestrians, and they are subject to an extensive body of publicly known law that all drivers accept as a condition of using the road. When a driver runs a red light, drives while using a handheld phone, or overtakes dangerously, they are not engaging in private conduct affecting only themselves — they are imposing risk on other people who are present in the same shared space and who have no say in whether that risk is imposed on them.</p>
+  <p class="arg-body">This matters because one of the most important factors in deciding whether citizen evidence and citizen involvement in enforcement is legitimate is whether the conduct being reported is public or private in nature. Private conduct receives strong protection from observation and reporting. Public conduct in shared space, especially conduct that imposes risk on others, receives much weaker protection — because the person committing the conduct has already entered shared civic space and is already subject to the observation of everyone present. Traffic violations squarely fall in the public-risk category, and that makes citizen evidence especially appropriate here.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">The United Kingdom's National Dashcam Safety Portal, operated through Nextbase and coordinated with police forces across England and Wales, allows drivers to submit footage of dangerous driving for police review and potential prosecution. As of the early 2020s, the scheme had processed hundreds of thousands of submissions and resulted in significant numbers of prosecutions for serious driving offences including mobile phone use and dangerous overtaking. The scheme operates without financial reward — which is relevant to Prop's argument — but its legitimacy has not been seriously questioned. Roads are public, driving is regulated, and other road users have a direct interest in enforcement. This establishes the baseline: citizen evidence in this context is legitimate regardless of reward.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop may point to China's citizen-reporting schemes, which include traffic violations alongside a broader social credit infrastructure, as evidence that citizen monitoring of public conduct slides into authoritarian surveillance. The reason this example does not defeat Opp's argument is that the Chinese model is not an example of a narrow, verified, state-controlled reward scheme with meaningful safeguards. Its objectionable features — lack of judicial oversight, social credit integration, targeting of political dissent — are not features of the model Opp is defending. Comparing Opp's model to Chinese social credit is not a fair characterisation of what Opp has actually proposed.</div></div>
+  <div class="quote qo">💬 Say this: "This is not private spying. It is accountability in a public-risk space — where everyone present has a shared interest in enforcement, and where citizen observation is a natural consequence of shared civic life, not a violation of it."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Traffic violations occur in public space, impose risk on others, and are the subject of heavily regulated shared civic conduct</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means citizen observation of traffic violations is not surveillance in any meaningful sense — it is the natural consequence of being present in shared public space</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means citizen-submitted evidence of traffic violations is not an intrusion into private life but a form of accountability in a space where everyone has a shared interest in safety</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the moral foundation for citizen involvement in traffic enforcement is especially strong — and this directly defeats the strongest intuition behind the motion's claim of wrongness: that paying citizens to report one another violates the social compact. In public-risk space, <strong>the social compact already requires compliance with safety rules</strong>, and enforcing those rules is a matter of shared social interest, not surveillance.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Public Space Justifies Evidence, Not Payment" Response</div>
+    <div class="weight-text">Prop's best counter is that public visibility may justify reporting but does not by itself justify the reward. That counter is correct and Opp should concede it cleanly — this argument is not trying to prove the reward is justified on its own. It is establishing that the baseline act of citizen reporting is legitimate in this context, which defeats any framing that treats the whole scheme as analogous to paid surveillance or informant culture. The reward is justified separately by the participation argument. This argument defeats the most powerful moral intuition behind Prop's case before the reward is even discussed.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If roads are public and violations observable by anyone, why is formal enforcement inadequate? Surely police presence is the right answer, not citizen monitoring."</div>
+    <div class="judgeobj-a">Formal enforcement is structurally incomplete. Traffic networks are enormous, police are finite, and the ratio of violations to enforcement officers means a very large number of genuine public-safety violations are never observed by formal authorities. The question is not whether formal enforcement is adequate in principle but whether it is adequate in practice. The evidence consistently suggests it is not — which is precisely why the participation argument matters. This argument establishes the right context for understanding why citizen reporting exists; the participation argument establishes why the reward is needed.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">Public space justifies citizen evidence being admissible. It does not justify paying citizens to go out and monitor one another. The public nature of roads is not a blank check for whatever enforcement mechanism you attach to it.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Correct — this argument establishes the legitimacy of the underlying act, not of the reward. The reward is justified separately. But you need to defeat the legitimacy argument before you can attack the reward — and Prop has not done that because they have conceded that citizen reporting is legitimate.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">02</span><span class="arg-title">The Reward Solves a Real Collective-Action Problem in Public-Safety Reporting</span></div>
+  <p class="arg-body">The collective-action problem in public-safety reporting is well understood. The social benefit of a dangerous driver being reported and acted on is diffuse — shared by everyone who uses that road. The individual cost of making a report is concentrated — it falls on the specific person who happened to have footage, who must take time to save it, find the reporting platform, upload evidence, and provide a statement. In economics, this structure — diffuse benefits, concentrated individual costs — routinely leads to under-provision of the public good. People will not invest personal time and hassle in producing benefits that they themselves will barely notice.</p>
+  <p class="arg-body">A modest financial reward addresses this problem directly. It does not create the legitimacy of reporting — that legitimacy already exists, as established in Argument 1. What it does is make it economically rational for individuals to complete the reporting process rather than simply deleting their dashcam footage at the end of the day. The reward does not transform a principled act into a corrupt one. It reduces the net personal cost of doing something socially valuable enough that people actually do it rather than intending to do it and then not getting around to it.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Several Australian states have operated schemes in which members of the public, particularly professional drivers, can report observations of unsafe heavy vehicles — overloading, fatigued driving, unsafe loads — and receive small payments for verified reports through the National Heavy Vehicle Regulator framework. The consistent finding is that modest financial incentives increase reporting participation among people who already have the relevant observation and the legitimacy to report — they simply lack the personal incentive to complete the reporting process. The reward is not creating new monitors; it is enabling existing witnesses to follow through.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will argue that the participation problem can be solved through civic education, better reporting infrastructure, and social norming campaigns without financial incentives. They may point to high road safety culture countries like Denmark and the Netherlands. The reason this counter fails is that it confuses high-compliance cultures with effective violation reporting. Scandinavian road safety success is largely attributable to high formal enforcement presence and good road design, not to high rates of citizen reporting. Importing the outcome without the cultural and institutional conditions that produced it is not a realistic alternative for most jurisdictions.</div></div>
+  <div class="quote qo">💬 Say this: "The reward does not create legitimacy. It makes legitimate reporting happen. Those are different things. Solving under-participation around a legitimate act is exactly what good enforcement design should do."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Diffuse public benefits and concentrated individual reporting costs predictably produce under-participation in public-safety reporting</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means genuine traffic violations that could be reported and acted on are routinely not reported because individuals lack sufficient personal incentive to complete the process</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means roads are less safe than they could be even where the evidence for enforcement exists and the reporting is legitimate</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion's claim of wrongness fails: the reward is not a corruption of a functioning system — it is a mechanism for making a legitimate system actually function. <strong>A tool that makes legitimate enforcement happen more reliably is not wrong</strong> — it is doing exactly what a well-designed enforcement mechanism should do.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Solving Non-Participation Doesn't Justify Corrupting the Role" Response</div>
+    <div class="weight-text">Prop's best counter is that solving non-participation does not justify corrupting the reporting role through financial incentive. The asymmetry here is that this counter assumes the reward corrupts the role — which is precisely what is in dispute. If the underlying act is legitimate and the reward is modest, post-verification, and bounded in design, the reward is not transforming a principled act into a self-interested one. It is compensating for the transaction cost of completing a principled act. The corruption claim depends on the reward being large enough and structurally significant enough to change the fundamental motivation. A modest post-verification payment for submitting verified evidence of a genuine public-safety violation does not meet that threshold.</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"If the participation problem is real, is the right solution to pay citizens, or to increase police numbers and invest in formal enforcement?"</div>
+    <div class="judgeobj-a">These are not mutually exclusive, and the motion does not ask whether this is the only solution — it asks whether this solution is wrong. Even if more police would be better, that does not make citizen-submitted verified evidence wrong. In practice, formal enforcement budgets are constrained across almost all jurisdictions. The participation incentive is a complement to formal enforcement, not a substitute for it. Saying the right answer is better police funding is a counsel of perfection that does not address the practical enforcement reality. And a legitimate supplementary mechanism is not wrong simply because a better but unavailable alternative also exists.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">The participation problem can be solved through civic education, better reporting platforms, and unpaid reporting — all without the moral cost of introducing financial incentive. Under-participation doesn't justify the wrong tool.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">Show us the evidence that unpaid reporting produces adequate participation levels. In every real-world jurisdiction, unpaid dashcam reporting is underused. The aspiration to solve the participation problem without reward is not a policy — it is an assumption that contradicts the evidence on how collective-action problems are actually resolved.</div>
+    </div>
+  </div>
+</div>
+
+<div class="arg">
+  <div class="arg-header"><span class="arg-n">03</span><span class="arg-title">One Reasonable Model Defeats the Motion's Absolute Claim</span></div>
+  <p class="arg-body">The motion says "wrong." Not sometimes problematic. Not potentially abused. Not requiring careful design. Wrong — an absolute moral judgment that should not happen, that doing it is blameworthy. An absolute claim of this form is defeated if a meaningful, defensible version of the scheme exists that is not wrong. Opp does not need to show that every version of a citizen-reporting reward scheme is legitimate. It only needs to show that one narrow, reasonable, well-designed version is not inherently wrong.</p>
+  <p class="arg-body">That version is this: citizens submit dashcam or mobile footage of specific categories of serious or repeat traffic violations. The footage is reviewed by trained traffic officers applying legal criteria. No fine is issued until review confirms a violation. A modest reward — the equivalent of a small administrative fee — is paid only after successful verification. Reports found to be fabricated or malicious result in penalties for the reporter. The state retains all coercive power: the decision to fine, the amount, any further enforcement action. Citizens do not punish anyone. They submit evidence. The state decides. This model is not wrong. One non-wrong version defeats the motion.</p>
+  <div class="eg"><div class="eg-label">📌 Real Example</div><div class="eg-text">Taiwan's citizen-reporting scheme for traffic violations functions broadly along these lines: citizens submit dashcam footage, traffic police review and confirm violations, fines are issued by the state, and reporters receive a share of the fine only after verification. The scheme has been operational for many years, has broad public awareness, and has not been characterised by systematic abuse or significant erosion of civic trust. If Taiwan's scheme is not wrong — and it is difficult to make the case that it is — the motion fails.</div></div>
+  <div class="eg"><div class="eg-label">📌 Counter-Example and Why It Does Not Win for Prop</div><div class="eg-text">Prop will argue that Taiwan's scheme has produced the exact distortions they predict — concentration of reports on easy violations, targeting of specific individuals. Some of this criticism has appeared in Taiwanese press and academic commentary. The reason this does not defeat Opp's argument is that some distortion in the scheme's operation does not prove the scheme is wrong in principle. Prop must prove wrongness, not imperfection. If the distortions are manageable and the state retains enforcement authority, the scheme is an imperfect but legitimate tool — and imperfect legitimate tools are not wrong.</div></div>
+  <div class="quote qo">💬 Say this: "The motion says 'wrong.' Prop needs to show wrongness — not imperfection, not risk, not difficult design. One reasonable version that survives that test is enough, and we have put that version on the floor."</div>
+
+  <div class="sowhat so-o">
+    <div class="sowhat-label">⛓ So What? — Why This Wins the Motion</div>
+    <div class="sowhat-chain">
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>A narrow, verified, state-controlled reward scheme exists and is defensible — one in which citizens submit evidence, the state verifies and sanctions, rewards are modest and post-verification, and abuse is penalised</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the absolute claim in the motion — that allowing this is wrong — cannot survive, because it requires showing that no reasonable version is legitimate</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means Prop must prove wrongness in principle, not wrongness in bad implementations</div>
+      <div class="sowhat-step"><span class="sowhat-arrow">→</span>Which means the motion fails on its own terms: <strong>one non-wrong version is enough</strong>, and the narrow, verified, bounded model Opp has described throughout this round is that version.</div>
+    </div>
+  </div>
+
+  <div class="weight">
+    <div class="weight-label">⚖️ Why This Outweighs Prop's "Narrow Model Barely Justifies the Moral Cost" Response</div>
+    <div class="weight-text">Prop's best counter is that the narrower the model, the weaker it is, and a scheme of marginal benefit does not justify the moral cost of introducing it. The asymmetry is that this argument sets a false threshold. Opp does not need to show the scheme produces enormous benefits. It needs to show some real, legitimate benefit without crossing the moral line the motion identifies. A scheme that verifiably increases detection of dangerous driving even marginally, without corrupting the enforcement process or institutionalising peer surveillance, is not wrong. It is simply modest. Modest and legitimate is sufficient to defeat the motion — the motion does not say "wrong unless sufficiently impactful."</div>
+  </div>
+
+  <div class="judgeobj">
+    <div class="judgeobj-label">🧑‍⚖️ Silent Judge Objection — Answer This Before They Think It</div>
+    <div class="judgeobj-q">"Can Opposition always narrow any policy until it is safe, and then use that narrowed version to defeat any motion? Doesn't this logic work for anything?"</div>
+    <div class="judgeobj-a">No — narrowing works as a defence only when the core act being enabled remains legitimate after the narrowing. If the core act were monitoring private behaviour, or purchasing information about political activity, narrowing would not save it because the core is illegitimate regardless of design. Here, the core act — submitting evidence of a traffic violation in public space — remains legitimate after narrowing because the public-space and public-risk foundations still hold. Narrowing works here because there is a legitimate core to narrow toward, and the narrow version genuinely does reach that core rather than just reducing the worst features of something still wrong in principle.</div>
+  </div>
+
+  <div class="mini-2">
+    <div class="mini-box">
+      <div class="mini-box-label">🔵 Prop will say</div>
+      <div class="mini-box-text">The narrower the model, the less it justifies the moral cost. A scheme that needs heavy safeguards and produces marginal benefit has not earned the right to exist given what it costs civically to introduce paid peer monitoring.</div>
+    </div>
+    <div class="mini-box">
+      <div class="mini-box-label">🔴 Your defense</div>
+      <div class="mini-box-text">The motion asks whether it is wrong — not whether it produces enormous benefits. Modest and legitimate defeats an absolute claim. The motion says wrong; Prop needs to show wrongness, not insufficient impact. Those are different tests, and we are being held to the wrong one.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ATTACKS -->
+<div id="atk" class="page"><div class="wrap">
+
+<h1 class="page-title">⚔️ What They'll Throw at You</h1>
+<p class="page-sub">These are the most common and dangerous attacks each side will face. The danger level tells you how much preparation time to invest. Read the defense carefully — the goal is not to memorize lines but to understand the logic so you can adapt it under pressure.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on PROP — if you're arguing FOR the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"One reasonable, verified, narrow model is enough to defeat 'wrong.' You need to prove wrongness in principle, not just risk in bad versions."</div>
+        <div class="d-answer">Accept the burden framing — it is correct. Then show that even the narrow, verified model embeds the features Prop argues are wrong: a financial stake in finding a neighbour's violations, and a front-end distortion that verification cannot fix. Prop's argument is not "bad implementations are bad." It is "the core incentive — paying citizens to monitor one another — is the wrong design principle, and the narrow model still embeds that principle." Wrongness lies in the design, not only in outcomes.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Roads are public. Violations impose risk on others. Citizen evidence is legitimate here — why is the reward the problem if the underlying act is fine?"</div>
+        <div class="d-answer">Agree that the underlying act is legitimate — Prop has said this from the start. Then hold the specific line: public visibility justifies citizen evidence being admissible. It does not justify the state creating a financial incentive for citizens to systematically monitor one another. The nature of the space changes the evidence law; it does not change the moral character of what the state is purchasing. The question is not whether the evidence is valid but whether the state should build a payment system to incentivise its collection.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Police cannot be everywhere. Unpaid reporting is insufficient. Are you defending under-enforcement as preferable to imperfect verified citizen reporting?"</div>
+        <div class="d-answer">Acknowledge that under-enforcement is a real problem — Prop's position is not that it should be ignored. Then challenge the implication that the first available mechanism to address under-enforcement is therefore not wrong. Better targeted formal enforcement, automated camera systems with independent oversight, and civic reporting without financial incentive are all alternatives. Under-enforcement does not justify the wrong tool; it justifies finding the right tool. Prop argues this is the wrong tool — and the argument for that is the role-change and pipeline distortion case, not a claim that under-enforcement is acceptable.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Citizens report; the state decides. Every coercive decision is made by state officials. How is this bounty hunting if the citizen has no coercive power whatsoever?"</div>
+        <div class="d-answer">Acknowledge that this framing is accurate as a description of the formal structure. Then explain that Prop's argument is not about who makes the final enforcement decision. It is about what the state has bought: a service in which private citizens are financially motivated to monitor and report one another's everyday conduct. The state's control over the eventual fine does not change the fact that the state has created a market in peer monitoring. State control over the sanction is a necessary condition for legitimacy, not a sufficient one.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"If evidence is verified and the driver genuinely violated the law, why do the reporter's motives matter? The truth of the violation is what counts."</div>
+        <div class="d-answer">Because motives shape what gets reported, not just whether each reported thing is true. A reporter with a financial stake in finding violations is more likely to film selectively, to submit footage that omits exculpatory context, and to target specific individuals rather than reporting objectively. Even if every submitted violation is verified as real, the selection of what to submit and how to frame it is not subject to that verification. Truth of violation is necessary for a legitimate fine. It is not sufficient for a legitimate enforcement system.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">Attacks on OPP — if you're arguing AGAINST the motion</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"The reward changes the role — the state is buying peer accusation, not receiving help. That is a structural wrong that no safeguard removes."</div>
+        <div class="d-answer">Engage directly with the role-change argument rather than dismissing it. Acknowledge that financial incentives change motivation — then show why the change does not reach the level of wrongness the motion requires. The citizen's reward is tied to verified evidence of a real violation in a public-risk space, not to the act of accusation itself. Verification severs the reward from mere accusation and ties it to confirmed reality. Mixed motives do not erase public value when the output is independently verified. A doctor financially compensated for correct diagnoses is not morally corrupted by having a financial interest in finding treatable conditions.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Verification checks the back end. It cannot fix a distorted front end — the selection of what to film and submit is shaped by financial incentive before verification begins."</div>
+        <div class="d-answer">Acknowledge this is a real concern rather than dismissing it. Then hold the specific counter: all enforcement systems have intake distortions. Police patrol routes reflect institutional incentives, resource constraints, and demographic assumptions. The question is not whether this scheme has intake distortion — it does — but whether that distortion is worse than the distortions already present in formal enforcement, and whether it is manageable through design. Category restrictions limit the distortion to the qualifying violations. Opp argues the residual distortion is acceptable — Prop must show it is not merely imperfect but wrong.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Every safeguard you add proves the incentive is dangerous. You are building antidotes to the poison your own scheme creates."</div>
+        <div class="d-answer">Accept the rhetorical framing of safeguards as evidence of risk — then show why risk does not equal wrongness. All public programmes have safeguards in response to identified risks. A drug approval process has rigorous testing requirements because drugs can cause harm; that does not make drug approval wrong. What matters is whether the residual risk after safeguards is acceptable and whether the benefit justifies it. Opp's position is yes on both counts — and one non-wrong version is enough to defeat the motion's absolute claim.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dh">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">High</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Your narrowest model produces marginal benefit. The moral cost of institutionalising paid peer monitoring is not justified by a small increment above formal enforcement."</div>
+        <div class="d-answer">Challenge the implied threshold. The motion asks whether the scheme is wrong — not whether it produces enormous benefits relative to moral cost. Modest and legitimate defeats an absolute claim of wrongness. Prop is effectively arguing that a legitimate tool with modest benefit is wrong because its benefit is insufficient. That is not the standard "wrong" sets. Opp does not need to prove the scheme is transformative — only that it is not wrong. A small, legitimate, verified improvement in public-safety enforcement is not wrong.</div>
+      </div>
+    </div>
+
+    <div class="danger-row dm">
+      <div class="d-indicator"><div class="d-dot"></div><div class="d-txt">Med</div></div>
+      <div class="d-content">
+        <div class="d-attack">"Narrow model or not, the state is still creating a financial market in watching and reporting on neighbours. That is not the right civic relationship regardless of how well-designed the market is."</div>
+        <div class="d-answer">This is Prop's most principled attack and deserves a principled answer. The state routinely creates financial incentives around civic acts — jury duty compensation, witness fees, recycling deposit returns. The question is whether this specific incentive, for this specific act, in this specific context, crosses a moral line. Opp's position is that submitting verified evidence of a genuine public-safety violation in a shared-risk space, in exchange for a modest post-verification payment, does not cross that line. Prop must identify the specific principle violated — not just assert discomfort with the general idea of payment for civic acts.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLASHES -->
+<div id="clash" class="page"><div class="wrap">
+
+<h1 class="page-title">⚡ The 5 Big Clashes</h1>
+<p class="page-sub">These are the five points where the two sides most directly contradict each other. Winning the debate means winning at least two or three of these clashes convincingly. Know which ones your side has the easier burden before the round starts.</p>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Easier Burden</span><span class="clash-title">Clash 1 — What Changes When the Reward Is Added?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the reward does not simply increase the frequency of an otherwise identical act — it changes the nature of what the citizen is doing. From incidental witnessing to motivated monitoring. The change is not in degree but in structural character: the citizen now has a financial stake contingent on a neighbour's guilt. Prop must show this change is morally significant and structurally consequential, not merely a difference in motivation level.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That a citizen who reports a genuine violation for a modest reward is not doing something categorically different from a citizen who reports the same violation without reward. The act is the same: observing real conduct in public space and submitting evidence. Financial motivation is present in many legitimate civic activities without corrupting them. Opp must explain what the reward adds without conceding that it also adds a problematic financial stake in other citizens' violations.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: has the reward changed the moral character of the act or merely its incentive structure? The judge will be persuaded by whichever side gives the clearest mechanical account of what the reward does. Prop loses this clash by arguing that any financial incentive automatically corrupts any act — judges know this is too broad. Opp loses it by failing to explain why the reward does not change the citizen's relationship to the enforcement process — saying "the reward just makes people do it" without addressing the structural role change is insufficient.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Easier Burden</span><span class="clash-title">Clash 2 — Does Verification Solve the Main Harm?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the main harm is not at the back end — wrongly issued fines — but at the front end: the distorted selection of what gets filmed and submitted, driven by financial incentives before verification begins. Prop must show verification is a back-end filter that cannot reach front-end distortion, and that this distinction is both real and significant.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That the combination of verification, category restrictions, and abuse penalties reduces the distortion to a level no worse than the intake distortions already present in formal enforcement. All enforcement systems have selection effects. The question is whether this one's distortion is worse than the status quo — and Opp argues it is not.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking a practical question about mechanism: how much distortion does the reward actually add, and how much does verification reduce it? Prop wins if it can show front-end distortion is systematic and verification cannot reach it. Opp wins if it can show the distortion is bounded, comparable to existing enforcement distortions, and manageable through design. Prop loses by treating all distortion as equivalent and catastrophic. Opp loses by treating verification as if it solves the problem entirely rather than acknowledging it reduces but does not eliminate front-end distortion.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill py">Even Fight</span><span class="clash-title">Clash 3 — Bounty Logic or Public Accountability?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the presence of financial reward, attached to a citizen's decision to monitor and report another citizen's conduct, is structurally analogous to bounty systems in which private actors have a financial stake in finding and pursuing other private actors. The relevant feature of bounty hunting is the privatisation of enforcement motivation — not necessarily the use of force.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That bounty hunters exercise force and coercion — they pursue, detain, and apply physical power. Citizens in this scheme observe, film, and submit. The coercive power remains entirely with the state. The relevant and disqualifying feature of bounty hunting is force, not financial motivation, and this scheme has neither the former nor the problematic version of the latter.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is deciding which feature of bounty systems makes them problematic — coercion or privatised financial motivation. If coercion is the problem, Opp wins because this scheme has none. If privatised financial motivation in enforcement is the problem, Prop wins because this scheme has that. Prop loses by relying on the moral intuition that bounty hunting feels wrong without specifying which feature is present here. Opp loses by assuming the only problem with bounty systems is force, without engaging with Prop's argument about what financial motivation in enforcement does to civic structure.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill pp">Prop Has Easier Burden</span><span class="clash-title">Clash 4 — Do Safeguards Save the Model or Expose Its Weakness?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That the specific safeguards Opp requires are not ordinary good policy design — they are specific antidotes to dangers created by the payment structure. Verification against false reports, abuse penalties against targeting, distortion-reduction mechanisms against selection effects — these are responses to dangers the incentive itself generates. Their presence is evidence about the nature of the incentive.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That all responsible policy design includes safeguards, and safeguards are evidence of careful design rather than inherent danger. The same safeguards — verification, oversight, abuse penalties — appear in many legitimate public programmes. Their presence does not indicate the core mechanism is illegitimate.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking: are these safeguards the kind that any responsible programme includes, or are they specifically designed to contain dangers created by this scheme's core mechanism? Prop wins if it can show these safeguards are specific antidotes to specific dangers the incentive generates. Opp wins if it can show these are generic good governance measures not different in kind from safeguards in any legitimate programme. Prop loses by treating all safeguards as equivalent evidence of inherent danger. Opp loses by refusing to acknowledge that abuse penalties and distortion-reduction requirements are specifically responding to the incentive structure rather than to generic implementation risks.</div>
+  </div>
+</div>
+
+<div class="clash">
+  <div class="clash-hd"><span class="pill po">Opp Has Easier Burden</span><span class="clash-title">Clash 5 — Is the Burden Legitimacy or Marginal Utility?</span></div>
+  <div class="clash-body">
+    <div class="clash-side">
+      <div class="clash-side-label">Prop Must Win This By Showing</div>
+      That even if the narrow, safeguarded model produces some real enforcement benefit, the moral cost of institutionalising paid citizen monitoring is not worth that benefit — that some tools remain wrong even when they are effective, because the way they function crosses a line public law should not cross. Prop must name the specific principle violated.
+    </div>
+    <div class="clash-side">
+      <div class="clash-side-label">Opp Must Win This By Showing</div>
+      That a model producing genuine, verified, bounded public-safety benefit in a legitimate context is not wrong by any reasonable definition of that term. Modest and legitimate is sufficient to defeat an absolute claim. The motion does not say "wrong unless sufficiently impactful" — it says wrong, and one non-wrong version defeats that.
+    </div>
+  </div>
+  <div class="judgeobj" style="margin:0;border-radius:0 0 var(--r-m) var(--r-m);border-top:1px solid var(--line);">
+    <div class="judgeobj-label">⚖️ How a Judge Will Weigh This Clash</div>
+    <div class="judgeobj-q">The judge is asking the deepest question in the debate: is there a moral principle that makes rewarded citizen monitoring wrong even when it works in a narrow, verified form? Prop needs a specific named principle — not vague discomfort. "The state should not purchase peer accusation in everyday civic life" is a principle. "It feels uncomfortable" is not. Opp needs to show its model respects the relevant civic values: state control over coercion, evidential basis for enforcement, proportionality of rewards, protection against abuse. Prop loses by relying on intuition without principle. Opp loses by treating marginal utility as automatically sufficient without addressing whether some things are wrong even when useful.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- POIs -->
+<div id="pois" class="page"><div class="wrap">
+
+<h1 class="page-title">💬 Best Questions to Ask</h1>
+<p class="page-sub">A good POI does one of two things: it exposes a gap in the other side's argument, or it forces them to concede something they would rather not say out loud. Have your top three ready from memory so you can deliver them calmly and confidently under any conditions.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">If citizen reporting is already legitimate without the reward, what specifically does the reward add — and why is what it adds not a problem?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If the reward is small enough not to distort behaviour, why would it be large enough to solve the participation problem you have identified? Small enough to be safe or big enough to work — which is it?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">Your verification mechanism checks whether submitted footage shows a real violation. Does it also fix the distorted selection of what gets filmed and submitted in the first place?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">If your model needs narrow categories, verified evidence, modest reward, and abuse penalties — how much enforcement benefit is left, and is that benefit enough to justify introducing paid peer monitoring?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Are you defending the principle that citizens should report traffic violations, or specifically defending the principle that citizens should be paid to do so? Because only the second is your motion.</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Opp attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "reporting dangerous driving is obviously good":</strong> We agree. We oppose the state paying citizens to go out and monitor one another for violations in exchange for financial reward. A citizen who sees a dangerous driver and reports it is helping society. A citizen systematically monitoring traffic for financial return is doing something categorically different, and only the second is what we oppose.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "why is a modest reward morally transformative":</strong> The size of the reward is relevant but not the central issue. The central issue is structural — when the state attaches financial reward to reporting a neighbour's violation, the citizen has a financial stake in that neighbour being found guilty. That structural relationship — regardless of the reward amount — is what changes the civic role from witness to incentive-shaped monitor.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "what is your alternative to under-enforcement":</strong> Better targeted formal enforcement, automated camera systems with independent oversight, and civic reporting without financial incentive. Under-enforcement is a real problem that deserves a properly designed solution — not the first available mechanism regardless of what it costs civically to introduce it.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "if safeguards exist, what is left of your objection":</strong> The objection is about the structure of the incentive, not only its consequences. Safeguards prove the incentive is dangerous by showing what specific behaviours it predictably generates. A well-caged danger is safer than an uncaged one — but the cage does not make the danger appropriate to introduce in the first place.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "citizens report, the state decides — so how is this a problem":</strong> We agree the state retains all coercive authority. Our argument is not about who makes the enforcement decision. It is about what the state has purchased: a service in which private citizens are financially motivated to monitor one another's everyday conduct. State control over the sanction is necessary for legitimacy — it is not sufficient for it.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp's Best POIs</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="sec-label" style="padding-top:0">⚔️ Offensive — ask these to attack their case</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text">You accept that citizen reporting is legitimate. Can you name the specific moral principle that makes a modest, verified, post-verification reward for that legitimate act wrong?</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text">If formal enforcement cannot observe most traffic violations, and unpaid reporting is insufficient to compensate, are you prepared to say that under-enforcement is preferable to imperfect verified citizen reporting?</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text">If the state verifies the evidence, issues the fine, and retains all coercive authority, in what specific sense is this bounty hunting rather than ordinary state enforcement supported by citizen evidence?</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text">The motion says "wrong" — not "sometimes abused" or "requiring care." Where specifically in your case have you proved categorical wrongness rather than difficulty or risk?</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text">Would you support a scheme in which citizens submit verified evidence of traffic violations for no reward at all — and if so, what exactly does your case prove about the reward specifically?</span></li>
+    </ul>
+    <div class="sec-label">🛡 Defensive — say these when Prop attacks you</div>
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">01</span><span class="poi-text"><strong>On "the state is buying suspicion":</strong> The reward is tied to verified evidence of a real violation — not to the act of accusation. A reporter receives nothing if the footage does not confirm a genuine violation. That severs the reward from accusation and ties it to confirmed public reality. Buying verified evidence of genuine public-safety violations is categorically different from buying suspicion.</span></li>
+      <li class="poi-item"><span class="poi-n">02</span><span class="poi-text"><strong>On "you only have narrow edge cases":</strong> Our cases include real, operating schemes in multiple jurisdictions — Taiwan, Australia's heavy vehicle reporting, UK dashcam portals. These are not hypothetical models. The claim that one reasonable operating scheme is not wrong is not an edge case argument; it is an argument about what actually exists in the world right now.</span></li>
+      <li class="poi-item"><span class="poi-n">03</span><span class="poi-text"><strong>On "your safeguards prove the incentive is dangerous":</strong> Safeguards are normal policy design — they appear in every legitimate public programme. Drug approval processes have strict testing because drugs can cause harm; that does not make drug approval wrong. The question is whether residual risk after safeguards is acceptable and whether the benefit justifies it. We say yes on both counts.</span></li>
+      <li class="poi-item"><span class="poi-n">04</span><span class="poi-text"><strong>On "narrow model produces marginal benefit":</strong> The motion asks whether the scheme is wrong — not whether it produces transformative benefit. Modest and legitimate defeats an absolute claim of wrongness. Prop is applying the wrong test. The standard is not "sufficiently impactful to justify" — it is "wrong," and that standard is not met by the model we are defending.</span></li>
+      <li class="poi-item"><span class="poi-n">05</span><span class="poi-text"><strong>On "the bounty logic problem":</strong> Bounty hunters pursue, detain, and apply force. Citizens in this scheme observe, film, and submit. Every coercive decision is made by the state. The relevant disqualifying feature of bounty hunting is coercion — which this scheme lacks entirely. Financial motivation alone is not the problem with bounty systems; their exercise of private coercive power is.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- REBUTTALS -->
+<div id="reb" class="page"><div class="wrap">
+
+<h1 class="page-title">🥊 Best Rebuttals</h1>
+<p class="page-sub">Rebuttals work best when they directly name what the other side has just argued, explain specifically why it fails, and connect the failure back to your overall thesis. The starred lines are your top three per side — have them ready to deploy from memory.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Public roads being public justifies the evidence being admissible. It does not justify the state paying citizens to systematically monitor one another."</strong> Opp's most used foundational argument is that because roads are public, citizen involvement in enforcement is legitimate. Prop agrees. But public visibility changes the evidence law — it does not change the moral character of what the state is purchasing. The nature of the space explains why the footage is valid; it does not explain why the state should build a payment system to incentivise its collection. These are different questions and Opp has answered only the first one.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Verification checks the output. It cannot repair a distorted input."</strong> Verification is a filter applied after a submission has been made. It can confirm that a video shows a real violation. It cannot determine whether the reporter chose to film that particular driver because of a personal grievance, whether relevant context was omitted from the footage, or whether the reporting pool systematically under-represents complex violations in favour of simple and profitable ones. The distortion operates at the front end. Fixing the back end does not fix the front end. These are different stages of the same process.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"The narrower they make the model, the more they prove the danger and the less they prove the benefit."</strong> Every restriction Opp adds is a concession that the unrestricted version of the scheme is genuinely dangerous. Name each restriction and explain what specific danger it responds to: abuse penalties respond to targeting and false reports; category restrictions respond to distorted selection; verification responds to fabricated evidence. The cumulative effect is a model that is heavily circumscribed, administratively complex, and producing only a marginal increment above formal enforcement. That scheme has not earned the moral cost of institutionalising paid peer monitoring.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"Under-enforcement is a problem that deserves a properly designed solution — not the first available mechanism regardless of what it costs civically to introduce it. Opp identifies a real enforcement gap. But demonstrating that a gap exists does not prove that any particular mechanism to address it is therefore not wrong. The test is not whether the enforcement problem is real; it is whether this tool crosses a moral line. Prop's case is that it does, and pointing to the gap does not defeat that case."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Citizens report; the state decides — Opp's best line — does not remove the bounty structure from the intake. Prop's argument has never been that citizens exercise coercive power. It has been that the state has created a financial incentive for citizens to monitor and report one another's everyday conduct in exchange for payment. The state's control over the eventual fine does not change the fact that the state has designed and funded a market in peer monitoring. Whether you call the citizen a reporter or a monitor, the state has built the structure that motivated and rewarded the watching."</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Rebuttals</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition has attacked bad implementations, not the concept in its best form."</strong> Throughout the debate Prop has used examples — US informant distortion, UK revenue cameras — that show real problems with real schemes. Each of those examples involves a model Opp has explicitly not defended: broad, poorly safeguarded, financially distorted in ways the narrow verified model is not. Prop has shown that bad versions are bad. That is not the same as showing the concept is wrong. Prop needed to show that even the specific narrow model Opp put on the floor is wrong — and they have not done that.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Mixed motives do not erase public value when the evidence is real and verified."</strong> Prop's central role-corruption argument depends on the premise that financial motivation changes the nature of what the citizen is doing in a morally disqualifying way. But mixed motives are normal in many legitimate public activities. Doctors are financially compensated for diagnoses. Lawyers are compensated for finding legal violations. What matters is whether the act is legitimate and whether the evidence produced is independently assessed. In Opp's model, both conditions are satisfied. The payout is tied to verified violations — not to the act of accusation itself. That is the decisive structural feature Prop has not addressed.</span></li>
+      <li class="poi-item"><span class="poi-n" style="color:var(--Y)">★</span><span class="poi-text"><strong>"Proposition proved risks in some versions. They never proved wrongness in principle."</strong> The word "wrong" in the motion is an absolute moral claim. Proving that a scheme is risky, requires careful design, or is frequently abused in bad implementations does not prove wrongness. Most policy arguments, even sound ones, prove that something requires care. Proving wrongness requires showing that no legitimate version can exist. Prop has not done that — they have shown the concept requires careful design, not that it is inherently illegitimate. One narrow, verified, reasonable model surviving is sufficient to defeat the claim of wrongness, and that model is on the floor.</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text">"The alternative to Opp's scheme is not a perfect world — it is under-enforcement. Prop's alternatives — better police funding, smarter formal enforcement, unpaid reporting — are real options but they are not on offer in the near term in most jurisdictions. The choice the motion presents is not between a reward scheme and a perfectly funded formal enforcement system. It is between a carefully designed supplementary mechanism and the status quo of chronic under-enforcement. Prop must defend that status quo if it rejects the reward scheme, and if that status quo involves systematic under-detection of dangerous driving that kills and injures people, Prop owes the judge an account of why that outcome is preferable."</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text">"Safeguards are evidence of responsible design, not evidence of inherent wrongness. Prop's argument treats every safeguard as an antidote to a poison the scheme creates. But safeguards appear in every responsible public programme. A drug approval process has rigorous testing requirements; that does not make pharmaceutical development wrong. The question is not whether safeguards are needed but whether the residual risk after safeguards is acceptable and whether the benefit justifies it. Opp says yes — and the burden remains on Prop to show specific, named wrongness rather than the need for careful design."</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- ROLES -->
+<div id="roles" class="page"><div class="wrap">
+
+<h1 class="page-title">👤 Speaker Roles</h1>
+<p class="page-sub">Each speaker has one primary job. The biggest mistake teams make is when speakers drift into each other's territory — repeating what has already been said, or front-loading material that should land later when the other side has committed to a position. Know your lane and stay in it.</p>
+
+<div class="card cp open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔵</span>
+    <div class="card-hd-text"><div class="card-hd-title">Prop Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Define the line in the first sixty seconds: "We do not oppose citizen reporting. We oppose the state paying citizens to monitor one another's everyday conduct in exchange for financial reward." This must be planted before Opp sets a different frame.</div>
+        <div class="role-line"><span class="role-icon">→</span>Establish that the reward is the pivot of the debate, not an implementation detail. Announce the team structure: Captain on role-change, Speaker 1 on pipeline distortion, Speaker 2 on rebutting safeguards.</div>
+        <div class="role-line"><span class="role-icon">→</span>Pre-empt the two highest-danger Opp attacks — "one reasonable model defeats the motion" and "citizens report, the state decides" — briefly and confidently, so the judge knows Prop has thought about them before Opp raises them.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Sounding like all citizen reporting is wrong. This is the round-ending mistake. Every sentence must be consistent with Prop's explicit acceptance that incidental, voluntary, unrewarded reporting is legitimate.</div>
+        <div class="role-line"><span class="role-icon">→</span>Running the pipeline distortion argument in depth — that belongs to Speaker 1. Every second on arguments is a second not spent on framing, which is where this round is often decided.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the pipeline distortion argument in full: how the reward shapes what gets filmed and submitted before verification begins, with the UK revenue camera example and the selection-effect logic fully explained.</div>
+        <div class="role-line"><span class="role-icon">→</span>Explain partial-context evidence — how financially motivated reporters submit footage that omits exculpatory detail — and why this is not addressed by verification of whether a violation occurred.</div>
+        <div class="role-line"><span class="role-icon">→</span>Close every argument with an explicit sentence connecting it to the motion's specific word "wrong" — not "problematic" or "risky" but wrong as a matter of institutional design.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Re-running the role-change argument the Captain already made. Build on it, do not repeat it.</div>
+        <div class="role-line"><span class="role-icon">→</span>Getting absorbed in hypothetical case distinctions at the expense of the affirmative mechanism. The judge needs to leave with a clear picture of how distortion works, not a catalogue of bad scenarios.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Directly attack Opp's three arguments in sequence: the public-roads framing, the verification safeguard, and the narrow-model defense. Each attack must be named, engaged, and specifically defeated.</div>
+        <div class="role-line"><span class="role-icon">→</span>Run the self-defeating safeguards argument: name each safeguard Opp has added, identify what specific danger it responds to, and show that the narrow survivable model is both administratively complex and marginally beneficial.</div>
+        <div class="role-line"><span class="role-icon">→</span>Hold the line that even Opp's best model still embeds a financial stake in finding a neighbour's violations — which is the core wrong Prop has identified throughout.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Rebuilding the entire constructive case from scratch. The judge needs engagement with what Opp has actually said, not a repeat of what Prop has already argued.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--P)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Tell the judge a story about what happened in the round. Opp proved that narrow, verified, safeguarded reporting can exist. But they did not show that even their best model avoids the feature Prop identified as wrong — a state-designed financial incentive for monitoring neighbours — and they did not show the benefit justifies the cost.</div>
+        <div class="role-line"><span class="role-icon">→</span>Every sentence should advance the comparison at the highest level of abstraction. Reward is the pivot; verification is insufficient; broad model bad, narrow model weak.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Replaying every argument line-by-line. Judges remember comparisons and conclusions, not detailed recaps. A defensive closing that engages with every Opp point has already lost the narrative.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card co open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">🔴</span>
+    <div class="card-hd-text"><div class="card-hd-title">Opp Team Roles</div></div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Opening</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Set the burden at the correct level from the first sentence: the motion says "wrong" — an absolute claim — and one reasonable version surviving defeats it. This framing must be on the floor before Prop's narrative sets the judge's expectations.</div>
+        <div class="role-line"><span class="role-icon">→</span>Define the narrow model precisely and completely: verified evidence, serious violations, modest post-verification reward, state control, abuse penalties. Every subsequent Opp speech defends this specific model, not any other.</div>
+        <div class="role-line"><span class="role-icon">→</span>Signal generosity about inclusion's value: "We broadly agree that incidental unrewarded reporting is good — the disagreement is whether the motion's absolute language can survive the narrow model we are about to describe." This prevents Prop from winning on moral framing alone.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Spending the whole opening on wording without moral content. Winning the definitional argument while losing the moral argument has not yet won the round.</div>
+        <div class="role-line"><span class="role-icon">→</span>Appearing to defend any broad, unverified, mass-participation scheme. Narrow from the very first sentence and defend the narrow model consistently.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 1</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Build the full constructive case: public-risk accountability, the collective-action problem, and the modest reward as necessary mechanism. Give all three full development with examples and So What chains.</div>
+        <div class="role-line"><span class="role-icon">→</span>Specify the standard every time: clinical severity is not the standard here — it is the severity of the violation, the public-risk context, and individual verified evidence. Never imply drivers with violations are a risk category; focus on the violation, not the person.</div>
+        <div class="role-line"><span class="role-icon">→</span>Deploy "Citizens report; the state decides" as a refrain throughout — not just as a line but as the governing description of every coercive feature of the scheme.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overexplaining the collective-action problem at the expense of the reward-specific argument. Prop will concede the participation problem is real — the fight is whether the reward is the right solution, and that requires defending the reward specifically.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Speaker 2</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Punish Prop's concessions and force them onto the burden. If Prop has acknowledged that narrow, verified reporting is acceptable, name it: they have effectively conceded one non-wrong version exists, and the motion's absolute claim cannot survive that concession.</div>
+        <div class="role-line"><span class="role-icon">→</span>Attack the pipeline distortion argument directly: acknowledge that intake distortion is real in all enforcement systems, and show why this scheme's distortion — after category restrictions — is not worse than the distortions already built into formal enforcement.</div>
+        <div class="role-line"><span class="role-icon">→</span>Press consistently on "wrong" vs. "imperfect" — every Prop argument that shows risk or difficulty must be challenged with: does this prove wrongness or the need for careful design?</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Overclaiming deterrence or large safety benefits. These are not established empirically and will be attacked. Modest, legitimate, marginal benefit is sufficient — and claiming more than that invites challenge on claims that cannot be defended.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-name" style="color:var(--O)">Captain — Closing</div>
+        <div class="role-do-label">✅ Your Job</div>
+        <div class="role-line"><span class="role-icon">→</span>Make the ballot feel simple. "Vote on the motion as written. It says wrong. Prop's case is that some versions are risky and that the reward introduces problems requiring management. That proves imperfection. It does not prove wrongness. The narrow model we described is not wrong. The motion fails."</span></div>
+        <div class="role-line"><span class="role-icon">→</span>End with: citizens report, the state decides, the evidence is verified, the benefit is real, the model is defensible. One non-wrong version. Motion fails.</div>
+        <div class="role-dont-label">🚫 Avoid</div>
+        <div class="role-line"><span class="role-icon">→</span>Relitigating every example or trying to win every argument. Give the judge one clean narrative about why the specific model Opp defined throughout the round is not wrong — and nothing else.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- CLOSINGS -->
+<div id="close" class="page"><div class="wrap">
+
+<h1 class="page-title">🎯 Opening &amp; Closing Lines</h1>
+<p class="page-sub">The opening line is the first thing the judge hears. The closing bullets are the last. Both should be memorized and delivered without notes — they signal that your team has a confident, coherent position, not just a collection of arguments.</p>
+
+<div class="opening-box op">
+  <div class="opening-box-who">🔵 Prop Captain — Opening Line</div>
+  "This debate is not about whether citizens may report dangerous driving. We agree that they may — and we support it. This debate is about whether the state should pay citizens to go out, monitor one another's everyday conduct, and report violations in exchange for financial reward. That is the wrong way to enforce public law. The moment the state attaches financial reward to peer monitoring, the citizen is no longer a witness helping enforcement — they are a paid monitor with a stake in finding violations. That change is what this motion says is wrong, and we will show you precisely why it is."
+</div>
+
+<div class="opening-box oo">
+  <div class="opening-box-who">🔴 Opp Captain — Opening Line</div>
+  "The motion says that allowing citizens to monitor traffic violations in exchange for rewards is wrong — full stop. We broadly agree that incidental unrewarded reporting is legitimate. We broadly agree that broad, poorly safeguarded, financially distorted schemes are problematic. But the motion does not say those things. It says this is wrong. We will describe one narrow, verified, state-controlled model — citizens submit evidence, the state verifies and sanctions, rewards are modest and post-verification, abuse is penalised — and we will show you that model is not wrong. If it is not wrong, the motion fails on its own terms."
+</div>
+
+<hr class="div">
+
+<div class="closing-2">
+  <div class="closing-panel cp">
+    <div class="closing-panel-title">🔵 Prop — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>This was never reporting vs silence. It was whether the state should purchase peer monitoring — and the answer is no, because that purchase changes the civic role, distorts the intake pipeline, and institutionalises a financial stake in finding neighbours' violations.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Verification checks the output. It cannot repair a distorted input. Opp's central safeguard addresses the wrong stage of the problem.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Opp's survivable model is either broad and corrosive or narrow and marginal. Every safeguard they added proved the incentive is dangerous. The cage reveals the nature of what it contains.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Even the narrow model Opp defended embeds a financial stake in a neighbour's guilt — and that feature, regardless of design quality, is the structural wrong the motion identifies.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Public law should not be enforced through a market in peer accusation. Vote Proposition.</div>
+  </div>
+  <div class="closing-panel co">
+    <div class="closing-panel-title">🔴 Opp — Closing Bullets</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Watch what Proposition actually defended by the end of this round: not that this is wrong, but that some versions are risky. Risky is not wrong. The motion requires wrongness.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Citizens report. The state decides. The evidence is verified. The reward is modest and post-verification. No private citizen punishes anyone. That model is not wrong.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>The reward solves a real collective-action problem around a legitimate act in a public-risk space. A tool that makes legitimate enforcement happen more reliably is not wrong.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>Prop proved that some versions require care. They proved that safeguards are needed. They did not prove categorical wrongness — and that is the only thing the motion required them to prove.</div>
+    <div class="bullet-row"><span class="bullet-icon">✦</span>One narrow, verified, reasonable model. Citizens report; the state decides. Not wrong. Motion fails. Vote Opposition.</div>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EVIDENCE -->
+<div id="evid" class="page"><div class="wrap">
+
+<h1 class="page-title">📋 Evidence Honesty Table</h1>
+<p class="page-sub">One of the fastest ways to lose credibility with a judge is to state something as fact that turns out to be contested or unverifiable. This table shows which claims are solidly provable, and offers safer versions of the ones that are not.</p>
+
+<div class="ev-table-wrap">
+  <table class="ev-table">
+    <thead><tr><th>Claim</th><th>Side</th><th>Status</th><th>Safer Version If Challenged</th></tr></thead>
+    <tbody>
+      <tr><td>Financial incentives change what people choose to observe, report, and how they frame their reports — a well-established principle of incentive economics</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>The reward changes the citizen's role from incidental witness to motivated monitor — a normative structural argument whose logic is internally valid</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified (normative)</span></td><td>—</td></tr>
+      <tr><td>UK House of Commons Transport Committee raised concerns about revenue-sharing arrangements for speed cameras creating perverse placement incentives</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>US drug enforcement informant payment schemes have been documented to produce selection distortions and targeting effects in academic literature</td><td><span class="pill pp">Prop</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Rewards can distort what categories of violations get reported toward easy-to-document rather than serious violations</td><td><span class="pill pp">Prop</span></td><td><span class="pill pw">⚠️ Plausible, contested</span></td><td>"Financial incentives can create selection effects toward easier, more documentable cases — as documented in analogous institutional contexts including revenue-operated enforcement mechanisms."</td></tr>
+      <tr><td>Taiwan's citizen dashcam traffic reporting scheme has operated for years without documented systematic abuse</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Directionally supported</span></td><td>"Taiwan's scheme has been operational for many years without generating the level of documented abuse that would characterise a failed model — though independent systematic evaluation is limited."</td></tr>
+      <tr><td>Australia's National Heavy Vehicle Regulator has operated financial incentive schemes for verified heavy vehicle reporting</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Traffic enforcement is structurally incomplete — formal police cannot directly observe most violations that occur on road networks</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Broadly verified</span></td><td>—</td></tr>
+      <tr><td>Diffuse benefits and concentrated individual costs predictably produce under-participation in public reporting — collective-action problem well established in economics</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Modest financial incentives increase citizen participation in public reporting schemes</td><td><span class="pill po">Opp</span></td><td><span class="pill pw">⚠️ Plausible, contested</span></td><td>"Incentives can reduce the personal cost barrier that prevents otherwise willing participants from completing reporting processes — consistent with general findings on collective-action problem resolution."</td></tr>
+      <tr><td>The UK National Dashcam Safety Portal has processed hundreds of thousands of submissions resulting in prosecutions</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified</span></td><td>—</td></tr>
+      <tr><td>Verification and abuse penalties, as institutional mechanisms, reduce misuse and tie enforcement outcomes to evidential rather than accusation standards</td><td><span class="pill po">Opp</span></td><td><span class="pill pg">✅ Verified (institutional reasoning)</span></td><td>"Verification reduces, but does not eliminate, misuse — the extent of reduction depends on design quality and enforcement of abuse penalties."</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div></div>
+
+<!-- TRAPS -->
+<div id="traps" class="page"><div class="wrap">
+
+<h1 class="page-title">🚫 How to Lose This Debate</h1>
+<p class="page-sub">Most debates are lost not because the losing team made bad arguments, but because they made avoidable mistakes that undermined their credibility or handed the other side their framing. These are the specific traps that teams fall into on this motion.</p>
+
+<div class="trap-2">
+  <div class="trap-panel tp">
+    <div class="trap-title">🔵 5 Ways Prop Loses</div>
+    <div class="trap-item"><span>💀</span><span>Sounding like you oppose all citizen reporting of any kind. This is the single most dangerous trap for Proposition and is also the most common. The moment Prop implies that citizens should never report one another for anything, or that all citizen involvement in enforcement is suspect, the judge stops listening to the case. Plant "ordinary reporting yes, paid monitoring no" in the first speech and return to it every time this trap is set.</span></div>
+    <div class="trap-item"><span>💀</span><span>Failing to explain specifically why a modest reward changes the model. The role-change argument is Prop's backbone, and its weakest link is the question of magnitude. If the reward is fifty dollars for footage of a dangerous driver, does that really transform the civic relationship? Prop must have a clear, specific answer: it is not about the amount — it is structural. The financial stake is contingent on a neighbour's guilt, and that contingency exists regardless of reward size.</span></div>
+    <div class="trap-item"><span>💀</span><span>Treating verification as if it addresses the intake distortion argument. Prop's pipeline distortion argument specifically concerns what happens before verification. If Prop's speakers respond to "verification fixes the problem" by arguing that verification is insufficient in general, they have missed the point. The response must be specific: verification operates at the back end; distortion operates at the front end; these are different stages.</span></div>
+    <div class="trap-item"><span>💀</span><span>Failing to engage with the absolute burden the word "wrong" creates. Prop needs to prove wrongness in principle, not just risk in bad implementations. If every Prop argument demonstrates that the scheme requires careful design or that some versions produce bad outcomes, a careful judge will note that none of that proves wrongness. Prop must identify the specific moral principle violated — not a vague discomfort — and argue that even the narrow model violates it.</span></div>
+    <div class="trap-item"><span>💀</span><span>Building a case that is all principle and no operational alternative. A judge who hears Prop argue against paid monitoring without a credible account of how the enforcement gap is otherwise addressed will find the case unsatisfying. Prop must have an operational answer: automated cameras with independent oversight, targeted patrol deployment, and civic reporting without financial incentive. The alternative is not perfection — it is a better-designed response to the same enforcement problem.</span></div>
+  </div>
+  <div class="trap-panel to">
+    <div class="trap-title">🔴 5 Ways Opp Loses</div>
+    <div class="trap-item"><span>💀</span><span>Defending a broad, unverified, mass-participation scheme. If Opp is not careful about their model from the first speech, they will find themselves defending something that looks like institutionalised surveillance. Any version involving large numbers of people actively patrolling roads for violations hoping for large financial returns is exactly the model Prop's arguments are designed for. Narrow from the very first sentence and defend the narrow model specifically throughout.</span></div>
+    <div class="trap-item"><span>💀</span><span>Explaining reporting convincingly but defending the reward badly. It is much easier to argue that citizen reporting of dangerous driving is legitimate than it is to argue that paying citizens to do it is not wrong. Opp must spend at least as much time on the specific function and justification of the reward as on the legitimacy of reporting. Judges who are persuaded that reporting is legitimate but unconvinced about the reward will still find for Prop.</span></div>
+    <div class="trap-item"><span>💀</span><span>Treating verification as a complete answer to every Prop attack. Verification is Opp's most powerful safeguard, but using it as a catch-all response to every Prop argument will lose credibility. Verification addresses outcome legitimacy — fines are only issued for real violations. It does not address intake distortion, selective targeting, partial context, or the role-change argument. Opp should be precise about what verification does and honest about what it does not do.</span></div>
+    <div class="trap-item"><span>💀</span><span>Overclaiming deterrence effects or large safety benefits. These claims are not empirically established in citizen-reporting specific contexts, and they will be challenged. The case rests on modest, legitimate, marginal benefit — and that is sufficient. Claiming the scheme produces significant deterrence effects or measurably safer roads invites challenge on claims that cannot be defended and distracts from the argument Opp can win: not wrong.</span></div>
+    <div class="trap-item"><span>💀</span><span>Narrowing the model so much it sounds meaningless. There is a version of the narrowing strategy that goes too far — a scheme so restricted it barely functions and produces negligible benefit. If Prop can fairly characterise Opp's model as "barely worth introducing," the marginal-benefit argument undermines Opp's own case. Opp must maintain enough scope that the model still produces genuine enforcement benefit, even if modest, while still being genuinely defensible.</span></div>
+  </div>
+</div>
+
+<div class="card cy open">
+  <div class="card-hd" onclick="tog(this)">
+    <span class="card-hd-icon">❌</span>
+    <div class="card-hd-text">
+      <div class="card-hd-title">5 Arguments That Sound Clever But Will Hurt You</div>
+      <div class="card-hd-sub">Both sides — avoid these no matter how tempting they feel in the moment</div>
+    </div>
+    <span class="card-chev">▼</span>
+  </div>
+  <div class="card-bd">
+    <ul class="poi-list">
+      <li class="poi-item"><span class="poi-n">1</span><span class="poi-text"><strong>Prop: "This will obviously destroy social trust."</strong> This argument sounds persuasive because it appeals to a real intuition. It backfires because the causal chain from "citizens receive rewards for traffic reports" to "social trust collapses" is extremely long, depends on contested assumptions about cultural norms, and is trivially rebuttable by pointing to Taiwan's scheme operating without documented trust collapse. Use this argument only if you can give a specific, mechanically complete account of why trust collapse follows from the reward structure — not as a rhetorical crescendo.</span></li>
+      <li class="poi-item"><span class="poi-n">2</span><span class="poi-text"><strong>Prop: "This inevitably becomes a surveillance state."</strong> A slippery slope from citizen dashcam reporting to mass state surveillance requires a large number of intermediate steps, each of which is contestable. A carefully designed, narrow, verified scheme does not obviously lead to broader surveillance infrastructure simply by existing. Opp will simply point to their safeguards and note that Prop is arguing against their own concession that the scheme can be bounded. Avoid slippery slope framing entirely.</span></li>
+      <li class="poi-item"><span class="poi-n">3</span><span class="poi-text"><strong>Opp: "More eyes always means safer roads."</strong> This inference from "more reports" to "better safety outcomes" is not automatic and will be challenged. More reports mean more fines if verified; more fines mean deterrence only if drivers change behaviour in response; changed behaviour means fewer violations only if the right violations are being deterred. Each link is contestable. Use the much safer formulation: "verified citizen reporting of genuine public-safety violations provides the state with evidence it would otherwise not have, which is a legitimate incremental benefit."</span></li>
+      <li class="poi-item"><span class="poi-n">4</span><span class="poi-text"><strong>Opp: "This definitely reduces corruption."</strong> Some versions of this argument appear occasionally — more eyes on the road means harder for officers to accept bribes to ignore violations. This claim is almost entirely unverified in citizen-reporting specific contexts, opens Opp to counter-arguments about how financially motivated reporters might interact with corrupt enforcement systems, and is not necessary to the core case. Drop it entirely.</span></li>
+      <li class="poi-item"><span class="poi-n">5</span><span class="poi-text"><strong>Either side: Relying on Mongolia-specific or highly localised examples that the judge cannot verify.</strong> Both sides have access to well-documented examples from major legal and health systems — the UK Transport Committee, Taiwan's scheme, Australian heavy vehicle reporting, US informant literature. These are credible, better-evidenced, and universally relevant. Local examples should be used only if they add specific value that global examples do not, and should never be the primary example for a major argument.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div></div>
+
+<!-- EMERGENCY -->
+<div id="emrg" class="page"><div class="wrap">
+
+<div class="emrg-banner">
+  <div class="emrg-banner-title">🚨 5-Minute Emergency Sheet</div>
+  <div class="emrg-banner-sub">You are going on shortly and have no time to read the full packet. Read only this page. Everything here is the absolute minimum you need to walk in and compete.</div>
+</div>
+
+<div class="emrg-2">
+
+  <div class="emrg-panel ep">
+    <div class="emrg-who">🔵 PROP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>This debate is about the reward — not about citizen reporting. We support incidental unrewarded reporting. We oppose the state paying citizens to monitor one another's everyday conduct for financial reward.</div>
+
+    <div class="emrg-section">2 Core Definitions</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>The reward</strong> = the pivot of the debate. It changes the citizen's role from incidental witness to financially motivated monitor with a stake in finding violations.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>The wrong</strong> = the state has created a financial market in peer monitoring. That is wrong in design regardless of how any individual case is handled.</div>
+
+    <div class="emrg-section">2 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>The reward changes the role — the citizen now has a financial stake in a neighbour's guilt, and that structural change is the wrong regardless of reward size.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>The reward distorts the intake pipeline — verification fixes the back end; the front-end selection of what to film and submit is shaped by private financial incentives that verification cannot reach.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">Your verification mechanism checks whether submitted footage shows a real violation. Does it also fix the distorted selection of what gets filmed and submitted in the first place — before verification begins?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We support incidental unrewarded reporting. We oppose the state paying citizens to monitor one another. Those are different practices, and we have distinguished them throughout. The motion is about the second one."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "This debate is not about whether citizens may report dangerous driving — they may. It is about whether the state should pay them to go out and monitor one another for violations in exchange for financial reward. That is the wrong way to enforce public law. Vote Proposition."</div>
+    <div class="emrg-quote">Closing: "The reward is the pivot. Broad model bad, narrow model weak. Public law should not be enforced through a market in peer accusation. Vote Proposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not imply you oppose all citizen reporting. Do not fail to explain why a modest reward matters structurally. Do not treat verification as if it addresses the intake distortion argument — it addresses a different stage. Do not make the case all principle and no alternative.</span></div>
+  </div>
+
+  <div class="emrg-panel eo">
+    <div class="emrg-who">🔴 OPP</div>
+
+    <div class="emrg-section">Your Frame</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>The motion says "wrong" — an absolute claim. One reasonable version surviving defeats it. Citizens report; the state decides. That model is not wrong.</div>
+
+    <div class="emrg-section">2 Core Frames</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>The narrow model.</strong> Verified evidence. Serious violations. Modest post-verification reward. State control. Abuse penalties. Describe it specifically in the first speech and defend this exact model throughout.</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span><strong>The burden test.</strong> Wrong means wrong in principle — not "sometimes problematic." One non-wrong version defeats an absolute claim. Prop must prove wrongness, not imperfection.</div>
+
+    <div class="emrg-section">2 Arguments (One Line Each)</div>
+    <div class="emrg-line"><span class="emrg-icon">1.</span>Traffic violations happen in public, impose risk on others, and citizen evidence is especially legitimate in shared-risk space — the underlying act is appropriate regardless of reward.</div>
+    <div class="emrg-line"><span class="emrg-icon">2.</span>The reward solves a real collective-action problem around a legitimate act — and one narrow, verified, state-controlled model producing modest legitimate benefit is not wrong.</div>
+
+    <div class="emrg-section">Emergency POI to Ask</div>
+    <div class="emrg-quote">The motion says "wrong" — not "sometimes abused" or "requiring care." Where specifically in your case have you proved categorical wrongness rather than the need for careful design?</div>
+
+    <div class="emrg-section">Answer to Every Attack</div>
+    <div class="emrg-line"><span class="emrg-icon">→</span>"We broadly agree that poorly designed, broad, unverified schemes are problematic. We are not defending those. We are defending one specific narrow, verified, state-controlled model — and Prop has not shown that model is wrong."</div>
+
+    <div class="emrg-section">Opening + Closing</div>
+    <div class="emrg-quote">Opening: "The motion says this is wrong — full stop. We will describe one narrow, verified model that is not wrong. If it is not wrong, the absolute claim in the motion fails. Citizens report; the state decides. Vote Opposition."</div>
+    <div class="emrg-quote">Closing: "Prop proved risks in some versions. They never proved wrongness in the model we described. One non-wrong version. Motion fails. Vote Opposition."</div>
+
+    <div class="fatal"><span>☠️</span><span><strong>NEVER DO THIS:</strong> Do not defend a broad unverified scheme. Do not fail to defend the reward specifically — defending reporting without defending the reward is defending the wrong thing. Do not overclain deterrence or safety benefits. Do not let the round become about your best version vs. Prop's worst framing of it.</span></div>
+  </div>
+
+</div>
+</div></div>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function tog(hd){hd.parentElement.classList.toggle('open');}
+function strat(show,hide,btn){
+  document.getElementById(show).classList.add('on');
+  document.getElementById(hide).classList.remove('on');
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on-p','on-o'));
+  btn.classList.add(show==='sp'?'on-p':'on-o');
+}
+</script>
+</body>
+</html>
