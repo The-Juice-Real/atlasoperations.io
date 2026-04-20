@@ -4,653 +4,614 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Community Strategy — Atlas Operations</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #080808;
-    --white: #f0ede6;
-    --accent: #e8ff47;
-    --dim: #3a3a3a;
-    --muted: #7a7a7a;
-    --border: #1e1e1e;
+    --bg: #f7f4ef;
+    --bg-card: #f0ece4;
+    --bg-dark: #0f1a14;
+    --ink: #0e0e0e;
+    --ink-2: #3a3733;
+    --ink-3: #8a8680;
+    --accent: #b8460f;
+    --accent-light: #f2e8e2;
+    --border: #dedad2;
+    --white: #fdfcf9;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
     overflow-x: hidden;
-    cursor: crosshair;
   }
 
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.35;
-  }
+  /* ── LANGUAGE SYSTEM ── */
+  [data-zh] { display: none !important; }
+  span[data-en] { display: inline; }
+  span[data-zh] { display: none !important; }
 
-  /* NAV */
+  body.zh [data-en] { display: none !important; }
+  body.zh span[data-en] { display: none !important; }
+  body.zh [data-zh] { display: block !important; }
+  body.zh span[data-zh] { display: inline !important; }
+  body.zh p[data-zh] { display: block !important; }
+  body.zh h1[data-zh], body.zh h2[data-zh], body.zh h3[data-zh] { display: block !important; }
+  body.zh li[data-zh] { display: list-item !important; }
+  body.zh div[data-zh] { display: block !important; }
+  body.zh .ticker-item[data-zh] { display: inline-block !important; }
+
+  /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 20px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: rgba(247,244,239,0.94);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    background: rgba(8,8,8,0.92);
-    backdrop-filter: blur(12px);
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
+  .nav-left { display: flex; align-items: center; gap: 16px; }
+
   .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
     font-size: 15px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--white);
+    color: var(--ink);
     text-decoration: none;
   }
 
-  .nav-logo span { color: var(--accent); }
+  .nav-sep { width: 1px; height: 16px; background: var(--border); }
 
-  .nav-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
+  .nav-section { font-size: 13px; color: var(--ink-3); font-weight: 400; }
+
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  /* BEAUTIFUL LANGUAGE TOGGLE */
+  .lang-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px;
+    gap: 0;
   }
 
-  /* HERO */
+  .lang-pill {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    background: var(--white);
+    border-radius: 100px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+  }
+
+  body.zh .lang-pill { transform: translateX(100%); }
+
+  .lang-switch button {
+    position: relative; z-index: 1;
+    background: none; border: none;
+    padding: 6px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    color: var(--ink-3);
+    transition: color 0.28s;
+    border-radius: 100px;
+    min-width: 52px; text-align: center;
+  }
+
+  .lang-switch button.active { color: var(--ink); }
+  .lang-switch button:hover:not(.active) { color: var(--ink-2); }
+
+  .btn-nav {
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-nav:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 48px 72px;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 48px 80px;
+    gap: 80px;
     border-bottom: 1px solid var(--border);
   }
 
-  .hero-counter {
-    position: absolute;
-    top: 120px;
-    right: 48px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
   }
 
-  .hero-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards 0.2s;
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.4; transform:scale(0.75); }
   }
 
   .hero-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(64px, 10vw, 140px);
-    line-height: 0.92;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    max-width: 900px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px,7vw,96px);
+    font-weight: 600;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
     opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.35s;
+    animation: fadeUp 0.7s ease forwards 0.25s;
   }
 
-  .hero-title em {
-    font-style: normal;
-    color: var(--accent);
-    display: block;
-  }
+  .hero-title em { font-style: italic; color: var(--accent); }
 
   .hero-sub {
-    margin-top: 40px;
-    max-width: 520px;
-    font-size: 18px;
-    color: #9a9a9a;
-    line-height: 1.65;
+    font-size: 17px; color: var(--ink-2);
+    line-height: 1.7; max-width: 460px;
+    margin-bottom: 40px; font-weight: 300;
     opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.5s;
+    animation: fadeUp 0.7s ease forwards 0.4s;
   }
 
-  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-sub strong { font-weight: 600; color: var(--ink); }
 
-  .hero-cta {
-    margin-top: 48px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
+  .hero-actions {
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
     opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.65s;
+    animation: fadeUp 0.7s ease forwards 0.55s;
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: var(--black);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 16px 36px;
+    background: var(--ink); color: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500; font-size: 14px;
+    padding: 14px 28px; border-radius: 100px;
     text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s;
-    cursor: crosshair;
+    transition: all 0.2s; display: inline-block;
   }
 
   .btn-primary:hover {
-    background: var(--white);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent);
+    background: var(--accent); transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(184,70,15,0.25);
   }
 
   .btn-ghost {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
+    font-size: 14px; color: var(--ink-3);
     text-decoration: none;
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--dim);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.2s; font-weight: 400;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn-ghost::after { content:'↓'; font-size:12px; }
+
+  .hero-right {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.45s;
   }
 
-  .btn-ghost:hover { color: var(--white); border-color: var(--white); }
-
-  /* TICKER */
-  .ticker {
-    background: var(--accent);
-    color: var(--black);
-    padding: 12px 0;
-    overflow: hidden;
-    white-space: nowrap;
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.06);
   }
 
-  .ticker-inner {
-    display: inline-flex;
-    animation: ticker 24s linear infinite;
-    gap: 0;
+  .hero-card-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 20px;
   }
 
-  .ticker-item {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 0 48px;
-  }
-
-  .ticker-sep {
-    font-size: 10px;
-    opacity: 0.4;
-    padding: 0;
-  }
-
-  /* SECTION BASE */
-  section {
-    padding: 96px 48px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--dim);
-  }
-
-  /* PROBLEM */
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    margin-top: 48px;
-  }
-
-  .problem-card {
-    background: var(--black);
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .problem-card:hover { background: #0f0f0f; }
-
-  .problem-card::before {
-    content: attr(data-num);
-    position: absolute;
-    top: 24px;
-    right: 28px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 72px;
-    color: var(--border);
-    line-height: 1;
-    transition: color 0.3s;
-  }
-
-  .problem-card:hover::before { color: #1a1a1a; }
-
-  .problem-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 26px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    line-height: 1.1;
-  }
-
-  .problem-card p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 380px;
-  }
-
-  .problem-card p strong { color: #b0b0b0; font-weight: 500; }
-
-  /* HOW */
-  .how-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(42px, 6vw, 80px);
-    text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -1px;
-    max-width: 800px;
-  }
-
-  .how-title em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .how-steps {
-    margin-top: 64px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .how-step {
-    background: var(--black);
-    padding: 40px 36px;
-    position: relative;
-    transition: background 0.3s;
-  }
-
-  .how-step:hover { background: #0d0d0d; }
-
-  .step-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-  }
-
-  .how-step h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    line-height: 1.1;
-  }
-
-  .how-step p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .how-step p strong { color: #9a9a9a; }
-
-  /* WHO */
-  .who-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    margin-top: 16px;
-  }
-
-  .who-copy h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(36px, 5vw, 64px);
-    text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -1px;
-    margin-bottom: 28px;
-  }
-
-  .who-copy h2 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .who-copy p {
-    font-size: 16px;
-    color: #8a8a8a;
-    line-height: 1.7;
+  .hero-stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border-radius: 10px; overflow: hidden;
     margin-bottom: 16px;
   }
 
-  .who-copy p strong { color: var(--white); font-weight: 600; }
-
-  .who-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
+  .hero-stat {
+    background: var(--bg); padding: 18px;
   }
+
+  .hero-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 600;
+    color: var(--ink); line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat .lbl {
+    font-size: 12px; color: var(--ink-3);
+    font-weight: 400; line-height: 1.4;
+  }
+
+  .guarantee-strip {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--accent-light);
+    border-radius: 10px; padding: 16px;
+  }
+
+  .g-icon {
+    width: 34px; height: 34px;
+    background: var(--accent); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0; color: white;
+  }
+
+  .g-text { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+  .g-text strong { display: block; font-weight: 600; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--bg-dark);
+    padding: 14px 0; overflow: hidden; white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    animation: tick 28s linear infinite;
+  }
+
+  .ticker-item {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); padding: 0 28px;
+  }
+
+  .ticker-sep { color: rgba(255,255,255,0.18); }
+
+  @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 48px; border-bottom: 1px solid var(--border); }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 48px;
+  }
+  .eyebrow-bar { width: 28px; height: 1px; background: var(--accent); }
+  .eyebrow-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent);
+  }
+
+  /* ── PROBLEM ── */
+  .problem-intro { max-width: 580px; margin-bottom: 52px; }
+
+  .problem-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px,4vw,54px); font-weight: 600;
+    line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.5px;
+  }
+
+  .problem-intro p {
+    font-size: 17px; color: var(--ink-2);
+    font-weight: 300; line-height: 1.7;
+  }
+
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+
+  .p-card {
+    background: var(--white); padding: 36px;
+    transition: background 0.2s;
+  }
+  .p-card:hover { background: var(--bg); }
+
+  .p-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px; color: var(--ink-3); font-weight: 500;
+    letter-spacing: 1.5px; margin-bottom: 14px;
+  }
+
+  .p-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600;
+    line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.2px;
+  }
+
+  .p-card p {
+    font-size: 15px; color: var(--ink-2);
+    line-height: 1.7; font-weight: 300;
+  }
+  .p-card p strong { font-weight: 600; color: var(--ink); }
+
+  /* ── HOW ── */
+  .how-layout {
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 80px; align-items: start;
+  }
+
+  .how-sticky { position: sticky; top: 88px; }
+
+  .how-sticky h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px,4vw,50px); font-weight: 600;
+    line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 18px;
+  }
+  .how-sticky h2 em { font-style: italic; color: var(--accent); }
+
+  .how-sticky p {
+    font-size: 15px; color: var(--ink-3);
+    line-height: 1.7; font-weight: 300;
+  }
+
+  .how-step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    margin-bottom: 10px;
+  }
+  .how-step:last-child { margin-bottom: 0; }
+  .how-step:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); transform: translateY(-2px); }
+
+  .step-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+
+  .step-badge {
+    width: 30px; height: 30px;
+    background: var(--accent-light); color: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .how-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 600; letter-spacing: -0.2px;
+  }
+
+  .how-step p {
+    font-size: 15px; color: var(--ink-2);
+    line-height: 1.7; font-weight: 300;
+  }
+  .how-step p strong { font-weight: 600; color: var(--ink); }
+
+  /* ── WHO ── */
+  .who-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+
+  .who-copy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px,4vw,50px); font-weight: 600;
+    line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 22px;
+  }
+  .who-copy h2 em { font-style: italic; color: var(--accent); }
+
+  .who-copy p {
+    font-size: 16px; color: var(--ink-2);
+    line-height: 1.75; margin-bottom: 14px; font-weight: 300;
+  }
+  .who-copy p strong { font-weight: 600; color: var(--ink); }
+
+  .who-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 
   .who-list li {
-    background: var(--black);
-    padding: 20px 24px;
-    font-size: 15px;
-    color: #8a8a8a;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: background 0.2s, color 0.2s;
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 20px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px; color: var(--ink-2);
+    line-height: 1.55; font-weight: 300;
+    transition: all 0.2s;
   }
 
-  .who-list li:hover { background: #0d0d0d; color: var(--white); }
+  .who-list li:hover {
+    background: var(--bg); color: var(--ink);
+    border-color: var(--accent); transform: translateX(4px);
+  }
 
   .who-list li::before {
-    content: '→';
-    color: var(--accent);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    flex-shrink: 0;
-    margin-top: 1px;
+    content: '→'; color: var(--accent);
+    font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    transition: transform 0.2s;
+  }
+  .who-list li:hover::before { transform: translateX(3px); }
+
+  /* ── DARK STATS ── */
+  .dark-section {
+    background: var(--bg-dark); color: #f0ece4;
+    padding: 96px 48px;
   }
 
-  /* PROOF STRIP */
-  .proof {
-    background: #0a0a0a;
-    padding: 64px 48px;
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+    border-radius: 16px; overflow: hidden;
   }
 
-  .proof-inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
+  .stat-box {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 28px;
+    transition: background 0.2s;
+  }
+  .stat-box:hover { background: rgba(255,255,255,0.06); }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px; font-weight: 600;
+    color: #f0ece4; line-height: 1;
+    margin-bottom: 8px; letter-spacing: -1px;
+  }
+  .stat-num sup { font-size: 24px; color: var(--accent); vertical-align: super; }
+
+  .stat-lbl {
+    font-size: 13px; color: rgba(255,255,255,0.38);
+    line-height: 1.5; font-weight: 300;
   }
 
-  .proof-stat {
-    background: #0a0a0a;
-    padding: 36px 32px;
-    text-align: center;
-  }
-
-  .proof-stat .num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 52px;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -1px;
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .proof-stat .label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  /* CONTACT */
+  /* ── CONTACT ── */
   .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
   }
 
   .contact-copy h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(42px, 5vw, 72px);
-    text-transform: uppercase;
-    line-height: 0.92;
-    letter-spacing: -1px;
-    margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px,4vw,50px); font-weight: 600;
+    line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 20px;
   }
-
-  .contact-copy h2 em {
-    font-style: normal;
-    color: var(--accent);
-    display: block;
-  }
+  .contact-copy h2 em { font-style: italic; color: var(--accent); }
 
   .contact-copy p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 32px;
+    font-size: 15px; color: var(--ink-2);
+    line-height: 1.75; margin-bottom: 14px; font-weight: 300;
   }
 
-  .contact-email {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--white);
+  .contact-note {
+    font-size: 13px !important; font-weight: 600 !important;
+    color: var(--accent) !important; margin-bottom: 28px !important;
+  }
+
+  .email-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--ink);
     text-decoration: none;
-    border: 1px solid var(--dim);
-    padding: 14px 20px;
-    transition: all 0.2s;
+    border: 1px solid var(--border); border-radius: 100px;
+    padding: 12px 20px; transition: all 0.2s; font-weight: 500;
+  }
+  .email-link:hover {
+    border-color: var(--accent); color: var(--accent);
+    box-shadow: 0 4px 16px rgba(184,70,15,0.12); transform: translateY(-1px);
   }
 
-  .contact-email:hover {
+  .form-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 36px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.05);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    margin-bottom: 24px; letter-spacing: -0.3px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+  .f-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .f-field:last-of-type { margin-bottom: 0; }
+
+  .f-field label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-3);
+  }
+
+  .f-field input, .f-field select, .f-field textarea {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--ink);
+    font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 300;
+    padding: 11px 14px; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none; appearance: none; width: 100%;
+  }
+
+  .f-field input:focus, .f-field select:focus, .f-field textarea:focus {
     border-color: var(--accent);
-    color: var(--accent);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--dim);
+    box-shadow: 0 0 0 3px rgba(184,70,15,0.08);
   }
 
-  .contact-email span { color: var(--muted); font-size: 11px; }
-
-  /* FORM */
-  .form-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .form-field label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 16px 6px;
-    background: #0f0f0f;
-    border: 1px solid var(--border);
-    border-bottom: none;
-  }
-
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    background: #0f0f0f;
-    border: 1px solid var(--border);
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    padding: 12px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: none;
-    appearance: none;
-    cursor: crosshair;
-  }
-
-  .form-field input:focus,
-  .form-field select,
-  .form-field textarea:focus {
-    border-color: var(--accent);
-  }
-
-  .form-field select option { background: #0f0f0f; }
+  .f-field select { cursor: pointer; }
+  .f-field select option { background: var(--white); }
 
   .form-submit {
-    background: var(--accent);
-    color: var(--black);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    padding: 18px;
-    border: none;
-    cursor: crosshair;
-    transition: all 0.2s;
-    margin-top: 2px;
+    width: 100%; background: var(--ink); color: var(--bg);
+    font-family: 'Outfit', sans-serif; font-weight: 500;
+    font-size: 15px; padding: 14px; border: none;
+    border-radius: 100px; cursor: pointer;
+    transition: all 0.2s; margin-top: 18px;
   }
-
   .form-submit:hover {
-    background: var(--white);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent);
+    background: var(--accent); transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(184,70,15,0.25);
   }
 
   .form-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    margin-top: 12px;
-    line-height: 1.6;
+    font-size: 12px; color: var(--ink-3);
+    line-height: 1.6; margin-top: 12px; font-weight: 300;
   }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
-    padding: 32px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 26px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
   }
+  .f-logo { font-size: 14px; font-weight: 500; color: var(--ink-2); }
+  .f-right { font-size: 12px; color: var(--ink-3); font-weight: 300; }
 
-  .footer-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .footer-logo span { color: var(--accent); }
-
-  .footer-right {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 1px;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* SCROLL REVEAL */
+  /* ── REVEAL ── */
   .reveal {
-    opacity: 0;
-    transform: translateY(32px);
+    opacity: 0; transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(18px); }
+    to { opacity:1; transform:translateY(0); }
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .hero { padding: 0 24px 56px; }
-    section { padding: 64px 24px; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .how-steps { grid-template-columns: 1fr; }
-    .who-layout { grid-template-columns: 1fr; gap: 48px; }
-    .proof-inner { grid-template-columns: 1fr 1fr; }
-    .contact-layout { grid-template-columns: 1fr; gap: 48px; }
-    .form-row { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 0 20px; }
+    .hero { grid-template-columns:1fr; padding:100px 20px 60px; gap:40px; }
+    .hero-right { order:-1; }
+    section { padding:60px 20px; }
+    .problem-grid { grid-template-columns:1fr; }
+    .how-layout { grid-template-columns:1fr; gap:40px; }
+    .how-sticky { position:static; }
+    .who-layout { grid-template-columns:1fr; gap:40px; }
+    .stats-grid { grid-template-columns:1fr 1fr; }
+    .dark-section { padding:60px 20px; }
+    .contact-layout { grid-template-columns:1fr; gap:40px; }
+    .form-row { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:8px; text-align:center; padding:20px; }
   }
 </style>
 </head>
@@ -658,225 +619,384 @@
 
 <!-- NAV -->
 <nav>
-  <a href="https://atlasoperations.io" class="nav-logo">Atlas<span>.</span>Operations</a>
-  <span class="nav-tag">/ community-strategy</span>
+  <div class="nav-left">
+    <a href="https://atlasoperations.io" class="nav-logo">Atlas Operations</a>
+    <div class="nav-sep"></div>
+    <span class="nav-section">
+      <span data-en>Community Strategy</span>
+      <span data-zh>社区战略</span>
+    </span>
+  </div>
+  <div class="nav-right">
+    <a href="#contact" class="btn-nav">
+      <span data-en>Get in touch</span>
+      <span data-zh>联系我们</span>
+    </a>
+    <div class="lang-switch">
+      <div class="lang-pill"></div>
+      <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+      <button onclick="setLang('zh')" id="btn-zh">中文</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-counter">ATLAS — COMMUNITY STRATEGY — 2026</div>
-  <div class="hero-label">Community Strategy</div>
-  <h1 class="hero-title">
-    Your brand.<br>
-    <em>Their turf.</em>
-  </h1>
-  <p class="hero-sub">
-    Right now, somewhere online, someone is asking which product to buy in your category. Your competitors are in that thread. <strong>You're not.</strong> That conversation will rank on Google for two years. It will feed into AI answers for longer. And you'll never know it happened.
-  </p>
-  <div class="hero-cta">
-    <a href="#contact" class="btn-primary">Tell us what's happening</a>
-    <a href="#how" class="btn-ghost">See how it works</a>
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span data-en>Community Strategy</span>
+      <span data-zh>社区战略</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-en>Your brand.<br><em>Their turf.</em></span>
+      <span data-zh>你的品牌，<br><em>他们的地盘。</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-en>Right now, somewhere online, someone is asking which product to buy in your category. Your competitors are in that thread. <strong>You're not.</strong> That conversation will rank on Google for two years, feed into AI answers for longer. And you'll never know it happened.</span>
+      <span data-zh>此刻，网上某处有人正在问该买哪个品类的产品。你的竞争对手在那个帖子里。<strong>你不在。</strong>那段对话将在 Google 上排名两年，在 AI 搜索结果中存在更久。而你永远不会知道它发生过。</span>
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <span data-en>Tell us what's happening</span>
+        <span data-zh>告诉我们你的情况</span>
+      </a>
+      <a href="#how" class="btn-ghost">
+        <span data-en>See how it works</span>
+        <span data-zh>了解运作方式</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-label">
+        <span data-en>Atlas Engine — Active</span>
+        <span data-zh>Atlas Engine — 运行中</span>
+      </div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="num">109K</div>
+          <div class="lbl"><span data-en>Community members managed</span><span data-zh>管理社区成员数</span></div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">1,315</div>
+          <div class="lbl"><span data-en>Posts analyzed per case</span><span data-zh>每案例分析帖子数</span></div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">4,930</div>
+          <div class="lbl"><span data-en>Posts read before first contact</span><span data-zh>首次接触前阅读帖子</span></div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">24h</div>
+          <div class="lbl"><span data-en>Response time on every inquiry</span><span data-zh>每条询问的响应时间</span></div>
+        </div>
+      </div>
+      <div class="guarantee-strip">
+        <div class="g-icon">✦</div>
+        <div class="g-text">
+          <strong>
+            <span data-en>Fully done for you</span>
+            <span data-zh>完全为你执行</span>
+          </strong>
+          <span data-en>Research, relationships, content, monitoring. You approve. We execute.</span>
+          <span data-zh>调研、关系维护、内容创作、持续监控。你审批，我们执行。</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Ban Removal</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Community Rehabilitation</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Mod Relationship Management</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Reddit Ecosystem Domination</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Asian Brands → Western Markets</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Competitor Intelligence</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Ban Removal</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Community Rehabilitation</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Mod Relationship Management</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Reddit Ecosystem Domination</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Asian Brands → Western Markets</span><span class="ticker-sep">✦</span>
-    <span class="ticker-item">Competitor Intelligence</span><span class="ticker-sep">✦</span>
+  <div class="ticker-track">
+    <span class="ticker-item" data-en>Ban Removal</span><span class="ticker-item" data-zh>封禁解除</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Community Rehabilitation</span><span class="ticker-item" data-zh>社区形象修复</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Mod Relationship Management</span><span class="ticker-item" data-zh>版主关系管理</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Reddit Ecosystem Domination</span><span class="ticker-item" data-zh>Reddit 生态主导</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Asian Brands → Western Markets</span><span class="ticker-item" data-zh>亚洲品牌 → 西方市场</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Competitor Intelligence</span><span class="ticker-item" data-zh>竞争对手情报</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Ban Removal</span><span class="ticker-item" data-zh>封禁解除</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Community Rehabilitation</span><span class="ticker-item" data-zh>社区形象修复</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Mod Relationship Management</span><span class="ticker-item" data-zh>版主关系管理</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Reddit Ecosystem Domination</span><span class="ticker-item" data-zh>Reddit 生态主导</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Asian Brands → Western Markets</span><span class="ticker-item" data-zh>亚洲品牌 → 西方市场</span><span class="ticker-sep"> ✦ </span>
+    <span class="ticker-item" data-en>Competitor Intelligence</span><span class="ticker-item" data-zh>竞争对手情报</span><span class="ticker-sep"> ✦ </span>
   </div>
 </div>
 
 <!-- PROBLEM -->
 <section>
-  <div class="section-label reveal">What's Actually Happening</div>
+  <div class="eyebrow reveal">
+    <div class="eyebrow-bar"></div>
+    <span class="eyebrow-label">
+      <span data-en>What's Actually Happening</span>
+      <span data-zh>实际情况是什么</span>
+    </span>
+  </div>
+  <div class="problem-intro reveal">
+    <h2>
+      <span data-en>While you're not in the room,<br>someone else is.</span>
+      <span data-zh>当你不在场时，<br>别人已经在了。</span>
+    </h2>
+    <p>
+      <span data-en>The communities where real purchase decisions happen — your competitors are already there, building trust, getting recommended. Every week you're absent is a week the gap widens.</span>
+      <span data-zh>真实购买决策发生的那些社区——你的竞争对手早就在里面了，建立信任，获得推荐。你每缺席一周，差距就拉大一分。</span>
+    </p>
+  </div>
   <div class="problem-grid reveal">
-    <div class="problem-card" data-num="01">
-      <h3>Your competitor<br>owns the room<br>you're not in</h3>
-      <p>The communities where your buyers actually make decisions — they're already in there. Answering questions. Building trust. Getting recommended. <strong>Every week you're not there is a week they get stronger.</strong></p>
+    <div class="p-card">
+      <div class="p-num">— 01</div>
+      <h3><span data-en>Your competitor owns the room you're not in</span><span data-zh>你的竞争对手占据了你不在的圈子</span></h3>
+      <p><span data-en>The communities where your buyers actually make decisions — they're already there. Answering questions. Building trust. Getting recommended. <strong>Every week you're absent, they get stronger.</strong></span><span data-zh>你的买家真正做决策的那些社区——他们早就在里面了。回答问题，建立信任，获得推荐。<strong>你每缺席一周，他们就强大一分。</strong></span></p>
     </div>
-    <div class="problem-card" data-num="02">
-      <h3>A ban isn't<br>just embarrassing.<br>It's expensive.</h3>
-      <p>Community threads rank on Google for years. They get cited in AI answers. A ban means every search, every AI overview, every recommendation thread — <strong>that's a sale going somewhere else.</strong> Permanently, until it's fixed.</p>
+    <div class="p-card">
+      <div class="p-num">— 02</div>
+      <h3><span data-en>A ban isn't just embarrassing. It's expensive.</span><span data-zh>封禁不只是丢面子。它代价高昂。</span></h3>
+      <p><span data-en>Community threads rank on Google for years. They feed AI answers. A ban means every search, every recommendation — <strong>that's a sale going somewhere else.</strong> Permanently, until fixed.</span><span data-zh>社区帖子在 Google 上排名数年，被 AI 引用。一次封禁意味着每一次搜索、每一个推荐——<strong>都是流向别处的订单。</strong>永久如此，直到问题被解决。</span></p>
     </div>
-    <div class="problem-card" data-num="03">
-      <h3>You've tried<br>this yourself.<br>It got worse.</h3>
-      <p>Western communities have a finely tuned radar for brands that don't belong. One wrong move — too promotional, wrong tone, wrong timing — <strong>and you've confirmed every suspicion they already had about you.</strong></p>
+    <div class="p-card">
+      <div class="p-num">— 03</div>
+      <h3><span data-en>You've tried this yourself. It got worse.</span><span data-zh>你自己试过。结果更糟了。</span></h3>
+      <p><span data-en>Western communities have a finely tuned radar for brands that don't belong. One wrong move — too promotional, wrong tone, wrong timing — <strong>and you've confirmed every suspicion they had about you.</strong></span><span data-zh>西方社区对不属于这里的品牌有极其灵敏的雷达。一步走错——太商业化、语气不对、时机失误——<strong>你就坐实了他们对你的所有猜疑。</strong></span></p>
     </div>
-    <div class="problem-card" data-num="04">
-      <h3>The window<br>is closing<br>right now.</h3>
-      <p>Category conversations on Reddit and niche forums are still up for grabs in most markets. <strong>The brand that moves first owns the narrative.</strong> After that, the community has already decided who they trust — and it's not a newcomer.</p>
+    <div class="p-card">
+      <div class="p-num">— 04</div>
+      <h3><span data-en>The window is closing right now.</span><span data-zh>机会窗口正在关闭。</span></h3>
+      <p><span data-en>Category conversations are still up for grabs in most markets. <strong>The brand that moves first owns the narrative.</strong> After that, the community has already decided who they trust — and it's not a newcomer.</span><span data-zh>大多数市场中，品类讨论仍是空白地带。<strong>先行者将掌控话语权。</strong>之后，社区已经决定了信任谁——那不会是新来者。</span></p>
     </div>
   </div>
 </section>
 
 <!-- HOW -->
-<section id="how">
-  <div class="section-label reveal">What You Get</div>
-  <h2 class="how-title reveal">
-    You focus on<br>
-    your product.<br>
-    <em>We handle the room.</em>
-  </h2>
-  <div class="how-steps reveal">
-    <div class="how-step">
-      <div class="step-num">01 — FAST</div>
-      <h3>Results before<br>you expect them</h3>
-      <p>Most clients see their first meaningful community win within 30 days. Not a promise of future results — an actual moment where the room shifts. <strong>We engineer early wins deliberately.</strong> You need to know you made the right call fast.</p>
+<section id="how" style="background:var(--white);">
+  <div class="eyebrow reveal">
+    <div class="eyebrow-bar"></div>
+    <span class="eyebrow-label">
+      <span data-en>What You Get</span>
+      <span data-zh>你将获得什么</span>
+    </span>
+  </div>
+  <div class="how-layout reveal">
+    <div class="how-sticky">
+      <h2>
+        <span data-en>You focus on your product.<br><em>We handle the room.</em></span>
+        <span data-zh>你专注产品。<br><em>我们搞定圈子。</em></span>
+      </h2>
+      <p>
+        <span data-en>Research, relationships, content, timing, monitoring — all of it. Your only job is to approve what goes live.</span>
+        <span data-zh>调研、关系维护、内容创作、时机把握、持续监控——全由我们来。你只需审批上线内容。</span>
+      </p>
     </div>
-    <div class="how-step">
-      <div class="step-num">02 — EFFORTLESS</div>
-      <h3>You do almost<br>nothing</h3>
-      <p>We handle the research, the relationships, the content, the timing, the monitoring. Your only job is to approve what goes live and ship the hardware when we win something. <strong>This is fully done for you.</strong> That's why it works.</p>
-    </div>
-    <div class="how-step">
-      <div class="step-num">03 — PERMANENT</div>
-      <h3>A position that<br>compounds over time</h3>
-      <p>Community standing isn't rented like an ad. Once earned, it holds. We build the kind of presence that gets stronger every month — <strong>the kind your competitors can't buy their way into</strong> once you have it.</p>
+    <div>
+      <div class="how-step">
+        <div class="step-hd">
+          <div class="step-badge">01</div>
+          <h3><span data-en>Results before you expect them</span><span data-zh>比你预期的更快见效</span></h3>
+        </div>
+        <p><span data-en>Most clients see their first meaningful community win within 30 days. Not a promise — an actual moment where the room shifts. <strong>We engineer early wins deliberately.</strong> You need to know fast that you made the right call.</span><span data-zh>大多数客户在 30 天内就能看到第一个有意义的社区成果。不是承诺——而是局面真正改变的那一刻。<strong>我们刻意设计早期胜利。</strong>你需要尽快知道自己做了正确的决定。</span></p>
+      </div>
+      <div class="how-step">
+        <div class="step-hd">
+          <div class="step-badge">02</div>
+          <h3><span data-en>You do almost nothing</span><span data-zh>你几乎什么都不用做</span></h3>
+        </div>
+        <p><span data-en>We handle the research, the relationships, the content, the timing, the monitoring. Your only job is to approve what goes live. <strong>This is fully done for you.</strong> That's why it works.</span><span data-zh>调研、关系维护、内容创作、时机把握、持续监控——全由我们来。你唯一需要做的是审批上线内容。<strong>这是完全为你执行的服务。</strong>这正是它奏效的原因。</span></p>
+      </div>
+      <div class="how-step">
+        <div class="step-hd">
+          <div class="step-badge">03</div>
+          <h3><span data-en>A position that compounds over time</span><span data-zh>随时间持续增值的地位</span></h3>
+        </div>
+        <p><span data-en>Community standing isn't rented like an ad. Once earned, it holds. We build presence that gets stronger every month — <strong>the kind your competitors can't buy their way into</strong> once you have it.</span><span data-zh>社区地位不像广告那样是租来的。一旦赢得，就会持续。我们构建的是每个月都在增强的影响力——<strong>一旦你拥有，竞争对手就再也买不到入场券。</strong></span></p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- WHO -->
 <section>
-  <div class="section-label reveal">Who We Work With</div>
-  <div class="who-layout">
-    <div class="who-copy reveal">
-      <h2>We don't work<br>with <em>everyone.</em></h2>
-      <p>If your product is average, we can't help you. Communities are sharp — they'll see through positioning that isn't earned. We only take on brands that deserve to be in the room.</p>
-      <p>But if your product is genuinely good and you're just losing ground because you don't speak the language of these communities — <strong>that's exactly the gap we exist to close.</strong></p>
-      <p>The brands that win here move first and move right. That's the only advantage that matters.</p>
+  <div class="eyebrow reveal">
+    <div class="eyebrow-bar"></div>
+    <span class="eyebrow-label">
+      <span data-en>Who We Work With</span>
+      <span data-zh>我们与谁合作</span>
+    </span>
+  </div>
+  <div class="who-layout reveal">
+    <div class="who-copy">
+      <h2>
+        <span data-en>We don't work<br>with <em>everyone.</em></span>
+        <span data-zh>我们不与<br><em>所有人</em>合作。</span>
+      </h2>
+      <p><span data-en>If your product is average, we can't help you. Communities are sharp — they'll see through positioning that isn't earned. We only take on brands that deserve to be in the room.</span><span data-zh>如果你的产品平庸，我们帮不了你。社区眼光很毒——他们能看穿没有实力支撑的定位。我们只接那些真正值得进入这个圈子的品牌。</span></p>
+      <p><span data-en>But if your product is genuinely good and you're losing ground because you don't speak the language of these communities — <strong>that's exactly the gap we exist to close.</strong></span><span data-zh>但如果你的产品真的好，只是因为不懂这些社区的语言而在失地——<strong>这正是我们存在要弥合的差距。</strong></span></p>
+      <p><span data-en>The brands that win here move first and move right. That's the only advantage that matters.</span><span data-zh>在这里胜出的品牌，行动更早，方向更准。这是唯一重要的优势。</span></p>
     </div>
-    <ul class="who-list reveal">
-      <li>You want to own the conversation in your category — not just participate in it</li>
-      <li>You've been banned or restricted from a community that drives real purchase decisions</li>
-      <li>You're entering a Western market and know your brand doesn't yet have the cultural standing to move alone</li>
-      <li>A competitor is getting recommended everywhere and you're watching it happen</li>
-      <li>You tried to manage this internally and it made things worse</li>
-      <li>You're launching something significant and need the ecosystem warmed up before it drops</li>
+    <ul class="who-list">
+      <li><span data-en>You want to own the conversation in your category — not just participate in it</span><span data-zh>你想主导品类话语权——而不只是参与讨论</span></li>
+      <li><span data-en>You've been banned or restricted from a community that drives real purchase decisions</span><span data-zh>你已被某个影响真实购买决策的社区封禁或限制</span></li>
+      <li><span data-en>You're entering a Western market and your brand doesn't yet have the cultural standing to move alone</span><span data-zh>你正在进入西方市场，品牌还没有独立行动的文化底气</span></li>
+      <li><span data-en>A competitor is getting recommended everywhere and you're watching it happen</span><span data-zh>竞争对手在到处被推荐，而你只能眼睁睁看着</span></li>
+      <li><span data-en>You tried to manage this internally and it made things worse</span><span data-zh>你试过内部自己处理，结果越搞越糟</span></li>
+      <li><span data-en>You're launching something significant and need the ecosystem warmed up before it drops</span><span data-zh>你即将发布重要产品，需要在上线前把生态圈预热好</span></li>
     </ul>
   </div>
 </section>
 
-<!-- PROOF STRIP -->
-<div class="proof reveal">
-  <div class="proof-inner">
-    <div class="proof-stat">
-      <span class="num">109K</span>
-      <span class="label">Members in<br>communities managed</span>
+<!-- DARK STATS -->
+<div class="dark-section reveal">
+  <div class="eyebrow" style="margin-bottom:40px;">
+    <div class="eyebrow-bar" style="background:rgba(255,255,255,0.2);"></div>
+    <span class="eyebrow-label" style="color:rgba(255,255,255,0.3);">
+      <span data-en>By the numbers</span>
+      <span data-zh>数据说话</span>
+    </span>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num">109<sup>K</sup></div>
+      <div class="stat-lbl"><span data-en>Community members<br>in managed subreddits</span><span data-zh>所管理社区<br>的成员总数</span></div>
     </div>
-    <div class="proof-stat">
-      <span class="num">1,315</span>
-      <span class="label">Posts analyzed<br>per engagement</span>
+    <div class="stat-box">
+      <div class="stat-num">1,315</div>
+      <div class="stat-lbl"><span data-en>Posts analyzed<br>per engagement</span><span data-zh>每次合作<br>分析的帖子数量</span></div>
     </div>
-    <div class="proof-stat">
-      <span class="num">4,930</span>
-      <span class="label">Community posts read<br>before first contact</span>
+    <div class="stat-box">
+      <div class="stat-num">4,930</div>
+      <div class="stat-lbl"><span data-en>Community posts read<br>before first contact</span><span data-zh>首次接触前<br>已阅读的社区帖子</span></div>
     </div>
-    <div class="proof-stat">
-      <span class="num">45</span>
-      <span class="label">Day ban-lift<br>guarantee</span>
+    <div class="stat-box">
+      <div class="stat-num">24<sup>h</sup></div>
+      <div class="stat-lbl"><span data-en>Response time<br>on every inquiry</span><span data-zh>每条询问<br>的响应时间</span></div>
     </div>
   </div>
 </div>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label reveal">Get In Touch</div>
-  <div class="contact-layout">
-    <div class="contact-copy reveal">
-      <h2>We take on<br><em>a few clients</em><br>at a time.</h2>
-      <p>Community work is not a volume game. Every engagement gets the full operation — which means we're selective about who we work with and when.</p>
-      <p>If you have a real problem and a real product, tell us the situation. We'll give you a straight answer on whether we can help and what it would take.</p>
-      <p style="color: var(--accent); font-size: 14px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 1px;">No pitch decks. No SDR calls. Just the situation.</p>
-      <a href="mailto:juice@atlasoperations.io" class="contact-email">
-        <span>EMAIL →</span>
-        juice@atlasoperations.io
+  <div class="eyebrow reveal">
+    <div class="eyebrow-bar"></div>
+    <span class="eyebrow-label">
+      <span data-en>Get In Touch</span>
+      <span data-zh>联系我们</span>
+    </span>
+  </div>
+  <div class="contact-layout reveal">
+    <div class="contact-copy">
+      <h2>
+        <span data-en>We take on<br><em>a few clients</em><br>at a time.</span>
+        <span data-zh>我们每次只<br><em>接少数</em><br>客户。</span>
+      </h2>
+      <p><span data-en>Community work is not a volume game. Every engagement gets the full operation — which means we're selective about who we work with and when.</span><span data-zh>社区工作不是靠数量取胜的。每个合作项目都会得到完整的运营投入——这意味着我们对合作对象和时机都非常挑剔。</span></p>
+      <p><span data-en>If you have a real problem and a real product, tell us the situation. We'll give you a straight answer on whether we can help and what it would take.</span><span data-zh>如果你有真实的问题和真实的产品，告诉我们情况。我们会直接告诉你能否帮到你，以及需要什么。</span></p>
+      <p class="contact-note"><span data-en>No pitch decks. No SDR calls. Just the situation.</span><span data-zh>不要 PPT，不要销售电话。直接说情况。</span></p>
+      <a href="mailto:juice@atlasoperations.io" class="email-link">
+        <span>✉</span> juice@atlasoperations.io
       </a>
     </div>
-    <div class="form-wrap reveal">
+    <div class="form-card">
+      <div class="form-title">
+        <span data-en>Send your situation</span>
+        <span data-zh>发送你的情况</span>
+      </div>
       <div class="form-row">
-        <div class="form-field">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name">
+        <div class="f-field">
+          <label><span data-en>Name</span><span data-zh>姓名</span></label>
+          <input type="text" id="f-name" placeholder="Full name" data-ph-zh="全名">
         </div>
-        <div class="form-field">
-          <label>Company</label>
-          <input type="text" placeholder="Brand or company">
+        <div class="f-field">
+          <label><span data-en>Company</span><span data-zh>公司</span></label>
+          <input type="text" id="f-co" placeholder="Brand or company" data-ph-zh="品牌或公司名称">
         </div>
       </div>
-      <div class="form-field">
+      <div class="f-field">
         <label>Email</label>
         <input type="email" placeholder="you@company.com">
       </div>
-      <div class="form-field">
-        <label>Situation</label>
-        <select>
-          <option value="" disabled selected>What describes you best?</option>
-          <option>We're banned or restricted from a community</option>
-          <option>We need to enter a new community from scratch</option>
-          <option>Competitors are outpositing us in our community</option>
-          <option>We have a reputation problem we need to address</option>
-          <option>Something else</option>
+      <div class="f-field">
+        <label><span data-en>Situation</span><span data-zh>你的情况</span></label>
+        <select id="f-sit">
+          <option value="" disabled selected data-en="What describes you best?" data-zh="最符合你情况的是？">What describes you best?</option>
+          <option data-en="We're banned or restricted from a community" data-zh="我们被社区封禁或限制">We're banned or restricted from a community</option>
+          <option data-en="We need to enter a new community from scratch" data-zh="我们需要从零进入一个新社区">We need to enter a new community from scratch</option>
+          <option data-en="Competitors are outpositing us in our community" data-zh="竞争对手在社区中压制了我们">Competitors are outpositing us in our community</option>
+          <option data-en="We have a reputation problem to address" data-zh="我们有需要处理的声誉问题">We have a reputation problem to address</option>
+          <option data-en="Something else" data-zh="其他情况">Something else</option>
         </select>
       </div>
-      <div class="form-field">
-        <label>Tell us more</label>
-        <textarea rows="5" placeholder="What's the situation, what you've already tried, what a win looks like for you. Be direct — we'll be direct back."></textarea>
+      <div class="f-field" style="margin-bottom:0;">
+        <label><span data-en>Tell us more</span><span data-zh>详细说明</span></label>
+        <textarea rows="4" id="f-more"
+          placeholder="What's the situation, what you've tried, what a win looks like. Be direct — we'll be direct back."
+          data-ph-zh="说说你的情况、你已经尝试过什么、对你来说什么算赢。直接说——我们也会直接回答。"></textarea>
       </div>
-      <button class="form-submit" onclick="handleSubmit(event)">Send It →</button>
-      <p class="form-note">We respond within 24 hours with a straight answer. Everything is confidential — we don't discuss clients, engagements, or who we work with. Ever.</p>
+      <button class="form-submit" onclick="handleSubmit(event)">
+        <span data-en>Send It →</span>
+        <span data-zh>发送 →</span>
+      </button>
+      <p class="form-note">
+        <span data-en>We respond within 24 hours. Everything is confidential — we don't discuss clients or engagements publicly. Ever.</span>
+        <span data-zh>我们在 24 小时内回复。所有内容严格保密——我们从不对外透露客户或合作项目。</span>
+      </p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Atlas<span>.</span>Operations — Community Strategy</div>
-  <div class="footer-right">atlasoperations.io/community · © 2026</div>
+  <div class="f-logo">Atlas Operations — <span data-en>Community Strategy</span><span data-zh>社区战略</span></div>
+  <div class="f-right">atlasoperations.io/community · © 2026</div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
+  // SCROLL REVEAL
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 55);
+        obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  reveals.forEach(el => observer.observe(el));
+  // LANGUAGE SWITCH
+  function setLang(lang) {
+    const isZh = lang === 'zh';
+    document.body.classList.toggle('zh', isZh);
+    document.getElementById('btn-en').classList.toggle('active', !isZh);
+    document.getElementById('btn-zh').classList.toggle('active', isZh);
 
-  // Form submit handler
+    // Placeholders
+    document.querySelectorAll('[data-ph-zh]').forEach(el => {
+      if (!el.dataset.phEn) el.dataset.phEn = el.placeholder;
+      el.placeholder = isZh ? el.dataset.phZh : el.dataset.phEn;
+    });
+
+    // Select options
+    document.querySelectorAll('select option').forEach(opt => {
+      const t = opt.getAttribute(isZh ? 'data-zh' : 'data-en');
+      if (t) opt.textContent = t;
+    });
+
+    localStorage.setItem('atlas-lang', lang);
+  }
+
+  if (localStorage.getItem('atlas-lang') === 'zh') setLang('zh');
+
+  // FORM
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target;
-    btn.textContent = 'Sent ✓';
-    btn.style.background = '#f0ede6';
-    btn.style.letterSpacing = '2px';
+    const btn = e.currentTarget;
+    const isZh = document.body.classList.contains('zh');
+    btn.innerHTML = isZh ? '已发送 ✓' : 'Sent ✓';
+    btn.style.background = 'var(--accent)';
     setTimeout(() => {
-      btn.textContent = 'Send It →';
+      btn.innerHTML = isZh
+        ? '<span data-zh style="display:inline">发送 →</span>'
+        : '<span data-en style="display:inline">Send It →</span>';
       btn.style.background = '';
-      btn.style.letterSpacing = '';
     }, 3000);
-    // Wire to Tally or backend here
   }
 </script>
-
 </body>
 </html>
