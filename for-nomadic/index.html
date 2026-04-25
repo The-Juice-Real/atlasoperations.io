@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JCI ASPAC 2026 Niigata: Available Stay Report</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172026;
+      --muted: #66717a;
+      --line: #d8e1e7;
+      --soft: #f5f7f9;
+      --band: #eef5f1;
+      --green: #0b6b61;
+      --blue: #245a9a;
+      --amber: #9a6500;
+      --red: #aa3d2f;
+      --bg: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      letter-spacing: 0;
+    }
+    a { color: #155e9b; }
+    header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f3f8f7 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 20px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.12;
+      font-weight: 760;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+    p { line-height: 1.5; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .gift-card {
+      position: relative;
+      min-height: 210px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1f2a2f;
+      color: #fff;
+    }
+    .gift-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.04) contrast(1.02);
+    }
+    .gift-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.72));
+      font-weight: 760;
+      letter-spacing: 0;
+      font-size: 18px;
+    }
+    main { padding: 24px 32px 40px; }
+    .notice {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 18px;
+      border: 1px solid #c8d9e5;
+      border-radius: 8px;
+      background: #f3f8fb;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #26333b;
+    }
+    .notice strong { font-size: 14px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+      min-height: 112px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    #map {
+      height: 690px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--soft);
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .panel-head {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 150px 150px;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    input, select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+    .table-wrap {
+      overflow: auto;
+      max-height: 690px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #eef4f3;
+      color: #26333b;
+      font-size: 12px;
+    }
+    tr:hover { background: #f8fbfb; }
+    .name {
+      font-weight: 700;
+      min-width: 190px;
+    }
+    .tiny {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      margin-top: 4px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--soft);
+      margin: 6px 5px 0 0;
+      white-space: nowrap;
+    }
+    .tag.best { color: #fff; background: var(--green); }
+    .tag.car { color: #fff; background: var(--blue); }
+    .tag.rail { color: #fff; background: var(--amber); }
+    .tag.last { color: #fff; background: var(--red); }
+    .money-stack {
+      display: grid;
+      gap: 2px;
+      min-width: 126px;
+    }
+    .money-stack strong { font-size: 14px; }
+    .money-stack span { color: var(--muted); font-size: 12px; }
+    .section {
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .info-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+    .proof {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #3b4650;
+      background: #f7f7f2;
+      border-left: 3px solid #a87514;
+      padding: 8px 10px;
+      margin-top: 7px;
+      line-height: 1.35;
+      font-size: 12px;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      padding: 10px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: -1px;
+    }
+    .dot.green { background: var(--green); }
+    .dot.blue { background: var(--blue); }
+    .dot.amber { background: var(--amber); }
+    .dot.red { background: var(--red); }
+    .soldout-list {
+      columns: 2;
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #3b4650;
+      line-height: 1.55;
+    }
+    .searches {
+      columns: 2;
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #3b4650;
+      line-height: 1.55;
+    }
+    @media (max-width: 1080px) {
+      .layout { grid-template-columns: 1fr; }
+      #map { height: 520px; }
+    }
+    @media (max-width: 760px) {
+      header, main { padding-left: 16px; padding-right: 16px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .gift-card, .gift-card img { height: 260px; }
+      .summary, .cards { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+      .soldout-list, .searches { columns: 1; }
+      table { font-size: 12px; }
+      th, td { padding: 9px 7px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero-grid">
+      <div>
+        <h1>JCI ASPAC 2026 Niigata: Available Stay Report</h1>
+        <div class="meta">
+          <span class="pill">Main venue: Toki Messe, Bandaijima</span>
+          <span class="pill">Event: 2026-06-11 to 2026-06-14</span>
+          <span class="pill">Stay priced: 2026-06-11 to 2026-06-15</span>
+          <span class="pill">Only live bookable options included</span>
+        </div>
+      </div>
+      <div class="gift-card">
+        <img src="portrait.png" alt="Gift to JCI nomadic" onerror="this.style.display='none'">
+        <div class="gift-caption">Gift to JCI nomadic</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="notice" aria-label="Currency conversion rate">
+      <strong>Currency conversion used: 1 JPY = USD 0.006271 = MNT 22.573656</strong>
+      <span>Also: 1 USD = JPY 159.4642 = MNT 3,599.69. Live source pulled from <a href="https://open.er-api.com/v6/latest/JPY" target="_blank" rel="noreferrer">ExchangeRate-API open JPY endpoint</a>, last update Sat, 25 Apr 2026 00:02:32 UTC. MNT sanity-check source: <a href="https://www.mongolbank.mn/en/currency-rates" target="_blank" rel="noreferrer">Bank of Mongolia daily foreign exchange rates</a>.</span>
+      <span>Research pass: 2026-04-25. Proof is from live web pages opened with exact check-in 2026-06-11, check-out 2026-06-15, 4 nights, 1 adult, 1 room. No official accommodation PDF rates are used as recommendations here.</span>
+    </section>
+
+    <section class="summary" aria-label="Key findings">
+      <div class="metric"><strong>Venue locked</strong><span>JCI states ASPAC 2026 is at Toki Messe Convention Center, with Hotel Nikko Niigata as HQ hotel.</span></div>
+      <div class="metric"><strong>JPY 20,500</strong><span>Lowest live lodging total found: Kusanagi Ryokan in Mitsuke. It is cheap because it is a commute play.</span></div>
+      <div class="metric"><strong>JPY 33,000</strong><span>Best live Niigata-city hotel total found: Comfort Inn Niigata Chuo Inter. It needs taxi/car strategy.</span></div>
+      <div class="metric"><strong>JPY 30,900</strong><span>Cheapest lodging plus listed event-day JR/bus commute: Kusanagi, before hotel-to-station local transfer.</span></div>
+    </section>
+
+    <section class="section">
+      <h2>Verdict</h2>
+      <p>The earlier central-hotel list was not usable because the exact ASPAC dates are currently sold out or not bookable through the live pages I could verify. The cheap inventory that remains is either outside central Niigata, car/taxi dependent, or commuter rail dependent. For a chapter paying individual costs, the defensible message is simple: the cheapest verified solo lodging is not glamorous, but it materially reduces the reimbursement burden compared with late central hotels.</p>
+    </section>
+
+    <section class="layout">
+      <div>
+        <div id="map" role="img" aria-label="Map of available hotel options around Toki Messe"></div>
+        <div class="legend">
+          <span><i class="dot green"></i>Cheapest available</span>
+          <span><i class="dot blue"></i>Niigata-city car/taxi</span>
+          <span><i class="dot amber"></i>Rail commute</span>
+          <span><i class="dot red"></i>Venue / last resorts</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Available Options</h2>
+          <p class="tiny">Sorted by lodging total by default. Use the booking link on each row; it keeps the ASPAC dates in the Rakuten search parameters.</p>
+          <div class="controls">
+            <input id="search" type="search" placeholder="Search hotel, area, proof, transit...">
+            <select id="category">
+              <option value="">All categories</option>
+              <option value="Best cheap">Best cheap</option>
+              <option value="Niigata car/taxi">Niigata car/taxi</option>
+              <option value="Rail commute">Rail commute</option>
+              <option value="Last resort">Last resort</option>
+            </select>
+            <select id="sort">
+              <option value="price">Sort by lodging price</option>
+              <option value="commute">Sort by lodging + listed rail/bus</option>
+              <option value="distance">Sort by distance</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Distance</th>
+                <th>Exact ASPAC-Date Cost</th>
+                <th>Feel / Quality</th>
+                <th>Book / Use</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Transit Math</h2>
+      <div class="cards">
+        <div class="info-box">
+          <h3>Niigata Station to Toki Messe</h3>
+          <p class="tiny">Use this after any train commute into Niigata Station.</p>
+          <div id="tokimesseBus"></div>
+          <div class="proof">Proof: Niigata Kotsu 2026 event direct-bus page shows adult fare JPY 260 one-way and about 15-20 minutes; Japan Meetings also lists about 15 minutes by bus and 5 minutes by taxi from Niigata Station.</div>
+        </div>
+        <div class="info-box">
+          <h3>Mitsuke to Niigata Station</h3>
+          <div id="mitsukeRail"></div>
+          <div class="proof">Proof: Ekitan exact fare page shows Mitsuke to Niigata, JPY 1,040 one-way by ticket, IC JPY 1,034, 1h05, no transfer.</div>
+        </div>
+        <div class="info-box">
+          <h3>Nagaoka / Raikoji to Niigata</h3>
+          <div id="nagaokaRail"></div>
+          <div class="proof">Proof: Ekitan shows Nagaoka to Niigata Shinkansen unreserved JPY 3,100 one-way; Raikoji to Niigata local JR JPY 1,410 one-way and 1h50.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof-table">
+      <h2>Exact-Date Proof Table</h2>
+      <p class="tiny">These are the proof snippets I used. I kept them short: total price, reserve signal, and remaining-room signal where the page exposed one. Some bookable Rakuten rows show a reserve button without a remaining-room warning; those are still included because the page returned an exact total and a booking action for 2026-06-11 to 2026-06-15.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Live proof</th>
+              <th>Lodging total</th>
+              <th>Booking link</th>
+            </tr>
+          </thead>
+          <tbody id="proofRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What I Removed</h2>
+      <p class="tiny">These are not recommendations now because exact-date pages did not show bookable inventory in the live check. The old official PDF rates are not enough; they do not prove you can actually book today.</p>
+      <ul class="soldout-list">
+        <li>Toyoko Inn Niigata Furumachi</li>
+        <li>Bandai Silver Hotel</li>
+        <li>Art Hotel Niigata Ekimae</li>
+        <li>Toyoko Inn Niigata Ekimae</li>
+        <li>Court Hotel Niigata</li>
+        <li>Niigata Daiichi Hotel</li>
+        <li>Niigata Terminal Hotel</li>
+        <li>Niigata Grand Hotel</li>
+        <li>Hotel Sunroute Niigata</li>
+        <li>APA Hotel &amp; Resort Niigata Ekimae Odori</li>
+        <li>Dormy Inn Niigata</li>
+        <li>Country Hotel Niigata</li>
+        <li>Hotel Global View Niigata</li>
+        <li>Core Tsubame-Sanjo station hotels checked through Rakuten exact dates</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Japanese Search Layer</h2>
+      <ul class="searches">
+        <li>2026年6月11日 6月15日 新潟市 ホテル 空室 1名</li>
+        <li>2026/6/11 2026/6/15 新潟駅 ホテル 空室 1名</li>
+        <li>6月13日 2026 新潟市 ホテル 空室 朱鷺メッセ</li>
+        <li>朱鷺メッセ 遠征 ホテル 安い 新潟駅</li>
+        <li>朱鷺メッセ ライブ 遠征 ホテル 新潟駅 おすすめ</li>
+        <li>新潟駅 万代口 ビジネスホテル 素泊まり</li>
+        <li>新潟市中央区 旅館 素泊まり 安い 朱鷺メッセ</li>
+        <li>新潟市 民泊 朱鷺メッセ</li>
+        <li>新潟市 ゲストハウス ドミトリー</li>
+        <li>見附 新潟駅 ホテル 旅館 空室</li>
+        <li>長岡駅 新潟駅 新幹線 ホテル</li>
+        <li>来迎寺 新潟駅 ホテル 空室 楽天</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Source Links</h2>
+      <div class="cards">
+        <div class="info-box">
+          <h3>Venue</h3>
+          <p class="tiny"><a href="https://jciaspac2026.com/when-and-where-will-jci-aspac-2026-take-place/" target="_blank" rel="noreferrer">JCI ASPAC venue/date FAQ</a><br><a href="https://www.japanmeetings.org/plan-your-event/search/venue-detail/843.html" target="_blank" rel="noreferrer">Japan Meetings Toki Messe access</a></p>
+        </div>
+        <div class="info-box">
+          <h3>Rail / Bus</h3>
+          <p class="tiny"><a href="https://ekitan.com/transit/fare/sf-3733/st-3654" target="_blank" rel="noreferrer">Ekitan Mitsuke to Niigata</a><br><a href="https://ekitan.com/transit/fare/sf-3781/st-3654" target="_blank" rel="noreferrer">Ekitan Raikoji to Niigata</a><br><a href="https://ekitan.com/transit/shinkansen/section/sf-3643/st-3654/toki" target="_blank" rel="noreferrer">Ekitan Nagaoka to Niigata Shinkansen</a><br><a href="https://www.niigata-kotsu.co.jp/~noriai/route-bus/extrabus/tokimesse/2026/260425-26_messe.html" target="_blank" rel="noreferrer">Niigata Kotsu Toki Messe bus fare signal</a></p>
+        </div>
+        <div class="info-box">
+          <h3>Exact Booking</h3>
+          <p class="tiny">Every recommendation links to its exact-date Rakuten plan search. Check cancellation terms and smoking/non-smoking room type before paying.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const venue = { name: "Toki Messe", lat: 37.9262099, lon: 139.0600135 };
+    const fx = {
+      jpyUsd: 0.006271,
+      jpyMnt: 22.573656,
+      usdJpy: 159.4642,
+      usdMnt: 3599.69,
+      updated: "Sat, 25 Apr 2026 00:02:32 UTC"
+    };
+    const eventBus = { oneWay: 260, roundTrip: 520, fourDayRoundTrips: 2080, time: "15-20 min Niigata Station to Toki Messe" };
+    const rail = {
+      mitsuke: { oneWay: 1040, fourDayRoundTrips: 8320, time: "1h05 local JR, no transfer" },
+      raikoji: { oneWay: 1410, fourDayRoundTrips: 11280, time: "1h50 local JR, 1 transfer via Nagaoka" },
+      nagaokaShinkansen: { oneWay: 3100, fourDayRoundTrips: 24800, time: "about 17-25 min by Joetsu Shinkansen / Toki unreserved" }
+    };
+
+    function rakutenPlan(id) {
+      return "https://hotel.travel.rakuten.co.jp/hotelinfo/plan/?f_no=" + id + "&f_teikei=&f_flg=PLAN&f_otona_su=1&f_s1=0&f_s2=0&f_y1=0&f_y2=0&f_y3=0&f_y4=0&f_kin=&f_kin2=&f_heya_su=1&f_nen1=2026&f_tuki1=6&f_hi1=11&f_nen2=2026&f_tuki2=6&f_hi2=15&f_hak=4&f_tel=&f_target_flg=&f_tscm_flg=&f_p_no=&f_custom_code=&f_search_type=&f_service=&f_campaign=&f_camp_id=&f_static=1&f_squeezes=&f_squeezes=";
+    }
+
+    const hotels = [
+      {
+        p: "A",
+        category: "Best cheap",
+        n: "Kusanagi Ryokan",
+        jp: "草薙旅館＜新潟県＞",
+        id: 13677,
+        a: "2-17-5 Honcho, Mitsuke, Niigata 954-0053",
+        area: "Mitsuke",
+        lat: 37.524353,
+        lon: 138.925079,
+        d: 46.2,
+        total: 20500,
+        transit: rail.mitsuke.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "Mitsuke -> Niigata local JR: JPY 1,040 one-way, 1h05. Add Toki Messe bus JPY 260 one-way. Four event-day round trips listed here, before ryokan-to-station local transfer.",
+        proof: "Rakuten exact dates: JPY 20,500 total / reserve / 3 rooms left for 2026-06-11 to 2026-06-15.",
+        feel: "Cheapest verified. Simple renovated ryokan room, Japanese style, no meals, shower/toilet in the room on the plan I saw, Wi-Fi/LAN. This is a savings move, not a comfort flex.",
+        action: "Book first if the chapter's priority is lowest individual reimbursement and you can tolerate the commute.",
+        tag: "best"
+      },
+      {
+        p: "A",
+        category: "Best cheap",
+        n: "Kyoya Ryokan",
+        jp: "京屋旅館＜新潟県＞",
+        id: 70943,
+        a: "2-2-18 Yamada, Nagaoka, Niigata 940-0097",
+        area: "Nagaoka",
+        lat: 37.446655,
+        lon: 138.841431,
+        d: 56.7,
+        total: 21000,
+        transit: rail.nagaokaShinkansen.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "Nagaoka -> Niigata Shinkansen: JPY 3,100 one-way unreserved. Add Toki Messe bus JPY 260 one-way. Four event-day round trips listed here, before ryokan-to-station local transfer.",
+        proof: "Rakuten exact dates: JPY 21,000 total / reserve / 2 rooms left.",
+        feel: "Very basic old-school ryokan. Cheapest Nagaoka proof I found, but quality expectations should be modest.",
+        action: "Good backup if Kusanagi disappears; Shinkansen makes the time sane but raises total cost.",
+        tag: "best"
+      },
+      {
+        p: "A",
+        category: "Rail commute",
+        n: "Kokorate",
+        jp: "越路ていしゃば交流施設ここらて",
+        id: 196069,
+        a: "Raikoji-ko 2602-2, Nagaoka, Niigata 949-5411",
+        area: "Raikoji / Nagaoka",
+        lat: 37.3972688,
+        lon: 138.7831143,
+        d: 63.7,
+        total: 28920,
+        transit: rail.raikoji.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "Raikoji -> Niigata local JR: JPY 1,410 one-way, 1h50 with 1 transfer. Add Toki Messe bus JPY 260 one-way. Four event-day round trips listed here.",
+        proof: "Rakuten exact dates: JPY 28,920 total / reserve / 3 rooms left.",
+        feel: "Cleaner and more modern than the cheapest ryokans. Single room with bath/toilet, desk, TV, Wi-Fi. The commute is long but predictable.",
+        action: "Best balance if you want cheap lodging with a more hotel-like room and can handle local rail time.",
+        tag: "rail"
+      },
+      {
+        p: "A",
+        category: "Niigata car/taxi",
+        n: "Comfort Inn Niigata Chuo Inter",
+        jp: "コンフォートイン新潟中央インター",
+        id: 80563,
+        a: "14-5 Konan, Chuo-ku, Niigata 950-1151",
+        area: "Niigata Chuo Inter",
+        lat: 37.875469,
+        lon: 139.039398,
+        d: 5.9,
+        total: 33000,
+        transit: 0,
+        transitLabel: "No rail/metro leg. Treat this as car or taxi. Official hotel access says JR Niigata Station by taxi/car is about 16 min; Toki Messe route should be checked before booking.",
+        proof: "Rakuten exact dates: JPY 33,000 total / reserve button shown for a non-smoking semi-double, no remaining-room warning displayed.",
+        feel: "The best Niigata-city find in this pass. Modern budget chain, private bath, Wi-Fi, parking. It is not walkable to the venue, but the room quality is safer than the bare ryokan layer.",
+        action: "Strong individual-cost choice if taxi/car logistics are acceptable.",
+        tag: "car"
+      },
+      {
+        p: "B",
+        category: "Rail commute",
+        n: "Hotel Route-Inn Nagaoka Inter",
+        jp: "ホテルルートイン長岡インター",
+        id: 2925,
+        a: "85 Sakaihigashi-machi, Nagaoka, Niigata 940-2026",
+        area: "Nagaoka Inter",
+        lat: 37.455593,
+        lon: 138.813126,
+        d: 56.7,
+        total: 33150,
+        transit: rail.nagaokaShinkansen.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "If commuting by rail: taxi/car to Nagaoka Station, then Shinkansen JPY 3,100 one-way, plus Toki Messe bus JPY 260 one-way. Four event-day rail/bus round trips listed here, before Nagaoka local taxi.",
+        proof: "Rakuten exact dates: JPY 33,150 total / reserve button shown.",
+        feel: "Predictable Route-Inn business hotel with breakfast and bath. Better quality than the ryokan layer, but it is car-oriented and not near Nagaoka Station.",
+        action: "Use only if you want Route-Inn predictability and can manage station transfers.",
+        tag: "rail"
+      },
+      {
+        p: "B",
+        category: "Rail commute",
+        n: "Hotel Route-Inn Mitsuke",
+        jp: "ホテルルートイン見附 -中之島見附インター-",
+        id: 184347,
+        a: "160-1 Kamishinden-machi, Mitsuke, Niigata 954-0112",
+        area: "Mitsuke / Nakanoshima-Mitsuke IC",
+        lat: 37.540127,
+        lon: 138.884796,
+        d: 45.6,
+        total: 40900,
+        transit: rail.mitsuke.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "Mitsuke -> Niigata local JR: JPY 1,040 one-way, 1h05. Add Toki Messe bus JPY 260 one-way. Four event-day round trips listed here, before hotel-to-station local transfer.",
+        proof: "Rakuten exact dates: JPY 40,900 total / reserve / 3 rooms left.",
+        feel: "Reliable business hotel, breakfast included, large bath, private room. More defensible for comfort than Kusanagi, but needs local transfer to station.",
+        action: "Good if the chapter prefers a recognizable business hotel over a bare ryokan.",
+        tag: "rail"
+      },
+      {
+        p: "B",
+        category: "Niigata car/taxi",
+        n: "Guesthouse GooGoo",
+        jp: "ゲストハウスぐーぐー",
+        id: 186463,
+        a: "3013-1 Shirone, Minami-ku, Niigata 950-1217",
+        area: "Shirone / Minami-ku",
+        lat: 37.761436,
+        lon: 139.013016,
+        d: 18.8,
+        total: 46400,
+        transit: 0,
+        transitLabel: "No rail shortcut. This is a bus/car/taxi problem from Shirone; confirm route timing before booking. Check-in window on the plan was strict: 12:00-17:00.",
+        proof: "Rakuten exact dates: JPY 46,400 total / reserve / 1 room left.",
+        feel: "Guesthouse/private twin with shared shower and toilet. Characterful and cheaper than many late hotels, but it is not smooth conference logistics.",
+        action: "Use only if you accept shared facilities and can handle the early check-in window.",
+        tag: "car"
+      },
+      {
+        p: "C",
+        category: "Niigata car/taxi",
+        n: "Comfort Inn Niigata Kameda",
+        jp: "コンフォートイン新潟亀田",
+        id: 178613,
+        a: "2-1-11 Higashi-hayadori, Konan-ku, Niigata 950-0148",
+        area: "Kameda / Konan-ku",
+        lat: 37.8754,
+        lon: 139.0916,
+        d: 6.3,
+        total: 74400,
+        transit: 0,
+        transitLabel: "No rail/metro leg. Treat as taxi/car. It is much closer by map than Nagaoka/Mitsuke but not cheap enough to beat the best commuter options.",
+        proof: "Rakuten exact dates: JPY 74,400 total / reserve button shown.",
+        feel: "Modern outer-city Comfort Inn, private facilities, car-friendly. More comfortable than cheap ryokan, weaker value than Comfort Chuo Inter.",
+        action: "Keep as a safer Niigata-city fallback if cheaper rooms vanish.",
+        tag: "car"
+      },
+      {
+        p: "D",
+        category: "Last resort",
+        n: "NEMARU Hontogurashi",
+        jp: "NEMARU ほんとぐらし",
+        id: 177987,
+        a: "Yoita-machi Yoita-ko 170, Nagaoka, Niigata 940-2402",
+        area: "Yoita / Nagaoka",
+        lat: 37.542118,
+        lon: 138.808228,
+        d: 48.1,
+        total: 95000,
+        transit: 0,
+        transitLabel: "No clean rail plan from the house. Car/taxi strongly preferred. If forced into Nagaoka Station, add local taxi plus Shinkansen costs.",
+        proof: "Rakuten exact dates: JPY 95,000 total / reserve / 1 house left.",
+        feel: "One-house rental with kitchen, bath, parking, Wi-Fi, outdoor deck. Nice but not cheap as an individual reimbursement.",
+        action: "Only use if the chapter values house privacy or all cheaper options disappear.",
+        tag: "last"
+      },
+      {
+        p: "D",
+        category: "Last resort",
+        n: "Royal Tainai Park Hotel",
+        jp: "新胎内温泉 ロイヤル胎内パークホテル",
+        id: 107608,
+        a: "1191 Natsui, Tainai, Niigata 959-2822",
+        area: "Tainai Onsen",
+        lat: 38.031841,
+        lon: 139.496033,
+        d: 40.0,
+        total: 95100,
+        transit: 0,
+        transitLabel: "Remote hot-spring hotel. Not a rail/metro solution; use only with car/taxi/shuttle planning.",
+        proof: "Rakuten exact dates: JPY 95,100 total / reserve / 1 room left.",
+        feel: "Comfortable onsen hotel, more resort-like. Operationally far from ASPAC despite straight-line distance.",
+        action: "Last resort for comfort, not for savings.",
+        tag: "last"
+      },
+      {
+        p: "D",
+        category: "Rail commute",
+        n: "Hotel New Otani Nagaoka",
+        jp: "ホテルニューオータニ長岡",
+        id: 2104,
+        a: "2-8-35 Daimachi, Nagaoka, Niigata 940-0048",
+        area: "Nagaoka Station",
+        lat: 37.447201,
+        lon: 138.856003,
+        d: 56.2,
+        total: 159720,
+        transit: rail.nagaokaShinkansen.fourDayRoundTrips + eventBus.fourDayRoundTrips,
+        transitLabel: "Nagaoka -> Niigata Shinkansen: JPY 3,100 one-way unreserved. Add Toki Messe bus JPY 260 one-way. Four event-day round trips listed here.",
+        proof: "Rakuten exact dates: JPY 159,720 total / reserve / 1 room left.",
+        feel: "Proper full-service hotel right by Nagaoka Station. Comfortable and low-risk, but wildly outside the cheap goal.",
+        action: "Only for a chapter that chooses quality and low logistical risk over savings.",
+        tag: "last"
+      }
+    ];
+
+    const colors = {
+      "Best cheap": "#0b6b61",
+      "Niigata car/taxi": "#245a9a",
+      "Rail commute": "#9a6500",
+      "Last resort": "#aa3d2f"
+    };
+
+    const rows = document.getElementById("rows");
+    const proofRows = document.getElementById("proofRows");
+    const search = document.getElementById("search");
+    const category = document.getElementById("category");
+    const sort = document.getElementById("sort");
+    let map;
+    let markers = [];
+
+    function formatJPY(value) {
+      return "JPY " + value.toLocaleString("en-US");
+    }
+    function formatUSDFromJPY(value) {
+      return "USD " + (value * fx.jpyUsd).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function formatMNTFromJPY(value) {
+      return "MNT " + Math.round(value * fx.jpyMnt).toLocaleString("en-US");
+    }
+    function moneyStack(value) {
+      return `<div class="money-stack"><strong>${formatJPY(value)}</strong><span>${formatUSDFromJPY(value)}</span><span>${formatMNTFromJPY(value)}</span></div>`;
+    }
+    function listedTotal(item) {
+      return item.total + (item.transit || 0);
+    }
+    function priceHtml(item) {
+      const transit = item.transit
+        ? `<div class="tiny"><strong>Listed rail/bus add-on:</strong> ${formatJPY(item.transit)} / ${formatUSDFromJPY(item.transit)} / ${formatMNTFromJPY(item.transit)}<br>${item.transitLabel}</div><div class="tiny"><strong>Lodging + listed rail/bus:</strong> ${formatJPY(listedTotal(item))} / ${formatUSDFromJPY(listedTotal(item))} / ${formatMNTFromJPY(listedTotal(item))}</div>`
+        : `<div class="tiny"><strong>Transit:</strong> ${item.transitLabel}</div>`;
+      return `${moneyStack(item.total)}<div class="proof">${item.proof}</div>${transit}`;
+    }
+    function mapsUrl(item) {
+      const q = encodeURIComponent(item.n + " " + item.a + " Japan");
+      return "https://www.google.com/maps/search/?api=1&query=" + q;
+    }
+    function directionsUrl(item) {
+      const origin = encodeURIComponent(item.n + " " + item.a + " Japan");
+      return "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=Toki+Messe+Niigata+Convention+Center&travelmode=transit";
+    }
+    function priorityClass(item) {
+      return item.tag;
+    }
+    function filtered() {
+      const q = search.value.trim().toLowerCase();
+      const data = hotels
+        .filter(h => !category.value || h.category === category.value)
+        .filter(h => {
+          const blob = [h.n, h.jp, h.a, h.area, h.proof, h.feel, h.action, h.category, h.transitLabel].join(" ").toLowerCase();
+          return !q || blob.includes(q);
+        });
+      if (sort.value === "distance") return data.sort((a, b) => a.d - b.d);
+      if (sort.value === "commute") return data.sort((a, b) => listedTotal(a) - listedTotal(b));
+      return data.sort((a, b) => a.total - b.total);
+    }
+    function renderRows() {
+      const data = filtered();
+      rows.innerHTML = data.map(h => `
+        <tr>
+          <td class="name">
+            ${h.n}
+            <div class="tiny">${h.jp}<br>${h.a}<br>${h.area}</div>
+            <span class="tag ${priorityClass(h)}">${h.p}</span><span class="tag ${priorityClass(h)}">${h.category}</span>
+          </td>
+          <td>${h.d.toFixed(1)} km<div class="tiny">straight-line to Toki Messe; road/rail time differs.</div></td>
+          <td>${priceHtml(h)}</td>
+          <td>${h.feel}</td>
+          <td>${h.action}<div class="tiny"><a href="${rakutenPlan(h.id)}" target="_blank" rel="noreferrer">book exact dates</a> &middot; <a href="${mapsUrl(h)}" target="_blank" rel="noreferrer">map</a> &middot; <a href="${directionsUrl(h)}" target="_blank" rel="noreferrer">directions</a></div></td>
+        </tr>
+      `).join("");
+      renderMarkers(data);
+    }
+    function renderProofRows() {
+      const data = [...hotels].sort((a, b) => a.total - b.total);
+      proofRows.innerHTML = data.map(h => `
+        <tr>
+          <td class="name">${h.n}<div class="tiny">${h.jp}<br>${h.area}</div></td>
+          <td>${h.proof}<div class="tiny">${h.transitLabel}</div></td>
+          <td>${moneyStack(h.total)}${h.transit ? `<div class="tiny">With listed rail/bus: ${formatJPY(listedTotal(h))}</div>` : ""}</td>
+          <td><a href="${rakutenPlan(h.id)}" target="_blank" rel="noreferrer">Rakuten exact-date page</a></td>
+        </tr>
+      `).join("");
+    }
+    function renderTransitBoxes() {
+      document.getElementById("tokimesseBus").innerHTML = `${moneyStack(eventBus.oneWay)}<div class="tiny">One-way bus fare. Four event-day round trips: ${formatJPY(eventBus.fourDayRoundTrips)} / ${formatUSDFromJPY(eventBus.fourDayRoundTrips)} / ${formatMNTFromJPY(eventBus.fourDayRoundTrips)}. Time: ${eventBus.time}.</div>`;
+      document.getElementById("mitsukeRail").innerHTML = `${moneyStack(rail.mitsuke.oneWay)}<div class="tiny">One-way ticket fare. Four event-day rail round trips: ${formatJPY(rail.mitsuke.fourDayRoundTrips)} / ${formatUSDFromJPY(rail.mitsuke.fourDayRoundTrips)} / ${formatMNTFromJPY(rail.mitsuke.fourDayRoundTrips)}. Time: ${rail.mitsuke.time}.</div>`;
+      document.getElementById("nagaokaRail").innerHTML = `${moneyStack(rail.nagaokaShinkansen.oneWay)}<div class="tiny">Nagaoka Shinkansen one-way unreserved. Four event-day round trips: ${formatJPY(rail.nagaokaShinkansen.fourDayRoundTrips)} / ${formatUSDFromJPY(rail.nagaokaShinkansen.fourDayRoundTrips)} / ${formatMNTFromJPY(rail.nagaokaShinkansen.fourDayRoundTrips)}.<br>Raikoji local one-way: ${formatJPY(rail.raikoji.oneWay)}; four event-day round trips: ${formatJPY(rail.raikoji.fourDayRoundTrips)}. Time: ${rail.raikoji.time}.</div>`;
+    }
+    function renderMarkers(data) {
+      if (!map || !window.L) return;
+      markers.forEach(m => m.remove());
+      markers = [];
+      const venueMarker = L.circleMarker([venue.lat, venue.lon], { radius: 9, color: "#aa3d2f", fillColor: "#aa3d2f", fillOpacity: 0.95 })
+        .addTo(map)
+        .bindPopup("<strong>Toki Messe</strong><br>Main ASPAC venue");
+      markers.push(venueMarker);
+      data.forEach(h => {
+        const marker = L.circleMarker([h.lat, h.lon], {
+          radius: h.p === "A" ? 7 : 5,
+          color: colors[h.category] || "#666",
+          fillColor: colors[h.category] || "#666",
+          fillOpacity: 0.88,
+          weight: 2
+        }).addTo(map);
+        marker.bindPopup(`<strong>${h.n}</strong><br>${h.area}<br>${h.d.toFixed(1)} km straight-line<br>${formatJPY(h.total)} lodging<br>${h.transit ? formatJPY(listedTotal(h)) + " with listed rail/bus" : "car/taxi logistics"}<br><a href="${rakutenPlan(h.id)}" target="_blank">Book exact dates</a>`);
+        markers.push(marker);
+      });
+    }
+    function initMap() {
+      if (!window.L) {
+        document.getElementById("map").textContent = "Map library did not load. Use the table links for maps and directions.";
+        return;
+      }
+      map = L.map("map", { scrollWheelZoom: true }).setView([37.72, 139.03], 9);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+      renderRows();
+    }
+
+    search.addEventListener("input", renderRows);
+    category.addEventListener("change", renderRows);
+    sort.addEventListener("change", renderRows);
+    renderTransitBoxes();
+    renderProofRows();
+    renderRows();
+    window.addEventListener("load", initMap);
+  </script>
+</body>
+</html>
